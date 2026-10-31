@@ -231,7 +231,7 @@ def main(argv=None):
         if args.command == "qualify":
             return 4 if report["qualification_status"] == "FAIL" else 3
         return 0
-    except (InputError, OSError) as exc:
+    except (InputError, OSError, ValueError, UnicodeError) as exc:
         print("INPUT_ERROR: " + str(exc), file=sys.stderr)
         return 2
 
