@@ -48,7 +48,7 @@ def test_archive_pin_mismatch(tmp_path):
 
 def test_extracted_file_changed(tmp_path):
     a, root, pin = sample_zip(tmp_path)
-    (root / "contracts.py").write_bytes(b"changed!")
+    (root / "contracts.py").write_bytes(b"changed-length")
     assert "EXTRACTED_SIZE_MISMATCH" in codes(inventory_zip(a, root=root, expected_archive_sha256=pin))
 
 
