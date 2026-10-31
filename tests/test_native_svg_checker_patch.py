@@ -170,3 +170,18 @@ def test_private_svg_member_mutation_detected(tmp_path):
     with pytest.raises(ValueError,match="OWNER_SVG_BYTE_PIN_MISMATCH"):
         patch.inspect_private_wpe_svg_sources(
             path,archive_pin=sha,figure_pins={"SYNTH-ONE":("example/fig.svg","0"*64)})
+
+
+def test_semibold_numeric_entity_long_title_is_not_false_clip():
+    # 60 source characters, 16px semibold, centred on a 550-unit canvas.
+    # Font weight changes stroke width, not the glyph advance to 0.58*font.
+    title="SYNTHETIC CENTERED SEMIBOLD TITLE WITH &#956; AND &#952; UNITS"
+    s=svg('<text x="260" y="300" font-size="16" font-weight="600" '
+          'text-anchor="middle">'+title+'</text>',viewbox="0 0 550 340")
+    assert not any("outside the viewBox" in x for x in judge(s))
+
+
+def test_true_clipped_bold_title_still_warns():
+    s=svg('<text x="590" y="200" font-size="18" font-weight="600">'
+          'SYNTHE​TIC OUTSIDE TITLE</text>')
+    assert any("outside the viewBox" in x for x in judge(s))
