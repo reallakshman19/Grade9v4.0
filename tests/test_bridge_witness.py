@@ -257,3 +257,30 @@ def test_cli_known_physics_contradiction_returns_one(base,tmp_path):
 
 def test_report_deterministic(base):
     assert inspect_witness(base)==inspect_witness(copy.deepcopy(base))
+
+
+def test_cli_unknown_top_level_is_invalid_contract(base,tmp_path):
+    base["fake_review_override"] = True
+    witness = tmp_path/"witness.json"
+    out = tmp_path/"out.json"
+    witness.write_text(json.dumps(base))
+    assert main(["bridge-witness","--witness",str(witness),"--out",str(out)]) == 1
+    output = json.loads(out.read_text())
+    assert output["mechanical_status"] == "FAIL"
+    assert "SCHEMA_ERROR" in {x["code"] for x in output["diagnostics"]}
+
+
+def test_cli_disallows_self_declared_approved_witness(base,tmp_path):
+    base["status"] = "APPROVED"
+    source=tmp_path/"witness.json"
+    target=tmp_path/"report.json"
+    source.write_text(json.dumps(base))
+    assert main(["bridge-witness","--witness",str(source),"--out",str(target)]) == 1
+    assert any(x["gate"] == "CONTRACT" for x in json.loads(target.read_text())["diagnostics"])
+
+
+def test_report_omits_full_question_or_student_answer_payload(base):
+    base["source_and_physics"]["paper_ref"] = "private-document-id-only"
+    base["core1b"]["answer_secret"] = "PRIVATE_STUDENT_RESPONSE"
+    report = inspect_witness(base)
+    assert "PRIVATE_STUDENT_RESPONSE" not in json.dumps(report)

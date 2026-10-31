@@ -10,7 +10,7 @@ from .shared_manifest import inventory_zip
 from .shared_authorities import summarize_authorities
 from .qrt_binding import inspect_binding, fingerprints
 from .bridge_witness import inspect_witness
-from .validate import inspect
+from .validate import inspect, schema_errors
 from .report import make_report, markdown
 
 def main(argv=None):
@@ -57,6 +57,14 @@ def main(argv=None):
         if args.command == "bridge-witness":
             data = read_json(Path(args.witness))
             report = inspect_witness(data)
+            schema_findings = schema_errors(data, "bridge-witness", str(args.witness))
+            if schema_findings:
+                report["mechanical_status"] = "FAIL"
+                report["diagnostics"].extend(
+                    {"gate": "CONTRACT", "code": item.code, "severity": "FAIL",
+                     "detail": item.message, "path": item.path} for item in schema_findings
+                )
+                report["diagnostics"].sort(key=lambda row: (row["gate"], row["code"], row["detail"]))
             write_json(Path(args.out), report)
             print("BRIDGE-WITNESS mechanical=" + report["mechanical_status"] +
                   " qualification=HOLD NOT_ACADEMIC_APPROVAL")
