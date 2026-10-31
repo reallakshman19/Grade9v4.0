@@ -4,6 +4,24 @@
 
 The initial candidate validator and Smart Skills read-only adapter are documented in [draft PR #2](https://github.com/reallakshman19/Grade9v4.0/pull/2), following [master specification #1](https://github.com/reallakshman19/Grade9v4.0/issues/1).
 
+## P0.5c — Real Shared subject-workspace preflight (draft PR #10)
+
+`grade9qa subject-workspace-audit` examines a **real provided repository root**, looks for each explicitly bound `<Subject>/adapter/CoreContracts.json`, checks the native six-Core catalogue and claimed validator limitations, and compares subject-local gate/library evidence to Shared's native discovery result. It never executes or installs a subject adapter or grants academic approval.
+
+```bash
+# Native Shared checker runs separately in a trusted full subject repository:
+python -B Shared/tools/check_subjects.py > /local/native-subjects.json
+
+grade9qa subject-workspace-audit \
+  --manifest examples/three-subjects-candidate/manifest.json \
+  --root /path/to/full-subject-repository \
+  --bindings /local/subject-directory-map.json \
+  --native-report /local/native-subjects.json \
+  --out out/native-workspaces.json
+```
+
+The subject-directory bindings must name **actual owner-authorized directories**. The supplied `Shared.zip` has no such subjects. A synthetic three-subject local native run reported `passed:true` with all three `CONTRACT_ONLY` and zero gate/library records; **this is NOT three-subject readiness**. `subject-workspace-audit` retains HOLD even when native discovery passes. See [preflight guide](docs/native-subject-workspaces/README.md) and [draft PR #10](https://github.com/reallakshman19/Grade9v4.0/pull/10).
+
 ## P0.5b — WPE v1 migration preview and native Shared subject-dispatch readback (PR #9)
 
 `migrate-v1-preview` creates a **reversible, read-only reference map** from the historic Physics/WPE WEP-01 pilot to the versioned three-subject v2 candidate intake. It records original bundle/collection/source byte hashes, preserves original IDs and statuses, and refuses unverifiable source assets or silent transfer of an old APPROVED status.
