@@ -3,14 +3,14 @@ import json
 import pytest
 
 from grade9qa.core2_render_hardening import (
-    OLD_SAVE, OLD_COMMIT, OLD_DEBUG, NEW_SAVE, NEW_COMMIT, PATCHES,
+    OLD_SAVE, OLD_COMMIT, OLD_RESTORE, OLD_DEBUG, NEW_SAVE, NEW_COMMIT, PATCHES,
     RENDER_ANCHOR, patch_runtime_js, patch_native_source, patch_private_html,
     write_candidate,
 )
 
 
 def runtime():
-    return "\n".join([OLD_SAVE, OLD_COMMIT, OLD_DEBUG])
+    return "\n".join([OLD_SAVE, OLD_COMMIT, OLD_RESTORE, OLD_DEBUG])
 
 
 def native():
