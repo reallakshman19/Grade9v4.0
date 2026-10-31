@@ -28,6 +28,19 @@ See [readme.txt](readme.txt) for **“1. Correct workflow placement”** and [Sm
 
 The sample has mechanically valid candidate records. `qualify` intentionally returns exit code **3 (HOLD)**. This is not a software defect. No source scan, official paper, answer key or academically approved lesson is provided.
 
+## P0.2b complete inventory and native authority report adapter (stacked PR #4)
+
+The 292-file `Shared.zip` is **external** and has not been republished in this public repo. The read-only tools create a deterministic per-file SHA-256 inventory and summarize the original Shared auditors' **native reports**. They **never grant academic approval**.
+
+```bash
+grade9qa shared-manifest --archive /path/to/Shared.zip --shared-root /path/to/Shared --out out/shared-full-manifest.json
+
+# The following inputs must be outputs of the original Shared auditors, not reports invented by Grade9QA:
+grade9qa shared-authorities --core core-authority.json --review review-audit.json --release release-audit.json --out out/native-authorities.json
+```
+
+Exit 3 means the evidence is mechanically usable but platform/academic qualification remains **HOLD**; exit 1 means contradiction/invalid evidence; exit 2 means unreadable inputs. A native audit with **zero receipts** cannot establish a reviewed record or authorized learner release. See [P0.2b instructions](docs/p02b/README.md) and [draft PR #4](https://github.com/reallakshman19/Grade9v4.0/pull/4). 
+
 ## Shared platform audit (stacked PR #3)
 
 The existing Shared platform is **not yet copied into this public repository**. Its 292-file owner-supplied archive is summarized by 16 selected immutable source fingerprints in `docs/shared-baseline-pins.json`.
