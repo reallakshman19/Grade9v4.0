@@ -28,6 +28,19 @@ See [readme.txt](readme.txt) for **“1. Correct workflow placement”** and [Sm
 
 The sample has mechanically valid candidate records. `qualify` intentionally returns exit code **3 (HOLD)**. This is not a software defect. No source scan, official paper, answer key or academically approved lesson is provided.
 
+## P0.3 native QRT/WPE binding (stacked PR #5)
+
+`grade9qa qrt-bind` checks candidate **SL1 → SL2 → native R2 sidecar → QRT Physics Blueprint v0.2.0 → WPE topic adapter** consistency, with an optional source-to-Core1A preparation dossier.
+
+```bash
+grade9qa qrt-bind --sl1 /local/sl1.json --sl2 /local/sl2.json \
+  --contract /local/native-sidecar.json --blueprint /local/physics-blueprint.D3-D4.json \
+  --adapter /local/topic-adapter.work-power-energy.json \
+  --handoff /local/source-to-core1a-handoff.json --out out/qrt-binding.json
+```
+
+It checks IDs, native legacy SL1/SL2 digest continuity, proposed operation, five-factor demand scores, exact Blueprint/adapter cells, preparation-only handoff status and optional native checker reports. **It never approves QRT cognitive demand, a scientific warrant, exam authenticity, teaching equivalence or release.** The original QRT WPE adapters contain examination text and are intentionally kept out of this public repository. See [P0.3 documentation](docs/p03/README.md) and [PR #5](https://github.com/reallakshman19/Grade9v4.0/pull/5).
+
 ## P0.2b complete inventory and native authority report adapter (stacked PR #4)
 
 The 292-file `Shared.zip` is **external** and has not been republished in this public repo. The read-only tools create a deterministic per-file SHA-256 inventory and summarize the original Shared auditors' **native reports**. They **never grant academic approval**.
