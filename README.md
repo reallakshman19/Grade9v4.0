@@ -4,6 +4,12 @@
 
 The initial candidate validator and Smart Skills read-only adapter are documented in [draft PR #2](https://github.com/reallakshman19/Grade9v4.0/pull/2), following [master specification #1](https://github.com/reallakshman19/Grade9v4.0/issues/1).
 
+## P0 Core2: no duplicate HTML, source identity and Physics QRT binding
+
+[Draft PR #12](https://github.com/reallakshman19/Grade9v4.0/pull/12) adds `core2-inventory-audit` and `core2-cell-audit`, using the original **four review lots (63 identified source IDs + 16 reconciliation positions)**, **21-place selection (14 conditional / 7 vacant)** and **nine existing native Core2 rendered cards (8 textbook / 1 synthetic)**, which must **not** be conflated. The original Physics Blueprint supplies 14 D3/D4 cells but the current general WPE adapter candidate supplies only D3.1 and is unselected; the later subtiles refer to a different Blueprint version. Everything remains an academic HOLD; the native renderer is reused, not replaced.
+
+See [Core2 P0 source-based plan](docs/core2-p0/README.md).
+
 ## P1 pilot: original WPE evidence and authored WEP-01 drafts (draft PR #11)
 
 The Owner-provided source archives include a **noncanonical D3.1.1 B1–B7 witness** and **two actual WEP-01 Core1A/Core1B authored pairs**. They must not be silently equated. The `wep-pilot-evidence` and `wep01-pair-audit` commands read fixed ZIP members locally, preserve original SHA-256 byte identities and produce **metadata-only academic HOLD** reports; they never publish original exam/teaching text, approve academic correctness or test the actual learner runtime.

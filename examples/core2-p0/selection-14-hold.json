@@ -1,0 +1,100 @@
+[
+  {
+    "source_id": "EX-M105",
+    "operation": "APPLY",
+    "band": "D3",
+    "topic_family": null,
+    "capability_refs": []
+  },
+  {
+    "source_id": "EX-M62",
+    "operation": "APPLY",
+    "band": "D3",
+    "topic_family": null,
+    "capability_refs": []
+  },
+  {
+    "source_id": "EX-M79",
+    "operation": "APPLY",
+    "band": "D3",
+    "topic_family": null,
+    "capability_refs": []
+  },
+  {
+    "source_id": "EX-M16",
+    "operation": "MODEL",
+    "band": "D3",
+    "topic_family": null,
+    "capability_refs": []
+  },
+  {
+    "source_id": "EX-M73",
+    "operation": "MODEL",
+    "band": "D3",
+    "topic_family": null,
+    "capability_refs": []
+  },
+  {
+    "source_id": "EX-M81",
+    "operation": "MODEL",
+    "band": "D3",
+    "topic_family": null,
+    "capability_refs": []
+  },
+  {
+    "source_id": "EX-M56",
+    "operation": "REPRESENT",
+    "band": "D3",
+    "topic_family": null,
+    "capability_refs": []
+  },
+  {
+    "source_id": "EX-M61",
+    "operation": "REPRESENT",
+    "band": "D3",
+    "topic_family": null,
+    "capability_refs": []
+  },
+  {
+    "source_id": "EX-M69",
+    "operation": "REPRESENT",
+    "band": "D3",
+    "topic_family": null,
+    "capability_refs": []
+  },
+  {
+    "source_id": "EX-M39",
+    "operation": "SYNTHESIZE",
+    "band": "D3",
+    "topic_family": null,
+    "capability_refs": []
+  },
+  {
+    "source_id": "EX-M44",
+    "operation": "SYNTHESIZE",
+    "band": "D3",
+    "topic_family": null,
+    "capability_refs": []
+  },
+  {
+    "source_id": "EX-M60",
+    "operation": "SYNTHESIZE",
+    "band": "D3",
+    "topic_family": null,
+    "capability_refs": []
+  },
+  {
+    "source_id": "EX-M101",
+    "operation": "JUSTIFY",
+    "band": "D3",
+    "topic_family": null,
+    "capability_refs": []
+  },
+  {
+    "source_id": "WEP07-03",
+    "operation": "JUSTIFY",
+    "band": "D4",
+    "topic_family": null,
+    "capability_refs": []
+  }
+]
