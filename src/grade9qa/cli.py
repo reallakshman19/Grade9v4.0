@@ -10,6 +10,7 @@ from .shared_manifest import inventory_zip
 from .shared_authorities import summarize_authorities
 from .qrt_binding import inspect_binding, fingerprints
 from .bridge_witness import inspect_witness
+from .bridge_legacy import inspect_legacy_witness
 from .validate import inspect, schema_errors
 from .report import make_report, markdown
 
@@ -52,8 +53,17 @@ def main(argv=None):
     bridge_witness = subs.add_parser("bridge-witness", help="B1-B7 teaching/reconstruction evidence audit; no academic self-approval.")
     bridge_witness.add_argument("--witness", required=True, help="Local v1 candidate witness JSON")
     bridge_witness.add_argument("--out", required=True, help="B1-B7 evidence summary JSON output")
+    legacy = subs.add_parser("bridge-legacy", help="Sanitized readback of native WPE D3 candidate B1-B7 records.")
+    legacy.add_argument("--witness", required=True, help="Original local WPE D3 candidate witness JSON")
+    legacy.add_argument("--out", required=True, help="Source status readback without stem/question text")
     args = parser.parse_args(argv)
     try:
+        if args.command == "bridge-legacy":
+            summary = inspect_legacy_witness(read_json(Path(args.witness)))
+            write_json(Path(args.out), summary)
+            print("BRIDGE-LEGACY status=" + summary["mechanical_status"] +
+                  " qualification=HOLD NOT_ACADEMIC_APPROVAL")
+            return 1 if summary["mechanical_status"] == "FAIL" else 3
         if args.command == "bridge-witness":
             data = read_json(Path(args.witness))
             report = inspect_witness(data)
