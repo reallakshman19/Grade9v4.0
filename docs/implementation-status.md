@@ -4,7 +4,7 @@
 
 Master: [Issue #1](https://github.com/reallakshman19/Grade9v4.0/issues/1).
 
-Stacked draft PRs: [#2](https://github.com/reallakshman19/Grade9v4.0/pull/2) → [#3](https://github.com/reallakshman19/Grade9v4.0/pull/3) → [#4](https://github.com/reallakshman19/Grade9v4.0/pull/4) → [#5](https://github.com/reallakshman19/Grade9v4.0/pull/5) → [#6](https://github.com/reallakshman19/Grade9v4.0/pull/6) → [#7](https://github.com/reallakshman19/Grade9v4.0/pull/7) → [#9](https://github.com/reallakshman19/Grade9v4.0/pull/9) → [#10](https://github.com/reallakshman19/Grade9v4.0/pull/10) → [#11](https://github.com/reallakshman19/Grade9v4.0/pull/11).
+Stacked draft PRs: [#2](https://github.com/reallakshman19/Grade9v4.0/pull/2) → [#3](https://github.com/reallakshman19/Grade9v4.0/pull/3) → [#4](https://github.com/reallakshman19/Grade9v4.0/pull/4) → [#5](https://github.com/reallakshman19/Grade9v4.0/pull/5) → [#6](https://github.com/reallakshman19/Grade9v4.0/pull/6) → [#7](https://github.com/reallakshman19/Grade9v4.0/pull/7) → [#9](https://github.com/reallakshman19/Grade9v4.0/pull/9) → [#10](https://github.com/reallakshman19/Grade9v4.0/pull/10) → [#11](https://github.com/reallakshman19/Grade9v4.0/pull/11) → [#12](https://github.com/reallakshman19/Grade9v4.0/pull/12).
 
 - [x] P0.0/P0.1: Grade9QA CLI, structural records, source-incomplete synthetic example
 - [x] P0.2a: read-only Shared six-Core authority audit
@@ -28,3 +28,6 @@ No user-supplied hash, synthetic fixture, preview screenshot, candidate D3 label
 
 - [x] **P1 pilot evidence triage:** original Owner-supplied WPE D3.1.1 witness/Physics review/source register/handoff/browser-hub metadata readback, plus two genuine authored WEP-01 Core1A/Core1B draft variant comparisons, 30 new synthetic regression tests; [draft PR #11](https://github.com/reallakshman19/Grade9v4.0/pull/11). No source text imported.
 - [ ] **P1 academic qualification:** select independently reviewed WEP-01 Core1A/B variant; QRT construction-family operation/band decision; exact qualified Physics warrants; real first-answer learner state and independent Shared approvals. **HOLD**.
+
+- [x] **P0 Core2 reconciliation/resolver:** metadata-only real four-lot/21-slot/nine-native-card comparison, Physics QRT 14-cell and Owner-pinned WPE adapter semantic resolver, fail-closed wrong/missing family/capability/version/D1-D2 checks, 31 synthetic negative tests; [draft PR #12](https://github.com/reallakshman19/Grade9v4.0/pull/12).
+- [ ] **P0 Core2 academic acceptance:** original complete 79-row owner disposition ledger, independently authenticated paper/key/figures, selected exact WPE adapter, reviewed WEP topic/capability links, non-draft native Core2 golden and protected first-attempt learner tests; all **HOLD**.
