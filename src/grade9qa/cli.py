@@ -16,6 +16,7 @@ from .migrate_v1 import preview_v1_to_v2, _load_strict
 from .shared_dispatch import inspect_shared_dispatch
 from .subject_workspaces import inspect_workspaces
 from .pilot_evidence import readback_pilot
+from .pilot_pair_review import compare_wep01_drafts
 from .validate import inspect, schema_errors
 from .report import make_report, markdown
 
@@ -87,8 +88,21 @@ def main(argv=None):
     wep.add_argument("--handoff-archive", required=True, help="Original WPE_CONSTRUCTION_HANDOFF_SKILL_R1_CANDIDATE.zip")
     wep.add_argument("--hub-archive", required=True, help="Original wpe.zip (browser hub QA only)")
     wep.add_argument("--out", required=True, help="Sanitized JSON; original exam/lesson text stays local")
+    pair = subs.add_parser("wep01-pair-audit", help="Compare two real WEP-01 authored draft variants without copying content.")
+    pair.add_argument("--inputs-archive", required=True, help="Owner-supplied original Input sources(4).zip")
+    pair.add_argument("--out", required=True, help="Metadata-only draft comparison JSON, academic HOLD")
     args = parser.parse_args(argv)
     try:
+        if args.command == "wep01-pair-audit":
+            source = Path(args.inputs_archive)
+            target = Path(args.out).resolve()
+            if target == source.resolve():
+                raise InputError("OUTPUT_CANNOT_OVERWRITE_ORIGINAL_OWNER_ARCHIVE")
+            report = compare_wep01_drafts(source)
+            write_json(target, report)
+            print("WEP01-PAIR-AUDIT mechanical=" + report["mechanical_status"] +
+                  " academic=HOLD release=HOLD NOT_ACADEMIC_APPROVAL")
+            return 1 if report["mechanical_status"] == "FAIL" else 3
         if args.command == "wep-pilot-evidence":
             output = Path(args.out).resolve()
             archive_paths = [Path(args.d3_archive), Path(args.handoff_archive), Path(args.hub_archive)]
