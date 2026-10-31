@@ -202,11 +202,90 @@ def patch_to_private_file(source: Path, destination: Path) -> dict:
     }
 
 
+
+# These original SVG bytes are Owner-local extracted textbook candidates, not
+# canonical exam assets. Safe to store ONLY hashes/IDs in this public code.
+ORIGINAL_INPUT_SOURCES_SHA256 = "ed0880d9ff314853c084834f2a8ac4ced69d2b8f5b019612ca999a1222b20565"
+WPE_FIGURE_BYTES = {
+    "REP-TB-FIG-06-INCLINE-BLOCK": (
+        "work_energy_power_extracted/images/fig_06_incline_block.svg",
+        "c5a896866e7fcca2b2dd82e8408394e655ab8b4ef8edda3a3eb6d80cbad6ccd5"),
+    "REP-TB-FIG-07-INCLINE-FBD": (
+        "work_energy_power_extracted/images/fig_07_incline_fbd.svg",
+        "98c664df1595322694f974c7fde38699fc337a6f7829786b00e0dd5fd133e6bd"),
+    "REP-TB-FIG-09-OVERHANGING-CHAIN": (
+        "work_energy_power_extracted/images/fig_09_overhanging_chain.svg",
+        "40510540074ad29b0f7634e680f8235356f64dbe969eb28b164edb7e30a00aa0"),
+    "REP-TB-FIG-10-SPRING-BLOCK-WALL": (
+        "work_energy_power_extracted/images/fig_10_spring_block_wall.svg",
+        "c0a90c6fffcc88731316cb17fe34439e4bdccceda7a34d8deb585a2ba1d61bbc"),
+}
+
+
+def inspect_private_wpe_svg_sources(archive: Path, *, archive_pin: str = ORIGINAL_INPUT_SOURCES_SHA256,
+                                    figure_pins: dict | None = None) -> dict:
+    """Compare exact source SVG candidates using the proposed checker.
+
+    This is *not* original native product re-render, figure approval, or a
+    replacement for the pre-existing 10-gap authoritative render receipt.
+    No figure text, image, authored solution or question content is returned.
+    """
+    import re
+    import xml.etree.ElementTree as ET
+    import zipfile
+    pins = WPE_FIGURE_BYTES if figure_pins is None else figure_pins
+    data_sha = hashlib.sha256()
+    with Path(archive).open("rb") as reader:
+        while chunk := reader.read(1048576):
+            data_sha.update(chunk)
+    if data_sha.hexdigest() != archive_pin:
+        raise ValueError("OWNER_INPUT_SOURCES_ARCHIVE_HASH_MISMATCH")
+    checker={}
+    exec(REPLACEMENT, {"ET": ET, "re": re}, checker)
+    check=checker["_figure_text_findings"]
+    records=[]
+    with zipfile.ZipFile(archive) as source:
+        for figure_id,(member,byte_pin) in pins.items():
+            info=source.getinfo(member)
+            if info.is_dir() or not 0 < info.file_size <= 100000:
+                raise ValueError("INVALID_OR_OVERSIZED_OWNER_SVG")
+            original=source.read(member)
+            if hashlib.sha256(original).hexdigest()!=byte_pin:
+                raise ValueError("OWNER_SVG_BYTE_PIN_MISMATCH")
+            try:
+                findings=check(original.decode("utf8"),400.0,12.0)
+            except UnicodeDecodeError as exc:
+                raise ValueError("OWNER_SVG_ENCODING_INVALID") from exc
+            records.append({
+                "figure_id":figure_id,
+                "source_sha256":byte_pin,
+                "candidate_clipping_warnings":sum("outside the viewBox" in x for x in findings),
+                "minimum_text_size_warnings":sum("smallest label" in x for x in findings),
+                "unsupported_geometry_warnings":sum("requires browser/author review" in x for x in findings),
+                "source_figure_modified":False,
+                "owner_source_equivalence_to_printed_textbook": "NOT_CERTIFIED",
+            })
+    return {
+        "schema_version":"1.0.0",
+        "audit_type":"ORIGINAL_OWNER_TEXTBOOK_SVG_CHECKER_PATCH_CANDIDATE",
+        "source_archive_sha256":data_sha.hexdigest(),
+        "figure_results":records,
+        "mechanical_status":"HOLD" if all(x["candidate_clipping_warnings"]==0 and x["unsupported_geometry_warnings"]==0 for x in records) else "FAIL",
+        "original_native_receipt_gaps_waived":0,
+        "uncreated_native_representations":6,
+        "native_rebuild":"NOT_PERFORMED",
+        "academic_status":"HOLD","release_status":"HOLD",
+        "warning":"400px/12px source-level approximation is not the original manifest's exact tablet column, browser glyph metrics or a genuine new Shared render receipt.",
+    }
+
+
 def main(argv=None):
     parser=argparse.ArgumentParser(description="Original Shared SVG checker candidate, Owner-local only")
     parser.add_argument("--original-renderer",required=True)
     parser.add_argument("--out",required=True)
     parser.add_argument("--receipt",required=True)
+    parser.add_argument("--svg-archive",help="Optional exact Owner Input sources(4).zip; never copied")
+    parser.add_argument("--svg-audit-out",help="Optional metadata-only four-source SVG comparison JSON")
     args=parser.parse_args(argv)
     originals=[Path(args.original_renderer).resolve(),Path(args.out).resolve(),Path(args.receipt).resolve()]
     if len(set(originals))!=3:
@@ -214,6 +293,15 @@ def main(argv=None):
     result=patch_to_private_file(originals[0],originals[1])
     originals[2].parent.mkdir(parents=True,exist_ok=True)
     originals[2].write_text(json.dumps(result,indent=2)+"\n",encoding="utf8")
+    if bool(args.svg_archive) != bool(args.svg_audit_out):
+        raise ValueError("SVG_SOURCE_AND_REPORT_MUST_BE_PAIRED")
+    if args.svg_archive:
+        svg_out=Path(args.svg_audit_out).resolve()
+        if svg_out in set(originals)|{Path(args.svg_archive).resolve()}:
+            raise ValueError("CANNOT_OVERWRITE_OWNER_INPUT_OR_RECEIPT")
+        report=inspect_private_wpe_svg_sources(Path(args.svg_archive))
+        svg_out.parent.mkdir(parents=True,exist_ok=True)
+        svg_out.write_text(json.dumps(report,indent=2)+"\n",encoding="utf8")
     print("NATIVE_SHARED_SVG_CHECKER_CANDIDATE academic=HOLD release=HOLD")
     return 3
 
