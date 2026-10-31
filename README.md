@@ -4,6 +4,12 @@
 
 The initial candidate validator and Smart Skills read-only adapter are documented in [draft PR #2](https://github.com/reallakshman19/Grade9v4.0/pull/2), following [master specification #1](https://github.com/reallakshman19/Grade9v4.0/issues/1).
 
+## P0 Core2 native runtime repair (draft PR #13)
+
+[Draft PR #13](https://github.com/reallakshman19/Grade9v4.0/pull/13) provides a **source-independent, Owner-local patch** for the existing original Shared `render_core/2` **Core2** runtime: verify first-response storage and readback **before** solution reveal, preserve first committed answer, and remove the author debug reveal function from Core2 pages. Private tests against the existing **nine-card** native HTML passed five Chromium interactions; 11 new synthetic regression tests passed CI. No original Shared renderer, full HTML, question text, figures, answers or Owner files are committed to GitHub.
+
+The **ten original authoring/diagram receipt gaps remain open**, as do the trusted native rebuild, server-protected answers, Owner-selected WPE adapter, original exam authentication, independent QRT/Physics/Core2 admission, and learner release. See [native Core2 runtime evidence and limitations](docs/core2-runtime/README.md).
+
 ## P0 Core2: no duplicate HTML, source identity and Physics QRT binding
 
 [Draft PR #12](https://github.com/reallakshman19/Grade9v4.0/pull/12) adds `core2-inventory-audit` and `core2-cell-audit`, using the original **four review lots (63 identified source IDs + 16 reconciliation positions)**, **21-place selection (14 conditional / 7 vacant)** and **nine existing native Core2 rendered cards (8 textbook / 1 synthetic)**, which must **not** be conflated. The original Physics Blueprint supplies 14 D3/D4 cells but the current general WPE adapter candidate supplies only D3.1 and is unselected; the later subtiles refer to a different Blueprint version. Everything remains an academic HOLD; the native renderer is reused, not replaced.
