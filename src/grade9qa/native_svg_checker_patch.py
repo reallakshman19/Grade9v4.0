@@ -124,8 +124,10 @@ REPLACEMENT = '''def _figure_text_findings(svg: str, column_px: float, minimum_p
             if x is None or y is None:
                 unverified.append("unresolved text coordinates")
                 return
-            bold=bool(re.search(r"(bold|[6-9]00)",attr(node,"font-weight","") or "",re.I))
-            width=len(txt)*size*(.58 if bold else .52)
+            # Font weight mostly changes stroke mass, not glyph advance width.
+            # The original 0.58 bold-width multiplier overestimated a real
+            # 600-weight title. All widths remain estimates, never approval.
+            width=len(txt)*size*.52
             if anchor=="middle":low=x-width/2
             elif anchor=="end":low=x-width
             elif anchor in ("start",None,""):low=x
