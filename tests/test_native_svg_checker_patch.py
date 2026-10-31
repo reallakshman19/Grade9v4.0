@@ -135,3 +135,38 @@ def test_candidate_report_holds_academic_and_native(monkeypatch,tmp_path):
     assert report["original_source_unchanged"] is True
     assert original.read_text()==synthetic
     assert out.read_text()!=synthetic
+
+
+def test_private_svg_archive_candidate_readback_synthetic(tmp_path):
+    import zipfile
+    path=tmp_path/"src.zip"
+    raw=svg('<text x="300" y="200" font-size="18" text-anchor="middle">'
+            'Synthetic &#956; arrows &#8658; done</text>').encode()
+    with zipfile.ZipFile(path,"w") as z:
+        z.writestr("example/fig.svg",raw)
+    sha=hashlib.sha256(path.read_bytes()).hexdigest()
+    report=patch.inspect_private_wpe_svg_sources(
+        path,archive_pin=sha,figure_pins={"SYNTH-ONE":("example/fig.svg",hashlib.sha256(raw).hexdigest())})
+    assert report["mechanical_status"]=="HOLD"
+    assert report["figure_results"][0]["candidate_clipping_warnings"]==0
+    assert report["uncreated_native_representations"]==6
+    assert report["original_native_receipt_gaps_waived"]==0
+    assert "Synthetic" not in json.dumps(report)
+
+
+def test_private_source_archive_wrong_hash_rejected(tmp_path):
+    import zipfile
+    path=tmp_path/"src.zip"
+    with zipfile.ZipFile(path,"w") as z:z.writestr("example/fig.svg","<svg/>")
+    with pytest.raises(ValueError,match="ARCHIVE_HASH_MISMATCH"):
+        patch.inspect_private_wpe_svg_sources(path)
+
+
+def test_private_svg_member_mutation_detected(tmp_path):
+    import zipfile
+    path=tmp_path/"src.zip"
+    with zipfile.ZipFile(path,"w") as z:z.writestr("example/fig.svg","<svg viewBox='0 0 10 10'/>")
+    sha=hashlib.sha256(path.read_bytes()).hexdigest()
+    with pytest.raises(ValueError,match="OWNER_SVG_BYTE_PIN_MISMATCH"):
+        patch.inspect_private_wpe_svg_sources(
+            path,archive_pin=sha,figure_pins={"SYNTH-ONE":("example/fig.svg","0"*64)})
