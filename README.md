@@ -1,28 +1,39 @@
-# Grade9 v4.0 — Academic Qualification Backbone
+# Grade9 v4.0 — WPE Academic Qualification Backbone
 
-This repository is the implementation workspace for a **WPE (Work, Power & Energy) academic qualification validator** for Grade 9–10 JEE Main foundation content.
+The first implementation is underway in [draft PR #2](https://github.com/reallakshman19/Grade9v4.0/pull/2), following [master specification #1](https://github.com/reallakshman19/Grade9v4.0/issues/1).
 
-## Start here
+## Implemented in P0.0–P0.1
 
-**Master engineering specification:** [Issue #1 — WPE Academic Qualification Backbone](https://github.com/reallakshman19/Grade9v4.0/issues/1)
+- Python 3.11+ installable package and `grade9qa` command.
+- Eight versioned evidence JSON Schemas.
+- Local bundle loading, schema errors, type-aware references, duplicate IDs and prerequisite cycles.
+- Numeric D1–D4 rubric-band consistency checks (not academic validity).
+- Sample WEP-01 **synthetic candidate**, pytest suite, and Python 3.11/3.12 CI.
+- Academic release and B1–B7 engines deliberately report **HOLD** until P0.2–P0.4 evidence controls are implemented.
 
-The issue defines the implementation sequence, file layout, JSON schemas, CLI behavior, required tests, review gates, and acceptance criteria. Implement it in the specified PR slices; do not substitute a simplified architecture.
+## Run locally
 
-## Current status
+```bash
+python -m pip install -e ".[dev]"
+grade9qa validate --bundle examples/wpe-n01-candidate/bundle.json --out out/validation.json
+grade9qa bridge --bundle examples/wpe-n01-candidate/bundle.json --out out/bridge.json
+grade9qa qualify --bundle examples/wpe-n01-candidate/bundle.json --out out/qualification.json
+grade9qa report --bundle examples/wpe-n01-candidate/bundle.json --json out/report.json --md out/report.md
+python -m pytest -q
+```
 
-**Planning / scaffolding only.** No validator implementation, qualified course, or student release is claimed by this README.
+The sample has mechanically valid candidate records. `qualify` intentionally returns exit code **3 (HOLD)**. This is not a software defect. No source scan, official paper, answer key or academically approved lesson is provided.
 
-## Core boundaries
+## Layout
 
-- Separate source custody from scientific correctness.
-- Preserve construction identity, cognitive operation, direction, and D3/D4 evidence.
-- Test Core1A teaching against genuinely fresh Core1B reconstruction using B1–B7.
-- Enforce Core2 → Core1A → Core1B approval gates.
-- Do not manufacture academic approvals or relabel synthetic items as authenticated exam questions.
-- Keep Grade 9–10 readiness separate from JEE demand band.
+- `schemas/v1/`: source, warrant, construction, lesson, assessment, approval, bundle, report.
+- `src/grade9qa/`: CLI and partial validators; academic gates unimplemented and blocked.
+- `examples/wpe-n01-candidate/`: entirely synthetic test evidence.
+- `tests/`: automatic regressions.
+- `docs/`: architecture, schema rules, import policy and independent reviewer checklist.
 
-## References
+## Non-negotiable boundaries
 
-The master issue was derived from the user's uploaded WPE Concept Report, Construction Handoff Skill R1 Candidate, organized D3 construction packages, and related academic review. Those archives are **not** mirrored into this public repository. Their evidence and copyrighted materials must be imported only with permission and correct custody records.
+Hash verification is not Physics approval; a shared formula is not teaching-to-reconstruction equivalence; D3/D4 demand is not a school grade; a green build is not permission for student release. Do not invent review receipts, exam authenticity or D1/D2 standards. Source archives remain outside this public repo pending proper permission and custody.
 
-See [AGENTS.md](AGENTS.md) for implementer rules once added.
+See [AGENTS.md](AGENTS.md) for coding-agent instructions and [implementation status](docs/implementation-status.md) for open phases.
