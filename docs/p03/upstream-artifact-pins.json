@@ -37,7 +37,7 @@
         },
         {
           "path": "builds/PHY-WPE-D3.5/topic-adapter.work-power-energy.json",
-          "sha256": "471edab47b5ad79e7323cf4d560e3489bcfe4762db460b24e31e2"
+          "sha256": "471edab47b5ad79e7323cf4d560e348b0de30da3689bcfe4762db460b24e31e2"
         },
         {
           "path": "builds/PHY-WPE-D3.7/topic-adapter.work-power-energy.json",
