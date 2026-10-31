@@ -4,6 +4,10 @@
 
 The initial candidate validator and Smart Skills read-only adapter are documented in [draft PR #2](https://github.com/reallakshman19/Grade9v4.0/pull/2), following [master specification #1](https://github.com/reallakshman19/Grade9v4.0/issues/1).
 
+## P0 Core2 three private Owner review batches (draft PR #17)
+
+[Draft PR #17](https://github.com/reallakshman19/Grade9v4.0/pull/17) converts the six previous Core2 representation warnings into three actionable, **independently reviewed** handoffs: (1) three reasoned potential waivers; (2) two original, private, answer-free SVG authoring candidates; (3) the ILL-05 original-source missing initial-speed Physics HOLD. It adds fail-closed identity, SVG, native provenance and anti-approval tests; **no real waiver, figure binding, exam admission or new learner HTML is made**. See [R17 source-backed three-batch work order](docs/core2-three-batches/README.md).
+
 ## P0 Core2 representation applicability: six original source records (draft PR #16)
 
 The original Shared Core2 Blueprint 1.11.0 declares `REPRESENTATION` as **EXPECTED**, allowing a specific written **author waiver** where diagrams would be decorative or reveal an answer. [Draft PR #16](https://github.com/reallakshman19/Grade9v4.0/pull/16) reviews six original ten-gap receipt records: **3 waiver proposals, 2 neutral-visual authoring routes, 1 missing-initial-condition Physics/source HOLD**. Two existing solution-only FBD/chain figures remain protected post-attempt. **No waivers were actually applied, no new diagrams created, all original 10 render gaps unchanged.** [Owner source/Blueprint-based plan](docs/core2-representation/README.md).
