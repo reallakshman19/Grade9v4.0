@@ -3,6 +3,17 @@ Version: 2026-10-31 / candidate integration design
 Master issue: https://github.com/reallakshman19/Grade9v4.0/issues/1
 Draft PR: https://github.com/reallakshman19/Grade9v4.0/pull/2
 
+PRODUCT SCOPE — 2026-10-31 CORRECTION
+===================================
+Grade9 v4.0 is a planned Physics + Mathematics + Chemistry learning platform.
+WPE is ONLY the Physics pilot topic. The Physics Blueprint is not a generic
+Blueprint for Mathematics/Chemistry, and WEP-01 cannot certify the whole app.
+Shared, Smart Skills, QRT governance, the six Core roles, B1–B7 and release
+evidence should be reusable; subject Blueprints, warrants, demand calibration,
+topic adapters, exams and academic approvals are separately qualified.
+The workflow below illustrates the WPE Physics PILOT, not the only product flow.
+See docs/product-scope.md for planned v2 schemas and subject adapters.
+
 1. Correct workflow placement
 =============================
 

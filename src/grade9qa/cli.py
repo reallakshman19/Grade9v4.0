@@ -9,7 +9,9 @@ from .shared_audit import audit_shared
 from .shared_manifest import inventory_zip
 from .shared_authorities import summarize_authorities
 from .qrt_binding import inspect_binding, fingerprints
-from .validate import inspect
+from .bridge_witness import inspect_witness
+from .bridge_legacy import inspect_legacy_witness
+from .validate import inspect, schema_errors
 from .report import make_report, markdown
 
 def main(argv=None):
@@ -24,6 +26,8 @@ def main(argv=None):
             command.add_argument("--md", required=True)
         else:
             command.add_argument("--out", required=True)
+        if name == "qualify":
+            command.add_argument("--witness", help="Optional B1-B7 bridge witness, fail-closed and independently reviewed later")
     smart = subs.add_parser("smart-audit", help="Read-only R2 candidate checker-report inspection; never grants approval.")
     smart.add_argument("--report", required=True, help="Local JSON from original native checker")
     smart.add_argument("--out", required=True, help="Output v4 hold/readiness summary")
@@ -48,8 +52,35 @@ def main(argv=None):
     bind.add_argument("--native-sl1-report", help="Optional native SL1 checker report JSON")
     bind.add_argument("--native-sl2-report", help="Optional native SL2 checker report JSON")
     bind.add_argument("--out", required=True, help="JSON output, no source question text copied")
+    bridge_witness = subs.add_parser("bridge-witness", help="B1-B7 teaching/reconstruction evidence audit; no academic self-approval.")
+    bridge_witness.add_argument("--witness", required=True, help="Local v1 candidate witness JSON")
+    bridge_witness.add_argument("--out", required=True, help="B1-B7 evidence summary JSON output")
+    legacy = subs.add_parser("bridge-legacy", help="Sanitized readback of native WPE D3 candidate B1-B7 records.")
+    legacy.add_argument("--witness", required=True, help="Original local WPE D3 candidate witness JSON")
+    legacy.add_argument("--out", required=True, help="Source status readback without stem/question text")
     args = parser.parse_args(argv)
     try:
+        if args.command == "bridge-legacy":
+            summary = inspect_legacy_witness(read_json(Path(args.witness)))
+            write_json(Path(args.out), summary)
+            print("BRIDGE-LEGACY status=" + summary["mechanical_status"] +
+                  " qualification=HOLD NOT_ACADEMIC_APPROVAL")
+            return 1 if summary["mechanical_status"] == "FAIL" else 3
+        if args.command == "bridge-witness":
+            data = read_json(Path(args.witness))
+            report = inspect_witness(data)
+            schema_findings = schema_errors(data, "bridge-witness", str(args.witness))
+            if schema_findings:
+                report["mechanical_status"] = "FAIL"
+                report["diagnostics"].extend(
+                    {"gate": "CONTRACT", "code": item.code, "severity": "FAIL",
+                     "detail": item.message, "path": item.path} for item in schema_findings
+                )
+                report["diagnostics"].sort(key=lambda row: (row["gate"], row["code"], row["detail"]))
+            write_json(Path(args.out), report)
+            print("BRIDGE-WITNESS mechanical=" + report["mechanical_status"] +
+                  " qualification=HOLD NOT_ACADEMIC_APPROVAL")
+            return 1 if report["mechanical_status"] == "FAIL" else 3
         if args.command == "qrt-bind":
             sources = {key: Path(getattr(args, key)) for key in ("sl1", "sl2", "contract", "blueprint", "adapter")}
             if args.handoff:
@@ -104,11 +135,47 @@ def main(argv=None):
             target.parent.mkdir(parents=True, exist_ok=True)
             target.write_text(markdown(report), encoding="utf-8")
         else:
+            if args.command == "qualify" and args.witness and not errors:
+                evidence = read_json(Path(args.witness))
+                shape = schema_errors(evidence, "bridge-witness", str(args.witness))
+                if shape:
+                    report["mechanical_status"] = "FAIL"
+                    report["diagnostics"].extend(
+                        {"code":d.code, "severity":"ERROR", "object_id":"",
+                         "path":d.path, "message":d.message,
+                         "remediation":"Correct the v1 bridge-witness JSON shape."} for d in shape
+                    )
+                    write_json(Path(args.out), report)
+                    print("QUALIFY structural=FAIL (invalid bridge contract) NOT_ACADEMIC_APPROVAL")
+                    return 1
+                bridge = inspect_witness(evidence)
+                expected = {c["id"] for c in data.get("constructions", [])}
+                if bridge["construction_id"] not in expected:
+                    report["qualification_status"] = "FAIL"
+                    report["diagnostics"].append({
+                        "code":"WITNESS_CONSTRUCTION_NOT_IN_BUNDLE",
+                        "severity":"ERROR","object_id":bridge["construction_id"],
+                        "path":"bridge_witness.construction.construction_id",
+                        "message":"Witness refers to a different bound construction.",
+                        "remediation":"Provide the correctly scoped witness for this bundle."
+                    })
+                elif bridge["mechanical_status"] == "FAIL":
+                    report["qualification_status"] = "FAIL"
+                report["bridge_results"] = bridge["gate_results"]
+                report["diagnostics"].extend({
+                    "code":d["code"], "severity":d["severity"],
+                    "object_id":bridge["construction_id"], "path":d["gate"],
+                    "message":d["detail"],"remediation":"Resolve and independently review this gate."
+                } for d in bridge["diagnostics"])
+                report["coverage"]["qualified_constructions"] = 0
             write_json(Path(args.out), report)
-        print(args.command.upper(), "structural=" + report["mechanical_status"], "academic=HOLD NOT_ACADEMIC_APPROVAL")
+        print(args.command.upper(), "structural=" + report["mechanical_status"],
+              "academic=" + report["qualification_status"] + " NOT_ACADEMIC_APPROVAL")
         if errors:
             return 1
-        return 3 if args.command == "qualify" else 0
+        if args.command == "qualify":
+            return 4 if report["qualification_status"] == "FAIL" else 3
+        return 0
     except (InputError, OSError) as exc:
         print("INPUT_ERROR: " + str(exc), file=sys.stderr)
         return 2

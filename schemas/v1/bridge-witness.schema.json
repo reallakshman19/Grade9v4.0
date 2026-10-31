@@ -1,0 +1,589 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Grade9QA B1–B7 evidence witness; machine schema is not academic approval",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "grade9qa-b1b7-witness/v1"
+    },
+    "status": {
+      "enum": [
+        "CANDIDATE",
+        "UNDER_REVIEW",
+        "REJECTED"
+      ]
+    },
+    "author_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "construction": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "construction_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "topic_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "operation": {
+          "enum": [
+            "RETRIEVE",
+            "EXPLAIN",
+            "APPLY",
+            "MODEL",
+            "REPRESENT",
+            "SYNTHESIZE",
+            "JUSTIFY"
+          ]
+        },
+        "band": {
+          "enum": [
+            "D1",
+            "D2",
+            "D3",
+            "D4"
+          ]
+        },
+        "direction": {
+          "type": "string",
+          "minLength": 1
+        },
+        "decisive_roles": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "signature": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "inputs": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "obstacle": {
+              "type": "string",
+              "minLength": 1
+            },
+            "decisive_move": {
+              "type": "string",
+              "minLength": 1
+            },
+            "output": {
+              "type": "string",
+              "minLength": 1
+            },
+            "independent_check": {
+              "type": "string",
+              "minLength": 1
+            },
+            "validity_boundary": {
+              "type": "string",
+              "minLength": 1
+            },
+            "conditions": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "dependency_refs": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "required": []
+        }
+      },
+      "required": [
+        "construction_id",
+        "topic_id",
+        "operation",
+        "band",
+        "direction",
+        "decisive_roles",
+        "signature"
+      ]
+    },
+    "core1a": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "construction_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "operation": {
+          "type": "string",
+          "minLength": 1
+        },
+        "band": {
+          "type": "string",
+          "minLength": 1
+        },
+        "direction": {
+          "type": "string",
+          "minLength": 1
+        },
+        "content_sha256": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "worked_example_sha256": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "teaching_slots": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "physical_demo": {
+              "type": "string",
+              "minLength": 1
+            },
+            "qualitative_prediction": {
+              "type": "string",
+              "minLength": 1
+            },
+            "law_and_conditions": {
+              "type": "string",
+              "minLength": 1
+            },
+            "worked_original_example": {
+              "type": "string",
+              "minLength": 1
+            },
+            "guided_practice": {
+              "type": "string",
+              "minLength": 1
+            },
+            "misconception_repair": {
+              "type": "string",
+              "minLength": 1
+            },
+            "verification_check": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": []
+        },
+        "taught_roles": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "teaching_span_ref": {
+                "type": "string",
+                "minLength": 1
+              },
+              "demonstration_ref": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "teaching_span_ref",
+              "demonstration_ref"
+            ]
+          }
+        }
+      },
+      "required": [
+        "construction_id",
+        "operation",
+        "band",
+        "direction",
+        "teaching_slots",
+        "taught_roles"
+      ]
+    },
+    "core1b": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "construction_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "operation": {
+          "type": "string",
+          "minLength": 1
+        },
+        "band": {
+          "type": "string",
+          "minLength": 1
+        },
+        "direction": {
+          "type": "string",
+          "minLength": 1
+        },
+        "task_sha256": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "fresh_context_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "freshness_review_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "assessed_roles": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "attempt_field": {
+                "type": "string",
+                "minLength": 1
+              },
+              "observable": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "attempt_field",
+              "observable"
+            ]
+          }
+        },
+        "attempt_contract": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "p1_optional": {
+              "type": "boolean"
+            },
+            "first_answer_before_hint": {
+              "type": "boolean"
+            },
+            "reveal_requires_saved_attempt": {
+              "type": "boolean"
+            },
+            "fail_closed_on_save_error": {
+              "type": "boolean"
+            }
+          },
+          "required": []
+        },
+        "attempt_events": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "type": {
+                "enum": [
+                  "ANSWER_ENTERED",
+                  "FIRST_ANSWER_SAVED",
+                  "SAVE_FAILED",
+                  "HINT_SHOWN",
+                  "ANSWER_REVEALED"
+                ]
+              },
+              "at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "durable": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "type",
+              "at"
+            ]
+          }
+        },
+        "native_runtime_receipt_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "diagnostic_rules": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "role_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "observable": {
+                "type": "string",
+                "minLength": 1
+              },
+              "repair_ref": {
+                "type": "string",
+                "minLength": 1
+              },
+              "failed_node_ref": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "role_id",
+              "observable",
+              "repair_ref"
+            ]
+          }
+        },
+        "changed_condition_transfer_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "saved_answer_evidence_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "exposure_audit": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "surface": {
+                "enum": [
+                  "HINT",
+                  "PICTURE_STAGE",
+                  "ALT_TEXT",
+                  "MODEL_RESPONSE",
+                  "RUBRIC",
+                  "EXAM_RETURN"
+                ]
+              },
+              "audit_ref": {
+                "type": "string",
+                "minLength": 1
+              },
+              "decisive_route_visible_before_save": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "surface",
+              "audit_ref",
+              "decisive_route_visible_before_save"
+            ]
+          }
+        },
+        "transfer_success_criterion": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "construction_id",
+        "operation",
+        "band",
+        "direction",
+        "assessed_roles",
+        "attempt_contract"
+      ]
+    },
+    "assessment": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "operation": {
+          "type": "string",
+          "minLength": 1
+        },
+        "band": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_role": {
+          "enum": [
+            "DIRECT_EXAM_EVIDENCE",
+            "PREREQUISITE_BRIDGE",
+            "AUTHORED_TRANSFER"
+          ]
+        },
+        "qrt_decision_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "demand_vector": {
+          "type": "array",
+          "minItems": 5,
+          "maxItems": 5,
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2
+          }
+        },
+        "demand_evidence_ref": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "operation",
+        "band"
+      ]
+    },
+    "source_and_physics": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "physics_warrant_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "physics_review_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_custody_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "paper_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "official_key_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "solution_review_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "known_physics_contradiction": {
+          "type": "boolean"
+        },
+        "warrant_links": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "role_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "warrant_ref": {
+                "type": "string",
+                "minLength": 1
+              },
+              "library_sha256": {
+                "type": "string",
+                "pattern": "^sha256:[0-9a-f]{64}$"
+              }
+            },
+            "required": [
+              "role_id",
+              "warrant_ref",
+              "library_sha256"
+            ]
+          }
+        }
+      },
+      "required": []
+    },
+    "review_receipts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "gate": {
+            "enum": [
+              "B1",
+              "B2",
+              "B3",
+              "B4",
+              "B5",
+              "B6",
+              "B7"
+            ]
+          },
+          "discipline": {
+            "enum": [
+              "COGNITIVE",
+              "PEDAGOGY",
+              "QRT",
+              "TECHNICAL",
+              "PHYSICS",
+              "SOURCE_CUSTODY"
+            ]
+          },
+          "reviewer_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "author_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "independent_of_author": {
+            "type": "boolean"
+          },
+          "construction_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "subject_sha256": {
+            "type": "string",
+            "pattern": "^sha256:[0-9a-f]{64}$"
+          },
+          "decision": {
+            "enum": [
+              "APPROVED",
+              "REJECTED"
+            ]
+          }
+        },
+        "required": [
+          "gate",
+          "discipline",
+          "reviewer_id",
+          "author_id",
+          "independent_of_author",
+          "construction_id",
+          "subject_sha256",
+          "decision"
+        ]
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "status",
+    "author_id",
+    "construction",
+    "core1a",
+    "core1b",
+    "assessment",
+    "source_and_physics",
+    "review_receipts"
+  ]
+}

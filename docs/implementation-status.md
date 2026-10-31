@@ -1,15 +1,20 @@
-# Implementation status
+# Grade9 v4.0 implementation status
 
-Master spec: [Issue #1](https://github.com/reallakshman19/Grade9v4.0/issues/1).
-Stacked PRs: [#2](https://github.com/reallakshman19/Grade9v4.0/pull/2) → [#3](https://github.com/reallakshman19/Grade9v4.0/pull/3) → [#4](https://github.com/reallakshman19/Grade9v4.0/pull/4) → [#5](https://github.com/reallakshman19/Grade9v4.0/pull/5).
+**Product scope correction (2026-10-31):** Grade9 v4.0 targets **Physics, Mathematics and Chemistry**. WPE / WEP-01 is only the initial Physics pilot. Existing `schemas/v1` bundle/construction topic IDs and `qrt-bind` are Physics/WPE-specific; subject-neutral contracts, Mathematics and Chemistry Blueprints, and cross-subject curriculum qualification **are not yet implemented**. See [product-scope.md](product-scope.md).
 
-- [x] P0.0/P0.1 initial Grade9QA + Smart R2 report adapter
-- [x] P0.2a Shared fingerprint/authority audit
-- [x] P0.2b Shared full 292-file manifest and native review/release report adapter
-- [x] P0.3 **candidate-only SL1/SL2→QRT Physics/WPE binding**: read-only `qrt-bind`, exact upstream archive pins, 22 synthetic regression cases and source-shape smoke
-- [ ] P0.3 acceptance: actual independently adjudicated QRT decisions and verified native source/answer/key/canonical receipts
-- [ ] Qualification of original D3/D4 common Blueprint, WPE adapter and scientific warrants
-- [ ] P0.4 actual B1–B7 bridge semantic review and governance
-- [ ] P1–P3 WEP-01 complete pilot, ten-topic coverage and learner publication
+Master: [Issue #1](https://github.com/reallakshman19/Grade9v4.0/issues/1).
 
-**Candidate software and source-side structural checks do not authorize any academic release.**
+Stacked draft PRs: [#2](https://github.com/reallakshman19/Grade9v4.0/pull/2) → [#3](https://github.com/reallakshman19/Grade9v4.0/pull/3) → [#4](https://github.com/reallakshman19/Grade9v4.0/pull/4) → [#5](https://github.com/reallakshman19/Grade9v4.0/pull/5) → [#6](https://github.com/reallakshman19/Grade9v4.0/pull/6).
+
+- [x] P0.0/P0.1: Grade9QA CLI, structural records, source-incomplete synthetic example
+- [x] P0.2a: read-only Shared six-Core authority audit
+- [x] P0.2b: complete 292-file external Shared fingerprint and original authority readbacks
+- [x] P0.3: read-only native SL1/SL2 R2 to QRT Physics/WPE version and operation binding
+- [x] **P0.4a: B1–B7 machine evidence engine**, separate v1 witness schema, standalone `bridge-witness`, archival `bridge-legacy`, full direct `qualify --witness` noncompensatory FAIL/HOLD propagation
+- [x] Original archived D3.1 and D3.6 witness candidate status accounted for without publishing question content
+- [ ] **P0.4b: independent semantic/Physics/QRT/Shared review receipts and validated native learner runtime** — HOLD
+- [ ] P1: owner-qualified end-to-end WEP-01 pilot (Core1A worked reasoning, fresh Core1B reconstruction and independent Core2 question)
+- [ ] P2: subject-neutral v2 contracts; Physics WEP-02–10 expansion; independent Mathematics and Chemistry subject adapter pilots (topics not yet selected)
+- [ ] P3: publication and learner-facing release
+
+No user-supplied hash, synthetic fixture, preview screenshot, candidate D3 label or CI success constitutes academic approval.

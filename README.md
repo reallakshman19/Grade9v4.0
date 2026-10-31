@@ -1,4 +1,6 @@
-# Grade9 v4.0 — WPE Academic Qualification Backbone
+# Grade9 v4.0 — Physics, Mathematics and Chemistry Learning Platform
+
+> **Product scope:** The application is planned for **Physics, Mathematics and Chemistry**. WPE is the first **Physics pilot topic**, not the application or universal curriculum. Current Grade9QA contracts and sample assets are pilot-scoped; subject-neutral v2 contracts and Mathematics/Chemistry blueprints are **not yet implemented**. See [product scope and migration plan](docs/product-scope.md).
 
 The candidate validator and read-only Smart Skills report adapter are being developed in [draft PR #2](https://github.com/reallakshman19/Grade9v4.0/pull/2), following [master specification #1](https://github.com/reallakshman19/Grade9v4.0/issues/1).
 
@@ -27,6 +29,18 @@ python -m pytest -q
 See [readme.txt](readme.txt) for **“1. Correct workflow placement”** and [Smart Skills integration](docs/smart-skills-integration.md) for the R2 candidate adoption rules.
 
 The sample has mechanically valid candidate records. `qualify` intentionally returns exit code **3 (HOLD)**. This is not a software defect. No source scan, official paper, answer key or academically approved lesson is provided.
+
+## P0.4 B1–B7 teaching-to-reconstruction witness (stacked PR #6)
+
+Grade9QA now includes a **candidate-only, non-compensatory B1–B7 evidence checker**. This supplements rather than replaces native Shared/QRT/Physics governance.
+
+```bash
+grade9qa bridge-witness --witness examples/wpe-b1b7-candidate/witness.json --out out/bridge.json
+grade9qa bridge-legacy --witness /local/original/bridge_witness.json --out out/archived-status.json
+grade9qa qualify --bundle /local/valid-bundle.json --witness /local/matching-witness.json --out out/qualify.json
+```
+
+Known contradictions in operation, direction, reused worked task, protected-answer exposure, false first-save, scientific warrants or review record cause FAIL. Missing independently qualified evidence remains HOLD, even when structural witness fields are complete. **No academic PASS/release can be manufactured from an untrusted JSON approval receipt.** Details and original-source limitations: [P0.4 documentation](docs/p04/README.md) and [PR #6](https://github.com/reallakshman19/Grade9v4.0/pull/6).
 
 ## P0.3 native QRT/WPE binding (stacked PR #5)
 
