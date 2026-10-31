@@ -28,6 +28,18 @@ See [readme.txt](readme.txt) for **“1. Correct workflow placement”** and [Sm
 
 The sample has mechanically valid candidate records. `qualify` intentionally returns exit code **3 (HOLD)**. This is not a software defect. No source scan, official paper, answer key or academically approved lesson is provided.
 
+## Shared platform audit (stacked PR #3)
+
+The existing Shared platform is **not yet copied into this public repository**. Its 292-file owner-supplied archive is summarized by 16 selected immutable source fingerprints in `docs/shared-baseline-pins.json`.
+
+```bash
+grade9qa shared-audit --shared-root /path/to/extracted/Shared --archive /path/to/Shared.zip --out out/shared-audit.json
+```
+
+This reads the external archive/snapshot, checks selected source fingerprints, six-Core authority invariants, cognitive operation mapping and Grade 9 Physics scope. It never executes upstream code or grants approval. Exit **3** means mechanical audit completed but independent integration/academic review remains **HOLD**.
+
+See [Shared compatibility audit](docs/shared-compatibility-audit.md) and the [stacked PR #3](https://github.com/reallakshman19/Grade9v4.0/pull/3). The parent PR #2 must merge first.
+
 ## Layout
 
 - `schemas/v1/`: source, warrant, construction, lesson, assessment, approval, bundle, report.

@@ -1,0 +1,91 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "SHARED_LOCAL_ARCHIVE_FINGERPRINTS",
+  "source_archive_name": "Shared.zip",
+  "source_archive_sha256": "16b6fba6c349923d1744badf0c53f5debdbbe4e25eae7f02413a7baeee76667b",
+  "file_count": 292,
+  "scope": "SELECTED_KEY_FILES_ONLY",
+  "trust": "OWNER_SUPPLIED_UNVERIFIED",
+  "files": [
+    {
+      "path": "Shared/roles/CORE-AUTHORITY-CONTRACT.md",
+      "sha256": "3cbf70c177ddaa4914776dca52a40224e0e4dbe24d259b61af3e95ab8ea1bda0",
+      "size": 9146
+    },
+    {
+      "path": "Shared/roles/README.md",
+      "sha256": "95593bcfe45534dc0a62c308a8814dbbffb7a129d912f3f854b3a97bf4a0d0b5",
+      "size": 9259
+    },
+    {
+      "path": "Shared/vocabularies/cognitive-demand.v1.json",
+      "sha256": "e3872e9fcd75526156ea3b7deaae1d573c55cc3a7b6247b5cfdf616efe308314",
+      "size": 2052
+    },
+    {
+      "path": "Shared/policy/grade9-physics.v1.json",
+      "sha256": "059dab4c7fc63a7a0ccd1732b9522b905f22e82f0ebdbcf6c48be29d3933ff29",
+      "size": 2812
+    },
+    {
+      "path": "Shared/library/package.schema.json",
+      "sha256": "b645f4b5beb9132d6e38b628b1416846201d44dec16a5f04af9a252e9e891d93",
+      "size": 108010
+    },
+    {
+      "path": "Shared/contracts.py",
+      "sha256": "694fdde7a725490741f380597596c908258f6c9195de7e83e16a30498a896b3d",
+      "size": 6054
+    },
+    {
+      "path": "Shared/library/source_custody.py",
+      "sha256": "17e7dbf616c13941e37b0426c9d06ee24e9228d058f4108c8ec38dc1d86c9ab0",
+      "size": 11800
+    },
+    {
+      "path": "Shared/tools/review_authority.py",
+      "sha256": "c2607a773059a0cc8cd56aa9af8639e167230b60a4f98380c3c8ce42e2124311",
+      "size": 22249
+    },
+    {
+      "path": "Shared/tools/release_authority.py",
+      "sha256": "e343e48045525d397fa3f919a8df7e8e04aaca270842c4322de2956db10",
+      "size": 15839
+    },
+    {
+      "path": "Shared/tools/qrt_pipeline_guard.py",
+      "sha256": "d54516ae6abb4c3ffd43b103de4bb475c34d42829a591b720a53317a0d6b959c",
+      "size": 20675
+    },
+    {
+      "path": "Shared/tools/core_authority_contract.py",
+      "sha256": "932e353ca185756f94c9a7001bd97f7aadefc1cd4dc553cd982d368e19c92fd2",
+      "size": 8407
+    },
+    {
+      "path": "Shared/quality/question-demand-matrix.v1.json",
+      "sha256": "13ba08cc08910f56298447d389e92f7c0804906c750b25b9cf50e8d629c1dfda",
+      "size": 12179
+    },
+    {
+      "path": "Shared/quality/qrt-pipeline-run.schema.json",
+      "sha256": "70c9393a54845778715d9fb6396984644c63751f42fd64ccddec32f948a5fecb",
+      "size": 22563
+    },
+    {
+      "path": "Shared/roles/CORE1A.md",
+      "sha256": "c6fb6b45d3128c9b335d2670eedd3e7d55ca467045de92368436a3d22fd866fa",
+      "size": 5346
+    },
+    {
+      "path": "Shared/roles/CORE1B.md",
+      "sha256": "be81c8e403875dd423872c29c254a363178b34f06e429141c038ee80dfacbf6a",
+      "size": 4897
+    },
+    {
+      "path": "Shared/roles/CORE2.md",
+      "sha256": "490331afdef62e711f347a763f3cb0b138e87ac67abbaabe2e5791afeeee5542",
+      "size": 5553
+    }
+  ]
+}
