@@ -1,0 +1,47 @@
+{
+  "schema_version": "2.0.0",
+  "kind": "THREE_SUBJECT_CANDIDATE_INTAKE",
+  "programme_id": "GRADE9V4-THREE-SUBJECTS",
+  "status": "CANDIDATE",
+  "subjects": [
+    {
+      "subject_id": "PHYSICS",
+      "stage": "PILOT_CANDIDATE",
+      "blueprint_ref": {
+        "subject_id": "PHYSICS",
+        "id": "PHYS-QRT-BLUEPRINT",
+        "version": "0.2.0",
+        "sha256": "e6030a5933a803ddc39708414e6831c89c9565def78c09c99f58f95052c2b45f"
+      },
+      "topics": [
+        {
+          "topic_id": "WEP-01",
+          "unit_id": "WPE",
+          "adapter_ref": {
+            "subject_id": "PHYSICS",
+            "topic_id": "WEP-01",
+            "id": "PHYS-TOPIC-WPE",
+            "version": "0.1.0-candidate",
+            "sha256": "21db1a2c6688c23ab68e8f29eb52f2ed63a8881b3ff2468b0acd10a1353454a9",
+            "blueprint_sha256": "e6030a5933a803ddc39708414e6831c89c9565def78c09c99f58f95052c2b45f"
+          },
+          "sources": [],
+          "warrants": [],
+          "constructions": []
+        }
+      ]
+    },
+    {
+      "subject_id": "MATHEMATICS",
+      "stage": "PLANNED",
+      "blueprint_ref": null,
+      "topics": []
+    },
+    {
+      "subject_id": "CHEMISTRY",
+      "stage": "PLANNED",
+      "blueprint_ref": null,
+      "topics": []
+    }
+  ]
+}

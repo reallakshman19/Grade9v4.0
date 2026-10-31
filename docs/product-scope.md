@@ -52,6 +52,8 @@ Proposed **v2 subject-neutral intake fields** (not yet implemented/approved):
 | `academic_track` | Instructional track separated from operation and D1–D4 task demand |
 | `source_roles` and `review_scopes` | Subject-specific authorities using Shared's canonical governance; not invented by Grade9QA |
 
+**Implementation update (2026-10-31):** [Draft PR #7](https://github.com/reallakshman19/Grade9v4.0/pull/7) introduces `schemas/v2/subject-intake.schema.json`, `grade9qa subjects-audit`, and an intentionally unqualified three-subject candidate manifest. This is an **intake envelope**, not a replacement for Shared's canonical schemas or a completed v1-to-v2 migration. The subject-specific Blueprints for Mathematics and Chemistry remain unknown/unapproved.
+
 **Migration conditions:** maintain v1 support and its existing tests, add exact v2 schema validation/migration fixtures, reject unknown subjects and cross-subject references, preserve immutable source IDs and historical digests, and never silently widen `WEP` schema semantics.
 
 Existing `grade9qa qrt-bind` is a **Physics/WPE-specific candidate binding CLI**. It is not the generic binding for all three subjects. The cross-subject interface must dispatch to subject adapters without modifying or weakening native QRT/Shared authority.

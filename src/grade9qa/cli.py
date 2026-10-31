@@ -11,6 +11,7 @@ from .shared_authorities import summarize_authorities
 from .qrt_binding import inspect_binding, fingerprints
 from .bridge_witness import inspect_witness
 from .bridge_legacy import inspect_legacy_witness
+from .subjects import audit_subject_intake
 from .validate import inspect, schema_errors
 from .report import make_report, markdown
 
@@ -58,8 +59,17 @@ def main(argv=None):
     legacy = subs.add_parser("bridge-legacy", help="Sanitized readback of native WPE D3 candidate B1-B7 records.")
     legacy.add_argument("--witness", required=True, help="Original local WPE D3 candidate witness JSON")
     legacy.add_argument("--out", required=True, help="Source status readback without stem/question text")
+    subjects = subs.add_parser("subjects-audit", help="Read-only v2 three-subject intake, not academic approval.")
+    subjects.add_argument("--manifest", required=True, help="Version 2.0.0 candidate subject intake JSON")
+    subjects.add_argument("--out", required=True, help="Candidate validation report, always academic HOLD")
     args = parser.parse_args(argv)
     try:
+        if args.command == "subjects-audit":
+            report = audit_subject_intake(read_json(Path(args.manifest)))
+            write_json(Path(args.out), report)
+            print("SUBJECTS-AUDIT mechanical=" + report["mechanical_status"] +
+                  " academic=HOLD NOT_ACADEMIC_APPROVAL")
+            return 1 if report["mechanical_status"] == "FAIL" else 3
         if args.command == "bridge-legacy":
             summary = inspect_legacy_witness(read_json(Path(args.witness)))
             write_json(Path(args.out), summary)
