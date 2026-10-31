@@ -149,7 +149,7 @@ def inspect_workspaces(manifest, root, bindings, native=None):
             state = definition.get("production")
             if state not in ("COMPILED", "NOT_COMPILED"):
                 issues.append(_issue("CORE_PRODUCT_PRODUCTION_UNKNOWN", sid, "FAIL"))
-            if state == "NOT_COMPILED" and not isinstance(definition.get("reason"), str):
+            if state == "NOT_COMPILED" and not str(definition.get("reason", "")).strip():
                 issues.append(_issue("CORE_PRODUCT_MISSING_REASON", sid, "FAIL"))
         catalogue = contract.get("validator_catalogue", [])
         if not isinstance(catalogue, list):
@@ -199,6 +199,9 @@ def inspect_workspaces(manifest, root, bindings, native=None):
         raw_rows = native.get("subjects", []) if isinstance(native, dict) else []
         found = {r.get("subject"): r for r in raw_rows
                  if isinstance(r, dict) and isinstance(r.get("subject"), str)}
+        unbound = set(found) - set(bindings.values())
+        for name in sorted(unbound):
+            issues.append(_issue("NATIVE_UNBOUND_SUBJECT_DIRECTORY", "Shared"))
         for sid, row in subjects.items():
             name = bindings.get(sid)
             if name in found:
