@@ -4,6 +4,10 @@
 
 The initial candidate validator and Smart Skills read-only adapter are documented in [draft PR #2](https://github.com/reallakshman19/Grade9v4.0/pull/2), following [master specification #1](https://github.com/reallakshman19/Grade9v4.0/issues/1).
 
+## P0 Core2 representation applicability: six original source records (draft PR #16)
+
+The original Shared Core2 Blueprint 1.11.0 declares `REPRESENTATION` as **EXPECTED**, allowing a specific written **author waiver** where diagrams would be decorative or reveal an answer. [Draft PR #16](https://github.com/reallakshman19/Grade9v4.0/pull/16) reviews six original ten-gap receipt records: **3 waiver proposals, 2 neutral-visual authoring routes, 1 missing-initial-condition Physics/source HOLD**. Two existing solution-only FBD/chain figures remain protected post-attempt. **No waivers were actually applied, no new diagrams created, all original 10 render gaps unchanged.** [Owner source/Blueprint-based plan](docs/core2-representation/README.md).
+
 ## P0 Core2 native SVG warning repair candidate (draft PR #15)
 
 The original `Input sources(4).zip` does contain editable candidate SVG files for the four flagged WPE figures. [Draft PR #15](https://github.com/reallakshman19/Grade9v4.0/pull/15) proposes a byte-pinned fix to the original Shared SVG label checker—decoding numeric entities, respecting parent transforms and preserving real clipping and tablet text-size warnings—without changing the original figure assets or native receipt. The **six separately missing source `REPRESENTATION` components remain HOLD**. See [actual source/Chromium evidence](docs/core2-native-svg/README.md).
