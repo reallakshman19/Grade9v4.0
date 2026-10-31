@@ -4,6 +4,10 @@
 
 The initial candidate validator and Smart Skills read-only adapter are documented in [draft PR #2](https://github.com/reallakshman19/Grade9v4.0/pull/2), following [master specification #1](https://github.com/reallakshman19/Grade9v4.0/issues/1).
 
+## P0 Core2 SVG evidence: retain existing figures, investigate renderer false positives
+
+[Draft PR #14](https://github.com/reallakshman19/Grade9v4.0/pull/14) measures **transformed SVG text bounds** in Chromium against the actual original native nine-card `core2(3).html` and its ten-gap render receipt. The four `AUTHOR_FIGURE_TEXT` cases all had visible-browser text inside the viewBox at 1280×850, suggesting conservative false positives in the original character-width heuristic. **No original Shared warning was waived or source SVG changed.** Six missing `REPRESENTATION` components still need real native source and reviewer decisions. See [exact geometry and authoring backlog](docs/core2-geometry/README.md).
+
 ## P0 Core2 native runtime repair (draft PR #13)
 
 [Draft PR #13](https://github.com/reallakshman19/Grade9v4.0/pull/13) provides a **source-independent, Owner-local patch** for the existing original Shared `render_core/2` **Core2** runtime: verify first-response storage and readback **before** solution reveal, preserve first committed answer, and remove the author debug reveal function from Core2 pages. Private tests against the existing **nine-card** native HTML passed five Chromium interactions; 11 new synthetic regression tests passed CI. No original Shared renderer, full HTML, question text, figures, answers or Owner files are committed to GitHub.
