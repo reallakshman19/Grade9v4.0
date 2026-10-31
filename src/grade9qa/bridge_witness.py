@@ -320,6 +320,12 @@ def inspect_witness(witness: dict, *, trusted_shared_receipts: bool = False) -> 
     if not isinstance(reviewers, list):
         reviewers = []
     declared = set()
+    raw_subject = {k: v for k, v in witness.items() if k != "review_receipts"}
+    try:
+        subject_digest = _digest(raw_subject)
+    except (TypeError, ValueError, UnicodeError):
+        subject_digest = None
+        mark("B2", "WITNESS_DIGEST_UNAVAILABLE", "Non-canonical/nonfinite JSON cannot be pinned.", "FAIL")
     for i, item in enumerate(reviewers):
         if not isinstance(item, dict):
             mark("B7", "REVIEW_RECORD_INVALID", f"Receipt {i} not an object.", "FAIL")
@@ -333,7 +339,7 @@ def inspect_witness(witness: dict, *, trusted_shared_receipts: bool = False) -> 
             mark(gate, "SELF_REVIEW_NOT_ACCEPTABLE", "Review must be independently performed.", "FAIL")
         if item.get("construction_id") != subject_id:
             mark(gate, "REVIEW_SUBJECT_MISMATCH", "Receipt scoped to different construction.", "FAIL")
-        if item.get("subject_sha256") != _digest({k: v for k, v in witness.items() if k != "review_receipts"}):
+        if not subject_digest or item.get("subject_sha256") != subject_digest:
             mark(gate, "STALE_OR_UNBOUND_REVIEW", "Review not bound to current witness digest.")
         if item.get("decision") == "REJECTED":
             mark(gate, "REVIEW_REJECTED", "Independent reviewer rejected this obligation.", "FAIL")
@@ -371,7 +377,7 @@ def inspect_witness(witness: dict, *, trusted_shared_receipts: bool = False) -> 
         "release_status": "HOLD",
         "gate_results": gate_results,
         "diagnostics": sorted(diagnostics, key=lambda x: (x["gate"], x["code"], x["detail"])),
-        "witness_subject_sha256": _digest({k: v for k, v in witness.items() if k != "review_receipts"}),
+        "witness_subject_sha256": subject_digest,
         "coverage": {"candidate_constructions": 1 if _nonempty(subject_id) else 0,
                      "academically_qualified_constructions": 0},
         "blocked_by": ["SHARED_NATIVE_REVIEW_AUTHORITY", "INDEPENDENT_SEMANTIC_B1_B7",

@@ -31,7 +31,12 @@ def inspect_legacy_witness(source):
         if gates is None:
             problems.append("ARCHIVED_GATE_FORMAT_UNMAPPED")
             gates = {}
-        vals = {key: str(gates.get(key, "NOT_RUN")) for key in GATES}
+        accepted = {"HOLD", "PARTIAL", "PARTIAL_STRUCTURAL_ONLY",
+                    "LOCAL_PREVIEW_CHECKS_ONLY", "NOT_RUN", "PASS", "APPROVED",
+                    "REJECTED", "FAIL"}
+        vals = {key: (value if isinstance(value := gates.get(key, "NOT_RUN"), str)
+                      and value in accepted else "UNRECOGNIZED")
+                for key in GATES}
         if any(v.upper() in ("REJECTED","FAIL") for v in vals.values()):
             outcome = "FAIL"
         else:
