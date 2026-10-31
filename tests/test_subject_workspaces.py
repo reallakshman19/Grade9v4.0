@@ -292,3 +292,24 @@ def test_cli_rejects_overwriting_native_report(tmp_path,manifest):
     assert main(["subject-workspace-audit","--manifest",str(m),"--root",str(root),
                  "--bindings",str(b),"--native-report",str(nr),"--out",str(nr)])==2
     assert nr.read_bytes()==original
+
+
+def test_empty_noncompiled_reason_rejected(tmp_path,manifest):
+    root=make_root(tmp_path)
+    p=root/"Physics/adapter/CoreContracts.json"
+    content=json.loads(p.read_text())
+    content["learner_products"]["CORE1"]["production"]="NOT_COMPILED"
+    content["learner_products"]["CORE1"]["reason"]="  "
+    p.write_text(json.dumps(content))
+    assert "CORE_PRODUCT_MISSING_REASON" in codes(inspect(manifest,root))
+
+
+def test_unmapped_native_subject_directory_requires_explicit_binding(tmp_path,manifest):
+    root=make_root(tmp_path)
+    shared=native()
+    shared["subjects_checked"]=2
+    shared["subjects"].append({"subject":"Mathematics","state":"CONTRACT_ONLY",
+                              "gate_registries":0,"library_packages":0,"findings":[]})
+    r=inspect(manifest,root,shared)
+    assert "NATIVE_UNBOUND_SUBJECT_DIRECTORY" in codes(r)
+    assert r["academic_status"]=="HOLD"
