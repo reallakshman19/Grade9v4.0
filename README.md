@@ -1,4 +1,6 @@
-# Grade9 v4.0 — WPE Academic Qualification Backbone
+# Grade9 v4.0 — Physics, Mathematics and Chemistry Learning Platform
+
+> **Product scope:** The application is planned for **Physics, Mathematics and Chemistry**. WPE is the first **Physics pilot topic**, not the application or universal curriculum. Current Grade9QA contracts and sample assets are pilot-scoped; subject-neutral v2 contracts and Mathematics/Chemistry blueprints are **not yet implemented**. See [product scope and migration plan](docs/product-scope.md).
 
 The candidate validator and read-only Smart Skills report adapter are being developed in [draft PR #2](https://github.com/reallakshman19/Grade9v4.0/pull/2), following [master specification #1](https://github.com/reallakshman19/Grade9v4.0/issues/1).
 

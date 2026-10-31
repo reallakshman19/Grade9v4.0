@@ -1,5 +1,7 @@
 # Grade9 v4.0 implementation status
 
+**Product scope correction (2026-10-31):** Grade9 v4.0 targets **Physics, Mathematics and Chemistry**. WPE / WEP-01 is only the initial Physics pilot. Existing `schemas/v1` bundle/construction topic IDs and `qrt-bind` are Physics/WPE-specific; subject-neutral contracts, Mathematics and Chemistry Blueprints, and cross-subject curriculum qualification **are not yet implemented**. See [product-scope.md](product-scope.md).
+
 Master: [Issue #1](https://github.com/reallakshman19/Grade9v4.0/issues/1).
 
 Stacked draft PRs: [#2](https://github.com/reallakshman19/Grade9v4.0/pull/2) → [#3](https://github.com/reallakshman19/Grade9v4.0/pull/3) → [#4](https://github.com/reallakshman19/Grade9v4.0/pull/4) → [#5](https://github.com/reallakshman19/Grade9v4.0/pull/5) → [#6](https://github.com/reallakshman19/Grade9v4.0/pull/6).
@@ -12,7 +14,7 @@ Stacked draft PRs: [#2](https://github.com/reallakshman19/Grade9v4.0/pull/2) →
 - [x] Original archived D3.1 and D3.6 witness candidate status accounted for without publishing question content
 - [ ] **P0.4b: independent semantic/Physics/QRT/Shared review receipts and validated native learner runtime** — HOLD
 - [ ] P1: owner-qualified end-to-end WEP-01 pilot (Core1A worked reasoning, fresh Core1B reconstruction and independent Core2 question)
-- [ ] P2: WEP-02–10 / JEE-bridge expansion
+- [ ] P2: subject-neutral v2 contracts; Physics WEP-02–10 expansion; independent Mathematics and Chemistry subject adapter pilots (topics not yet selected)
 - [ ] P3: publication and learner-facing release
 
 No user-supplied hash, synthetic fixture, preview screenshot, candidate D3 label or CI success constitutes academic approval.
