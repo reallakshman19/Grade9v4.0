@@ -1,5 +1,7 @@
 """Local CLI. Exit: 0 successful command, 1 invalid, 2 IO, 3 qualification HOLD."""
 import argparse
+import csv
+import hashlib
 import sys
 from pathlib import Path
 from .errors import InputError
@@ -17,6 +19,8 @@ from .shared_dispatch import inspect_shared_dispatch
 from .subject_workspaces import inspect_workspaces
 from .pilot_evidence import readback_pilot
 from .pilot_pair_review import compare_wep01_drafts
+from .core2_semantic import resolve_wpe_cells
+from .core2_inventory import audit_core2_coverage
 from .validate import inspect, schema_errors
 from .report import make_report, markdown
 
@@ -91,8 +95,46 @@ def main(argv=None):
     pair = subs.add_parser("wep01-pair-audit", help="Compare two real WEP-01 authored draft variants without copying content.")
     pair.add_argument("--inputs-archive", required=True, help="Owner-supplied original Input sources(4).zip")
     pair.add_argument("--out", required=True, help="Metadata-only draft comparison JSON, academic HOLD")
+    source_ledger = subs.add_parser("core2-inventory-audit", help="Reconcile four lot positions, 21 slots and nine existing renders (no duplicate question authoring).")
+    source_ledger.add_argument("--lots", required=True, help="Original private four-lot-register.json; IDs/metadata only")
+    source_ledger.add_argument("--selections", required=True, help="Original CORE2_21_SELECTION_PLACES.csv")
+    source_ledger.add_argument("--native", required=True, help="Original existing HTML readback JSON")
+    source_ledger.add_argument("--out", required=True, help="Sanitized reconciliation report")
+    cells = subs.add_parser("core2-cell-audit", help="Read-only Physics QRT Blueprint x pinned WPE adapter cell audit, academic HOLD.")
+    cells.add_argument("--blueprint", required=True, help="Original QRT Physics Blueprint JSON")
+    cells.add_argument("--adapter", required=True, help="Exact chosen WPE topic-adapter candidate JSON")
+    cells.add_argument("--entries", required=True, help="Candidate source IDs, operation, band and independently reviewed topic-family/capability refs")
+    cells.add_argument("--selected-adapter-sha256", help="Owner provided candidate byte pin; NOT approval")
+    cells.add_argument("--out", required=True, help="Only IDs, hashes and fail-closed diagnostics")
     args = parser.parse_args(argv)
     try:
+        if args.command == "core2-inventory-audit":
+            paths=[Path(args.lots), Path(args.selections), Path(args.native)]
+            dest=Path(args.out).resolve()
+            if dest in {p.resolve() for p in paths}:
+                raise InputError("OUTPUT_CANNOT_OVERWRITE_OWNER_CORE2_SOURCE")
+            with Path(args.selections).open("r", encoding="utf-8-sig", newline="") as fp:
+                rows=list(csv.DictReader(fp))
+            result=audit_core2_coverage(
+                _load_strict(Path(args.lots)), rows, _load_strict(Path(args.native)))
+            write_json(dest,result)
+            print("CORE2-INVENTORY mechanical=" + result["mechanical_status"] +
+                  " reviewed=HOLD admitted=0 NOT_ACADEMIC_APPROVAL")
+            return 1 if result["mechanical_status"]=="FAIL" else 3
+        if args.command == "core2-cell-audit":
+            paths=[Path(args.blueprint),Path(args.adapter),Path(args.entries)]
+            dest=Path(args.out).resolve()
+            if dest in {p.resolve() for p in paths}:
+                raise InputError("OUTPUT_CANNOT_OVERWRITE_NATIVE_QRT_INPUT")
+            result=resolve_wpe_cells(
+                _load_strict(paths[0]),_load_strict(paths[1]),_load_strict(paths[2]),
+                blueprint_digest=hashlib.sha256(paths[0].read_bytes()).hexdigest(),
+                adapter_digest=hashlib.sha256(paths[1].read_bytes()).hexdigest(),
+                selected_adapter_digest=args.selected_adapter_sha256)
+            write_json(dest,result)
+            print("CORE2-CELL mechanical=" + result["mechanical_status"] +
+                  " academic=HOLD admission=NOT_PERFORMED NOT_ACADEMIC_APPROVAL")
+            return 1 if result["mechanical_status"]=="FAIL" else 3
         if args.command == "wep01-pair-audit":
             source = Path(args.inputs_archive)
             target = Path(args.out).resolve()
