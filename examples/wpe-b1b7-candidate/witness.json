@@ -1,0 +1,126 @@
+{
+  "schema_version": "grade9qa-b1b7-witness/v1",
+  "status": "CANDIDATE",
+  "author_id": "SYNTH-AUTHOR",
+  "construction": {
+    "construction_id": "WPE-C-SYNTH-01",
+    "topic_id": "WEP-01",
+    "operation": "RETRIEVE",
+    "band": "D3",
+    "direction": "CLASSIFY_FROM_CASE",
+    "decisive_roles": [
+      "CONDITION",
+      "NEAR_NEIGHBOUR"
+    ],
+    "signature": {
+      "inputs": [
+        "force vector",
+        "contact displacement"
+      ],
+      "obstacle": "magnitude trap",
+      "decisive_move": "classify sign via force projection",
+      "output": "signed work explanation",
+      "independent_check": "perpendicular force counterexample",
+      "validity_boundary": "constant force, specified point of application"
+    }
+  },
+  "core1a": {
+    "construction_id": "WPE-C-SYNTH-01",
+    "operation": "RETRIEVE",
+    "band": "D3",
+    "direction": "CLASSIFY_FROM_CASE",
+    "content_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "worked_example_sha256": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "teaching_slots": {
+      "physical_demo": "L#1",
+      "qualitative_prediction": "L#2",
+      "law_and_conditions": "L#3",
+      "worked_original_example": "L#4",
+      "guided_practice": "L#5",
+      "misconception_repair": "L#6",
+      "verification_check": "L#7"
+    },
+    "taught_roles": {
+      "CONDITION": {
+        "teaching_span_ref": "L#3",
+        "demonstration_ref": "L#4"
+      },
+      "NEAR_NEIGHBOUR": {
+        "teaching_span_ref": "L#6",
+        "demonstration_ref": "L#7"
+      }
+    }
+  },
+  "core1b": {
+    "construction_id": "WPE-C-SYNTH-01",
+    "operation": "RETRIEVE",
+    "band": "D3",
+    "direction": "CLASSIFY_FROM_CASE",
+    "task_sha256": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+    "fresh_context_ref": "CYC-SYNTH-NEW",
+    "freshness_review_ref": "PENDING-INDEPENDENT",
+    "assessed_roles": {
+      "CONDITION": {
+        "attempt_field": "answer-sign",
+        "observable": "condition stated"
+      },
+      "NEAR_NEIGHBOUR": {
+        "attempt_field": "answer-exception",
+        "observable": "excludes countercase"
+      }
+    },
+    "attempt_contract": {
+      "p1_optional": true,
+      "first_answer_before_hint": true,
+      "reveal_requires_saved_attempt": true,
+      "fail_closed_on_save_error": true
+    },
+    "attempt_events": [
+      {
+        "type": "ANSWER_ENTERED",
+        "at": "2026-10-31T10:00:00Z"
+      },
+      {
+        "type": "FIRST_ANSWER_SAVED",
+        "at": "2026-10-31T10:00:01Z",
+        "durable": true
+      },
+      {
+        "type": "HINT_SHOWN",
+        "at": "2026-10-31T10:00:02Z"
+      },
+      {
+        "type": "ANSWER_REVEALED",
+        "at": "2026-10-31T10:00:03Z"
+      }
+    ],
+    "native_runtime_receipt_ref": "RUNTIME-NOT-REVIEWED",
+    "diagnostic_rules": [
+      {
+        "role_id": "CONDITION",
+        "observable": "wrong angle",
+        "repair_ref": "REPAIR-1"
+      },
+      {
+        "role_id": "NEAR_NEIGHBOUR",
+        "observable": "misses exception",
+        "repair_ref": "REPAIR-2"
+      }
+    ],
+    "changed_condition_transfer_ref": "TRANSFER-01",
+    "saved_answer_evidence_ref": "SYNTHETIC-ATTEMPT-ONLY"
+  },
+  "assessment": {
+    "operation": "RETRIEVE",
+    "band": "D3",
+    "source_role": "AUTHORED_TRANSFER",
+    "qrt_decision_ref": "QRT-PENDING"
+  },
+  "source_and_physics": {
+    "physics_warrant_ref": "PHYS-CANDIDATE",
+    "physics_review_ref": "PHYS-NOT-TRUSTED",
+    "source_custody_ref": "CUSTODY-NOT-TRUSTED",
+    "known_physics_contradiction": false
+  },
+  "review_receipts": []
+}

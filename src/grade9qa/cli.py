@@ -9,6 +9,7 @@ from .shared_audit import audit_shared
 from .shared_manifest import inventory_zip
 from .shared_authorities import summarize_authorities
 from .qrt_binding import inspect_binding, fingerprints
+from .bridge_witness import inspect_witness
 from .validate import inspect
 from .report import make_report, markdown
 
@@ -48,8 +49,18 @@ def main(argv=None):
     bind.add_argument("--native-sl1-report", help="Optional native SL1 checker report JSON")
     bind.add_argument("--native-sl2-report", help="Optional native SL2 checker report JSON")
     bind.add_argument("--out", required=True, help="JSON output, no source question text copied")
+    bridge_witness = subs.add_parser("bridge-witness", help="B1-B7 teaching/reconstruction evidence audit; no academic self-approval.")
+    bridge_witness.add_argument("--witness", required=True, help="Local v1 candidate witness JSON")
+    bridge_witness.add_argument("--out", required=True, help="B1-B7 evidence summary JSON output")
     args = parser.parse_args(argv)
     try:
+        if args.command == "bridge-witness":
+            data = read_json(Path(args.witness))
+            report = inspect_witness(data)
+            write_json(Path(args.out), report)
+            print("BRIDGE-WITNESS mechanical=" + report["mechanical_status"] +
+                  " qualification=HOLD NOT_ACADEMIC_APPROVAL")
+            return 1 if report["mechanical_status"] == "FAIL" else 3
         if args.command == "qrt-bind":
             sources = {key: Path(getattr(args, key)) for key in ("sl1", "sl2", "contract", "blueprint", "adapter")}
             if args.handoff:
