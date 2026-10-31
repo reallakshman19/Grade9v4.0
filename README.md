@@ -4,6 +4,10 @@
 
 The initial candidate validator and Smart Skills read-only adapter are documented in [draft PR #2](https://github.com/reallakshman19/Grade9v4.0/pull/2), following [master specification #1](https://github.com/reallakshman19/Grade9v4.0/issues/1).
 
+## P0 Core2 native SVG warning repair candidate (draft PR #15)
+
+The original `Input sources(4).zip` does contain editable candidate SVG files for the four flagged WPE figures. [Draft PR #15](https://github.com/reallakshman19/Grade9v4.0/pull/15) proposes a byte-pinned fix to the original Shared SVG label checker—decoding numeric entities, respecting parent transforms and preserving real clipping and tablet text-size warnings—without changing the original figure assets or native receipt. The **six separately missing source `REPRESENTATION` components remain HOLD**. See [actual source/Chromium evidence](docs/core2-native-svg/README.md).
+
 ## P0 Core2 SVG evidence: retain existing figures, investigate renderer false positives
 
 [Draft PR #14](https://github.com/reallakshman19/Grade9v4.0/pull/14) measures **transformed SVG text bounds** in Chromium against the actual original native nine-card `core2(3).html` and its ten-gap render receipt. The four `AUTHOR_FIGURE_TEXT` cases all had visible-browser text inside the viewBox at 1280×850, suggesting conservative false positives in the original character-width heuristic. **No original Shared warning was waived or source SVG changed.** Six missing `REPRESENTATION` components still need real native source and reviewer decisions. See [exact geometry and authoring backlog](docs/core2-geometry/README.md).
