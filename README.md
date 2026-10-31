@@ -1,8 +1,20 @@
 # Grade9 v4.0 — Physics, Mathematics and Chemistry Learning Platform
 
-> **Product scope:** The application is planned for **Physics, Mathematics and Chemistry**. WPE is the first **Physics pilot topic**, not the application or universal curriculum. Current Grade9QA contracts and sample assets are pilot-scoped; subject-neutral v2 contracts and Mathematics/Chemistry blueprints are **not yet implemented**. See [product scope and migration plan](docs/product-scope.md).
+> **Product scope:** The application is planned for **Physics, Mathematics and Chemistry**. WPE is the first **Physics pilot topic**, not the application or universal curriculum. Current Grade9QA contracts and sample assets are pilot-scoped; a **v2 candidate intake contract** exists in draft PR #7, while native subject adapters, canonical migration and Mathematics/Chemistry blueprints are **not yet implemented**. See [product scope and migration plan](docs/product-scope.md).
 
 The candidate validator and read-only Smart Skills report adapter are being developed in [draft PR #2](https://github.com/reallakshman19/Grade9v4.0/pull/2), following [master specification #1](https://github.com/reallakshman19/Grade9v4.0/issues/1).
+
+## Three-subject v2 candidate intake (stacked PR #7)
+
+The `subjects-audit` command validates a **subject-neutral candidate intake** for Physics, Mathematics and Chemistry, with type-aware scoped references and exact Blueprint/adapter identity checks. It deliberately does **not** replace the Shared canonical library, create native subject adapters, or approve Mathematics/Chemistry syllabuses.
+
+```bash
+grade9qa subjects-audit \
+  --manifest examples/three-subjects-candidate/manifest.json \
+  --out out/subjects-audit.json
+```
+
+The example has the WPE/WEP-01 **Physics pilot** and explicitly PLANNED Mathematics and Chemistry subject entries with no fabricated Blueprint or lesson. Exit **3/HOLD** means candidate structure is mechanically consistent but subject qualifications are absent; exit **1** means a contradiction. The legacy v1 WPE commands and fixtures still work. See [v2 contracts and migration notes](docs/v2/README.md).
 
 ## Implemented in P0.0–P0.1 and early Smart Skills adaptation
 

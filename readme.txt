@@ -116,3 +116,14 @@ SMART_LABELLING_QRT_HARDENING_R2_CANDIDATE(2).zip:
   tests/test_hardening.py
 
 Further detail: docs/smart-skills-integration.md
+
+MULTI-SUBJECT ENGINEERING UPDATE — P0.5a
+======================================
+The version 2.0.0 three-subject candidate intake is added in draft PR #7:
+  schemas/v2/subject-intake.schema.json
+  examples/three-subjects-candidate/manifest.json
+  grade9qa subjects-audit --manifest ... --out ...
+Existing WPE v1 contracts remain unchanged. Maths/Chemistry are PLANNED with
+no fabricated Blueprints or content. Scoped references cannot silently cross
+subjects. Mechanical PASS is still academic HOLD; canonical migration and
+independent subject-specific academic review remain pending.
