@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9._:-]{2,127}$"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "CANDIDATE",
+        "UNDER_REVIEW",
+        "APPROVED",
+        "REJECTED",
+        "BLOCKED"
+      ]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "bundle_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "mechanical_status": {
+      "enum": [
+        "PASS",
+        "HOLD",
+        "FAIL"
+      ]
+    },
+    "qualification_status": {
+      "enum": [
+        "PASS",
+        "HOLD",
+        "FAIL"
+      ]
+    },
+    "gate_results": {
+      "type": "array"
+    },
+    "bridge_results": {
+      "type": "array"
+    },
+    "coverage": {
+      "type": "object"
+    },
+    "diagnostics": {
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "status",
+    "created_at",
+    "bundle_id",
+    "generated_at",
+    "mechanical_status",
+    "qualification_status",
+    "gate_results",
+    "bridge_results",
+    "coverage",
+    "diagnostics"
+  ]
+}

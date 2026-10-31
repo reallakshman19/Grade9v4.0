@@ -1,0 +1,333 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9._:-]{2,127}$"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "CANDIDATE",
+        "UNDER_REVIEW",
+        "APPROVED",
+        "REJECTED",
+        "BLOCKED"
+      ]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "topic_id": {
+      "type": "string",
+      "pattern": "^WEP-(0[1-9]|10)$"
+    },
+    "source_node_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "operation": {
+      "enum": [
+        "RETRIEVE",
+        "EXPLAIN",
+        "APPLY",
+        "MODEL",
+        "REPRESENT",
+        "SYNTHESIZE",
+        "JUSTIFY"
+      ]
+    },
+    "band": {
+      "enum": [
+        "D1",
+        "D2",
+        "D3",
+        "D4"
+      ]
+    },
+    "grade_track": {
+      "enum": [
+        "G9_FOUNDATION",
+        "G10_STRENGTHENING",
+        "JEE_BRIDGE"
+      ]
+    },
+    "blueprint_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "blueprint_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "adapter_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "adapter_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "signature": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "inputs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "obstacle": {
+          "type": "string",
+          "minLength": 1
+        },
+        "decisive_move": {
+          "type": "string",
+          "minLength": 1
+        },
+        "output": {
+          "type": "string",
+          "minLength": 1
+        },
+        "independent_check": {
+          "type": "string",
+          "minLength": 1
+        },
+        "assumptions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "direction": {
+          "enum": [
+            "CLASSIFY_FROM_CASE",
+            "EXPLAIN_CAUSE_TO_EFFECT",
+            "APPLY_LAW_TO_RESULT",
+            "MODEL_PHENOMENON_TO_SYSTEM",
+            "FORCE_TO_POTENTIAL",
+            "POTENTIAL_TO_FORCE",
+            "GRAPH_TO_EQUATION",
+            "EQUATION_TO_GRAPH",
+            "SYNTHESIZE_STAGES",
+            "JUSTIFY_CLAIM",
+            "OTHER_EXPLICIT"
+          ]
+        },
+        "direction_description": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "inputs",
+        "obstacle",
+        "decisive_move",
+        "output",
+        "independent_check",
+        "assumptions",
+        "direction"
+      ]
+    },
+    "prerequisite_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z][A-Za-z0-9._:-]{2,127}$"
+      }
+    },
+    "warrant_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z][A-Za-z0-9._:-]{2,127}$"
+      }
+    },
+    "source_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z][A-Za-z0-9._:-]{2,127}$"
+      }
+    },
+    "demand_scores": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "conceptual": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2
+        },
+        "representation": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2
+        },
+        "reasoning_chain": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2
+        },
+        "algebraic": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2
+        },
+        "misconception_trap": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2
+        }
+      },
+      "required": [
+        "conceptual",
+        "representation",
+        "reasoning_chain",
+        "algebraic",
+        "misconception_trap"
+      ]
+    },
+    "demand_evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "conceptual": {
+          "type": "string",
+          "minLength": 1
+        },
+        "representation": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reasoning_chain": {
+          "type": "string",
+          "minLength": 1
+        },
+        "algebraic": {
+          "type": "string",
+          "minLength": 1
+        },
+        "misconception_trap": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "conceptual",
+        "representation",
+        "reasoning_chain",
+        "algebraic",
+        "misconception_trap"
+      ]
+    },
+    "decisive_move_evidence": {
+      "type": "string",
+      "minLength": 1
+    },
+    "lesson_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z][A-Za-z0-9._:-]{2,127}$"
+      }
+    },
+    "assessment_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z][A-Za-z0-9._:-]{2,127}$"
+      }
+    },
+    "author_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "status",
+    "created_at",
+    "topic_id",
+    "source_node_id",
+    "operation",
+    "band",
+    "grade_track",
+    "blueprint_id",
+    "blueprint_version",
+    "adapter_id",
+    "adapter_version",
+    "signature",
+    "prerequisite_ids",
+    "warrant_ids",
+    "source_ids",
+    "demand_scores",
+    "demand_evidence",
+    "lesson_ids",
+    "assessment_ids"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "band": {
+            "enum": [
+              "D3",
+              "D4"
+            ]
+          }
+        },
+        "required": [
+          "band"
+        ]
+      },
+      "then": {
+        "required": [
+          "decisive_move_evidence"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "signature": {
+            "properties": {
+              "direction": {
+                "const": "OTHER_EXPLICIT"
+              }
+            },
+            "required": [
+              "direction"
+            ]
+          }
+        },
+        "required": [
+          "signature"
+        ]
+      },
+      "then": {
+        "properties": {
+          "signature": {
+            "required": [
+              "direction_description"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}
