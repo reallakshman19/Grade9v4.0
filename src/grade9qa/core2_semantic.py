@@ -125,6 +125,7 @@ def resolve_wpe_cells(blueprint: object, adapter: object, entries: object,
             issues.append(_problem("WPE_TOPIC_FAMILY_INVALID", sid, "FAIL"))
         else:
             result["family"] = family
+        matched_family = False
         if isinstance(a_cells, dict):
             native = a_cells.get(key)
             if not isinstance(native, dict):
@@ -139,7 +140,6 @@ def resolve_wpe_cells(blueprint: object, adapter: object, entries: object,
                 issues.append(_problem("ADAPTER_CELL_EMPTY", sid, "FAIL"))
                 continue
             all_caps = set()
-            matched_family = False
             for sub in subs:
                 if not isinstance(sub, dict):
                     issues.append(_problem("ADAPTER_SUBTOPIC_INVALID", sid, "FAIL"))
@@ -149,7 +149,7 @@ def resolve_wpe_cells(blueprint: object, adapter: object, entries: object,
                 if not isinstance(families_here, list) or not isinstance(caps, list) or not caps:
                     issues.append(_problem("ADAPTER_SUBTOPIC_FOREIGN_KEYS_MISSING", sid, "FAIL"))
                     continue
-                if any(not isinstance(ref,str) or not FAMILY.fullmatch(ref) or (family_ids and ref not in family_ids)
+                if any(not isinstance(ref,str) or not FAMILY.fullmatch(ref) or ref not in family_ids
                        for ref in families_here):
                     issues.append(_problem("ADAPTER_SUBTOPIC_FAMILY_REF_UNRESOLVED", sid, "FAIL"))
                 if family in families_here:
@@ -177,6 +177,9 @@ def resolve_wpe_cells(blueprint: object, adapter: object, entries: object,
                 issues.append(_problem("SUBTILE_NOT_IN_SELECTED_ADAPTER", sid))
                 continue
             result["adapter_cell"] = subtile
+            # Native v0.2.x subtiles do not declare an independently adjudicated
+            # WEP family. A matching unit ID alone never proves topic meaning.
+            issues.append(_problem("SUBTILE_WEP_FAMILY_BINDING_UNSUPPORTED", sid))
             units = native.get("units")
             if not isinstance(units, list) or not units or not all(isinstance(x,str) and x for x in units):
                 issues.append(_problem("SUBTILE_UNIT_REFS_INVALID", sid,"FAIL"))
@@ -188,7 +191,7 @@ def resolve_wpe_cells(blueprint: object, adapter: object, entries: object,
                 issues.append(_problem("SUBTILE_UNIT_REFERENCE_MISSING", sid,"FAIL"))
             else:
                 result["capabilities_structurally_present"] = True
-        if result["family"] and result["capabilities_structurally_present"]:
+        if result["family"] and matched_family and result["capabilities_structurally_present"]:
             result["resolution"] = "STRUCTURAL_MATCH_CANDIDATE_ONLY"
             issues.append(_problem("INDEPENDENT_QRT_SOURCE_PHYSICS_REVIEW_MISSING", sid))
     return _report(issues, resolutions)
