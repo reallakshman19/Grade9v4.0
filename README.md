@@ -4,6 +4,12 @@
 
 The initial candidate validator and Smart Skills read-only adapter are documented in [draft PR #2](https://github.com/reallakshman19/Grade9v4.0/pull/2), following [master specification #1](https://github.com/reallakshman19/Grade9v4.0/issues/1).
 
+## P1 pilot: original WPE evidence and authored WEP-01 drafts (draft PR #11)
+
+The Owner-provided source archives include a **noncanonical D3.1.1 B1–B7 witness** and **two actual WEP-01 Core1A/Core1B authored pairs**. They must not be silently equated. The `wep-pilot-evidence` and `wep01-pair-audit` commands read fixed ZIP members locally, preserve original SHA-256 byte identities and produce **metadata-only academic HOLD** reports; they never publish original exam/teaching text, approve academic correctness or test the actual learner runtime.
+
+See [WEP-01 reviewer packet](docs/pilot/wep01/README.md) and [draft PR #11](https://github.com/reallakshman19/Grade9v4.0/pull/11).
+
 ## P0.5c — Real Shared subject-workspace preflight (draft PR #10)
 
 `grade9qa subject-workspace-audit` examines a **real provided repository root**, looks for each explicitly bound `<Subject>/adapter/CoreContracts.json`, checks the native six-Core catalogue and claimed validator limitations, and compares subject-local gate/library evidence to Shared's native discovery result. It never executes or installs a subject adapter or grants academic approval.
