@@ -284,3 +284,62 @@ def test_report_omits_full_question_or_student_answer_payload(base):
     base["core1b"]["answer_secret"] = "PRIVATE_STUDENT_RESPONSE"
     report = inspect_witness(base)
     assert "PRIVATE_STUDENT_RESPONSE" not in json.dumps(report)
+
+
+def test_no_alt_text_exposure_audit_is_hold(base):
+    base["core1b"]["exposure_audit"] = [x for x in base["core1b"]["exposure_audit"]
+                                         if x["surface"] != "ALT_TEXT"]
+    out = inspect_witness(base)
+    assert "EXPOSURE_SURFACE_NOT_AUDITED" in codes(out,"B5")
+    assert gate(out,"B5")["result"] == "HOLD"
+
+
+def test_alt_text_leaking_answer_is_hard_failure(base):
+    for x in base["core1b"]["exposure_audit"]:
+        if x["surface"] == "ALT_TEXT":
+            x["decisive_route_visible_before_save"] = True
+    out = inspect_witness(base)
+    assert "PROTECTED_ROUTE_LEAK" in codes(out,"B5")
+    assert gate(out,"B5")["result"] == "FAIL"
+
+
+def test_duplicate_picture_state_audit_fails(base):
+    base["core1b"]["exposure_audit"].append(base["core1b"]["exposure_audit"][0].copy())
+    assert "EXPOSURE_SURFACE_DUPLICATE" in codes(inspect_witness(base),"B5")
+
+
+def test_diagnostic_requires_erroneous_construction_node(base):
+    base["core1b"]["diagnostic_rules"][0]["failed_node_ref"]=""
+    assert "DIAGNOSIS_EVIDENCE_MISSING" in codes(inspect_witness(base),"B6")
+
+
+def test_transfer_needs_observable_success_criterion(base):
+    base["core1b"]["transfer_success_criterion"]=""
+    assert "TRANSFER_SUCCESS_CRITERION_MISSING" in codes(inspect_witness(base),"B6")
+
+
+def test_physics_warrant_pin_required_for_each_role(base):
+    base["source_and_physics"]["warrant_links"].pop()
+    assert "CONSEQUENTIAL_STEP_WARRANT_MISSING" in codes(inspect_witness(base),"B7")
+
+
+def test_warrant_on_unbound_role_fails(base):
+    base["source_and_physics"]["warrant_links"][0]["role_id"]="UNTAUGHT_WARRANT_ROLE"
+    assert "WARRANT_ROLE_INVALID" in codes(inspect_witness(base),"B7")
+
+
+def test_demand_vector_not_plain_label(base):
+    base["assessment"]["demand_vector"]=[2,2,2,1,1]
+    assert "DEMAND_BAND_CONTRADICTION" in codes(inspect_witness(base),"B1")
+
+
+def test_signature_requires_dependency_steps(base):
+    base["construction"]["signature"]["dependency_refs"]=[]
+    assert "SIGNATURE_DEPENDENCY_REFS_MISSING" in codes(inspect_witness(base),"B2")
+
+
+def test_pure_structural_evidence_is_never_approved(base):
+    out=inspect_witness(base)
+    assert len(out["gate_results"])==7
+    assert all(row["review_authority"]=="UNVERIFIED" for row in out["gate_results"])
+    assert all(row["result"]=="HOLD" for row in out["gate_results"])
