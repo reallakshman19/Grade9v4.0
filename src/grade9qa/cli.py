@@ -26,6 +26,8 @@ def main(argv=None):
             command.add_argument("--md", required=True)
         else:
             command.add_argument("--out", required=True)
+        if name == "qualify":
+            command.add_argument("--witness", help="Optional B1-B7 bridge witness, fail-closed and independently reviewed later")
     smart = subs.add_parser("smart-audit", help="Read-only R2 candidate checker-report inspection; never grants approval.")
     smart.add_argument("--report", required=True, help="Local JSON from original native checker")
     smart.add_argument("--out", required=True, help="Output v4 hold/readiness summary")
@@ -133,11 +135,47 @@ def main(argv=None):
             target.parent.mkdir(parents=True, exist_ok=True)
             target.write_text(markdown(report), encoding="utf-8")
         else:
+            if args.command == "qualify" and args.witness and not errors:
+                evidence = read_json(Path(args.witness))
+                shape = schema_errors(evidence, "bridge-witness", str(args.witness))
+                if shape:
+                    report["mechanical_status"] = "FAIL"
+                    report["diagnostics"].extend(
+                        {"code":d.code, "severity":"ERROR", "object_id":"",
+                         "path":d.path, "message":d.message,
+                         "remediation":"Correct the v1 bridge-witness JSON shape."} for d in shape
+                    )
+                    write_json(Path(args.out), report)
+                    print("QUALIFY structural=FAIL (invalid bridge contract) NOT_ACADEMIC_APPROVAL")
+                    return 1
+                bridge = inspect_witness(evidence)
+                expected = {c["id"] for c in data.get("constructions", [])}
+                if bridge["construction_id"] not in expected:
+                    report["qualification_status"] = "FAIL"
+                    report["diagnostics"].append({
+                        "code":"WITNESS_CONSTRUCTION_NOT_IN_BUNDLE",
+                        "severity":"ERROR","object_id":bridge["construction_id"],
+                        "path":"bridge_witness.construction.construction_id",
+                        "message":"Witness refers to a different bound construction.",
+                        "remediation":"Provide the correctly scoped witness for this bundle."
+                    })
+                elif bridge["mechanical_status"] == "FAIL":
+                    report["qualification_status"] = "FAIL"
+                report["bridge_results"] = bridge["gate_results"]
+                report["diagnostics"].extend({
+                    "code":d["code"], "severity":d["severity"],
+                    "object_id":bridge["construction_id"], "path":d["gate"],
+                    "message":d["detail"],"remediation":"Resolve and independently review this gate."
+                } for d in bridge["diagnostics"])
+                report["coverage"]["qualified_constructions"] = 0
             write_json(Path(args.out), report)
-        print(args.command.upper(), "structural=" + report["mechanical_status"], "academic=HOLD NOT_ACADEMIC_APPROVAL")
+        print(args.command.upper(), "structural=" + report["mechanical_status"],
+              "academic=" + report["qualification_status"] + " NOT_ACADEMIC_APPROVAL")
         if errors:
             return 1
-        return 3 if args.command == "qualify" else 0
+        if args.command == "qualify":
+            return 4 if report["qualification_status"] == "FAIL" else 3
+        return 0
     except (InputError, OSError) as exc:
         print("INPUT_ERROR: " + str(exc), file=sys.stderr)
         return 2
