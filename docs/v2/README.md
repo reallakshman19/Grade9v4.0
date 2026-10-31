@@ -54,3 +54,8 @@ All example source/warrant/lesson counts are **candidate** counts. No Mathematic
 **Exit policy:** 0 is not returned by this candidate command. Successful mechanical checks still return HOLD/3.
 
 No academic approval inferred from software validation.
+
+
+### P0.5b transition work
+
+The next [draft PR #9](https://github.com/reallakshman19/Grade9v4.0/pull/9) implements a **preview only** of WPE/WEP-01 v1 source and construction reference mappings into this v2 candidate manifest. It also checks explicit Native Shared subject-directory bindings against the native checker report. It does **not** overwrite v1 data or run Shared canonical promotion. See [P0.5b instructions](../v2-migration/README.md).

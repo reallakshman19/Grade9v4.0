@@ -12,6 +12,8 @@ from .qrt_binding import inspect_binding, fingerprints
 from .bridge_witness import inspect_witness
 from .bridge_legacy import inspect_legacy_witness
 from .subjects import audit_subject_intake
+from .migrate_v1 import preview_v1_to_v2, _load_strict
+from .shared_dispatch import inspect_shared_dispatch
 from .validate import inspect, schema_errors
 from .report import make_report, markdown
 
@@ -62,8 +64,51 @@ def main(argv=None):
     subjects = subs.add_parser("subjects-audit", help="Read-only v2 three-subject intake, not academic approval.")
     subjects.add_argument("--manifest", required=True, help="Version 2.0.0 candidate subject intake JSON")
     subjects.add_argument("--out", required=True, help="Candidate validation report, always academic HOLD")
+    migration = subs.add_parser("migrate-v1-preview", help="Read-only WEP-01 v1→v2 reference-map preview, never promotes.")
+    migration.add_argument("--bundle", required=True, help="Existing original WEP-01 v1 bundle.json")
+    migration.add_argument("--manifest", required=True, help="Three-subject v2 candidate intake JSON")
+    migration.add_argument("--out", required=True, help="Output preview and full integrity mapping report")
+    migration.add_argument("--candidate-out", help="Optional separate candidate v2 manifest output (only if source integrity permits)")
+    dispatch = subs.add_parser("shared-dispatch-audit", help="Reconcile explicit subject dirs with native Shared check_subjects report.")
+    dispatch.add_argument("--manifest", required=True, help="Three-subject v2 candidate intake JSON")
+    dispatch.add_argument("--native-report", required=True, help="Original Shared/tools/check_subjects.py JSON output")
+    dispatch.add_argument("--bindings", required=True, help="Explicit subject_id→native directory JSON map")
+    dispatch.add_argument("--out", required=True, help="No academic authority asserted")
     args = parser.parse_args(argv)
     try:
+        if args.command == "migrate-v1-preview":
+            original_root = Path(args.bundle).resolve().parent
+            manifest_in = Path(args.manifest).resolve()
+            report_out = Path(args.out).resolve()
+            preview_out = Path(args.candidate_out).resolve() if args.candidate_out else None
+            for output in (report_out, preview_out):
+                if output is not None and (output.is_relative_to(original_root) or output == manifest_in):
+                    raise InputError("OUTPUT_WOULD_OVERWRITE_HISTORIC_V1_OR_V2_INPUT")
+            if preview_out is not None and preview_out == report_out:
+                raise InputError("PREVIEW_AND_REPORT_OUTPUTS_MUST_BE_DISTINCT")
+            result = preview_v1_to_v2(Path(args.bundle), Path(args.manifest))
+            # Preview is portable only after original bundle/source bytes were checked.
+            write_json(report_out, result)
+            if preview_out is not None and result["candidate_manifest"] is not None:
+                write_json(preview_out, result["candidate_manifest"])
+            print("V1-MIGRATION-PREVIEW mechanical=" + result["mechanical_status"] +
+                  " SharedAdmission=NOT_PERFORMED academic=HOLD NOT_ACADEMIC_APPROVAL")
+            return 1 if result["mechanical_status"] == "FAIL" else 3
+        if args.command == "shared-dispatch-audit":
+            output = Path(args.out).resolve()
+            originals = {Path(args.manifest).resolve(), Path(args.native_report).resolve(),
+                         Path(args.bindings).resolve()}
+            if output in originals:
+                raise InputError("OUTPUT_WOULD_OVERWRITE_NATIVE_INPUT")
+            report = inspect_shared_dispatch(
+                _load_strict(Path(args.manifest)),
+                _load_strict(Path(args.native_report)),
+                _load_strict(Path(args.bindings)),
+            )
+            write_json(output, report)
+            print("SHARED-DISPATCH mechanical=" + report["mechanical_status"] +
+                  " canonicalAdmission=NOT_PERFORMED academic=HOLD NOT_ACADEMIC_APPROVAL")
+            return 1 if report["mechanical_status"] == "FAIL" else 3
         if args.command == "subjects-audit":
             report = audit_subject_intake(read_json(Path(args.manifest)))
             write_json(Path(args.out), report)
@@ -186,7 +231,7 @@ def main(argv=None):
         if args.command == "qualify":
             return 4 if report["qualification_status"] == "FAIL" else 3
         return 0
-    except (InputError, OSError) as exc:
+    except (InputError, OSError, ValueError, UnicodeError) as exc:
         print("INPUT_ERROR: " + str(exc), file=sys.stderr)
         return 2
 

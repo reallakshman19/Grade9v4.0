@@ -99,3 +99,8 @@ tests/
 ```
 
 These are **planned** paths. The existing pilot contracts and tools remain in place until a versioned migration is implemented and tested.
+
+
+## Migration implementation update — candidate only
+
+[Draft PR #9](https://github.com/reallakshman19/Grade9v4.0/pull/9) adds a read-only `migrate-v1-preview` command for WEP-01, and `shared-dispatch-audit` for Shared-native subject discovery reports with **explicit subject→directory mappings**. The original `Shared.zip` contains zero installed subject workspaces, and the original v1 approvals, teaching and assessments are **not** migrated as canonical v2 records. Native Shared admission remains pending. See [P0.5b guide](v2-migration/README.md).
