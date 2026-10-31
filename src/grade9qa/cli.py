@@ -6,6 +6,8 @@ from .errors import InputError
 from .io import read_json, write_json
 from .smart_skills import inspect_native_report
 from .shared_audit import audit_shared
+from .shared_manifest import inventory_zip
+from .shared_authorities import summarize_authorities
 from .validate import inspect
 from .report import make_report, markdown
 
@@ -29,8 +31,31 @@ def main(argv=None):
     shared.add_argument("--baseline", help="Optional owner-supplied fingerprint JSON (default docs/shared-baseline-pins.json)")
     shared.add_argument("--archive", help="Optional original Shared.zip for archive digest/count verification")
     shared.add_argument("--out", required=True, help="Path to audit output JSON")
+    manifest = subs.add_parser("shared-manifest", help="Rebuild complete Shared.zip manifest; never grants authority.")
+    manifest.add_argument("--archive", required=True, help="Local owner-supplied Shared.zip")
+    manifest.add_argument("--shared-root", help="Optional extracted Shared/ directory to compare all files")
+    manifest.add_argument("--out", required=True, help="Write complete per-file SHA-256 manifest JSON")
+    authority = subs.add_parser("shared-authorities", help="Read native Shared authority reports; never self-approves.")
+    authority.add_argument("--review", required=True, help="JSON output of native review_authority.py --audit")
+    authority.add_argument("--release", required=True, help="JSON output of native release_authority.py --audit")
+    authority.add_argument("--core", required=True, help="JSON output of native core_authority_contract.py")
+    authority.add_argument("--out", required=True, help="Output audit summary JSON")
     args = parser.parse_args(argv)
     try:
+        if args.command == "shared-manifest":
+            baseline_path = Path(__file__).resolve().parents[2] / "docs/shared-baseline-pins.json"
+            pin = read_json(baseline_path)["source_archive_sha256"]
+            out = inventory_zip(Path(args.archive), root=Path(args.shared_root) if args.shared_root else None,
+                                expected_archive_sha256=pin)
+            write_json(Path(args.out), out)
+            print("SHARED-MANIFEST", out["file_count"], "files; mechanical=" + out["mechanical_status"],
+                  "qualification=HOLD NOT_ACADEMIC_APPROVAL")
+            return 1 if out["mechanical_status"] == "FAIL" else 3
+        if args.command == "shared-authorities":
+            out = summarize_authorities(read_json(Path(args.review)), read_json(Path(args.release)), read_json(Path(args.core)))
+            write_json(Path(args.out), out)
+            print("SHARED-AUTHORITIES", out["mechanical_status"], "authority=HOLD NOT_ACADEMIC_APPROVAL")
+            return 1 if out["mechanical_status"] == "FAIL" else 3
         if args.command == "shared-audit":
             baseline_path = Path(args.baseline) if args.baseline else Path(__file__).resolve().parents[2] / "docs" / "shared-baseline-pins.json"
             baseline = read_json(baseline_path)
