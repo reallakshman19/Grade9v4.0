@@ -14,6 +14,7 @@ from .bridge_legacy import inspect_legacy_witness
 from .subjects import audit_subject_intake
 from .migrate_v1 import preview_v1_to_v2, _load_strict
 from .shared_dispatch import inspect_shared_dispatch
+from .subject_workspaces import inspect_workspaces
 from .validate import inspect, schema_errors
 from .report import make_report, markdown
 
@@ -74,8 +75,30 @@ def main(argv=None):
     dispatch.add_argument("--native-report", required=True, help="Original Shared/tools/check_subjects.py JSON output")
     dispatch.add_argument("--bindings", required=True, help="Explicit subject_id→native directory JSON map")
     dispatch.add_argument("--out", required=True, help="No academic authority asserted")
+    workspace = subs.add_parser("subject-workspace-audit", help="Read-only Shared CoreContracts and subject-content preflight.")
+    workspace.add_argument("--manifest", required=True, help="Three-subject v2 candidate intake manifest")
+    workspace.add_argument("--root", required=True, help="Root containing actual Shared/ and subject directories")
+    workspace.add_argument("--bindings", required=True, help="Explicit subject-to-directory mapping JSON")
+    workspace.add_argument("--native-report", help="Optional original Shared/tools/check_subjects.py JSON output")
+    workspace.add_argument("--out", required=True, help="Sanitized evidence report; no academic qualification")
     args = parser.parse_args(argv)
     try:
+        if args.command == "subject-workspace-audit":
+            target = Path(args.out).resolve()
+            upstream = {Path(args.manifest).resolve(), Path(args.bindings).resolve()}
+            if args.native_report:
+                upstream.add(Path(args.native_report).resolve())
+            root = Path(args.root).resolve()
+            if target in upstream or target.is_relative_to(root):
+                raise InputError("OUTPUT_MUST_NOT_OVERWRITE_NATIVE_SUBJECT_WORKSPACE")
+            report = inspect_workspaces(
+                _load_strict(Path(args.manifest)), root, _load_strict(Path(args.bindings)),
+                _load_strict(Path(args.native_report)) if args.native_report else None,
+            )
+            write_json(target, report)
+            print("SUBJECT-WORKSPACE mechanical=" + report["mechanical_status"] +
+                  " canonicalPromotion=NOT_PERFORMED academic=HOLD NOT_ACADEMIC_APPROVAL")
+            return 1 if report["mechanical_status"] == "FAIL" else 3
         if args.command == "migrate-v1-preview":
             original_root = Path(args.bundle).resolve().parent
             manifest_in = Path(args.manifest).resolve()
