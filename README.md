@@ -4,6 +4,30 @@
 
 The initial candidate validator and Smart Skills read-only adapter are documented in [draft PR #2](https://github.com/reallakshman19/Grade9v4.0/pull/2), following [master specification #1](https://github.com/reallakshman19/Grade9v4.0/issues/1).
 
+## P0.5b — WPE v1 migration preview and native Shared subject-dispatch readback (PR #9)
+
+`migrate-v1-preview` creates a **reversible, read-only reference map** from the historic Physics/WPE WEP-01 pilot to the versioned three-subject v2 candidate intake. It records original bundle/collection/source byte hashes, preserves original IDs and statuses, and refuses unverifiable source assets or silent transfer of an old APPROVED status.
+
+```bash
+grade9qa migrate-v1-preview \
+  --bundle examples/wpe-n01-candidate/bundle.json \
+  --manifest examples/three-subjects-candidate/manifest.json \
+  --out out/v1-migration-report.json \
+  --candidate-out out/v2-candidate-preview.json
+
+# Only with actual native Shared/tools/check_subjects.py output
+# and an explicit, owner-reviewed subject-directory binding map:
+grade9qa shared-dispatch-audit \
+  --manifest out/v2-candidate-preview.json \
+  --native-report /local/shared-subject-check.json \
+  --bindings /local/subject-directory-bindings.json \
+  --out out/shared-subject-dispatch.json
+```
+
+The **original standalone Shared.zip** yields zero native subject workspaces: no subject is installed or academically approved in that snapshot. The migration intentionally leaves `lessons`, `assessments` and `approvals` in their original v1 custody and flags legacy Physics Blueprint/adapter aliases as review-required, not automatically equivalent.
+
+`schemas/v1` and native Shared contracts are unchanged. A structurally usable candidate returns exit **3/HOLD**; a failed check returns **1/FAIL**; malformed/unreadable inputs return **2**. See [P0.5b guide](docs/v2-migration/README.md), [PR #9](https://github.com/reallakshman19/Grade9v4.0/pull/9), and [Issue #8](https://github.com/reallakshman19/Grade9v4.0/issues/8).
+
 ## Three-subject v2 candidate intake (stacked PR #7)
 
 The `subjects-audit` command validates a **subject-neutral candidate intake** for Physics, Mathematics and Chemistry, with type-aware scoped references and exact Blueprint/adapter identity checks. It deliberately does **not** replace the Shared canonical library, create native subject adapters, or approve Mathematics/Chemistry syllabuses.

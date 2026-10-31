@@ -127,3 +127,13 @@ Existing WPE v1 contracts remain unchanged. Maths/Chemistry are PLANNED with
 no fabricated Blueprints or content. Scoped references cannot silently cross
 subjects. Mechanical PASS is still academic HOLD; canonical migration and
 independent subject-specific academic review remain pending.
+
+P0.5b — READ-ONLY HISTORIC WPE MIGRATION
+========================================
+PR #9 introduces the commands "migrate-v1-preview" and
+"shared-dispatch-audit". Old WPE v1 record bytes/IDs/statuses stay unchanged;
+only a candidate scoped source/warrant/construction mapping is proposed.
+Legacy Blueprint/adapter aliases and lessons/assessments/approvals remain
+for separate reviews. The supplied Shared.zip has ZERO native subject
+directories, so Physics, Mathematics and Chemistry canonical installation
+is NOT established. All academic qualification stays HOLD.
