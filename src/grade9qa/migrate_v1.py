@@ -203,7 +203,10 @@ def preview_v1_to_v2(bundle_path: Path, manifest_path: Path) -> dict:
                 pins[f"original-source/{src['id']}"] = recorded
         except (OSError, UnicodeError, InputError):
             issues.append(_issue("SOURCE_ORIGINAL_BYTES_UNAVAILABLE", f"sources[{idx}]", "HOLD"))
-    if any(i["severity"] == "FAIL" for i in issues):
+    if any(i["severity"] == "FAIL" or i["code"] == "SOURCE_ORIGINAL_BYTES_UNAVAILABLE"
+           for i in issues):
+        # A missing original asset blocks even a mechanically portable preview:
+        # an unverifiable source must not be wrapped into a new intake record.
         return _finish(issues, None, pins, mappings, unresolved)
 
     # Never silently downgrade an archived APPROVED status. Refuse the v2
