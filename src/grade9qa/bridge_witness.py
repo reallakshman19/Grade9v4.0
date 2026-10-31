@@ -25,6 +25,7 @@ TEACHING_SLOTS = (
     "worked_original_example", "guided_practice", "misconception_repair",
     "verification_check",
 )
+EXPOSURE_SURFACES = ("HINT", "PICTURE_STAGE", "ALT_TEXT", "MODEL_RESPONSE", "RUBRIC", "EXAM_RETURN")
 EVENT_TYPES = {
     "ANSWER_ENTERED", "FIRST_ANSWER_SAVED", "SAVE_FAILED",
     "HINT_SHOWN", "ANSWER_REVEALED",
@@ -101,6 +102,16 @@ def inspect_witness(witness: dict, *, trusted_shared_receipts: bool = False) -> 
              "Assessment's operation/band must match the claimed construction.", "FAIL")
     if not _nonempty(assessment.get("qrt_decision_ref")):
         mark("B1", "QRT_DECISION_ABSENT", "SL2 PROPOSED is not independently reviewed QRT.")
+    vector = assessment.get("demand_vector")
+    allowed = {"D1": (0, 2), "D2": (3, 5), "D3": (6, 7), "D4": (8, 10)}
+    if (not isinstance(vector, list) or len(vector) != 5
+            or any(type(k) is not int or k < 0 or k > 2 for k in vector)):
+        mark("B1", "DEMAND_VECTOR_MISSING", "Five evidence-supported 0..2 factors required.")
+    elif c_band in allowed and not allowed[c_band][0] <= sum(vector) <= allowed[c_band][1]:
+        mark("B1", "DEMAND_BAND_CONTRADICTION", "Five-factor sum contradicts claimed band.", "FAIL")
+    if not _nonempty(assessment.get("demand_evidence_ref")):
+        mark("B1", "INDEPENDENT_DEMAND_EVIDENCE_MISSING",
+             "Numerical score alone is not cognitive difficulty adjudication.")
     if assessment.get("source_role") not in (
         "DIRECT_EXAM_EVIDENCE", "PREREQUISITE_BRIDGE", "AUTHORED_TRANSFER"
     ):
@@ -122,6 +133,11 @@ def inspect_witness(witness: dict, *, trusted_shared_receipts: bool = False) -> 
     if not isinstance(c_roles, list) or not c_roles or not all(map(_nonempty, c_roles)):
         mark("B2", "DECISIVE_ROLES_MISSING", "Declared protected cognitive roles needed.")
         c_roles = []
+    for field in ("conditions", "dependency_refs"):
+        value = signature.get(field)
+        if not isinstance(value, list) or not value or not all(map(_nonempty, value)):
+            mark("B2", "SIGNATURE_" + field.upper() + "_MISSING",
+                 "Explicit nonempty governing conditions and dependency stages required.")
     if len(set(c_roles)) != len(c_roles):
         mark("B2", "DUPLICATE_DECISIVE_ROLE", "Roles must have distinct stable IDs.", "FAIL")
 
@@ -218,6 +234,27 @@ def inspect_witness(witness: dict, *, trusted_shared_receipts: bool = False) -> 
                  f"{kind} before successful durable first-answer save.", "FAIL")
     if not events:
         mark("B5", "ATTEMPT_TRACE_NOT_PROVIDED", "Need synthetic/native runtime state trace for an actual check.")
+    surfaces = learner.get("exposure_audit")
+    if not isinstance(surfaces, list):
+        surfaces = []
+    index = {}
+    for row in surfaces:
+        if not isinstance(row, dict) or row.get("surface") not in EXPOSURE_SURFACES:
+            mark("B5", "EXPOSURE_SURFACE_INVALID", "Unknown protected-answer exposure surface.", "FAIL")
+            continue
+        name = row["surface"]
+        if name in index:
+            mark("B5", "EXPOSURE_SURFACE_DUPLICATE", "Exposure surface audited more than once.", "FAIL")
+        index[name] = row
+        if not _nonempty(row.get("audit_ref")):
+            mark("B5", "EXPOSURE_AUDIT_EVIDENCE_MISSING", f"Missing source-native {name} trace.")
+        if row.get("decisive_route_visible_before_save") is True:
+            mark("B5", "PROTECTED_ROUTE_LEAK", f"{name} reveals decisive work before durable first save.", "FAIL")
+        if row.get("decisive_route_visible_before_save") not in (True, False):
+            mark("B5", "EXPOSURE_OUTCOME_UNKNOWN", f"{name} exposure state was not audited.")
+    for name in EXPOSURE_SURFACES:
+        if name not in index:
+            mark("B5", "EXPOSURE_SURFACE_NOT_AUDITED", f"Protected-answer surface {name} untested.")
     if not _nonempty(learner.get("native_runtime_receipt_ref")):
         mark("B5", "NATIVE_RUNTIME_EVIDENCE_MISSING",
              "Synthetic state log is not a verified deployed-browser/runtime test.")
@@ -234,15 +271,19 @@ def inspect_witness(witness: dict, *, trusted_shared_receipts: bool = False) -> 
         role = item.get("role_id")
         if role not in c_roles:
             mark("B6", "DIAGNOSIS_UNKNOWN_ROLE", "Diagnosis references non-bound role.", "FAIL")
-        elif _nonempty(item.get("observable")) and _nonempty(item.get("repair_ref")):
+        elif (_nonempty(item.get("observable")) and _nonempty(item.get("repair_ref"))
+              and _nonempty(item.get("failed_node_ref"))):
             role_diagnosed.add(role)
         else:
             mark("B6", "DIAGNOSIS_EVIDENCE_MISSING",
-                 "Diagnosis needs both learner observable and independent repair reference.")
+                 "Diagnosis needs observed error, erroneous construction node and Core1A repair span.")
     for role in set(c_roles)-role_diagnosed:
         mark("B6", "DECISIVE_ROLE_UNDIAGNOSED", f"No diagnosis/repair bound to {role}.")
     if not _nonempty(learner.get("changed_condition_transfer_ref")):
         mark("B6", "TRANSFER_NOT_DEFINED", "Changed-condition follow-up needed.")
+    if not _nonempty(learner.get("transfer_success_criterion")):
+        mark("B6", "TRANSFER_SUCCESS_CRITERION_MISSING",
+             "Specify observable changed-condition success, not only changed numbers.")
     if not _nonempty(learner.get("saved_answer_evidence_ref")):
         mark("B6", "INSUFFICIENT_EVIDENCE",
              "No actual saved response; do not claim a misconception was observed.")
@@ -259,6 +300,21 @@ def inspect_witness(witness: dict, *, trusted_shared_receipts: bool = False) -> 
             if not _nonempty(science.get(field)):
                 mark("B7", "EXAM_" + field.upper() + "_MISSING",
                      "Authenticated exam evidence requires independently verified " + field)
+    links = science.get("warrant_links")
+    if not isinstance(links, list):
+        links = []
+    secured_roles = set()
+    for row in links:
+        if not isinstance(row, dict) or row.get("role_id") not in c_roles:
+            mark("B7", "WARRANT_ROLE_INVALID", "Physics warrant must map to a bound decisive step.", "FAIL")
+            continue
+        if not _nonempty(row.get("warrant_ref")) or not _nonempty(row.get("library_sha256")):
+            mark("B7", "WARRANT_UNPINNED", "Each consequential step requires an exact version-pinned warrant.")
+        else:
+            secured_roles.add(row["role_id"])
+    for role in set(c_roles) - secured_roles:
+        mark("B7", "CONSEQUENTIAL_STEP_WARRANT_MISSING",
+             f"No scoped canonical Physics warrant pin for role {role}.")
     if science.get("known_physics_contradiction") is True:
         mark("B7", "KNOWN_PHYSICS_CONTRADICTION", "Known physics contradiction blocks qualification.", "FAIL")
     if not isinstance(reviewers, list):

@@ -93,6 +93,22 @@
             "validity_boundary": {
               "type": "string",
               "minLength": 1
+            },
+            "conditions": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "dependency_refs": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
             }
           },
           "required": []
@@ -324,6 +340,10 @@
               "repair_ref": {
                 "type": "string",
                 "minLength": 1
+              },
+              "failed_node_ref": {
+                "type": "string",
+                "minLength": 1
               }
             },
             "required": [
@@ -338,6 +358,41 @@
           "minLength": 1
         },
         "saved_answer_evidence_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "exposure_audit": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "surface": {
+                "enum": [
+                  "HINT",
+                  "PICTURE_STAGE",
+                  "ALT_TEXT",
+                  "MODEL_RESPONSE",
+                  "RUBRIC",
+                  "EXAM_RETURN"
+                ]
+              },
+              "audit_ref": {
+                "type": "string",
+                "minLength": 1
+              },
+              "decisive_route_visible_before_save": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "surface",
+              "audit_ref",
+              "decisive_route_visible_before_save"
+            ]
+          }
+        },
+        "transfer_success_criterion": {
           "type": "string",
           "minLength": 1
         }
@@ -371,6 +426,20 @@
           ]
         },
         "qrt_decision_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "demand_vector": {
+          "type": "array",
+          "minItems": 5,
+          "maxItems": 5,
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2
+          }
+        },
+        "demand_evidence_ref": {
           "type": "string",
           "minLength": 1
         }
@@ -410,6 +479,32 @@
         },
         "known_physics_contradiction": {
           "type": "boolean"
+        },
+        "warrant_links": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "role_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "warrant_ref": {
+                "type": "string",
+                "minLength": 1
+              },
+              "library_sha256": {
+                "type": "string",
+                "pattern": "^sha256:[0-9a-f]{64}$"
+              }
+            },
+            "required": [
+              "role_id",
+              "warrant_ref",
+              "library_sha256"
+            ]
+          }
         }
       },
       "required": []

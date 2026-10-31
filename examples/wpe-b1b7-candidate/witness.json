@@ -21,7 +21,17 @@
       "decisive_move": "classify sign via force projection",
       "output": "signed work explanation",
       "independent_check": "perpendicular force counterexample",
-      "validity_boundary": "constant force, specified point of application"
+      "validity_boundary": "constant force, specified point of application",
+      "conditions": [
+        "constant force",
+        "ground frame",
+        "correct point of force application"
+      ],
+      "dependency_refs": [
+        "SIGN",
+        "POINT_APPLICATION",
+        "CONDITION_CHECK"
+      ]
     }
   },
   "core1a": {
@@ -99,28 +109,83 @@
       {
         "role_id": "CONDITION",
         "observable": "wrong angle",
-        "repair_ref": "REPAIR-1"
+        "repair_ref": "REPAIR-1",
+        "failed_node_ref": "SYNTH-NODE-CONDITION"
       },
       {
         "role_id": "NEAR_NEIGHBOUR",
         "observable": "misses exception",
-        "repair_ref": "REPAIR-2"
+        "repair_ref": "REPAIR-2",
+        "failed_node_ref": "SYNTH-NODE-NEAR_NEIGHBOUR"
       }
     ],
     "changed_condition_transfer_ref": "TRANSFER-01",
-    "saved_answer_evidence_ref": "SYNTHETIC-ATTEMPT-ONLY"
+    "saved_answer_evidence_ref": "SYNTHETIC-ATTEMPT-ONLY",
+    "exposure_audit": [
+      {
+        "surface": "HINT",
+        "audit_ref": "SYNTH-HINT-PREVIEW",
+        "decisive_route_visible_before_save": false
+      },
+      {
+        "surface": "PICTURE_STAGE",
+        "audit_ref": "SYNTH-PICTURE_STAGE-PREVIEW",
+        "decisive_route_visible_before_save": false
+      },
+      {
+        "surface": "ALT_TEXT",
+        "audit_ref": "SYNTH-ALT_TEXT-PREVIEW",
+        "decisive_route_visible_before_save": false
+      },
+      {
+        "surface": "MODEL_RESPONSE",
+        "audit_ref": "SYNTH-MODEL_RESPONSE-PREVIEW",
+        "decisive_route_visible_before_save": false
+      },
+      {
+        "surface": "RUBRIC",
+        "audit_ref": "SYNTH-RUBRIC-PREVIEW",
+        "decisive_route_visible_before_save": false
+      },
+      {
+        "surface": "EXAM_RETURN",
+        "audit_ref": "SYNTH-EXAM_RETURN-PREVIEW",
+        "decisive_route_visible_before_save": false
+      }
+    ],
+    "transfer_success_criterion": "Learner justifies sign and exception under changed force direction"
   },
   "assessment": {
     "operation": "RETRIEVE",
     "band": "D3",
     "source_role": "AUTHORED_TRANSFER",
-    "qrt_decision_ref": "QRT-PENDING"
+    "qrt_decision_ref": "QRT-PENDING",
+    "demand_vector": [
+      2,
+      1,
+      1,
+      1,
+      1
+    ],
+    "demand_evidence_ref": "SYNTH-DEMAND-NOT-QUALIFIED"
   },
   "source_and_physics": {
     "physics_warrant_ref": "PHYS-CANDIDATE",
     "physics_review_ref": "PHYS-NOT-TRUSTED",
     "source_custody_ref": "CUSTODY-NOT-TRUSTED",
-    "known_physics_contradiction": false
+    "known_physics_contradiction": false,
+    "warrant_links": [
+      {
+        "role_id": "CONDITION",
+        "warrant_ref": "PHY-WARRANT-SYNTH-1",
+        "library_sha256": "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+      },
+      {
+        "role_id": "NEAR_NEIGHBOUR",
+        "warrant_ref": "PHY-WARRANT-SYNTH-2",
+        "library_sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+      }
+    ]
   },
   "review_receipts": []
 }
