@@ -1,0 +1,80 @@
+{
+  "version": "1.0.0",
+  "decision": "HOLD",
+  "upstream": "Shared.zip",
+  "authority_source": "Shared/roles/CORE-AUTHORITY-CONTRACT.md",
+  "workflow_separate_from_authority": true,
+  "roles": {
+    "CORE1": [
+      "CANONICAL_ACADEMIC_TRUTH"
+    ],
+    "CORE1A": [
+      "CANONICAL_ACADEMIC_TRUTH"
+    ],
+    "CORE1B": [
+      "CANONICAL_ACADEMIC_TRUTH"
+    ],
+    "CORE2": [
+      "AUTHORIZED_SOURCE_CUSTODY"
+    ],
+    "CORE2A": [
+      "CANONICAL_ACADEMIC_TRUTH"
+    ],
+    "CORE2B": [
+      "CANONICAL_ACADEMIC_TRUTH",
+      "PRIOR_EXPOSURE"
+    ]
+  },
+  "grade9_policy": {
+    "WORK_ENERGY": "PREREQUISITE"
+  },
+  "integration_overlaps": [
+    {
+      "grade9qa": "io.py and sha256.py",
+      "shared": "Shared/contracts.py",
+      "action": "ADAPTER"
+    },
+    {
+      "grade9qa": "schemas/v1",
+      "shared": "Shared/library/package.schema.json",
+      "action": "TEMPORARY_DTO"
+    },
+    {
+      "grade9qa": "traceability.py",
+      "shared": "Shared/library/intake.py",
+      "action": "REUSE"
+    },
+    {
+      "grade9qa": "demand.py",
+      "shared": "Shared/vocabularies/cognitive-demand.v1.json",
+      "action": "READ_ONLY"
+    },
+    {
+      "grade9qa": "gates.py",
+      "shared": "Shared/tools/review_authority.py",
+      "action": "DO_NOT_DUPLICATE"
+    },
+    {
+      "grade9qa": "bridge.py",
+      "shared": "Shared/library/core1a_construction.py",
+      "action": "EXTEND_B1_B7"
+    },
+    {
+      "grade9qa": "smart_skills.py",
+      "shared": "Shared/tools/qrt_pipeline_guard.py",
+      "action": "READ_ONLY"
+    },
+    {
+      "grade9qa": "report.py",
+      "shared": "Shared/assurance/aggregate.py",
+      "action": "ADAPTER"
+    }
+  ],
+  "blocked_by": [
+    "OWNER_SHARED_REDISTRIBUTION_DECISION",
+    "COMPLETE_292_FILE_OWNER_PIN",
+    "NATIVE_TEST_COMPATIBILITY",
+    "AUTHORITY_WORKFLOW_SIGNOFF",
+    "INDEPENDENT_REVIEW"
+  ]
+}
