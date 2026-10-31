@@ -2,7 +2,7 @@
 
 > **Product scope:** The application is planned for **Physics, Mathematics and Chemistry**. WPE is the first **Physics pilot topic**, not the application or universal curriculum. Current Grade9QA contracts and sample assets are pilot-scoped; a **v2 candidate intake contract** exists in draft PR #7, while native subject adapters, canonical migration and Mathematics/Chemistry blueprints are **not yet implemented**. See [product scope and migration plan](docs/product-scope.md).
 
-The candidate validator and read-only Smart Skills report adapter are being developed in [draft PR #2](https://github.com/reallakshman19/Grade9v4.0/pull/2), following [master specification #1](https://github.com/reallakshman19/Grade9v4.0/issues/1).
+The initial candidate validator and Smart Skills read-only adapter are documented in [draft PR #2](https://github.com/reallakshman19/Grade9v4.0/pull/2), following [master specification #1](https://github.com/reallakshman19/Grade9v4.0/issues/1).
 
 ## Three-subject v2 candidate intake (stacked PR #7)
 
@@ -24,7 +24,7 @@ The example has the WPE/WEP-01 **Physics pilot** and explicitly PLANNED Mathemat
 - Numeric D1–D4 rubric-band consistency checks (not academic validity).
 - Sample WEP-01 **synthetic candidate**, pytest suite, and Python 3.11/3.12 CI.
 - The new `smart-audit` reads native Smart Labelling R2 reports without asserting qualification; native skills are **not** installed by this repository.
-- Academic release and B1–B7 engines deliberately report **HOLD** until P0.2–P0.4 evidence controls are implemented.
+- B1–B7 candidate evidence checks are implemented in PR #6, but **independent academic approval and learner release remain HOLD** pending native reviewer authority and real learner evidence.
 
 ## Run locally
 
