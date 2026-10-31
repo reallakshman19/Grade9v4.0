@@ -8,6 +8,7 @@ from .smart_skills import inspect_native_report
 from .shared_audit import audit_shared
 from .shared_manifest import inventory_zip
 from .shared_authorities import summarize_authorities
+from .qrt_binding import inspect_binding, fingerprints
 from .validate import inspect
 from .report import make_report, markdown
 
@@ -40,8 +41,34 @@ def main(argv=None):
     authority.add_argument("--release", required=True, help="JSON output of native release_authority.py --audit")
     authority.add_argument("--core", required=True, help="JSON output of native core_authority_contract.py")
     authority.add_argument("--out", required=True, help="Output audit summary JSON")
+    bind = subs.add_parser("qrt-bind", help="Read-only native Smart R2 → QRT Physics/WPE candidate binding.")
+    for option in ("sl1", "sl2", "contract", "blueprint", "adapter"):
+        bind.add_argument("--" + option, required=True, help="Local exact upstream " + option + " JSON")
+    bind.add_argument("--handoff", help="Optional source-to-Core1A original handoff JSON")
+    bind.add_argument("--native-sl1-report", help="Optional native SL1 checker report JSON")
+    bind.add_argument("--native-sl2-report", help="Optional native SL2 checker report JSON")
+    bind.add_argument("--out", required=True, help="JSON output, no source question text copied")
     args = parser.parse_args(argv)
     try:
+        if args.command == "qrt-bind":
+            sources = {key: Path(getattr(args, key)) for key in ("sl1", "sl2", "contract", "blueprint", "adapter")}
+            if args.handoff:
+                sources["handoff"] = Path(args.handoff)
+            if args.native_sl1_report:
+                sources["native_sl1"] = Path(args.native_sl1_report)
+            if args.native_sl2_report:
+                sources["native_sl2"] = Path(args.native_sl2_report)
+            evidence = {key: read_json(path) for key, path in sources.items()}
+            output = inspect_binding(evidence["sl1"], evidence["sl2"], evidence["contract"],
+                                     evidence["blueprint"], evidence["adapter"],
+                                     handoff=evidence.get("handoff"),
+                                     native_sl1=evidence.get("native_sl1"),
+                                     native_sl2=evidence.get("native_sl2"),
+                                     input_fingerprints=fingerprints(sources))
+            write_json(Path(args.out), output)
+            print("QRT-BIND mechanical=" + output["mechanical_status"] +
+                  " integration=HOLD NOT_ACADEMIC_APPROVAL")
+            return 1 if output["mechanical_status"] == "FAIL" else 3
         if args.command == "shared-manifest":
             baseline_path = Path(__file__).resolve().parents[2] / "docs/shared-baseline-pins.json"
             pin = read_json(baseline_path)["source_archive_sha256"]
