@@ -1,14 +1,15 @@
 # Grade9 v4.0 — WPE Academic Qualification Backbone
 
-The first implementation is underway in [draft PR #2](https://github.com/reallakshman19/Grade9v4.0/pull/2), following [master specification #1](https://github.com/reallakshman19/Grade9v4.0/issues/1).
+The candidate validator and read-only Smart Skills report adapter are being developed in [draft PR #2](https://github.com/reallakshman19/Grade9v4.0/pull/2), following [master specification #1](https://github.com/reallakshman19/Grade9v4.0/issues/1).
 
-## Implemented in P0.0–P0.1
+## Implemented in P0.0–P0.1 and early Smart Skills adaptation
 
 - Python 3.11+ installable package and `grade9qa` command.
 - Eight versioned evidence JSON Schemas.
 - Local bundle loading, schema errors, type-aware references, duplicate IDs and prerequisite cycles.
 - Numeric D1–D4 rubric-band consistency checks (not academic validity).
 - Sample WEP-01 **synthetic candidate**, pytest suite, and Python 3.11/3.12 CI.
+- The new `smart-audit` reads native Smart Labelling R2 reports without asserting qualification; native skills are **not** installed by this repository.
 - Academic release and B1–B7 engines deliberately report **HOLD** until P0.2–P0.4 evidence controls are implemented.
 
 ## Run locally
@@ -19,8 +20,11 @@ grade9qa validate --bundle examples/wpe-n01-candidate/bundle.json --out out/vali
 grade9qa bridge --bundle examples/wpe-n01-candidate/bundle.json --out out/bridge.json
 grade9qa qualify --bundle examples/wpe-n01-candidate/bundle.json --out out/qualification.json
 grade9qa report --bundle examples/wpe-n01-candidate/bundle.json --json out/report.json --md out/report.md
+grade9qa smart-audit --report path/to/native-r2-report.json --out out/smart-audit.json
 python -m pytest -q
 ```
+
+See [readme.txt](readme.txt) for **“1. Correct workflow placement”** and [Smart Skills integration](docs/smart-skills-integration.md) for the R2 candidate adoption rules.
 
 The sample has mechanically valid candidate records. `qualify` intentionally returns exit code **3 (HOLD)**. This is not a software defect. No source scan, official paper, answer key or academically approved lesson is provided.
 
