@@ -4,7 +4,7 @@
 
 Master: [Issue #1](https://github.com/reallakshman19/Grade9v4.0/issues/1).
 
-Stacked draft PRs: [#2](https://github.com/reallakshman19/Grade9v4.0/pull/2) → [#3](https://github.com/reallakshman19/Grade9v4.0/pull/3) → [#4](https://github.com/reallakshman19/Grade9v4.0/pull/4) → [#5](https://github.com/reallakshman19/Grade9v4.0/pull/5) → [#6](https://github.com/reallakshman19/Grade9v4.0/pull/6) → [#7](https://github.com/reallakshman19/Grade9v4.0/pull/7) → [#9](https://github.com/reallakshman19/Grade9v4.0/pull/9).
+Stacked draft PRs: [#2](https://github.com/reallakshman19/Grade9v4.0/pull/2) → [#3](https://github.com/reallakshman19/Grade9v4.0/pull/3) → [#4](https://github.com/reallakshman19/Grade9v4.0/pull/4) → [#5](https://github.com/reallakshman19/Grade9v4.0/pull/5) → [#6](https://github.com/reallakshman19/Grade9v4.0/pull/6) → [#7](https://github.com/reallakshman19/Grade9v4.0/pull/7) → [#9](https://github.com/reallakshman19/Grade9v4.0/pull/9) → [#10](https://github.com/reallakshman19/Grade9v4.0/pull/10).
 
 - [x] P0.0/P0.1: Grade9QA CLI, structural records, source-incomplete synthetic example
 - [x] P0.2a: read-only Shared six-Core authority audit
@@ -21,3 +21,7 @@ Stacked draft PRs: [#2](https://github.com/reallakshman19/Grade9v4.0/pull/2) →
 - [ ] P3: publication and learner-facing release
 
 No user-supplied hash, synthetic fixture, preview screenshot, candidate D3 label or CI success constitutes academic approval.
+
+- [x] **P0.5c preflight:** direct read-only `CoreContracts.json` workspace inspection, six-Core role claims, truthful validator limitations, gate/library presence, native Shared report count reconciliation, and safe subject mappings; [draft PR #10](https://github.com/reallakshman19/Grade9v4.0/pull/10).
+- [x] Local synthetic native Shared check demonstrated that **three CONTRACT_ONLY subjects can pass discovery with zero libraries**, which is NOT subject implementation or academic readiness.
+- [ ] P0.5c acceptance: actual Owner-provided complete Physics/Mathematics/Chemistry subject roots, accepted native contract and library packages, approved discipline-specific Blueprints, source/proof/chemical warrants and independent governance receipts; **HOLD**.
