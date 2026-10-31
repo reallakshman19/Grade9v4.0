@@ -1,16 +1,17 @@
 # Implementation status
 
-Master specification: [Issue #1](https://github.com/reallakshman19/Grade9v4.0/issues/1). [PR #2](https://github.com/reallakshman19/Grade9v4.0/pull/2) provides the initial scaffold; [stacked PR #3](https://github.com/reallakshman19/Grade9v4.0/pull/3) adds Shared baseline compatibility.
+Master spec: [Issue #1](https://github.com/reallakshman19/Grade9v4.0/issues/1).
+Stack: [PR #2](https://github.com/reallakshman19/Grade9v4.0/pull/2) → [PR #3](https://github.com/reallakshman19/Grade9v4.0/pull/3) → [PR #4](https://github.com/reallakshman19/Grade9v4.0/pull/4).
 
-- [x] P0.0 package, CLI and CI scaffolding.
-- [x] P0.1 versioned schemas, synthetic WPE-N01 candidate, structural checks.
-- [x] Smart Skills R2 workflow documented; local manifest 35/35 and native candidate tests 90/90.
-- [x] Read-only SL1/SL2 R2 report adapter + ten regression tests; qualification always HOLD.
-- [x] P0.2a **Shared compatibility audit**, 16 selected fingerprints from 292 upstream files, six-Core authority and vocabulary/policy reconciliation. Read-only `grade9qa shared-audit` command, 14 tests.
-- [x] Run upstream's native `core_authority_contract.py` locally: six roles, zero findings.
-- [ ] P0.2b **Shared integration acceptance**: public redistribution rights, complete verified owner pin, native full-project test baseline, Shared/QRT/Smart R2 integration, Owner workflow sign-off, distinct independent reviewer.
-- [ ] P0.3 directional construction identity and demand semantics.
-- [ ] P0.4 genuine B1–B7 and independent governance gates.
-- [ ] P1–P3 learner pilot, scaling and release controls.
+- [x] P0.0/P0.1: Initial Python validator, synthetic WEP-01 fixture, schema and structural checks.
+- [x] Smart Skills R2: documented source, local candidate verification (manifest 35/35, test suite 90/90), read-only native report adapter.
+- [x] P0.2a: Shared six-Core authority/compatibility audit, 16-file baseline pins, read-only `shared-audit` and 14 tests.
+- [x] P0.2b engineering: **full 292-file** ZIP inventory and extracted-root comparison, `shared-manifest`; original Shared review/release audit report adapter, `shared-authorities`; negative regression tests.
+- [x] Local source findings: six roles passed; native review/release auditors passed with zero receipts (therefore **no approval**); all extracted 292 source files match Owner-supplied ZIP.
+- [ ] P0.2b approval: signed/trusted external baseline, Owner rights/redistribution decision, full native Shared suite in project context, trusted receipt binding and independent authority acceptance.
+- [ ] Native R2 SL1/SL2 installation/integration and distinct QRT/Physics reviews.
+- [ ] P0.3: independent cognitive construction identity and directional operation qualification.
+- [ ] P0.4: actual B1–B7 semantic and governance qualification.
+- [ ] P1–P3: WEP-01 pilot, WEP-02–10 expansion, independent learner release.
 
-**The project remains a candidate. Passing fingerprint, schema, or native smoke checks does not qualify Physics, cognition, examination coverage or learner release.**
+**No academic or release qualification is complete.**
