@@ -5,6 +5,7 @@ from pathlib import Path
 from .errors import InputError
 from .io import read_json, write_json
 from .smart_skills import inspect_native_report
+from .shared_audit import audit_shared
 from .validate import inspect
 from .report import make_report, markdown
 
@@ -23,8 +24,21 @@ def main(argv=None):
     smart = subs.add_parser("smart-audit", help="Read-only R2 candidate checker-report inspection; never grants approval.")
     smart.add_argument("--report", required=True, help="Local JSON from original native checker")
     smart.add_argument("--out", required=True, help="Output v4 hold/readiness summary")
+    shared = subs.add_parser("shared-audit", help="Read-only external Shared baseline fingerprint and authority audit.")
+    shared.add_argument("--shared-root", required=True, help="Path to extracted Shared/ folder")
+    shared.add_argument("--baseline", help="Optional owner-supplied fingerprint JSON (default docs/shared-baseline-pins.json)")
+    shared.add_argument("--archive", help="Optional original Shared.zip for archive digest/count verification")
+    shared.add_argument("--out", required=True, help="Path to audit output JSON")
     args = parser.parse_args(argv)
     try:
+        if args.command == "shared-audit":
+            baseline_path = Path(args.baseline) if args.baseline else Path(__file__).resolve().parents[2] / "docs" / "shared-baseline-pins.json"
+            baseline = read_json(baseline_path)
+            schema = Path(__file__).resolve().parents[2] / "schemas/v1/construction.schema.json"
+            summary = audit_shared(Path(args.shared_root), baseline, archive=Path(args.archive) if args.archive else None, construction_schema=schema)
+            write_json(Path(args.out), summary)
+            print("SHARED-AUDIT mechanical=" + summary["mechanical_status"] + " integration=HOLD NOT_ACADEMIC_APPROVAL")
+            return 1 if summary["mechanical_status"] == "FAIL" else 3
         if args.command == "smart-audit":
             summary = inspect_native_report(read_json(Path(args.report)))
             write_json(Path(args.out), summary)
