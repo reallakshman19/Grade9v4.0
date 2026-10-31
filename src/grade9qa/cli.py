@@ -15,6 +15,7 @@ from .subjects import audit_subject_intake
 from .migrate_v1 import preview_v1_to_v2, _load_strict
 from .shared_dispatch import inspect_shared_dispatch
 from .subject_workspaces import inspect_workspaces
+from .pilot_evidence import readback_pilot
 from .validate import inspect, schema_errors
 from .report import make_report, markdown
 
@@ -81,8 +82,23 @@ def main(argv=None):
     workspace.add_argument("--bindings", required=True, help="Explicit subject-to-directory mapping JSON")
     workspace.add_argument("--native-report", help="Optional original Shared/tools/check_subjects.py JSON output")
     workspace.add_argument("--out", required=True, help="Sanitized evidence report; no academic qualification")
+    wep = subs.add_parser("wep-pilot-evidence", help="Sanitized owner-local D3.1.1 evidence readback; no academic approval.")
+    wep.add_argument("--d3-archive", required=True, help="Original WPE_D3_Organized_2026-10-30(1).zip")
+    wep.add_argument("--handoff-archive", required=True, help="Original WPE_CONSTRUCTION_HANDOFF_SKILL_R1_CANDIDATE.zip")
+    wep.add_argument("--hub-archive", required=True, help="Original wpe.zip (browser hub QA only)")
+    wep.add_argument("--out", required=True, help="Sanitized JSON; original exam/lesson text stays local")
     args = parser.parse_args(argv)
     try:
+        if args.command == "wep-pilot-evidence":
+            output = Path(args.out).resolve()
+            archive_paths = [Path(args.d3_archive), Path(args.handoff_archive), Path(args.hub_archive)]
+            if output in {p.resolve() for p in archive_paths}:
+                raise InputError("OUTPUT_CANNOT_OVERWRITE_OWNER_ARCHIVES")
+            report = readback_pilot(*archive_paths)
+            write_json(output, report)
+            print("WEP-PILOT-EVIDENCE mechanical=" + report["mechanical_status"] +
+                  " academic=HOLD release=HOLD NOT_ACADEMIC_APPROVAL")
+            return 1 if report["mechanical_status"] == "FAIL" else 3
         if args.command == "subject-workspace-audit":
             target = Path(args.out).resolve()
             upstream = {Path(args.manifest).resolve(), Path(args.bindings).resolve()}
