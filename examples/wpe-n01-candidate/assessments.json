@@ -1,0 +1,28 @@
+[
+  {
+    "schema_version": "1.0.0",
+    "id": "TEST-Q01",
+    "status": "CANDIDATE",
+    "created_at": "2026-10-31T00:00:00Z",
+    "construction_id": "WEP-C01",
+    "kind": "SYNTHETIC",
+    "source_ids": [],
+    "review_approval_ids": [],
+    "direction": "CLASSIFY_FROM_CASE",
+    "decisive_move": "Classify based on projection",
+    "demand_scores": {
+      "conceptual": 2,
+      "representation": 1,
+      "reasoning_chain": 1,
+      "algebraic": 1,
+      "misconception_trap": 1
+    },
+    "demand_evidence": {
+      "conceptual": "Compare force components",
+      "representation": "Interpret directions",
+      "reasoning_chain": "Check applicability then project force",
+      "algebraic": "Calculate projection sign",
+      "misconception_trap": "Perpendicular force may give zero work"
+    }
+  }
+]

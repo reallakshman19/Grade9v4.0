@@ -1,0 +1,14 @@
+[
+  {
+    "schema_version": "1.0.0",
+    "id": "SOURCE-N01",
+    "status": "CANDIDATE",
+    "created_at": "2026-10-31T00:00:00Z",
+    "role": "OTHER",
+    "authority": "SYNTHETIC_TEST_FIXTURE",
+    "path": "synthetic-note.txt",
+    "sha256": "abec801212bbf56f4449022053d5edc4f7ca4a1528050e7316034b458da08de4",
+    "locator": "Fixture only; not a textbook source",
+    "claim_ids": []
+  }
+]
