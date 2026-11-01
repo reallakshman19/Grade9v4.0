@@ -15,7 +15,7 @@ const types = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascrip
     const a = fs.readFileSync(R1SVG, 'utf8'), b = fs.readFileSync(R2SVG, 'utf8');
     pre.push({ name: 'R2-L2 Incline geometry identical to R1 (only the 37° label line differs)', pass: strip(a) === strip(b) && a !== b });
   } else {
-    pre.push({ name: 'R2-L2 Incline geometry check skipped (source SVGs not present locally)', pass: true, note: 'SKIPPED_SOURCE_SVGS_NOT_FOUND' });
+    pre.push({ name: 'R2-L2 Incline geometry check (source SVGs not present in public templates)', pass: null, skipped: true, note: 'SKIPPED_SOURCE_SVGS_NOT_FOUND' });
   }
 
   const server = http.createServer((req, res) => {
@@ -42,9 +42,10 @@ const types = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascrip
   await browser.close(); server.close();
   result.checks = (result.checks || []).concat(pre);
   result.page_errors = errors;
-  result.passed = result.checks.filter(c => c.pass).length;
+  result.passed = result.checks.filter(c => c.pass === true).length;
+  result.skipped = result.checks.filter(c => c.skipped).length;
   result.total = result.checks.length;
-  result.pass = !result.error && result.checks.every(c => c.pass) && errors.length === 0;
+  result.pass = !result.error && result.checks.every(c => c.pass === true || c.skipped) && errors.length === 0;
   result.browser = 'playwright-core 1.52 headless Chromium (ms-playwright chromium-1169)';
   result.url = url;
   console.log(JSON.stringify(result, null, 1));
