@@ -4,6 +4,10 @@
 
 The initial candidate validator and Smart Skills read-only adapter are documented in [draft PR #2](https://github.com/reallakshman19/Grade9v4.0/pull/2), following [master specification #1](https://github.com/reallakshman19/Grade9v4.0/issues/1).
 
+## R18 WPE Core2 source review: three batches of three exam candidates
+
+[Draft PR #18](https://github.com/reallakshman19/Grade9v4.0/pull/18) prepares nine **existing** conditional Lot 01 examination-source leads as APPLY, MODEL and REPRESENT private review batches, with independent Physics calculation proposals, source/key/figure holds and exact existing D3.3/D3.4/D3.5 draft WPE adapter hashes. This does **not** repeat the prior six TB illustrations, fill seven vacant 21-place slots, or generate learner HTML. EX-M73's cross-cell anchor and EX-M61's incorrect-option explanation mismatch are explicit review holds. See [R18 evidence and review order](docs/core2-r18/README.md).
+
 ## P0 Core2 three private Owner review batches (draft PR #17)
 
 [Draft PR #17](https://github.com/reallakshman19/Grade9v4.0/pull/17) converts the six previous Core2 representation warnings into three actionable, **independently reviewed** handoffs: (1) three reasoned potential waivers; (2) two original, private, answer-free SVG authoring candidates; (3) the ILL-05 original-source missing initial-speed Physics HOLD. It adds fail-closed identity, SVG, native provenance and anti-approval tests; **no real waiver, figure binding, exam admission or new learner HTML is made**. See [R17 source-backed three-batch work order](docs/core2-three-batches/README.md).
