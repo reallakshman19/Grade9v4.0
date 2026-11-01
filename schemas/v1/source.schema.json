@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9._:-]{2,127}$"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "CANDIDATE",
+        "UNDER_REVIEW",
+        "APPROVED",
+        "REJECTED",
+        "BLOCKED"
+      ]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "role": {
+      "enum": [
+        "TEXTBOOK",
+        "SCAN",
+        "FIGURE",
+        "SYLLABUS",
+        "EXAM_PAPER",
+        "ANSWER_KEY",
+        "DERIVATION",
+        "OTHER"
+      ]
+    },
+    "authority": {
+      "enum": [
+        "OWNER_LOCAL_UNAUTHENTICATED",
+        "CANDIDATE_REFERENCE",
+        "VERIFIED_PRIMARY_SOURCE",
+        "DERIVED_FIGURE",
+        "SYNTHETIC_TEST_FIXTURE"
+      ]
+    },
+    "path": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$)).+$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "locator": {
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "object"
+        }
+      ]
+    },
+    "claim_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z][A-Za-z0-9._:-]{2,127}$"
+      }
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "status",
+    "created_at",
+    "role",
+    "authority",
+    "path",
+    "sha256",
+    "locator",
+    "claim_ids"
+  ]
+}

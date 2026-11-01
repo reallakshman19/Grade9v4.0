@@ -1,0 +1,48 @@
+{
+  "schema": "wpe-core2-readonly-return-manifest/v1",
+  "created_utc": "2026-10-30T10:02:38.753128+00:00",
+  "status": "UNAPPOINTED_HOLD",
+  "neutral_snapshot_sha256": "9e46ae6edf545fbc5eac61c36ae668f7a870408ff5dc81169f5dc0f88855b0f6",
+  "files": {
+    "01_NEUTRAL_ONLY_PRECOMPARISON.json": {
+      "sha256": "9e46ae6edf545fbc5eac61c36ae668f7a870408ff5dc81169f5dc0f88855b0f6",
+      "bytes": 82457
+    },
+    "01_NEUTRAL_ONLY_PRECOMPARISON.sha256": {
+      "sha256": "0cdcc688f50047d94f2d05e21655524810e01b7218a2eb9820e7d1452c57b218",
+      "bytes": 101
+    },
+    "02B_POST_EXPOSURE_SUPPLEMENT_NOT_BLIND.json": {
+      "sha256": "249322c71f2bcbfe0c04894612ee99978cc5e0b5325bfc32a04b75486d8d465c",
+      "bytes": 11090
+    },
+    "02_POST_EXPOSURE_RECONCILIATION.json": {
+      "sha256": "265d4622bfc41e7fa91425946c118ab41ba49ade158088cd1cad966e1100ac3c",
+      "bytes": 215549
+    },
+    "03_ARCHITECTURE_AND_FIX_PLAN.md": {
+      "sha256": "2a37db42bad5c048f444719021c1f70d4cf19de33a7a4c19e6d4721120c6ed92",
+      "bytes": 10772
+    },
+    "04_QUESTION_BY_QUESTION_VERDICTS.md": {
+      "sha256": "db633d4f86d63d55ad65cc35860be37822d4301c05bcad4964302ea88ace19e0",
+      "bytes": 16787
+    },
+    "05_CHECK_CORE2_CONTRACT.py": {
+      "sha256": "77a723889b16a8468ad930d9f5b13941762c03384d75c90e068d5f9fcb37b6c7",
+      "bytes": 9790
+    },
+    "06_REPRODUCIBLE_GATE_RESULTS.json": {
+      "sha256": "4233644bf7a5a75d91a4d70b983eee741c61494726acd978bd2dfc45728d7377",
+      "bytes": 7337
+    },
+    "07_GOLDEN_FIELD_CROSSWALK.json": {
+      "sha256": "8618b86dbcd5e382c5299ff1a2a64624036a567bddc4a6405cfd4a4876ca139d",
+      "bytes": 6311
+    },
+    "README.md": {
+      "sha256": "0f5a86503010add0101ea07a9480aeb9e6c4124f7c986dfc1f91a979418a3f66",
+      "bytes": 2882
+    }
+  }
+}

@@ -1,0 +1,376 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Three-subject v2 candidate intake (NOT Shared canonical authority)",
+  "description": "Physics, Mathematics, Chemistry only; candidate presence does not qualify academic content.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "2.0.0"
+    },
+    "kind": {
+      "const": "THREE_SUBJECT_CANDIDATE_INTAKE"
+    },
+    "programme_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9._:-]{2,127}$"
+    },
+    "status": {
+      "const": "CANDIDATE"
+    },
+    "subjects": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "subject_id": {
+            "enum": [
+              "PHYSICS",
+              "MATHEMATICS",
+              "CHEMISTRY"
+            ]
+          },
+          "stage": {
+            "enum": [
+              "PLANNED",
+              "PILOT_CANDIDATE",
+              "EXPANDING_CANDIDATE"
+            ]
+          },
+          "blueprint_ref": {
+            "oneOf": [
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "subject_id": {
+                    "enum": [
+                      "PHYSICS",
+                      "MATHEMATICS",
+                      "CHEMISTRY"
+                    ]
+                  },
+                  "id": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z][A-Za-z0-9._:-]{2,127}$"
+                  },
+                  "version": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "sha256": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  }
+                },
+                "required": [
+                  "subject_id",
+                  "id",
+                  "version",
+                  "sha256"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "topics": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "topic_id": {
+                  "type": "string",
+                  "pattern": "^[A-Z][A-Z0-9_-]{1,63}$"
+                },
+                "unit_id": {
+                  "type": "string",
+                  "pattern": "^[A-Z][A-Z0-9_-]{1,63}$"
+                },
+                "adapter_ref": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "subject_id": {
+                      "enum": [
+                        "PHYSICS",
+                        "MATHEMATICS",
+                        "CHEMISTRY"
+                      ]
+                    },
+                    "topic_id": {
+                      "type": "string",
+                      "pattern": "^[A-Z][A-Z0-9_-]{1,63}$"
+                    },
+                    "id": {
+                      "type": "string",
+                      "pattern": "^[A-Za-z][A-Za-z0-9._:-]{2,127}$"
+                    },
+                    "version": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "pattern": "^[0-9a-f]{64}$"
+                    },
+                    "blueprint_sha256": {
+                      "type": "string",
+                      "pattern": "^[0-9a-f]{64}$"
+                    }
+                  },
+                  "required": [
+                    "subject_id",
+                    "topic_id",
+                    "id",
+                    "version",
+                    "sha256",
+                    "blueprint_sha256"
+                  ]
+                },
+                "sources": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "pattern": "^[A-Za-z][A-Za-z0-9._:-]{2,127}$"
+                      },
+                      "status": {
+                        "enum": [
+                          "CANDIDATE",
+                          "UNDER_REVIEW",
+                          "BLOCKED",
+                          "REJECTED"
+                        ]
+                      },
+                      "origin_ref": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "status",
+                      "origin_ref"
+                    ]
+                  }
+                },
+                "warrants": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "pattern": "^[A-Za-z][A-Za-z0-9._:-]{2,127}$"
+                      },
+                      "status": {
+                        "enum": [
+                          "CANDIDATE",
+                          "UNDER_REVIEW",
+                          "BLOCKED",
+                          "REJECTED"
+                        ]
+                      },
+                      "discipline": {
+                        "enum": [
+                          "PHYSICS",
+                          "MATHEMATICS",
+                          "CHEMISTRY"
+                        ]
+                      },
+                      "source_refs": {
+                        "type": "array",
+                        "uniqueItems": true,
+                        "items": {
+                          "type": "string",
+                          "pattern": "^(PHYSICS|MATHEMATICS|CHEMISTRY)/[A-Z][A-Z0-9_-]{1,63}/[A-Za-z][A-Za-z0-9._:-]{2,127}$"
+                        }
+                      },
+                      "claim_ref": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "status",
+                      "discipline",
+                      "source_refs",
+                      "claim_ref"
+                    ]
+                  }
+                },
+                "constructions": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "pattern": "^[A-Za-z][A-Za-z0-9._:-]{2,127}$"
+                      },
+                      "status": {
+                        "enum": [
+                          "CANDIDATE",
+                          "UNDER_REVIEW",
+                          "BLOCKED",
+                          "REJECTED"
+                        ]
+                      },
+                      "operation": {
+                        "enum": [
+                          "RETRIEVE",
+                          "EXPLAIN",
+                          "APPLY",
+                          "MODEL",
+                          "REPRESENT",
+                          "SYNTHESIZE",
+                          "JUSTIFY"
+                        ]
+                      },
+                      "band": {
+                        "enum": [
+                          "D1",
+                          "D2",
+                          "D3",
+                          "D4"
+                        ]
+                      },
+                      "grade_track": {
+                        "enum": [
+                          "G9_FOUNDATION",
+                          "G10_STRENGTHENING",
+                          "JEE_BRIDGE"
+                        ]
+                      },
+                      "direction": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "source_refs": {
+                        "type": "array",
+                        "uniqueItems": true,
+                        "items": {
+                          "type": "string",
+                          "pattern": "^(PHYSICS|MATHEMATICS|CHEMISTRY)/[A-Z][A-Z0-9_-]{1,63}/[A-Za-z][A-Za-z0-9._:-]{2,127}$"
+                        }
+                      },
+                      "warrant_refs": {
+                        "type": "array",
+                        "uniqueItems": true,
+                        "items": {
+                          "type": "string",
+                          "pattern": "^(PHYSICS|MATHEMATICS|CHEMISTRY)/[A-Z][A-Z0-9_-]{1,63}/[A-Za-z][A-Za-z0-9._:-]{2,127}$"
+                        }
+                      },
+                      "prerequisite_refs": {
+                        "type": "array",
+                        "uniqueItems": true,
+                        "items": {
+                          "type": "string",
+                          "pattern": "^(PHYSICS|MATHEMATICS|CHEMISTRY)/[A-Z][A-Z0-9_-]{1,63}/[A-Za-z][A-Za-z0-9._:-]{2,127}$"
+                        }
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "status",
+                      "operation",
+                      "band",
+                      "grade_track",
+                      "direction",
+                      "source_refs",
+                      "warrant_refs",
+                      "prerequisite_refs"
+                    ]
+                  }
+                }
+              },
+              "required": [
+                "topic_id",
+                "adapter_ref",
+                "sources",
+                "warrants",
+                "constructions"
+              ]
+            }
+          }
+        },
+        "required": [
+          "subject_id",
+          "stage",
+          "blueprint_ref",
+          "topics"
+        ]
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "kind",
+    "programme_id",
+    "status",
+    "subjects"
+  ],
+  "allOf": [
+    {
+      "properties": {
+        "subjects": {
+          "contains": {
+            "properties": {
+              "subject_id": {
+                "const": "PHYSICS"
+              }
+            },
+            "required": [
+              "subject_id"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "subjects": {
+          "contains": {
+            "properties": {
+              "subject_id": {
+                "const": "MATHEMATICS"
+              }
+            },
+            "required": [
+              "subject_id"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "subjects": {
+          "contains": {
+            "properties": {
+              "subject_id": {
+                "const": "CHEMISTRY"
+              }
+            },
+            "required": [
+              "subject_id"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

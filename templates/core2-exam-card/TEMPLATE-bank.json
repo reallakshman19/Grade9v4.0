@@ -1,0 +1,171 @@
+{
+  "schema_version": "grade9v3-owner-supplied-bank-v1",
+  "bank_id": "<FILL: /bank_id>",
+  "intake_digest": "<FILL: sha256 of the exact file/text>",
+  "questions": [
+    {
+      "id": "<FILL: /questions/0/id>",
+      "original_identifier": "<FILL: /questions/0/original_identifier>",
+      "stem": "<FILL: /questions/0/stem>",
+      "answer": {
+        "kind": "MODEL_RESPONSE",
+        "summary": "<FILL: /questions/0/answer/summary>",
+        "reasoning": [
+          "<FILL: /questions/0/answer/reasoning/0>"
+        ],
+        "reasoning_route": [
+          {
+            "id": "<FILL: /questions/0/answer/reasoning_route/0/id>",
+            "kind": "REPRESENT",
+            "action": "<FILL: /questions/0/answer/reasoning_route/0/action>",
+            "why_valid": "<FILL: /questions/0/answer/reasoning_route/0/why_valid>",
+            "inputs": [
+              "<FILL: /questions/0/answer/reasoning_route/0/inputs/0>"
+            ],
+            "output": "<FILL: /questions/0/answer/reasoning_route/0/output>",
+            "source_ref": "<FILL: /questions/0/answer/reasoning_route/0/source_ref>"
+          }
+        ],
+        "crux_move_ref": "<FILL: /questions/0/answer/crux_move_ref>",
+        "check": "<FILL: /questions/0/answer/check>",
+        "acceptable_alternatives": [],
+        "subpart_answers": [],
+        "verification_status": "CHECKED_BY_AUTHOR"
+      },
+      "primary_capability_ref": "<FILL: /questions/0/primary_capability_ref>",
+      "family_ref": "<FILL: /questions/0/family_ref>",
+      "extensions": {
+        "grade9v3:source_custody": {
+          "authority_class": "OWNER_SUPPLIED_RAW_INPUT",
+          "intake_ref": "<FILL: /questions/0/extensions/grade9v3:source_custody/intake_ref>",
+          "wording_custody": "VERBATIM",
+          "text_sha256": "<FILL: sha256 of the exact file/text>"
+        },
+        "grade9v3:math_spans": [
+          {
+            "target": "<FILL: /questions/0/extensions/grade9v3:math_spans/0/target>",
+            "literal": "<FILL: /questions/0/extensions/grade9v3:math_spans/0/literal>",
+            "tex": "<FILL: /questions/0/extensions/grade9v3:math_spans/0/tex>",
+            "display": false
+          }
+        ],
+        "grade9v3:attempt_labels": {
+          "question_ref": "<FILL: /questions/0/extensions/grade9v3:attempt_labels/question_ref>",
+          "concept": "<FILL: /questions/0/extensions/grade9v3:attempt_labels/concept>",
+          "family": "<FILL: /questions/0/extensions/grade9v3:attempt_labels/family>"
+        },
+        "grade9v3:analysis": {
+          "learner_question_type": "multi_correct_mcq",
+          "difficulty": {
+            "band": "D2",
+            "score": 0,
+            "components": {
+              "concept_model_selection": 0,
+              "representation_translation": 0,
+              "reasoning_chain_length": 0,
+              "algebra_computational_load": 0,
+              "trap_exception_sensitivity": 0
+            },
+            "basis": "<FILL: /questions/0/extensions/grade9v3:analysis/difficulty/basis>",
+            "component_evidence": {
+              "concept_model_selection": "<FILL: /questions/0/extensions/grade9v3:analysis/difficulty/component_evidence/concept_model_selection>",
+              "representation_translation": "<FILL: /questions/0/extensions/grade9v3:analysis/difficulty/component_evidence/representation_translation>",
+              "reasoning_chain_length": "<FILL: /questions/0/extensions/grade9v3:analysis/difficulty/component_evidence/reasoning_chain_length>",
+              "algebra_computational_load": "<FILL: /questions/0/extensions/grade9v3:analysis/difficulty/component_evidence/algebra_computational_load>",
+              "trap_exception_sensitivity": "<FILL: /questions/0/extensions/grade9v3:analysis/difficulty/component_evidence/trap_exception_sensitivity>"
+            }
+          },
+          "expected_time_seconds": 0,
+          "common_wrong_route": "<FILL: /questions/0/extensions/grade9v3:analysis/common_wrong_route>",
+          "topic": "<FILL: /questions/0/extensions/grade9v3:analysis/topic>",
+          "exam_source_badge": "<FILL: /questions/0/extensions/grade9v3:analysis/exam_source_badge>",
+          "stable_crux_move": "<FILL: /questions/0/extensions/grade9v3:analysis/stable_crux_move>"
+        },
+        "wpe:exam_paper_source": {
+          "role": "OWNER_HELD_COPY_OF_OFFICIAL_PAPER",
+          "exam": "<FILL: /questions/0/extensions/wpe:exam_paper_source/exam>",
+          "printed_question_paper_code": "<FILL: /questions/0/extensions/wpe:exam_paper_source/printed_question_paper_code>",
+          "file_name_label": "<FILL: /questions/0/extensions/wpe:exam_paper_source/file_name_label>",
+          "question_number": 0,
+          "printed_page": 0,
+          "paper_sha256": "<FILL: sha256 of the exact file/text>",
+          "crop_sha256": "<FILL: sha256 of the exact file/text>",
+          "official_key": "<FILL: /questions/0/extensions/wpe:exam_paper_source/official_key>",
+          "transcription": "<FILL: /questions/0/extensions/wpe:exam_paper_source/transcription>",
+          "solution_provenance": "<FILL: /questions/0/extensions/wpe:exam_paper_source/solution_provenance>",
+          "academic_status": "UNREVIEWED_NO_ADMISSION"
+        },
+        "grade9v3:core2_support_plan": {
+          "protected_move_refs": [
+            "<FILL: /questions/0/extensions/grade9v3:core2_support_plan/protected_move_refs/0>"
+          ],
+          "support_completions": [
+            {
+              "support_ref": "<FILL: /questions/0/extensions/grade9v3:core2_support_plan/support_completions/0/support_ref>",
+              "completed_move_refs": [],
+              "availability": "<FILL: /questions/0/extensions/grade9v3:core2_support_plan/support_completions/0/availability>"
+            }
+          ]
+        }
+      },
+      "conditions": [],
+      "figure_refs": [],
+      "scaffolds": [
+        {
+          "prompt": "<FILL: /questions/0/scaffolds/0/prompt>",
+          "text": "<FILL: /questions/0/scaffolds/0/text>",
+          "learner_stage": "REPRESENTATION",
+          "support_kind": "REPRESENT",
+          "reveals": "METHOD",
+          "supports_move_ref": "<FILL: /questions/0/scaffolds/0/supports_move_ref>"
+        }
+      ],
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "<FILL: /questions/0/source_refs/0>"
+      ],
+      "evidence_refs": [],
+      "origin": "ORIGINAL",
+      "origin_ref": "<FILL: /questions/0/origin_ref>",
+      "subparts": [],
+      "options": [
+        "<FILL: /questions/0/options/0>"
+      ],
+      "secondary_capability_refs": [],
+      "adaptation": null,
+      "exposure": [],
+      "hints": [],
+      "response": {
+        "type": "multiple_choice"
+      },
+      "learner_question_type": "multi_correct_mcq",
+      "difficulty": {
+        "band": "D2",
+        "score": 0,
+        "components": {
+          "concept_model_selection": 0,
+          "representation_translation": 0,
+          "reasoning_chain_length": 0,
+          "algebra_computational_load": 0,
+          "trap_exception_sensitivity": 0
+        },
+        "basis": "<FILL: /questions/0/difficulty/basis>",
+        "component_evidence": {
+          "concept_model_selection": "<FILL: /questions/0/difficulty/component_evidence/concept_model_selection>",
+          "representation_translation": "<FILL: /questions/0/difficulty/component_evidence/representation_translation>",
+          "reasoning_chain_length": "<FILL: /questions/0/difficulty/component_evidence/reasoning_chain_length>",
+          "algebra_computational_load": "<FILL: /questions/0/difficulty/component_evidence/algebra_computational_load>",
+          "trap_exception_sensitivity": "<FILL: /questions/0/difficulty/component_evidence/trap_exception_sensitivity>"
+        }
+      }
+    }
+  ],
+  "title": "<FILL: /title>",
+  "extensions": {
+    "source_role": "OWNER_HELD_COPY_OF_OFFICIAL_PAPER",
+    "academic_status": "UNREVIEWED",
+    "classification_status": "OWNER_DECIDED_CELL_APPLY_D2_NOT_ADMITTED",
+    "official_exam_status": "PAPER_ON_FILE_NOT_ADMITTED"
+  }
+}

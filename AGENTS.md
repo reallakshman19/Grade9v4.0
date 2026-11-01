@@ -1,8 +1,21 @@
+> **Local workspace entry:** read [Start_here.md](Start_here.md) and [CURRENT_CHECKPOINT.md](CURRENT_CHECKPOINT.md) before editing. Owner-local sources live in Git-excluded `workspace/`; copying does not grant publication or academic authority. The following original repository instructions remain in force.
+
 # AGENTS.md — Instructions for Coding Agents
 
 **Primary specification:** https://github.com/reallakshman19/Grade9v4.0/issues/1
 
 This file applies to all work in this repository.
+
+## Product scope — mandatory
+
+**Grade9 v4.0 targets Physics, Mathematics and Chemistry.** WPE is **only the pilot within Physics**. Read [docs/product-scope.md](docs/product-scope.md) before designing schemas, subject interfaces, QRT adapters or release reports.
+
+- Shared, native Smart Skills roles, QRT governance, six Core role boundaries, B1–B7 witness obligations and release authority are cross-subject responsibilities.
+- `PHYS-QRT-BLUEPRINT`, `PHYS-TOPIC-WPE`, `WEP-` topic IDs and `qrt-bind` are **Physics/WPE-specific existing candidates**; they are not universal Mathematics or Chemistry contracts.
+- Never assume Physics demand calibration, laws, contexts or proof requirements apply to Mathematics or Chemistry. Subject-specific Blueprints, warrants and independent reviewers are required.
+- Existing v1 schemas intentionally constrain WEP topic IDs. Introduce a **versioned v2 migration** with explicit `subject_id` and topic namespaces; retain historical v1 fixtures/tests and fail closed on cross-subject references.
+- Do not invent which Mathematics or Chemistry topic should be first, or imply any such content has already been imported or qualified.
+- The WEP-01 pilot is a **technical/academic reference exemplar**, never the completion criterion for the three-subject application.
 
 ## Required approach
 
@@ -16,7 +29,7 @@ This file applies to all work in this repository.
 8. Never create human review receipts automatically; only validate externally provided, scoped receipts and their hash/timestamp consistency.
 9. Protect provenance. Do not publish source textbook scans, answer-key PDFs, or copyrighted exam papers without appropriate permission. Never claim a synthetic problem is a verified past examination question.
 10. Treat directional operations as different until independently accepted: e.g. potential→force differs from force→potential.
-11. Never introduce WPE-specific claims into the generic Physics/QRT blueprint. Keep the shared blueprint, Physics warrant library, WPE adapter, and runtime separate.
+11. Keep the Shared/QRT platform separate from **subject-specific** Physics, Mathematics and Chemistry Blueprints, warrants, topic adapters and runtime. WPE is a Physics-only pilot.
 12. Do not invent a D1/D2 common blueprint; record `SPEC_PENDING`.
 13. State explicitly in every PR: **“No academic approval inferred from software validation.”**
 

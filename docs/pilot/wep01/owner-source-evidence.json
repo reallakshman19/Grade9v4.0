@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.0.0",
+  "source_scope": "OWNER_LOCAL_WPE_D311_AND_WEP01_AUTHORED_PAIRS",
+  "subject_id": "PHYSICS",
+  "unit_id": "WPE",
+  "pilot_qualification": "HOLD",
+  "archive_sha256": {
+    "d3": "b664284944de4eb76775a089ecdf795a86cd99d250081625aca700dc90f2356c",
+    "handoff": "c14de8a538c2276855a5f911dc9685adbebd159f5c631ff870daba87a05ab681",
+    "hub": "50fb7c1e5cba1a9fba4efea360452ed06cb97efc2f370ab382e6598b13583705",
+    "input_sources": "ed0880d9ff314853c084834f2a8ac4ced69d2b8f5b019612ca999a1222b20565"
+  },
+  "d311": {
+    "native_construction_id": "WPE-D31-1-CONSTRUCTION-REVIEW",
+    "operation": "RECALL_CLASSIFY_PROPOSED",
+    "demand": "D3_PROPOSED",
+    "b1_b7": {
+      "B1": "HOLD",
+      "B2": "PARTIAL_STRUCTURAL_ONLY",
+      "B3": "NOT_RUN",
+      "B4": "NOT_RUN",
+      "B5": "LOCAL_PREVIEW_CHECKS_ONLY",
+      "B6": "NOT_RUN",
+      "B7": "HOLD"
+    },
+    "teacher_step_count": 8,
+    "core1a_refs": [
+      "MIC-PHY-WEP-D3-SIGN-ONE-FORCE",
+      "MIC-PHY-WEP-D3-PERP-EVERY-INSTANT"
+    ],
+    "core1b_cycles": [
+      "T-DIR-MAIN",
+      "T-D1",
+      "T-D2"
+    ],
+    "original_witness_sha256": "332b0314e4d81e83d59d47ee1f4d2397c71c48a610a9a70b2208b87f5ef11bdb",
+    "original_physics_review_sha256": "03f8087bb25ce70ac2c6a3c7f74626fc46a2bc0d689d832a96061c26bafdae09",
+    "source_registration": "OWNER_LOCAL_PRIVATE_NOT_FOR_PUBLIC_DEPLOYMENT",
+    "source_requested_at_archive_time": "NOT_RECEIVED",
+    "physics_review": "HOLD"
+  },
+  "handoff": {
+    "schema": "core1a-source-handoff/v1",
+    "status": "CANDIDATE",
+    "question_links": 0,
+    "source_file_sha256": "705e87ad7c26cf235563d58881282380983a9ddb6c4a8e86ffd30463bfb4abd3"
+  },
+  "hub": {
+    "browser_checks_passed": 14,
+    "scope": "AUTHOR_HUB_BROWSER_CHECKS_ONLY",
+    "independent_QA": false,
+    "core1b_runtime_assessment_approved": false
+  },
+  "wep01_pairs": [
+    {
+      "source_member_sha256": "9e95dde53a83f15e25e9a4ff47b3830ec4e43453181b8d927b925fe52d82fe0b",
+      "core1a_blocks": 11,
+      "core1b_cycles": 5,
+      "pre_attempt_convention_refs": [
+        "WEP01-C1",
+        "WEP01-C2",
+        "WEP01-C3",
+        "WEP01-C4"
+      ],
+      "writer_status": "WRITER_DRAFT_FOR_INDEPENDENT_CHECK_NOT_APPROVED"
+    },
+    {
+      "source_member_sha256": "a886c004bbbd26b6e525d8461ad935f7894e27ba01424e15b8a49c176bdb5c83",
+      "core1a_blocks": 11,
+      "core1b_cycles": 6,
+      "pre_attempt_convention_refs": [
+        "WEP01-C2",
+        "WEP01-C4",
+        "WEP01-C10"
+      ],
+      "writer_status": "WRITER_DRAFT_FOR_INDEPENDENT_CHECK_NOT_APPROVED"
+    }
+  ],
+  "unknown": [
+    "D311_TO_WEP01_JOIN",
+    "SUBJECT_WARRANT_APPROVAL",
+    "INDEPENDENT_QRT_DECISION",
+    "B1_B7_TWO_WAY_SEMANTICS",
+    "LEARNER_DURABLE_FIRST_ATTEMPT",
+    "SHARED_NATIVE_REVIEW"
+  ],
+  "academic_approval": "HOLD",
+  "release": "HOLD",
+  "copyright_scope": "METADATA_AND_SHA256_ONLY_NO_EXAM_STEMS"
+}
