@@ -134,6 +134,10 @@ Kept as history; R3 supersedes it. Same layout as R3 below, plus `prepare_r2.py`
 | `review/REVIEW_RECORDS.json` | .json | Holds, waivers, the Owner's APPLY D2 decision, the 61/611 note. **Keep admin text here, never in learner text.** |
 | `review/*.png` | .png | Screenshots: NSEP card before and after the attempt, hints open, full answer open, incline label |
 
+### 4.5b Key templates and the concept package in Git (added to PR #19)
+- `templates/`: privacy-scanned copies of the key templates: the blank exam-card template, Physics blueprint, Shared page blueprints/roles/schemas, method templates, SL1/SL2 and source-to-Core1A skills, and the reader build kit. Read `templates/README.md` first. **Start a new card from `templates/core2-exam-card/`.**
+- `WPE_Source_to_Core1A_Concept/`: the concept report package (Owner asked to include it). Start with `CONCEPT_REPORT.md`.
+
 ### 4.6 Read-only sources you will need (never edit)
 | Path | What |
 |---|---|

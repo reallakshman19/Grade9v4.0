@@ -1,0 +1,317 @@
+{
+  "schema": "wpe-core2-coverage-r1-selection/v1",
+  "target": 21,
+  "proposed_conditional": 14,
+  "vacant": 7,
+  "admitted": 0,
+  "selected_questions_are_unique": true,
+  "review_state": "OPEN",
+  "operation_coverage": {
+    "RETRIEVE": {
+      "pending": 0,
+      "vacant": 3,
+      "admitted": 0
+    },
+    "EXPLAIN": {
+      "pending": 0,
+      "vacant": 3,
+      "admitted": 0
+    },
+    "APPLY": {
+      "pending": 3,
+      "vacant": 0,
+      "admitted": 0
+    },
+    "MODEL": {
+      "pending": 3,
+      "vacant": 0,
+      "admitted": 0
+    },
+    "REPRESENT": {
+      "pending": 3,
+      "vacant": 0,
+      "admitted": 0
+    },
+    "SYNTHESIZE": {
+      "pending": 3,
+      "vacant": 0,
+      "admitted": 0
+    },
+    "JUSTIFY": {
+      "pending": 2,
+      "vacant": 1,
+      "admitted": 0
+    }
+  },
+  "places": [
+    {
+      "place_id": "RETRIEVE-1",
+      "operation": "RETRIEVE",
+      "candidate_id": null,
+      "status": "VACANT",
+      "band": null,
+      "primary_counting_home": null,
+      "reason": "No additional distinct D3/D4 examination original established for decisive RETRIEVE operation",
+      "holds": []
+    },
+    {
+      "place_id": "RETRIEVE-2",
+      "operation": "RETRIEVE",
+      "candidate_id": null,
+      "status": "VACANT",
+      "band": null,
+      "primary_counting_home": null,
+      "reason": "No additional distinct D3/D4 examination original established for decisive RETRIEVE operation",
+      "holds": []
+    },
+    {
+      "place_id": "RETRIEVE-3",
+      "operation": "RETRIEVE",
+      "candidate_id": null,
+      "status": "VACANT",
+      "band": null,
+      "primary_counting_home": null,
+      "reason": "No additional distinct D3/D4 examination original established for decisive RETRIEVE operation",
+      "holds": []
+    },
+    {
+      "place_id": "EXPLAIN-1",
+      "operation": "EXPLAIN",
+      "candidate_id": null,
+      "status": "VACANT",
+      "band": null,
+      "primary_counting_home": null,
+      "reason": "No additional distinct D3/D4 examination original established for decisive EXPLAIN operation",
+      "holds": []
+    },
+    {
+      "place_id": "EXPLAIN-2",
+      "operation": "EXPLAIN",
+      "candidate_id": null,
+      "status": "VACANT",
+      "band": null,
+      "primary_counting_home": null,
+      "reason": "No additional distinct D3/D4 examination original established for decisive EXPLAIN operation",
+      "holds": []
+    },
+    {
+      "place_id": "EXPLAIN-3",
+      "operation": "EXPLAIN",
+      "candidate_id": null,
+      "status": "VACANT",
+      "band": null,
+      "primary_counting_home": null,
+      "reason": "No additional distinct D3/D4 examination original established for decisive EXPLAIN operation",
+      "holds": []
+    },
+    {
+      "place_id": "APPLY-1",
+      "operation": "APPLY",
+      "candidate_id": "EX-M105",
+      "status": "PENDING_REVIEW_HOLD",
+      "band": "D3",
+      "primary_counting_home": "APPLY-1",
+      "reason": "Pending independent source, official-key, exact-task and demand review; local source witnesses alone do not admit",
+      "holds": [
+        "OFFICIAL_PAPER_ITEM_NOT_BOUND",
+        "OFFICIAL_KEY_NOT_BOUND"
+      ]
+    },
+    {
+      "place_id": "APPLY-2",
+      "operation": "APPLY",
+      "candidate_id": "EX-M62",
+      "status": "PENDING_REVIEW_HOLD",
+      "band": "D3",
+      "primary_counting_home": "APPLY-2",
+      "reason": "Pending independent source, official-key, exact-task and demand review; local source witnesses alone do not admit",
+      "holds": [
+        "OFFICIAL_PAPER_ITEM_NOT_BOUND",
+        "OFFICIAL_KEY_NOT_BOUND"
+      ]
+    },
+    {
+      "place_id": "APPLY-3",
+      "operation": "APPLY",
+      "candidate_id": "EX-M79",
+      "status": "PENDING_REVIEW_HOLD",
+      "band": "D3",
+      "primary_counting_home": "APPLY-3",
+      "reason": "Pending independent source, official-key, exact-task and demand review; local source witnesses alone do not admit",
+      "holds": [
+        "OFFICIAL_PAPER_ITEM_NOT_BOUND",
+        "OFFICIAL_KEY_NOT_BOUND"
+      ]
+    },
+    {
+      "place_id": "MODEL-1",
+      "operation": "MODEL",
+      "candidate_id": "EX-M16",
+      "status": "PENDING_REVIEW_HOLD",
+      "band": "D3",
+      "primary_counting_home": "MODEL-1",
+      "reason": "Pending independent source, official-key, exact-task and demand review; local source witnesses alone do not admit",
+      "holds": [
+        "OFFICIAL_PAPER_ITEM_NOT_BOUND",
+        "OFFICIAL_KEY_NOT_BOUND"
+      ]
+    },
+    {
+      "place_id": "MODEL-2",
+      "operation": "MODEL",
+      "candidate_id": "EX-M73",
+      "status": "PENDING_REVIEW_HOLD",
+      "band": "D3",
+      "primary_counting_home": "MODEL-2",
+      "reason": "Pending independent source, official-key, exact-task and demand review; local source witnesses alone do not admit",
+      "holds": [
+        "OFFICIAL_PAPER_ITEM_NOT_BOUND",
+        "OFFICIAL_KEY_NOT_BOUND"
+      ]
+    },
+    {
+      "place_id": "MODEL-3",
+      "operation": "MODEL",
+      "candidate_id": "EX-M81",
+      "status": "PENDING_REVIEW_HOLD",
+      "band": "D3",
+      "primary_counting_home": "MODEL-3",
+      "reason": "Pending independent source, official-key, exact-task and demand review; local source witnesses alone do not admit",
+      "holds": [
+        "OFFICIAL_PAPER_ITEM_NOT_BOUND",
+        "OFFICIAL_KEY_NOT_BOUND"
+      ]
+    },
+    {
+      "place_id": "REPRESENT-1",
+      "operation": "REPRESENT",
+      "candidate_id": "EX-M56",
+      "status": "PENDING_REVIEW_HOLD",
+      "band": "D3",
+      "primary_counting_home": "REPRESENT-1",
+      "reason": "Pending independent source, official-key, exact-task and demand review; local source witnesses alone do not admit",
+      "holds": [
+        "QUESTION_ASSET_UNBOUND",
+        "OFFICIAL_PAPER_ITEM_NOT_BOUND",
+        "OFFICIAL_KEY_NOT_BOUND"
+      ]
+    },
+    {
+      "place_id": "REPRESENT-2",
+      "operation": "REPRESENT",
+      "candidate_id": "EX-M61",
+      "status": "PENDING_REVIEW_HOLD",
+      "band": "D3",
+      "primary_counting_home": "REPRESENT-2",
+      "reason": "Pending independent source, official-key, exact-task and demand review; local source witnesses alone do not admit",
+      "holds": [
+        "QUESTION_ASSET_UNBOUND",
+        "OFFICIAL_PAPER_ITEM_NOT_BOUND",
+        "OFFICIAL_KEY_NOT_BOUND"
+      ]
+    },
+    {
+      "place_id": "REPRESENT-3",
+      "operation": "REPRESENT",
+      "candidate_id": "EX-M69",
+      "status": "PENDING_REVIEW_HOLD",
+      "band": "D3",
+      "primary_counting_home": "REPRESENT-3",
+      "reason": "Pending independent source, official-key, exact-task and demand review; local source witnesses alone do not admit",
+      "holds": [
+        "QUESTION_ASSET_UNBOUND",
+        "OFFICIAL_PAPER_ITEM_NOT_BOUND",
+        "OFFICIAL_KEY_NOT_BOUND"
+      ]
+    },
+    {
+      "place_id": "SYNTHESIZE-1",
+      "operation": "SYNTHESIZE",
+      "candidate_id": "EX-M39",
+      "status": "PENDING_REVIEW_HOLD",
+      "band": "D3",
+      "primary_counting_home": "SYNTHESIZE-1",
+      "reason": "Pending independent source, official-key, exact-task and demand review; local source witnesses alone do not admit",
+      "holds": [
+        "OFFICIAL_PAPER_ITEM_NOT_BOUND",
+        "OFFICIAL_KEY_NOT_BOUND"
+      ]
+    },
+    {
+      "place_id": "SYNTHESIZE-2",
+      "operation": "SYNTHESIZE",
+      "candidate_id": "EX-M44",
+      "status": "PENDING_REVIEW_HOLD",
+      "band": "D3",
+      "primary_counting_home": "SYNTHESIZE-2",
+      "reason": "Pending independent source, official-key, exact-task and demand review; local source witnesses alone do not admit",
+      "holds": [
+        "OFFICIAL_PAPER_ITEM_NOT_BOUND",
+        "OFFICIAL_KEY_NOT_BOUND"
+      ]
+    },
+    {
+      "place_id": "SYNTHESIZE-3",
+      "operation": "SYNTHESIZE",
+      "candidate_id": "EX-M60",
+      "status": "PENDING_REVIEW_HOLD",
+      "band": "D3",
+      "primary_counting_home": "SYNTHESIZE-3",
+      "reason": "Pending independent source, official-key, exact-task and demand review; local source witnesses alone do not admit",
+      "holds": [
+        "OFFICIAL_PAPER_ITEM_NOT_BOUND",
+        "OFFICIAL_KEY_NOT_BOUND"
+      ]
+    },
+    {
+      "place_id": "JUSTIFY-1",
+      "operation": "JUSTIFY",
+      "candidate_id": "EX-M101",
+      "status": "PENDING_REVIEW_HOLD",
+      "band": "D3",
+      "primary_counting_home": "JUSTIFY-1",
+      "reason": "Pending independent source, official-key, exact-task and demand review; local source witnesses alone do not admit",
+      "holds": [
+        "OFFICIAL_PAPER_ITEM_NOT_BOUND",
+        "OFFICIAL_KEY_NOT_BOUND"
+      ]
+    },
+    {
+      "place_id": "JUSTIFY-2",
+      "operation": "JUSTIFY",
+      "candidate_id": "WEP07-03",
+      "status": "PENDING_REVIEW_HOLD",
+      "band": "D4",
+      "primary_counting_home": "JUSTIFY-2",
+      "reason": "Pending independent source, official-key, exact-task and demand review; local source witnesses alone do not admit",
+      "holds": [
+        "QUESTION_ASSET_WITNESS_PENDING",
+        "NO_CANONICAL_EXACT_STEM_IN_REGISTRY",
+        "PAPER_WITNESS_PENDING",
+        "OFFICIAL_KEY_NOT_BOUND",
+        "PAPER_CODE_RECONCILIATION",
+        "OFFICIAL_KEY_NOT_RETAINED"
+      ]
+    },
+    {
+      "place_id": "JUSTIFY-3",
+      "operation": "JUSTIFY",
+      "candidate_id": null,
+      "status": "VACANT",
+      "band": null,
+      "primary_counting_home": null,
+      "reason": "No additional distinct D3/D4 examination original established for decisive JUSTIFY operation",
+      "holds": []
+    }
+  ],
+  "secondary_not_counted": [
+    "EX-M14",
+    "EX-M18",
+    "EX-M92",
+    "EX-M106",
+    "EX-M49",
+    "EX-M78",
+    "WEP07-02",
+    "WEP07-04"
+  ]
+}

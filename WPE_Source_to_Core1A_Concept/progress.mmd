@@ -1,0 +1,17 @@
+flowchart TD
+    A["Book / syllabus / figures: retained"] --> B["Exact units: one WPE-N01 checked candidate"]
+    B --> C["Construction requirements: candidate delivered"]
+    C --> D["Science / warrant qualification: HOLD"]
+    Q["Core2 latest received proposal: 14 leads / 7 vacant / 0 admitted"] --> E["Reviewed task + adapter binding: HOLD"]
+    D --> E
+    E --> F["Owner approves completed Core2: PENDING"]
+    F --> G["Native Core1A authoring: NOT_STARTED"]
+    G --> H["Governed render / teaching / runtime review: NOT_RUN"]
+    H --> I["Owner Core1A approval: PENDING"]
+    I --> J["Fresh Core1B: DEFERRED"]
+    classDef candidate fill:#e5effb,stroke:#315f9f,color:#203047;
+    classDef hold fill:#fff1d4,stroke:#9b6418,color:#203047;
+    classDef future fill:#edf0f4,stroke:#626f7d,color:#203047;
+    class B,C candidate;
+    class D,E,F,Q hold;
+    class G,H,I,J future;

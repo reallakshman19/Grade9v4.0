@@ -1,0 +1,58 @@
+{
+  "integrity": "PASS",
+  "trust_binding": "EXTERNAL_PIN_BYTES_MATCH",
+  "preparation": "CANDIDATE",
+  "core1a_authoring": "HOLD",
+  "semantic_review": "NOT_RUN",
+  "native_package": "NOT_EMITTED",
+  "sources_checked": 6,
+  "units_checked": 11,
+  "claims": 3,
+  "required_steps": 3,
+  "question_links": 0,
+  "holds": [
+    {
+      "id": "H-SCIENCE",
+      "detail": "Pinned WPE library and every interpreted claim remain CANDIDATE/UNREVIEWED.",
+      "affects": [
+        "SCIENCE_QUALIFICATION"
+      ]
+    },
+    {
+      "id": "H-TEACHING",
+      "detail": "The canonical microtopic has no bound representation or worked anchor; no completed new teaching unit is emitted.",
+      "affects": [
+        "CORE1A_AUTHORING"
+      ]
+    },
+    {
+      "id": "H-QRT",
+      "detail": "No reviewed Core2 task is joined; none is fabricated from a book badge.",
+      "affects": [
+        "EXAM_COVERAGE",
+        "CORE1A_TASK_ALIGNMENT"
+      ]
+    },
+    {
+      "id": "H-OWNER",
+      "detail": "Core2 approval is pending. D3.1 stays paused; no Core1A/B lesson construction.",
+      "affects": [
+        "CORE1A_AUTHORING",
+        "CORE1B_AUTHORING"
+      ]
+    },
+    {
+      "id": "H-SCAN",
+      "detail": "Only page-1 definition/formula/positive-work region was visually inspected; Illustration 1 and remaining pages are not scan-verified.",
+      "affects": [
+        "SOURCE_QUALIFICATION"
+      ]
+    }
+  ],
+  "limitations": [
+    "No scientific or pedagogical qualification",
+    "No authentication of sources or reviewers",
+    "No runtime/reveal/first-save validation",
+    "Paraphrase and diagram meaning require semantic review"
+  ]
+}
