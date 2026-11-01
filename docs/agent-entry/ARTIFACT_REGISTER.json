@@ -1,0 +1,609 @@
+{
+  "as_of": "2026-10-31",
+  "purpose": "Current agent navigation, provenance and consumer register; no native schema or academic decision changed",
+  "artifacts": [
+    {
+      "id": "question_sources",
+      "path": "workspace/legacy/g9v3.5/chatgpt/output/WPE_Question_Bank_and_Book_2026-10-30/01_Question_Bank",
+      "purpose": "question sources",
+      "consumer": "TASK-SPECIFIC; see entry guide",
+      "onboarding_status": "LOCAL_CANDIDATE_OR_NAVIGATION",
+      "authority": "Inspect native artifact and actual Owner scope; this register grants none",
+      "sha256": null,
+      "superseded_by": null
+    },
+    {
+      "id": "book_syllabus",
+      "path": "workspace/legacy/g9v3.5/chatgpt/output/WPE_Question_Bank_and_Book_2026-10-30/02_Book_and_Syllabus",
+      "purpose": "book syllabus",
+      "consumer": "TASK-SPECIFIC; see entry guide",
+      "onboarding_status": "LOCAL_CANDIDATE_OR_NAVIGATION",
+      "authority": "Inspect native artifact and actual Owner scope; this register grants none",
+      "sha256": null,
+      "superseded_by": null
+    },
+    {
+      "id": "smart_sl1",
+      "path": "workspace/skills/smart-labelling-r2/skills/smart-labelling-1/SKILL.md",
+      "purpose": "smart sl1",
+      "consumer": "TASK-SPECIFIC; see entry guide",
+      "onboarding_status": "LOCAL_CANDIDATE_OR_NAVIGATION",
+      "authority": "Inspect native artifact and actual Owner scope; this register grants none",
+      "sha256": "044f0752410f79f54a0b37032a43707523f744fc6ab30db65940c760f4fa48cd",
+      "superseded_by": null,
+      "declared_version_or_schema": "Native R2 candidate; exact SKILL.md and record contracts govern"
+    },
+    {
+      "id": "smart_sl2",
+      "path": "workspace/skills/smart-labelling-r2/skills/smart-labelling-2/SKILL.md",
+      "purpose": "smart sl2",
+      "consumer": "TASK-SPECIFIC; see entry guide",
+      "onboarding_status": "LOCAL_CANDIDATE_OR_NAVIGATION",
+      "authority": "Inspect native artifact and actual Owner scope; this register grants none",
+      "sha256": "f8638dc9ba0ad6d2c1f1f3bde31e5722a1ee9237979f017f2a8195527971ea12",
+      "superseded_by": null,
+      "declared_version_or_schema": "Native R2 candidate; exact SKILL.md and record contracts govern"
+    },
+    {
+      "id": "core1a_preparation_skill",
+      "path": "workspace/skills/source-to-core1a-r2/SKILL.md",
+      "purpose": "core1a preparation skill",
+      "consumer": "TASK-SPECIFIC; see entry guide",
+      "onboarding_status": "LOCAL_CANDIDATE_OR_NAVIGATION",
+      "authority": "Inspect native artifact and actual Owner scope; this register grants none",
+      "sha256": "7866b71fb1a2e7f49099e680040100cb4277baf15e3ea70c0c620798425222ca",
+      "superseded_by": null,
+      "declared_version_or_schema": "0.2.0-candidate; program v1 / handoff v2; legacy v1 retained"
+    },
+    {
+      "id": "shared_runtime",
+      "path": "workspace/native/Grade9v3.5/Shared",
+      "purpose": "shared runtime",
+      "consumer": "TASK-SPECIFIC; see entry guide",
+      "onboarding_status": "LOCAL_CANDIDATE_OR_NAVIGATION",
+      "authority": "Inspect native artifact and actual Owner scope; this register grants none",
+      "sha256": null,
+      "superseded_by": null
+    },
+    {
+      "id": "native_subject_reference",
+      "path": "workspace/native/Grade9v3.5",
+      "purpose": "native subject reference",
+      "consumer": "TASK-SPECIFIC; see entry guide",
+      "onboarding_status": "LOCAL_CANDIDATE_OR_NAVIGATION",
+      "authority": "Inspect native artifact and actual Owner scope; this register grants none",
+      "sha256": null,
+      "superseded_by": null
+    },
+    {
+      "id": "physics_blueprint",
+      "path": "workspace/subjects/physics/blueprints/physics-blueprint.D3-D4.json",
+      "purpose": "physics blueprint",
+      "consumer": "TASK-SPECIFIC; see entry guide",
+      "onboarding_status": "LOCAL_CANDIDATE_OR_NAVIGATION",
+      "authority": "Inspect native artifact and actual Owner scope; this register grants none",
+      "sha256": "e6030a5933a803ddc39708414e6831c89c9565def78c09c99f58f95052c2b45f",
+      "superseded_by": null,
+      "declared_version_or_schema": {
+        "version": "0.2.0",
+        "status": "DRAFT_OWNER_REVIEW"
+      }
+    },
+    {
+      "id": "physics_resolved_blueprint",
+      "path": "workspace/subjects/physics/blueprints/physics-blueprint.D3-D4.resolved.v0.2.0.json",
+      "purpose": "physics resolved blueprint",
+      "consumer": "TASK-SPECIFIC; see entry guide",
+      "onboarding_status": "LOCAL_CANDIDATE_OR_NAVIGATION",
+      "authority": "Inspect native artifact and actual Owner scope; this register grants none",
+      "sha256": "ac32dc937403cac33c76343f2e7e0dabd7c2c4a3188cb3b453ddf2576578ddf9",
+      "superseded_by": null,
+      "declared_version_or_schema": {
+        "version": "0.2.0"
+      }
+    },
+    {
+      "id": "root_adapter_draft",
+      "path": "workspace/subjects/physics/adapters/root-draft/topic-adapter.work-power-energy.json",
+      "purpose": "root adapter draft",
+      "consumer": "TASK-SPECIFIC; see entry guide",
+      "onboarding_status": "LOCAL_CANDIDATE_OR_NAVIGATION",
+      "authority": "Inspect native artifact and actual Owner scope; this register grants none",
+      "sha256": "899e61e59370a3fc5d6f73b7d8cbb65165d0782c9fba20acd83439ae441e6a9b",
+      "superseded_by": null,
+      "declared_version_or_schema": {
+        "version": "0.1.0",
+        "status": "DRAFT_OWNER_REVIEW"
+      }
+    },
+    {
+      "id": "operation_adapter_variants",
+      "path": "workspace/legacy/g9v3.5/chatgpt/output/WPE_D3_Organized_2026-10-30/packages",
+      "purpose": "operation adapter variants",
+      "consumer": "TASK-SPECIFIC; see entry guide",
+      "onboarding_status": "LOCAL_CANDIDATE_OR_NAVIGATION",
+      "authority": "Inspect native artifact and actual Owner scope; this register grants none",
+      "sha256": null,
+      "superseded_by": null
+    },
+    {
+      "id": "core2_reader",
+      "path": "workspace/output/WPE_Core2_Reader_Fix_R1_20261031/rendered/core2.html",
+      "purpose": "core2 reader",
+      "consumer": "TASK-SPECIFIC; see entry guide",
+      "onboarding_status": "LOCAL_CANDIDATE_OR_NAVIGATION",
+      "authority": "Inspect native artifact and actual Owner scope; this register grants none",
+      "sha256": "2f4dd41a0a9a5e8fdce49faa0a2fdf1a29ca809b8f45f3bc6edd57d42c346e3f",
+      "superseded_by": null
+    },
+    {
+      "id": "core2_textbook_baseline",
+      "path": "workspace/legacy/g9v3.5/chatgpt/output/WPE_Core2_Native_Integration_R1_20261030/textbook-baseline/rendered/core2.html",
+      "purpose": "core2 textbook baseline",
+      "consumer": "TASK-SPECIFIC; see entry guide",
+      "onboarding_status": "LOCAL_CANDIDATE_OR_NAVIGATION",
+      "authority": "Inspect native artifact and actual Owner scope; this register grants none",
+      "sha256": "fc17badf85ff872e1e7c0fefae848229093fb50962d3dcc835c31ed11540d8ab",
+      "superseded_by": null
+    },
+    {
+      "id": "core1a_dossiers",
+      "path": "workspace/legacy/g9v3.5/chatgpt/output/WPE_Source_Core1A_Completion_R2_20261030/skill/source-to-core1a/examples/wpe-source-program/index.html",
+      "purpose": "core1a dossiers",
+      "consumer": "TASK-SPECIFIC; see entry guide",
+      "onboarding_status": "LOCAL_CANDIDATE_OR_NAVIGATION",
+      "authority": "Inspect native artifact and actual Owner scope; this register grants none",
+      "sha256": "d1262c9906838c958bacde9f5aa611912058a49909f0b0c468189a5c733dd2bf",
+      "superseded_by": null
+    },
+    {
+      "id": "core2_template",
+      "path": "workspace/native/Grade9v3.5/golden/units/G-CORE2-R2/core 2 template.zip",
+      "purpose": "core2 template",
+      "consumer": "TASK-SPECIFIC; see entry guide",
+      "onboarding_status": "LOCAL_CANDIDATE_OR_NAVIGATION",
+      "authority": "Inspect native artifact and actual Owner scope; this register grants none",
+      "sha256": "433b356a26ebfdbfa922cbaa7401e7c224f5c095f4bae8f951b4e97154937d74",
+      "superseded_by": null
+    },
+    {
+      "id": "core1ab_method_fixture",
+      "path": "workspace/native/Grade9v3.5/golden/units/G-MATH-LINEAR-CONSTRAINT/GOLDEN.md",
+      "purpose": "core1ab method fixture",
+      "consumer": "TASK-SPECIFIC; see entry guide",
+      "onboarding_status": "LOCAL_CANDIDATE_OR_NAVIGATION",
+      "authority": "Inspect native artifact and actual Owner scope; this register grants none",
+      "sha256": "224199b6377e32cc99139c6aaab2c3bb9e8f1ab303574e14ea2d6f4f5208d17b",
+      "superseded_by": null
+    },
+    {
+      "id": "stress_controls",
+      "path": "workspace/native/Grade9v3.5/evidence/stress-tests/polynomials-six-core",
+      "purpose": "stress controls",
+      "consumer": "TASK-SPECIFIC; see entry guide",
+      "onboarding_status": "LOCAL_CANDIDATE_OR_NAVIGATION",
+      "authority": "Inspect native artifact and actual Owner scope; this register grants none",
+      "sha256": null,
+      "superseded_by": null
+    },
+    {
+      "id": "academic_review",
+      "path": "workspace/legacy/g9v3.5/chatgpt/output/WPE_Core2_Academic_Review_R1_20261031/index.html",
+      "purpose": "academic review",
+      "consumer": "TASK-SPECIFIC; see entry guide",
+      "onboarding_status": "EXACT_REVIEW_EVIDENCE; NOT_ADMISSION",
+      "authority": "Inspect native artifact and actual Owner scope; this register grants none",
+      "sha256": "31f0c19fa9d034ff2c3c5946aaca86703aaa5430f4d70e3bfbde5753077f9bda",
+      "superseded_by": null
+    },
+    {
+      "id": "legacy_workflow_hub",
+      "path": "workspace/legacy/g9v3.5/chatgpt/output/WPE_Workflow_Hub_20261031/index.html",
+      "purpose": "legacy workflow hub",
+      "consumer": "TASK-SPECIFIC; see entry guide",
+      "onboarding_status": "HISTORICAL_REFERENCE",
+      "authority": "Inspect native artifact and actual Owner scope; this register grants none",
+      "sha256": "6f370298fb7a6b53d97839cbd618e88502d3ba4f39bb624ea28645ca16aa6a0f",
+      "superseded_by": null
+    },
+    {
+      "id": "methodology",
+      "path": "workspace/legacy/g9v3.5/chatgpt/output/QRT_Methodology_Concept_Note_REVISED_WITH_APPENDIX.md",
+      "purpose": "Revised architecture: operations, cognitive construction, ownership; relevant appendix for the assigned task",
+      "consumer": "ALL",
+      "onboarding_status": "LOCAL_CANDIDATE_OR_NAVIGATION",
+      "authority": "Inspect native artifact and actual Owner scope; this register grants none",
+      "sha256": "43a2638f7bd2e4e47777c7fa98cbf600986b595549aa683148c1d2a903c8443f",
+      "superseded_by": null
+    },
+    {
+      "id": "legacy_plan",
+      "path": "workspace/legacy/g9v3.5/chatgpt/output/WPE_QUESTION_TO_CORE2_END_TO_END_PLAN_20261030.md",
+      "purpose": "legacy plan",
+      "consumer": "TASK-SPECIFIC; see entry guide",
+      "onboarding_status": "HISTORICAL_REFERENCE",
+      "authority": "Inspect native artifact and actual Owner scope; this register grants none",
+      "sha256": "b552ec9e7ca8162d75c79d9dc752c24acb5d3e122f9c17ffd3e0e58f851e63fc",
+      "superseded_by": null
+    },
+    {
+      "id": "legacy_continuity",
+      "path": "workspace/legacy/g9v3.5/chatgpt/output/WPE_ORACLE_ACADEMIC_REVIEW_CHECKPOINT_20261031.md",
+      "purpose": "legacy continuity",
+      "consumer": "TASK-SPECIFIC; see entry guide",
+      "onboarding_status": "HISTORICAL_REFERENCE",
+      "authority": "Inspect native artifact and actual Owner scope; this register grants none",
+      "sha256": "4a7eebb0354c9e737f77d386096ef3b88292ddac61726120b528898cebd769ae",
+      "superseded_by": null
+    },
+    {
+      "id": "output_root",
+      "path": "workspace/output",
+      "purpose": "output root",
+      "consumer": "TASK-SPECIFIC; see entry guide",
+      "onboarding_status": "LOCAL_CANDIDATE_OR_NAVIGATION",
+      "authority": "Inspect native artifact and actual Owner scope; this register grants none",
+      "sha256": null,
+      "superseded_by": null
+    },
+    {
+      "id": "local_html_staging",
+      "path": "workspace/publish/html/index.html",
+      "purpose": "local html staging",
+      "consumer": "TASK-SPECIFIC; see entry guide",
+      "onboarding_status": "LOCAL_CANDIDATE_OR_NAVIGATION",
+      "authority": "Inspect native artifact and actual Owner scope; this register grants none",
+      "sha256": "df80f756c117e6a5cae98f616d5e6c596e14f4188227104eb7b23a8b5cbbb8de",
+      "superseded_by": null
+    },
+    {
+      "id": "historical_core2_reader",
+      "path": "workspace/legacy/g9v3.5/chatgpt/output/WPE_Core2_Native_Integration_R1_20261030/rendered/core2.html",
+      "purpose": "historical core2 reader",
+      "consumer": "TASK-SPECIFIC; see entry guide",
+      "onboarding_status": "HISTORICAL_REFERENCE",
+      "authority": "Inspect native artifact and actual Owner scope; this register grants none",
+      "sha256": "44d052d8e163ab7e15e8ca13aba1cd90482cbb42df096a14a5a4e72c1f58a6a5",
+      "superseded_by": "core2_reader"
+    },
+    {
+      "id": "concept_report",
+      "path": "workspace/legacy/g9v3.5/chatgpt/output/WPE_Source_to_Core1A_Concept_20261030/CONCEPT_REPORT.md",
+      "purpose": "concept report",
+      "consumer": "TASK-SPECIFIC; see entry guide",
+      "onboarding_status": "LOCAL_CANDIDATE_OR_NAVIGATION",
+      "authority": "Inspect native artifact and actual Owner scope; this register grants none",
+      "sha256": "26e9ca030087a12751a21d54451b85374e002587f8e75f0f4f375a4ded028cde",
+      "superseded_by": null,
+      "as_of": "2026-10-30; interpreted by current_companion"
+    },
+    {
+      "id": "concept_report_html",
+      "path": "docs/agent-entry/concept-report-v4.html",
+      "purpose": "Source→Core1A reasoning, evidence obligations and fixture comparison",
+      "consumer": "ALL",
+      "onboarding_status": "LOCAL_CANDIDATE_OR_NAVIGATION",
+      "authority": "Inspect native artifact and actual Owner scope; this register grants none",
+      "sha256": "6e660c77ad5bb1cc218c6a541a0a523ebec4597d03489c6cdae16fd1263df413",
+      "superseded_by": null,
+      "as_of": "2026-10-30; interpreted by current_companion"
+    },
+    {
+      "id": "concept_progress_diagram",
+      "path": "workspace/legacy/g9v3.5/chatgpt/output/WPE_Source_to_Core1A_Concept_20261030/progress.svg",
+      "purpose": "concept progress diagram",
+      "consumer": "TASK-SPECIFIC; see entry guide",
+      "onboarding_status": "LOCAL_CANDIDATE_OR_NAVIGATION",
+      "authority": "Inspect native artifact and actual Owner scope; this register grants none",
+      "sha256": "aca3bc1e729e233701ff392ac08a9d723b7b744ffc316237b770d2fbf5f25f39",
+      "superseded_by": null
+    },
+    {
+      "id": "concept_archive_root",
+      "path": "WPE_Source_to_Core1A_Concept.zip",
+      "purpose": "concept archive root",
+      "consumer": "TASK-SPECIFIC; see entry guide",
+      "onboarding_status": "LOCAL_CANDIDATE_OR_NAVIGATION",
+      "authority": "Inspect native artifact and actual Owner scope; this register grants none",
+      "sha256": "40d20103c5367885c589ccf0de0a530bbf604422a6cdad130b7869be2674063e",
+      "superseded_by": null
+    },
+    {
+      "id": "concept_archive_migrated",
+      "path": "workspace/legacy/g9v3.5/chatgpt/output/WPE_SOURCE_TO_CORE1A_CONCEPT_REPORT_20261030.zip",
+      "purpose": "concept archive migrated",
+      "consumer": "TASK-SPECIFIC; see entry guide",
+      "onboarding_status": "LOCAL_CANDIDATE_OR_NAVIGATION",
+      "authority": "Inspect native artifact and actual Owner scope; this register grants none",
+      "sha256": "42eb77a8c1f6dcf56d38df487e6fc7b902b092c61c991ada71ba54485fd8a2e6",
+      "superseded_by": null
+    },
+    {
+      "id": "zip_equivalence",
+      "path": "workspace/output/WPE_Onboarding_Repair_R1_20261031/review/ZIP_EQUIVALENCE.json",
+      "purpose": "zip equivalence",
+      "consumer": "TASK-SPECIFIC; see entry guide",
+      "onboarding_status": "LOCAL_CANDIDATE_OR_NAVIGATION",
+      "authority": "Inspect native artifact and actual Owner scope; this register grants none",
+      "sha256": "f804b3f9a7e15183ba534e66c67326e165c592f71b561ee8fb0fe784b20916d5",
+      "superseded_by": null,
+      "declared_version_or_schema": {}
+    },
+    {
+      "id": "current_companion",
+      "path": "docs/agent-entry/CURRENT_CONCEPT_COMPANION.md",
+      "purpose": "Current interpretation and corrections",
+      "consumer": "ALL",
+      "onboarding_status": "LOCAL_CANDIDATE_OR_NAVIGATION",
+      "authority": "Inspect native artifact and actual Owner scope; this register grants none",
+      "sha256": "7c0bd1e099a95f0ecc04f3879543fbf70b77558201e91f14500321ed32d0314b",
+      "superseded_by": null
+    },
+    {
+      "id": "required_reading",
+      "path": "docs/agent-entry/00-required-reading.md",
+      "purpose": "required reading",
+      "consumer": "TASK-SPECIFIC; see entry guide",
+      "onboarding_status": "LOCAL_CANDIDATE_OR_NAVIGATION",
+      "authority": "Inspect native artifact and actual Owner scope; this register grants none",
+      "sha256": "3f3f5a9a1e9ebb512b8cd47ac5d55f7c27952f96e1bc2b8469c17321c3753cda",
+      "superseded_by": null
+    },
+    {
+      "id": "onboarding_html",
+      "path": "docs/agent-entry/index.html",
+      "purpose": "onboarding html",
+      "consumer": "TASK-SPECIFIC; see required reading map",
+      "onboarding_status": "LOCAL_NAVIGATION; NOT_NATIVE_APPROVAL",
+      "authority": "Actual artifact and Owner assignment; register grants none",
+      "superseded_by": null,
+      "sha256": "f95c4b5991f5bf6e103a1c47ea2a792d550b4dc025a1940006453b9710ac841e"
+    },
+    {
+      "id": "fixture_catalogue",
+      "path": "docs/agent-entry/fixtures.html",
+      "purpose": "fixture catalogue",
+      "consumer": "TASK-SPECIFIC; see required reading map",
+      "onboarding_status": "LOCAL_NAVIGATION; NOT_NATIVE_APPROVAL",
+      "authority": "Actual artifact and Owner assignment; register grants none",
+      "superseded_by": null,
+      "sha256": "5541bc98e6def5c01a621f76e1d969c3e07bf82b4672b7d325b29ab550a1fc01"
+    },
+    {
+      "id": "fixture_register",
+      "path": "docs/agent-entry/FIXTURE_REGISTER.json",
+      "purpose": "fixture register",
+      "consumer": "TASK-SPECIFIC; see entry guide",
+      "onboarding_status": "LOCAL_CANDIDATE_OR_NAVIGATION",
+      "authority": "Inspect native artifact and actual Owner scope; this register grants none",
+      "sha256": "f9f19cf598382cdd90de2f3b9042b2df7777f99922d47b1d2febda9bb6217f50",
+      "superseded_by": null,
+      "declared_version_or_schema": {}
+    },
+    {
+      "id": "open_gaps",
+      "path": "docs/agent-entry/OPEN_GAPS.md",
+      "purpose": "open gaps",
+      "consumer": "TASK-SPECIFIC; see required reading map",
+      "onboarding_status": "LOCAL_NAVIGATION; NOT_NATIVE_APPROVAL",
+      "authority": "Actual artifact and Owner assignment; register grants none",
+      "superseded_by": null,
+      "sha256": "0c89a0c9dfbe4b9c355842968f2d32a8e61065d8911930b743030bb366ae92fa"
+    },
+    {
+      "id": "task_brief",
+      "path": "docs/agent-entry/AGENT_TASK_BRIEF.md",
+      "purpose": "task brief",
+      "consumer": "TASK-SPECIFIC; see required reading map",
+      "onboarding_status": "LOCAL_NAVIGATION; NOT_NATIVE_APPROVAL",
+      "authority": "Actual artifact and Owner assignment; register grants none",
+      "superseded_by": null,
+      "sha256": "25fc150bdbaac8960c68a64bcbb0f2befe6a801ad2223b9877512d68aab67b41"
+    },
+    {
+      "id": "worked_r2_record",
+      "path": "workspace/skills/source-to-core1a-r2/examples/wpe-source-program/handoffs/WPE-N01.json",
+      "purpose": "Inspect an actual evidence-bearing dossier and its pins",
+      "consumer": "PREPARATION / OUTPUT / ORACLE / REVIEW",
+      "onboarding_status": "LOCAL_CANDIDATE_OR_NAVIGATION",
+      "authority": "Inspect native artifact and actual Owner scope; this register grants none",
+      "sha256": "649f4797b0a442d65c9c765ee339636c0ea09b7b4349e42e346e5fd15e49a89d",
+      "superseded_by": null,
+      "declared_version_or_schema": {
+        "schema": "core1a-source-handoff/v2",
+        "status": "CANDIDATE"
+      }
+    },
+    {
+      "id": "program_r2",
+      "path": "workspace/skills/source-to-core1a-r2/examples/wpe-source-program/program.json",
+      "purpose": "program r2",
+      "consumer": "TASK-SPECIFIC; see entry guide",
+      "onboarding_status": "LOCAL_CANDIDATE_OR_NAVIGATION",
+      "authority": "Inspect native artifact and actual Owner scope; this register grants none",
+      "sha256": "41ae676c77ace2d727696b2a8d7fc6a3ec6f9d4c90972bfff1c6c75c6d838b2f",
+      "superseded_by": null,
+      "declared_version_or_schema": {
+        "schema": "core1a-source-program/v1",
+        "status": "CANDIDATE"
+      }
+    },
+    {
+      "id": "program_catalogue_r2",
+      "path": "workspace/skills/source-to-core1a-r2/examples/wpe-source-program/index.html",
+      "purpose": "program catalogue r2",
+      "consumer": "TASK-SPECIFIC; see entry guide",
+      "onboarding_status": "LOCAL_CANDIDATE_OR_NAVIGATION",
+      "authority": "Inspect native artifact and actual Owner scope; this register grants none",
+      "sha256": "d1262c9906838c958bacde9f5aa611912058a49909f0b0c468189a5c733dd2bf",
+      "superseded_by": null
+    },
+    {
+      "id": "program_receipt",
+      "path": "workspace/legacy/g9v3.5/chatgpt/output/WPE_Source_Core1A_Completion_R2_20261030/COMPLETION_REPORT.md",
+      "purpose": "program receipt",
+      "consumer": "TASK-SPECIFIC; see entry guide",
+      "onboarding_status": "LOCAL_CANDIDATE_OR_NAVIGATION",
+      "authority": "Inspect native artifact and actual Owner scope; this register grants none",
+      "sha256": "51167918277027f7db8e48b7ceeedf3380c2c3a11e02bf6b193e3d9f5acb06f7",
+      "superseded_by": null
+    },
+    {
+      "id": "academic_correction",
+      "path": "workspace/legacy/g9v3.5/chatgpt/output/WPE_Core2_Academic_Review_R1_20261031/CORRECTION_NOTICE.md",
+      "purpose": "academic correction",
+      "consumer": "TASK-SPECIFIC; see entry guide",
+      "onboarding_status": "EXACT_REVIEW_EVIDENCE; NOT_ADMISSION",
+      "authority": "Inspect native artifact and actual Owner scope; this register grants none",
+      "sha256": "6f197424ba5893886f04955e9e171907140da0ffcc6e2b6b8c16ef5307a7b36c",
+      "superseded_by": null
+    },
+    {
+      "id": "reviewer_first_pass",
+      "path": "workspace/legacy/g9v3.5/chatgpt/output/WPE_Core2_Academic_Review_R1_20261031/reviewer-return/FIRST_PASS.json",
+      "purpose": "reviewer first pass",
+      "consumer": "TASK-SPECIFIC; see entry guide",
+      "onboarding_status": "EXACT_REVIEW_EVIDENCE; NOT_ADMISSION",
+      "authority": "Inspect native artifact and actual Owner scope; this register grants none",
+      "sha256": "99ac9b27be8fc9924b905449696fe693f2f369395b4227a615602d4d83b7a0e3",
+      "superseded_by": null,
+      "declared_version_or_schema": {}
+    },
+    {
+      "id": "reviewer_final",
+      "path": "workspace/legacy/g9v3.5/chatgpt/output/WPE_Core2_Academic_Review_R1_20261031/reviewer-return/FINAL_REVIEW.json",
+      "purpose": "reviewer final",
+      "consumer": "TASK-SPECIFIC; see entry guide",
+      "onboarding_status": "EXACT_REVIEW_EVIDENCE; NOT_ADMISSION",
+      "authority": "Inspect native artifact and actual Owner scope; this register grants none",
+      "sha256": "3b734b059920b6036b4b91d45b523adbe70e7a3d5c6b5481faed1ddf950d65c3",
+      "superseded_by": null,
+      "declared_version_or_schema": {}
+    },
+    {
+      "id": "reader_fix_receipt",
+      "path": "workspace/output/WPE_Core2_Reader_Fix_R1_20261031/review/DELIVERY_RECEIPT.json",
+      "purpose": "reader fix receipt",
+      "consumer": "TASK-SPECIFIC; see entry guide",
+      "onboarding_status": "LOCAL_CANDIDATE_OR_NAVIGATION",
+      "authority": "Inspect native artifact and actual Owner scope; this register grants none",
+      "sha256": "e155a770d0682b034d0515c77fbc8a939846df82b6c8c3ee26a4339e00d3346f",
+      "superseded_by": null,
+      "declared_version_or_schema": {
+        "status": "CLOSED"
+      }
+    },
+    {
+      "id": "reader_rebuild_entry",
+      "path": "workspace/output/WPE_Core2_Reader_Fix_R1_20261031/build_reader.py",
+      "purpose": "reader rebuild entry",
+      "consumer": "TASK-SPECIFIC; see entry guide",
+      "onboarding_status": "LOCAL_CANDIDATE_OR_NAVIGATION",
+      "authority": "Inspect native artifact and actual Owner scope; this register grants none",
+      "sha256": "2c8f99434786f3409c68e5343bf041e4c348b222ca6bfc032e3248f6dfb4016b",
+      "superseded_by": null
+    },
+    {
+      "id": "canonical_wpe_library",
+      "path": "workspace/native/Grade9v3.5/Physics/library/phy-work-energy-power.v1.json",
+      "purpose": "canonical wpe library",
+      "consumer": "TASK-SPECIFIC; see entry guide",
+      "onboarding_status": "LOCAL_CANDIDATE_OR_NAVIGATION",
+      "authority": "Inspect native artifact and actual Owner scope; this register grants none",
+      "sha256": "84fe88387e33a03bf87bf1f537bae8c447f5b86f0d77a854c899ad70f12d8258",
+      "superseded_by": null,
+      "declared_version_or_schema": {
+        "version": "0.2.0",
+        "schema_version": "0.2.0",
+        "status": "CANDIDATE"
+      }
+    },
+    {
+      "id": "native_package_schema",
+      "path": "workspace/native/Grade9v3.5/Shared/library/package.schema.json",
+      "purpose": "native package schema",
+      "consumer": "TASK-SPECIFIC; see entry guide",
+      "onboarding_status": "LOCAL_CANDIDATE_OR_NAVIGATION",
+      "authority": "Inspect native artifact and actual Owner scope; this register grants none",
+      "sha256": "b645f4b5beb9132d6e38b628b1416846201d44dec16a5f04af9a252e9e891d93",
+      "superseded_by": null,
+      "declared_version_or_schema": {}
+    },
+    {
+      "id": "native_page_blueprints",
+      "path": "workspace/native/Grade9v3.5/Shared/web/interactive-page-blueprints.v1.json",
+      "purpose": "native page blueprints",
+      "consumer": "TASK-SPECIFIC; see entry guide",
+      "onboarding_status": "LOCAL_CANDIDATE_OR_NAVIGATION",
+      "authority": "Inspect native artifact and actual Owner scope; this register grants none",
+      "sha256": "75f6bd43b31dfdf555fb26e8b36417e9c830a563898264dbe917d4254828653e",
+      "superseded_by": null,
+      "declared_version_or_schema": {
+        "schema_version": "1.0"
+      }
+    },
+    {
+      "id": "native_authority",
+      "path": "workspace/native/Grade9v3.5/Shared/roles/CORE-AUTHORITY-CONTRACT.md",
+      "purpose": "Native six-Core and release boundaries",
+      "consumer": "ALL",
+      "onboarding_status": "LOCAL_CANDIDATE_OR_NAVIGATION",
+      "authority": "Inspect native artifact and actual Owner scope; this register grants none",
+      "sha256": "3cbf70c177ddaa4914776dca52a40224e0e4dbe24d259b61af3e95ab8ea1bda0",
+      "superseded_by": null
+    },
+    {
+      "id": "current_checkpoint",
+      "path": "CURRENT_CHECKPOINT.md",
+      "purpose": "Current aim, authority and latest scoped changes",
+      "consumer": "ALL",
+      "onboarding_status": "LOCAL_CANDIDATE_OR_NAVIGATION",
+      "authority": "Inspect native artifact and actual Owner scope; this register grants none",
+      "sha256": null,
+      "superseded_by": null,
+      "pin_policy": "LIVE_STATUS; READ_CURRENT_NOT_FROZEN"
+    },
+    {
+      "id": "independent_review_entry",
+      "path": "docs/agent-entry/07-independent-review.md",
+      "purpose": "independent review entry",
+      "consumer": "TASK-SPECIFIC; see required reading map",
+      "onboarding_status": "LOCAL_NAVIGATION; NOT_NATIVE_APPROVAL",
+      "authority": "Actual artifact and Owner assignment; register grants none",
+      "superseded_by": null,
+      "sha256": "aa7245d319081eb15f4295f49d7f12cd29a757b405dce49b844e82fdbdc97660"
+    },
+    {
+      "id": "shared_pin_correction",
+      "path": "workspace/migration/SHARED_PIN_CORRECTION_PROPOSAL.json",
+      "purpose": "shared pin correction",
+      "consumer": "TASK-SPECIFIC; see required reading map",
+      "onboarding_status": "LOCAL_NAVIGATION; NOT_NATIVE_APPROVAL",
+      "authority": "Actual artifact and Owner assignment; register grants none",
+      "superseded_by": null,
+      "sha256": "c334c361f823390819f36d4097303e7b65326f52553e80d26fe83f68d3868dd7",
+      "declared_version_or_schema": {}
+    },
+    {
+      "id": "engine_test_evidence",
+      "path": "workspace/migration/V4_PYTEST_WITH_LOCAL_DEPS.log",
+      "purpose": "engine test evidence",
+      "consumer": "TASK-SPECIFIC; see required reading map",
+      "onboarding_status": "LOCAL_NAVIGATION; NOT_NATIVE_APPROVAL",
+      "authority": "Actual artifact and Owner assignment; register grants none",
+      "superseded_by": null,
+      "sha256": "ab84926ca79319f8df269f42fb6e17caef1a1a9c988d0433c18e00df4f6f3865"
+    },
+    {
+      "id": "targeted_reader_build_command",
+      "path": "workspace/output/WPE_Core2_Reader_Fix_R1_20261031/review/BUILD_COMMAND.json",
+      "purpose": "targeted reader build command",
+      "consumer": "TASK-SPECIFIC; see required reading map",
+      "onboarding_status": "LOCAL_NAVIGATION; NOT_NATIVE_APPROVAL",
+      "authority": "Actual artifact and Owner assignment; register grants none",
+      "superseded_by": null,
+      "sha256": "2d48c744737b9091705a79466c211c1f7046a04093ed0a3e32115382daef8771",
+      "declared_version_or_schema": {}
+    }
+  ]
+}
