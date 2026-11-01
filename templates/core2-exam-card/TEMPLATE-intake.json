@@ -13,6 +13,6 @@
     ]
   },
   "source_role": "OWNER_HELD_COPY_OF_OFFICIAL_PAPER",
-  "official_exam_status": "PAPER_ON_FILE_NOT_ADMITTED",
+  "official_exam_status": "<FILL: e.g. PAPER_ON_FILE_NOT_ADMITTED / VERIFIED / UNVERIFIED>",
   "intake_digest": "<FILL: sha256 of the exact file/text>"
 }
