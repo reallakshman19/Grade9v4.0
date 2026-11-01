@@ -1,3 +1,5 @@
+> **Local workspace entry:** read [Start_here.md](Start_here.md) and [CURRENT_CHECKPOINT.md](CURRENT_CHECKPOINT.md) before editing. Owner-local sources live in Git-excluded `workspace/`; copying does not grant publication or academic authority. The following original repository instructions remain in force.
+
 # AGENTS.md — Instructions for Coding Agents
 
 **Primary specification:** https://github.com/reallakshman19/Grade9v4.0/issues/1

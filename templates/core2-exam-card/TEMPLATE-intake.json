@@ -1,0 +1,18 @@
+{
+  "schema": "<FILL: /schema>",
+  "inputs": {
+    "questions": [
+      {
+        "id": "<FILL: /inputs/questions/0/id>",
+        "label": "<FILL: /inputs/questions/0/label>",
+        "text": "<FILL: /inputs/questions/0/text>",
+        "options": [
+          "<FILL: /inputs/questions/0/options/0>"
+        ]
+      }
+    ]
+  },
+  "source_role": "OWNER_HELD_COPY_OF_OFFICIAL_PAPER",
+  "official_exam_status": "PAPER_ON_FILE_NOT_ADMITTED",
+  "intake_digest": "<FILL: sha256 of the exact file/text>"
+}

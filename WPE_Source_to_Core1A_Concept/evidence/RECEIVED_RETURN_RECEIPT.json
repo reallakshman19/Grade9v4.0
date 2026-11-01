@@ -1,0 +1,279 @@
+{
+  "schema": "wpe-core2-coverage-r1-return-receipt/v1",
+  "task": "WPE-CORE2-COVERAGE-R1",
+  "scope": "LOCAL_CANDIDATE_RETURN_ONLY",
+  "source_archive_sha256": "f9f5cf75652f20483d44e837c564fe4635e55aa75dd6007d988c297e82ef82c4",
+  "sha256_file_match": true,
+  "external_delivery_receipt_match": true,
+  "zip_crc": "PASS",
+  "manifest_entries_checked": 1063,
+  "manifest_digest_and_byte_size_failures": [],
+  "source_originals_modified": false,
+  "quarantine_records_unchanged": 19,
+  "practice_records_not_counted": 25,
+  "books_not_counted": 8,
+  "r2_upload_sha256": "96f7f3dea6efb0ec7bff729392ed6b53a08a6496fb53663f002fb9998e9c1286",
+  "r2_pinned_zip_match": true,
+  "native_inherited_overlay_bytes_unchanged": true,
+  "files_read": [
+    "WPE_CORE2_21_REVIEW_CANDIDATE_20261030.sha256",
+    "WPE_CORE2_21_REVIEW_CANDIDATE_20261030.zip",
+    "WPE_CORE2_21_DELIVERY_RECEIPT.json",
+    "WPE_CORE2_21_FINAL_VALIDATION.json",
+    "WPE_CORE2_21_PROGRESS.json",
+    "WPE_CORE2_21_ARCHIVE_READBACK.json",
+    "WPE_CORE2_21_CLEANUP.json",
+    "SMART_LABELLING_QRT_HARDENING_R2_CANDIDATE.zip",
+    "DELIVERY_MANIFEST.json",
+    "CONTINUITY.md",
+    "PLAN_CORE2_21.md",
+    "review/OWNER_REVIEW.md",
+    "review/SMART_SKILL_INTEGRATION.md",
+    "AUTHORITY.json",
+    "data/pins.json",
+    "data/raw_intake.json",
+    "data/registry.json",
+    "data/source_inventory.json",
+    "assessment_proposals.json",
+    "labels.sl1.json",
+    "labels.sl2.json",
+    "r2-contract.json",
+    "smart_handoff.py",
+    "verify_native.py",
+    "r2_preserved/skills/smart-labelling-1/SKILL.md",
+    "r2_preserved/skills/smart-labelling-2/SKILL.md",
+    "pinned library/vocabulary/blueprint and four local NSEP crops",
+    "six retained JEE source-paper pages and final-key PDF rows"
+  ],
+  "checks": {
+    "first_53_assessed_before_reconsidered_26": true,
+    "dispositions_79": 79,
+    "distinct_identity_upper_bound_after_definite_merge": 78,
+    "five_factor_range_and_totals": "PASS",
+    "bands": "PASS",
+    "primary_homes": 14,
+    "vacancies": 7,
+    "independent_admissions": 0,
+    "source_version_alias_merged": true,
+    "six_jee_final_key_rows_local_match": 6,
+    "four_nsep_crop_pdf_locator_checks": [
+      {
+        "id": "WEP07-01",
+        "paper": {
+          "path": "evidence/7d283f2a07a0da27d2f67783c2eea0abd54ddb6bd8b407f63f5f97f5baef337d.pdf",
+          "sha256": "7d283f2a07a0da27d2f67783c2eea0abd54ddb6bd8b407f63f5f97f5baef337d",
+          "locator": "PDF page 3, printed Q4",
+          "original_name": "NSEP_-_2024_Set_61.pdf"
+        },
+        "page_1based": 3,
+        "printed_question_number": 4,
+        "question_number_in_page_text": true,
+        "retained_crop": "evidence/c736cf65efc971650283feda7ba367d07648277d6900d56423383841574a639e.png",
+        "crop_sha256": "c736cf65efc971650283feda7ba367d07648277d6900d56423383841574a639e",
+        "official_key_bound": false,
+        "paper_authenticity_review": "PENDING"
+      },
+      {
+        "id": "WEP07-02",
+        "paper": {
+          "path": "evidence/7d283f2a07a0da27d2f67783c2eea0abd54ddb6bd8b407f63f5f97f5baef337d.pdf",
+          "sha256": "7d283f2a07a0da27d2f67783c2eea0abd54ddb6bd8b407f63f5f97f5baef337d",
+          "locator": "PDF page 8, printed Q32",
+          "original_name": "NSEP_-_2024_Set_61.pdf"
+        },
+        "page_1based": 8,
+        "printed_question_number": 32,
+        "question_number_in_page_text": true,
+        "retained_crop": "evidence/561a433c93cc85b89bba9b1b216cc22c43789931c91256e1c9f88e9c335c65a7.png",
+        "crop_sha256": "561a433c93cc85b89bba9b1b216cc22c43789931c91256e1c9f88e9c335c65a7",
+        "official_key_bound": false,
+        "paper_authenticity_review": "PENDING"
+      },
+      {
+        "id": "WEP07-03",
+        "paper": {
+          "path": "evidence/c3e5770f56d60d4245ad5c707b53bbbee35745b643b063de11f51287261e5973.pdf",
+          "sha256": "c3e5770f56d60d4245ad5c707b53bbbee35745b643b063de11f51287261e5973",
+          "locator": "PDF page 15, printed Q57",
+          "original_name": "NSEP_-_2025_Set_611.pdf"
+        },
+        "page_1based": 15,
+        "printed_question_number": 57,
+        "question_number_in_page_text": true,
+        "retained_crop": "evidence/ae826bc82e01199473958c6c622c94851ef60fd54792d0e3b1f4ffd5442e13e7.png",
+        "crop_sha256": "ae826bc82e01199473958c6c622c94851ef60fd54792d0e3b1f4ffd5442e13e7",
+        "official_key_bound": false,
+        "paper_authenticity_review": "PENDING"
+      },
+      {
+        "id": "WEP07-04",
+        "paper": {
+          "path": "evidence/7d283f2a07a0da27d2f67783c2eea0abd54ddb6bd8b407f63f5f97f5baef337d.pdf",
+          "sha256": "7d283f2a07a0da27d2f67783c2eea0abd54ddb6bd8b407f63f5f97f5baef337d",
+          "locator": "PDF page 13, printed Q59",
+          "original_name": "NSEP_-_2024_Set_61.pdf"
+        },
+        "page_1based": 13,
+        "printed_question_number": 59,
+        "question_number_in_page_text": true,
+        "retained_crop": "evidence/521f4ae1fa0b2ceea200a2b089bbb6ee972b1297ffc33be3e86b72f448c2d302.png",
+        "crop_sha256": "521f4ae1fa0b2ceea200a2b089bbb6ee972b1297ffc33be3e86b72f448c2d302",
+        "official_key_bound": false,
+        "paper_authenticity_review": "PENDING"
+      }
+    ],
+    "native_r2_current_checks": {
+      "native_sl1_check.json": {
+        "status": "HOLD",
+        "integrity_gate": "HOLD",
+        "legacy_subchecks": [
+          [
+            "13 records: 0 FAIL, 0 WARN"
+          ],
+          [
+            "13 records: 0 FAIL, 0 WARN"
+          ]
+        ]
+      },
+      "native_sl2_check.json": {
+        "status": "HOLD",
+        "integrity_gate": "HOLD",
+        "legacy_subchecks": [
+          [
+            "13 records: 0 FAIL, 0 WARN"
+          ],
+          [
+            "13 records: 0 FAIL, 0 WARN"
+          ]
+        ]
+      }
+    },
+    "question_only_no_answer_scoring_seed_fields": "PASS",
+    "manifest_rechecked_on_extract": "PASS"
+  },
+  "limitations": [
+    "Each exam-origin claim remains unverified upstream; local file integrity is not source authenticity",
+    "SL1/SL2 staging for 66 additional exam records is not native R2 format; preserved 13 overlays remain native",
+    "Missing original graphs and explanatory-figure role mismatch; R2 question digests remain unchanged",
+    "NSEP 2025 code 61 vs 611 requires reconciliation",
+    "WEP07-04 break-angle needs the pre-break oscillation amplitude",
+    "M4 direction and M106/M92 conditions not supplied",
+    "No distinct academic reviewer, no blind assessment, no official key custody witness"
+  ],
+  "failures": [
+    "No engineering checksum/format failure found",
+    "ACADEMIC_HOLD: exact figures, original-paper custody, key custody, and several problem assumptions unresolved"
+  ],
+  "NOT_RUN": [
+    "external web retrieval or upstream official authentication",
+    "remote writes",
+    "installation",
+    "agent creation",
+    "public publication",
+    "independent reviewer first scoring",
+    "Owner approval",
+    "academic Core2 admission",
+    "future official-key reconciliation adapter",
+    "P1 learner observation (optional)",
+    "Core1A construction",
+    "Core1B construction",
+    "D3.1 finalisation"
+  ],
+  "prior_exposure": "TRUE; previous solutions, 26 author score proposals, and 13 reserved leads were accessible",
+  "review_state": "UNREVIEWED",
+  "core2_status": "PARTIAL",
+  "D3.1": "PAUSED",
+  "core1a": "WAIT_FOR_OWNER_APPROVED_CORE2",
+  "output_files": [
+    {
+      "path": "dispositions_79.json",
+      "bytes": 575766,
+      "sha256": "796d1a7b579182abb9cbb15e7aef8ee0c65f5028cf278b2ac65ffc87418c3dfd"
+    },
+    {
+      "path": "QUESTION_ONLY_PENDING_14.html",
+      "bytes": 160051,
+      "sha256": "618e65869caa21afedc70151c11411dea09de2bb86b956872431a27a892c422c"
+    },
+    {
+      "path": "nsep_crop_paper_readback.json",
+      "bytes": 3084,
+      "sha256": "af001296c37ca402c59f5eb9cc1058cf386e905471c8040f689a4cee5d91f5bc"
+    },
+    {
+      "path": "friction_original_page11.png",
+      "bytes": 178814,
+      "sha256": "cd4959ce280bb58cc47fe40f66eee6f5c80791e08e7802b790013bc1930bee0b"
+    },
+    {
+      "path": "sl1_staging_79.json",
+      "bytes": 147838,
+      "sha256": "4356ef34136128bf177a4e4aefdb1f3c7558b3faebed4d7ae9dc7595a7ed3e9b"
+    },
+    {
+      "path": "sl2_staging_79.json",
+      "bytes": 359046,
+      "sha256": "8da78299d56a57ff0f3c01fe155a62a6bb340b4fbcc4b0aa33c4623ba54f941f"
+    },
+    {
+      "path": "selection_21_places.json",
+      "bytes": 9637,
+      "sha256": "4eed0a28a32a3e64f018a4506102781417e57bad7d586b3f6d239a0d9a036a97"
+    },
+    {
+      "path": "native_sl2_check.json",
+      "bytes": 31452,
+      "sha256": "c2dddfecd633d6705b7f9267c2868ebd891d4811eecea26a841b6d5f4e56dfc8"
+    },
+    {
+      "path": "build_return.py",
+      "bytes": 76800,
+      "sha256": "99011da3387889d7473e49eacbe02f257377cc7d899a20369ed1b2dbd75bc3a4"
+    },
+    {
+      "path": "native_sl1_check.json",
+      "bytes": 31452,
+      "sha256": "c9561bc1b899f583c54dc80b37d77e0ac2b243319292cf276589ac88a7411457"
+    },
+    {
+      "path": "QUESTION_ONLY_79.html",
+      "bytes": 3526547,
+      "sha256": "a34a8b6e86167516b189f1d47573e0d48972dfb4de2aeed283618b171fe3f0e7"
+    },
+    {
+      "path": "jee_six_key_readbacks.json",
+      "bytes": 7068,
+      "sha256": "0b5841a847439d0c07d322a68d08aef207c3f5d65e352c9f76dc08d36f72c4ef"
+    },
+    {
+      "path": "inherited_native_labels.sl1.json",
+      "bytes": 51928,
+      "sha256": "91f378ccddc1bc0e4f17c24ef400a938e9d02f08c89eb3fd5394c922e8545679"
+    },
+    {
+      "path": "inherited_native_r2-contract.json",
+      "bytes": 60390,
+      "sha256": "534bee323512dfe77979538102fb342a86a7574f03942a026b962d03442974fc"
+    },
+    {
+      "path": "nsep_crops_review_sheet.png",
+      "bytes": 429207,
+      "sha256": "1daa43f2457ef0133864fa6900bcbd5a617fe97e91fd85145f9b3d984f8dc7d4"
+    },
+    {
+      "path": "inherited_native_labels.sl2.json",
+      "bytes": 58004,
+      "sha256": "d8207107474a5d5c1444ecb8fdd65032ca06493bc361d300c12127c5cbfe4eef"
+    },
+    {
+      "path": "PRIVATE_REVIEW_79.html",
+      "bytes": 4026553,
+      "sha256": "cbec471255d3119429f58afda11aa47ed2dedbd3aa8a607ad4d2ca67eaa325f3"
+    },
+    {
+      "path": "R1_READABLE_REPORT.md",
+      "bytes": 52550,
+      "sha256": "af7aef9e0fdb577531f704f4a26f79e18bcb7fd474061b6fbdd058a861388135"
+    }
+  ]
+}
