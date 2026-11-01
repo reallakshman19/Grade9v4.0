@@ -55,9 +55,9 @@
           "family": "<FILL: /questions/0/extensions/grade9v3:attempt_labels/family>"
         },
         "grade9v3:analysis": {
-          "learner_question_type": "multi_correct_mcq",
+          "learner_question_type": "<FILL: single_correct_mcq / multi_correct_mcq / numerical>",
           "difficulty": {
-            "band": "D2",
+            "band": "D1",
             "score": 0,
             "components": {
               "concept_model_selection": 0,
@@ -139,9 +139,9 @@
       "response": {
         "type": "multiple_choice"
       },
-      "learner_question_type": "multi_correct_mcq",
+      "learner_question_type": "<FILL: single_correct_mcq / multi_correct_mcq / numerical>",
       "difficulty": {
-        "band": "D2",
+        "band": "D1",
         "score": 0,
         "components": {
           "concept_model_selection": 0,
@@ -165,7 +165,7 @@
   "extensions": {
     "source_role": "OWNER_HELD_COPY_OF_OFFICIAL_PAPER",
     "academic_status": "UNREVIEWED",
-    "classification_status": "OWNER_DECIDED_CELL_APPLY_D2_NOT_ADMITTED",
-    "official_exam_status": "PAPER_ON_FILE_NOT_ADMITTED"
+    "classification_status": "<FILL: e.g. OWNER_DECIDED_CELL_<KIND>_<LEVEL>_NOT_ADMITTED / CANDIDATE_UNREVIEWED>",
+    "official_exam_status": "<FILL: e.g. PAPER_ON_FILE_NOT_ADMITTED / VERIFIED / UNVERIFIED>"
   }
 }
