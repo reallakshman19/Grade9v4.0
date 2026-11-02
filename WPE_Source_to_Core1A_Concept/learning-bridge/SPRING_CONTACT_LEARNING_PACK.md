@@ -9,9 +9,9 @@
 **A toy cart released by a spring.** A 1 kg cart starts at rest, touching a horizontal spring that is compressed by 0.20 m. The spring stiffness is 100 N/m. The cart is not attached to the spring and the track is smooth throughout.
 
 1. **Sketch two regions:** Region A is from the compressed position until the spring returns to its natural length; Region B begins after contact ends. At the boundary, a spring that cannot pull the cart no longer acts on it.
-2. **Stored spring energy at the start:** \\(U_s=\\tfrac12kx^2=\\tfrac12(100)(0.20)^2=2\\text{ J}\\).
-3. **While in contact:** spring energy becomes kinetic energy. At the natural length, spring energy is zero and the cart has \\(K=2\\text{ J}\\).
-4. **Find the release speed:** \\(\\tfrac12(1)v^2=2\\), giving \\(v=2\\text{ m/s}\\).
+2. **Stored spring energy at the start:** \(U_s=\tfrac12kx^2=\tfrac12(100)(0.20)^2=2\text{ J}\).
+3. **While in contact:** spring energy becomes kinetic energy. At the natural length, spring energy is zero and the cart has \(K=2\text{ J}\).
+4. **Find the release speed:** \(\tfrac12(1)v^2=2\), giving \(v=2\text{ m/s}\).
 5. **After contact:** the spring has no further horizontal force on the cart. On this smooth track there is no horizontal friction, so it continues at **2 m/s**. Do not keep adding spring work beyond the release point.
 
 **Thinking contrast:** A spring connected to a cart can pull as well as push; this lesson assumes **not attached**. If friction starts on a later segment, include it only on that segment.
@@ -40,9 +40,9 @@ Change the rough strip's length to **1.00 m**, with the same 1 N friction. Would
 
 ## Author-only reference, not for learner-facing pre-attempt delivery
 
-- Compressed spring: \\(U_s=\\tfrac12(200)(0.10)^2=1.00\\text{ J}\\).
-- At the natural length: \\(K_{\\mathrm{release}}=1.00\\text{ J}\\) and \\(v_{\\mathrm{release}}=\\sqrt{2K/m}=1.00\\text{ m/s}\\).
-- On the separate rough strip: \\(W_f=-1\\times0.50=-0.50\\text{ J}\\). So \\(K_f=0.50\\text{ J}\\) and \\(v_f=\\sqrt{2K_f/m}=\\sqrt{0.50}\\approx0.707\\text{ m/s}\\). The cart crosses the strip.
+- Compressed spring: \(U_s=\tfrac12(200)(0.10)^2=1.00\text{ J}\).
+- At the natural length: \(K_{\mathrm{release}}=1.00\text{ J}\) and \(v_{\mathrm{release}}=\sqrt{2K/m}=1.00\text{ m/s}\).
+- On the separate rough strip: \(W_f=-1\times0.50=-0.50\text{ J}\). So \(K_f=0.50\text{ J}\) and \(v_f=\sqrt{2K_f/m}=\sqrt{0.50}\approx0.707\text{ m/s}\). The cart crosses the strip.
 - Boundary: after 1.00 m of rough travel the full 1 J is dissipated, so speed has fallen to zero at the end; it does **not** arrive with nonzero speed. A longer strip cannot be fully crossed without extra energy.
 - **Reconstruction rubric:** choose two regions, explicitly stop spring work at loss of contact, distinguish smooth and rough sections, calculate energies at the transfer boundary, handle zero-speed boundary correctly and explain what changed.
 
