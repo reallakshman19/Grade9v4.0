@@ -1,0 +1,561 @@
+{
+  "schema": "wpe-d3d4-core1-construction-bridge/v1",
+  "date": "2026-11-02",
+  "status": "AUTHOR_AUTHORED_PREPARATORY_CONTENT_NOT_ACADEMICALLY_ADMITTED",
+  "source_versions": {
+    "pilot_selection": {
+      "path": "WPE_Source_to_Core1A_Concept/evidence/RECEIVED_selection_21_places.json",
+      "blob_sha": "531a5027da2649310b4660e9e812b774eb883de9"
+    },
+    "consolidated_reader": {
+      "path": "workspace/output/WPE_Core2_Consolidated_20261102/native-candidate/selected_bank.review.json",
+      "blob_sha": "1161271c0de01f9de31f62cdbcf3679629e16bad"
+    },
+    "current_learn_challenge": {
+      "path": "physics/wpe/learn-challenge.html",
+      "blob_sha": "2a2e14994000588441c57b4e53f099c35777ea5a"
+    },
+    "current_learn_challenge_map": {
+      "path": "physics/wpe/learn-challenge-source-map.json",
+      "blob_sha": "b7e8449419e68398b8440c527ef5a05cbe2af811"
+    }
+  },
+  "grounding_policy": "Selected pilot operation/band is a pending claim, consolidated reader op/band an inconsistent review claim; no independent QRT is inferred. Additional source link IDs from supplied gap audit are author-proposed themes, not verified stem-level joins.",
+  "counts": {
+    "pilot_places": 21,
+    "pending_candidates": 14,
+    "vacant": 7,
+    "reader_agree": 3,
+    "reader_conflicts": 8,
+    "reader_absent": 3,
+    "admitted": 0
+  },
+  "reconciliation": [
+    {
+      "candidate_id": "EX-M105",
+      "place_id": "APPLY-1",
+      "pilot_operation": "APPLY",
+      "pilot_band": "D3",
+      "reader_records": [
+        {
+          "review_question_id": "Q-PHY-WPE-B3-38",
+          "operation": "APPLY",
+          "band": "D2",
+          "review_state": "NOT_ADMITTED",
+          "flags": []
+        }
+      ],
+      "comparison": "CONFLICT_IN_READER",
+      "academic_status": "PENDING__NO_AUTHORITY_TO_REPLACE"
+    },
+    {
+      "candidate_id": "EX-M62",
+      "place_id": "APPLY-2",
+      "pilot_operation": "APPLY",
+      "pilot_band": "D3",
+      "reader_records": [
+        {
+          "review_question_id": "Q-PHY-WPE-B2-18",
+          "operation": "MODEL",
+          "band": "D3",
+          "review_state": "NOT_ADMITTED",
+          "flags": [
+            "This master suggests MODEL/D3; a separate academic reconciliation treated this source nomination as APPLY/D2. Do not treat master classification as final."
+          ]
+        }
+      ],
+      "comparison": "CONFLICT_IN_READER",
+      "academic_status": "PENDING__NO_AUTHORITY_TO_REPLACE"
+    },
+    {
+      "candidate_id": "EX-M79",
+      "place_id": "APPLY-3",
+      "pilot_operation": "APPLY",
+      "pilot_band": "D3",
+      "reader_records": [
+        {
+          "review_question_id": "Q-PHY-WPE-B2-27",
+          "operation": "APPLY",
+          "band": "D3",
+          "review_state": "NOT_ADMITTED",
+          "flags": []
+        }
+      ],
+      "comparison": "AGREES_IN_READER",
+      "academic_status": "PENDING__NO_AUTHORITY_TO_REPLACE"
+    },
+    {
+      "candidate_id": "EX-M16",
+      "place_id": "MODEL-1",
+      "pilot_operation": "MODEL",
+      "pilot_band": "D3",
+      "reader_records": [
+        {
+          "review_question_id": "Q-PHY-WPE-B1-08",
+          "operation": "MODEL",
+          "band": "D3",
+          "review_state": "NOT_ADMITTED",
+          "flags": []
+        }
+      ],
+      "comparison": "AGREES_IN_READER",
+      "academic_status": "PENDING__NO_AUTHORITY_TO_REPLACE"
+    },
+    {
+      "candidate_id": "EX-M73",
+      "place_id": "MODEL-2",
+      "pilot_operation": "MODEL",
+      "pilot_band": "D3",
+      "reader_records": [
+        {
+          "review_question_id": "Q-PHY-WPE-B2-23",
+          "operation": "APPLY",
+          "band": "D3",
+          "review_state": "NOT_ADMITTED",
+          "flags": [
+            "This master suggests APPLY/D3; academic reconciliation disputes the D3 classification. Work formula MgL/(2n²) itself follows from the stated hanging length."
+          ]
+        }
+      ],
+      "comparison": "CONFLICT_IN_READER",
+      "academic_status": "PENDING__NO_AUTHORITY_TO_REPLACE"
+    },
+    {
+      "candidate_id": "EX-M81",
+      "place_id": "MODEL-3",
+      "pilot_operation": "MODEL",
+      "pilot_band": "D3",
+      "reader_records": [],
+      "comparison": "ABSENT_FROM_SELECTED_READER",
+      "academic_status": "PENDING__NO_AUTHORITY_TO_REPLACE"
+    },
+    {
+      "candidate_id": "EX-M56",
+      "place_id": "REPRESENT-1",
+      "pilot_operation": "REPRESENT",
+      "pilot_band": "D3",
+      "reader_records": [
+        {
+          "review_question_id": "Q-PHY-WPE-B2-16",
+          "operation": "REPRESENT",
+          "band": "D2",
+          "review_state": "NOT_ADMITTED",
+          "flags": []
+        }
+      ],
+      "comparison": "CONFLICT_IN_READER",
+      "academic_status": "PENDING__NO_AUTHORITY_TO_REPLACE"
+    },
+    {
+      "candidate_id": "EX-M61",
+      "place_id": "REPRESENT-2",
+      "pilot_operation": "REPRESENT",
+      "pilot_band": "D3",
+      "reader_records": [
+        {
+          "review_question_id": "Q-PHY-WPE-B2-17",
+          "operation": "EXPLAIN",
+          "band": "D2",
+          "review_state": "NOT_ADMITTED",
+          "flags": [
+            "Potential-energy graph interpretation and the statement concerning zero kinetic energy on a region require source-figure/solution review."
+          ]
+        }
+      ],
+      "comparison": "CONFLICT_IN_READER",
+      "academic_status": "PENDING__NO_AUTHORITY_TO_REPLACE"
+    },
+    {
+      "candidate_id": "EX-M69",
+      "place_id": "REPRESENT-3",
+      "pilot_operation": "REPRESENT",
+      "pilot_band": "D3",
+      "reader_records": [
+        {
+          "review_question_id": "Q-PHY-WPE-B2-22",
+          "operation": "REPRESENT",
+          "band": "D2",
+          "review_state": "NOT_ADMITTED",
+          "flags": []
+        }
+      ],
+      "comparison": "CONFLICT_IN_READER",
+      "academic_status": "PENDING__NO_AUTHORITY_TO_REPLACE"
+    },
+    {
+      "candidate_id": "EX-M39",
+      "place_id": "SYNTHESIZE-1",
+      "pilot_operation": "SYNTHESIZE",
+      "pilot_band": "D3",
+      "reader_records": [
+        {
+          "review_question_id": "Q-PHY-WPE-B5-69",
+          "operation": "SYNTHESIZE",
+          "band": "D3",
+          "review_state": "NOT_ADMITTED",
+          "flags": [
+            "Check source geometry and conditions before treating the pendulum equal-acceleration solution as an admitted examination key."
+          ]
+        }
+      ],
+      "comparison": "AGREES_IN_READER",
+      "academic_status": "PENDING__NO_AUTHORITY_TO_REPLACE"
+    },
+    {
+      "candidate_id": "EX-M44",
+      "place_id": "SYNTHESIZE-2",
+      "pilot_operation": "SYNTHESIZE",
+      "pilot_band": "D3",
+      "reader_records": [],
+      "comparison": "ABSENT_FROM_SELECTED_READER",
+      "academic_status": "PENDING__NO_AUTHORITY_TO_REPLACE"
+    },
+    {
+      "candidate_id": "EX-M60",
+      "place_id": "SYNTHESIZE-3",
+      "pilot_operation": "SYNTHESIZE",
+      "pilot_band": "D3",
+      "reader_records": [],
+      "comparison": "ABSENT_FROM_SELECTED_READER",
+      "academic_status": "PENDING__NO_AUTHORITY_TO_REPLACE"
+    },
+    {
+      "candidate_id": "EX-M101",
+      "place_id": "JUSTIFY-1",
+      "pilot_operation": "JUSTIFY",
+      "pilot_band": "D3",
+      "reader_records": [
+        {
+          "review_question_id": "Q-PHY-WPE-B3-37",
+          "operation": "JUSTIFY",
+          "band": "D1",
+          "review_state": "NOT_ADMITTED",
+          "flags": [
+            "Master JUSTIFY/D1 is not examination-coverage admission; official paper/key correspondence and reviewer decision remain open."
+          ]
+        }
+      ],
+      "comparison": "CONFLICT_IN_READER",
+      "academic_status": "PENDING__NO_AUTHORITY_TO_REPLACE"
+    },
+    {
+      "candidate_id": "WEP07-03",
+      "place_id": "JUSTIFY-2",
+      "pilot_operation": "JUSTIFY",
+      "pilot_band": "D4",
+      "reader_records": [
+        {
+          "review_question_id": "Q-PHY-WPE-B5-65",
+          "operation": "APPLY",
+          "band": "D2",
+          "review_state": "NOT_ADMITTED",
+          "flags": [
+            "ACADEMIC/QRT HOLD: master labels SYNTHESIZE/D4 while R3 labels APPLY/D2; no independent cognitive decision is recorded. The public IAPT Q57 solution corroborates a,b,c,d but answer agreement alone is not academic admission.",
+            "HINT-CONTAMINATION REPAIRED (AUTHOR PROPOSAL): pre-attempt hints now avoid stating E=0, the transformation z=x0/x, or a complete-the-square method. Preserve original source hints separately where available."
+          ]
+        }
+      ],
+      "comparison": "CONFLICT_IN_READER",
+      "academic_status": "PENDING__NO_AUTHORITY_TO_REPLACE"
+    }
+  ],
+  "constructions": [
+    {
+      "id": "WPE-C01",
+      "priority": "P0",
+      "title": "Multi-force work–energy ledger",
+      "links": [
+        "EX-M105",
+        "EX-M24",
+        "TB-WPE-ILL-02"
+      ],
+      "starting_foundation": [
+        "work-sign",
+        "energy-motion"
+      ],
+      "core1a": [
+        "Choose the moving object/system and direction of displacement",
+        "Identify all forces including gravity, friction and normal",
+        "Calculate signed work per force and sum to net work",
+        "Use W_net=ΔK, not W_friction=ΔK",
+        "Check geometry, omitted forces and no-motion boundary"
+      ],
+      "core1b": [
+        "Predict sign of change in kinetic energy from competing forces",
+        "Construct a full force-work ledger without suggested formula order",
+        "Reconstruct the velocity using total work rather than one force",
+        "Diagnose an omitted-gravity or wrong-friction-sign solution",
+        "Repair by explicitly restoring missing ledger row",
+        "Boundary test: change the incline height or remove the motor"
+      ],
+      "misconception": "Using one selected force's work as net work or treating friction as always the only energy loss",
+      "first_pair": "MULTIFORCE_LEDGER_LEARNING_PACK.md"
+    },
+    {
+      "id": "WPE-C02",
+      "priority": "P0",
+      "title": "Spring contact and motion phases",
+      "links": [
+        "EX-M24",
+        "TB-WPE-ILL-12",
+        "EX-M18"
+      ],
+      "starting_foundation": [
+        "energy-motion",
+        "momentum-fragments"
+      ],
+      "core1a": [
+        "Draw the compressed-spring contact region and natural-length release boundary",
+        "Calculate spring energy ½kx² while in contact",
+        "Determine the energy and speed precisely when contact ends",
+        "Use a different energy/work equation beyond contact",
+        "Explain why spring force is zero after separation when spring is not attached"
+      ],
+      "core1b": [
+        "Predict when the spring stops pushing",
+        "Split a new motion into contact and post-contact phases",
+        "Reconstruct the energy ledger for each phase",
+        "Diagnose a solution that keeps spring force active after separation",
+        "Repair the region boundary before recalculating",
+        "Boundary test: change the surface friction only after separation"
+      ],
+      "misconception": "Continuing to apply the spring force and spring work outside the actual contact region",
+      "first_pair": "SPRING_CONTACT_LEARNING_PACK.md"
+    },
+    {
+      "id": "WPE-C03",
+      "priority": "P0",
+      "title": "Constant power and speed–time–distance",
+      "links": [
+        "EX-M62",
+        "EX-M79",
+        "EX-M69"
+      ],
+      "starting_foundation": [
+        "momentum-energy",
+        "energy-motion"
+      ],
+      "core1a": [
+        "Distinguish constant power from constant force",
+        "Start with P=dK/dt and show K increases linearly with t if P constant and losses negligible",
+        "From ½mv²=Pt for rest-start derive v∝√t",
+        "Relate distance to area under a v–t curve; reserve s∝t^(3/2) for a supported algebra/calculus extension",
+        "Check start-speed and resistive-loss conditions"
+      ],
+      "core1b": [
+        "Choose constant-P rather than constant-F model",
+        "Predict qualitative v–t shape and KE–t straight line",
+        "Reconstruct speed at two times from energy inputs",
+        "Diagnose unjustified constant acceleration",
+        "Repair model and test a nonzero-start-speed case",
+        "Boundary test: add friction or efficiency loss"
+      ],
+      "misconception": "Treating constant motor power as constant force or constant acceleration",
+      "first_pair": null
+    },
+    {
+      "id": "WPE-C04",
+      "priority": "P0",
+      "title": "Distributed mass, chain and changing centre of mass",
+      "links": [
+        "EX-M73",
+        "WEP07-02",
+        "TB-WPE-ILL-11"
+      ],
+      "starting_foundation": [
+        "energy-motion"
+      ],
+      "core1a": [
+        "Represent a hanging length and its fraction of the chain mass",
+        "Find the hanging segment's centre-of-mass height",
+        "Build changing potential energy as hanging length changes",
+        "Compare finite-state energy method with integral where curriculum supports it",
+        "Check limits: none hanging vs all hanging"
+      ],
+      "core1b": [
+        "Represent a new hanging-rope geometry without a memorized cable formula",
+        "Identify which mass is lifted and its moving centre of mass",
+        "Reconstruct the needed work from potential energy",
+        "Diagnose using total chain mass at full height",
+        "Repair hanging-fraction calculation",
+        "Boundary test: different fraction or rope length"
+      ],
+      "misconception": "Treating every part of a partly hanging chain as being raised through the same height",
+      "first_pair": null
+    },
+    {
+      "id": "WPE-C05",
+      "priority": "P0",
+      "title": "Graph decision: area, slope or time shape",
+      "links": [
+        "EX-M56",
+        "EX-M61",
+        "EX-M69"
+      ],
+      "starting_foundation": [
+        "potential-force",
+        "energy-motion"
+      ],
+      "core1a": [
+        "Read both axes and their units before computing",
+        "Force–displacement graph: signed area is work",
+        "Potential–position graph: negative slope is conservative force",
+        "Displacement–time graph: slope is velocity, not work",
+        "Check whether the source's original graph/axes are actually available"
+      ],
+      "core1b": [
+        "Select the correct operation from a newly authored graph with changed axes",
+        "Compute a signed area, negative slope or velocity as appropriate",
+        "Explain why the other two operations are wrong for those units",
+        "Diagnose area–slope confusion",
+        "Repair by labeling axes and dimensional check",
+        "Boundary test: switch to a different graph type"
+      ],
+      "misconception": "Applying 'area under graph' indiscriminately even when the axes are not force and displacement",
+      "first_pair": null
+    },
+    {
+      "id": "WPE-C06",
+      "priority": "P0",
+      "title": "Vertical circle: energy plus contact/tension condition",
+      "links": [
+        "EX-M39",
+        "EX-N31",
+        "EX-M18",
+        "EX-M6"
+      ],
+      "starting_foundation": [
+        "energy-motion"
+      ],
+      "core1a": [
+        "Use height to convert energy into speed at each location",
+        "Distinguish radial acceleration v²/r from tangential acceleration",
+        "Balance inward forces at top/bottom of a circular path",
+        "Apply T≥0 for a string or N≥0 for a contact constraint",
+        "Check when computed negative tension means loss of taut-string model"
+      ],
+      "core1b": [
+        "Model both height/speed and radial contact force",
+        "Choose actual radial direction at a new location",
+        "Reconstruct minimum-speed condition rather than recall a shortcut",
+        "Diagnose a negative-tension answer being treated as physical",
+        "Repair with contact-loss interpretation",
+        "Boundary test: different top speed or track radius"
+      ],
+      "misconception": "Energy conservation alone guaranteeing the object stays in a vertical circle",
+      "first_pair": null
+    },
+    {
+      "id": "WPE-C07",
+      "priority": "P1",
+      "title": "Variable-mass momentum transfer and conveyor power",
+      "links": [
+        "EX-M16"
+      ],
+      "starting_foundation": [
+        "momentum-fragments"
+      ],
+      "core1a": [
+        "Identify incoming mass per unit time and velocity change",
+        "Explain why momentum per unit time sets force",
+        "Distinguish motor work/power from purely kinetic-energy flow",
+        "Account for losses or impact behavior only when specified"
+      ],
+      "core1b": [
+        "Set a new mass-flow model with defined incoming relative velocity",
+        "Reconstruct horizontal momentum-transfer force and supplied power",
+        "Diagnose treating the whole accumulated load as fixed mass",
+        "Repair control volume and boundary",
+        "Boundary test: change feed direction or belt speed"
+      ],
+      "misconception": "Confusing momentum flow with total momentum of a fixed body",
+      "first_pair": null
+    },
+    {
+      "id": "WPE-C08",
+      "priority": "P1",
+      "title": "Spring energy at equal force versus equal extension",
+      "links": [
+        "EX-M101"
+      ],
+      "starting_foundation": [
+        "momentum-energy"
+      ],
+      "core1a": [
+        "State stored energy U=½kx² and spring force magnitude F=kx",
+        "Hold extension fixed: U grows with k",
+        "Hold force fixed: substitute x=F/k, giving U=F²/(2k)",
+        "Use a controlled-variable comparison before selecting a formula"
+      ],
+      "core1b": [
+        "Distinguish two experiments that control force versus extension",
+        "Reconstruct which spring stores more energy in each experiment",
+        "Diagnose assuming higher stiffness always means higher energy",
+        "Repair with explicitly fixed variable",
+        "Boundary test: double stiffness in each protocol"
+      ],
+      "misconception": "Ignoring which variable is controlled when comparing springs",
+      "first_pair": null
+    }
+  ],
+  "extensions_backlog": [
+    {
+      "topic": "Analytic potential wells, accessible domains and extrema",
+      "ids": [
+        "WEP07-03",
+        "EX-M109"
+      ],
+      "status": "NEXT_NOT_YET_AUTHORED"
+    },
+    {
+      "topic": "Instantaneous power",
+      "ids": [
+        "TB-WPE-ILL-05",
+        "TB-WPE-ILL-06"
+      ],
+      "status": "LATER"
+    },
+    {
+      "topic": "Spring–projectile transitions",
+      "ids": [
+        "EX-N34"
+      ],
+      "status": "LATER"
+    },
+    {
+      "topic": "Repeated dissipative bounces",
+      "ids": [
+        "EX-M82"
+      ],
+      "status": "LATER"
+    },
+    {
+      "topic": "Radial-force potential",
+      "ids": [
+        "EX-M89"
+      ],
+      "status": "LATER"
+    }
+  ],
+  "core1b_contract": [
+    "PREDICT",
+    "ATTEMPT",
+    "RECONSTRUCT",
+    "DIAGNOSE",
+    "REPAIR",
+    "BOUNDARY_TEST"
+  ],
+  "learner_protocol": "Ask for an explanation and a model/diagram before exposing author solutions; hints optional after committed attempt. Post-attempt rubric separates model choice, sign/conditions, working, and changed-boundary response. A text-length threshold is not a reasoning assessment.",
+  "stale_review": {
+    "historical_b3_b4_review": "physics/wpe/learn-challenge-wpe02-b3-b4-review.json",
+    "reviewed_page_blob_sha": "5a76c88035d6083f4707d4c20507b1468529d61d",
+    "reviewed_map_blob_sha": "eb6090afd5f015f0b32d36c0be65c4cda63e0acb",
+    "current_page_blob_sha": "2a2e14994000588441c57b4e53f099c35777ea5a",
+    "current_map_blob_sha": "b7e8449419e68398b8440c527ef5a05cbe2af811",
+    "conclusion": "REVIEW_SUPERSEDED_BY_EDITS__DO_NOT_USE_AS_CURRENT_ACCEPTANCE"
+  },
+  "native_admissions": 0,
+  "owner_approval": false,
+  "qrt_approval": false,
+  "scope_boundary": "Documentation and proposed author-only learning examples; no public Learn → Challenge changes, no exam-original reproduction, no pilot slot reassignment, no score/band promotion."
+}
