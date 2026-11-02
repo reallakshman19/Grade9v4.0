@@ -60,62 +60,62 @@
 </section>
 
 <h2>A. Decision and progress diagram</h2>
-<section id="decision-reconciliation-2026-11-02" aria-label="Current decision reconciliation">
-<p><strong>Reconciled 2 November 2026 — proposed decision clarification, not an Owner approval.</strong> The original 30 October diagram conflated three different things: the construction of a source-backed Core2 question, independent QRT classification, and Owner authorization to begin WPE Core1A. The corrected map below keeps their authorities and gates separate. It is an interpretation for Owner review; it does not amend Shared, grant D3/D4 admissions or lift the D3.1 pause.</p>
+<section id="decision-reconciliation-2026-11-02" aria-label="Progress over the current source-to-QRT-to-teaching workflow">
+<p><strong>Corrected after Owner feedback, 2 November 2026.</strong> <a href="#workflow-update-heading">The current source → QRT → teaching workflow above is the single governing depiction on this page.</a> Section A is <strong>only a progress overlay</strong> on that workflow. It does not introduce new source-of-truth routes, authorize a revised production order, or transform proposals into Owner decisions. The previous Section A attempted to treat Core2 custody and QRT classification as the two evidence routes, relegating Physics source analysis to a downstream step. That was an incorrect model.</p>
 <style>
-#corrected-decision-diagram{border:1px solid #b8cbe0;background:#fff;border-radius:12px;padding:18px;max-width:100%;overflow:hidden}
-#corrected-decision-diagram .decision-top{padding:13px;background:#eaf2fc;border:1px solid #b6cee8;border-radius:9px;text-align:center}
-#corrected-decision-diagram .decision-cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-#corrected-decision-diagram .decision-lane{border:1px solid #cbd6e4;border-radius:9px;padding:14px;background:#f8fafc;min-width:0}
-#corrected-decision-diagram .decision-lane h4{font-size:1.05em;margin:0 0 10px;color:#203047}
-#corrected-decision-diagram .decision-step{padding:11px;border-radius:7px;background:#eaf0f7;margin:8px 0;overflow-wrap:anywhere}
-#corrected-decision-diagram .decision-arrow{text-align:center;font-size:23px;color:#567494;line-height:1.3;padding:4px}
-#corrected-decision-diagram .decision-join{margin:10px 0;padding:14px;border:1px solid #9cb8d3;border-radius:9px;background:#f4f8fc;text-align:center}
-#corrected-decision-diagram .decision-gate{margin:10px 0;padding:14px;border:2px solid #a68032;border-radius:9px;background:#fff6df;text-align:center}
-#corrected-decision-diagram .decision-caption{font-size:.85em;color:#54677e}
-@media(max-width:750px){#corrected-decision-diagram .decision-cols{grid-template-columns:1fr}}
+#a-progress{background:#fff;border:1px solid #cbd5e1;border-radius:12px;padding:18px;margin:22px 0;max-width:100%;box-sizing:border-box}
+#a-progress .progress-cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px}
+#a-progress .progress-lane{background:#f7f9fc;border:1px solid #dae1ea;border-radius:10px;padding:15px;min-width:0}
+#a-progress h4{margin:0 0 10px;font-size:1em;color:#223b5b}
+#a-progress .progress-unit{background:white;border:1px solid #d6e0eb;border-radius:7px;padding:11px;margin:10px 0;overflow-wrap:anywhere}
+#a-progress .progress-status{font-size:.83em;font-weight:700;color:#4b6176;display:block;margin-top:4px}
+#a-progress .progress-down{color:#667f99;text-align:center;font-size:21px;line-height:1}
+#a-progress .progress-join{border:1px solid #bdcddd;background:#f7fafd;border-radius:9px;padding:13px;margin:12px 0}
+#a-progress .progress-hold{border:1px solid #c1a267;background:#fff9e9;border-radius:9px;padding:13px;margin:12px 0}
+#a-progress .progress-note{font-size:.86em;color:#506378}
+@media(max-width:720px){#a-progress .progress-cols{grid-template-columns:1fr}}
 </style>
-<figure id="corrected-decision-diagram" aria-label="Updated source custody, QRT classification, Physics authority and Core1A decision flow">
-<figcaption><strong>Updated decision and progress map</strong> — source custody and cognitive adjudication are different routes; neither authorizes the other's work.</figcaption>
-<div class="decision-top"><strong>Shared authority + selected subject Blueprint / topic adapter</strong><div class="decision-caption">Load cognitive rules before SL2/QRT; draft WPE adapter selection is still open.</div></div>
-<div class="decision-arrow" aria-hidden="true">↓</div>
-<div class="decision-cols">
-  <div class="decision-lane">
-    <h4>Route A — Source-backed Core2</h4>
-    <div class="decision-step">Original examination or textbook question, exact wording, figures, answer, source hints and identity</div>
-    <div class="decision-arrow" aria-hidden="true">↓</div>
-    <div class="decision-step">Source preservation and custody verification (SL1 or an equivalent authorized source-custody review)</div>
-    <div class="decision-arrow" aria-hidden="true">↓</div>
-    <div class="decision-step"><strong>Core2 candidate → independently reviewed source-backed Core2</strong><div class="decision-caption">Can be prepared without completed SL2/QRT; learner use additionally follows protection, eligibility and release controls.</div></div>
-    <div class="decision-step">Optional P1 first attempt <strong>before</strong> help or answers when actual learner observations are collected</div>
+<figure id="corrected-decision-diagram" aria-label="Status overlay of the current question and Physics-source evidence routes">
+<div id="a-progress">
+<figcaption><strong>Source → QRT → teaching: actual evidence status</strong><div class="progress-note">Read with the workflow above. A status here is evidence of a specific stage, not permission for the next stage.</div></figcaption>
+<div class="progress-cols">
+  <div class="progress-lane">
+    <h4>1 · Question route — assessment demand</h4>
+    <div class="progress-unit"><strong>Question bank + textbook questions</strong><span class="progress-status">AVAILABLE / SOURCE IDENTITY NOT FULLY QUALIFIED</span><div class="progress-note">Exact source, figure, answer and examination-key custody remain distinct checks.</div></div>
+    <div class="progress-down" aria-hidden="true">↓</div>
+    <div class="progress-unit"><strong>SL1 identity and custody</strong><span class="progress-status">CANDIDATE TOOL / UNRESOLVED SOURCE REVIEWS</span></div>
+    <div class="progress-down" aria-hidden="true">↓</div>
+    <div class="progress-unit"><strong>Optional P1 first attempt</strong><span class="progress-status">OPTIONAL — NO OBSERVATION INFERRED</span><div class="progress-note">If collected, save the attempt before any support/answer exposure. Missing P1 does not block static question analysis.</div></div>
+    <div class="progress-down" aria-hidden="true">↓</div>
+    <div class="progress-unit"><strong>SL2 cognitive proposal → independent QRT adjudication</strong><span class="progress-status">4 REVIEWED APPLY/D2 SUPPORTS · 10 NOMINATIONS UNREVIEWED · 0 EXAM ADMISSIONS</span><div class="progress-note">A proposed D3/D4 placement is not qualifying evidence. Seven original vacancies persist.</div></div>
   </div>
-  <div class="decision-lane">
-    <h4>Route B — Cognitive demand / QRT</h4>
-    <div class="decision-step">The <strong>same exact source question</strong> + its preserved identity + pinned subject rules</div>
-    <div class="decision-arrow" aria-hidden="true">↓</div>
-    <div class="decision-step">SL2 candidate: decisive intellectual operation, competing routes, five demand factors; optional P1 evidence remains distinguishable</div>
-    <div class="decision-arrow" aria-hidden="true">↓</div>
-    <div class="decision-step"><strong>Independent QRT adjudication</strong>: operation, D-band, task/source role and one supported examination counting home<div class="decision-caption">Required for certified D3/D4 placement, not for ordinary question preservation.</div></div>
+  <div class="progress-lane">
+    <h4>2 · Source/exposition route — Physics truth</h4>
+    <div class="progress-unit"><strong>Book, syllabus, diagrams, scans</strong><span class="progress-status">AVAILABLE, WITH COVERAGE GAPS</span></div>
+    <div class="progress-down" aria-hidden="true">↓</div>
+    <div class="progress-unit"><strong>Exact source units, claims and conditions</strong><span class="progress-status">10 PREPARATION DOSSIERS · NOT 10 LESSONS</span><div class="progress-note">Evidence extraction and native-field presence do not prove scientific meaning or teaching sufficiency.</div></div>
+    <div class="progress-down" aria-hidden="true">↓</div>
+    <div class="progress-unit"><strong>Qualified laws, prerequisites, representations and conditional warrants</strong><span class="progress-status">INDEPENDENT SCIENTIFIC QUALIFICATION HOLD</span></div>
+    <div class="progress-down" aria-hidden="true">↓</div>
+    <div class="progress-unit"><strong>Construction obligations for Core1A</strong><span class="progress-status">PREPARATION MAY CONTINUE · NO APPROVED NEW LESSON</span><div class="progress-note">Canonical Physics is the academic authority, not the Core2 reader.</div></div>
   </div>
 </div>
-<div class="decision-arrow" aria-hidden="true">↓</div>
-<div class="decision-join"><strong>Parallel academic route:</strong> book / syllabus / figures → exact evidence → qualified canonical scientific laws, conditions and representations.<div class="decision-caption">Core1A Physics truth belongs to canonical authority; Core2 cannot replace it.</div></div>
-<div class="decision-arrow" aria-hidden="true">↓</div>
-<div class="decision-join"><strong>Construction binder B1–B7</strong> — qualified Physics plus an independently reviewed task requirement <em>where a specific assessment-demand correspondence is claimed</em>.<div class="decision-caption">No fabricated task join, approved adapter, scientific warrant or teaching sufficiency.</div></div>
-<div class="decision-arrow" aria-hidden="true">↓</div>
-<div class="decision-gate"><strong>WPE Owner authoring gate remains in force</strong><div>Completed Core2 at the Owner-approved scope → explicit Owner approval.</div><div class="decision-caption"><strong>OPEN:</strong> full-bank completion versus a bounded approved slice; no scope was selected in this document.</div></div>
-<div class="decision-arrow" aria-hidden="true">↓</div>
-<div class="decision-join"><strong>Native Core1A lesson teaching → independent checks → Owner Core1A approval → fresh Core1B reconstruction</strong><div class="decision-caption">Source dossiers can continue in parallel. All learner publication/release approvals are separate; D3.1 remains PAUSED.</div></div>
+<div class="progress-down" aria-hidden="true">↓</div>
+<div class="progress-join"><strong>Reviewed task requirement + qualified subject science + selected topic adapter → B1–B7 binder</strong><span class="progress-status">HOLD — EXACT REVIEWED TASK JOIN, APPROVED ADAPTER AND SCIENTIFIC/TEACHING WITNESSES MISSING</span><div class="progress-note">This is where the two evidence routes must be reconciled for a question-linked teaching construction, not where an original question gets its source authority.</div></div>
+<div class="progress-hold"><strong>Separate Core2 production and Owner execution gate</strong><div>Eight textbook-question records plus one synthetic control are present in a draft native reader; no examination question is independently admitted. Under the existing WPE Owner sequence, Core2 must reach its <em>explicitly accepted scope</em> and obtain Owner approval before Core1A lesson authoring.</div><span class="progress-status">CORE2 OWNER ACCEPTANCE: PENDING · COVERAGE SCOPE (WHOLE BANK OR BOUNDED SLICE): OPEN</span><div class="progress-note">Source-preserving Core2 preparation can proceed without SL2/QRT qualification; certifying D3/D4 examination placement still requires the independent QRT route. These are separate claims, not alternative academic authorities.</div></div>
+<div class="progress-down" aria-hidden="true">↓</div>
+<div class="progress-join"><strong>Core1A authoring → governed learner render/independent teaching checks → Owner approval → fresh Core1B reconstruction</strong><span class="progress-status">NO NEW QUALIFIED CORE1A LESSON · CORE1B NOT STARTED UNDER THIS HANDOFF · D3.1 PAUSED</span><div class="progress-note">Learner publication has a separate release authority and is not implied by a local HTML build.</div></div>
+</div>
 </figure>
-<h3>Owner decisions and workflow corrections — explicit disposition</h3>
-<div class="table"><table><thead><tr><th>Decision</th><th>Required distinction</th><th>Current disposition</th></tr></thead><tbody>
-<tr><th>D1 — Core2 custody</th><td>Prepare source-backed questions before cognitive labelling; ordinary Core2 qualification rests on authorized original-question custody, not automatically on QRT.</td><td>Supported by <a href="../../templates/shared-roles/CORE-AUTHORITY-CONTRACT.md">Shared role authority</a>; do not confuse draft and admitted product.</td></tr>
-<tr><th>D2 — P1/SL2/QRT</th><td>P1 is optional evidence, recorded before help/answer exposure if present. SL2 proposes; independent QRT qualifies operation, D-band and examination coverage.</td><td>Clarification; no retrospective classification or admissions granted.</td></tr>
-<tr><th>D3 — Subject rules first</th><td>Load subject Blueprint and topic-adapter constraints before cognitive analysis; independently resolve exact accepted bindings later.</td><td>Required workflow interpretation; WPE adapter approval still open.</td></tr>
-<tr><th>D4 — Owner gate scope</th><td>Keep the WPE Core2 → Owner → Core1A → Owner → Core1B execution gate, but identify what “complete Core2” covers.</td><td><strong>OWNER DECISION OPEN:</strong> full planned corpus or an expressly approved bounded slice.</td></tr>
-<tr><th>D5 — Workflow-map alignment</th><td><a href="CURRENT_WORKFLOW.json">CURRENT_WORKFLOW.json</a> currently gives native <code>core2</code> a <code>qrt</code> dependency, conflating ordinary custody with examined D3/D4 placement. A future revision must separate Core2 source-product status from QRT admission and preserve release/Owner gates.</td><td><strong>OPEN:</strong> this report edit does not rewrite the machine navigation map or install a new governance contract.</td></tr>
+<h3>Decisions versus evidence — do not collapse them</h3>
+<div class="table"><table><thead><tr><th>Question</th><th>Supported conclusion</th><th>Next decision / missing proof</th></tr></thead><tbody>
+<tr><th>Can Core2 be prepared before SL2/QRT?</th><td><strong>Yes, as a source-preserving product candidate.</strong> Reviewed source custody is its Shared authority; QRT is not a substitute.</td><td>Separate source eligibility, learner/release eligibility, and D3/D4 examination admission in the actual workflow and receipts.</td></tr>
+<tr><th>Can SL2/QRT be omitted from a D3/D4 examination-coverage claim?</th><td><strong>No.</strong> SL2's proposal and independent QRT's decision are distinct from source identity.</td><td>Obtain original paper/key/figure correspondence, reviewed cognitive judgments and exact-counting-home admissions.</td></tr>
+<tr><th>Can Physics/source preparation proceed before complete Core2?</th><td><strong>Yes, within its authorized scope.</strong> Canonical Physics, not Core2, governs Core1A truth.</td><td>Qualify warrants, pin an approved WPE adapter and independently verify B1–B7 task correspondence when claimed.</td></tr>
+<tr><th>What does “complete Core2 → Owner approval” mean here?</th><td><strong>It is an Owner-scoped execution control, not a universal academic dependency.</strong></td><td><strong>OWNER DECISION OPEN:</strong> specify whether the acceptable Core2 scope is the full bank or an explicitly bounded slice; no assumption or release authorization is made here.</td></tr>
+<tr><th>Is the machine workflow already reconciled?</th><td><strong>No.</strong> The present <a href="CURRENT_WORKFLOW.json">CURRENT_WORKFLOW.json</a> still lists <code>qrt</code> as a dependency of its native <code>core2</code> stage.</td><td>Reconcile its stage/state meaning with <a href="../../templates/shared-roles/CORE-AUTHORITY-CONTRACT.md">Shared Core authority</a> in a separate governed change; this report does not silently rewrite the dependency graph.</td></tr>
 </tbody></table></div>
-<p><strong>Current evidence is not changed by this design correction:</strong> 8 textbook question candidates plus one synthetic control, 0 admitted examination originals, 4 APPLY/D2 reviewed supports, 10 unreviewed nominations, 7 original vacancies, and 10 preparation dossiers with 0 newly qualified Core1A lessons. Consult the <a href="CURRENT_CONCEPT_COMPANION.md">current companion</a> for source scope and evidence dates.</p>
+<p><strong>Evidence snapshot:</strong> these status labels are drawn from the current 31 October reconciliation and the 2 November operational addendum, not from new academic or browser test runs. <a href="CURRENT_CONCEPT_COMPANION.md">Current companion</a> and <a href="OPEN_GAPS.md">open gaps</a> carry the full limitations. Historic counts in the ledger below remain historical, not live totals.</p>
 <details><summary><strong>Historical 30 October diagram (superseded dependency interpretation)</strong></summary>
 <p>The original diagram is retained as a dated record, not the current Core2/QRT authority contract. The original source report and its inventory remain separately linked above.</p>
 <pre>BOOK / SYLLABUS / FIGURES                    QUESTION BANK
