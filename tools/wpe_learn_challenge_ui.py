@@ -62,7 +62,7 @@ def test(browser):
         check("single two-kilogram trolley" in guide.nth(1).locator("svg").get_attribute("aria-label"),"Momentum guide diagram still shows challenge carts")
         check("single straight potential-energy line" in guide.nth(3).locator("svg").get_attribute("aria-label"),"Potential guide diagram still previews challenge slopes")
         check("two carts separate from rest" in guide.nth(4).locator("figcaption").inner_text(),"Fragment guide diagram still previews moving parent")
-        check("60 J" not in guide.nth(2).locator("svg").inner_text(),"Core1A visual leaks ridge answer")
+        check("60 J" not in guide.nth(2).locator("svg").text_content(),"Core1A visual leaks ridge answer")
         check(not errors,f"JS errors at {w}: {errors}")
         wide=page.evaluate("document.documentElement.scrollWidth - innerWidth")
         check(wide<=2,f"Horizontal overflow {wide}px at {w}")
