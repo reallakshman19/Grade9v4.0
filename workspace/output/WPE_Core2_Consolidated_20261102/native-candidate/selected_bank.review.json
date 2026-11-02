@@ -266,14 +266,14 @@
       "scaffolds": [
         {
           "prompt": "Study cue 1",
-          "text": "When the same applied force stretches two different springs, which spring property determines the extension?",
+          "text": "When each hanging block is at rest, what load does its own spring support? Are the loads for 100 g and 200 g equal?",
           "origin": "AUTHORED_PEDAGOGICAL",
           "support_kind": "REPRESENT",
           "reveals": "HINT_ONLY"
         },
         {
           "prompt": "Study cue 2",
-          "text": "How would you compare their stored energies without assuming equal extensions?",
+          "text": "How does the stored energy depend separately on the supported load and the spring stiffness?",
           "origin": "AUTHORED_PEDAGOGICAL",
           "support_kind": "CONNECT",
           "reveals": "HINT_ONLY"
@@ -1804,7 +1804,23 @@
       "key_state": "HOLD:OFFICIAL_KEY_UNRESOLVED",
       "flags": [],
       "source_urls": [],
-      "master_sequence": 34
+      "master_sequence": 34,
+      "scaffolds": [
+        {
+          "prompt": "Study cue 1",
+          "text": "What form of energy arrives at a generator with the moving wind?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "REPRESENT",
+          "reveals": "HINT_ONLY"
+        },
+        {
+          "prompt": "Study cue 2",
+          "text": "If the wind gets faster, does the amount of air crossing a fixed rotor area each second stay the same?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "CONNECT",
+          "reveals": "HINT_ONLY"
+        }
+      ]
     },
     {
       "id": "Q-PHY-WPE-B3-35",
@@ -2850,7 +2866,23 @@
       "key_state": "HOLD:OFFICIAL_KEY_UNRESOLVED",
       "flags": [],
       "source_urls": [],
-      "master_sequence": 57
+      "master_sequence": 57,
+      "scaffolds": [
+        {
+          "prompt": "Study cue 1",
+          "text": "What angle does the specified force make with the direction of motion at each instant?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "REPRESENT",
+          "reveals": "HINT_ONLY"
+        },
+        {
+          "prompt": "Study cue 2",
+          "text": "What quantity connects a force acting during motion to the change in kinetic energy?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "CONNECT",
+          "reveals": "HINT_ONLY"
+        }
+      ]
     },
     {
       "id": "Q-PHY-WPE-B4-58",
@@ -2898,7 +2930,23 @@
       "key_state": "HOLD:OFFICIAL_KEY_UNRESOLVED",
       "flags": [],
       "source_urls": [],
-      "master_sequence": 58
+      "master_sequence": 58,
+      "scaffolds": [
+        {
+          "prompt": "Study cue 1",
+          "text": "Would a force that depends on an object's speed have the same properties as a force determined only by position?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "REPRESENT",
+          "reveals": "HINT_ONLY"
+        },
+        {
+          "prompt": "Study cue 2",
+          "text": "What experiment using two different paths between the same endpoints might help you distinguish the force types?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "CONNECT",
+          "reveals": "HINT_ONLY"
+        }
+      ]
     },
     {
       "id": "Q-PHY-WPE-B4-59",
@@ -3376,7 +3424,23 @@
       "key_state": "HOLD:OFFICIAL_KEY_UNRESOLVED",
       "flags": [],
       "source_urls": [],
-      "master_sequence": 67
+      "master_sequence": 67,
+      "scaffolds": [
+        {
+          "prompt": "Study cue 1",
+          "text": "When two moving vehicles have the same kinetic energy and are stopped by equal resisting forces, which quantity can you compare first?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "REPRESENT",
+          "reveals": "HINT_ONLY"
+        },
+        {
+          "prompt": "Study cue 2",
+          "text": "If a vehicle turns while keeping the same speed, what changes about its velocity?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "CONNECT",
+          "reveals": "HINT_ONLY"
+        }
+      ]
     },
     {
       "id": "Q-PHY-WPE-B5-68",

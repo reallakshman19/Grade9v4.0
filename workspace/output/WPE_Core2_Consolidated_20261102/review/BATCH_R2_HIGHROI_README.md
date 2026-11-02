@@ -28,3 +28,10 @@ Retained fields on all 74: ID, exact stem, stem digest, options, figure ref, que
 Engineering tests: `python -m pytest -q tests/test_wpe_core2_batch_r2.py` plus full Python QA on PR head; actual CI results required. Independent science review: NOT_RUN. Live student browser trial: NOT_RUN. Publication and promotion: HOLD pending scoped reviewer/Owner release.
 
 **No academic approval inferred from software validation.**
+
+## Batch academic pre-review supplement · a5062ab1 base
+
+- [Batch academic author audit](BATCH_R2_ACADEMIC_AUTHOR_AUDIT_20261102.json) evaluates all 16 existing flags as one evidence set, with source/key/figure gaps and exact physical derivations clearly separated from independent admissions.
+- EX-M8 original scanned source shows unequal 100 g and 200 g hanging weights; incorrect same-force cue corrected. Four other high-spoiler raw hint sets (AN-4/5/6 and EX-M96) now have authored student-safe cue pairs. **33** scaffolded questions in total, 26 of the 63 explicit Crux Move cases covered by authored cues.
+- Remaining **37** raw Crux Move hint instances are **filtered from pre-attempt UI**, not deleted or rewritten. They are available as historical raw evidence and their underlying solution reasoning is accessible after attempt. Other kinds of unexamined hint leakage remain possible.
+- No source original, question identity, QRT label, exam rights or verified scientific reviewer verdict is created. All academic admissions remain zero and release remains HOLD.

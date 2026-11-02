@@ -8,8 +8,8 @@
   "artifacts": [
     {
       "path": "preview/question-status.html",
-      "sha": "dd3dde403b86e4f18f92d0a77b87b2f2339adec5",
-      "length": 307346
+      "sha": "c416fe93e4fd043cb365a2bc5962f1ba4f15ab8f",
+      "length": 310747
     },
     {
       "path": "preview/question-status-archive.html",
@@ -18,8 +18,8 @@
     },
     {
       "path": "workspace/output/WPE_Core2_Consolidated_20261102/native-candidate/selected_bank.review.json",
-      "sha": "146143142b47a01deae48e66f55f21f90e27754c",
-      "length": 236247
+      "sha": "cd7cb5c705ce12b0f97edee213be2afedc04abb1",
+      "length": 240046
     },
     {
       "path": "workspace/output/WPE_Core2_Consolidated_20261102/native-candidate/assets.review.json",
@@ -53,13 +53,18 @@
     },
     {
       "path": "workspace/output/WPE_Core2_Consolidated_20261102/review/BATCH_R2_HIGHROI_AUDIT.json",
-      "sha": "cf0af3314eef6fc738ba9afa5555dd2ce31c4a9a",
-      "length": 6566
+      "sha": "bff8622ad8be2d22973e416a3f00a739f0f8f291",
+      "length": 7683
     },
     {
       "path": "workspace/output/WPE_Core2_Consolidated_20261102/review/BATCH_R2_HIGHROI_README.md",
-      "sha": "e0a6d8ad4e6f75bd567011749b6ca54821fd10d0",
-      "length": 3387
+      "sha": "9b97990c5dacf98bdf3bf16cb38708ee921f7a3e",
+      "length": 4477
+    },
+    {
+      "path": "workspace/output/WPE_Core2_Consolidated_20261102/review/BATCH_R2_ACADEMIC_AUTHOR_AUDIT_20261102.json",
+      "sha": "ddb51fb70cfd5edcee5f8607e03dcd63f1722c9d",
+      "length": 14905
     }
   ],
   "academic_review": "NOT_RUN",
@@ -72,8 +77,8 @@
     "WEP07-03"
   ],
   "batch_r2": {
-    "base_commit": "90615716979d4172a5953cabf124c92de83912cf",
-    "scope": "29 question-specific authored scaffolds; six corrected author explanations; 16 existing source flags individually triaged",
+    "base_commit": "a5062ab11b512f0146d7bcb6c117124c648e23b4",
+    "scope": "33 authored student cue sets; literal Crux Move filtered for remaining 37; 16-question provisional academic batch audit; no source mutation",
     "academic_state": "NOT_ADMITTED",
     "independent_review": "NOT_RUN"
   }

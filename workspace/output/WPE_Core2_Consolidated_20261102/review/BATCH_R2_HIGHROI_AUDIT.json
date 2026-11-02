@@ -11,9 +11,10 @@
     "unique_question_ids": 74,
     "source_flagged": 16,
     "with_literal_crux_move_pre_attempt_hint": 63,
-    "authored_scaffold_questions_added": 29,
-    "crux_move_cases_with_scaffold": 22,
-    "crux_move_cases_unscaffolded": 41
+    "authored_scaffold_questions_added": 33,
+    "crux_move_cases_with_scaffold": 26,
+    "crux_move_cases_unscaffolded": 37,
+    "crux_move_cases_guarded_by_filter": 37
   },
   "review_flags": [
     {
@@ -162,7 +163,11 @@
     "TB-WPE-ILL-05",
     "TB-WPE-ILL-11",
     "TB-WPE-ILL-12",
-    "SYN-WPE-DIRECTION-CONTROL-01"
+    "SYN-WPE-DIRECTION-CONTROL-01",
+    "AN-4",
+    "AN-5",
+    "AN-6",
+    "EX-M96"
   ],
   "science_text_changed": [
     "EX-M2",
@@ -180,5 +185,21 @@
     "Remaining pre-attempt cue contamination; do not claim all 63 resolved"
   ],
   "independent_review": "NOT_RUN",
-  "learner_trial": "NOT_RUN"
+  "learner_trial": "NOT_RUN",
+  "reader_protection": {
+    "method": "Preserve raw hints[] exactly. For questions with authored scaffolds, show those instead of raw hints. For others, exclude only literal 'Crux Move' raw hints from the pre-attempt page; their method can still be learned from the after-attempt worked solution.",
+    "raw_hints_modified": false,
+    "explicit_crux_cases": 63,
+    "curated_scaffold_cases": 26,
+    "other_deferred_cases": 37,
+    "remaining_unreviewed_for_other_spoilers": 37,
+    "not_a_learned_mastery_claim": true
+  },
+  "student_cue_correction": {
+    "source_id": "EX-M8",
+    "error": "Earlier author hint wrongly presupposed equal stretching forces for unequal hanging masses (100 g and 200 g).",
+    "repair": "Prompt separate loads and energy/stiffness comparison without supplying the result.",
+    "source_reproduction": "https://www.allenoverseas.com/wp-content/themes/ALLENOverseas/lp-assets/2026/Physics/2301-Physics_Paper_With_Solution_Morning.pdf#page=3",
+    "academic_admission": "NOT_ADMITTED"
+  }
 }

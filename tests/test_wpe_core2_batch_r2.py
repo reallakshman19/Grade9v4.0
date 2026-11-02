@@ -36,7 +36,7 @@ def test_authored_cues_are_separate_from_original_hint_custody():
     b,h,_=read()
     a=json.loads(AUDIT.read_text(encoding="utf-8"))
     covered=[x for x in b["questions"] if x.get("scaffolds")]
-    assert len(covered)==29
+    assert len(covered)==33
     assert {x["source_id"] for x in covered}==set(a["changed_questions"])
     assert "q.scaffolds?.length?q.scaffolds:q.hints" in h
     for x in covered:
@@ -85,10 +85,36 @@ def test_flag_disposition_and_scanned_hints():
 
 def test_manifest_exact_git_blob_ids():
     manifest=json.loads(MANIFEST.read_text(encoding="utf-8"))
-    for path in [BANK,PAGE,AUDIT,OUT/"review/BATCH_R2_HIGHROI_README.md"]:
+    for path in [BANK,PAGE,AUDIT,OUT/"review/BATCH_R2_HIGHROI_README.md",OUT/"review/BATCH_R2_ACADEMIC_AUTHOR_AUDIT_20261102.json"]:
         relative=path.relative_to(ROOT).as_posix()
         rows=[x for x in manifest["artifacts"] if x["path"]==relative]
         assert len(rows)==1
         raw=path.read_bytes()
         sha=hashlib.sha1(b"blob "+str(len(raw)).encode()+bytes([0])+raw).hexdigest()
         assert sha==rows[0]["sha"]
+
+def test_batch_guard_on_remaining_raw_crux_hints():
+    b,html,_=read()
+    assert "q.hints.filter(h=>!/crux move/i.test(h.text||''))" in html
+    flagged=[q for q in b["questions"] if any("crux move" in h["text"].lower() for h in q["hints"])]
+    curated=[q for q in flagged if q.get("scaffolds")]
+    filtered=[q for q in flagged if not q.get("scaffolds")]
+    assert (len(flagged),len(curated),len(filtered)) == (63,26,37)
+    for item in b["questions"]:
+        assert item["review_state"]=="NOT_ADMITTED"
+
+def test_correct_unequal_load_spring_scaffold_and_source_custody():
+    b,_,_=read()
+    item=q(b,"EX-M8")
+    assert "100 g" in item["scaffolds"][0]["text"]
+    assert "200 g" in item["scaffolds"][0]["text"]
+    assert "same applied force" not in " ".join(s["text"].lower() for s in item["scaffolds"])
+    assert item["stem_sha256"] == "f154bd2c140fee999c231282c39119e1efee629fa820c8edcbb97fb9c2bf5245"
+    assert all(s["origin"]=="AUTHORED_PEDAGOGICAL" for s in item["scaffolds"])
+
+def test_academic_batch_16_source_dispositions_are_not_admissions():
+    a=json.loads((OUT/"review/BATCH_R2_ACADEMIC_AUTHOR_AUDIT_20261102.json").read_text(encoding="utf-8"))
+    assert a["role"]=="AUTHOR_ORACLE_PRE_REVIEW_NOT_INDEPENDENT"
+    assert len(a["flagged_questions"])==16
+    assert a["summary"]["source_admissions"]==0
+    assert all(row["independent_physics_verdict"]=="NOT_RUN" and row["qrt_admission"]=="NOT_ADMITTED" for row in a["flagged_questions"])
