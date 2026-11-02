@@ -201,5 +201,21 @@
     "Two hints revealed progressively; answer only inserted into live DOM after deliberate unlock.",
     "Question type and QRT difficulty not inferred from original sheet's LEVEL–IA label.",
     "Core1A/B formal B1–B7 and Owner academic reviews are outstanding."
-  ]
+  ],
+  "technical_review": {
+    "id": "WPE-01",
+    "status": "TECHNICAL_REMEDIATION_ONLY__ACADEMIC_HOLD",
+    "review_file": "learn-challenge-wpe01-review.json",
+    "scope": [
+      "Four guided diagrams separated from challenge-specific setups",
+      "Guided teaching contrast and transfer paragraphs added for five subtopics",
+      "Local-only attempt persistence, option-specific feedback and reflection added"
+    ],
+    "limits": [
+      "Static public challenge key is readable in page code",
+      "LocalStorage is not secure or independent first-attempt evidence",
+      "No semantic grading of free-text reasoning",
+      "QRT, adapter, Owner and native Core1A/B acceptance remain pending"
+    ]
+  }
 }
