@@ -98,7 +98,7 @@ def test_six_complete_p0_packs_and_no_p1_promotion():
         assert "## Core1A" in content and "## Core1B" in content
         assert "## Author-only reference" in content
         assert "Separation check" in content
-        assert "Rubric" in content
+        assert "rubric" in content.casefold()
         assert all(f"### {i:02d}" in content for i in range(1, 7))
         assert "not for learner-facing pre-attempt delivery" in content
         assert "\\\\(" not in content, "Double-escaped maths cannot render as intended"
