@@ -21,7 +21,7 @@
 
 ## Core1B — unseen challenge (energy seems sufficient, but contact fails)
 
-**Will the toy loop stay taut?** A **1 kg** bob is attached to a light string of length **1 m**. At the bottom of its vertical circle it has speed **7 m/s** upward along the circle. The pivot is fixed; the string is initially taut. Use \(g=10\text{ m/s}^2\) and neglect air resistance. 
+**Will the toy loop stay taut?** A **1 kg** bob is attached to a light string of length **1 m**. At the bottom of its vertical circle it has speed **7 m/s**, moving tangentially toward the rising side of the circle. The pivot is fixed; the string is initially taut. Use \(g=10\text{ m/s}^2\) and neglect air resistance. 
 
 Can this bob complete the **full circular path with the string remaining taut all the way to the top**? Check *both* energy and the inward-force condition, and explain precisely what a negative computed tension means.
 
@@ -51,6 +51,6 @@ Keep everything the same but change the **bottom speed to 8 m/s**. Recalculate \
 - **Boundary \(v_{\mathrm{bottom}}=8\text{ m/s}\):** \(v_{\mathrm{top}}^2=64-40=24\), \(T_{\mathrm{top}}=24-10=+14\text{ N}\). The string can remain taut at the top (and along the ideal lossless circular path).
 - **Rubric:** distinguishes energy from radial-force test, chooses inward direction at top, computes \(v_{\mathrm{top}}^2=9\), identifies \(T=-1\text{ N}\) as an impossible *taut-string* outcome, states slack-path interpretation, and verifies the 8 m/s boundary. An answer of “not enough energy” is **not** an acceptable explanation: energy is enough to reach that height, but tension is not physically admissible.
 
-**Scientific conditions:** light inextensible string, fixed pivot and constant \(r\) only **while taut**; no drag/dissipation; ideal nonrelativistic motion; the ball begins with an upward tangential velocity from the bottom. The energy calculation of a hypothetical top position must **not** be mistaken for a valid future trajectory once the string becomes slack. A rigid rail or rod can supply different constraint forces, so string-specific \(T\ge0\) is not universal.
+**Scientific conditions:** light inextensible string, fixed pivot and constant \(r\) only **while taut**; no drag/dissipation; ideal nonrelativistic motion; at the bottom, the bob's velocity is horizontal and tangent to the circle, directed so it moves upward along the following arc. The energy calculation of a hypothetical top position must **not** be mistaken for a valid future trajectory once the string becomes slack. A rigid rail or rod can supply different constraint forces, so string-specific \(T\ge0\) is not universal.
 
 **Separation check:** guided = *given top speed* for a 0.5 kg bob on 2 m string, calculate actual top tension and bottom speed; independent = *given bottom speed* for 1 kg bob on 1 m string and decide whether the taut constraint is physically possible. Neither the source question nor its original geometry is copied.
