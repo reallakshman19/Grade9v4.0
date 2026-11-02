@@ -12,7 +12,7 @@
 2. **Start with the sled's energy.** \(K_0=\tfrac12mv_0^2=\tfrac12(2)(2^2)=4\text{ J}\).
 3. **Build an energy ledger:** \(K(t)=K_0+Pt=4+12t\) joules. At \(t=1\text{ s}\), \(K=16\text{ J}\). At \(t=4\text{ s}\), \(K=52\text{ J}\).
 4. **Convert energy into speed.** For this 2 kg sled, \(K=v^2\) numerically in joules, so \(v(1)=4\text{ m/s}\) and \(v(4)=\sqrt{52}\approx7.21\text{ m/s}\). The speed did **not** grow by the same number of m/s each second.
-5. **Pick the graphs.** The *kinetic energy–time* plot is straight because the increase is 12 J/s. The *speed–time* plot bends upward while getting less steep, since \(v(t)=\sqrt{4+12t}\). The *displacement–time* plot becomes steeper as the sled speeds up; its slope is speed. Distance is the area under a speed–time curve, **not** the area under an energy–time curve.
+5. **Pick the graphs.** The *kinetic energy–time* plot is straight because the increase is 12 J/s. The *speed–time* plot rises but gradually flattens (its slope gets smaller), since \(v(t)=\sqrt{4+12t}\). The *displacement–time* plot becomes steeper as the sled speeds up; its slope is speed. Distance is the area under a speed–time curve, **not** the area under an energy–time curve.
 
 **A child-friendly graph check:** The motor adds 36 J between \(t=1\text{ s}\) and \(t=4\text{ s}\). That is constant energy gain per second, even though the speed rises from 4 to about 7.21 m/s rather than increasing by 12 m/s.
 
