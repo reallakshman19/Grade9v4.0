@@ -28,21 +28,23 @@ The exact pilot selections and reader classifications are compared side by side 
 | P0 | WPE-C04 · Distributed mass / centre of mass | EX-M73, WEP07-02, TB-WPE-ILL-11 | **Full guided + fresh-task author pack** |
 | P0 | WPE-C05 · Graph: area, slope, or time shape | EX-M56, EX-M61, EX-M69 | **Full guided + fresh-task author pack**; original exam graphs still unqualified |
 | P0 | WPE-C06 · Vertical circle and contact constraint | EX-M39, EX-N31, EX-M18, EX-M6 | **Full guided + fresh-task author pack** |
-| P1 | WPE-C07 · Conveyor and mass flow | EX-M16 | Construction specification |
-| P1 | WPE-C08 · Springs at fixed force vs extension | EX-M101 | Construction specification |
+| P1 | WPE-C07 · Conveyor and mass flow | EX-M16 | **Full guided + fresh-task author pack** |
+| P1 | WPE-C08 · Springs at fixed force vs extension | EX-M101 | **Full guided + fresh-task author pack** |
 
 Source-theme links after the R1 selection are *proposals*, not independently verified operation-level QRT joins. The matrix deliberately avoids claiming that a specific exam stem matches a construction without original-question confirmation.
 
-## Six usable P0 author packs
+## Eight usable Core1A/Core1B author packs — six P0 and two P1
 
 - [WPE-C01 — Multi-force ledger](MULTIFORCE_LEDGER_LEARNING_PACK.md): guide = horizontal box with motor pull/friction; genuinely new task = scooter up a ramp requiring motor, friction, gravity and normal-force decisions.
 - [WPE-C02 — Spring contact](SPRING_CONTACT_LEARNING_PACK.md): guide = spring launch followed by a smooth region; genuinely new task = spring launch **then a rough strip** with changed equations after loss of contact.
-- [WPE-C03 — Constant power](CONSTANT_POWER_LEARNING_PACK.md): guide = 2 kg toy sled, already moving, energy input at fixed power; fresh task = different trolley and power, model the kinetic-energy, speed and distance graph shapes with a changed-power boundary. Optional rest-start (spropto t^{3/2}) derivation is explicitly advanced/idealized.
+- [WPE-C03 — Constant power](CONSTANT_POWER_LEARNING_PACK.md): guide = 2 kg toy sled, already moving, energy input at fixed power; fresh task = different trolley and power, model the kinetic-energy, speed and distance graph shapes with a changed-power boundary. Optional rest-start (\(s\propto t^{3/2}\)) derivation is explicitly advanced/idealized.
 - [WPE-C04 — Hanging chain](DISTRIBUTED_MASS_LEARNING_PACK.md): guide = lift the hanging half of a chain fully onto a table; fresh task = pull a different rope only partway, recomputing both changing hanging masses and centres of mass.
 - [WPE-C05 — Graph decisions](GRAPH_OPERATION_LEARNING_PACK.md): guide = one rectangle work graph, one potential slope and one displacement slope; fresh task = a force-area triangle, rising energy line and a piecewise position–time slope, plus a force–time impulse boundary.
 - [WPE-C06 — Vertical circle](VERTICAL_CIRCLE_LEARNING_PACK.md): guide = given top speed, calculate tension and bottom speed; fresh task = given bottom speed, use energy **and** top radial-force constraints to detect an impossible negative string tension and test a corrected speed.
+- [WPE-C07 — Conveyor momentum and motor power](CONVEYOR_MOMENTUM_POWER_LEARNING_PACK.md): guide = a steady stream of stationary sand caught by a moving belt; fresh task = already-moving wood chips arriving at a **belt-speed-dependent feed rate**, with separate momentum, motor power, kinetic-energy gain and frictional heating.
+- [WPE-C08 — Spring energy with different controls](SPRING_CONTROLLED_VARIABLE_LEARNING_PACK.md): guide = compare equal extension against equal final force using known stiffnesses; fresh task = infer **unknown stiffnesses from force/extension observations**, then reconstruct both controlled-variable energy comparisons and a doubled-force test.
 
-All six P0 author packs contain **six Core1B stages**: Predict → Attempt → Reconstruct → Diagnose → Repair → Boundary test. All reserve a separate independent task with an **author-only worked reference** and an explanation rubric. Those reference answers are in repository documentation only: **do not embed them into a public pre-attempt client bundle or claim secure answer protection from a static page**.
+All eight author packs contain **six Core1B stages**: Predict → Attempt → Reconstruct → Diagnose → Repair → Boundary test. All reserve a separate independent task with an **author-only worked reference** and an explanation rubric. Those reference answers are in repository documentation only: **do not embed them into a public pre-attempt client bundle or claim secure answer protection from a static page**.
 
 For a student, the essential format is:
 
@@ -51,11 +53,11 @@ For a student, the essential format is:
 
 This is more than selecting MCQ options or writing eight arbitrary characters. It permits playful, age-appropriate open reasoning while keeping an honest distinction between guided teaching and independently witnessed reconstruction.
 
-## This six-pack batch — evidence boundaries
+## Eight-pack completion — evidence boundaries
 
-The construction inventory in [P0_P1_CONSTRUCTION_BRIDGE.json](P0_P1_CONSTRUCTION_BRIDGE.json) marks **six P0 drafted packs, two P1 outlines** and records independently recalculable numerical answer checks. The included test asserts the numeric relationships rather than merely checking that the Markdown files exist. This does not constitute academic validation, real child testing, or secured answer delivery.
+The construction inventory in [P0_P1_CONSTRUCTION_BRIDGE.json](P0_P1_CONSTRUCTION_BRIDGE.json) marks **six P0 and two P1 drafted packs (eight total)** and records independently recalculable numerical answer checks. The included tests independently recompute six numerical answer sets (C03–C08), check all eight guided/challenge documents and exercise the full six-stage structure rather than merely checking that files exist. This does not constitute academic validation, real child testing, or secured answer delivery.
 
-**Grade-9 curriculum caution:** constant-power time/distance calculus and advanced tension analysis are explained as optional supported extensions, not assumed prerequisites for every student. Use graph and energy reasoning first. A vertical-circle challenge may require explicit prior teaching of radial acceleration and string constraints; do not label it accessible solely on the basis of the foundational energy lesson.
+**Grade-9 curriculum caution:** constant-power time/distance calculus, advanced tension analysis and variable-mass momentum-flow energy accounting are scaffolded or labeled as advanced extensions, not assumed prerequisites for every student. Use graph and energy reasoning first. A vertical-circle challenge may require explicit prior teaching of radial acceleration and string constraints; do not label it accessible solely on the basis of the foundational energy lesson.
 
 **Source custody caution:** EX-M56/61/69 original graphs are not qualified by these newly authored example descriptions. Reader and selection conflicts remain exactly as recorded. Nothing in the pack verifies a source figure or official answer key.
 
@@ -67,9 +69,9 @@ The earlier B3/B4 review (`physics/wpe/learn-challenge-wpe02-b3-b4-review.json`)
 
 ## Usage and limits
 
-1. All **six P0 constructions** now have guided and independent learning-pack drafts. Check scientific assumptions and curriculum prerequisites before using an authored pack with a child. The packages do not alter the existing source bank.
+1. All **eight P0/P1 constructions** now have guided and independent learning-pack drafts. Check scientific assumptions and curriculum prerequisites before using an authored pack with a child. The packages do not alter the existing source bank.
 2. Keep Core1A and Core1B in separate learner stages. Preserve a child's prediction, model and first calculation before revealing the author-only solution. Prompt for diagnosis, repair and a boundary test rather than treating a chosen MCQ option as enough.
-3. Expand the **two P1** outlines (conveyor momentum flow and fixed-force versus fixed-extension spring energy) only when ready to use their prerequisite models, and then address the recorded targeted extensions.
+3. The **two P1 packs are now drafted**. Teach them only after mass flow, power and Hooke-law prerequisites are explained at an age-appropriate level; their existence does not imply that the source's D3/D4 demands are qualified. The separate targeted extensions remain future work.
 4. Resolve the pilot/source-reader classification discrepancies **as a separate provenance task**, without blocking clearly labeled preparatory teaching drafts or calling those drafts admission evidence.
 5. If a native assessment or release is intended, complete the existing independent subject/QRT, curriculum adapter, paper/key custody and Owner requirements before claiming acceptance.
 
