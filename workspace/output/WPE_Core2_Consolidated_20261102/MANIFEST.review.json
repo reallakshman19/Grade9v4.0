@@ -8,8 +8,8 @@
   "artifacts": [
     {
       "path": "preview/question-status.html",
-      "sha": "69335bc44cf6493d9e49e2052823f1fb7233f538",
-      "length": 293321
+      "sha": "dd3dde403b86e4f18f92d0a77b87b2f2339adec5",
+      "length": 307346
     },
     {
       "path": "preview/question-status-archive.html",
@@ -18,8 +18,8 @@
     },
     {
       "path": "workspace/output/WPE_Core2_Consolidated_20261102/native-candidate/selected_bank.review.json",
-      "sha": "1161271c0de01f9de31f62cdbcf3679629e16bad",
-      "length": 217380
+      "sha": "146143142b47a01deae48e66f55f21f90e27754c",
+      "length": 236247
     },
     {
       "path": "workspace/output/WPE_Core2_Consolidated_20261102/native-candidate/assets.review.json",
@@ -50,6 +50,16 @@
       "path": "workspace/output/WPE_Core2_Consolidated_20261102/review/HIGH_ROI_CORRECTION_20261102.md",
       "sha": "977911d0d8aa88d73b47870ff87e6ea9569f34f6",
       "length": 3257
+    },
+    {
+      "path": "workspace/output/WPE_Core2_Consolidated_20261102/review/BATCH_R2_HIGHROI_AUDIT.json",
+      "sha": "cf0af3314eef6fc738ba9afa5555dd2ce31c4a9a",
+      "length": 6566
+    },
+    {
+      "path": "workspace/output/WPE_Core2_Consolidated_20261102/review/BATCH_R2_HIGHROI_README.md",
+      "sha": "e0a6d8ad4e6f75bd567011749b6ca54821fd10d0",
+      "length": 3387
     }
   ],
   "academic_review": "NOT_RUN",
@@ -60,5 +70,11 @@
     "EX-M6",
     "TB-WPE-ILL-05",
     "WEP07-03"
-  ]
+  ],
+  "batch_r2": {
+    "base_commit": "90615716979d4172a5953cabf124c92de83912cf",
+    "scope": "29 question-specific authored scaffolds; six corrected author explanations; 16 existing source flags individually triaged",
+    "academic_state": "NOT_ADMITTED",
+    "independent_review": "NOT_RUN"
+  }
 }

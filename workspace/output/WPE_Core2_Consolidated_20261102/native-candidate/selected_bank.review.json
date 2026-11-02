@@ -43,11 +43,11 @@
           "text": "Substitute parameters into the governing relation to compute the matching value."
         }
       ],
-      "answer": "Coaching predicted option: A: 7.74",
+      "answer": "Calculation: v=sqrt(60)=7.745966... m/s. Rounded to two decimal places this is 7.75 m/s, NOT 7.74 m/s. Among the supplied choices, A (7.74) is closest; the original key and option precision remain unverified.",
       "steps": [
         "1. System Representation & Setup: Establish coordinate system, free-body system boundary, and identify initial states for EX-M2.",
         "2. Physical Model & Formulation: Conservation of mechanical energy for connected two-body system: Delta K = W_net => 1/2(M+m)v^2 = (M-m)gh => v = sqrt(2(M-m)gh / (M+m)) = sqrt(2(6-2)(10)(6)/(6+2)) = sqrt(480/8) = sqrt(60) approx 7.74596 m/s.",
-        "3. Execution & Resolution: Solve for the required target quantity and select matching option A:."
+        "3. Compute the unrounded speed sqrt(60)=7.745966... m/s; standard two-decimal rounding gives 7.75 m/s. Option A=7.74 is the nearest displayed value, not the correctly rounded value. Source-key comparison remains unresolved."
       ],
       "check": "Author Limiting Case Verification: If m = M, v = 0 (equilibrium). If m = 0, v = sqrt(2gh) = sqrt(120) approx 10.95 m/s. Bound: 0 < 7.746 < 10.95 m/s.",
       "op": "APPLY",
@@ -59,7 +59,23 @@
         "Numerical precision: √60 = 7.745966… m/s; 7.74 is the closest listed option but is not the conventional two-decimal rounded value (7.75). Verify original options/key."
       ],
       "source_urls": [],
-      "master_sequence": 1
+      "master_sequence": 1,
+      "scaffolds": [
+        {
+          "prompt": "Study cue 1",
+          "text": "Which masses gain or lose gravitational energy, and how are their displacements linked?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "REPRESENT",
+          "reveals": "HINT_ONLY"
+        },
+        {
+          "prompt": "Study cue 2",
+          "text": "Before picking an option, ask whether the calculated value and the listed choices agree to the stated precision.",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "CONNECT",
+          "reveals": "HINT_ONLY"
+        }
+      ]
     },
     {
       "id": "Q-PHY-WPE-B1-03",
@@ -114,7 +130,23 @@
       "source_urls": [
         "https://www.allenoverseas.com/wp-content/themes/ALLENOverseas/lp-assets/2026/Physics/2301-Physics_Paper_With_Solution_Evening.pdf"
       ],
-      "master_sequence": 3
+      "master_sequence": 3,
+      "scaffolds": [
+        {
+          "prompt": "Study cue 1",
+          "text": "Where are the actual starting points of P and Q on the original diagram?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "REPRESENT",
+          "reveals": "HINT_ONLY"
+        },
+        {
+          "prompt": "Study cue 2",
+          "text": "Which component of P's velocity is specified, and how could the curved track change the other component?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "CONNECT",
+          "reveals": "HINT_ONLY"
+        }
+      ]
     },
     {
       "id": "Q-PHY-WPE-B1-04",
@@ -164,7 +196,23 @@
       "key_state": "HOLD:OFFICIAL_KEY_UNRESOLVED",
       "flags": [],
       "source_urls": [],
-      "master_sequence": 4
+      "master_sequence": 4,
+      "scaffolds": [
+        {
+          "prompt": "Study cue 1",
+          "text": "Which part of projectile motion changes during ascent, and which remains unchanged?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "REPRESENT",
+          "reveals": "HINT_ONLY"
+        },
+        {
+          "prompt": "Study cue 2",
+          "text": "At the highest point, which velocity components still contribute to kinetic energy?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "CONNECT",
+          "reveals": "HINT_ONLY"
+        }
+      ]
     },
     {
       "id": "Q-PHY-WPE-B1-05",
@@ -214,7 +262,23 @@
       "key_state": "HOLD:OFFICIAL_KEY_UNRESOLVED",
       "flags": [],
       "source_urls": [],
-      "master_sequence": 5
+      "master_sequence": 5,
+      "scaffolds": [
+        {
+          "prompt": "Study cue 1",
+          "text": "When the same applied force stretches two different springs, which spring property determines the extension?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "REPRESENT",
+          "reveals": "HINT_ONLY"
+        },
+        {
+          "prompt": "Study cue 2",
+          "text": "How would you compare their stored energies without assuming equal extensions?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "CONNECT",
+          "reveals": "HINT_ONLY"
+        }
+      ]
     },
     {
       "id": "Q-PHY-WPE-B1-06",
@@ -264,7 +328,23 @@
       "key_state": "HOLD:OFFICIAL_KEY_UNRESOLVED",
       "flags": [],
       "source_urls": [],
-      "master_sequence": 6
+      "master_sequence": 6,
+      "scaffolds": [
+        {
+          "prompt": "Study cue 1",
+          "text": "What feature of a potential-versus-position graph tells you about the force at a point?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "REPRESENT",
+          "reveals": "HINT_ONLY"
+        },
+        {
+          "prompt": "Study cue 2",
+          "text": "If two regions have different slopes, what does that tell you about their force magnitudes?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "CONNECT",
+          "reveals": "HINT_ONLY"
+        }
+      ]
     },
     {
       "id": "Q-PHY-WPE-B1-07",
@@ -312,7 +392,23 @@
       "key_state": "HOLD:OFFICIAL_KEY_UNRESOLVED",
       "flags": [],
       "source_urls": [],
-      "master_sequence": 7
+      "master_sequence": 7,
+      "scaffolds": [
+        {
+          "prompt": "Study cue 1",
+          "text": "Does the inclined pulling force change the normal force on the block?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "REPRESENT",
+          "reveals": "HINT_ONLY"
+        },
+        {
+          "prompt": "Study cue 2",
+          "text": "Which forces do work along the actual displacement, and what does uniform speed imply?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "CONNECT",
+          "reveals": "HINT_ONLY"
+        }
+      ]
     },
     {
       "id": "Q-PHY-WPE-B1-08",
@@ -360,7 +456,23 @@
       "key_state": "HOLD:OFFICIAL_KEY_UNRESOLVED",
       "flags": [],
       "source_urls": [],
-      "master_sequence": 8
+      "master_sequence": 8,
+      "scaffolds": [
+        {
+          "prompt": "Study cue 1",
+          "text": "What does the moving conveyor have to change about the incoming sand's momentum?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "REPRESENT",
+          "reveals": "HINT_ONLY"
+        },
+        {
+          "prompt": "Study cue 2",
+          "text": "As belt speed changes, how would the delivery rate affect the required driving power?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "CONNECT",
+          "reveals": "HINT_ONLY"
+        }
+      ]
     },
     {
       "id": "Q-PHY-WPE-B1-09",
@@ -410,7 +522,23 @@
       "key_state": "HOLD:OFFICIAL_KEY_UNRESOLVED",
       "flags": [],
       "source_urls": [],
-      "master_sequence": 9
+      "master_sequence": 9,
+      "scaffolds": [
+        {
+          "prompt": "Study cue 1",
+          "text": "As the bead moves around the hoop, what changes about the spring length and height?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "REPRESENT",
+          "reveals": "HINT_ONLY"
+        },
+        {
+          "prompt": "Study cue 2",
+          "text": "Which energies change between the two bead positions shown in the figure?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "CONNECT",
+          "reveals": "HINT_ONLY"
+        }
+      ]
     },
     {
       "id": "Q-PHY-WPE-B1-10",
@@ -460,7 +588,23 @@
       "key_state": "HOLD:OFFICIAL_KEY_UNRESOLVED",
       "flags": [],
       "source_urls": [],
-      "master_sequence": 10
+      "master_sequence": 10,
+      "scaffolds": [
+        {
+          "prompt": "Study cue 1",
+          "text": "Which energies increase or decrease between release and maximum spring compression?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "REPRESENT",
+          "reveals": "HINT_ONLY"
+        },
+        {
+          "prompt": "Study cue 2",
+          "text": "What is the distance over which friction acts before the block stops momentarily?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "CONNECT",
+          "reveals": "HINT_ONLY"
+        }
+      ]
     },
     {
       "id": "Q-PHY-WPE-B1-12",
@@ -510,7 +654,23 @@
       "key_state": "HOLD:OFFICIAL_KEY_UNRESOLVED",
       "flags": [],
       "source_urls": [],
-      "master_sequence": 12
+      "master_sequence": 12,
+      "scaffolds": [
+        {
+          "prompt": "Study cue 1",
+          "text": "What distinguishes a string that is just taut from one that has slackened at the top?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "REPRESENT",
+          "reveals": "HINT_ONLY"
+        },
+        {
+          "prompt": "Study cue 2",
+          "text": "How is the kinetic energy at the top related to the energy supplied at the bottom?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "CONNECT",
+          "reveals": "HINT_ONLY"
+        }
+      ]
     },
     {
       "id": "Q-PHY-WPE-B1-13",
@@ -558,7 +718,23 @@
       "key_state": "HOLD:OFFICIAL_KEY_UNRESOLVED",
       "flags": [],
       "source_urls": [],
-      "master_sequence": 13
+      "master_sequence": 13,
+      "scaffolds": [
+        {
+          "prompt": "Study cue 1",
+          "text": "Which velocity component remains at the top of a projectile's flight?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "REPRESENT",
+          "reveals": "HINT_ONLY"
+        },
+        {
+          "prompt": "Study cue 2",
+          "text": "How much kinetic energy remains when only that component contributes?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "CONNECT",
+          "reveals": "HINT_ONLY"
+        }
+      ]
     },
     {
       "id": "Q-PHY-WPE-B1-14",
@@ -606,7 +782,23 @@
       "key_state": "HOLD:OFFICIAL_KEY_UNRESOLVED",
       "flags": [],
       "source_urls": [],
-      "master_sequence": 14
+      "master_sequence": 14,
+      "scaffolds": [
+        {
+          "prompt": "Study cue 1",
+          "text": "What horizontal momentum must be supplied to sand arriving on the belt?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "REPRESENT",
+          "reveals": "HINT_ONLY"
+        },
+        {
+          "prompt": "Study cue 2",
+          "text": "Which energy and momentum transfers should be distinguished when finding motor power?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "CONNECT",
+          "reveals": "HINT_ONLY"
+        }
+      ]
     },
     {
       "id": "Q-PHY-WPE-B1-15",
@@ -656,7 +848,23 @@
       "key_state": "HOLD:OFFICIAL_KEY_UNRESOLVED",
       "flags": [],
       "source_urls": [],
-      "master_sequence": 15
+      "master_sequence": 15,
+      "scaffolds": [
+        {
+          "prompt": "Study cue 1",
+          "text": "What kinetic energy do both blocks carry before the spring changes length?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "REPRESENT",
+          "reveals": "HINT_ONLY"
+        },
+        {
+          "prompt": "Study cue 2",
+          "text": "What point in the motion would correspond to maximum stored spring energy?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "CONNECT",
+          "reveals": "HINT_ONLY"
+        }
+      ]
     },
     {
       "id": "Q-PHY-WPE-B2-16",
@@ -742,13 +950,13 @@
           "text": "Compare the deduced direction against candidate options."
         }
       ],
-      "answer": "Coaching predicted option: B: at x < x1, K.E. is smallest and the particle is moving at the slowest speed.",
+      "answer": "Source/coaching proposal: B, NOT VERIFIED. From E=8 J, K(x)=8-U(x); the incorrect choice cannot be independently certified without checking the exact original U(x) plot and all plateau values.",
       "steps": [
         "1. System Representation & Setup: Identify potential energy profile and reference coordinates for EX-M61.",
-        "2. Physical Model & Formulation: Conservation of mechanical energy: E_mech = K(x) + U(x) = 8 J. At any point, K(x) = 8 - U(x). Coaching note asserts: at x < x1, U = 8 J => K = 0 J (particle at rest, speed is zero), contradicting Option B's assertion of 'moving at slowest speed'. Requires diagram to confirm potential plateau values at x1, x2, x3, x4.",
-        "3. Execution & Resolution: Isolate the correct force orientation or profile matching option B:."
+        "2. For any permitted position, K(x)=E-U(x)=8 J-U(x), with K(x)>=0. A higher U gives a smaller K and speed; the conclusion for the four plotted regions depends on reading the original figure accurately. An interval with U=8 J has K=0, meaning a particle at rest there, not a finite slow-motion speed.",
+        "3. Independently verify the original graph ordinates and accessible domains before selecting any 'incorrect statement' option. Coaching option B remains an unaccepted claim."
       ],
-      "check": "Author Limiting Case Verification: Without authentic U(x) plot, potential values at specific points cannot be independently checked.",
+      "check": "Without a source-verified U(x) plot there is no defensible final option. At any accessible point K>=0 implies U(x)<=8 J; at U=8 J the speed is zero.",
       "op": "EXPLAIN",
       "band": "D2",
       "batch": "B2",
@@ -758,7 +966,23 @@
         "Potential-energy graph interpretation and the statement concerning zero kinetic energy on a region require source-figure/solution review."
       ],
       "source_urls": [],
-      "master_sequence": 17
+      "master_sequence": 17,
+      "scaffolds": [
+        {
+          "prompt": "Study cue 1",
+          "text": "For a given total energy, how could the graph tell you where kinetic energy is largest?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "REPRESENT",
+          "reveals": "HINT_ONLY"
+        },
+        {
+          "prompt": "Study cue 2",
+          "text": "Which plotted regions are physically accessible, and what happens when kinetic energy reaches zero?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "CONNECT",
+          "reveals": "HINT_ONLY"
+        }
+      ]
     },
     {
       "id": "Q-PHY-WPE-B2-18",
@@ -808,7 +1032,23 @@
         "This master suggests MODEL/D3; a separate academic reconciliation treated this source nomination as APPLY/D2. Do not treat master classification as final."
       ],
       "source_urls": [],
-      "master_sequence": 18
+      "master_sequence": 18,
+      "scaffolds": [
+        {
+          "prompt": "Study cue 1",
+          "text": "Which physical quantity stays constant while the car's speed changes?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "REPRESENT",
+          "reveals": "HINT_ONLY"
+        },
+        {
+          "prompt": "Study cue 2",
+          "text": "After finding how speed depends on time, what additional step determines displacement?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "CONNECT",
+          "reveals": "HINT_ONLY"
+        }
+      ]
     },
     {
       "id": "Q-PHY-WPE-B2-20",
@@ -858,7 +1098,23 @@
         "Constant-power displacement x ∝ t^(3/2) is derived for initial rest and negligible other work/drag; the original question should be checked for ideal-system assumptions."
       ],
       "source_urls": [],
-      "master_sequence": 20
+      "master_sequence": 20,
+      "scaffolds": [
+        {
+          "prompt": "Study cue 1",
+          "text": "Does constant power mean constant force or constant energy supplied per unit time?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "REPRESENT",
+          "reveals": "HINT_ONLY"
+        },
+        {
+          "prompt": "Study cue 2",
+          "text": "How would an unknown resistive force change the assumption behind a simple displacement scaling?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "CONNECT",
+          "reveals": "HINT_ONLY"
+        }
+      ]
     },
     {
       "id": "Q-PHY-WPE-B2-21",
@@ -1006,7 +1262,23 @@
         "This master suggests APPLY/D3; academic reconciliation disputes the D3 classification. Work formula MgL/(2n²) itself follows from the stated hanging length."
       ],
       "source_urls": [],
-      "master_sequence": 23
+      "master_sequence": 23,
+      "scaffolds": [
+        {
+          "prompt": "Study cue 1",
+          "text": "How much of the cable is hanging, and where is that portion's centre of mass?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "REPRESENT",
+          "reveals": "HINT_ONLY"
+        },
+        {
+          "prompt": "Study cue 2",
+          "text": "As the cable rises, which part changes gravitational potential energy?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "CONNECT",
+          "reveals": "HINT_ONLY"
+        }
+      ]
     },
     {
       "id": "Q-PHY-WPE-B2-24",
@@ -1352,7 +1624,23 @@
       "key_state": "HOLD:OFFICIAL_KEY_UNRESOLVED",
       "flags": [],
       "source_urls": [],
-      "master_sequence": 31
+      "master_sequence": 31,
+      "scaffolds": [
+        {
+          "prompt": "Study cue 1",
+          "text": "For circular motion, what force is needed radially at the stated radius?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "REPRESENT",
+          "reveals": "HINT_ONLY"
+        },
+        {
+          "prompt": "Study cue 2",
+          "text": "How are the motion's kinetic energy and the interaction's potential energy related, and what reference must be chosen?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "CONNECT",
+          "reveals": "HINT_ONLY"
+        }
+      ]
     },
     {
       "id": "Q-PHY-WPE-B3-32",
@@ -1400,7 +1688,23 @@
       "key_state": "HOLD:OFFICIAL_KEY_UNRESOLVED",
       "flags": [],
       "source_urls": [],
-      "master_sequence": 32
+      "master_sequence": 32,
+      "scaffolds": [
+        {
+          "prompt": "Study cue 1",
+          "text": "Which stages occur before and after contact or collision?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "REPRESENT",
+          "reveals": "HINT_ONLY"
+        },
+        {
+          "prompt": "Study cue 2",
+          "text": "Which conservation principle applies within each stage, and why might it differ between stages?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "CONNECT",
+          "reveals": "HINT_ONLY"
+        }
+      ]
     },
     {
       "id": "Q-PHY-WPE-B3-33",
@@ -1636,21 +1940,38 @@
       ],
       "answer": "Coaching predicted option: A: Statement 1 is false, Statement 2 is true",
       "steps": [
-        "1. System Representation & Setup: Establish system boundary [body of mass m + Earth conservative gravitational field] and statement propositions with reference datum U_grav = 0 at arbitrary reference plane.",
+        "1. Compare two ideal springs S1 and S2 using the same stretching force F; then repeat the comparison when their extensions x are equal. Do not substitute gravitational potential or path-independent work.",
         "2. Physical Model & Formulation: Same force F: W = F^2/(2k). W1 > W2 => F^2/(2k1) > F^2/(2k2) => k1 < k2. Statement 2 is TRUE. Same extension x: W = (1/2)kx^2. Since k1 < k2, W1 < W2. Statement 1 claims W1 > W2, which is FALSE. Therefore Statement 1 is false, Statement 2 is true.",
-        "3. Execution & Resolution: Justify that Statement 2 correctly explains the path-independence in Statement 1 to select A:."
+        "3. Since the fixed-force observation requires k1<k2, Statement 2 is true. At the same extension the stiffer spring S2 stores more energy, so Statement 1 is false. Therefore A follows from the supplied ideal-spring model; official exam/key custody is still unverified."
       ],
-      "check": "Author Sanity & Limiting Case Check: Dimensional consistency verified in SI base units; limiting bounds confirmed: ",
+      "check": "Example: if k1=k2/2, then at the same applied force W1=2 W2, but at the same extension W1=W2/2. The two experimental comparisons use different fixed quantities.",
       "op": "JUSTIFY",
       "band": "D1",
       "batch": "B3",
       "review_state": "NOT_ADMITTED",
       "key_state": "HOLD:OFFICIAL_KEY_UNRESOLVED",
       "flags": [
-        "Master JUSTIFY/D1 is not examination-coverage admission; official paper/key correspondence and reviewer decision remain open."
+        "Master JUSTIFY/D1 is not examination-coverage admission; official paper/key correspondence and reviewer decision remain open.",
+        "AUTHOR CORRECTION: inherited source hint ladder and two solution lines discuss path independence/gravity, unrelated to this spring comparison. Original hint records preserved for custody; authored student scaffolds and corrected explanatory steps are used by the candidate reader. Independent content review pending."
       ],
       "source_urls": [],
-      "master_sequence": 37
+      "master_sequence": 37,
+      "scaffolds": [
+        {
+          "prompt": "Study cue 1",
+          "text": "How does work stored in a spring depend on stiffness if the stretching force is held fixed?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "REPRESENT",
+          "reveals": "HINT_ONLY"
+        },
+        {
+          "prompt": "Study cue 2",
+          "text": "Now imagine equal stretches instead of equal forces: what changes in that comparison?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "CONNECT",
+          "reveals": "HINT_ONLY"
+        }
+      ]
     },
     {
       "id": "Q-PHY-WPE-B3-38",
@@ -2706,11 +3027,11 @@
           "text": "Evaluate governing equation with boundary conditions to obtain numerical/algebraic result."
         }
       ],
-      "answer": "Coaching predicted option: 6952787592: - 9.98",
+      "answer": "Calculated resistive work W_res = -9.9875 J. Standard two-decimal rounding gives -9.99 J. The closest listed option is -9.98 J (choice 6952787592), but no official-key or stated-rounding convention is verified.",
       "steps": [
         "1. System Representation & Setup: Establish system boundary [raindrop of mass 1 g + Earth + atmospheric drag column] and define reference datum U_grav = 0 at ground level (h = 0).",
-        "2. Physical Model & Formulation: 1. Raindrop mass m = 1 g = 10^-3 kg, fall height h = 1000 m. Work done by gravity: W_g = m*g*h = (10^-3 kg)*(10 m/s^2)*(1000 m) = +10.0 J.\n2. Kinetic energy at impact: Delta K = 1/2*m*v^2 - 0 = 1/2*(10^-3 kg)*(5 m/s)^2 = 0.0125 J.\n3. Work-Energy Theorem balance: W_g + W_res = Delta K ==> W_res = Delta K - W_g = 0.0125 J - 10.0 J = -9.9875 J ~= -9.98 J. Option 6952787592.",
-        "3. Execution & Resolution: Execute mathematical evaluation and algebraic root extraction to isolate 6952."
+        "2. Physical Model & Formulation: 1. Raindrop mass m = 1 g = 10^-3 kg, fall height h = 1000 m. Work done by gravity: W_g = m*g*h = (10^-3 kg)*(10 m/s^2)*(1000 m) = +10.0 J.\n2. Kinetic energy at impact: Delta K = 1/2*m*v^2 - 0 = 1/2*(10^-3 kg)*(5 m/s)^2 = 0.0125 J.\n3. Work-Energy Theorem balance: W_g + W_res = Delta K ==> W_res = Delta K - W_g = 0.0125 J - 10.0 J = -9.9875 J. Standard rounding to two decimal places gives -9.99 J; the closest displayed choice is 6952787592 (-9.98 J), not the rounded result.",
+        "3. Preserve the exact result -9.9875 J and keep the difference between an exact calculation, two-decimal rounding and a closest-choice selection visible. Do not label the displayed choice as an authenticated official answer."
       ],
       "check": "Author Sanity & Limiting Case Check: Dimensional consistency verified in SI base units; limiting bounds confirmed: If drag is zero (W_res = 0), impact speed is sqrt(2gh) = sqrt(20000) ~= 141.4 m/s; since v = 5 m/s << 141.4 m/s, air drag performs significant negative work.",
       "op": "APPLY",
@@ -2722,7 +3043,23 @@
         "Exact resistive work is −9.9875 J. Standard rounding to two decimal places gives −9.99 J, not listed −9.98 J; closest-option inference is not equivalent to verified official key."
       ],
       "source_urls": [],
-      "master_sequence": 61
+      "master_sequence": 61,
+      "scaffolds": [
+        {
+          "prompt": "Study cue 1",
+          "text": "What work acts on the raindrop, and which part of it cannot be accounted for by gravity?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "REPRESENT",
+          "reveals": "HINT_ONLY"
+        },
+        {
+          "prompt": "Study cue 2",
+          "text": "Find the unrounded result before comparing it with the displayed numerical choices.",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "CONNECT",
+          "reveals": "HINT_ONLY"
+        }
+      ]
     },
     {
       "id": "Q-PHY-WPE-B5-62",
@@ -2923,7 +3260,30 @@
         "https://reallakshman19.github.io/Grade9v4.0/workspace/output/WPE_Core2_Reader_R3_HintsFirst_20261101/rendered/core2.html",
         "https://www.iapt.org.in/images/nse_2025/Answer_key/NSEP_-_2025_Solution_1_compressed.pdf"
       ],
-      "master_sequence": 65
+      "master_sequence": 65,
+      "scaffolds": [
+        {
+          "prompt": "Study cue 1",
+          "text": "What does 'released from rest' tell you about the starting kinetic energy?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "REPRESENT",
+          "reveals": "HINT_ONLY"
+        },
+        {
+          "prompt": "Study cue 2",
+          "text": "What single physical quantity lets you compare the starting point and a later position?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "CONNECT",
+          "reveals": "HINT_ONLY"
+        },
+        {
+          "prompt": "Study cue 3",
+          "text": "To test the maximum-speed claim, check where motion is allowed before examining a mathematical maximum.",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "CONNECT",
+          "reveals": "HINT_ONLY"
+        }
+      ]
     },
     {
       "id": "Q-PHY-WPE-B5-66",
@@ -3068,7 +3428,23 @@
         "Duplicate EX-M4 suppressed. The numerical result 20 J presumes vertical upward translation (or equivalent source figure); check source apparatus direction before accepting the original answer."
       ],
       "source_urls": [],
-      "master_sequence": 68
+      "master_sequence": 68,
+      "scaffolds": [
+        {
+          "prompt": "Study cue 1",
+          "text": "Is the displacement of the block given relative to the inclined assembly or the ground?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "REPRESENT",
+          "reveals": "HINT_ONLY"
+        },
+        {
+          "prompt": "Study cue 2",
+          "text": "What angle should be used between friction and the block's actual displacement? Verify the direction from the original source figure.",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "CONNECT",
+          "reveals": "HINT_ONLY"
+        }
+      ]
     },
     {
       "id": "Q-PHY-WPE-B5-69",
@@ -3110,7 +3486,7 @@
         "2. Physical Model & Formulation: 1. Pendulum kinematics and energy conservation: Let thread length be L. Release from rest at deflection theta. Height fallen to lowest position: h = L*(1 - cos(theta)). By mechanical energy conservation: 1/2*m*v^2 = m*g*L*(1 - cos(theta)) ==> v^2/L = 2*g*(1 - cos(theta)).\n2. Acceleration at lowest point: Tangential acceleration is zero (gravity is vertical, thread tension is vertical). Magnitude of acceleration is purely centripetal: a_low = a_c = v^2/L = 2*g*(1 - cos(theta)).\n3. Acceleration at extreme point: Velocity is zero, so centripetal acceleration is zero. Acceleration is purely tangential along arc: a_ext = a_t = g*sin(theta).\n4. Equating acceleration magnitudes: 2*g*(1 - cos(theta)) = g*sin(theta) ==> 2*(2*sin^2(theta/2)) = 2*sin(theta/2)*cos(theta/2) ==> 2*sin(theta/2) = cos(theta/2) ==> tan(theta/2) = 1/2 ==> theta = 2*tan^-1(1/2). Option B.",
         "3. Execution & Resolution: Execute algebraic reduction and evaluate boundary roots to isolate B: 2."
       ],
-      "check": "Author Sanity & Limiting Case Check: Dimensional consistency verified in SI base units; limiting bounds confirmed: For small angles theta << 1, sin theta ~= theta, 1 - cos theta ~= theta^2/2 ==> theta = 2*(theta^2/2) = theta^2 ==> theta = 1 rad, showing exact trigonometric solution is essential.",
+      "check": "Check the nonzero solution tan(theta/2)=1/2. It gives sin(theta)=4/5 and cos(theta)=3/5, so the two acceleration magnitudes are g*sin(theta)=4g/5 and 2g(1-cos(theta))=4g/5. The trivial theta=0 has no actual swing and does not establish the nonzero result. Source/key identity remains unverified.",
       "op": "SYNTHESIZE",
       "band": "D3",
       "batch": "B5",
@@ -3120,7 +3496,23 @@
         "Check source geometry and conditions before treating the pendulum equal-acceleration solution as an admitted examination key."
       ],
       "source_urls": [],
-      "master_sequence": 69
+      "master_sequence": 69,
+      "scaffolds": [
+        {
+          "prompt": "Study cue 1",
+          "text": "At an extreme position, which acceleration component can be nonzero? What about at the lowest point?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "REPRESENT",
+          "reveals": "HINT_ONLY"
+        },
+        {
+          "prompt": "Study cue 2",
+          "text": "Before equating magnitudes, identify which energy change determines the speed at the bottom.",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "CONNECT",
+          "reveals": "HINT_ONLY"
+        }
+      ]
     },
     {
       "id": "Q-PHY-WPE-B5-70",
@@ -3329,6 +3721,22 @@
       ],
       "source_urls": [
         "https://reallakshman19.github.io/Grade9v4.0/workspace/output/WPE_Core2_Reader_R3_HintsFirst_20261101/rendered/core2.html#TB-WPE-ILL-04"
+      ],
+      "scaffolds": [
+        {
+          "prompt": "Study cue 1",
+          "text": "Which forces have components parallel, opposite and perpendicular to downhill displacement?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "REPRESENT",
+          "reveals": "HINT_ONLY"
+        },
+        {
+          "prompt": "Study cue 2",
+          "text": "Does a force have to be zero for its work to be zero?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "CONNECT",
+          "reveals": "HINT_ONLY"
+        }
       ]
     },
     {
@@ -3371,6 +3779,22 @@
       ],
       "source_urls": [
         "https://reallakshman19.github.io/Grade9v4.0/workspace/output/WPE_Core2_Reader_R3_HintsFirst_20261101/rendered/core2.html#TB-WPE-ILL-05"
+      ],
+      "scaffolds": [
+        {
+          "prompt": "Study cue 1",
+          "text": "What starting-speed information is absent from the stem?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "REPRESENT",
+          "reveals": "HINT_ONLY"
+        },
+        {
+          "prompt": "Study cue 2",
+          "text": "Which component of gravity contributes to the instantaneous power at the bottom?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "CONNECT",
+          "reveals": "HINT_ONLY"
+        }
       ]
     },
     {
@@ -3439,13 +3863,13 @@
           "text": "Check whether the initial kinetic energy is stated."
         }
       ],
-      "answer": "Conditional on initial rest and the ideal-chain model: Kfinal = (4/9)mgl.",
+      "answer": "For an ideal smooth table and uniform flexible chain, K_final = K_initial + (4/9)mgl. The source-derived result K_final=(4/9)mgl requires the additional condition K_initial=0 (initially at rest), which is not explicit in this stem.",
       "steps": [
         "Use linear density m/l and table-height gravitational reference.",
         "Initial hanging length = l/3 gives U_initial = -mgl/18; completely hanging gives U_final = -mgl/2.",
-        "If initially at rest, K_final = U_initial - U_final = (4/9)mgl."
+        "Energy conservation gives K_final - K_initial = U_initial - U_final = (4/9)mgl. Set K_initial=0 only as an additional release-from-rest assumption."
       ],
-      "check": "Initial hanging mass m/3 is at depth l/6: U_i = -(m/3)g(l/6).",
+      "check": "For the initially resting case, the final kinetic energy is 4mgl/9. If initial kinetic energy is nonzero, add it to the same potential-energy loss; do not assume an initial speed not stated.",
       "op": "UNREVIEWED",
       "band": "D4",
       "batch": "TEXTBOOK",
@@ -3456,6 +3880,22 @@
       ],
       "source_urls": [
         "https://reallakshman19.github.io/Grade9v4.0/workspace/output/WPE_Core2_Reader_R3_HintsFirst_20261101/rendered/core2.html#TB-WPE-ILL-11"
+      ],
+      "scaffolds": [
+        {
+          "prompt": "Study cue 1",
+          "text": "What fraction of the chain hangs over the edge initially?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "REPRESENT",
+          "reveals": "HINT_ONLY"
+        },
+        {
+          "prompt": "Study cue 2",
+          "text": "What initial motion, if any, is specified? Keep the unknown kinetic energy separate from the gravitational change.",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "CONNECT",
+          "reveals": "HINT_ONLY"
+        }
       ]
     },
     {
@@ -3499,6 +3939,22 @@
       ],
       "source_urls": [
         "https://reallakshman19.github.io/Grade9v4.0/workspace/output/WPE_Core2_Reader_R3_HintsFirst_20261101/rendered/core2.html#TB-WPE-ILL-12"
+      ],
+      "scaffolds": [
+        {
+          "prompt": "Study cue 1",
+          "text": "Is the block connected to the spring or only pressing against it?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "REPRESENT",
+          "reveals": "HINT_ONLY"
+        },
+        {
+          "prompt": "Study cue 2",
+          "text": "At what position does the contact force cease, and what is the subsequent motion?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "CONNECT",
+          "reveals": "HINT_ONLY"
+        }
       ]
     },
     {
@@ -3543,7 +3999,23 @@
       "flags": [
         "Separate technical control; not included in 73 source-backed question count."
       ],
-      "source_urls": []
+      "source_urls": [],
+      "scaffolds": [
+        {
+          "prompt": "Study cue 1",
+          "text": "Which particular force is the question asking about?",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "REPRESENT",
+          "reveals": "HINT_ONLY"
+        },
+        {
+          "prompt": "Study cue 2",
+          "text": "Compare the force direction with the displacement direction, regardless of how fast the trolley travels.",
+          "origin": "AUTHORED_PEDAGOGICAL",
+          "support_kind": "CONNECT",
+          "reveals": "HINT_ONLY"
+        }
+      ]
     }
   ],
   "duplicate_display_decisions": [
