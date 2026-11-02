@@ -204,9 +204,10 @@
     "No original PDF question stems used as learner-facing text.",
     "Core1A and Core1B within each subtopic use different physical setups, not mere numeric permutations.",
     "Core1B initial choice and explanation must be locked before hints.",
-    "Two hints revealed progressively; answer only inserted into live DOM after deliberate unlock.",
     "Question type and QRT difficulty not inferred from original sheet's LEVEL–IA label.",
-    "Core1A/B formal B1–B7 and Owner academic reviews are outstanding."
+    "Core1A/B formal B1–B7 and Owner academic reviews are outstanding.",
+    "Both hints remain optional and progressive after the first attempt is locked; the student may open the worked check directly after a locked attempt.",
+    "A visible worked-check counter is practice navigation only and does not imply that free-text reasoning was graded."
   ],
   "technical_review": {
     "id": "WPE-01",
@@ -304,5 +305,26 @@
     "original_question_custody": "Unverified original Q1–Q11 remain mapped as source-reference themes; cut-off Q12 excluded.",
     "release_role": "STUDENT_PRACTICE_PREVIEW_NOT_NATIVE_ACADEMIC_ADMISSION",
     "verification": "Automated UI/pytest; not independent subject, QRT or Owner sign-off"
+  },
+  "student_journey_batch": {
+    "id": "WPE_STUDENT_JOURNEY_5_TOPICS",
+    "date": "2026-11-02",
+    "scope": "All five existing student practice topics; no original source question reauthoring or independent learner test",
+    "improvements": [
+      "Short reasoning prompt personalized to each challenge",
+      "After an initial choice and written reason are locked, either one/two optional hints or immediate worked check",
+      "Post-check two-point explanation self-check for each topic, with option-specific misconception note and changed-condition reflection",
+      "Worked checks viewed counter and per-topic practice status restored after browser reload",
+      "Next-topic links, simpler introductory instructions, three worked sign-of-work contrasts"
+    ],
+    "progress_definition": "Counts worked checks opened locally, NOT demonstrated mastery or academic qualification",
+    "learner_testing": "AUTOMATED_SIMULATIONS_ONLY__NO_CHILD_OR_STUDENT_PARTICIPANTS",
+    "practice_states": [
+      "Not started",
+      "First try saved",
+      "Worked check viewed"
+    ],
+    "publication_scope": "EXISTING_STUDENT_PRACTICE_PREVIEW",
+    "academic_admissions_changed": false
   }
 }
