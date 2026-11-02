@@ -77,6 +77,91 @@ def test_eight_distinct_construction_specs_and_six_step_self_tutor_cycle():
             assert "\\\\(" not in content, "Markdown maths must not be double-escaped"
 
 
+def test_six_complete_p0_packs_and_no_p1_promotion():
+    bridge = load(BRIDGE_PATH)
+    p0 = [row for row in bridge["constructions"] if row["priority"] == "P0"]
+    p1 = [row for row in bridge["constructions"] if row["priority"] == "P1"]
+    assert len(p0) == 6 and len(p1) == 2
+    assert all(row["first_pair"] for row in p0)
+    assert all(row["first_pair"] is None for row in p1)
+    inventory = bridge["pack_inventory"]
+    assert inventory["p0_complete_draft_count"] == len(p0) == 6
+    assert inventory["p1_complete_draft_count"] == 0
+    assert inventory["source_qrt_owner_approval_changed"] is False
+    assert inventory["student_website_modified"] is False
+    assert inventory["official_source_stems_republished"] is False
+    assert inventory["first_attempt_secure_delivery_claim"] is False
+    for row in p0:
+        pack = BASE / "learning-bridge" / row["first_pair"]
+        content = pack.read_text(encoding="utf-8")
+        assert "Child's key decision" in content, row["id"]
+        assert "## Core1A" in content and "## Core1B" in content
+        assert "## Author-only reference" in content
+        assert "Separation check" in content
+        assert "rubric" in content.casefold()
+        assert all(f"### {i:02d}" in content for i in range(1, 7))
+        assert "not for learner-facing pre-attempt delivery" in content
+        assert "\\\\(" not in content, "Double-escaped maths cannot render as intended"
+
+
+def test_numerical_answers_for_four_new_p0_packs():
+    from math import isclose, sqrt
+
+    checks = load(BRIDGE_PATH)["solution_checks"]
+    assert set(checks) == {"WPE-C03", "WPE-C04", "WPE-C05", "WPE-C06"}
+    close = lambda a, b: isclose(a, b, rel_tol=1e-11, abs_tol=1e-11)
+
+    p = checks["WPE-C03"]
+    for group_name in ("guide", "fresh"):
+        group = p[group_name]
+        m, u, power = group["mass_kg"], group["initial_m_s"], group["power_w"]
+        for i, t in enumerate(group["time_s"]):
+            K = 0.5 * m * u**2 + power * t
+            speed = sqrt(2*K / m)
+            assert close(group["speed_m_s"][i], speed)
+            if group_name == "fresh":
+                assert close(group["kinetic_j"][i], K)
+    f = p["fresh"]
+    boundary_K = 0.5*f["mass_kg"]*f["initial_m_s"]**2 + f["boundary_power_w"]*f["boundary_time_s"]
+    assert close(f["boundary_speed_m_s"], sqrt(2*boundary_K/f["mass_kg"]))
+
+    p = checks["WPE-C04"]
+    for group_name in ("guide", "fresh"):
+        group = p[group_name]
+        linear_density = group["mass_kg"] / group["length_m"]
+        def U(hanging):
+            return -0.5 * linear_density * 10 * hanging**2
+        assert close(group["lift_work_j"], U(group["final_hanging_m"]) - U(group["initial_hanging_m"]))
+        if group_name == "fresh":
+            assert close(group["boundary_lift_work_j"], U(group["boundary_final_hanging_m"]) - U(group["initial_hanging_m"]))
+
+    p = checks["WPE-C05"]
+    assert close(p["guide"]["force_rectangle_work_j"], 3*2)
+    assert close(p["guide"]["potential_force_n"], -(3-9)/2)
+    assert close(p["guide"]["displacement_time_velocity_m_s"], 6/3)
+    assert close(p["fresh"]["force_position_triangle_work_j"], 0.5*4*8)
+    assert close(p["fresh"]["potential_position_force_n"], -(8-2)/2)
+    assert close(p["fresh"]["second_interval_velocity_m_s"], (16-4)/(5-2))
+    assert close(p["fresh"]["boundary_force_time_impulse_n_s"], 0.5*4*8)
+
+    p = checks["WPE-C06"]
+    guide, fresh, g = p["guide"], p["fresh"], 10
+    m, r, top = guide["mass_kg"], guide["radius_m"], guide["top_speed_m_s"]
+    assert close(guide["top_tension_n"], m*top**2/r-m*g)
+    v_bottom_squared = top**2+4*g*r
+    assert close(guide["bottom_speed_squared"], v_bottom_squared)
+    assert close(guide["bottom_tension_n"], m*v_bottom_squared/r+m*g)
+    top2 = fresh["bottom_speed_m_s"]**2-4*g*fresh["radius_m"]
+    assert close(fresh["top_speed_squared"], top2)
+    T = fresh["mass_kg"]*top2/fresh["radius_m"] - fresh["mass_kg"]*g
+    assert close(fresh["top_tension_n"], T)
+    assert fresh["taut_string_possible"] is False and T < 0
+    boundary_top2 = fresh["boundary_bottom_speed_m_s"]**2-4*g*fresh["radius_m"]
+    assert close(fresh["boundary_top_speed_squared"], boundary_top2)
+    assert close(fresh["boundary_top_tension_n"], fresh["mass_kg"]*boundary_top2/fresh["radius_m"] - fresh["mass_kg"]*g)
+    assert close(fresh["minimum_bottom_speed_squared"], 5*g*fresh["radius_m"])
+
+
 def test_foundational_teaching_remains_unadmitted_and_review_is_historical():
     bridge = load(BRIDGE_PATH)
     mapping = load(ROOT / "physics/wpe/learn-challenge-source-map.json")

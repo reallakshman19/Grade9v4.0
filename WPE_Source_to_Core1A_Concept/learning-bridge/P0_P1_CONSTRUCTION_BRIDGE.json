@@ -351,7 +351,8 @@
         "Boundary test: add friction or efficiency loss"
       ],
       "misconception": "Treating constant motor power as constant force or constant acceleration",
-      "first_pair": null
+      "first_pair": "CONSTANT_POWER_LEARNING_PACK.md",
+      "pack_maturity": "AUTHOR_COMPLETE_CORE1A_GUIDE_CORE1B_SIX_STAGE_FRESH_TASK"
     },
     {
       "id": "WPE-C04",
@@ -381,7 +382,8 @@
         "Boundary test: different fraction or rope length"
       ],
       "misconception": "Treating every part of a partly hanging chain as being raised through the same height",
-      "first_pair": null
+      "first_pair": "DISTRIBUTED_MASS_LEARNING_PACK.md",
+      "pack_maturity": "AUTHOR_COMPLETE_CORE1A_GUIDE_CORE1B_SIX_STAGE_FRESH_TASK"
     },
     {
       "id": "WPE-C05",
@@ -412,7 +414,8 @@
         "Boundary test: switch to a different graph type"
       ],
       "misconception": "Applying 'area under graph' indiscriminately even when the axes are not force and displacement",
-      "first_pair": null
+      "first_pair": "GRAPH_OPERATION_LEARNING_PACK.md",
+      "pack_maturity": "AUTHOR_COMPLETE_CORE1A_GUIDE_CORE1B_SIX_STAGE_FRESH_TASK"
     },
     {
       "id": "WPE-C06",
@@ -443,7 +446,8 @@
         "Boundary test: different top speed or track radius"
       ],
       "misconception": "Energy conservation alone guaranteeing the object stays in a vertical circle",
-      "first_pair": null
+      "first_pair": "VERTICAL_CIRCLE_LEARNING_PACK.md",
+      "pack_maturity": "AUTHOR_COMPLETE_CORE1A_GUIDE_CORE1B_SIX_STAGE_FRESH_TASK"
     },
     {
       "id": "WPE-C07",
@@ -559,5 +563,126 @@
   "native_admissions": 0,
   "owner_approval": false,
   "qrt_approval": false,
-  "scope_boundary": "Documentation and proposed author-only learning examples; no public Learn → Challenge changes, no exam-original reproduction, no pilot slot reassignment, no score/band promotion."
+  "scope_boundary": "Documentation and proposed author-only learning examples; no public Learn → Challenge changes, no exam-original reproduction, no pilot slot reassignment, no score/band promotion.",
+  "pack_inventory": {
+    "date": "2026-11-02",
+    "scope": "WPE_SOURCE_TO_CORE1_CONSTRUCTION_BRIDGE",
+    "author_only_stage": "COMPLETE_GUIDED_AND_FRESH_TASK_DRAFTS_NOT_ACADEMIC_ADMISSION",
+    "p0_construction_count": 6,
+    "p0_complete_draft_count": 6,
+    "p1_construction_count": 2,
+    "p1_complete_draft_count": 0,
+    "p0_newly_drafted_in_batch": [
+      "WPE-C03",
+      "WPE-C04",
+      "WPE-C05",
+      "WPE-C06"
+    ],
+    "core1b_six_stage_contract": [
+      "PREDICT",
+      "ATTEMPT",
+      "RECONSTRUCT",
+      "DIAGNOSE",
+      "REPAIR",
+      "BOUNDARY_TEST"
+    ],
+    "student_website_modified": false,
+    "official_source_stems_republished": false,
+    "first_attempt_secure_delivery_claim": false,
+    "source_qrt_owner_approval_changed": false
+  },
+  "solution_checks": {
+    "WPE-C03": {
+      "guide": {
+        "mass_kg": 2,
+        "initial_m_s": 2,
+        "power_w": 12,
+        "time_s": [
+          1,
+          4
+        ],
+        "speed_m_s": [
+          4,
+          7.211102550927978
+        ]
+      },
+      "fresh": {
+        "mass_kg": 3,
+        "initial_m_s": 2,
+        "power_w": 18,
+        "time_s": [
+          2,
+          6
+        ],
+        "kinetic_j": [
+          42,
+          114
+        ],
+        "speed_m_s": [
+          5.291502622129181,
+          8.717797887081348
+        ],
+        "boundary_power_w": 9,
+        "boundary_time_s": 2,
+        "boundary_speed_m_s": 4
+      },
+      "unit_rule": "W=J/s, no resistance and positive initial speed"
+    },
+    "WPE-C04": {
+      "guide": {
+        "length_m": 4,
+        "mass_kg": 2,
+        "initial_hanging_m": 2,
+        "final_hanging_m": 0,
+        "lift_work_j": 10
+      },
+      "fresh": {
+        "length_m": 8,
+        "mass_kg": 4,
+        "initial_hanging_m": 4,
+        "final_hanging_m": 2,
+        "lift_work_j": 30,
+        "boundary_final_hanging_m": 0,
+        "boundary_lift_work_j": 40
+      },
+      "unit_rule": "Quasistatic, uniform rope, lambda=M/L; U=-lambda*g*x^2/2"
+    },
+    "WPE-C05": {
+      "guide": {
+        "force_rectangle_work_j": 6,
+        "potential_force_n": 3,
+        "displacement_time_velocity_m_s": 2
+      },
+      "fresh": {
+        "force_position_triangle_work_j": 16,
+        "potential_position_force_n": -3,
+        "second_interval_velocity_m_s": 4,
+        "boundary_force_time_impulse_n_s": 16
+      },
+      "unit_rule": "F-x area work, U-x negative slope force, s-t slope velocity, F-t area impulse"
+    },
+    "WPE-C06": {
+      "guide": {
+        "mass_kg": 0.5,
+        "radius_m": 2,
+        "top_speed_m_s": 6,
+        "top_tension_n": 4,
+        "bottom_speed_squared": 116,
+        "bottom_tension_n": 34
+      },
+      "fresh": {
+        "mass_kg": 1,
+        "radius_m": 1,
+        "bottom_speed_m_s": 7,
+        "top_speed_squared": 9,
+        "top_tension_n": -1,
+        "taut_string_possible": false,
+        "boundary_bottom_speed_m_s": 8,
+        "boundary_top_speed_squared": 24,
+        "boundary_top_tension_n": 14,
+        "minimum_bottom_speed_squared": 50
+      },
+      "unit_rule": "For taut string top: mg+T=mv^2/r, T>=0; height gain top-bottom=2r"
+    }
+  }
 }
