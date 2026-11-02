@@ -64,9 +64,12 @@ def tests(browser):
         assert_that(page.locator("#panel-solution").is_hidden(),"Solution must remain hidden after attempt")
         page.locator("#btn-reveal-solution").click()
         assert_that(page.locator("#panel-solution").is_visible(),"Worked solution should appear after deliberate reveal")
+        saved_before=page.evaluate("() => sessionStorage.getItem('grade9_alpha_progress')")
         open_url(page,"preview/progress.html")
-        assert_that("Attempt recorded" in page.locator("#status-wpe-practice").inner_text(),
-                   "Session progress not preserved")
+        saved_after=page.evaluate("() => sessionStorage.getItem('grade9_alpha_progress')")
+        status_text=page.locator("#status-wpe-practice").inner_text()
+        assert_that("Attempt recorded" in status_text,
+                   f"Session progress not preserved: before={saved_before!r}, after={saved_after!r}, status={status_text!r}")
         if width==1024:
             page.locator("#btn-reset-progress").click()
             assert_that("Not Started" in page.locator("#status-wpe-practice").inner_text(),
