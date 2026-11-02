@@ -61,6 +61,26 @@ The construction inventory in [P0_P1_CONSTRUCTION_BRIDGE.json](P0_P1_CONSTRUCTIO
 
 **Source custody caution:** EX-M56/61/69 original graphs are not qualified by these newly authored example descriptions. Reader and selection conflicts remain exactly as recorded. Nothing in the pack verifies a source figure or official answer key.
 
+## Four targeted D3/D4 extension drafts (WPE-E01–E04)
+
+The earlier eight reusable construction packs are still intact. The next four **source-theme extensions** are now separately drafted as child-facing *author specifications*, not inserted into the public student page. Each includes **Core1A guided learning → a distinct Core1B open-response challenge → Predict / Attempt / Reconstruct / Diagnose / Repair / Boundary test → author-only criteria**.
+
+| Extension | Learning decision | Source-theme references | Status |
+|---|---|---|---|
+| [E01 — Potential wells and reachable regions](POTENTIAL_WELLS_LEARNING_PACK.md) | Decide **which connected regions** satisfy `E ≥ U`; do not confuse a low destination with a passable route | WEP07-03, EX-M109 | Drafted, not admitted |
+| [E02 — Instantaneous power](INSTANTANEOUS_POWER_LEARNING_PACK.md) | Use **force along velocity** at that instant rather than magnitude-only multiplication or time-average work | TB-WPE-ILL-05/06 | Drafted, not admitted |
+| [E03 — Spring → projectile](SPRING_PROJECTILE_TRANSITION_LEARNING_PACK.md) | Switch model at the **end of spring contact**, then determine horizontal flight and vertical fall separately | EX-N34 | Drafted, not admitted |
+| [E04 — Dissipative bounces](DISSIPATIVE_BOUNCES_LEARNING_PACK.md) | Transfer impact **energy-retention fractions** to rebound heights, distinguish speed ratios, and count both travel directions | EX-M82 | Drafted, not admitted |
+
+**Scope and scientific cautions:**
+- **WEP07-03:** its potential/well task has an unresolved operation/demand-band conflict (D2 vs D4). E01 deliberately uses a **different** well with two disconnected accessible regions; no exam source is reclassified.
+- **TB-WPE-ILL-05:** the original bottom-power problem omits initial speed. E02 uses fully specified instantaneous speeds and does not infer a missing source condition. Its diagonal-vector question is an advanced supported extension.
+- **EX-N34:** the original figure is not independently qualified here. E03 uses **new** horizontal launcher conditions with contact-only friction and a separate flight phase. No substitute drawing is presented as an original image.
+- **EX-M82:** E04 uses a *first-impact versus later-impact* retention change; the source's original single retention ratio and predicted answer remain outside the new task.
+- **EX-M89 / radial-force potential** remains **undrafted** after this batch and is documented in the bridge's backlog. No source theme is declared finished merely by making an unrelated problem.
+
+The inventory and machine-check values appear in [P0_P1_CONSTRUCTION_BRIDGE.json](P0_P1_CONSTRUCTION_BRIDGE.json) under `extension_inventory` and `extension_solution_checks`. The independent `tests/test_wpe_d3d4_extensions.py` recomputes turning-point inequalities, signed power, spring/contact flight, and geometric bounces. These are *mathematical correctness checks*, not student testing, independent B3/B4/QRT qualification or secure answer containment.
+
 ## The current five foundational pairs remain distinct
 
 The previous five pairs teach work sign, momentum/kinetic energy, energy reachability, potential-energy slope and spring-driven cart momentum. They remain useful foundations but do **not** establish the missing D3/D4 constructions above.
@@ -71,7 +91,7 @@ The earlier B3/B4 review (`physics/wpe/learn-challenge-wpe02-b3-b4-review.json`)
 
 1. All **eight P0/P1 constructions** now have guided and independent learning-pack drafts. Check scientific assumptions and curriculum prerequisites before using an authored pack with a child. The packages do not alter the existing source bank.
 2. Keep Core1A and Core1B in separate learner stages. Preserve a child's prediction, model and first calculation before revealing the author-only solution. Prompt for diagnosis, repair and a boundary test rather than treating a chosen MCQ option as enough.
-3. The **two P1 packs are now drafted**. Teach them only after mass flow, power and Hooke-law prerequisites are explained at an age-appropriate level; their existence does not imply that the source's D3/D4 demands are qualified. The separate targeted extensions remain future work.
+3. The **two P1 packs and four targeted extension packs** are now drafted. Teach advanced flow, vectors, analytic wells and geometric series only with the necessary scaffolding; writing a difficult author pack does not make the learning age-accessible by itself. Radial-force potential remains undrafted.
 4. Resolve the pilot/source-reader classification discrepancies **as a separate provenance task**, without blocking clearly labeled preparatory teaching drafts or calling those drafts admission evidence.
 5. If a native assessment or release is intended, complete the existing independent subject/QRT, curriculum adapter, paper/key custody and Owner requirements before claiming acceptance.
 
