@@ -26,10 +26,10 @@ def test_extension_inventory_and_six_stage_authored_separation():
     bridge = load(BRIDGE)
     ext = bridge["extension_inventory"]
     rows = bridge["extensions_backlog"]
-    assert ext["drafted_count"] == 4 and ext["remaining_unwritten"] == 1
-    assert ext["drafted_ids"] == ["WPE-E01", "WPE-E02", "WPE-E03", "WPE-E04"]
+    assert ext["drafted_count"] == 5 and ext["remaining_unwritten"] == 0
+    assert ext["drafted_ids"] == ["WPE-E01", "WPE-E02", "WPE-E03", "WPE-E04", "WPE-E05"]
     assert len(rows) == 5
-    assert len([r for r in rows if r["status"] == "AUTHOR_PACK_DRAFTED_NOT_ADMITTED"]) == 4
+    assert len([r for r in rows if r["status"] == "AUTHOR_PACK_DRAFTED_NOT_ADMITTED"]) == 5
     assert set(bridge["extension_solution_checks"]) == set(ext["drafted_ids"])
     assert ext["original_exam_stems_reproduced"] is False
     assert ext["original_figures_substituted"] is False
@@ -39,7 +39,7 @@ def test_extension_inventory_and_six_stage_authored_separation():
     assert bridge["pack_inventory"]["all_eight_author_draft_count"] == 8
     assert len(bridge["constructions"]) == 8
 
-    for row in rows[:4]:
+    for row in rows:
         assert row["id"] in ext["drafted_ids"]
         pack = (BRIDGE_DIR / row["pack"]).read_text(encoding="utf-8")
         assert "## Core1A" in pack and "## Core1B" in pack, row["id"]
@@ -50,7 +50,7 @@ def test_extension_inventory_and_six_stage_authored_separation():
         assert "not for learner-facing pre-attempt delivery" in pack
         assert "\\\\(" not in pack, "Double-escaped maths must not be introduced"
     assert rows[4]["topic"] == "Radial-force potential"
-    assert rows[4]["status"] == "LATER"
+    assert rows[4]["status"] == "AUTHOR_PACK_DRAFTED_NOT_ADMITTED"
 
 
 def test_source_references_retain_pending_and_under_specified_flags():
