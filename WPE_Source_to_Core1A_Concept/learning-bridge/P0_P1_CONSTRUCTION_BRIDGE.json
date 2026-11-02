@@ -474,7 +474,8 @@
         "Boundary test: change incoming feed direction or belt speed"
       ],
       "misconception": "Confusing momentum flow with total momentum of a fixed body",
-      "first_pair": null
+      "first_pair": "CONVEYOR_MOMENTUM_POWER_LEARNING_PACK.md",
+      "pack_maturity": "AUTHOR_COMPLETE_CORE1A_GUIDE_CORE1B_SIX_STAGE_FRESH_TASK"
     },
     {
       "id": "WPE-C08",
@@ -501,7 +502,8 @@
         "Boundary test: double stiffness in each protocol and compare the two changes"
       ],
       "misconception": "Ignoring which variable is controlled when comparing springs",
-      "first_pair": null
+      "first_pair": "SPRING_CONTROLLED_VARIABLE_LEARNING_PACK.md",
+      "pack_maturity": "AUTHOR_COMPLETE_CORE1A_GUIDE_CORE1B_SIX_STAGE_FRESH_TASK"
     }
   ],
   "extensions_backlog": [
@@ -567,11 +569,11 @@
   "pack_inventory": {
     "date": "2026-11-02",
     "scope": "WPE_SOURCE_TO_CORE1_CONSTRUCTION_BRIDGE",
-    "author_only_stage": "COMPLETE_GUIDED_AND_FRESH_TASK_DRAFTS_NOT_ACADEMIC_ADMISSION",
+    "author_only_stage": "EIGHT_COMPLETE_GUIDED_AND_FRESH_TASK_DRAFTS_NOT_ACADEMIC_ADMISSION",
     "p0_construction_count": 6,
     "p0_complete_draft_count": 6,
     "p1_construction_count": 2,
-    "p1_complete_draft_count": 0,
+    "p1_complete_draft_count": 2,
     "p0_newly_drafted_in_batch": [
       "WPE-C03",
       "WPE-C04",
@@ -589,7 +591,12 @@
     "student_website_modified": false,
     "official_source_stems_republished": false,
     "first_attempt_secure_delivery_claim": false,
-    "source_qrt_owner_approval_changed": false
+    "source_qrt_owner_approval_changed": false,
+    "p1_newly_drafted_in_batch": [
+      "WPE-C07",
+      "WPE-C08"
+    ],
+    "all_eight_author_draft_count": 8
   },
   "solution_checks": {
     "WPE-C03": {
@@ -683,6 +690,83 @@
         "minimum_bottom_speed_squared": 50
       },
       "unit_rule": "For taut string top: mg+T=mv^2/r, T>=0; height gain top-bottom=2r"
+    },
+    "WPE-C07": {
+      "guide": {
+        "incoming_speed_m_s": 0,
+        "belt_speed_m_s": 2,
+        "mass_flow_kg_s": 1,
+        "force_n": 2,
+        "motor_power_w": 4,
+        "kinetic_gain_w": 2,
+        "slip_heat_w": 2,
+        "boundary_incoming_speed_m_s": 2,
+        "boundary_pickup_force_n": 0,
+        "variable_feeder_speed_m_s": 4,
+        "variable_feeder_flow_kg_s": 2,
+        "variable_feeder_power_w": 32
+      },
+      "fresh": {
+        "incoming_speed_m_s": 1,
+        "belt_speed_m_s": 4,
+        "flow_coefficient_kg_m": 0.5,
+        "mass_flow_kg_s": 2,
+        "force_n": 6,
+        "motor_power_w": 24,
+        "kinetic_gain_w": 15,
+        "slip_heat_w": 9,
+        "boundary_belt_speed_m_s": 2,
+        "boundary_mass_flow_kg_s": 1,
+        "boundary_force_n": 1,
+        "boundary_motor_power_w": 2,
+        "boundary_kinetic_gain_w": 1.5,
+        "boundary_slip_heat_w": 0.5
+      },
+      "unit_rule": "Steady conveyor pickup at constant belt speed; rate in kg/s, F=rate*(v-u), motor pickup power=F*v, chips' K gain rate=rate*(v²-u²)/2, sliding heat=rate*(v-u)²/2; u<v, no other losses."
+    },
+    "WPE-C08": {
+      "guide": {
+        "spring_a_k_n_m": 100,
+        "spring_b_k_n_m": 200,
+        "equal_extension_m": 0.1,
+        "extension_energy_j": [
+          0.5,
+          1
+        ],
+        "equal_final_force_n": 10,
+        "force_energy_j": [
+          0.5,
+          0.25
+        ]
+      },
+      "fresh": {
+        "measurement_extension_m": 0.04,
+        "measurement_force_n": [
+          8,
+          16
+        ],
+        "derived_k_n_m": [
+          200,
+          400
+        ],
+        "equal_extension_m": 0.05,
+        "extension_energy_j": [
+          0.25,
+          0.5
+        ],
+        "equal_final_force_n": 12,
+        "force_energy_j": [
+          0.36,
+          0.18
+        ],
+        "boundary_force_n": 24,
+        "boundary_force_energy_j": [
+          1.44,
+          0.72
+        ],
+        "force_doubling_energy_factor": 4
+      },
+      "unit_rule": "Quasistatic elastic Hookean spring: F_final=k*x, U=k*x²/2=F_final²/(2k). Fixed extension and fixed final force are different comparisons."
     }
   }
 }
