@@ -126,7 +126,7 @@
       },
       "core1b": {
         "title": "Your turn: can the cart cross?",
-        "authored_question": "A 1 kg cart starts in a left valley at height 1 m. Its total mechanical energy is 50 J. The track rises to a 6 m high ridge, then falls to a right valley at 3 m. No motor or friction acts. Can the cart reach the right valley from the left?",
+        "authored_question": "A 1 kg cart starts in a left valley at height 1 m. Its total mechanical energy is 50 J. The track rises to a 6 m high ridge, then falls to a right valley at 3 m. Take g = 10 m/s². No motor or friction acts. Can the cart reach the right valley from the left?",
         "option_count": 4,
         "correct_option_index_AUTHOR_ONLY": 1,
         "change_of_conditions": "An energy barrier blocks access to an otherwise allowed destination; this is a path-reasoning transfer, not another endpoint-speed calculation."
@@ -158,7 +158,7 @@
         "authored_question": "A piecewise-linear potential has U = 2 J at x = 0 m, U = 10 J at x = 2 m, then U = 4 J at x = 4 m. Which statement about the conservative force is correct between these points?",
         "option_count": 4,
         "correct_option_index_AUTHOR_ONLY": 0,
-        "change_of_conditions": "Reverse-engineer forces from two graph slopes and recognize the undefined corner rather than simply differentiate a supplied algebraic expression."
+        "change_of_conditions": "Interpret two different piecewise-linear slopes on their open intervals instead of differentiating one algebraic expression. The challenge does not directly test the undefined force at the sharp corner; that issue belongs to its worked check."
       },
       "duplicate_a_b_stem": false,
       "role": "AUTHOR_EXPOSED_SYNTHETIC_LESSON_AND_FRESH_CHECK_NOT_APPROVED"
@@ -217,5 +217,20 @@
       "No semantic grading of free-text reasoning",
       "QRT, adapter, Owner and native Core1A/B acceptance remain pending"
     ]
+  },
+  "author_exposed_b3_b4_review": {
+    "id": "WPE-02",
+    "status": "AUTHOR_EXPOSED_CANDIDATE_REVIEW__NO_INDEPENDENT_ACADEMIC_ACCEPTANCE",
+    "human_readable_review": "learn-challenge-wpe02-b3-b4-review.md",
+    "machine_readable_review": "learn-challenge-wpe02-b3-b4-review.json",
+    "scope": "Five existing Core1A/Core1B construction pairs: teaching sufficiency, design novelty and evidence gaps",
+    "technical_editorial_adjustments": [
+      "Energy-motion challenge now states g=10 m/s² explicitly",
+      "Potential-force transfer record no longer claims the corner is tested by the question"
+    ],
+    "native_core1a": "NOT_ACCEPTED",
+    "native_core1b": "NOT_ACCEPTED",
+    "qrt": "NOT_RUN",
+    "owner": "PENDING"
   }
 }
