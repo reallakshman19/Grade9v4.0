@@ -1,11 +1,19 @@
 name: WPE Learn Challenge UI QA
 on:
   workflow_dispatch:
+  pull_request:
+    paths:
+      - "physics/wpe/learn-challenge.html"
+      - "physics/wpe/learn-challenge-source-map.json"
+      - "physics/wpe/learn-challenge-wpe01-review.json"
+      - "tools/wpe_learn_challenge_ui.py"
+      - ".github/workflows/wpe-learn-challenge.yml"
   push:
     branches: [main]
     paths:
       - "physics/wpe/learn-challenge.html"
       - "physics/wpe/learn-challenge-source-map.json"
+      - "physics/wpe/learn-challenge-wpe01-review.json"
       - "physics/wpe/index.html"
       - "tools/wpe_learn_challenge_ui.py"
       - ".github/workflows/wpe-learn-challenge.yml"
