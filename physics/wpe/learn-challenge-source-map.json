@@ -82,26 +82,27 @@
       "source_gate_note": "Source answer marks unverified",
       "learning_goal": "Explain why equal momentum does not imply equal kinetic energy.",
       "core1a": {
-        "title": "A guide: same momentum, different masses",
-        "authored_question": "A 2 kg trolley has momentum 6 kg·m/s. Find its kinetic energy.",
+        "title": "A guide: a toy trolley’s energy",
+        "authored_question": "A 2 kg toy trolley has momentum 6 kg·m/s. How much kinetic energy does it have?",
         "walkthrough_steps": [
-          "State the relation: K = p²/(2m).",
-          "Substitute p = 6 kg·m/s and m = 2 kg.",
-          "K = 36 ÷ 4 = 9 J.",
-          "At the same momentum, greater mass means less kinetic energy."
+          "Find the speed v=p/m=6/2=3 m/s.",
+          "Find kinetic energy K=½mv²=½×2×3²=9 J.",
+          "Check using K=p²/(2m)=36/4=9 J.",
+          "Compare the same 2 kg trolley at momentum magnitudes 0, 2, 6 and 10 kg·m/s: kinetic energies 0, 1, 9 and 25 J; a curved, not linear, K-versus-p relationship."
         ],
         "conditions": "Classical, nonrelativistic momentum; the stated momentum and mass are measured in one inertial frame."
       },
       "core1b": {
-        "title": "Your turn: compare two carts",
-        "authored_question": "Cart A has mass 1 kg and cart B has mass 4 kg. Each has momentum magnitude 8 kg·m/s. What is the ratio K_A : K_B?",
+        "title": "Your turn: two mystery toy carts",
+        "authored_question": "A class measures two toy carts. Cart A has mass 2 kg and momentum magnitude 4 kg·m/s. Cart B has mass 4 kg and momentum magnitude 8 kg·m/s. Which cart has more kinetic energy, and by how much?",
         "option_count": 4,
-        "correct_option_index_AUTHOR_ONLY": 0,
-        "change_of_conditions": "Compare two objects at equal momentum; requires reasoning about inverse mass dependence rather than finding one object's energy."
+        "correct_option_index_AUTHOR_ONLY": 2,
+        "change_of_conditions": "Unlike the guide's single trolley or fixed-mass table, both momentum and mass change. The learner must select K=p²/(2m) for each and compare resulting values, rather than apply one fixed-variable rule.",
+        "practice_revision": 2
       },
       "duplicate_a_b_stem": false,
       "role": "AUTHOR_EXPOSED_SYNTHETIC_LESSON_AND_FRESH_CHECK_NOT_APPROVED",
-      "scope_note": "Includes graph K(p) expectation as prerequisite; no QRT classification assigned."
+      "scope_note": "Q2, Q4 and Q8 theme grouping, learner-facing candidate only; guided same-mass pattern table, same-energy and same-momentum boundaries; no QRT classification assigned."
     },
     {
       "id": "energy-motion",
@@ -232,5 +233,15 @@
     "native_core1b": "NOT_ACCEPTED",
     "qrt": "NOT_RUN",
     "owner": "PENDING"
+  },
+  "learner_facing_iteration": {
+    "id": "WPE_TOPIC_02_MOMENTUM_KINETIC_ENERGY",
+    "date": "2026-11-02",
+    "topic_id": "momentum-energy",
+    "purpose": "Continue child-friendly learning with a guided table and a new challenge requiring simultaneous mass/momentum comparison",
+    "challenge_revision": 2,
+    "storage_key_suffix": "momentum-energy-r2",
+    "previous_wpe02_report": "Historical author-exposed assessment of the previous candidate, not a judgement about this revised task",
+    "admissions_unchanged": true
   }
 }
