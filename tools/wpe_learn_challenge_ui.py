@@ -119,7 +119,7 @@ def test(browser):
         check("Choose an answer" in card.locator(".feedback").inner_text(),"Must require an answer")
         card.locator('input[type=radio]').first.check()
         card.locator('[data-action="lock"]').click()
-        check("8 characters" in card.locator(".feedback").inner_text(),"Must require reasoning")
+        check("short sentence" in card.locator(".feedback").inner_text(),"Must require reasoning")
         card.locator(".reason").fill("Both resistance forces oppose motion, so their work is negative.")
         card.locator('[data-action="lock"]').click()
         check(card.locator('[data-action="lock"]').is_disabled(),"Attempt not locked")
