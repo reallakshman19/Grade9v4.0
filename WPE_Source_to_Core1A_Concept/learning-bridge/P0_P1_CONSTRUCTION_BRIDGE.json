@@ -513,7 +513,9 @@
         "WEP07-03",
         "EX-M109"
       ],
-      "status": "NEXT_NOT_YET_AUTHORED"
+      "status": "AUTHOR_PACK_DRAFTED_NOT_ADMITTED",
+      "id": "WPE-E01",
+      "pack": "POTENTIAL_WELLS_LEARNING_PACK.md"
     },
     {
       "topic": "Instantaneous power",
@@ -521,21 +523,27 @@
         "TB-WPE-ILL-05",
         "TB-WPE-ILL-06"
       ],
-      "status": "LATER"
+      "status": "AUTHOR_PACK_DRAFTED_NOT_ADMITTED",
+      "id": "WPE-E02",
+      "pack": "INSTANTANEOUS_POWER_LEARNING_PACK.md"
     },
     {
       "topic": "Spring–projectile transitions",
       "ids": [
         "EX-N34"
       ],
-      "status": "LATER"
+      "status": "AUTHOR_PACK_DRAFTED_NOT_ADMITTED",
+      "id": "WPE-E03",
+      "pack": "SPRING_PROJECTILE_TRANSITION_LEARNING_PACK.md"
     },
     {
       "topic": "Repeated dissipative bounces",
       "ids": [
         "EX-M82"
       ],
-      "status": "LATER"
+      "status": "AUTHOR_PACK_DRAFTED_NOT_ADMITTED",
+      "id": "WPE-E04",
+      "pack": "DISSIPATIVE_BOUNCES_LEARNING_PACK.md"
     },
     {
       "topic": "Radial-force potential",
@@ -767,6 +775,156 @@
         "force_doubling_energy_factor": 4
       },
       "unit_rule": "Quasistatic elastic Hookean spring: F_final=k*x, U=k*x²/2=F_final²/(2k). Fixed extension and fixed final force are different comparisons."
+    }
+  },
+  "extension_inventory": {
+    "date": "2026-11-02",
+    "scope": "WPE_D3D4_TARGETED_EXTENSION_AUTHORING",
+    "drafted_count": 4,
+    "remaining_unwritten": 1,
+    "author_only_status": "FOUR_NEW_GUIDED_AND_SIX_STAGE_FRESH_TASK_DRAFTS__NOT_ACADEMIC_ADMISSIONS",
+    "drafted_ids": [
+      "WPE-E01",
+      "WPE-E02",
+      "WPE-E03",
+      "WPE-E04"
+    ],
+    "remaining_id": "WPE-E05",
+    "remaining_topic": "Radial-force potential energy",
+    "original_exam_stems_reproduced": false,
+    "original_figures_substituted": false,
+    "student_website_modified": false,
+    "independent_learner_evidence": false,
+    "academic_qrt_owner_approvals_changed": false,
+    "source_custody_notes": [
+      "WEP07-03 D2/D4 operation conflict unresolved",
+      "TB-WPE-ILL-05 lacks initial velocity in original stem",
+      "EX-N34 original drawing not independently qualified",
+      "EX-M82 coaching answer not treated as an admitted key"
+    ]
+  },
+  "extension_solution_checks": {
+    "WPE-E01": {
+      "guide": {
+        "mass_kg": 2,
+        "total_energy_j": 4,
+        "bowl_center_m": 2,
+        "turns_m": [
+          0,
+          4
+        ],
+        "kinetic_j_at_center": 4,
+        "max_speed_m_s": 2,
+        "low_energy_j": 1,
+        "low_energy_allowed_m": [
+          1,
+          3
+        ]
+      },
+      "fresh": {
+        "mass_kg": 2,
+        "total_energy_j": 9,
+        "allowed_x_bounds_m": [
+          -2.6457513110645907,
+          -1,
+          1,
+          2.6457513110645907
+        ],
+        "valleys_x_m": [
+          -2,
+          2
+        ],
+        "barrier_x_m": 0,
+        "barrier_u_j": 16,
+        "maximum_speed_m_s": 3,
+        "crossing_possible": false,
+        "boundary_total_energy_j": 17,
+        "boundary_center_speed_m_s": 1
+      }
+    },
+    "WPE-E02": {
+      "guide": {
+        "velocity_m_s": 3,
+        "pull_n": 6,
+        "resistance_n": -2,
+        "pull_power_w": 18,
+        "resistance_power_w": -6,
+        "net_power_w": 12,
+        "opposite_velocity_m_s": -3,
+        "opposite_net_power_w": -12
+      },
+      "fresh": {
+        "v_right_m_s": 3,
+        "v_forward_m_s": 4,
+        "motor_right_n": 6,
+        "drag_left_n": -2,
+        "drag_back_n": -1,
+        "motor_power_w": 18,
+        "drag_power_w": -10,
+        "net_power_w": 8,
+        "boundary_v_right_m_s": 1,
+        "boundary_v_forward_m_s": 4,
+        "boundary_net_power_w": 0
+      }
+    },
+    "WPE-E03": {
+      "guide": {
+        "spring_k_n_m": 100,
+        "compression_m": 0.2,
+        "puck_mass_kg": 1,
+        "spring_energy_j": 2,
+        "launch_speed_m_s": 2,
+        "other_ball_initial_horizontal_speed_m_s": 3,
+        "other_ball_height_m": 1.25,
+        "gravity_m_s2": 10,
+        "other_ball_flight_time_s": 0.5,
+        "other_ball_range_m": 1.5
+      },
+      "fresh": {
+        "mass_kg": 0.5,
+        "spring_k_n_m": 125,
+        "compression_m": 0.2,
+        "contact_friction_n": 2.5,
+        "spring_energy_j": 2.5,
+        "contact_friction_work_j": -0.5,
+        "launch_kinetic_j": 2,
+        "launch_speed_m_s": 2.8284271247461903,
+        "height_m": 1.25,
+        "gravity_m_s2": 10,
+        "flight_time_s": 0.5,
+        "range_m": 1.4142135623730951,
+        "boundary_friction_n": 0,
+        "boundary_launch_speed_m_s": 3.1622776601683795,
+        "boundary_flight_time_s": 0.5,
+        "boundary_range_m": 1.5811388300841898
+      }
+    },
+    "WPE-E04": {
+      "guide": {
+        "initial_height_m": 2,
+        "retained_energy_fraction": 0.25,
+        "first_three_rebound_heights_m": [
+          0.5,
+          0.125,
+          0.03125
+        ],
+        "total_distance_m": 3.3333333333333335,
+        "speed_ratio": 0.5
+      },
+      "fresh": {
+        "initial_height_m": 2,
+        "first_impact_retention": 0.75,
+        "later_impact_retention": 0.5,
+        "first_three_rebound_heights_m": [
+          1.5,
+          0.75,
+          0.375
+        ],
+        "total_distance_m": 8,
+        "first_speed_ratio": 0.8660254037844386,
+        "boundary_all_impacts_retention": 0.75,
+        "boundary_total_distance_m": 14
+      }
     }
   }
 }
