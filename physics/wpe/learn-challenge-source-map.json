@@ -1,0 +1,205 @@
+{
+  "schema": "wpe-core1a-core1b-synthetic-learning-path/v1",
+  "as_of": "2026-11-02",
+  "chapter": "PHYSICS/WPE",
+  "surface": "TECHNICAL_TEACHING_CANDIDATE",
+  "source_file": "W,E and P Theory questions.pdf",
+  "source_page": "1",
+  "source_state": "USER_SUPPLIED_SCAN__ORIGINAL_PUBLISHER_AND_ANSWER_KEY_NOT_ATTESTED",
+  "source_question_scope": "Q1–Q11 visually complete; Q12 cut off and excluded",
+  "rights": "No exam stems, original question options, scanned figures or handwritten key reproduced in this public exercise; all A/B stems and diagrams newly authored.",
+  "auth": {
+    "native_core1a": "NOT_ACCEPTED",
+    "native_core1b": "NOT_ACCEPTED",
+    "native_core2": "NOT_ADMITTED_BY_THIS_WORK",
+    "qrt": "NOT_RUN",
+    "blueprint_adapter": "UNSELECTED",
+    "owner": "PENDING"
+  },
+  "source_flags": [
+    {
+      "id": "Q7",
+      "issue": "Net tangential force, distance and instantaneous-versus-average interpretation need precise source wording."
+    },
+    {
+      "id": "Q9",
+      "issue": "K = E−U permits K = 0 at turning points; 'always strictly positive' is not a universal choice."
+    },
+    {
+      "id": "Q10",
+      "issue": "Conservative force component is −dU/dx, not simply dU/dx."
+    },
+    {
+      "id": "Q11",
+      "issue": "Conclusions about opposite fragment momenta need a stated initial-system momentum condition."
+    },
+    {
+      "id": "Q12",
+      "issue": "Truncated on the scan; excluded from construction map."
+    }
+  ],
+  "program": [
+    {
+      "id": "work-sign",
+      "title": "Work and its sign",
+      "source_qids": [
+        "Q1",
+        "Q3",
+        "Q7"
+      ],
+      "source_gate_note": "Q7 wording needs clarification",
+      "learning_goal": "Decide whether a force adds energy, removes energy, or does no work.",
+      "core1a": {
+        "title": "A guide: the moving crate",
+        "authored_question": "A 10 N friction force acts left while a crate slides 3 m right. What work does friction do?",
+        "walkthrough_steps": [
+          "Choose the motion direction: 3 m right.",
+          "Choose the force direction: 10 N left.",
+          "Calculate W = 10 × 3 × cos 180° = −30 J.",
+          "Interpret the sign: friction removes mechanical energy from the moving crate."
+        ],
+        "conditions": "Constant 10 N force, straight 3 m displacement, and no change of force direction within this step."
+      },
+      "core1b": {
+        "title": "Your turn: two journeys",
+        "authored_question": "A robot travels 4 m to the right while a 6 N braking force acts left. It then travels 2 m to the left while a 4 N resistive force acts right. What is the combined work done by these two resistive forces?",
+        "option_count": 4,
+        "correct_option_index_AUTHOR_ONLY": 0,
+        "change_of_conditions": "Two sequential displacement directions; requires tracking the sign twice rather than copying one-step friction arithmetic."
+      },
+      "duplicate_a_b_stem": false,
+      "role": "AUTHOR_EXPOSED_SYNTHETIC_LESSON_AND_FRESH_CHECK_NOT_APPROVED",
+      "scope_note": "For change of kinetic energy per distance, the relevant force is net tangential force; source Q7 wording remains unqualified."
+    },
+    {
+      "id": "momentum-energy",
+      "title": "Momentum and kinetic energy",
+      "source_qids": [
+        "Q2",
+        "Q4",
+        "Q8"
+      ],
+      "source_gate_note": "Source answer marks unverified",
+      "learning_goal": "Explain why equal momentum does not imply equal kinetic energy.",
+      "core1a": {
+        "title": "A guide: same momentum, different masses",
+        "authored_question": "A 2 kg trolley has momentum 6 kg·m/s. Find its kinetic energy.",
+        "walkthrough_steps": [
+          "State the relation: K = p²/(2m).",
+          "Substitute p = 6 kg·m/s and m = 2 kg.",
+          "K = 36 ÷ 4 = 9 J.",
+          "At the same momentum, greater mass means less kinetic energy."
+        ],
+        "conditions": "Classical, nonrelativistic momentum; the stated momentum and mass are measured in one inertial frame."
+      },
+      "core1b": {
+        "title": "Your turn: compare two carts",
+        "authored_question": "Cart A has mass 1 kg and cart B has mass 4 kg. Each has momentum magnitude 8 kg·m/s. What is the ratio K_A : K_B?",
+        "option_count": 4,
+        "correct_option_index_AUTHOR_ONLY": 0,
+        "change_of_conditions": "Compare two objects at equal momentum; requires reasoning about inverse mass dependence rather than finding one object's energy."
+      },
+      "duplicate_a_b_stem": false,
+      "role": "AUTHOR_EXPOSED_SYNTHETIC_LESSON_AND_FRESH_CHECK_NOT_APPROVED",
+      "scope_note": "Includes graph K(p) expectation as prerequisite; no QRT classification assigned."
+    },
+    {
+      "id": "energy-motion",
+      "title": "Energy and where motion is possible",
+      "source_qids": [
+        "Q5",
+        "Q6",
+        "Q9"
+      ],
+      "source_gate_note": "Q9 must allow K = 0",
+      "learning_goal": "Find accessible regions, identify energy barriers and distinguish K = 0 from impossible motion.",
+      "core1a": {
+        "title": "A guide: a cart climbing a hill",
+        "authored_question": "A 1 kg cart has total mechanical energy 50 J on a smooth track. At a point 3 m above the reference level, find its kinetic energy and speed (g = 10 m/s²).",
+        "walkthrough_steps": [
+          "Calculate U = 1 × 10 × 3 = 30 J.",
+          "Find K = E − U = 50 − 30 = 20 J.",
+          "Use K = ½mv², giving v = √40 ≈ 6.32 m/s.",
+          "At a turning point K can be zero; negative K is physically impossible."
+        ],
+        "conditions": "Smooth track, negligible dissipative forces, fixed gravitational reference, constant g and a particle moving along the connected track."
+      },
+      "core1b": {
+        "title": "Your turn: can the cart cross?",
+        "authored_question": "A 1 kg cart starts in a left valley at height 1 m. Its total mechanical energy is 50 J. The track rises to a 6 m high ridge, then falls to a right valley at 3 m. No motor or friction acts. Can the cart reach the right valley from the left?",
+        "option_count": 4,
+        "correct_option_index_AUTHOR_ONLY": 1,
+        "change_of_conditions": "An energy barrier blocks access to an otherwise allowed destination; this is a path-reasoning transfer, not another endpoint-speed calculation."
+      },
+      "duplicate_a_b_stem": false,
+      "role": "AUTHOR_EXPOSED_SYNTHETIC_LESSON_AND_FRESH_CHECK_NOT_APPROVED"
+    },
+    {
+      "id": "potential-force",
+      "title": "Potential energy and force direction",
+      "source_qids": [
+        "Q10"
+      ],
+      "source_gate_note": "Source wording omits the minus sign",
+      "learning_goal": "Read the slope of a potential-energy curve to infer the direction of conservative force.",
+      "core1a": {
+        "title": "A guide: a sloping potential",
+        "authored_question": "A particle has U(x) = 12 J − (3 N)x. What is the constant conservative force along x?",
+        "walkthrough_steps": [
+          "Differentiate U(x) = 12 − 3x, so dU/dx = −3 N.",
+          "Apply the negative gradient: Fₓ = −(−3 N) = +3 N.",
+          "The force points toward increasing x, where potential energy decreases.",
+          "Specify the interval where this potential law is differentiable."
+        ],
+        "conditions": "One-dimensional conservative force, differentiable potential over the interval, consistent coordinates and units."
+      },
+      "core1b": {
+        "title": "Your turn: an unfamiliar graph",
+        "authored_question": "A piecewise-linear potential has U = 2 J at x = 0 m, U = 10 J at x = 2 m, then U = 4 J at x = 4 m. Which statement about the conservative force is correct between these points?",
+        "option_count": 4,
+        "correct_option_index_AUTHOR_ONLY": 0,
+        "change_of_conditions": "Reverse-engineer forces from two graph slopes and recognize the undefined corner rather than simply differentiate a supplied algebraic expression."
+      },
+      "duplicate_a_b_stem": false,
+      "role": "AUTHOR_EXPOSED_SYNTHETIC_LESSON_AND_FRESH_CHECK_NOT_APPROVED"
+    },
+    {
+      "id": "momentum-fragments",
+      "title": "Explosions and energy transfer",
+      "source_qids": [
+        "Q11"
+      ],
+      "source_gate_note": "Initial motion not specified in source",
+      "learning_goal": "Distinguish momentum conservation from kinetic-energy conservation during an internal release.",
+      "core1a": {
+        "title": "A guide: two carts pushed apart",
+        "authored_question": "Two linked carts, masses 1 kg and 3 kg, start at rest on a frictionless track. A spring pushes the 1 kg cart to the right at 3 m/s. Find the 3 kg cart's velocity.",
+        "walkthrough_steps": [
+          "Initial total momentum: 0 kg·m/s.",
+          "Final balance: (1 kg)(+3 m/s) + (3 kg)v = 0.",
+          "Solve v = −1 m/s, so the heavier cart moves left.",
+          "Final total kinetic energy is 4.5 + 1.5 = 6 J, supplied by the spring."
+        ],
+        "conditions": "System initially at rest, negligible external horizontal impulse, spring energy released, nonrelativistic motion."
+      },
+      "core1b": {
+        "title": "Your turn: the parent cart was moving",
+        "authored_question": "A 2 kg cart is initially moving right at 4 m/s. It splits into a 0.5 kg part moving right at 10 m/s and a 1.5 kg part. External horizontal impulse is negligible. What is the heavier part's velocity, and how much does total kinetic energy change?",
+        "option_count": 4,
+        "correct_option_index_AUTHOR_ONLY": 0,
+        "change_of_conditions": "The parent initially moves; the two fragments can both move right in the laboratory frame, unlike the rest-start guide."
+      },
+      "duplicate_a_b_stem": false,
+      "role": "AUTHOR_EXPOSED_SYNTHETIC_LESSON_AND_FRESH_CHECK_NOT_APPROVED",
+      "scope_note": "CROSS_TOPIC_MOMENTUM_PREREQUISITE_CANDIDATE__WPE_CHAPTER_SCOPE_REVIEW_PENDING"
+    }
+  ],
+  "separation_rules": [
+    "No original PDF question stems used as learner-facing text.",
+    "Core1A and Core1B within each subtopic use different physical setups, not mere numeric permutations.",
+    "Core1B initial choice and explanation must be locked before hints.",
+    "Two hints revealed progressively; answer only inserted into live DOM after deliberate unlock.",
+    "Question type and QRT difficulty not inferred from original sheet's LEVEL–IA label.",
+    "Core1A/B formal B1–B7 and Owner academic reviews are outstanding."
+  ]
+}
