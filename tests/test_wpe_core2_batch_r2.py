@@ -51,7 +51,7 @@ def test_specific_wrong_science_corrected_without_false_admission():
     assert "path independence" in " ".join(x["text"].lower() for x in s["hints"])
     assert "equal stretches" in " ".join(x["text"].lower() for x in s["scaffolds"])
     assert "k1<k2" in s["steps"][2] and "W1=2 W2" in s["check"]
-    assert "gravitational" not in s["steps"][0]
+    assert "Do not substitute gravitational potential" in s["steps"][0]
     p=q(b,"EX-M61")
     assert p["answer"].startswith("Source/coaching proposal: B, NOT VERIFIED")
     r=q(b,"JEE-2026-04-06-S1-Q28")
