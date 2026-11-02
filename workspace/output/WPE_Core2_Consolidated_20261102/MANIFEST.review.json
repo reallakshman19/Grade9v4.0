@@ -8,8 +8,8 @@
   "artifacts": [
     {
       "path": "preview/question-status.html",
-      "sha": "84a8316884160b56d25cedfc387cfd4a0b6ef157",
-      "length": 285742
+      "sha": "69335bc44cf6493d9e49e2052823f1fb7233f538",
+      "length": 293321
     },
     {
       "path": "preview/question-status-archive.html",
@@ -18,8 +18,8 @@
     },
     {
       "path": "workspace/output/WPE_Core2_Consolidated_20261102/native-candidate/selected_bank.review.json",
-      "sha": "f6d7a873ee390747973842aab0c6765972aec7ce",
-      "length": 214458
+      "sha": "1161271c0de01f9de31f62cdbcf3679629e16bad",
+      "length": 217380
     },
     {
       "path": "workspace/output/WPE_Core2_Consolidated_20261102/native-candidate/assets.review.json",
@@ -33,8 +33,8 @@
     },
     {
       "path": "workspace/output/WPE_Core2_Consolidated_20261102/review/audit_flags.csv",
-      "sha": "e4d0a1443c181a01752e7be598f4c1c4d5c90c89",
-      "length": 3543
+      "sha": "e0ad3d002788ffeb3ab0453e7e40fada07cb817b",
+      "length": 3712
     },
     {
       "path": "workspace/output/WPE_Core2_Consolidated_20261102/review/build_checks.json",
@@ -45,9 +45,20 @@
       "path": "workspace/output/WPE_Core2_Consolidated_20261102/README.md",
       "sha": "4db60732c8670d01e3a0a8168f3d7123708f3fd4",
       "length": 2700
+    },
+    {
+      "path": "workspace/output/WPE_Core2_Consolidated_20261102/review/HIGH_ROI_CORRECTION_20261102.md",
+      "sha": "977911d0d8aa88d73b47870ff87e6ea9569f34f6",
+      "length": 3257
     }
   ],
   "academic_review": "NOT_RUN",
   "source_rights": "UNRESOLVED",
-  "learner_release": "NOT_APPROVED"
+  "learner_release": "NOT_APPROVED",
+  "high_roi_patch_base_commit": "146e62364b10255949a76e34284f2922d13f60c2",
+  "high_roi_patch_scope": [
+    "EX-M6",
+    "TB-WPE-ILL-05",
+    "WEP07-03"
+  ]
 }

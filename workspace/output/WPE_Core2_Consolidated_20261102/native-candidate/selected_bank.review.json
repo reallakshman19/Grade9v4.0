@@ -83,34 +83,37 @@
       "figure_note": "Author-produced schematic from source input; original official figure equivalence unverified.",
       "hints": [
         {
-          "prompt": "How should the system constraints be framed?",
-          "text": "Identify the geometric path constraints and acting forces."
+          "prompt": "Where does each bead actually begin?",
+          "text": "Locate S on the original semicircle and A on the chord. Do not assume P starts at A, and use the angle shown in the original figure."
         },
         {
-          "prompt": "What equations govern the trade-off across paths?",
-          "text": "Formulate the work-energy balance using Comparative Trajectory Time Integral."
+          "prompt": "Does the given v describe P's entire speed?",
+          "text": "The statement specifies only one horizontal component at S. On a circular wire, the normal force can change the horizontal component as P moves."
         },
         {
-          "prompt": "What warrant justifies the conclusion?",
-          "text": "Crux Move: Analyzing the trade-off between increased path length along a circular arc versus increased speed from gravitational potential energy conversion."
+          "prompt": "What must a travel-time comparison establish?",
+          "text": "Express P's speed along its changing-height arc, then compare its elapsed time with Q's straight-line time. First check whether P can even reach B."
         }
       ],
-      "answer": "Coaching predicted option: A: 𝑡_𝑃<𝑡_𝑄 (coaching proposal)",
+      "answer": "Source-listed coaching answer: A (t_P < t_Q), but NOT a verified universal Physics conclusion. The supplied source geometry and energy model permit counterexamples; independent adjudication remains on HOLD.",
       "steps": [
-        "1. System Representation & Setup: Establish coordinate frame and identify path/constraint geometry for EX-M6.",
-        "2. Physical Model & Formulation: Bead Q traverses straight chord AB of length 2R with uniform horizontal velocity v: t_Q = 2R/v. Bead P traverses curved semi-circular wire ACB. Under gravity, as P descends below AB, mechanical energy conservation gives v_P(theta) = sqrt(v_0^2 + 2gy) > v. However, the path length is pi*R approx 3.14 R, whereas AB is 2R. Whether t_P < t_Q depends on the exact initial point S, the ratio v^2/(gR), and whether the horizontal velocity component remains greater than v throughout. In the coaching solution, t_P < t_Q (Option A) is asserted based on average horizontal speed enhancement, but without the exact figure and rigorous bound, the result cannot be conclusively certified.",
-        "3. Execution & Resolution: Justify the extremal bound or comparison to conclude option A:."
+        "1. Reconstruct the supplied geometry before calculating: the January 23 evening paper reproduction places P at S, 45 degrees along the lower semicircle from A. Set the semicircle angle phi=0 at A, phi=pi/2 at C, phi=pi at B; then phi_S=pi/4. The existing author-created schematic is not a verified source diagram.",
+        "2. From the given horizontal velocity component v at S, P's tangential starting speed is sqrt(2)*v. With radius R, energy conservation along the frictionless wire gives speed_P(phi)^2 = 2v^2 + 2gR[sin(phi)-1/sqrt(2)]. Thus t_P = R * integral(phi=pi/4 to pi) dphi / sqrt(2v^2 + 2gR[sin(phi)-1/sqrt(2)]). Bead Q travels AB=2R at speed v, giving t_Q = 2R/v. A circular-wire normal force generally changes P's horizontal velocity component: treating it as constant is not justified.",
+        "3. At B, speed_P(B)^2 = 2v^2 - sqrt(2)*gR, so P can reach B only if v^2 >= gR/sqrt(2). Even among reachable trajectories, the time ordering is not universal: for v^2/(gR)=0.708, numerical integration gives t_P/t_Q about 1.009 (>1), while for v^2/(gR)=1 the ratio is about 0.864 (<1). The coaching key A exists in a paper reproduction but its simple time comparison does not follow from the given frictionless-wire dynamics; source/model review is required."
       ],
-      "check": "Author Limiting Case Verification: If g -> 0, path ACB is longer (pi*R > 2R) with constant speed v, so t_P = pi*R/v > 2R/v = t_Q. If g is very large, descent velocity becomes extremely high, driving t_P -> 0, so t_P < t_Q. Crossover depends sensitively on v^2/(gR).",
+      "check": "Reproduction of the original source: at g=0, t_P=3*pi*R/(4*sqrt(2)*v) < t_Q=2R/v because P starts at S, not A. With gravity and v^2/(gR)=0.708, direct arc-time integration reverses the ordering. Distinguish recorded coaching key from a proved solution.",
       "op": "JUSTIFY",
       "band": "D4",
       "batch": "B1",
       "review_state": "NOT_ADMITTED",
-      "key_state": "HOLD:OFFICIAL_KEY_UNRESOLVED",
+      "key_state": "HOLD:COACHING_KEY_PHYSICS_CONTRADICTION",
       "flags": [
-        "The provided reasoning compares path speed but does not by itself establish travel-time ordering on a longer curved path. Requires full transit-time analysis and original geometric constraints."
+        "KEY/PHYSICS HOLD: a January 23, 2026 shift-2 coaching paper lists A, but the published reasoning wrongly assumes unchanged horizontal speed along a curved wire. The frictionless dynamics and original 45-degree S geometry admit both time orderings for different v^2/(gR). Do not teach A as a proven universal result.",
+        "FIGURE CUSTODY HOLD: the author-derived SVG is not verified against the source 45-degree S geometry; preserve the original question and compare the exact original figure before academic admission."
       ],
-      "source_urls": [],
+      "source_urls": [
+        "https://www.allenoverseas.com/wp-content/themes/ALLENOverseas/lp-assets/2026/Physics/2301-Physics_Paper_With_Solution_Evening.pdf"
+      ],
       "master_sequence": 3
     },
     {
@@ -2888,35 +2891,37 @@
       "figure_note": "Author-produced schematic from source input; original official figure equivalence unverified.",
       "hints": [
         {
-          "prompt": "How should the physical system and datum be established?",
-          "text": "Isolate [particle of mass m + 1D conservative potential well U(x)] and set reference level at U(x_0) = 0 at release position x_0 = alpha/beta."
+          "prompt": "What is known at the instant of release?",
+          "text": "Evaluate the potential at the stated starting position and distinguish what is known about kinetic and potential energy."
         },
         {
-          "prompt": "Which physical interactions must be coupled?",
-          "text": "Crux Move: Identifying conserved total energy E = 0 at release point x0 and maximizing kinetic energy using completing the square on dimensionless ratio z = x0/x."
+          "prompt": "What quantity can connect the release point to another position?",
+          "text": "Write one physically justified relation between the starting and later states; the speed need not stay constant."
         },
         {
-          "prompt": "How is the target quantity resolved?",
-          "text": "Combine governing relations and solve algebraically for the target quantity."
+          "prompt": "How could you test a claim about maximum speed?",
+          "text": "Look for a bound on a quantity that controls speed. Check the allowed region of motion before selecting an algebraic method."
         }
       ],
-      "answer": "Coaching predicted option: a, b, c, d",
+      "answer": "Author-calculated statements (a), (b), (c), (d) all hold. The published IAPT NSEP 2025 solution for Q57 also lists a, b, c, d; independent examination admission and QRT classification remain separate HOLD gates.",
       "steps": [
         "1. System Representation & Setup: Declare system boundary [particle of mass m + 1D conservative potential well U(x)] and define reference datum U(x_0) = 0 at release position x_0 = alpha/beta.",
         "2. Physical Model & Formulation: 1. Substitute beta = alpha/x0 into U(x): U(x) = alpha/x^2 - (alpha/x0)/x = (alpha/x0^2)*[(x0/x)^2 - (x0/x)]. Statement (a) holds.\n2. At release point x = x0: U(x0) = 0 and K(x0) = 0 ==> Total energy E = 0. Statement (d) holds.\n3. By energy conservation: K(x) = -U(x) ==> 1/2*m*v(x)^2 = (alpha/x0^2)*[z - z^2] where z = x0/x ==> v(x) = sqrt((2*alpha/(m*x0^2))*[z - z^2]). Statement (b) holds.\n4. Complete the square: z - z^2 = 1/4 - (z - 1/2)^2. Maximum value is 1/4 at z = 1/2 (x = 2x0). Thus v_max = sqrt((2*alpha/(m*x0^2))*(1/4)) = sqrt(alpha/(2*m*x0^2)). Statement (c) holds. All four statements a, b, c, d hold.",
-        "3. Execution & Resolution: Execute algebraic reduction and evaluate boundary roots to isolate a, b."
+        "3. Closure: Evaluate each of statements (a), (b), (c) and (d) against the derived expressions; all four follow from the stated model. The accessible branch from release is x >= x0, with speed maximum at x=2x0. Do not infer academic approval or a final QRT band from a corroborated answer key."
       ],
-      "check": "Author Sanity & Limiting Case Check: Dimensional consistency verified in SI base units; limiting bounds confirmed: For 0 < x < x0, U(x) > 0 so K(x) < 0 which is forbidden; motion is strictly bounded on x >= x0.",
+      "check": "Self-check: v(x0)=0, v(2x0)=sqrt(alpha/(2*m*x0^2)), and v(x) approaches 0 as x approaches infinity. For 0<x<x0, the energy equation would require negative kinetic energy and is inaccessible from the stated release. All four statements must be examined independently.",
       "op": "APPLY",
       "band": "D2",
       "batch": "B5",
       "review_state": "NOT_ADMITTED",
-      "key_state": "HOLD:OFFICIAL_KEY_UNRESOLVED",
+      "key_state": "PUBLIC_IAPT_KEY_ABCD_CORROBORATED; INDEPENDENT_ADMISSION_HOLD",
       "flags": [
-        "R3 presents APPLY/D2 but the 70-question master proposes SYNTHESIZE/D4: contradictory, unapproved QRT labels. Source requires MULTIPLE correct options; do not use the master single-correct control. All four statements can be tested against U(x) and E=0."
+        "ACADEMIC/QRT HOLD: master labels SYNTHESIZE/D4 while R3 labels APPLY/D2; no independent cognitive decision is recorded. The public IAPT Q57 solution corroborates a,b,c,d but answer agreement alone is not academic admission.",
+        "HINT-CONTAMINATION REPAIRED (AUTHOR PROPOSAL): pre-attempt hints now avoid stating E=0, the transformation z=x0/x, or a complete-the-square method. Preserve original source hints separately where available."
       ],
       "source_urls": [
-        "https://reallakshman19.github.io/Grade9v4.0/workspace/output/WPE_Core2_Reader_R3_HintsFirst_20261101/rendered/core2.html"
+        "https://reallakshman19.github.io/Grade9v4.0/workspace/output/WPE_Core2_Reader_R3_HintsFirst_20261101/rendered/core2.html",
+        "https://www.iapt.org.in/images/nse_2025/Answer_key/NSEP_-_2025_Solution_1_compressed.pdf"
       ],
       "master_sequence": 65
     },
@@ -3340,28 +3345,29 @@
       "figure_note": "",
       "hints": [
         {
-          "prompt": "Hint 1",
-          "text": "Check whether the problem states an initial speed."
+          "prompt": "Which initial condition is actually given?",
+          "text": "Read the stem for the starting speed. Do not silently replace an unstated initial speed with zero."
         },
         {
-          "prompt": "Hint 2",
-          "text": "Keep gravitational power distinct from any unnamed applied force."
+          "prompt": "Whose instantaneous power is requested?",
+          "text": "At the bottom, relate the component of gravity along the motion to the block's instantaneous speed."
         }
       ],
-      "answer": "Conditional on release from rest: P = mg sin(θ) √(2gl sin(θ)).",
+      "answer": "As stated, the initial speed is unspecified, so a unique bottom power cannot be determined. For initial speed u: P_bottom = mg sin(theta) * sqrt(u^2 + 2gl sin(theta)). If and only if release from rest (u=0) is added, P_bottom = mg sin(theta) * sqrt(2gl sin(theta)).",
       "steps": [
-        "The source solution additionally assumes release from rest: v_bottom = √(2gl sin θ).",
-        "Gravity’s component along the velocity is mg sin θ.",
-        "Thus P = (mg sin θ)·v_bottom; without the initial speed, no unique numerical expression follows."
+        "1. The smooth incline specifies the acceleration and direction of motion, not the starting speed. Introduce u for the unknown speed at the top rather than pretending the block was released from rest.",
+        "2. The vertical drop over incline length l is l*sin(theta). Energy conservation gives (1/2)*m*v_bottom^2 = (1/2)*m*u^2 + mg*l*sin(theta), so v_bottom = sqrt(u^2 + 2gl sin(theta)).",
+        "3. Instantaneous gravitational power at the bottom is F_gravity dot velocity = mg*v_bottom*sin(theta), because velocity is along the downward slope. Therefore P_bottom = mg sin(theta)*sqrt(u^2 + 2gl sin(theta)).",
+        "4. The source-derived formula mg sin(theta)*sqrt(2gl sin(theta)) is valid only with the additional condition u=0. Preserve the original stem and make that conditional assumption visible."
       ],
-      "check": "For initial speed u, v_bottom² = u² + 2gl sin θ; the printed result uses u = 0.",
+      "check": "If u=0, recover the source-derived rest-release formula; if u increases, bottom power increases. For theta=0, gravity's power along the horizontal incline vanishes. Units are force times velocity (watts).",
       "op": "UNREVIEWED",
       "band": "D3",
       "batch": "TEXTBOOK",
       "review_state": "NOT_ADMITTED",
       "key_state": "AUTHOR_SOURCE_DERIVED_UNREVIEWED",
       "flags": [
-        "Stem does not expressly state release from rest. The displayed source solution is conditional on initial speed u=0; for arbitrary initial u, v_bottom²=u²+2gl sin θ."
+        "SOURCE-CONDITION HOLD: the exact supplied stem does not state release from rest. Its source-derived answer is only the u=0 special case; the general expression requires an unknown initial speed u and does not produce one unique value."
       ],
       "source_urls": [
         "https://reallakshman19.github.io/Grade9v4.0/workspace/output/WPE_Core2_Reader_R3_HintsFirst_20261101/rendered/core2.html#TB-WPE-ILL-05"
