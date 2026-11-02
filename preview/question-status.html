@@ -5,7 +5,57 @@
 @media(max-width:950px){.layout{grid-template-columns:minmax(0,1fr)}aside.panel{position:relative;max-height:none;top:auto}.list-scroll{max-height:230px}.reader{padding:16px}}
 @media(prefers-reduced-motion:no-preference){.item,.btn{transition:background .15s,border-color .15s}}
 @media print{header,aside,.toolbar-buttons,.notice,.actionbar,.hint,.filters,.footer{display:none!important}.layout{display:block;padding:0}.reader{padding:0;border:0;box-shadow:none}.stage{break-inside:avoid}.solution{display:none!important}}
-</style><script data-grade9-nav defer src="../site-nav.js"></script></head><body><header><div class="kicker">Grade9 v4.0 · Physics pilot · Work, Power &amp; Energy</div><h1>📚 Question Bank · Work, Power &amp; Energy</h1><p>Question custody first · selectable hints · local attempt · author-proposed solution · clear academic holds</p><span class="status">REVIEW CANDIDATE · 0 academically admitted · no learner release approval</span></header>
+
+/* Core2 first-class tablet layout. No iframe or second page viewport. */
+html{scroll-behavior:smooth}body{min-width:0;overflow-wrap:anywhere;overflow-x:clip}
+.c2-global{display:flex;align-items:center;justify-content:space-between;gap:12px 22px;flex-wrap:wrap;background:#102e43;color:#f3faff;padding:9px clamp(16px,2.7vw,42px);border-bottom:1px solid #4c8193;font-size:13px;line-height:1.4}
+.c2-global a{color:#e5f5fc;text-decoration:none;border-radius:7px;padding:7px 8px;display:inline-flex;align-items:center;min-height:38px;font-weight:720}
+.c2-global a:hover,.c2-global a:focus-visible{background:#ffffff20;color:white}
+.c2-brand{font-size:15px!important;font-weight:850!important;white-space:nowrap}.c2-brand span{display:inline-flex;align-items:center;justify-content:center;margin-right:5px;border-radius:7px;background:#207e77;width:29px;height:29px;font-size:12px}
+.c2-links{display:flex;align-items:center;gap:4px;flex-wrap:wrap}
+.c2-chapterbar{background:#e9f4f5;color:#23536a;display:flex;align-items:center;flex-wrap:wrap;gap:5px 11px;font-size:12px;padding:8px clamp(16px,2.7vw,42px)}
+.c2-chapterbar a{color:#155877;font-weight:700;text-decoration:none;min-height:27px;display:inline-flex;align-items:center}
+.c2-chapterbar a:hover{text-decoration:underline}.c2-chapterbar .c2-spacer{flex:1}
+header{padding:16px clamp(16px,2.7vw,42px) 18px;background:#152c4b}header h1{font-size:clamp(24px,2.4vw,32px);line-height:1.22}header p{font-size:14px;line-height:1.48}
+.layout{max-width:1800px;grid-template-columns:minmax(240px,290px) minmax(0,1fr);gap:16px;padding:16px clamp(12px,2.2vw,32px);width:100%}
+aside.panel{top:8px;max-height:calc(100dvh - 16px)}.main,.panel,.reader,.stage,.stem,.option,.source-note{min-width:0;max-width:100%}
+.reader{padding:clamp(15px,1.8vw,26px)}.reader-toolbar{align-items:center}
+.reader-toolbar>*,.reader-toolbar .toolbar-buttons{min-width:0}.toolbar-buttons{flex-wrap:wrap}
+.notice{font-size:13px;line-height:1.55}
+.stage{overflow-wrap:anywhere}.stage p,.stage div,.stage li{overflow-wrap:anywhere}.figure svg{max-width:100%;height:auto}
+.stage pre,.stage code,.math{max-width:100%;overflow-wrap:anywhere;white-space:pre-wrap}
+button,.btn{min-height:42px}.item{min-height:42px}.option{min-height:48px}.hint summary{min-height:44px}
+@media(min-width:850px){.list-scroll{max-height:none;flex:1;overflow-y:auto}}
+@media(min-width:850px) and (max-width:1250px){
+ .layout{grid-template-columns:minmax(222px,260px) minmax(0,1fr);gap:14px;padding-inline:14px}
+ aside.panel{position:sticky;top:7px;max-height:calc(100dvh - 14px)}
+ .reader{padding:15px}.sidebar-head{padding:14px}.reader-toolbar{gap:9px}
+ .reader-toolbar .btn{padding:9px 11px}.stage{padding:14px}
+ h2{font-size:20px}.filters{gap:7px}
+}
+@media(max-width:849px){
+ .layout{display:block;padding:12px 13px}
+ aside.panel{position:relative;max-height:none;top:auto;margin-bottom:13px}
+ .sidebar-head{padding:13px 15px}
+ .sidebar-head h2{font-size:19px}
+ .counts{margin:8px 0}.list-scroll{max-height:180px;overflow-y:auto;overscroll-behavior:contain}
+ .main{width:100%}.reader{padding:14px}
+ .reader-toolbar{gap:11px}.reader-toolbar .toolbar-buttons{width:100%;justify-content:flex-end}
+ .reader-toolbar .toolbar-buttons .btn{min-width:100px}
+ .c2-global{padding:8px 12px}.c2-chapterbar{padding:8px 12px}
+ .c2-global a{font-size:12px;padding:6px}.c2-links{gap:3px}
+ header{padding:15px 13px 17px}
+}
+@media(max-width:550px){
+ .c2-global .c2-brand{width:100%}.c2-links{width:100%;justify-content:space-between}
+ .c2-chapterbar .c2-spacer{display:none}
+ .filters{grid-template-columns:1fr 1fr}
+ .reader-toolbar .toolbar-buttons{justify-content:space-between}
+ .reader-toolbar .toolbar-buttons .btn{min-width:0}
+ .option{gap:8px}.stem{font-size:16px}
+}
+@media print{.c2-global,.c2-chapterbar{display:none!important}}
+</style></head><body><nav class="c2-global" aria-label="Site and subject navigation"><a class="c2-brand" href="../index.html" aria-label="Grade9 home"><span aria-hidden="true">G9</span> Grade9</a><div class="c2-links"><a href="../index.html">⌂ Home</a><a href="../physics/index.html">⚛ Physics</a><a href="../mathematics/index.html">∑ Maths</a><a href="../chemistry/index.html">⚗ Chemistry</a><a href="../architecture/index.html">◈ Architecture</a></div></nav><div class="c2-chapterbar"><a href="../physics/index.html">Physics</a><span aria-hidden="true">›</span><a href="../physics/wpe/index.html">Work, Power &amp; Energy</a><span aria-hidden="true">›</span><strong>Question Bank</strong><span class="c2-spacer"></span><a href="../physics/wpe/index.html">Chapter home</a><a href="practice.html">Try practice</a></div><header><div class="kicker">Grade9 v4.0 · Physics pilot · Work, Power &amp; Energy</div><h1>📚 Question Bank · Work, Power &amp; Energy</h1><p>Question custody first · selectable hints · local attempt · author-proposed solution · clear academic holds</p><span class="status">REVIEW CANDIDATE · 0 academically admitted · no learner release approval</span></header>
 <div class="layout"><aside class="panel"><div class="sidebar-head"><h3>Question navigator</h3><p class="subtitle">Unique display entries after evidence-conscious duplicate handling</p><div class="counts"><span class="count" id="count-source">73 source questions</span><span class="count">1 separate synthetic control</span><span class="count">5 suppressed duplicate displays</span></div><div class="filters"><input type="search" id="search" placeholder="Search source, question or concept" aria-label="Search questions"><select id="kind" aria-label="Filter source"><option value="ALL">All source types</option><option value="EXAM_CLAIM">Exam-labelled (unverified)</option><option value="TEXTBOOK">Textbook extracts</option><option value="SYNTHETIC_CONTROL">Synthetic control</option></select><select id="band" aria-label="Filter proposed band"><option value="ALL">All proposed levels</option><option>D1</option><option>D2</option><option>D3</option><option>D4</option></select></div></div><div id="navlist" class="list-scroll" role="list" aria-label="Filtered questions"></div></aside>
 <main class="main"><div class="notice"><strong>Academic status:</strong> Source text and calculations are preserved as candidate evidence, not as authenticated exam papers, official answer keys or independently accepted QRT labels. The 70-question attachment declares <strong>NOT_ADMITTED</strong> for every item despite its “qualified” title. The display deduplication does not erase original source IDs. Solutions are author/coaching proposals.</div><div class="panel reader"><div class="reader-toolbar"><div><div class="kicker" style="color:#526c87">Question view</div><div id="progress" aria-live="polite">1 / 74</div></div><div class="toolbar-buttons"><button id="prev" class="btn quiet" type="button">← Previous</button><button id="next" class="btn primary" type="button">Next →</button></div></div><div id="question-root" aria-live="polite"></div></div>
 <details class="report"><summary>Duplicate decisions and source selection</summary><p class="subtitle">Source identity aliases are not inferred solely from mathematical similarity. Removed items remain in the unchanged uploaded archive and are listed by original identifiers.</p><ol id="dedup-list"></ol></details>
