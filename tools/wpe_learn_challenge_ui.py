@@ -248,6 +248,38 @@ def test(browser):
         print(f"PASS: {w}x{h} layout, interaction, answer protection")
         context.close()
 
+def test_child_journeys(browser):
+    context=browser.new_context(viewport={"width":390,"height":844},device_scale_factor=1)
+    try:
+        page=context.new_page()
+        page.goto(URL,wait_until="load")
+        cards=page.locator("article.lesson")
+        wrong_options=[1,0,0,0,0]
+        for idx,wrong in enumerate(wrong_options):
+            row=cards.nth(idx)
+            check(row.locator('[data-action="solution"]').is_disabled(),f"Topic {idx+1} revealed before a first attempt")
+            row.locator('input[type="radio"]').nth(wrong).check()
+            row.locator(".reason").fill("I chose this answer because I am checking the idea in the question, but I may have missed a rule.")
+            row.locator('[data-action="lock"]').click()
+            check(row.locator('[data-action="solution"]').is_enabled(),f"Topic {idx+1} incorrectly forces hints")
+            row.locator('[data-action="solution"]').click()
+            output=row.locator(".solution-area").inner_text()
+            check("One possible mix-up:" in output,f"Topic {idx+1} missing misconception feedback")
+            check("Check your own explanation:" in output,f"Topic {idx+1} missing reasoning self-check")
+            check("Changed-condition reflection:" in output,f"Topic {idx+1} missing transfer reflection")
+            check(row.locator(".solution-area ul li").count()==2,f"Topic {idx+1} self-check items incomplete")
+        check(page.locator("#practice-progress-label").inner_text()=="5 of 5 worked checks viewed","All-five practice progress incorrect")
+        check(page.locator(".contents .topic-status").filter(has_text="Worked check viewed").count()==5,"Five topic statuses incorrect")
+        page.reload(wait_until="load")
+        check(page.locator("#practice-progress-label").inner_text()=="5 of 5 worked checks viewed","Practice progress failed to restore after reload")
+        for idx in range(5):
+            cards.nth(idx).locator('[data-action="reset"]').click()
+        check(page.locator("#practice-progress-label").inner_text()=="0 of 5 worked checks viewed","Practice progress failed to reset")
+        check(page.locator(".contents .topic-status").filter(has_text="Not started").count()==5,"Cleared topic statuses incorrect")
+        print("PASS: five incorrect-choice feedback journeys, optional hints and restored progress")
+    finally:
+        context.close()
+
 def main():
     corpus()
     server=subprocess.Popen([sys.executable,"-m","http.server",str(PORT),"--bind","127.0.0.1"],cwd=ROOT,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
@@ -259,7 +291,9 @@ def main():
         else: raise RuntimeError("HTTP server unavailable")
         with sync_playwright() as p:
             browser=p.chromium.launch(headless=True,args=["--no-sandbox","--disable-dev-shm-usage"])
-            try:test(browser)
+            try:
+                test(browser)
+                test_child_journeys(browser)
             finally:browser.close()
         print("PASS: Five authored pairs and five viewport browser checks.")
     finally:
