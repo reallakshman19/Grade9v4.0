@@ -52,7 +52,7 @@ def test_ex_m6_must_not_claim_universal_key():
     assert q["key_state"].startswith("HOLD:")
     assert "NOT a verified universal" in q["answer"]
     assert "0.708" in q["check"]
-    assert "horizontal component" in " ".join(q["steps"]).lower()
+    assert "horizontal velocity component" in " ".join(q["steps"]).lower()
 
 def test_nsep_multiple_correct_and_no_decisive_pre_attempt_hint():
     bank, _, _ = payload()
