@@ -99,5 +99,5 @@ def test_manifest_pins_real_git_blob_sha():
         matching = [a for a in manifest["artifacts"] if a["path"] == rel]
         assert len(matching) == 1, rel
         content = target.read_bytes()
-        obj = b"blob " + str(len(content)).encode() + b"\\0" + content
+        obj = b"blob " + str(len(content)).encode() + bytes([0]) + content
         assert hashlib.sha1(obj).hexdigest() == matching[0]["sha"], rel
