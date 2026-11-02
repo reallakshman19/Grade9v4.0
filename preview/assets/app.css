@@ -452,3 +452,68 @@ math mi {
 math mo, math mn, math mtext {
     font-style: normal;
 }
+
+
+/* Shared Physics / WPE presentation — tablet-first, student-facing. 2026-11-02 */
+:root{
+ color-scheme:light;--bg:#f3f8fb;--surface:#ffffff;--header-bg:#133c57;--header-text:#ffffff;
+ --border:#d8e5eb;--text-main:#203849;--text-muted:#526979;--accent:#15736c;--accent-hover:#0b5f5b;
+ --warn-bg:#fff8ea;--warn-border:#e6c887;--warn-text:#654d27;
+ --info-bg:#edf6fc;--info-border:#bdd9e8;--info-text:#234f72;
+ --success-bg:#eaf7f1;--success-border:#b4dac8;--success-text:#205944;
+ --hold-bg:#eff2f6;--hold-border:#d7e0e7;--hold-text:#637282;--radius:15px
+}
+@media(prefers-color-scheme:dark){:root{
+ color-scheme:light;--bg:#f3f8fb;--surface:#ffffff;--header-bg:#133c57;--header-text:#fff;
+ --border:#d8e5eb;--text-main:#203849;--text-muted:#526979;--accent:#15736c;--accent-hover:#0b5f5b;
+ --warn-bg:#fff8ea;--warn-border:#e6c887;--warn-text:#654d27;
+ --info-bg:#edf6fc;--info-border:#bdd9e8;--info-text:#234f72;
+ --success-bg:#eaf7f1;--success-border:#b4dac8;--success-text:#205944;
+ --hold-bg:#eff2f6;--hold-border:#d7e0e7;--hold-text:#637282
+}}
+body{color-scheme:light;min-width:0;background:var(--bg);color:var(--text-main);overflow-wrap:anywhere}
+.preview-page-header{border:0;background:linear-gradient(105deg,#153f5a,#216c6b);padding:24px clamp(16px,3vw,40px)}
+.preview-page-header .header-container{max-width:1190px;display:block}
+.preview-page-header .brand-title{font-size:clamp(25px,3vw,34px);letter-spacing:-.025em;color:#fff;line-height:1.18;margin:4px 0 5px}
+.preview-page-header .brand-tag{color:#abe1d4;font-size:11px;font-weight:800;letter-spacing:.11em;margin:0}
+.preview-page-header .page-subtitle{color:#e4f0f1;font-size:clamp(14px,1.4vw,16px);max-width:900px;line-height:1.55;margin:3px 0 0}
+nav.breadcrumb{display:flex;align-items:center;gap:8px;flex-wrap:wrap;max-width:1190px;margin:0 auto;padding:12px 22px 5px;color:#597383;font-size:13px}
+nav.breadcrumb a{color:#146877;font-weight:650}
+main{max-width:1190px;padding:11px clamp(15px,2.7vw,32px) 45px}
+.banner-disclosure{padding:12px 16px;margin-bottom:16px;background:var(--warn-bg);border:1px solid var(--warn-border);border-left:4px solid #c18a3f;color:var(--warn-text);border-radius:11px;font-size:13px}
+.banner-disclosure .preview-note-line{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.banner-disclosure strong{display:inline;font-size:13px;margin:0;color:#684e29}
+.banner-disclosure .preview-pill{display:inline-flex;padding:3px 8px;background:#f5e6c8;border-radius:999px;font-size:11px;letter-spacing:.025em;font-weight:800;text-transform:uppercase}
+.banner-disclosure details{margin-top:4px}.banner-disclosure details summary{font-size:12px;color:#836027;cursor:pointer;min-height:26px;display:list-item;margin-left:16px;width:max-content;max-width:100%}
+.banner-disclosure details p{margin:6px 0 2px;font-size:12px;max-width:950px}
+.card{border-radius:17px;border:1px solid #dbe7ed;padding:clamp(17px,2.5vw,26px);box-shadow:0 8px 20px #1a41560b;margin-bottom:16px}
+.card h2{font-size:clamp(19px,2vw,25px);line-height:1.28;color:#163d55!important;letter-spacing:-.017em}
+.card p{line-height:1.65}
+.grid-cards{gap:16px;margin-bottom:20px}.sub-card{padding:20px;border-radius:14px}
+.math-box{color:#193b52!important;background:#f0f6f9!important;border-color:#d9e8ee!important;border-left-color:#23847c!important;font-size:clamp(15px,1.4vw,18px);overflow-x:auto}
+.math-box math,.equation-steps math{color:inherit}
+.btn-primary{background:#16786f;color:#fff}.btn-primary:hover{background:#0d665e}
+.btn-option:hover{background:#f1faf8}.btn-option.selected,.practice-options .btn-option:has(input:checked){background:#e5f7f1;color:#15394c}
+.practice-options .btn-option{border-color:#cedee7;border-radius:11px;padding:12px 14px;font-size:15px;line-height:1.5}
+.practice-options input[type="radio"]{accent-color:#16776b}
+.reasoning-box textarea{min-height:100px;font-size:15px;line-height:1.55}
+.panel-reveal{font-size:15px;line-height:1.6}
+th{background:#eff5f8!important;color:#23475f!important}
+td{background:#fff;color:#233f51}
+.badge-active{background:#e5f7f4;color:#115b55}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #c18e40;outline-offset:3px}
+footer{margin-top:25px;padding-top:17px}
+@media(min-width:850px) and (max-width:1350px){
+  main{max-width:100%}.card{padding:19px 22px}
+  .grid-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .math-box{font-size:16px}
+  .preview-page-header{padding-top:20px;padding-bottom:20px}
+}
+@media(max-width:849px){
+  .preview-page-header{padding:19px 16px}
+  nav.breadcrumb{padding:10px 16px 4px}
+  main{padding:10px 15px 32px}.grid-cards{grid-template-columns:1fr}
+  .card{padding:17px 16px}.math-box{padding:11px;font-size:15px}
+  .nav-actions{margin-top:20px}.banner-disclosure{font-size:12px}
+}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
