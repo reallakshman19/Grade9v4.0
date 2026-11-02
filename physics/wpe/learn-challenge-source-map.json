@@ -139,32 +139,34 @@
     },
     {
       "id": "potential-force",
-      "title": "Potential energy and force direction",
+      "title": "Potential energy and force",
       "source_qids": [
         "Q10"
       ],
       "source_gate_note": "Source wording omits the minus sign",
-      "learning_goal": "Read the slope of a potential-energy curve to infer the direction of conservative force.",
+      "learning_goal": "Find direction and magnitude of a one-dimensional conservative force from how potential energy changes with position, including a flat interval and sharp-corner limitation.",
       "core1a": {
-        "title": "A guide: a sloping potential",
-        "authored_question": "A particle has U(x) = 12 J − (3 N)x. What is the constant conservative force along x?",
+        "title": "A guide: follow a sloping energy line",
+        "authored_question": "On a straight track, a particle’s potential energy is 12 J at x = 0 m and 6 J at x = 2 m. The graph is a straight line. What force acts along the track?",
         "walkthrough_steps": [
-          "Differentiate U(x) = 12 − 3x, so dU/dx = −3 N.",
-          "Apply the negative gradient: Fₓ = −(−3 N) = +3 N.",
-          "The force points toward increasing x, where potential energy decreases.",
-          "Specify the interval where this potential law is differentiable."
+          "Read U(0 m)=12 J and U(2 m)=6 J; find the slope ΔU/Δx=(6−12)/(2−0)=−3 J/m=−3 N.",
+          "Use Fₓ=−dU/dx for a one-dimensional conservative force; a straight segment has Fₓ=−(slope)=+3 N, directed right.",
+          "Contrast three line shapes: rising slope means force left, flat slope means zero force, falling slope means force right.",
+          "Explain that a sharp corner does not have a unique ordinary derivative at the join; the force can still be calculated separately on open straight intervals."
         ],
-        "conditions": "One-dimensional conservative force, differentiable potential over the interval, consistent coordinates and units."
+        "conditions": "One-dimensional conservative potential, positive x to the right, slope defined within each straight segment. 1 J/m=1 N. The force sign does not by itself determine velocity direction."
       },
       "core1b": {
-        "title": "Your turn: an unfamiliar graph",
-        "authored_question": "A piecewise-linear potential has U = 2 J at x = 0 m, U = 10 J at x = 2 m, then U = 4 J at x = 4 m. Which statement about the conservative force is correct between these points?",
+        "title": "Your turn: decode a new energy map",
+        "authored_question": "An explorer measures the potential energy at four positions on a straight track: (0 m, 2 J), (2 m, 10 J), (4 m, 10 J), and (6 m, 4 J). The graph joins the points with straight lines. What are the conservative force components on the three open sections: 0–2 m, 2–4 m, and 4–6 m?",
         "option_count": 4,
-        "correct_option_index_AUTHOR_ONLY": 0,
-        "change_of_conditions": "Interpret two different piecewise-linear slopes on their open intervals instead of differentiating one algebraic expression. The challenge does not directly test the undefined force at the sharp corner; that issue belongs to its worked check."
+        "correct_option_index_AUTHOR_ONLY": 2,
+        "change_of_conditions": "Unlike the guide's single falling line, the unfamiliar piecewise graph rises, stays flat and falls. The learner has to calculate three slopes, reverse each sign, identify zero-force interval and avoid treating the corners as differentiable.",
+        "practice_revision": 2
       },
       "duplicate_a_b_stem": false,
-      "role": "AUTHOR_EXPOSED_SYNTHETIC_LESSON_AND_FRESH_CHECK_NOT_APPROVED"
+      "role": "AUTHOR_EXPOSED_SYNTHETIC_LESSON_AND_FRESH_CHECK_NOT_APPROVED",
+      "scope_note": "Source Q10 remains an unverified scanned theme and is not reproduced. One-dimensional negative gradient relation retained; sharp joins excluded by asking only open intervals."
     },
     {
       "id": "momentum-fragments",
@@ -237,16 +239,17 @@
     "owner": "PENDING"
   },
   "learner_facing_iteration": {
-    "id": "WPE_TOPIC_03_ENERGY_MOTION",
+    "id": "WPE_TOPIC_04_POTENTIAL_FORCE",
     "date": "2026-11-02",
-    "topic_id": "energy-motion",
-    "purpose": "Advance to the third learner-friendly topic with a guided energy-budget table, turning points and a separate vertical time/height explanation",
+    "topic_id": "potential-force",
+    "purpose": "Provide child-friendly slope-to-force guide and a graph-based rising-flat-falling three-interval challenge",
     "challenge_revision": 2,
-    "storage_key_suffix": "energy-motion-r2",
+    "storage_key_suffix": "potential-force-r2",
     "previous_iterations": [
-      "WPE_TOPIC_02_MOMENTUM_KINETIC_ENERGY"
+      "WPE_TOPIC_02_MOMENTUM_KINETIC_ENERGY",
+      "WPE_TOPIC_03_ENERGY_MOTION"
     ],
-    "previous_wpe02_report": "Historical author-exposed review of older candidate tasks, not a judgement about this revised exercise",
+    "previous_wpe02_report": "Historical author-exposed review of prior topic tasks, not a decision on this revised student practice",
     "admissions_unchanged": true
   }
 }
