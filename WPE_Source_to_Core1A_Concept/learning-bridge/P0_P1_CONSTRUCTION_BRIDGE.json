@@ -550,7 +550,9 @@
       "ids": [
         "EX-M89"
       ],
-      "status": "LATER"
+      "status": "AUTHOR_PACK_DRAFTED_NOT_ADMITTED",
+      "id": "WPE-E05",
+      "pack": "RADIAL_FORCE_POTENTIAL_LEARNING_PACK.md"
     }
   ],
   "core1b_contract": [
@@ -780,17 +782,18 @@
   "extension_inventory": {
     "date": "2026-11-02",
     "scope": "WPE_D3D4_TARGETED_EXTENSION_AUTHORING",
-    "drafted_count": 4,
-    "remaining_unwritten": 1,
-    "author_only_status": "FOUR_NEW_GUIDED_AND_SIX_STAGE_FRESH_TASK_DRAFTS__NOT_ACADEMIC_ADMISSIONS",
+    "drafted_count": 5,
+    "remaining_unwritten": 0,
+    "author_only_status": "FIVE_TARGETED_EXTENSION_GUIDED_AND_FRESH_TASK_DRAFTS__NOT_ACADEMIC_ADMISSIONS",
     "drafted_ids": [
       "WPE-E01",
       "WPE-E02",
       "WPE-E03",
-      "WPE-E04"
+      "WPE-E04",
+      "WPE-E05"
     ],
-    "remaining_id": "WPE-E05",
-    "remaining_topic": "Radial-force potential energy",
+    "remaining_id": null,
+    "remaining_topic": null,
     "original_exam_stems_reproduced": false,
     "original_figures_substituted": false,
     "student_website_modified": false,
@@ -800,8 +803,12 @@
       "WEP07-03 D2/D4 operation conflict unresolved",
       "TB-WPE-ILL-05 lacks initial velocity in original stem",
       "EX-N34 original drawing not independently qualified",
-      "EX-M82 coaching answer not treated as an admitted key"
-    ]
+      "EX-M82 coaching answer not treated as an admitted key",
+      "EX-M89 consolidated reader is SYNTHESIZE/D3 with coaching-predicted answer only, not an independently verified official key or admission"
+    ],
+    "last_draft": "WPE-E05",
+    "last_draft_source_theme": "EX-M89",
+    "last_draft_original_source_status": "SYNTHESIZE_D3_CANDIDATE_NOT_ADMITTED"
   },
   "extension_solution_checks": {
     "WPE-E01": {
@@ -925,6 +932,44 @@
         "boundary_all_impacts_retention": 0.75,
         "boundary_total_distance_m": 14
       }
+    },
+    "WPE-E05": {
+      "guide": {
+        "mass_kg": 1,
+        "inward_force_magnitude_n": 3,
+        "circular_radius_m": 2,
+        "reference_radius_m": 0,
+        "potential_energy_j": 6,
+        "speed_squared_m2_s2": 6,
+        "speed_m_s": 2.449489742783178,
+        "kinetic_energy_j": 3,
+        "total_energy_j": 9
+      },
+      "fresh": {
+        "mass_kg": 2,
+        "inner_force_n": 4,
+        "inner_radius_m": 2,
+        "outer_force_gradient_n_per_m": 2,
+        "orbit_radius_m": 3,
+        "local_inward_force_n": 6,
+        "first_rectangle_j": 8,
+        "outer_trapezoid_j": 5,
+        "potential_energy_j": 13,
+        "speed_squared_m2_s2": 9,
+        "speed_m_s": 3,
+        "kinetic_energy_j": 9,
+        "total_energy_j": 22,
+        "boundary_radius_m": 4,
+        "boundary_local_inward_force_n": 8,
+        "boundary_outer_trapezoid_j": 12,
+        "boundary_potential_energy_j": 20,
+        "boundary_speed_squared_m2_s2": 16,
+        "boundary_speed_m_s": 4,
+        "boundary_kinetic_energy_j": 16,
+        "boundary_total_energy_j": 36
+      },
+      "physical_conditions": "Positive r outward; signed F_r = -f(r) = -dU/dr; U(0)=0 continuous reference; f(r) piecewise 4N through 2m then 2N/m*r to 4m. Circular states at distinct radii are distinct energies, not free transitions.",
+      "scope": "Author-only new piecewise central-force example, not a reproduction of EX-M89 proportional-to-r² original law"
     }
   }
 }
