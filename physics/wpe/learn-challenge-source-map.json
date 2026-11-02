@@ -170,33 +170,34 @@
     },
     {
       "id": "momentum-fragments",
-      "title": "Explosions and energy transfer",
+      "title": "Push-apart carts and energy",
       "source_qids": [
         "Q11"
       ],
       "source_gate_note": "Initial motion not specified in source",
-      "learning_goal": "Distinguish momentum conservation from kinetic-energy conservation during an internal release.",
+      "learning_goal": "Understand signed momentum conservation in a spring-powered push-apart event, and explain that kinetic energy may increase when stored internal energy is released.",
       "core1a": {
-        "title": "A guide: two carts pushed apart",
-        "authored_question": "Two linked carts, masses 1 kg and 3 kg, start at rest on a frictionless track. A spring pushes the 1 kg cart to the right at 3 m/s. Find the 3 kg cart's velocity.",
+        "title": "A guide: spring-powered toy carts",
+        "authored_question": "Two toy carts (1 kg and 3 kg) start at rest together on a smooth track. A compressed spring between them is released. The 1 kg cart rolls right at 3 m/s. Which way does the 3 kg cart move, and how fast?",
         "walkthrough_steps": [
-          "Initial total momentum: 0 kg·m/s.",
-          "Final balance: (1 kg)(+3 m/s) + (3 kg)v = 0.",
-          "Solve v = −1 m/s, so the heavier cart moves left.",
-          "Final total kinetic energy is 4.5 + 1.5 = 6 J, supplied by the spring."
+          "Set right positive: light cart momentum = 1 × (+3) = +3 kg·m/s.",
+          "Conserve total momentum from initial rest: 0 = +3 + 3v, giving v = −1 m/s (heavier cart left).",
+          "Check that final momenta +3 and −3 kg·m/s cancel, maintaining the initial total of zero.",
+          "Compare total kinetic energy before (0 J) and after (½×1×3² + ½×3×1² = 6 J); stored spring energy supplied the kinetic energy."
         ],
-        "conditions": "System initially at rest, negligible external horizontal impulse, spring energy released, nonrelativistic motion."
+        "conditions": "Initially stationary two-cart system with internal spring release, no significant external horizontal impulse or friction, nonrelativistic motion, right chosen positive."
       },
       "core1b": {
-        "title": "Your turn: the parent cart was moving",
-        "authored_question": "A 2 kg cart is initially moving right at 4 m/s. It splits into a 0.5 kg part moving right at 10 m/s and a 1.5 kg part. External horizontal impulse is negligible. What is the heavier part's velocity, and how much does total kinetic energy change?",
+        "title": "Your turn: the moving toy cart splits",
+        "authored_question": "A 4 kg toy cart is already rolling right at 3 m/s when an internal spring releases and separates it into a 1 kg cart and a 3 kg cart. The 1 kg part rolls right at 6 m/s. The track is smooth and the external horizontal impulse is negligible. What is the 3 kg cart's velocity, and how does the total kinetic energy change?",
         "option_count": 4,
-        "correct_option_index_AUTHOR_ONLY": 0,
-        "change_of_conditions": "The parent initially moves; the two fragments can both move right in the laboratory frame, unlike the rest-start guide."
+        "correct_option_index_AUTHOR_ONLY": 2,
+        "change_of_conditions": "The guided spring cart pair starts from rest, so total initial momentum is zero; the new independent cart is moving already, with nonzero +12 kg·m/s initial momentum. The learner must conserve nonzero momentum, infer remaining cart speed and independently compare kinetic energy before and after release.",
+        "practice_revision": 2
       },
       "duplicate_a_b_stem": false,
       "role": "AUTHOR_EXPOSED_SYNTHETIC_LESSON_AND_FRESH_CHECK_NOT_APPROVED",
-      "scope_note": "CROSS_TOPIC_MOMENTUM_PREREQUISITE_CANDIDATE__WPE_CHAPTER_SCOPE_REVIEW_PENDING"
+      "scope_note": "Source Q11 remains a visually complete but scientifically under-specified original (initial condition unresolved), not copied into the practice lesson. Cross-topic momentum prerequisite remains a candidate rather than an assumed accepted WPE exam demand."
     }
   ],
   "separation_rules": [
@@ -239,17 +240,69 @@
     "owner": "PENDING"
   },
   "learner_facing_iteration": {
-    "id": "WPE_TOPIC_04_POTENTIAL_FORCE",
+    "id": "WPE_TOPIC_05_PUSH_APART_ENERGY",
     "date": "2026-11-02",
-    "topic_id": "potential-force",
-    "purpose": "Provide child-friendly slope-to-force guide and a graph-based rising-flat-falling three-interval challenge",
+    "topic_id": "momentum-fragments",
+    "purpose": "Complete all five child-friendly WPE guided lessons and fresh challenges in one batch with end-to-end UI checks",
     "challenge_revision": 2,
-    "storage_key_suffix": "potential-force-r2",
+    "storage_key_suffix": "momentum-fragments-r2",
     "previous_iterations": [
       "WPE_TOPIC_02_MOMENTUM_KINETIC_ENERGY",
-      "WPE_TOPIC_03_ENERGY_MOTION"
+      "WPE_TOPIC_03_ENERGY_MOTION",
+      "WPE_TOPIC_04_POTENTIAL_FORCE"
     ],
-    "previous_wpe02_report": "Historical author-exposed review of prior topic tasks, not a decision on this revised student practice",
-    "admissions_unchanged": true
+    "source_topic_complete_count": 5,
+    "technical_batch": "COMPLETE_5_SYNTHETIC_PAIRS_ONLY",
+    "academic_admissions_unchanged": true
+  },
+  "batch_completion": {
+    "id": "WPE_LEARN_CHALLENGE_5_OF_5",
+    "scope": "Five existing synthetic WPE teaching-and-challenge pairs in the single tile",
+    "topics": [
+      {
+        "id": "work-sign",
+        "source_qids": [
+          "Q1",
+          "Q3",
+          "Q7"
+        ],
+        "learner_practice_revision": 1
+      },
+      {
+        "id": "momentum-energy",
+        "source_qids": [
+          "Q2",
+          "Q4",
+          "Q8"
+        ],
+        "learner_practice_revision": 2
+      },
+      {
+        "id": "energy-motion",
+        "source_qids": [
+          "Q5",
+          "Q6",
+          "Q9"
+        ],
+        "learner_practice_revision": 2
+      },
+      {
+        "id": "potential-force",
+        "source_qids": [
+          "Q10"
+        ],
+        "learner_practice_revision": 2
+      },
+      {
+        "id": "momentum-fragments",
+        "source_qids": [
+          "Q11"
+        ],
+        "learner_practice_revision": 2
+      }
+    ],
+    "original_question_custody": "Unverified original Q1–Q11 remain mapped as source-reference themes; cut-off Q12 excluded.",
+    "release_role": "STUDENT_PRACTICE_PREVIEW_NOT_NATIVE_ACADEMIC_ADMISSION",
+    "verification": "Automated UI/pytest; not independent subject, QRT or Owner sign-off"
   }
 }
