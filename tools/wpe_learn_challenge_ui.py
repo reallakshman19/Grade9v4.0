@@ -280,6 +280,55 @@ def test_child_journeys(browser):
     finally:
         context.close()
 
+
+def test_wpe_learning_route(browser):
+    """Cross-page browser smoke, not independent academic or learner evidence."""
+    root=f"http://127.0.0.1:{PORT}"
+    wrapper=(ROOT/"physics/wpe/question-bank.html").read_text(encoding="utf-8")
+    check("location.replace(" in wrapper and "preview/question-status.html" in wrapper,
+          "Existing full-width Question Bank redirect changed")
+    for width,height in ((1024,768),(390,844)):
+        context=browser.new_context(viewport={"width":width,"height":height},device_scale_factor=1)
+        try:
+            page=context.new_page()
+            errors=[]
+            page.on("pageerror",lambda err:errors.append(str(err)))
+            response=page.goto(root+"/physics/wpe/index.html",wait_until="load")
+            check(response is not None and response.status==200,"WPE hub unavailable")
+            page.locator('.quicklinks a[href="learn-challenge.html"]').click()
+            check("/physics/wpe/learn-challenge.html" in page.url,"Guided path inaccessible from hub")
+            check(page.locator("article.lesson").count()==5,"Five guided topic pairs lost")
+            check(page.locator("#wpe-related-pages a").count()==5,"Related pages navigation incomplete")
+            page.locator('#wpe-related-pages a[href="../../preview/physics-wpe.html"]').click()
+            check("/preview/physics-wpe.html" in page.url,"Foundation inaccessible")
+            check(page.locator("#wpe-learning-route").count()==1,"Foundation route missing")
+            page.locator('#wpe-learning-route a[href="../physics/wpe/learn-challenge.html#potential-force"]').click()
+            check(page.url.endswith("/physics/wpe/learn-challenge.html#potential-force"),"Concept deep link lost")
+            check(page.locator("#potential-force").count()==1,"Linked concept anchor missing")
+            page.locator('#wpe-related-pages a[href="../../preview/practice.html"]').click()
+            check("/preview/practice.html" in page.url,"Spring practice inaccessible")
+            check(page.locator("#btn-reveal-solution").is_hidden(),"Spring solution exposed before attempt")
+            check(page.locator('#wpe-learning-route a[href="../physics/wpe/question-bank.html"]').count()==1,
+                  "Spring practice missing Question Bank entry")
+            # The public bank wrapper intentionally redirects to GitHub Pages; exercise its
+            # real local target directly to keep the preview test self-contained and offline.
+            response=page.goto(root+"/preview/question-status.html",wait_until="load")
+            check(response is not None and response.status==200,"Full-width bank missing")
+            check("0 academically admitted" in page.locator("header").inner_text(),"Source hold missing")
+            page.locator('.c2-chapterbar a[href="../physics/wpe/index.html"]').first.click()
+            check("/physics/wpe/index.html" in page.url,"Bank cannot return to WPE hub")
+            page.locator('.quicklinks a[href="../../preview/batches/reader.html"]').click()
+            check("/preview/batches/reader.html" in page.url,"Technical examples inaccessible")
+            check(page.locator(".disclose").count()==1,"Examples disclosure missing")
+            check(page.locator('nav[aria-label="Collection navigation"] a[href="../../physics/wpe/learn-challenge.html"]').count()==1,
+                  "Examples guided return missing")
+            check(not errors,f"Route page JavaScript errors at {width}: {errors}")
+            check(page.evaluate("document.documentElement.scrollWidth - innerWidth") <= 2,
+                  f"Technical reader overflow at {width}")
+        finally:
+            context.close()
+    print("PASS: WPE five-surface learning route, anchored return, disclosure and attempt gates.")
+
 def main():
     corpus()
     server=subprocess.Popen([sys.executable,"-m","http.server",str(PORT),"--bind","127.0.0.1"],cwd=ROOT,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
@@ -294,6 +343,7 @@ def main():
             try:
                 test(browser)
                 test_child_journeys(browser)
+                test_wpe_learning_route(browser)
             finally:browser.close()
         print("PASS: Five authored pairs and five viewport browser checks.")
     finally:

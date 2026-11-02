@@ -4,6 +4,12 @@ on:
   pull_request:
     paths:
       - "physics/wpe/learn-challenge.html"
+      - "physics/wpe/index.html"
+      - "physics/wpe/question-bank.html"
+      - "preview/physics-wpe.html"
+      - "preview/practice.html"
+      - "preview/batches/reader.html"
+      - "tools/wpe_learn_challenge_ui.py"
       - "physics/wpe/learn-challenge-source-map.json"
       - "physics/wpe/learn-challenge-wpe01-review.json"
       - "tools/wpe_learn_challenge_ui.py"
@@ -12,6 +18,12 @@ on:
     branches: [main]
     paths:
       - "physics/wpe/learn-challenge.html"
+      - "physics/wpe/index.html"
+      - "physics/wpe/question-bank.html"
+      - "preview/physics-wpe.html"
+      - "preview/practice.html"
+      - "preview/batches/reader.html"
+      - "tools/wpe_learn_challenge_ui.py"
       - "physics/wpe/learn-challenge-source-map.json"
       - "physics/wpe/learn-challenge-wpe01-review.json"
       - "physics/wpe/index.html"
