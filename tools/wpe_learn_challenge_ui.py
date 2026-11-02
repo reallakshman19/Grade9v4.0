@@ -16,6 +16,7 @@ PORT=8768
 URL=f"http://127.0.0.1:{PORT}/physics/wpe/learn-challenge.html"
 MAP=ROOT/"physics/wpe/learn-challenge-source-map.json"
 REVIEW=ROOT/"physics/wpe/learn-challenge-wpe01-review.json"
+REVIEW_B34=ROOT/"physics/wpe/learn-challenge-wpe02-b3-b4-review.json"
 ART=ROOT/"wpe-learn-challenge-screenshots"
 ART.mkdir(exist_ok=True)
 SIZES=[(1280,800),(1024,768),(900,1280),(800,1280),(390,844)]
@@ -44,7 +45,16 @@ def corpus():
     check(len(review["witnesses"])==5,"Expected five technical witnesses")
     check(all(r["gate_status"]["B4"]=="REVIEW_REQUIRED" for r in review["witnesses"]),"Fresh reconstruction wrongly accepted")
     check(review["construction_gate_status"]["B5"]=="LIMITED_TECHNICAL_EVIDENCE","Client-side lock must not count as verified first-attempt record")
-    print("PASS: five distinct question pairs, technical review and academic holds")
+    b34=json.loads(REVIEW_B34.read_text(encoding="utf-8"))
+    check(b34["result"]["B3"].startswith("HOLD") and b34["result"]["B4"].startswith("HOLD"),"B3/B4 reviewer hold silently cleared")
+    check(b34["result"]["native_core1a"]=="NOT_ACCEPTED" and b34["result"]["native_core1b"]=="NOT_ACCEPTED","Native admissions changed")
+    check(b34["role"].startswith("AUTHOR_EXPOSED"),"WPE-02 review must disclose author exposure")
+    check(len(b34["per_construction"])==5,"Missing B3/B4 construction review")
+    check({r["id"] for r in b34["per_construction"]}=={r["id"] for r in data["program"]},"B3/B4 review does not cover all existing pairs")
+    check(all(r["B3"]["decision"]=="HOLD" and r["B4"]["decision"]=="HOLD" for r in b34["per_construction"]),"Per-construction admission hold cleared")
+    check("Take g = 10 m/s²" in next(r for r in data["program"] if r["id"]=="energy-motion")["core1b"]["authored_question"],"Energy challenge missing self-contained g")
+    check(data["author_exposed_b3_b4_review"]["status"].startswith("AUTHOR_EXPOSED"),"Missing WPE-02 provenance in source map")
+    print("PASS: five distinct question pairs, technical review and B3/B4 author-exposed holds")
 
 def test(browser):
     for w,h in SIZES:
@@ -63,6 +73,8 @@ def test(browser):
         check("single straight potential-energy line" in guide.nth(3).locator("svg").get_attribute("aria-label"),"Potential guide diagram still previews challenge slopes")
         check("two carts separate from rest" in guide.nth(4).locator("figcaption").inner_text(),"Fragment guide diagram still previews moving parent")
         check("60 J" not in guide.nth(2).locator("svg").text_content(),"Core1A visual leaks ridge answer")
+        check("Take g = 10 m/s²" in cards.nth(2).locator(".challenge-panel .scenario").inner_text(),"Independent energy challenge omitted gravity assumption")
+        check("WPE-02 B3/B4 author-exposed review" in page.locator("#separation").inner_text(),"B3/B4 review record not linked")
         check(not errors,f"JS errors at {w}: {errors}")
         wide=page.evaluate("document.documentElement.scrollWidth - innerWidth")
         check(wide<=2,f"Horizontal overflow {wide}px at {w}")
