@@ -68,11 +68,11 @@ def tests(browser):
         open_url(page,"preview/progress.html")
         saved_after=page.evaluate("() => sessionStorage.getItem('grade9_alpha_progress')")
         status_text=page.locator("#status-wpe-practice").inner_text()
-        assert_that("Attempt recorded" in status_text,
+        assert_that("attempt recorded" in status_text.casefold(),
                    f"Session progress not preserved: before={saved_before!r}, after={saved_after!r}, status={status_text!r}")
         if width==1024:
             page.locator("#btn-reset-progress").click()
-            assert_that("Not Started" in page.locator("#status-wpe-practice").inner_text(),
+            assert_that("not started" in page.locator("#status-wpe-practice").inner_text().casefold(),
                        "Session progress reset failed")
         ctx.close()
 
