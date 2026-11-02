@@ -106,34 +106,36 @@
     },
     {
       "id": "energy-motion",
-      "title": "Energy and where motion is possible",
+      "title": "Energy and motion",
       "source_qids": [
         "Q5",
         "Q6",
         "Q9"
       ],
       "source_gate_note": "Q9 must allow K = 0",
-      "learning_goal": "Find accessible regions, identify energy barriers and distinguish K = 0 from impossible motion.",
+      "learning_goal": "Find kinetic energy and possible heights on a smooth path, understand K=0 turning points, and distinguish changes with time from changes with height.",
       "core1a": {
-        "title": "A guide: a cart climbing a hill",
-        "authored_question": "A 1 kg cart has total mechanical energy 50 J on a smooth track. At a point 3 m above the reference level, find its kinetic energy and speed (g = 10 m/s²).",
+        "title": "A guide: a toy cart climbing a ramp",
+        "authored_question": "A 2 kg toy cart has 80 J of total mechanical energy on a smooth ramp. When it reaches a height of 2 m, how fast is it going? Take g = 10 m/s².",
         "walkthrough_steps": [
-          "Calculate U = 1 × 10 × 3 = 30 J.",
-          "Find K = E − U = 50 − 30 = 20 J.",
-          "Use K = ½mv², giving v = √40 ≈ 6.32 m/s.",
-          "At a turning point K can be zero; negative K is physically impossible."
+          "Use U=mgh=2×10×2=40 J at height 2 m.",
+          "Compute K=E−U=80−40=40 J; then v=√(2K/m)=√40≈6.3 m/s.",
+          "Compare other locations on the same ramp: h=0 gives K=80 J, h=4 gives K=0, and h=5 is impossible because U would exceed E.",
+          "Model a separate ball launched straight upward at 20 m/s with constant g=10 m/s² and no drag: at t=1 s its vertical velocity is 10 m/s and rise is 15 m; at t=2 s its velocity is zero and rise is 20 m. Velocity changes equally each second, not for every metre."
         ],
-        "conditions": "Smooth track, negligible dissipative forces, fixed gravitational reference, constant g and a particle moving along the connected track."
+        "conditions": "Smooth ramp with no friction, no mechanical energy loss, zero height reference, g=10 m/s² constant; vertical-ball example assumes no drag."
       },
       "core1b": {
-        "title": "Your turn: can the cart cross?",
-        "authored_question": "A 1 kg cart starts in a left valley at height 1 m. Its total mechanical energy is 50 J. The track rises to a 6 m high ridge, then falls to a right valley at 3 m. Take g = 10 m/s². No motor or friction acts. Can the cart reach the right valley from the left?",
+        "title": "Your turn: can the cart reach the flag?",
+        "authored_question": "A 1 kg toy cart starts in a valley at height 1 m with 50 J of total mechanical energy. The finish flag is at a height of 3 m, but to get there the cart must first cross a hilltop 6 m high. The track is smooth, with no motor or friction. Take g = 10 m/s². Can the cart reach the flag?",
         "option_count": 4,
         "correct_option_index_AUTHOR_ONLY": 1,
-        "change_of_conditions": "An energy barrier blocks access to an otherwise allowed destination; this is a path-reasoning transfer, not another endpoint-speed calculation."
+        "change_of_conditions": "Guide: single ramp with a height–energy table and a separate vertical-flight comparison. Challenge: determine accessibility of a finish beyond an intervening hilltop; the learner must check whole-path energy rather than only final height.",
+        "practice_revision": 2
       },
       "duplicate_a_b_stem": false,
-      "role": "AUTHOR_EXPOSED_SYNTHETIC_LESSON_AND_FRESH_CHECK_NOT_APPROVED"
+      "role": "AUTHOR_EXPOSED_SYNTHETIC_LESSON_AND_FRESH_CHECK_NOT_APPROVED",
+      "scope_note": "Original Q5/Q6/Q9 remain unverified source themes, not repeated learner-facing tasks. Simplified child-facing teaching candidate; Q9 must allow K=0."
     },
     {
       "id": "potential-force",
@@ -235,13 +237,16 @@
     "owner": "PENDING"
   },
   "learner_facing_iteration": {
-    "id": "WPE_TOPIC_02_MOMENTUM_KINETIC_ENERGY",
+    "id": "WPE_TOPIC_03_ENERGY_MOTION",
     "date": "2026-11-02",
-    "topic_id": "momentum-energy",
-    "purpose": "Continue child-friendly learning with a guided table and a new challenge requiring simultaneous mass/momentum comparison",
+    "topic_id": "energy-motion",
+    "purpose": "Advance to the third learner-friendly topic with a guided energy-budget table, turning points and a separate vertical time/height explanation",
     "challenge_revision": 2,
-    "storage_key_suffix": "momentum-energy-r2",
-    "previous_wpe02_report": "Historical author-exposed assessment of the previous candidate, not a judgement about this revised task",
+    "storage_key_suffix": "energy-motion-r2",
+    "previous_iterations": [
+      "WPE_TOPIC_02_MOMENTUM_KINETIC_ENERGY"
+    ],
+    "previous_wpe02_report": "Historical author-exposed review of older candidate tasks, not a judgement about this revised exercise",
     "admissions_unchanged": true
   }
 }
