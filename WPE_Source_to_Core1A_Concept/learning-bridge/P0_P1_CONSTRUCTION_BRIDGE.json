@@ -462,11 +462,12 @@
         "Account for losses or impact behavior only when specified"
       ],
       "core1b": [
-        "Set a new mass-flow model with defined incoming relative velocity",
-        "Reconstruct horizontal momentum-transfer force and supplied power",
-        "Diagnose treating the whole accumulated load as fixed mass",
-        "Repair control volume and boundary",
-        "Boundary test: change feed direction or belt speed"
+        "Predict the direction and size of the push needed when material joins a moving belt",
+        "Attempt: draw incoming and outgoing horizontal momenta per unit time and choose the correct control volume",
+        "Reconstruct momentum-transfer force and supplied motor power, explaining each energy flow",
+        "Diagnose treating the whole accumulated load as one fixed-mass body",
+        "Repair the control-volume boundaries and restore missing momentum-flow terms",
+        "Boundary test: change incoming feed direction or belt speed"
       ],
       "misconception": "Confusing momentum flow with total momentum of a fixed body",
       "first_pair": null
@@ -488,11 +489,12 @@
         "Use a controlled-variable comparison before selecting a formula"
       ],
       "core1b": [
-        "Distinguish two experiments that control force versus extension",
-        "Reconstruct which spring stores more energy in each experiment",
-        "Diagnose assuming higher stiffness always means higher energy",
-        "Repair with explicitly fixed variable",
-        "Boundary test: double stiffness in each protocol"
+        "Predict whether the stiffer spring stores more energy when the force is fixed versus when extension is fixed",
+        "Attempt: identify the controlled variable in two new experiments and write separate energy models",
+        "Reconstruct which spring stores more energy in each experiment using the appropriate equations",
+        "Diagnose assuming higher stiffness always means greater stored energy",
+        "Repair by explicitly marking the held-fixed variable in each comparison",
+        "Boundary test: double stiffness in each protocol and compare the two changes"
       ],
       "misconception": "Ignoring which variable is controlled when comparing springs",
       "first_pair": null
