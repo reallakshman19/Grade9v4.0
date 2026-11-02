@@ -77,21 +77,23 @@ def test_eight_distinct_construction_specs_and_six_step_self_tutor_cycle():
             assert "\\\\(" not in content, "Markdown maths must not be double-escaped"
 
 
-def test_six_complete_p0_packs_and_no_p1_promotion():
+def test_eight_complete_author_packs_with_zero_academic_promotion():
     bridge = load(BRIDGE_PATH)
     p0 = [row for row in bridge["constructions"] if row["priority"] == "P0"]
     p1 = [row for row in bridge["constructions"] if row["priority"] == "P1"]
     assert len(p0) == 6 and len(p1) == 2
     assert all(row["first_pair"] for row in p0)
-    assert all(row["first_pair"] is None for row in p1)
+    assert all(row["first_pair"] for row in p1)
     inventory = bridge["pack_inventory"]
     assert inventory["p0_complete_draft_count"] == len(p0) == 6
-    assert inventory["p1_complete_draft_count"] == 0
+    assert inventory["p1_complete_draft_count"] == len(p1) == 2
+    assert inventory["all_eight_author_draft_count"] == 8
+    assert set(inventory["p1_newly_drafted_in_batch"]) == {"WPE-C07", "WPE-C08"}
     assert inventory["source_qrt_owner_approval_changed"] is False
     assert inventory["student_website_modified"] is False
     assert inventory["official_source_stems_republished"] is False
     assert inventory["first_attempt_secure_delivery_claim"] is False
-    for row in p0:
+    for row in p0 + p1:
         pack = BASE / "learning-bridge" / row["first_pair"]
         content = pack.read_text(encoding="utf-8")
         assert "Child's key decision" in content, row["id"]
@@ -108,7 +110,7 @@ def test_numerical_answers_for_four_new_p0_packs():
     from math import isclose, sqrt
 
     checks = load(BRIDGE_PATH)["solution_checks"]
-    assert set(checks) == {"WPE-C03", "WPE-C04", "WPE-C05", "WPE-C06"}
+    assert set(checks) == {f"WPE-C0{i}" for i in range(3, 9)}
     close = lambda a, b: isclose(a, b, rel_tol=1e-11, abs_tol=1e-11)
 
     p = checks["WPE-C03"]
