@@ -72,8 +72,7 @@ def tests(browser):
                    f"Session progress not preserved: before={saved_before!r}, after={saved_after!r}, status={status_text!r}")
         if width==1024:
             page.locator("#btn-reset-progress").click()
-            assert_that("not started" in page.locator("#status-wpe-practice").inner_text().casefold(),
-                       "Session progress reset failed")
+            page.wait_for_function("""() => document.getElementById('status-wpe-practice')?.textContent?.toLowerCase().includes('not started') && sessionStorage.getItem('grade9_alpha_progress') === null""", timeout=8000)
         ctx.close()
 
 def main():
