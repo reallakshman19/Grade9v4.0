@@ -329,6 +329,48 @@ def test_wpe_learning_route(browser):
             context.close()
     print("PASS: WPE five-surface learning route, anchored return, disclosure and attempt gates.")
 
+
+def test_wpe_question_reasoning_return(browser):
+    """One source-ID route round trip; no academic acceptance or learner mastery inferred."""
+    root=f"http://127.0.0.1:{PORT}"
+    for width,height in ((1024,768),(390,844)):
+        context=browser.new_context(viewport={"width":width,"height":height},device_scale_factor=1)
+        try:
+            page=context.new_page()
+            errors=[]
+            page.on("pageerror",lambda error:errors.append(str(error)))
+            result=page.goto(root+"/preview/question-status.html?question=EX-M79",wait_until="load")
+            check(result is not None and result.status==200,"Question reader not accessible")
+            check(page.locator(".qtitle").inner_text()=="EX-M79","Exact question ID link failed")
+            check(page.locator("#solution-container .solution").count()==0,"Question solution visible before attempt")
+            page.locator('.source-note a[href*="reasoning-paths.html?question=EX-M79"]').click()
+            page.locator("#route-status").filter(has_text="EX-M79").wait_for()
+            check(page.locator('#WPE-C03[data-match="yes"]').count()==1,"Constant-power author theme not identified")
+            check("0 academically admitted" in page.locator(".route-alert").inner_text(),"Academic admission warning absent")
+            page.locator('#WPE-C03 a[href*="learn-challenge.html?question=EX-M79#energy-motion"]').click()
+            check(page.url.endswith("learn-challenge.html?question=EX-M79#energy-motion"),"Foundation link lost question context")
+            check(page.locator("#energy-motion").count()==1,"Foundation anchor missing")
+            page.locator('#reasoning-route-return a[href*="question-status.html?question=EX-M79"]').click()
+            check(page.locator(".qtitle").inner_text()=="EX-M79","Return did not select exact question")
+            check(page.locator("#solution-container .solution").count()==0,"Return exposed solution")
+            page.goto(root+"/preview/question-status.html?question=UNKNOWN-QUESTION",wait_until="load")
+            check("Unknown question link" in page.locator("#route-status").inner_text(),"Unknown question failed-open")
+            check(page.locator(".qtitle").inner_text()!="UNKNOWN-QUESTION","Invented question selected")
+            page.goto(root+"/physics/wpe/reasoning-paths.html?question=EX-M81",wait_until="load")
+            page.locator("#route-status").filter(has_text="absent from the 74-entry").wait_for()
+            check(page.locator("#return-links a").count()==0,"Absent reader record got a return link")
+            page.goto(root+"/physics/wpe/reasoning-paths.html?question=WEP07-03",wait_until="load")
+            page.locator("#route-status").filter(has_text="WEP07-03").wait_for()
+            check(page.locator('#WPE-E01[data-match="yes"]').count()==1,"WEP07-03 author extension not linked")
+            check(page.locator('#WPE-E01 .route-links a[href*="learn-challenge"]').count()==0,
+                  "Unapproved extension got a false foundation lesson")
+            check(not errors,f"Reasoning-route browser errors at {width}: {errors}")
+            check(page.evaluate("document.documentElement.scrollWidth-innerWidth")<=2,
+                  f"Reasoning-route horizontal overflow at {width}")
+        finally:
+            context.close()
+    print("PASS: question → provisional route → existing foundation → same question; invalid/absent ID and answer leakage blocked.")
+
 def main():
     corpus()
     server=subprocess.Popen([sys.executable,"-m","http.server",str(PORT),"--bind","127.0.0.1"],cwd=ROOT,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
@@ -344,6 +386,7 @@ def main():
                 test(browser)
                 test_child_journeys(browser)
                 test_wpe_learning_route(browser)
+                test_wpe_question_reasoning_return(browser)
             finally:browser.close()
         print("PASS: Five authored pairs and five viewport browser checks.")
     finally:
