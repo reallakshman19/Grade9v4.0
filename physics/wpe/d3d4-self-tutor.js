@@ -1,6 +1,6 @@
-/* WPE C01–C08 interactive student practice. Client-side only: NOT secured answers,
+/* WPE C01–C08 and E01–E05 interactive student practice. Client-side only: NOT secured answers,
  * not authenticated learner evidence, not academic Core1A/B acceptance.
- * Source author packs: WPE-C01 through C08 (work, spring, power, rope, graphs, circular motion, conveyor flow and controlled-variable springs).
+ * Source author packs: WPE-C01 through C08 and WPE-E01 through E05; all source-theme joins are proposed and unqualified.
  */
 (() => {
   "use strict";
@@ -387,6 +387,598 @@
         "BLUE still stores more at the same FINAL force, because it is softer and compresses farther. This does not mean a suddenly applied constant 24 N force acts through the entire extension."
       ]
 
+    },
+    E01: {
+      "title": "Can the bead reach the other valley?",
+      "version": 1,
+      "prediction": "Two valleys have equally low potential energy. Is that alone enough for a bead to travel from the right valley to the left? Why?",
+      "hints": [
+        "At each position, kinetic energy is what remains after subtracting potential from the fixed total. A forbidden position has a negative leftover.",
+        "Sketch the energy line on the whole double-well graph. A destination can be individually allowed but disconnected from the starting interval.",
+        "Find the turning positions by setting kinetic energy to zero. The crucial decision is whether every point along the path stays accessible."
+      ],
+      "diagnosisFeedback": [
+        "Check the entire continuous route, not just whether the destination has U below the energy budget.",
+        "A turning point has zero kinetic energy and can still be reached. Mark boundaries, not forbidden endpoints.",
+        "Find the connected allowed region containing your STARTING position. Two separate shaded regions are not traversable from one to the other.",
+        "Speed is largest where allowed potential energy is LOWEST, because kinetic energy is the remaining E−U.",
+        "Recheck the dimensionless position q=x/(1 m) and the inequality without changing a correct physical model.",
+        "Use a value table at q=−2, 0 and +2 before solving the turning points; uncertainty is a useful starting observation."
+      ],
+      "fields": [
+        {
+          "id": "barrier",
+          "type": "number",
+          "label": "Potential energy at the central barrier x=0 (J)",
+          "hint": "Use q=0 in U=(q²−4)² J."
+        },
+        {
+          "id": "route",
+          "type": "select",
+          "label": "Can the bead start at +2 m and travel continuously to −2 m?",
+          "options": [
+            "Yes, both wells are low",
+            "No, the two allowed regions are disconnected",
+            "Yes, because potential is never negative",
+            "I'm not sure"
+          ]
+        },
+        {
+          "id": "rightTurning",
+          "type": "number",
+          "label": "Right valley inner turning position (m)",
+          "hint": "This is the nearest turning point to the central hill."
+        },
+        {
+          "id": "outerTurning",
+          "type": "number",
+          "label": "Right valley outer turning position (m)",
+          "hint": "An approximation is fine."
+        },
+        {
+          "id": "leftRegion",
+          "type": "select",
+          "label": "Which shape describes the allowed regions at 9 J?",
+          "options": [
+            "One continuous interval through the middle",
+            "Two separate intervals, one in each valley",
+            "Only the single positions x=±2 m",
+            "I'm not sure"
+          ]
+        },
+        {
+          "id": "maximumSpeed",
+          "type": "number",
+          "label": "Maximum possible speed in the starting valley (m/s)"
+        },
+        {
+          "id": "reason",
+          "type": "textarea",
+          "label": "Explain the energy inequality AND why the route is or is not connected",
+          "hint": "You can write 'I'm not sure' and compare your first thinking later."
+        }
+      ],
+      "worked": [
+        [
+          "Choose a dimensionless coordinate",
+          "Let q=x/(1 m), so U=(q²−4)² J. At q=−2 and +2 U=0; at q=0 the barrier is 16 J."
+        ],
+        [
+          "Check allowable positions",
+          "K=E−U must be nonnegative. At E=9 J, (q²−4)²≤9 means |q²−4|≤3, so 1≤q²≤7."
+        ],
+        [
+          "Keep each connected region separate",
+          "Allowed x intervals are [−√7,−1] m and [1,√7] m. Starting at +2 m, the bead can move only within the RIGHT interval; x=+1 m is a turning point and the 16 J barrier blocks travel to the other valley."
+        ],
+        [
+          "Find peak speed where U is smallest",
+          "In the right well U(+2)=0, so K_max=9 J. With m=2 kg, ½mv²=9 gives v_max=3 m/s. A position with K=0 is an allowed turning point."
+        ],
+        [
+          "Explain why destination and path differ",
+          "A low-potential left valley exists but cannot be reached along the axis from the right well with only 9 J. The whole connected route, not a promising endpoint, decides accessibility."
+        ]
+      ],
+      "rubric": [
+        "I used K=E−U≥0, rather than trusting the appearance of two low valleys.",
+        "I identified two DISCONNECTED allowed intervals at 9 J and the starting right-hand region.",
+        "I marked the right inner turning point at +1 m and the outer at √7 m and explained the central barrier.",
+        "I located the maximum speed where U is smallest and computed 3 m/s with correct mass and units."
+      ],
+      "diagnoses": [
+        "I assumed low-energy endpoints guarantee a connected path.",
+        "I treated a turning point with K=0 as forbidden.",
+        "I joined two allowed regions even though the barrier is above E.",
+        "I located maximum speed at maximum U.",
+        "My model was sound; I need to check the algebra.",
+        "I'm not sure which step failed."
+      ],
+      "repairPrompt": "Rewrite the first wrong idea about E−U or connectivity. Show both allowed intervals, the starting region, a turning point, and the speed in a valley. Explain what changed.",
+      "boundaryPrompt": "Keep U=(q²−4)² J and mass 2 kg, but raise the total energy to 17 J. Can this bead now pass the central hill at x=0? Find the speed at x=0 and explain why the earlier barrier restriction changed.",
+      "boundaryCheck": [
+        "The potential at x=0 is still 16 J, but total energy is now 17 J. The central barrier is energetically accessible.",
+        "At x=0, K=17−16=1 J. With mass 2 kg, ½mv²=1 J, so v=1 m/s.",
+        "Now there is a connected route across the central hill. The borderline exactly E=16 J is special: reaching the unstable peak can be asymptotic, so we chose E=17 J.",
+        "The source-themed exam item WEP07-03 is separately disputed and not promoted by this authored exercise."
+      ]
+    },
+    E02: {
+      "title": "Power follows the direction of motion",
+      "version": 1,
+      "prediction": "If a robot moves diagonally while the motor pushes right and resistance pulls backward, does every force increase its kinetic energy? Could net power be zero even while it moves?",
+      "hints": [
+        "Draw right/forward axes and write the current velocity as two components. Each force contributes only along its own component of velocity.",
+        "Assign signs first: rightward motor work-rate is positive here, while a backward resistance component removes energy.",
+        "Compute force·velocity as F_right×v_right plus F_forward×v_forward for each force. Do not multiply whole vector magnitudes unless their directions agree."
+      ],
+      "diagnosisFeedback": [
+        "A force's instantaneous power depends on its alignment with velocity, not just on whether it is a motor.",
+        "Keep the leftward/backward resistance contributions negative; use signs in each component product.",
+        "A two-dimensional dot product is a sum of signed aligned components, not force magnitude times speed magnitude.",
+        "Power at an instant is dK/dt. It does not mean the same number of joules appears in every future second.",
+        "Recheck the force and velocity arrows and the units N·m/s=W without replacing a valid model.",
+        "Start with a two-column x and y table, draw directions, and allow yourself an 'unsure' statement."
+      ],
+      "fields": [
+        {
+          "id": "netFx",
+          "type": "number",
+          "label": "Net force in rightward x direction (N)"
+        },
+        {
+          "id": "netFy",
+          "type": "number",
+          "label": "Net force in forward y direction (N)",
+          "hint": "Backward is negative."
+        },
+        {
+          "id": "motorPower",
+          "type": "number",
+          "label": "Motor's instantaneous power (W)"
+        },
+        {
+          "id": "resistPower",
+          "type": "number",
+          "label": "Resistance's instantaneous power (W)",
+          "hint": "It can be negative."
+        },
+        {
+          "id": "netPower",
+          "type": "number",
+          "label": "Net instantaneous power (W)"
+        },
+        {
+          "id": "model",
+          "type": "select",
+          "label": "Which calculation is valid for these diagonal vectors?",
+          "options": [
+            "Net force magnitude × total speed",
+            "Signed x contributions + signed y contributions",
+            "All force contributions are positive",
+            "I'm not sure"
+          ]
+        },
+        {
+          "id": "energyTrend",
+          "type": "select",
+          "label": "What happens to kinetic energy at that moment?",
+          "options": [
+            "Increasing right now",
+            "Decreasing right now",
+            "Instantaneously constant",
+            "I'm not sure"
+          ]
+        },
+        {
+          "id": "reason",
+          "type": "textarea",
+          "label": "Explain your force arrows, both component products, and the meaning of an instantaneous rate",
+          "hint": "Why is the product of total magnitudes not always correct?"
+        }
+      ],
+      "worked": [
+        [
+          "Read force and velocity components",
+          "Right/forward axes: v=(3,4) m/s. Motor force=(6,0) N; resistance=(−2,−1) N; net force=(4,−1) N."
+        ],
+        [
+          "Motor power uses aligned components",
+          "P_motor=6×3+0×4=+18 W. Its direction is along the rightward component of velocity."
+        ],
+        [
+          "Resistance removes energy along two components",
+          "P_resist=(−2)×3+(−1)×4=−6−4=−10 W. The backward resistance matters, not only the force opposite the motor."
+        ],
+        [
+          "Compute the net instantaneous kinetic-energy rate",
+          "Net power=18−10=+8 W, so dK/dt=+8 J/s at that instant. It is NOT a claim about the following full second."
+        ],
+        [
+          "Check the dot-product model",
+          "Net F=(4,−1) and v=(3,4). Their dot product is 4×3−1×4=8 W. |F|×|v|=√17×5 W would be wrong because the vectors are not parallel."
+        ]
+      ],
+      "rubric": [
+        "I used velocity (3,4) m/s and net force (4,−1) N in matching axes.",
+        "I computed motor power +18 W and resistance power −10 W with signed component products.",
+        "I found +8 W net power and interpreted it as an instantaneous dK/dt, not a future constant rate.",
+        "I explained why force magnitude times speed magnitude is not generally a correct dot product."
+      ],
+      "diagnoses": [
+        "I treated motor power as positive regardless of velocity alignment.",
+        "I made leftward/backward resistance contributions positive.",
+        "I used total force magnitude × total speed instead of signed components.",
+        "I treated instantaneous power as an amount guaranteed every future second.",
+        "My signed model was fine; I should recheck arithmetic.",
+        "I'm not sure which direction matters."
+      ],
+      "repairPrompt": "Redraw the right/forward arrows; write each force's two signed component products and re-evaluate the current kinetic-energy trend. Explain the first correction.",
+      "boundaryPrompt": "At another instant the same net force (4 N right, 1 N backward) acts, but velocity is 1 m/s right and 4 m/s forward. Find net instantaneous power. Is the robot still moving? Can it accelerate despite zero instantaneous kinetic-energy rate?",
+      "boundaryCheck": [
+        "New velocity is (1,4) m/s and net force is (4,−1) N.",
+        "Dot product: P_net=4×1+(−1)×4=0 W, so dK/dt=0 at THIS instant.",
+        "Its speed is √(1²+4²)=√17 m/s, so it is moving. Nonzero net force means nonzero acceleration; the force is instantaneously perpendicular to velocity.",
+        "Zero instantaneous power does not mean zero force or stop; it means no instantaneous change in kinetic energy."
+      ]
+    },
+    E03: {
+      "title": "Where spring contact ends and flight begins",
+      "version": 1,
+      "prediction": "If friction acts while a spring pushes a dart, does ALL spring energy become launch motion? Does spring force keep acting after the dart has left the platform?",
+      "hints": [
+        "Draw a vertical line at the spring's natural length. Identify what acts on the dart BEFORE and AFTER that line.",
+        "In the contact phase use spring energy ½kx² minus friction force×contact distance. The launch kinetic energy determines horizontal speed.",
+        "Once the dart is in free flight, time depends on vertical drop and gravity; horizontal range depends on launch speed × flight time."
+      ],
+      "diagnosisFeedback": [
+        "An unattached spring stops at natural length; it cannot keep pushing or pulling the dart in the air.",
+        "Subtract the contact-only friction work from initial spring energy before calculating launch kinetic energy.",
+        "Spring force varies with compression; using its initial magnitude throughout the release overestimates its work.",
+        "Free-flight vertical time comes from h=½gt², not t=h/g, because initial vertical speed is zero.",
+        "Check units and distinguish horizontal launch speed from vertical fall speed at landing.",
+        "Start by drawing two regions: contact energy and flight kinematics. 'I'm not sure' is allowed."
+      ],
+      "fields": [
+        {
+          "id": "boundary",
+          "type": "select",
+          "label": "Where does the spring's force stop?",
+          "options": [
+            "At its natural length, where dart leaves the edge",
+            "Halfway through the flight",
+            "At the ground",
+            "I'm not sure"
+          ]
+        },
+        {
+          "id": "springEnergy",
+          "type": "number",
+          "label": "Starting spring energy (J)"
+        },
+        {
+          "id": "frictionLoss",
+          "type": "number",
+          "label": "Energy lost to friction during spring contact (J)",
+          "hint": "Give the positive energy lost; friction does negative work."
+        },
+        {
+          "id": "launchEnergy",
+          "type": "number",
+          "label": "Dart kinetic energy just as contact ends (J)"
+        },
+        {
+          "id": "launchSpeed",
+          "type": "number",
+          "label": "Horizontal launch speed (m/s)",
+          "hint": "Approximate square roots are fine."
+        },
+        {
+          "id": "flightTime",
+          "type": "number",
+          "label": "Time falling from platform to floor (s)"
+        },
+        {
+          "id": "range",
+          "type": "number",
+          "label": "Horizontal landing distance (m)"
+        },
+        {
+          "id": "reason",
+          "type": "textarea",
+          "label": "Explain the contact-only friction ledger and why horizontal flight has no spring force",
+          "hint": "Name the boundary between models."
+        }
+      ],
+      "worked": [
+        [
+          "Divide into two physical phases",
+          "The spring contacts the unattached dart only until natural length at the platform edge. Friction acts over this 0.20 m contact release; neither spring nor contact friction acts in flight."
+        ],
+        [
+          "Build the contact energy ledger",
+          "Initial U_s=½×125×0.20²=2.50 J. Friction loss is 2.5×0.20=0.50 J. K_launch=2.50−0.50=2.00 J."
+        ],
+        [
+          "Convert launch energy to horizontal speed",
+          "With m=0.50 kg, ½mv_x²=2 J gives v_x²=8 and v_x=√8≈2.828 m/s."
+        ],
+        [
+          "Free flight uses separate vertical and horizontal rules",
+          "From height h=1.25 m with initial vertical speed zero and g=10, h=½gt² gives t=0.50 s. Horizontal speed stays √8 m/s in ideal flight."
+        ],
+        [
+          "Find the range and cross-check",
+          "Range=√8×0.50=√2≈1.414 m. Do not use the spring's initial force kx as constant for all 0.20 m; elastic work is the triangle area ½kx²."
+        ]
+      ],
+      "rubric": [
+        "I separated spring CONTACT (with friction) from free FLIGHT (without spring/contact friction).",
+        "I correctly budgeted 2.50 J spring energy minus 0.50 J friction into 2.00 J launch kinetic energy.",
+        "I obtained the horizontal launch speed √8 m/s, then vertical flight time 0.50 s.",
+        "I used independent horizontal range = launch speed × flight time ≈1.414 m with correct assumptions."
+      ],
+      "diagnoses": [
+        "I continued the spring force after contact ended.",
+        "I forgot to subtract friction in the launch energy budget.",
+        "I treated the initial spring force as constant throughout compression.",
+        "I used h/g for flight time instead of h=½gt².",
+        "My two-model reasoning was fine; I need to verify a calculation.",
+        "I'm not sure when one model ends."
+      ],
+      "repairPrompt": "Mark spring natural length and the platform edge. Rebuild the contact energy ledger and the separate vertical-time/horizontal-distance equations; state why your first model changed.",
+      "boundaryPrompt": "Remove friction only from the 0.20 m spring-contact region. The spring, dart mass and 1.25 m platform height stay the same. What is the new horizontal launch speed and range? Does the 0.50 s fall time change?",
+      "boundaryCheck": [
+        "Without friction, all 2.50 J spring energy becomes horizontal launch kinetic energy.",
+        "½×0.50×v²=2.50 J gives v²=10 and v=√10≈3.162 m/s.",
+        "The fall time is still √(2×1.25/10)=0.50 s because the platform height and zero initial vertical speed are unchanged.",
+        "The range increases to √10×0.50≈1.581 m. Only the launch speed and horizontal range change; spring/contact friction never acts during flight."
+      ]
+    },
+    E04: {
+      "title": "Which energy fraction survives each bounce?",
+      "version": 1,
+      "prediction": "A first impact retains 75% of energy, then later impacts retain 50%. Does rebound speed follow the same fraction as energy? Should the 75% rule repeat?",
+      "hints": [
+        "Energy retained after collision determines the NEXT maximum height. A percentage of energy does not equal the same percentage of speed.",
+        "Build a small table: bounce 1 has its own fraction, bounce 2 and later share a new repeating fraction.",
+        "Count the first DROP once and then both UP and DOWN legs of every rebound. The infinite rebound heights use the later fraction as their ratio."
+      ],
+      "diagnosisFeedback": [
+        "The first floor impact uses 75% retention; the 50% retention rule applies only to later impacts.",
+        "Rebound height is proportional to energy retained; rebound speed is proportional to the square root of energy retained.",
+        "Keep a separate first term and later ratio when summing a geometric sequence.",
+        "Count the first 2 m drop once and each complete rebound distance twice, upward then downward.",
+        "Recheck the arithmetic in the height table and the convergence of the geometric series.",
+        "Start by writing one impact per table row; you can leave an unknown and explain the model."
+      ],
+      "fields": [
+        {
+          "id": "firstHeight",
+          "type": "number",
+          "label": "First rebound maximum height (m)"
+        },
+        {
+          "id": "secondHeight",
+          "type": "number",
+          "label": "Second rebound maximum height (m)"
+        },
+        {
+          "id": "thirdHeight",
+          "type": "number",
+          "label": "Third rebound maximum height (m)"
+        },
+        {
+          "id": "firstRetention",
+          "type": "select",
+          "label": "Which energy retention applies to the FIRST impact?",
+          "options": [
+            "75%",
+            "50%",
+            "25%",
+            "I'm not sure"
+          ]
+        },
+        {
+          "id": "laterRetention",
+          "type": "select",
+          "label": "Which energy retention repeats for later impacts?",
+          "options": [
+            "75%",
+            "50%",
+            "25%",
+            "I'm not sure"
+          ]
+        },
+        {
+          "id": "distanceRule",
+          "type": "select",
+          "label": "How do you count ideal total travel?",
+          "options": [
+            "Original drop + twice the sum of rebound heights",
+            "Original drop + sum of rebound heights",
+            "Twice the original drop only",
+            "I'm not sure"
+          ]
+        },
+        {
+          "id": "totalTravel",
+          "type": "number",
+          "label": "Total ideal travel including the original drop (m)"
+        },
+        {
+          "id": "firstSpeedRatio",
+          "type": "number",
+          "label": "First rebound SPEED divided by pre-impact speed",
+          "hint": "Approximately; square-root relation."
+        },
+        {
+          "id": "reason",
+          "type": "textarea",
+          "label": "Explain why the first term and later repeating ratio differ and how you counted both travel directions",
+          "hint": "Say 'I'm not sure' if the sequence rule is new to you."
+        }
+      ],
+      "worked": [
+        [
+          "Treat the first impact separately",
+          "The ball is dropped from 2 m. It retains 75% of impact energy, so its FIRST rebound height is h₁=0.75×2=1.50 m."
+        ],
+        [
+          "Later impacts follow a different rule",
+          "From bounce 2 onward, energy retention is 50%. Rebound heights are h₂=0.5×1.50=0.75 m, h₃=0.5×0.75=0.375 m and so on."
+        ],
+        [
+          "Distance includes two legs per rebound",
+          "The starting 2 m downward drop occurs once. Each complete bounce adds its upward height AND the following downward height: D=2+2(h₁+h₂+h₃+⋯)."
+        ],
+        [
+          "Use the correct geometric first term and ratio",
+          "The rebound heights have first term 1.50 m and repeating ratio 0.50. Sum=1.50/(1−0.50)=3.00 m. Total ideal vertical distance D=2+2×3=8.00 m."
+        ],
+        [
+          "Do not confuse speed and energy fractions",
+          "Speed immediately after impact divided by pre-impact speed is √0.75≈0.866, not 0.75. Speed squares to give kinetic energy."
+        ]
+      ],
+      "rubric": [
+        "I used 75% energy retention ONLY at the first impact, obtaining h₁=1.50 m.",
+        "I switched to 50% for all later impacts, giving h₂=0.75 m and h₃=0.375 m.",
+        "I counted the 2 m original drop once plus UP and DOWN rebound legs, so total travel is 8 m.",
+        "I explained the sqrt(0.75) speed fraction rather than treating energy and speed percentages as identical."
+      ],
+      "diagnoses": [
+        "I applied the 75% rule to every impact.",
+        "I treated an energy fraction as the same speed fraction.",
+        "I used the wrong first term or repeating ratio in the series.",
+        "I counted only up or down, or omitted the original drop.",
+        "The model was right but I should check the geometric sum.",
+        "I'm not sure what repeats after the first impact."
+      ],
+      "repairPrompt": "Make a new bounce table with FIRST retention 75% then LATER retention 50%. Write the two-direction travel formula and explain why the old ratio was wrong.",
+      "boundaryPrompt": "Now every single impact retains 75% of energy, starting from the same 2 m drop. Find the ideal total vertical travel distance, counting both ascent and descent. Why is it larger than the mixed-rule case?",
+      "boundaryCheck": [
+        "Every rebound height now has the SAME ratio 0.75, starting with 1.50 m.",
+        "The geometric rebound-height sum is 1.50/(1−0.75)=6 m.",
+        "Total ideal distance = original 2 m drop + 2×6 m = 14 m.",
+        "This ideal infinite-bounce enrichment ignores eventual real-world cessation; use only under the given ideal assumptions."
+      ]
+    },
+    E05: {
+      "title": "Area gives potential; local force makes the circle",
+      "version": 1,
+      "prediction": "A central force points inward while a spacecraft moves around a circle. Does the inward force continuously add energy during a circular orbit? What should a positive inward-force-magnitude graph say about U as radius grows?",
+      "hints": [
+        "Label the force graph vertical axis as POSITIVE inward-force magnitude f(r). Outward radial coordinate is positive, so radial force is −f(r).",
+        "For potential at 3 m, consider the entire radius from 0, not only the last segment; a piecewise graph needs separate area pieces.",
+        "For orbital speed, do not use area as the local force. Read the graph height at the orbit and use inward mv²/r."
+      ],
+      "diagnosisFeedback": [
+        "A positive inward-force magnitude graph has dU/dr=+f(r); the signed radial force is negative.",
+        "Potential at 3 m needs the rectangle 0–2 m PLUS the trapezoid 2–3 m from the chosen U(0) reference.",
+        "Distinguish graph area for potential DIFFERENCE from graph height for local circular force.",
+        "For a circular orbit, inward acceleration magnitude is v²/r; don't use mv/r or treat radius as arc length.",
+        "Check arithmetic in trapezoid and kinetic-energy formula, including signs and units.",
+        "Sketch inward force and tangent velocity separately; a radial force does no work on steady circular motion."
+      ],
+      "fields": [
+        {
+          "id": "firstArea",
+          "type": "number",
+          "label": "Potential rise from 0 to 2 m (J)"
+        },
+        {
+          "id": "secondArea",
+          "type": "number",
+          "label": "Additional potential rise from 2 to 3 m (J)"
+        },
+        {
+          "id": "potential",
+          "type": "number",
+          "label": "Potential energy U at r=3 m (J)"
+        },
+        {
+          "id": "forceAt3",
+          "type": "number",
+          "label": "Inward force magnitude at r=3 m (N)"
+        },
+        {
+          "id": "speed",
+          "type": "number",
+          "label": "Required circular speed at 3 m (m/s)"
+        },
+        {
+          "id": "kinetic",
+          "type": "number",
+          "label": "Circular kinetic energy at 3 m (J)"
+        },
+        {
+          "id": "total",
+          "type": "number",
+          "label": "Total mechanical energy for this 3 m orbit (J)"
+        },
+        {
+          "id": "motion",
+          "type": "select",
+          "label": "What work does the inward central force do while radius stays 3 m?",
+          "options": [
+            "Zero, because force is perpendicular to velocity",
+            "Positive equal to graph area",
+            "Negative equal to graph area",
+            "I'm not sure"
+          ]
+        },
+        {
+          "id": "reason",
+          "type": "textarea",
+          "label": "Explain why area and local force are different graph operations, with the force/velocity arrows",
+          "hint": "Name the graph's vertical axis and the radial reference U(0)=0."
+        }
+      ],
+      "worked": [
+        [
+          "Choose radial sign and reference",
+          "Positive r is OUTWARD; inward force magnitude f(r)>0 means signed radial force F_r=−f(r)=−dU/dr. With U(0)=0, increasing r raises U by the area under positive f(r)."
+        ],
+        [
+          "Find potential using both graph regions",
+          "From 0–2 m, 4 N×2 m=8 J. From 2–3 m, force magnitude rises 4 to 6 N, a trapezoid (4+6)/2×1=5 J. Thus U(3)=8+5=13 J."
+        ],
+        [
+          "Use LOCAL force, not area, for circular speed",
+          "At radius 3 m the inward force magnitude is 6 N. With mass 2 kg, mv²/r=6 gives v²=6×3/2=9 and v=3 m/s."
+        ],
+        [
+          "Compute kinetic and total energy",
+          "K=½×2×3²=9 J; total E=U+K=13+9=22 J for this chosen 3 m circular orbit."
+        ],
+        [
+          "Check zero work around the circle",
+          "The steady inward force is perpendicular to tangential velocity; it does no work during travel at fixed radius. The positive area concerns hypothetical RADIAL displacement between radii, not distance traveled along the circle."
+        ]
+      ],
+      "rubric": [
+        "I separated a positive inward-force-magnitude graph from signed radial force and used U(0)=0.",
+        "I added the full 8 J rectangle and 5 J trapezoid to obtain U(3)=13 J.",
+        "I used the LOCAL 6 N at r=3 m in mv²/r, obtaining v=3 m/s and K=9 J.",
+        "I found E=22 J and explained why the radial force does zero work while the object travels around the circle."
+      ],
+      "diagnoses": [
+        "I treated inward force magnitude as negative potential rise.",
+        "I used only the last graph segment and forgot the first rectangle.",
+        "I confused local force with area under force-versus-radius graph.",
+        "I used mv/r rather than mv²/r or the wrong radius.",
+        "My two-operation model was right; I need to recheck numbers.",
+        "I'm not sure why force is perpendicular to orbital motion."
+      ],
+      "repairPrompt": "Draw a positive outward radius axis, mark inward force and tangent velocity, then rebuild both graph-area contributions AND local circular-force calculation. Explain the first corrected inference.",
+      "boundaryPrompt": "Consider a SEPARATE steady circular orbit at radius 4 m under the same force law and 2 kg mass. Find U(4), local inward force, required speed, kinetic energy and E. Why must this not be described as a free conservative move from the 3 m orbit to 4 m?",
+      "boundaryCheck": [
+        "U(4) = (4 N×2 m) + ((4+8)/2×2 m) = 8+12=20 J.",
+        "At 4 m the force magnitude is 8 N, so mv²/r=8 gives v²=16 and v=4 m/s.",
+        "K=½×2×4²=16 J; total E=U+K=20+16=36 J.",
+        "These are different steady circular ORBITS with different energies. A conservative inward force does zero work while radius stays constant, and the spacecraft cannot spontaneously change circular orbit energies without a separate process."
+      ]
     }
   };
 
