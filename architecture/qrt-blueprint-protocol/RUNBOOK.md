@@ -4,7 +4,7 @@
 **Scope:** apply the repository's existing SL1 → SL2 → independent QRT → common Physics Blueprint + WPE topic adapter → Core1A/Core1B → B1–B7 → native/Owner gates. **D3/D4 first.** Physics-only: do **not** reuse these Physics rules in Mathematics or Chemistry.  
 **Authority:** this is a reproducible execution aid for a low-capability agent, **not** a substitute for Shared/Owner/Oracle instructions, the actual Blueprint, academic reviewer, native skill, source custody or actual child testing. **NO_REAL_APPROVAL** is ever conferred by this document, a fixture, a Python test or a webpage.
 
-[Architecture entry](../index.html) · [Readable protocol](index.html) · [Pinned source manifest](source-pins.json) · [Golden cases](fixtures/golden-cases.json) · [Executable validator](verify_cases.py) · [Physics Blueprint v0.2.0](../../templates/physics-blueprint/physics-blueprint.D3-D4.json) · [Independent-review entry](../../docs/agent-entry/07-independent-review.md)
+[Architecture entry](../index.html) · [Readable protocol](index.html) · **[Core six-stage reasoning method](CORE_METHOD.md)** · [Pinned source manifest](source-pins.json) · [Golden cases](fixtures/golden-cases.json) · [Executable validator](verify_cases.py) · [Physics Blueprint v0.2.0](../../templates/physics-blueprint/physics-blueprint.D3-D4.json) · [Independent-review entry](../../docs/agent-entry/07-independent-review.md)
 
 ## 0. Non-negotiable preflight — read these in this order
 
