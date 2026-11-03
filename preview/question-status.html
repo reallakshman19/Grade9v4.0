@@ -91,7 +91,17 @@ function renderNav(){nodes.list.textContent='';filtered.forEach((q,i)=>{let butt
 function current(){return qs.find(q=>q.id===active)}
 function optionMarkup(q,state){const isMulti=q.question_type==='multi_correct_mcq';return '<div class="option-list">'+q.options.map((v,i)=>{let checked=(state?.selected||[]).includes(i);return '<label class="option"><input type="'+(isMulti?'checkbox':'radio')+'" name="answer-option" value="'+i+'" '+(checked?'checked':'')+' '+(state?.committed?'disabled':'')+'><span class="option-key">'+String.fromCharCode(65+i)+'</span><span>'+formatted(cleanOption(v))+'</span></label>';}).join('')+'</div>'}
 function diagram(q){if(!q.source_figures?.length)return '';let entries=q.source_figures.map(name=>data.assets[name]||'').filter(Boolean);if(!entries.length)return '<p class="source-note">Figure reference exists but is not included in this package; see the cited source.</p>';return entries.map(s=>'<figure class="figure">'+s+'<figcaption>'+esc(q.figure_note||'Candidate figure; exact source correspondence unreviewed.')+'</figcaption></figure>').join('');}
-function hintMarkup(q){if(!q.hints.length)return '<p class="source-note">No source hints supplied for this item.</p>';return q.hints.map((h,i)=>'<details class="hint" data-hint="'+i+'" '+(i?'data-locked="true"':'')+'><summary>Hint '+(i+1)+' · '+esc(h.prompt||'Guided cue')+(i?' <span class="hint-lock">(unlock previous hint first)</span>':'')+'</summary><p>'+formatted(h.text)+'</p></details>').join('')}
+function hintMarkup(q){
+ // The imported EX-M101 hints wrongly discuss conservative vector fields; its actual stem compares spring work.
+ // Replace only the *displayed* hints. Source bank bytes and original stem remain unchanged.
+ const sourceHints=q.source_id==="EX-M101"?[
+  {prompt:"Which quantity is held constant?",text:"The first observation uses the same final stretching force. Statement 1 instead holds extension fixed. Are these the same experiment?"},
+  {prompt:"Use the spring's force–extension triangle",text:"For ideal slow Hookean stretching, stored work is U = ½kx². At fixed final force F, substitute x = F/k, giving U = F²/(2k)."},
+  {prompt:"Compare each statement independently",text:"Infer the relative stiffnesses from the equal-final-force observation first. Then check the work ranking again with the same extension. Explain whether each statement follows."}
+ ]:q.hints;
+ if(!sourceHints.length)return '<p class="source-note">No source hints supplied for this item.</p>';
+ return sourceHints.map((h,i)=>'<details class="hint" data-hint="'+i+'" '+(i?'data-locked="true"':'')+'><summary>Hint '+(i+1)+' · '+esc(h.prompt||'Guided cue')+(i?' <span class="hint-lock">(unlock previous hint first)</span>':'')+'</summary><p>'+formatted(h.text)+'</p></details>').join('')
+}
 function showInteractiveLessonLinks(q){
  studentRoutes.then(data=>{
   const host=nodes.root.querySelector('#interactive-lesson-links');
@@ -127,7 +137,21 @@ nodes.root.querySelector('#commit').addEventListener('click',()=>{const s=save()
 nodes.root.querySelector('#reveal').addEventListener('click',()=>{const s=attempts.get(q.id);if(!s?.committed)return;s.revealed=true;showSolution(q);nodes.root.querySelector('#reveal').disabled=true;nodes.root.querySelector('#reveal-note').textContent='Author proposal revealed. No official-key grading is claimed.';});
 let hintList=[...nodes.root.querySelectorAll('.hint')];hintList.forEach((el,i)=>{if(i>0){const prior=hintList[i-1];if(!prior.open){el.querySelector('summary').setAttribute('aria-disabled','true');}}el.addEventListener('toggle',()=>{if(i>0&&!hintList[i-1].open&&el.open){el.open=false;return;}if(el.open&&hintList[i+1]){hintList[i+1].removeAttribute('data-locked');hintList[i+1].querySelector('summary')?.removeAttribute('aria-disabled');}})});
 }
-function showSolution(q){let el=nodes.root.querySelector('#solution-container');if(!el)return;el.innerHTML='<div class="solution"><strong>Author-proposed answer:</strong> '+formatted(q.answer||'Not supplied')+(q.steps?.length?'<ol>'+q.steps.map(t=>'<li>'+formatted(t)+'</li>').join('')+'</ol>':'')+(q.check?'<p><strong>Check:</strong> '+formatted(q.check)+'</p>':'')+'</div>';}
+function showSolution(q){
+ let el=nodes.root.querySelector('#solution-container');if(!el)return;
+ if(q.source_id==="EX-M101"){
+  const springSteps=[
+   "For ideal slow stretching to the same FINAL force F, work stored in a spring is U=F²/(2k). More work in S1 than S2 therefore means k1<k2.",
+   "For the same EXTENSION x, work is U=½kx². Since k1<k2, S1 stores LESS energy than S2, not more.",
+   "Statement 1 is false and Statement 2 is true; this comparison depends on what is held fixed, not on a general conservative-vector-field argument."
+  ];
+  el.innerHTML='<div class="solution"><strong>Coaching-proposed answer (not an official verified key):</strong> '+formatted(q.answer||'Not supplied')+
+   '<ol>'+springSteps.map(x=>'<li>'+formatted(x)+'</li>').join('')+'</ol>'+
+   '<p><strong>Conditions:</strong> Hookean springs stretched slowly from natural length to their final equilibrium state. A suddenly applied constant force is a different dynamic experiment.</p></div>';
+  return;
+ }
+ el.innerHTML='<div class="solution"><strong>Author-proposed answer:</strong> '+formatted(q.answer||'Not supplied')+(q.steps?.length?'<ol>'+q.steps.map(t=>'<li>'+formatted(t)+'</li>').join('')+'</ol>':'')+(q.check?'<p><strong>Check:</strong> '+formatted(q.check)+'</p>':'')+'</div>';
+}
 nodes.prev.addEventListener('click',()=>{let idx=filtered.findIndex(q=>q.id===active);if(idx>0){active=filtered[idx-1].id;keepQuestionInUrl();renderNav();render();}});nodes.next.addEventListener('click',()=>{let idx=filtered.findIndex(q=>q.id===active);if(idx>=0&&idx+1<filtered.length){active=filtered[idx+1].id;keepQuestionInUrl();renderNav();render();}});
 [nodes.search,nodes.kind,nodes.band].forEach(el=>el.addEventListener('input',filters));
 const d=document.getElementById('dedup-list');data.dedup.forEach(x=>{let li=document.createElement('li');li.textContent='Keep '+x.kept+'; omit display of '+x.suppressed.join(', ')+'. '+x.reason;d.append(li);});filters();
