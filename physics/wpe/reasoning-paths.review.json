@@ -1,9 +1,9 @@
 {
   "schema": "wpe-reasoning-route-preview/v1",
   "created_on": "2026-11-02",
-  "source_head": "727c6f8758c31c34aa44af47f24477799ad5b107",
+  "source_head": "a90c34cffed8f108413973a5b12c25ecf09c8ca7",
   "source_git_blobs": {
-    "bridge": "f9e2bc93b1f1df157561823ea773d4b90f700efa",
+    "bridge": "255683fa36b2df733838f23a8b86b804aa812b8e",
     "bank": "1161271c0de01f9de31f62cdbcf3679629e16bad",
     "pilot": "531a5027da2649310b4660e9e812b774eb883de9",
     "foundation_map": "b7e8449419e68398b8440c527ef5a05cbe2af811"
@@ -19,8 +19,8 @@
   "counts": {
     "primary_constructions": 8,
     "proposed_extensions": 5,
-    "author_packs": 12,
-    "missing_author_packs": 1,
+    "author_packs": 13,
+    "missing_author_packs": 0,
     "qualified_learner_routes": 0,
     "pilot_candidates": 14,
     "reader_agreements": 3,
@@ -317,10 +317,11 @@
         }
       ],
       "foundation_anchors": [],
-      "authored_pack_present": false,
+      "authored_pack_present": true,
       "approved_core1a_url": null,
       "approved_core1b_url": null,
-      "acceptance": "AUTHOR_DRAFT_ONLY"
+      "acceptance": "AUTHOR_DRAFT_ONLY",
+      "id": "WPE-E05"
     }
   ],
   "pilot": [
