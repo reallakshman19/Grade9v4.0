@@ -18,7 +18,7 @@ For **authoring / planning agents** (already exposed to review history), read th
 
 **Exception: independent blind QRT reviewer.** Do **not** show this author-exposed guide, prior solutions, classification tables, golden fixtures, author labels, consolidated review reader, hints or checkpoint to a reviewer *before their sealed first pass*. Only an actually authorized dispatcher may give that reviewer exact, independently authenticated question/figure/source inputs, applicable rubric/Blueprint, task scope, seal destination and resource bound. Read `docs/agent-entry/07-independent-review.md`. If exposed, declare it. Never self-appoint or describe the review as blind.
 
-**As-of snapshot, not timeless truth:** 74 displayed consolidated records; 22 labeled D3/D4 (17 D3 + 5 D4), all **NOT_ADMITTED**. Eight interactive reusable teaching constructions (C01–C08), five author-only targeted extensions (E01–E05), zero qualified learner routes. The separate 21-place exam pilot has 14 pending, 7 vacant, zero admitted; among its 14 candidates versus the selected reader: 3 agree, 8 conflict, 3 absent from *that reader*. The Physics Blueprint has 14 draft cells (D3/D4 × 7 operations). The selected approved WPE adapter is **UNSELECTED**. D1/D2 common Blueprint is not approved/specified here. **D3.1 is PAUSED.** Recompute counts when the pinned inventory changes.
+**As-of snapshot, not timeless truth:** 74 displayed consolidated records; 22 labeled D3/D4 (17 D3 + 5 D4), all **NOT_ADMITTED**. Thirteen interactive authored practice constructions (C01–C08 and E01–E05), zero qualified learner routes. The separate 21-place exam pilot has 14 pending, 7 vacant, zero admitted; among its 14 candidates versus the selected reader: 3 agree, 8 conflict, 3 absent from *that reader*. The Physics Blueprint has 14 draft cells (D3/D4 × 7 operations). The selected approved WPE adapter is **UNSELECTED**. D1/D2 common Blueprint is not approved/specified here. **D3.1 is PAUSED.** Recompute counts when the pinned inventory changes.
 
 ## 1. Agent identity and output contract
 
@@ -138,7 +138,7 @@ Do **not** confuse columns because a question *contains* a graph, *mentions* a f
 |---|---|---|
 | **P0** | Exact source figure/key/custody and disputed QRT operation/band for all selected D3/D4 candidates | Each exact task has provenance, QRT disposition or explicit HOLD |
 | **P0** | Build **74-row** question→concept→QRT→tile register, including 21-place pilot overlay and dedup without dropping identities | 74 unique question records accounted for; 21 pilot places retained; counts reconcile |
-| **P1** | Interactive versions of **E01–E05**, currently author-only | Six linked D3 questions gain usable practice *without* academic promotion |
+| **P1** | Exact-inference review of interactive **E01–E05** extension routes, still source-theme proposals | Six linked reader-D3 questions now have practice *without* academic promotion; exact-source inference still needs review |
 | **P1** | Write original student constructions for **EX-M97**, **EX-N39** and **WEP07-01** | Three unmapped D3 source-theme rows gain truthful proposed learning links |
 | **P1** | Re-audit 13 currently linked D3/D4 questions for exact inference vs merely related prerequisite | Each link tagged `RELATED`, `EXACT_INFERENCE_REVIEWED` or `UNQUALIFIED`; no blanket coverage claims |
 | **P2** | Remaining lower-band/unmapped question bank rows using suitable D1/D2 rules when approved | No unaccounted question; never force into D3/D4 |
