@@ -147,6 +147,8 @@
     }
   };
   const ids=Object.keys(scenarios);
+  const transferVariants=window.WPE_FOCUSED_TRANSFER_VARIANTS||{};
+  const stateIds=[...ids,...ids.map(id=>id+"-transfer55")];
   const prefix="g9:wpe:focused:v1:";
   const doc=document,svgNS="http://www.w3.org/2000/svg";
   const $=(selector,root=doc)=>root.querySelector(selector);
@@ -169,7 +171,7 @@
   function blank(id){return {schema:1,id,stage:0,prediction:"",predictionDraft:"",draft:{},first:null,hints:[],checks:[],diagnosis:null,repair:"",boundary:null,helpHistory:[],exposure:"UNASSISTED_UNTIL_FIRST_ATTEMPT"};}
   const states={};
   let storageWorks=true;
-  for(const id of ids){
+  for(const id of stateIds){
     let s=null;
     try{s=JSON.parse(localStorage.getItem(prefix+id)||"null");}catch(_){}
     states[id]=(s&&s.schema===1&&s.id===id&&Number.isInteger(s.stage)&&s.stage>=0&&s.stage<=5&&(s.stage<2||(s.first&&s.first.answers&&typeof s.first.answers.reason==="string")))?s:blank(id);
@@ -260,8 +262,8 @@
   }
   const numeric=(raw)=>raw==null||String(raw).trim()===""?NaN:Number(raw);
   function feedback(field,value){
-    if(field.type==="textarea")return {status:"ungraded",text:"Your written explanation is saved, not automatically judged."};
-    if(value==null||String(value).trim()===""||field.type==="select"&&value==="Choose an idea")
+    if(field.type==="textarea"||field.type==="text")return {status:"ungraded",text:"Your written explanation or algebra is saved, not automatically judged."};
+    if(value==null||String(value).trim()===""||field.type==="select"&&/^Choose (an idea|a model)$/.test(value))
       return {status:"missing",text:"No model decision or value entered yet. "+field.mistake};
     const good=field.type==="select"?value===field.expected:Number.isFinite(numeric(value))&&Math.abs(numeric(value)-field.expected)<=field.tol;
     return good?{status:"matches",text:"Your entry matches this authored model. Check that your explanation also justifies it."}
@@ -275,7 +277,7 @@
     let firstIssue=null;
     for(const field of fields.filter(f=>f.type!=="textarea")){
       const result=feedback(field,answer[field.id]);
-      if(!firstIssue&&result.status!=="matches")firstIssue={field:field.id,why:result.text};
+      if(!firstIssue&&result.status!=="matches"&&result.status!=="ungraded")firstIssue={field:field.id,why:result.text};
       const li=add(list,"li");
       add(li,"strong",field.label+": ");
       li.append(doc.createTextNode(result.text));
@@ -374,8 +376,15 @@
         const worked=add(box,"section",null,"worked");add(worked,"h4","Changed-condition reconstruction");paragraph(worked,d.boundaryCheck);
         action(acts,"history","Review my original attempt and repair",true);
         paragraph(box,"You finished this fresh problem. Return to your source question and make your OWN final reasoning decision.","done");
-        if(sourceLink?.lesson===id){
-          const a=add(box,"a","Return to "+sourceLink.source+" without showing its answer","return-original");
+        if(!d.variantId){
+          const transfer=add(box,"a","Try another challenge (optional)","return-original");
+          transfer.href="focused-journeys.html"+(sourceLink?.lesson===id?"?question="+encodeURIComponent(sourceLink.source)+"&variant=transfer55":"?variant=transfer55")+"#"+id;
+        }else{
+          const first=add(box,"a","Revisit my first challenge","return-original");
+          first.href="focused-journeys.html"+(sourceLink?.lesson===id.split("-")[0]?"?question="+encodeURIComponent(sourceLink.source):"")+"#"+id.split("-")[0];
+        }
+        if(sourceLink?.lesson===id.split("-")[0]){
+          const a=add(box,"a","Return to my question · "+sourceLink.source+" without showing its answer","return-original");
           a.href=sourceLink.href;
         }
       }
@@ -454,8 +463,14 @@
   function render(focus=false){
     const requested=location.hash.slice(1).toUpperCase();
     active=ids.includes(requested)?requested:"F01";
-    const d=scenarios[active],root=$("#journey-root");root.replaceChildren();
-    $("#current-title").textContent=active+" · "+d.short;
+    const root=$("#journey-root");root.replaceChildren();
+    const variantRequested=new URLSearchParams(location.search).get("variant");
+    if(variantRequested&&variantRequested!=="transfer55"){paragraph(root,"Unrecognized challenge variant. No alternative problem is inferred.","step-note");return;}
+    const alternate=variantRequested==="transfer55";
+    if(alternate&&!transferVariants[active]){paragraph(root,"This lesson has no verified optional challenge.","step-note");return;}
+    const stateId=alternate?active+"-transfer55":active;
+    const d=alternate?{...scenarios[active],...transferVariants[active]}:scenarios[active];
+    $("#current-title").textContent=active+" · "+d.short+(alternate?" · Optional second challenge":"");
     const article=add(root,"article",null,"lesson");
     article.id=active;
     const header=add(article,"header",null,"lesson-title");
@@ -464,26 +479,28 @@
     const grid=add(article,"div",null,"learning-grid");
     buildGuide(grid,active,d);
     const challenge=add(grid,"section",null,"challenge");
-    paragraph(challenge,"CORE1B · A genuinely different problem","mini");
+    paragraph(challenge,alternate?"TRY ANOTHER CHALLENGE · OPTIONAL TRANSFER":"TRY IT YOURSELF · FIRST CHALLENGE","mini");
     add(challenge,"h2","Predict → Attempt → Reconstruct → Diagnose → Repair → Boundary test");
-    paragraph(challenge,"Original thinking is saved before the worked answer. Study hints are optional; the boundary is a different condition.");
-    const host=add(challenge,"div",null,"stage-root");host.dataset.stageRoot=active;
-    host.addEventListener("click",e=>dispatch(host,active,d,e));
+    paragraph(challenge,"Original thinking is saved before the worked answer. Hints are optional, staged and do not reveal the full reconstruction.");
+    const host=add(challenge,"div",null,"stage-root");host.dataset.stageRoot=stateId;
+    host.addEventListener("click",e=>dispatch(host,stateId,d,e));
     host.addEventListener("input",()=>{
-      const s=states[active];
+      const s=states[stateId];
       if(s.stage===0)s.predictionDraft=$('[data-field="prediction"]',host)?.value||"";
       else if(s.stage===1&&s.first===null)s.draft=readValues(host);
       else return;
-      persist(active);
+      persist(stateId);
     });
     host.addEventListener("change",()=>{
-      const s=states[active];if(s.stage===1&&s.first===null){s.draft=readValues(host);persist(active);}
+      const s=states[stateId];if(s.stage===1&&s.first===null){s.draft=readValues(host);persist(stateId);}
     });
-    showStage(host,active,d,focus);
+    showStage(host,stateId,d,focus);
     const footer=add(article,"nav",null,"lesson-footer");footer.setAttribute("aria-label","Other focused journeys");
     const n=ids.indexOf(active);
-    const prev=add(footer,"a",n?"← Previous new journey":"Learn → Challenge tile");prev.href=n?"#"+ids[n-1]:"learn-challenge.html";
-    const next=add(footer,"a",n<2?"Next new journey →":"All 74 question learning routes");next.href=n<2?"#"+ids[n+1]:"learn-challenge.html#question-routes";
+    const prev=add(footer,"a",n?"← Previous new journey":"Learn → Challenge gateway");prev.href=n?"focused-journeys.html#"+ids[n-1]:"learn-challenge.html";
+    const next=add(footer,"a",n<2?"Next new journey →":"All 74 question learning routes");next.href=n<2?"focused-journeys.html#"+ids[n+1]:"learn-challenge.html#question-routes";
+    if(alternate){const first=add(footer,"a","Try my first challenge");first.href="focused-journeys.html"+(sourceLink?.lesson===active?"?question="+encodeURIComponent(sourceLink.source):"")+"#"+active;}
+    else if(states[active].boundary!==null){const another=add(footer,"a","Try another challenge");another.href="focused-journeys.html"+(sourceLink?.lesson===active?"?question="+encodeURIComponent(sourceLink.source)+"&variant=transfer55":"?variant=transfer55")+"#"+active;}
     if(sourceLink?.lesson===active){
       const a=add(footer,"a","Return to "+sourceLink.source,"return-original");a.href=sourceLink.href;
     }
@@ -508,9 +525,10 @@
       const map=await r.json(),bank=await q.json();
       if(map.schema!=="wpe-learner-coverage-r1/v1"||!Array.isArray(map.questions)||bank.questions?.length!==74)throw Error("source inventory changed");
       const found=map.questions.find(x=>x.source_id===source);
-      if(!found||!bank.questions.some(x=>x.source_id===source)||found.primary_lesson!==active||found.fit!=="FOCUSED_NEW")
+      if(!found||!bank.questions.some(x=>x.source_id===source&&x.stem_sha256===found.stem_sha256)||found.primary_lesson!==active||found.fit!=="FOCUSED_NEW")
         throw Error("source does not map to this lesson");
       sourceLink={source,lesson:active,href:"../../preview/question-status.html?question="+encodeURIComponent(source)};
+      try{localStorage.setItem("g9:wpe:journey:v1",JSON.stringify({question:source,lesson:active,variant:new URLSearchParams(location.search).get("variant")==="transfer55"?"transfer55":null}));}catch(_){}
       $("#source-title").textContent="Your original question: "+source;
       $("#source-message").textContent="Learn the physical operation with a DIFFERENT example. Then return to "+source+" and test your own solution. Nothing here confirms the question's coaching answer.";
       returnLink.hidden=false;returnLink.href=sourceLink.href;returnLink.textContent="Return to "+source+" without showing its answer";
