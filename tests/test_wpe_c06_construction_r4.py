@@ -310,7 +310,7 @@ def test_c6h_crown_exact_rest_is_not_spontaneous_release():
     src=(WPE/"c06-constructions-r4.js").read_text(encoding="utf-8")
     assert "Exact unperturbed rest would remain at the unstable equilibrium" in src
     assert "vanishing downhill perturbation" in src
-    assert "perturbed crown-rest LIMIT" in src
+    assert "vanishing-perturbation crown-rest LIMIT" in src
     g,R=10,5
     approx(g*math.sin(0),0)
     heights=[R*2*math.cos(theta0)/3 for theta0 in (.1,.01,.001)]
