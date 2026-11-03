@@ -347,7 +347,13 @@
       const issue=drawAssessment(assessment,d.fields,s.first.answers);
       const suggested=issue?issue.field:"explanation";
       paragraph(box,issue?"Possible first divergence: "+suggested+". "+issue.why:"Your numerical entries match the authored model; explain why each equation is valid, not only the arithmetic.","diagnosis-tip");
-      const group=add(box,"div",null,"field");const label=add(group,"label","Where will you examine your reasoning first?");label.htmlFor="diagnosis-select";
+      if(Array.isArray(d.diagnoses)){
+         const alternatives=add(box,"details",null,"bridge");
+         add(alternatives,"summary","Common mistaken models and repair hints (optional)");
+         const examples=add(alternatives,"ol");
+         d.diagnoses.forEach((mistake,i)=>{const li=add(examples,"li");paragraph(li,mistake);paragraph(li,d.diagnosisTips?.[i]||"Check your assumptions.");});
+       }
+       const group=add(box,"div",null,"field");const label=add(group,"label","Where will you examine your reasoning first?");label.htmlFor="diagnosis-select";
       const select=add(group,"select");select.id="diagnosis-select";select.dataset.diagnosis="true";
       add(select,"option","Choose a step").value="";
       d.fields.filter(f=>f.type!=="textarea").forEach(f=>add(select,"option",f.label).value=f.id);
@@ -377,7 +383,14 @@
         drawAssessment(box,d.boundaryFields,s.boundary);
         const worked=add(box,"section",null,"worked");add(worked,"h4","Changed-condition reconstruction");paragraph(worked,d.boundaryCheck);
         action(acts,"history","Review my original attempt and repair",true);
-        paragraph(box,"You finished this fresh problem. Return to your source question and make your OWN final reasoning decision.","done");
+        paragraph(box,"You finished this fresh problem. You can return to the original question immediately; the next challenge is optional.","done");
+         if(requestedVariant()==="first"&&window.WPE_F_TRANSFER?.[id]){
+           const another=add(box,"a","Try another challenge · optional transfer","return-original");
+           const next=new URL(location.href);next.searchParams.set("variant","transfer");next.hash=id;another.href=next.pathname+next.search+next.hash;
+         }else if(requestedVariant()==="transfer"){
+           const initial=add(box,"a","Resume my first challenge","return-original");
+           const prev=new URL(location.href);prev.searchParams.delete("variant");prev.hash=id;initial.href=prev.pathname+prev.search+prev.hash;
+         }
         if(sourceLink?.lesson===id){
           const a=add(box,"a","Return to "+sourceLink.source+" without showing its answer","return-original");
           a.href=sourceLink.href;
@@ -459,17 +472,20 @@
     const requested=location.hash.slice(1).toUpperCase();
     active=ids.includes(requested)?requested:"F01";
     const d=chosenScenario(active),root=$("#journey-root");root.replaceChildren();
-    $("#current-title").textContent=active+" · "+d.short;
+     if(requestedVariant()==="transfer"&&!window.WPE_F_TRANSFER?.[active]){root.textContent="The second challenge is unavailable; open the first challenge instead.";return;}
+    $("#current-title").textContent=active+" · "+scenarios[active].short+(requestedVariant()==="transfer"?" · Try another challenge":"");
     const article=add(root,"article",null,"lesson");
     article.id=active;
     const header=add(article,"header",null,"lesson-title");
     paragraph(header,"LEARN THE IDEA · Physical model · not an exam key","mini");
-    add(header,"h2",d.title);paragraph(header,d.question);
+    add(header,"h2",scenarios[active].title);paragraph(header,scenarios[active].question);
+     if(requestedVariant()==="transfer")paragraph(header,"The teaching below remains the original F lesson. Now choose a model for a second, unfamiliar transfer task.","step-note");
     const grid=add(article,"div",null,"learning-grid");
     buildGuide(grid,active,d);
     const challenge=add(grid,"section",null,"challenge");
     paragraph(challenge,requestedVariant()==="transfer"?"TRY ANOTHER CHALLENGE · Optional transfer":"TRY IT YOURSELF · First fresh challenge","mini");
     add(challenge,"h2","Predict → Attempt → Reconstruct → Diagnose → Repair → Boundary test");
+     if(requestedVariant()==="transfer")paragraph(challenge,"A different scenario from PR #55, kept separate from your first saved answer; do not consult the reconstruction before committing your own model.","step-note");
     paragraph(challenge,"Original thinking is saved before the worked answer. Study hints are optional; the boundary is a different condition.");
     const host=add(challenge,"div",null,"stage-root");host.dataset.stageRoot=active;
     host.addEventListener("click",e=>dispatch(host,active,d,e));
