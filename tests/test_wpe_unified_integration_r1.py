@@ -101,35 +101,56 @@ def test_three_distinct_models_and_boundary_conditions():
     assert math.isclose(energy(x0,5),2) and math.isclose(energy(other2,5),2)
 
 
-def test_skill_explorer_four_tables_preserve_all_existing_destinations():
+def test_skill_explorer_four_subtabs_and_26_original_destinations():
     from urllib.parse import urlsplit
     gateway=source("physics/wpe/learn-challenge.html")
     area=gateway.split('<section class="skill-explorer"',1)[1].split('<section class="practice-manager"',1)[0]
     expected={
-        "foundation-skills-title": [("#work-sign","01"),("#momentum-energy","02"),("#energy-motion","03"),
-                                    ("#potential-force","04"),("#momentum-fragments","05")],
-        "core-skills-title": [(f"d3d4-self-tutor.html#C{i:02}",f"C{i:02}") for i in range(1,9)],
-        "extension-skills-title": [(f"extension-learning.html#E{i:02}",f"E{i:02}") for i in range(1,6)],
-        "focused-skills-title": [(f"focused-journeys.html#F{i:02}",f"F{i:02}") for i in range(1,4)]
+        "foundations": [("#work-sign","01"),("#momentum-energy","02"),("#energy-motion","03"),
+                        ("#potential-force","04"),("#momentum-fragments","05")],
+        "c": [(f"d3d4-self-tutor.html#C{i:02}",f"C{i:02}") for i in range(1,9)],
+        "e": [(f"extension-learning.html#E{i:02}",f"E{i:02}") for i in range(1,6)],
+        "f": [(f"focused-journeys.html#F{i:02}",f"F{i:02}") for i in range(1,4)]+
+             [(f"gap-journeys.html#F{i:02}",f"F{i:02}") for i in range(4,9)]
     }
-    groups=re.findall(r'<section class="skill-group" aria-labelledby="([^"]+)">(.*?)</table></section>',area,re.S)
+    assert 'role="tablist" aria-label="Choose a Physics skill section"' in area
+    assert area.count('role="tab"')==4
+    assert area.count('role="tabpanel"')==4
+    assert area.count('class="skill-entry"')==26
+    assert "<table" not in area
+    groups=re.findall(r'<section class="skill-tabpanel" id="skill-panel-([^"]+)"[^>]*>(.*?)</ul></section>',area,re.S)
     assert [name for name,_ in groups]==list(expected)
-    assert area.count('<table class="skill-table"')==4
-    assert area.count('<th scope="col">')==12
-    for name,group in groups:
-        rows=re.findall(r'<tr><th scope="row" class="skill-code">([^<]+)</th><td>.*?</td><td><a class="skill-open" href="([^"]+)"',group,re.S)
+    for index,(name,group) in enumerate(groups):
+        tab=re.search(r'<button type="button" class="skill-tab" role="tab" id="skill-tab-'+name+r'"[^>]*>',area)
+        assert tab and f'aria-controls="skill-panel-{name}"' in tab.group()
+        assert f'aria-selected="{str(index==0).lower()}"' in tab.group()
+        assert (' hidden>' in area.split('id="skill-panel-'+name+'"',1)[1].split('>',1)[0]+'>')==(index!=0)
+        rows=re.findall(r'<li class="skill-entry">.*?<span class="skill-code">([^<]+)</span>.*?<a class="skill-open" href="([^"]+)"',group,re.S)
         assert [(href,code) for code,href in rows]==expected[name],name
-        assert group.count('class="skill-open"')==len(expected[name])
         for href,_ in expected[name]:
             parsed=urlsplit(href)
             target=WPE/parsed.path if parsed.path else WPE/"learn-challenge.html"
             assert target.is_file(),(name,href)
-            if parsed.path in ("extension-learning.html","focused-journeys.html"):
-                # These existing pages generate lesson anchors from JS data at runtime.
-                js=WPE/("extension-learning.js" if parsed.path.startswith("extension") else "focused-journeys.js")
+            if parsed.path in ("extension-learning.html","focused-journeys.html","gap-journeys.html"):
+                js=WPE/("extension-learning.js" if parsed.path.startswith("extension")
+                        else "focused-journeys.js" if parsed.path.startswith("focused") else "gap-journeys.js")
                 assert f"{parsed.fragment}:" in js.read_text(encoding="utf-8"),(name,href)
             else:
                 assert f'id="{parsed.fragment}"' in target.read_text(encoding="utf-8"),(name,href)
+    findings={
+        "F04":"Correctly separates centre-of-mass energy from relative kinetic energy",
+        "F05":"Explicitly requires a linear velocity profile; does not claim mv²/6 for arbitrary spring motion",
+        "F06":"Separates mass flow proportional to v from energy per unit mass proportional to v²",
+        "F07":"Preserves the difference between turning-point work and static equilibrium",
+        "F08":"Keeps the coached energy-retention assumption separate from an actual two-body compression model"
+    }
+    focused=groups[-1][1]
+    for id_,finding in findings.items():
+        assert f'{id_}</span>' in focused and finding in focused
+    assert focused.count('Integration finding:')==5
     css=source("physics/wpe/student-journey.css")
-    assert ".skill-table" in css and ".skill-open" in css and "@media(max-width:560px)" in css
-    assert ".skill-links" not in area
+    js=source("physics/wpe/skill-explorer-tabs.js")
+    assert '.skill-tabpanel[hidden]' in css and '@media(max-width:560px)' in css
+    for key in ('ArrowRight','ArrowLeft','Home','End','aria-selected','tabIndex','hashchange'):
+        assert key in js
+    assert 'src="skill-explorer-tabs.js" defer' in gateway
