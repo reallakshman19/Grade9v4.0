@@ -60,6 +60,17 @@ def original_question_roundtrip(page,base):
     verify(page.locator("#commit").is_enabled(),"Start-again control did not reset source attempt")
     verify(saved(page,"g9:wpe:core2:attempt:v1:EX-M79") is None,"Reset did not erase this question")
 
+def legacy_bridge_direct_navigation(page,base):
+    page.goto(base+"/physics/wpe/study-bridge.html?question=EX-M79&lesson=C03")
+    page.wait_for_url("**/d3d4-self-tutor.html?question=EX-M79#C03")
+    verify(page.locator("iframe").count()==0,"Legacy C03 bridge embedded the lesson")
+    page.goto(base+"/physics/wpe/study-bridge.html?question=EX-M97&lesson=F01&variant=transfer")
+    page.wait_for_url("**/focused-journeys.html?question=EX-M97&variant=transfer#F01")
+    verify(page.locator('[data-stage-root="F01"]').count()==1,"Legacy F01 transfer route lost")
+    page.goto(base+"/physics/wpe/study-bridge.html?question=UNKNOWN-ID&lesson=C03")
+    page.locator("#status").filter(has_text="could not be verified").wait_for()
+    verify(page.locator("#direct").is_hidden(),"Unverified source bridge invented a lesson")
+
 def written_question_draft(page,base):
     page.goto(base+"/preview/question-status.html?question=EX-N39")
     verify(page.locator(".qtitle").inner_text()=="EX-N39","Numerical original question not selected")
@@ -173,6 +184,7 @@ def main():
                         errors=[]
                         page.on("pageerror",lambda error:errors.append(str(error)))
                         original_question_roundtrip(page,base)
+                        legacy_bridge_direct_navigation(page,base)
                         written_question_draft(page,base)
                         focus_variants(page,base)
                         verify(page.evaluate("document.documentElement.scrollWidth<=innerWidth+4"),"Mobile horizontal overflow")
