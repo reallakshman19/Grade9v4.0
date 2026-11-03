@@ -72,6 +72,29 @@ const nodes={search:document.getElementById('search'),kind:document.getElementBy
 const requestedQuestion=new URLSearchParams(location.search).get('question');
 const requestedMatch=qs.find(q=>q.source_id===requestedQuestion);
 let filtered=[...qs],active=requestedMatch?.id??qs[0].id;const attempts=new Map();
+const attemptPrefix='g9:wpe:core2:attempt:v1:',lastQuestionKey='g9:wpe:core2:last-question:v1';
+const blankAttempt=()=>({selected:[],response:'',committed:false,paper:false,revealed:false,first:null});
+let storageAvailable=true;
+function readAttempt(q){
+ try{
+ const a=JSON.parse(localStorage.getItem(attemptPrefix+q.source_id)||'null');
+ if(!a||a.schema!==1||a.source_id!==q.source_id||a.stem_sha256!==q.stem_sha256||
+    !Array.isArray(a.selected)||a.selected.some(i=>!Number.isInteger(i)||i<0||i>=q.options.length)||
+    typeof a.response!=='string'||typeof a.committed!=='boolean'||typeof a.paper!=='boolean')return null;
+ if(a.committed&&(!a.first||!Array.isArray(a.first.selected)||typeof a.first.response!=='string'))return null;
+ return {selected:a.selected.slice(),response:a.response,paper:a.paper,committed:a.committed,first:a.first||null,revealed:false};
+ }catch(_){storageAvailable=false;return null;}
+}
+function persistAttempt(q,s){
+ try{
+ const record={schema:1,source_id:q.source_id,stem_sha256:q.stem_sha256,
+   selected:s.selected.slice(),response:s.response,paper:s.paper,committed:s.committed,first:s.first||null,revealed:false};
+ localStorage.setItem(attemptPrefix+q.source_id,JSON.stringify(record));
+ localStorage.setItem(lastQuestionKey,q.source_id);
+ return true;
+ }catch(_){storageAvailable=false;return false;}
+}
+qs.forEach(q=>{const saved=readAttempt(q);if(saved)attempts.set(q.id,saved);});
 const studentRoutes=fetch('../physics/wpe/reasoning-paths.review.json').then(r=>r.ok?r.json():null).catch(()=>null);
 const learnerCoverage=fetch('../physics/wpe/learning-coverage-r1.json').then(r=>r.ok?r.json():null).catch(()=>null);
 if(requestedQuestion&&!requestedMatch){
@@ -144,22 +167,22 @@ function showInteractiveLessonLinks(q){
  });
 }
 function render(){const q=current();if(!q){nodes.root.innerHTML='<p class="empty">Select a different search or filter.</p>';nodes.progress.textContent='0 matches';nodes.prev.disabled=nodes.next.disabled=true;return;}
-const idx=filtered.findIndex(x=>x.id===q.id),st=attempts.get(q.id)||{selected:[],response:'',committed:false,paper:false,revealed:false};nodes.progress.textContent=(idx+1)+' of '+filtered.length+' shown · '+qs.length+' total entries';nodes.prev.disabled=idx<=0;nodes.next.disabled=idx>=filtered.length-1;
+const idx=filtered.findIndex(x=>x.id===q.id),st=attempts.get(q.id)||blankAttempt();nodes.progress.textContent=(idx+1)+' of '+filtered.length+' shown · '+qs.length+' total entries';nodes.prev.disabled=idx<=0;nodes.next.disabled=idx>=filtered.length-1;
 let type=q.question_type==='multi_correct_mcq'?'Select all that apply':q.options.length?'Choose one option':'Write a response or record a paper attempt';
 const media=diagram(q);const choice=q.options?.length?optionMarkup(q,st):'<div class="textarea-wrap"><label for="free-answer">Your worked response</label><textarea id="free-answer" placeholder="Write your method or answer before revealing the author proposal" '+(st.committed?'disabled':'')+'>'+esc(st.response||'')+'</textarea><label class="paperlabel"><input id="paper-attempt" type="checkbox" '+(st.paper?'checked':'')+' '+(st.committed?'disabled':'')+'> I worked this question on paper (self-report, not independent P1 evidence)</label></div>';
 let badges='<span class="chip">'+esc(q.category==='EXAM_CLAIM'?'Exam-labelled · unverified':q.category==='TEXTBOOK'?'Owner-supplied textbook':'Authored control')+'</span><span class="chip">'+esc(q.op)+' · '+esc(q.band)+' (proposed)</span><span class="chip hold">NOT ADMITTED</span>'+(q.flags.length?'<span class="chip warn">'+q.flags.length+' technical review note(s)</span>':'');
 nodes.root.innerHTML='<div class="meta">'+badges+'</div><h2 class="qtitle">'+esc(q.source_id)+'</h2><p class="subtitle">'+esc(q.source_name)+'</p>'+(q.flags.length?'<div class="alert"><strong>Review notes:</strong><ul>'+q.flags.map(f=>'<li>'+esc(f)+'</li>').join('')+'</ul></div>':'')+
 '<section class="stage"><h3><span class="tag">01</span> Source question</h3><div class="stem">'+formatted(q.stem)+'</div>'+media+'<p class="source-note">Provenance: '+esc(q.origin)+' · stem digest '+esc(q.stem_sha256.slice(0,14))+'… · original complete stem preserved in embedded data and package selected_bank.json.</p></section>'+
-'<section class="stage"><h3><span class="tag">02</span> Local attempt · '+esc(type)+'</h3>'+choice+'<div class="actionbar"><button id="commit" class="btn primary" type="button" '+(st.committed?'disabled':'')+'>Commit local attempt</button><span id="commit-note" class="live-note">'+(st.committed?'Attempt committed in this browser session.':'Answers remain hidden from the page until you attempt and separately reveal.')+'</span></div></section>'+
+'<section class="stage"><h3><span class="tag">02</span> Local attempt · '+esc(type)+'</h3>'+choice+'<div class="actionbar"><button id="commit" class="btn primary" type="button" '+(st.committed?'disabled':'')+'>Commit local attempt</button><span id="commit-note" class="live-note">'+(st.committed?'Attempt committed and locally saved in this browser.':'Drafts save locally when available. Answers stay hidden until you commit and separately reveal.')+'</span></div></section>'+
 '<nav id="interactive-lesson-links" class="study-jump" aria-label="Learn with another problem"></nav>'+
 '<p class="source-note">More options: <a href="../physics/wpe/reasoning-paths.html?question='+encodeURIComponent(q.source_id)+'">browse related reasoning skills</a>. The practice examples do not reveal the source answer.</p>'+
 '<section class="stage"><h3><span class="tag">03</span> Progressive hints</h3><p class="subtitle">'+(q.scaffolds?.length?'Author-created study cues. Original/source hints are retained separately as custody data, not presented here before the attempt.':'Early hints are available; explicit method spoilers are deferred to the worked solution. Attempt your own reasoning first.')+'</p>'+hintMarkup(q)+'</section>'+
 '<section class="stage"><h3><span class="tag">04</span> Author / coaching solution</h3><p class="source-note">Not an authenticated official key or independent scientific review.</p><div class="actionbar"><button id="reveal" class="btn" type="button" '+(!st.committed||st.revealed?'disabled':'')+'>Reveal after attempt</button><span id="reveal-note" class="live-note">'+(!st.committed?'Complete the local attempt before revealing.':st.revealed?'Author proposal revealed.':'Ready for a deliberate reveal.')+'</span></div><div id="solution-container"></div></section>';
-const save=()=>{let state=attempts.get(q.id)||{selected:[],response:'',committed:false,paper:false,revealed:false};if(q.options?.length){state.selected=[...nodes.root.querySelectorAll('input[name="answer-option"]:checked')].map(e=>Number(e.value));}else{state.response=nodes.root.querySelector('#free-answer')?.value||'';state.paper=!!nodes.root.querySelector('#paper-attempt')?.checked;}attempts.set(q.id,state);return state};
+const save=()=>{let state=attempts.get(q.id)||blankAttempt();if(q.options?.length){state.selected=[...nodes.root.querySelectorAll('input[name="answer-option"]:checked')].map(e=>Number(e.value));}else{state.response=nodes.root.querySelector('#free-answer')?.value||'';state.paper=!!nodes.root.querySelector('#paper-attempt')?.checked;}attempts.set(q.id,state);persistAttempt(q,state);return state};
 showInteractiveLessonLinks(q);
 if(st.revealed)showSolution(q);nodes.root.querySelectorAll('input[name="answer-option"]').forEach(el=>el.addEventListener('change',save));if(!q.options?.length){nodes.root.querySelector('#free-answer')?.addEventListener('input',save);nodes.root.querySelector('#paper-attempt')?.addEventListener('change',save);}
-nodes.root.querySelector('#commit').addEventListener('click',()=>{const s=save(),valid=q.options?.length?s.selected.length>0:(s.response.trim().length>=5||s.paper);if(!valid){nodes.root.querySelector('#commit-note').textContent='Choose an answer, write at least 5 characters, or confirm a paper attempt.';return;}s.committed=true;attempts.set(q.id,s);render();});
-nodes.root.querySelector('#reveal').addEventListener('click',()=>{const s=attempts.get(q.id);if(!s?.committed)return;s.revealed=true;showSolution(q);nodes.root.querySelector('#reveal').disabled=true;nodes.root.querySelector('#reveal-note').textContent='Author proposal revealed. No official-key grading is claimed.';});
+nodes.root.querySelector('#commit').addEventListener('click',()=>{const s=save(),valid=q.options?.length?s.selected.length>0:(s.response.trim().length>=5||s.paper);if(!valid){nodes.root.querySelector('#commit-note').textContent='Choose an answer, write at least 5 characters, or confirm a paper attempt.';return;}s.committed=true;s.first={selected:s.selected.slice(),response:s.response,paper:s.paper,committedAt:new Date().toISOString()};attempts.set(q.id,s);persistAttempt(q,s);render();});
+nodes.root.querySelector('#reveal').addEventListener('click',()=>{const s=attempts.get(q.id);if(!s?.committed)return;s.revealed=true;persistAttempt(q,s);showSolution(q);nodes.root.querySelector('#reveal').disabled=true;nodes.root.querySelector('#reveal-note').textContent='Author proposal revealed. No official-key grading is claimed.';});
 let hintList=[...nodes.root.querySelectorAll('.hint')];hintList.forEach((el,i)=>{if(i>0){const prior=hintList[i-1];if(!prior.open){el.querySelector('summary').setAttribute('aria-disabled','true');}}el.addEventListener('toggle',()=>{if(i>0&&!hintList[i-1].open&&el.open){el.open=false;return;}if(el.open&&hintList[i+1]){hintList[i+1].removeAttribute('data-locked');hintList[i+1].querySelector('summary')?.removeAttribute('aria-disabled');}})});
 }
 function showSolution(q){let el=nodes.root.querySelector('#solution-container');if(!el)return;el.innerHTML='<div class="solution"><strong>Author-proposed answer:</strong> '+formatted(q.answer||'Not supplied')+(q.steps?.length?'<ol>'+q.steps.map(t=>'<li>'+formatted(t)+'</li>').join('')+'</ol>':'')+(q.check?'<p><strong>Check:</strong> '+formatted(q.check)+'</p>':'')+'</div>';}
