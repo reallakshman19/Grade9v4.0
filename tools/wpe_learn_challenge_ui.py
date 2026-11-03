@@ -401,10 +401,9 @@ def test_wpe_core2_r2_hint_safety(browser):
             check("crux move:" not in displayed.lower(),"EX-M8 Crux Move leaked")
             check(page.locator("#solution-container .solution").count()==0,"EX-M8 answer leaked before attempt")
             page.locator('.source-note a[href*="reasoning-paths.html?question=EX-M8"]').click()
-            page.locator("#route-status").filter(has_text="EX-M8").wait_for()
-            page.locator('#return-links a[href*="question-status.html?question=EX-M8"]').click()
-            check(page.locator(".qtitle").inner_text()=="EX-M8","Return lost exact EX-M8 candidate")
-            check(page.locator("#solution-container .solution").count()==0,"Return revealed answer before attempt")
+            page.locator("#route-status").filter(has_text="No source-bound route exists for EX-M8").wait_for()
+            check(page.locator("#return-links a").count()==0,
+                  "Unmapped EX-M8 must not get an invented proposed prerequisite route")
             response=page.goto(f"http://127.0.0.1:{PORT}/preview/question-status.html?question=EX-M69",wait_until="load")
             check(response is not None and response.status==200,"Unscaffolded-hint reader unavailable")
             check(page.locator(".qtitle").inner_text()=="EX-M69","EX-M69 direct link failed")
@@ -415,6 +414,13 @@ def test_wpe_core2_r2_hint_safety(browser):
             check(all(h["text"] in displayed for h in raw["hints"] if "crux move" not in h["text"].lower()),
                   "Remaining source hints incorrectly removed")
             check(page.locator("#solution-container .solution").count()==0,"EX-M69 answer leaked before attempt")
+            page.locator('.source-note a[href*="reasoning-paths.html?question=EX-M69"]').click()
+            page.locator("#route-status").filter(has_text="EX-M69").wait_for()
+            check(page.locator('#WPE-C03[data-match="yes"]').count()==1,"Mapped author theme C03 missing")
+            page.locator('#return-links a[href*="question-status.html?question=EX-M69"]').click()
+            check(page.locator(".qtitle").inner_text()=="EX-M69","Mapped EX-M69 return lost exact source")
+            check(page.locator("#question-root details.hint").count()==2,"EX-M69 hint deferral lost after return")
+            check(page.locator("#solution-container .solution").count()==0,"EX-M69 answer leaked after return")
             check(not errors,f"Hint safety JavaScript errors at {width}: {errors}")
             check(page.evaluate("document.documentElement.scrollWidth-innerWidth")<=2,
                   f"Candidate hint reader horizontal overflow at {width}")
