@@ -1,6 +1,6 @@
-/* WPE C01–C04 interactive student practice. Client-side only: NOT secured answers,
+/* WPE C01–C06 interactive student practice. Client-side only: NOT secured answers,
  * not authenticated learner evidence, not academic Core1A/B acceptance.
- * Source author packs: WPE-C01 through C04 (multi-force, spring, power, hanging rope).
+ * Source author packs: WPE-C01 through C06 (work, spring, power, hanging rope, graphs, circular motion).
  */
 (() => {
   "use strict";
@@ -186,6 +186,96 @@
         "The slow helper's work is U_after − U_before = 0 − (−40) = +40 J.",
         "That exceeds the +30 J partial-lift case because the helper lifts the remaining hanging 2 m section as well. The full rope does not rise by one identical height."
       ]
+    },
+    C05: {
+      title: "Read the axes first",
+      version: 1,
+      prediction: "Which new graph card needs an area, and which two need a slope? What units should your answers use?",
+      fields: [
+        {id:"graphR",type:"select",label:"Card R: How do you find work from force against position?",options:["Area between the line and x-axis", "Slope of the line", "Area under a potential–position line", "I'm not sure"]},
+        {id:"workR",type:"number",label:"Card R: Work over 0–4 m (J)",hint:"The force rises from 0 N to 8 N. Think about a triangle."},
+        {id:"graphS",type:"select",label:"Card S: How do you find the conservative force from U against x?",options:["Area under the graph", "Negative slope of the line", "Positive slope of the line", "I'm not sure"]},
+        {id:"forceS",type:"number",label:"Card S: Conservative force (N)",hint:"Give a minus sign if the force points left."},
+        {id:"graphT",type:"select",label:"Card T: How do you find velocity from displacement against time?",options:["Area below the curve", "Slope of the segment from 2–5 s", "Slope of the entire 0–5 s span", "I'm not sure"]},
+        {id:"speedT",type:"number",label:"Card T: Velocity from 2–5 s (m/s)"},
+        {id:"unitChoice",type:"select",label:"Which units belong to R, S and T, in that order?",options:["J, N, m/s", "N/m, J, m/s", "J, J, m", "I'm not sure"]},
+        {id:"reason",type:"textarea",label:"Explain how the axes told you to use area or slope for all three cards",hint:"Use the pattern: axes → operation → quantity → units. 'I'm not sure' is okay."}
+      ],
+      worked: [
+        ["R: read F against x", "The y-axis is force (N) and the x-axis is position (m). Work is the signed AREA under F–x. A triangle rising 0 to 8 N over 4 m has area ½ × 4 × 8 = +16 J. Its slope is NOT work."],
+        ["S: read U against x", "Potential energy rises from 2 J at 0 m to 8 J at 2 m. The slope is (8 − 2) ÷ (2 − 0) = +3 J/m, and a conservative force is the NEGATIVE slope: F = −3 N. The area under U–x is not work."],
+        ["T: read s against t", "Between 2 s and 5 s, displacement rises from 4 m to 16 m. The slope of THAT straight segment is (16 − 4) ÷ (5 − 2) = +4 m/s. The earlier 0–2 s part has a different slope and is not the interval asked."],
+        ["Check the meaning of units", "Force × position → N·m = J of work; change in potential energy ÷ position → J/m = N of force, with a minus sign; change in displacement ÷ time → m/s of velocity."],
+        ["What if the graph has a corner?", "Card T has a sharp join at 2 s. It has a well-defined slope from 2 to 5 s, but at the exact corner a single instantaneous slope is not defined. Always check which interval is requested."]
+      ],
+      rubric: [
+        "I identified the horizontal and vertical axes and chose area, negative slope and slope, in that order.",
+        "I used the triangular force–position AREA for +16 J of work instead of its line slope.",
+        "I remembered the negative sign for the conservative force and got −3 N.",
+        "I used only the 2–5 s segment and gave +4 m/s with the correct units."
+      ],
+      diagnoses: [
+        "I used the slope of the force–position graph as work.",
+        "I used the area of the potential–position graph or forgot the negative force sign.",
+        "I measured the full 0–5 s interval instead of the 2–5 s segment.",
+        "I mixed up units or did not look at the axes first.",
+        "My model was fine; I want to double-check the arithmetic.",
+        "I'm not sure what went wrong yet."
+      ],
+      repairPrompt: "For each card, write its axes, the chosen operation and the physical answer with units. Circle in words the first wrong choice in your original explanation. What did you fix?",
+      boundaryPrompt: "Imagine Card R is drawn with the SAME rising triangle from 0 to 8 N over 4 horizontal units, but the horizontal axis is now TIME (0–4 s), not position. What does the AREA under a force–time graph represent? Is it still work? Give the quantity and unit.",
+      boundaryCheck: [
+        "Read the altered axes FIRST: vertical F in newtons, horizontal t in seconds.",
+        "The triangular area is still ½ × 4 × 8 = 16 numerically, but now its unit is N·s, not N·m.",
+        "Area under FORCE–TIME is IMPULSE (change in momentum), so the result is +16 N·s for the shown positive force.",
+        "It is NOT 16 J of work. A graph's meaning depends on its labeled axes, even when the shape looks identical."
+      ]
+    },
+    C06: {
+      title: "Stay on the circle?",
+      version: 1,
+      prediction: "The ball has enough energy to be at the top height in a calculation. Does that alone prove its string can stay taut? At the top, which way is inward and can a string push?",
+      fields: [
+        {id:"topInward",type:"select",label:"At the top of a vertical circle, which direction is toward its centre?",options:["Downward", "Upward", "Along its tangential velocity", "I'm not sure"]},
+        {id:"heightRise",type:"number",label:"Height change from bottom to top (m)",hint:"The rise is twice the circle's 1 m radius."},
+        {id:"candidateSpeedSquared",type:"number",label:"Candidate top speed squared, v² (m²/s²)",hint:"Use energy only for a hypothetical taut circle: v_top² = v_bottom² − 4gr."},
+        {id:"candidateSpeed",type:"number",label:"Candidate top speed (m/s)"},
+        {id:"energyPossible",type:"select",label:"Does energy alone allow a ball to be at the top height?",options:["Yes", "No", "I'm not sure"]},
+        {id:"radialEquation",type:"select",label:"Which equation is valid at the top WHILE the string is taut?",options:["T + mg = mv²/r", "T − mg = mv²/r", "T = mg + mv²/r", "I'm not sure"]},
+        {id:"topTension",type:"number",label:"Calculated top string tension (N)",hint:"A negative answer is a warning about the model."},
+        {id:"staysTaut",type:"select",label:"Can this string remain taut all the way over the top?",options:["Yes", "No", "I'm not sure"]},
+        {id:"reason",type:"textarea",label:"Explain the two checks—energy AND inward force—and what your tension sign means",hint:"Say what a real string can and cannot do. You may write 'I'm not sure'."}
+      ],
+      worked: [
+        ["Check the height with energy", "The top is 2r = 2 × 1 = 2 m higher than the bottom. For a hypothetical taut circle, v_top² = v_bottom² − 4gr = 7² − 4 × 10 × 1 = 9. So candidate top speed = 3 m/s. Energy ALONE would allow that height."],
+        ["Draw the top inward arrow", "At the very TOP, the centre of the circle is DOWNWARD. Both gravity mg and the taut-string tension T would point downward. The radial-force equation is T + mg = mv_top²/r."],
+        ["Check the force the string would need", "For 1 kg, g = 10 and r = 1: needed inward force mv²/r = 1 × 9 ÷ 1 = 9 N, while gravity alone pulls inward with 10 N. Thus T = 9 − 10 = −1 N."],
+        ["Interpret impossible negative tension", "A string can PULL but cannot PUSH. T = −1 N is not a real pulling tension. The imagined taut circular trajectory is impossible: the string goes slack BEFORE the top. After slackening, the bob is no longer constrained to the original circle."],
+        ["State the difference between tests", "The correct conclusion is NOT 'the ball has too little energy to reach the height'. The energy test passes, but the radial-force (taut-string) test fails. Both are needed for a full taut circle."]
+      ],
+      rubric: [
+        "I used the 2 m rise and calculated the candidate top speed squared from energy.",
+        "I marked inward as downward at the top and wrote T + mg = mv²/r.",
+        "I calculated −1 N and recognized it as an impossible pulling tension, not a normal negative force.",
+        "I concluded the string slackens before the top; energy alone does not guarantee a taut circle."
+      ],
+      diagnoses: [
+        "I assumed enough energy automatically means the ball stays on its circle.",
+        "I drew the top inward direction or force signs incorrectly.",
+        "I accepted negative tension as a real string pushing outward.",
+        "I mixed up v²/r (inward acceleration) with tangential speed or acceleration.",
+        "My model was fine; I want to double-check the arithmetic.",
+        "I'm not sure what went wrong yet."
+      ],
+      repairPrompt: "Draw in words the top centre arrow and write BOTH the energy and radial-force checks. What must you correct about a negative tension and whether the string remains taut?",
+      boundaryPrompt: "Keep the SAME 1 kg ball and 1 m light string, but start it at the bottom at 8 m/s instead of 7 m/s. Compute candidate top v² and the top tension. Could the string remain taut through the top now? Explain both checks.",
+      boundaryCheck: [
+        "For the hypothetical taut circle, v_top² = 8² − 4 × 10 × 1 = 64 − 40 = 24 m²/s². The energy test passes.",
+        "At the top, inward is down and T + mg = mv²/r. Thus T = 1 × 24 / 1 − 1 × 10 = +14 N.",
+        "The top tension is positive, so the string CAN remain taut at the top; under the ideal lossless conditions, the complete circular path is physically possible.",
+        "For comparison, the ideal minimum bottom speed for a just-taut top is √(5gr) = √50 ≈ 7.07 m/s. Seven was slightly too low; eight is above it."
+      ]
+
     }
   };
 
