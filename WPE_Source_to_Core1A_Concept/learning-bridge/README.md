@@ -2,6 +2,10 @@
 
 **2026-11-02 · Existing Core1A/Core1B practice is NOT a D3/D4 coverage demonstration.** This folder supplies a missing middle layer between selected difficult question *themes* and the reasoning a child must first learn. These are newly authored instructional proposals, **not** original examination questions, QRT findings, native academic admissions, or a new learner webpage.
 
+## Learner-readiness protocol (not yet conducted)
+
+The existing [eight-skill interactive self-tutor](../../physics/wpe/d3d4-self-tutor.html) now has an [observation protocol](LEARNER_OBSERVATION_PROTOCOL.md) for a supervised student session. This is a **prepared procedure, not a claim of observed outcomes**. The software checks first-attempt persistence, optional hints, available worked reasoning during self-repair, and untouched native admission flags. Any genuine student feedback must be recorded anonymously according to appropriate school/family permission and kept distinct from automated simulations.
+
 ## Verified against this repository snapshot
 
 | Item | Observed |

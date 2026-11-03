@@ -1,4 +1,4 @@
-name: WPE C01 C02 Six-Stage Self-Tutor UI QA
+name: WPE C01–C08 Six-Stage Self-Tutor UI QA
 on:
   workflow_dispatch:
   pull_request:
@@ -8,6 +8,11 @@ on:
       - "physics/wpe/d3d4-self-tutor.js"
       - "physics/wpe/d3d4-self-tutor.review.json"
       - "physics/wpe/index.html"
+      - "physics/wpe/reasoning-paths.html"
+      - "physics/wpe/question-coverage.html"
+      - "preview/question-status.html"
+      - "workspace/output/WPE_Core2_Consolidated_20261102/MANIFEST.review.json"
+      - "tools/wpe_student_journey_r1_ui.py"
       - "tools/wpe_d3d4_self_tutor_ui.py"
       - "tests/test_wpe_d3d4_self_tutor.py"
       - ".github/workflows/wpe-d3d4-self-tutor.yml"
@@ -19,6 +24,11 @@ on:
       - "physics/wpe/d3d4-self-tutor.js"
       - "physics/wpe/d3d4-self-tutor.review.json"
       - "physics/wpe/index.html"
+      - "physics/wpe/reasoning-paths.html"
+      - "physics/wpe/question-coverage.html"
+      - "preview/question-status.html"
+      - "workspace/output/WPE_Core2_Consolidated_20261102/MANIFEST.review.json"
+      - "tools/wpe_student_journey_r1_ui.py"
       - "tools/wpe_d3d4_self_tutor_ui.py"
       - "tests/test_wpe_d3d4_self_tutor.py"
       - ".github/workflows/wpe-d3d4-self-tutor.yml"
@@ -37,5 +47,7 @@ jobs:
           python -m playwright install --with-deps chromium
       - name: Static source, academic boundary and scientific checks
         run: python -m pytest -q tests/test_wpe_d3d4_self_tutor.py
-      - name: Browser walkthrough of both six-stage C01 C02 journeys
+      - name: Browser walkthrough of eight six-stage C01 to C08 journeys
         run: python tools/wpe_d3d4_self_tutor_ui.py
+      - name: Source question to C03 tutor and full coverage across desktop/mobile
+        run: python tools/wpe_student_journey_r1_ui.py
