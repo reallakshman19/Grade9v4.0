@@ -15,3 +15,11 @@
 .progressive-hints strong{font-size:.88rem}.hint-text{border-top:1px solid #eadfc5;padding:9px 0;margin:8px 0 0;font-size:.88rem}
 .diagnostic-tip{border-left:4px solid #44828e;background:#f0f8fa;padding:12px 13px;font-size:.89rem;border-radius:0 9px 9px 0}
 .stage-actions button:disabled{opacity:.6;cursor:not-allowed}
+
+/* C08 lab measurements: accessible table on small devices. */
+.student-data{width:100%;border-collapse:collapse;margin:13px 0 17px;font-size:.91rem}
+.student-data caption{font-weight:700;text-align:left;margin:5px 0;color:#345e70}
+.student-data th,.student-data td{border:1px solid #d2e1e6;padding:10px 12px;text-align:left}
+.student-data thead{background:#e8f3f6}
+.student-data tbody th{font-weight:700}
+.student-data tbody tr:nth-child(even){background:#f6fafb}

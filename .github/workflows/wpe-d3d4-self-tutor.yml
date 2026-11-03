@@ -1,4 +1,4 @@
-name: WPE C01–C06 Six-Stage Self-Tutor UI QA
+name: WPE C01–C08 Six-Stage Self-Tutor UI QA
 on:
   workflow_dispatch:
   pull_request:
@@ -43,7 +43,7 @@ jobs:
           python -m playwright install --with-deps chromium
       - name: Static source, academic boundary and scientific checks
         run: python -m pytest -q tests/test_wpe_d3d4_self_tutor.py
-      - name: Browser walkthrough of six six-stage C01 to C06 journeys
+      - name: Browser walkthrough of eight six-stage C01 to C08 journeys
         run: python tools/wpe_d3d4_self_tutor_ui.py
       - name: Source question to C03 tutor and full coverage across desktop/mobile
         run: python tools/wpe_student_journey_r1_ui.py
