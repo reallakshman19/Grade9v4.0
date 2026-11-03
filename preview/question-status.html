@@ -96,7 +96,7 @@ function showInteractiveLessonLinks(q){
  studentRoutes.then(data=>{
   const host=nodes.root.querySelector('#interactive-lesson-links');
   if(!host || current()?.id!==q.id || data?.schema!=='wpe-reasoning-route-preview/v1')return;
-  const matches=(data.constructions||[]).filter(c=>/^WPE-C0[1-4]$/.test(c.id) && c.proposed_source_ids?.some(x=>x.id===q.source_id && x.reader_present));
+  const matches=(data.constructions||[]).filter(c=>/^WPE-C0[1-6]$/.test(c.id) && c.proposed_source_ids?.some(x=>x.id===q.source_id && x.reader_present));
   if(!matches.length)return;
   const text=document.createElement('strong');text.textContent='Learn the reasoning with a different problem';host.append(text);
   const links=document.createElement('div');links.className='study-jump-links';
