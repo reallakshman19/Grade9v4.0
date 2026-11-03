@@ -1,0 +1,71 @@
+{
+  "schema": "wpe-c01-c02-six-stage-self-tutor/v1",
+  "date": "2026-11-03",
+  "publication_role": "STUDENT_PRACTICE_PREVIEW_ONLY",
+  "route": "physics/wpe/d3d4-self-tutor.html",
+  "scope": "Two original author-authored guided Core1A/fresh Core1B simulations with six stages; no native acceptance or source exam question reprint",
+  "lessons": [
+    {
+      "id": "C01",
+      "concept": "Multi-force work–energy ledger",
+      "author_pack": "WPE_Source_to_Core1A_Concept/learning-bridge/MULTIFORCE_LEDGER_LEARNING_PACK.md",
+      "author_pack_blob_sha": "ee4fb95f4528e8fc2bd2c43719406f414f315be2",
+      "guided": "2 kg horizontal box, +30 J pull, −12 J friction, 18 J net",
+      "fresh": "3 kg motorized scooter, 2 m uphill, 0.5 m rise, four force ledger",
+      "proposed_source_themes": [
+        "EX-M105",
+        "EX-M24",
+        "TB-WPE-ILL-02"
+      ],
+      "source_join_status": "PROPOSED_UNQUALIFIED",
+      "revision": 1
+    },
+    {
+      "id": "C02",
+      "concept": "Spring contact and rough-ground phase split",
+      "author_pack": "WPE_Source_to_Core1A_Concept/learning-bridge/SPRING_CONTACT_LEARNING_PACK.md",
+      "author_pack_blob_sha": "56ac029f37bc805acbdc296b2f3d55ebdc53b0",
+      "guided": "1 kg smooth spring-cart release k=100 N/m x=0.20 m",
+      "fresh": "2 kg spring cart k=200 N/m x=0.10 m then 0.50 m rough strip, 1 N friction",
+      "proposed_source_themes": [
+        "EX-M24",
+        "TB-WPE-ILL-12",
+        "EX-M18"
+      ],
+      "source_join_status": "PROPOSED_UNQUALIFIED",
+      "revision": 1
+    }
+  ],
+  "six_stage_contract": [
+    "PREDICT",
+    "ATTEMPT",
+    "RECONSTRUCT",
+    "DIAGNOSE",
+    "REPAIR",
+    "BOUNDARY_TEST"
+  ],
+  "first_attempt_policy": {
+    "recorded_first_model": "browser_local_storage",
+    "immutable_after_commit_until_explicit_reset": true,
+    "separate_repair_record": true,
+    "answer_revealed_in_dom_only_after_first_attempt": true,
+    "secure_answer_secrecy": false,
+    "graded_reasoning": false,
+    "external_evidence": false,
+    "independent_student_observation": false
+  },
+  "academic": {
+    "native_core1a": "NOT_ACCEPTED",
+    "native_core1b": "NOT_ACCEPTED",
+    "qrt": "NOT_RUN",
+    "owner": "PENDING",
+    "qualified_learner_routes": 0
+  },
+  "review_notes": [
+    "PR #40 source-question return route remains DRAFT and was inspected but not merged or treated as academic prerequisite authority.",
+    "Two concepts are connected to difficult-question source IDs only as unverified proposed themes, not proven prerequisites.",
+    "Existing five-topic practice and main academic reader remain unchanged apart from small WPE chapter entry-point link.",
+    "Original exam stems, keys, source figures and native academic statuses were not copied or modified.",
+    "Static browser code can be inspected; a UI lock is not secure answer custody or independent evidence of a child's ability."
+  ]
+}
