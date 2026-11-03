@@ -352,6 +352,7 @@ def test_wpe_question_reasoning_return(browser):
             page.locator('#WPE-C03 a[href*="learn-challenge.html?question=EX-M79#energy-motion"]').click()
             check(page.url.endswith("learn-challenge.html?question=EX-M79#energy-motion"),"Foundation link lost question context")
             check(page.locator("#energy-motion").count()==1,"Foundation anchor missing")
+            page.locator("details.review-metadata summary").click()
             page.locator('#reasoning-route-return a[href*="question-status.html?question=EX-M79"]').click()
             check(page.locator(".qtitle").inner_text()=="EX-M79","Return did not select exact question")
             check(page.locator("#solution-container .solution").count()==0,"Return exposed solution")
