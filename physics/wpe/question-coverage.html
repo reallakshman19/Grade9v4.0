@@ -51,7 +51,7 @@ if(!a.ok||!b.ok)throw Error("Source records unavailable");
 bank=await a.json();route=await b.json();
 if(!Array.isArray(bank.questions)||bank.questions.length!==74||route.schema!=="wpe-reasoning-route-preview/v1"||!Array.isArray(route.constructions))throw Error("Question inventory changed");
 }catch(err){summary.textContent="Question map unavailable: "+err.message;return;}
-const interactive=new Set(["WPE-C01","WPE-C02","WPE-C03","WPE-C04","WPE-C05","WPE-C06","WPE-C07","WPE-C08"]);
+const interactive=new Set(["WPE-C01","WPE-C02","WPE-C03","WPE-C04","WPE-C05","WPE-C06","WPE-C07","WPE-C08","WPE-E01","WPE-E02","WPE-E03","WPE-E04","WPE-E05","WPE-E06","WPE-E07","WPE-E08"]);
 const seen=new Set();
 const entries=bank.questions.map(q=>{
 if(!q.source_id||seen.has(q.source_id))throw Error("Duplicate or absent source question ID");
@@ -80,7 +80,7 @@ cell(row,"Question",link("../../preview/question-status.html?question="+encodeUR
 cell(row,"Essential reasoning",e.description);
 const options=document.createElement("div");options.className="topic-links";
 if(e.working.length){
-for(const c of e.working)options.append(link("d3d4-self-tutor.html?question="+encodeURIComponent(e.q.source_id)+"#"+c.id.slice(-3),c.id.slice(-3)+" · Learn + Challenge"));
+for(const c of e.working){const isExtension=c.id.startsWith("WPE-E");options.append(link((isExtension?"extension-learning.html":"d3d4-self-tutor.html")+"?question="+encodeURIComponent(e.q.source_id)+"#"+c.id.slice(-3),c.id.slice(-3)+" · Learn + Challenge (unqualified)"));}
 } else if(e.mapped.length){
 for(const c of e.mapped)options.append(link("reasoning-paths.html?question="+encodeURIComponent(e.q.source_id)+"#"+c.id,c.id+" · authored notes only"));
 }else options.textContent="No student-facing construction mapped";
