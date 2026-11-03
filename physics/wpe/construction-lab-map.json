@@ -1,0 +1,89 @@
+{
+  "schema": "wpe-six-stage-learning-journeys/v1",
+  "created_on": "2026-11-03",
+  "status": "TWO_STUDENT_PRACTICE_CANDIDATES_NO_NATIVE_ADMISSION",
+  "practice_page": "physics/wpe/learn-challenge.html#construction-lab",
+  "academic": {
+    "native_core1a": "NOT_ACCEPTED",
+    "native_core1b": "NOT_ACCEPTED",
+    "qrt": "NOT_RUN",
+    "owner": "PENDING",
+    "admitted": 0
+  },
+  "review_only_pr40": "DRAFT_NOT_MERGED_NO_READER_OR_PILOT_ROUTE_DEPENDENCY",
+  "source_policy": "Authored guides and new challenges derived from current learning-bridge pack concepts. Suggested source IDs are conceptual themes only, NOT verified exam-question mappings or admissions.",
+  "browser_storage": "localStorage; unverified and clearable; no secure first-attempt witness or automatic grading",
+  "answer_delivery": "Public static JSON fetched only on learner request after local first-attempt lock; URL is accessible without authentication, not secure exam storage",
+  "stages": [
+    "PREDICT",
+    "ATTEMPT",
+    "RECONSTRUCT",
+    "DIAGNOSE",
+    "REPAIR",
+    "BOUNDARY_TEST"
+  ],
+  "journeys": [
+    {
+      "code": "C01",
+      "title": "Multi-force work–energy ledger",
+      "source_pack": "WPE_Source_to_Core1A_Concept/learning-bridge/MULTIFORCE_LEDGER_LEARNING_PACK.md",
+      "source_pack_git_blob": "ee4fb95f4528e8fc2bd2c43719406f414f315be2",
+      "proposed_source_ids": [
+        "EX-M105",
+        "EX-M24",
+        "TB-WPE-ILL-02"
+      ],
+      "guided_example": "2 kg box moving horizontally, +30 J pull, -12 J friction, net +18 J, final K=19 J, speed=sqrt(19) m/s",
+      "independent_challenge": "3 kg scooter uphill 2 m / rise 0.5 m, motor 15 N, friction 3 N; decide four signed force-work entries, net kinetic energy and final speed",
+      "post_attempt_reference": "physics/wpe/construction-lab-answers.json#C01",
+      "boundary_case": "Motor changed to 10 N",
+      "local_key": "g9:wpe:six-stage-lab:v1:C01",
+      "first_attempt_fields": [
+        "motor",
+        "friction",
+        "gravity",
+        "normal",
+        "net",
+        "speed",
+        "explanation"
+      ],
+      "progress_status": "REFLECTION_COMPLETED_NOT_MASTERED"
+    },
+    {
+      "code": "C02",
+      "title": "Spring contact and phase changes",
+      "source_pack": "WPE_Source_to_Core1A_Concept/learning-bridge/SPRING_CONTACT_LEARNING_PACK.md",
+      "source_pack_git_blob": "56ac029f37bc805acbdc296b2f3d55ebdc53b0ca",
+      "proposed_source_ids": [
+        "EX-M24",
+        "TB-WPE-ILL-12",
+        "EX-M18"
+      ],
+      "guided_example": "1 kg cart touching an unattached spring compressed 0.20 m with k=100 N/m, smooth after release; K at natural length=2 J, speed 2 m/s",
+      "independent_challenge": "2 kg cart, k=200 N/m and compression 0.10 m smooth during contact, then rough 0.50 m strip with 1 N friction; change energy model at contact boundary",
+      "post_attempt_reference": "physics/wpe/construction-lab-answers.json#C02",
+      "boundary_case": "Rough strip extended to 1.00 m",
+      "local_key": "g9:wpe:six-stage-lab:v1:C02",
+      "first_attempt_fields": [
+        "springEnergy",
+        "releaseEnergy",
+        "releaseSpeed",
+        "friction",
+        "finishEnergy",
+        "finishSpeed",
+        "explanation"
+      ],
+      "progress_status": "REFLECTION_COMPLETED_NOT_MASTERED"
+    }
+  ],
+  "technical_invariants": [
+    "First prediction saved before independent attempt",
+    "All first attempt fields completed and locked before hints or worked model are requested",
+    "Original submitted attempt data retained unchanged during diagnosis and repair",
+    "Worked reference fetched only after locked attempt and explicit learner request",
+    "Model explanation, misconception diagnosis, repair and changed-condition reasoning are distinct",
+    "Boundary result disclosed after boundary answer is submitted",
+    "Each local journey can be cleared without changing five existing topic attempts",
+    "Practice completion is not grading, independent B3/B4 acceptance or academic status"
+  ]
+}
