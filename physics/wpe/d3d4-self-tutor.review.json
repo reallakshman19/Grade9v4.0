@@ -1,9 +1,9 @@
 {
-  "schema": "wpe-c01-c04-six-stage-self-tutor/v2",
+  "schema": "wpe-c01-c06-six-stage-self-tutor/v3",
   "date": "2026-11-03",
   "publication_role": "STUDENT_PRACTICE_PREVIEW_ONLY",
   "route": "physics/wpe/d3d4-self-tutor.html",
-  "scope": "Four original guided Core1A and separate fresh Core1B interactive six-stage practice journeys, no native academic acceptance or reproduction of source examination questions",
+  "scope": "Six original guided Core1A and distinct fresh Core1B six-stage interactive reasoning journeys; no native academic acceptance or source examination reprint",
   "lessons": [
     {
       "id": "C01",
@@ -64,6 +64,44 @@
       ],
       "source_join_status": "PROPOSED_UNQUALIFIED",
       "revision": 1
+    },
+    {
+      "id": "C05",
+      "concept": "Choose the correct operation for force–position, potential–position and displacement–time graphs",
+      "author_pack": "WPE_Source_to_Core1A_Concept/learning-bridge/GRAPH_OPERATION_LEARNING_PACK.md",
+      "author_pack_blob_sha": "0649efda3c2cef0c77b258d8a8ac15421cdfb7ed",
+      "guided": "Three simple axis-labeled graphs: F–x rectangle work, U–x negative-slope force, s–t slope velocity",
+      "fresh": "R triangular F–x work, S rising U–x negative force, T piecewise s–t interval velocity, F–t impulse boundary",
+      "proposed_source_themes": [
+        "EX-M56",
+        "EX-M61",
+        "EX-M69"
+      ],
+      "source_join_status": "PROPOSED_UNQUALIFIED",
+      "original_source_graphs_verified": false,
+      "revision": 1
+    },
+    {
+      "id": "C06",
+      "concept": "Vertical circular motion requires both energy feasibility and nonnegative taut-string tension",
+      "author_pack": "WPE_Source_to_Core1A_Concept/learning-bridge/VERTICAL_CIRCLE_LEARNING_PACK.md",
+      "author_pack_blob_sha": "33e5bd5a7111c95e01c33dc38eee930e9739a3e2",
+      "guided": "0.5 kg ball on 2 m string, top speed 6 m/s, top tension +4 N, bottom speed sqrt116 m/s",
+      "fresh": "1 kg ball on 1 m string initially 7 m/s at bottom, hypothetical top v²=9, tension −1 N impossible, 8 m/s boundary yields +14 N",
+      "proposed_source_themes": [
+        "EX-M39",
+        "EX-N31",
+        "EX-M18",
+        "EX-M6"
+      ],
+      "source_join_status": "PROPOSED_UNQUALIFIED",
+      "required_prerequisites": [
+        "conservation of mechanical energy",
+        "inward acceleration v²/r",
+        "direction of tension and gravity",
+        "taut string cannot push"
+      ],
+      "revision": 1
     }
   ],
   "six_stage_contract": [
@@ -100,24 +138,31 @@
     "C03 guided and fresh problems follow existing constant-power authored pack; finite initial speed avoids the idealized zero-speed constant-power singularity and no s∝t^(3/2) derivation is required.",
     "C04 guided and fresh problems follow existing chain pack; both hanging mass and centre height change, and a child may explain their diagram using text instead of drawing.",
     "C01/C02 browser localStorage v1 keys retained so saved prior attempts continue after expansion to four topics.",
-    "No real-child observation performed; layout and state testing are automated simulations only."
+    "No real-child observation performed; layout and state testing are automated simulations only.",
+    "C05 is an independently authored graph choice sequence; the original graphs for source themes EX-M56/61/69 have not been independently verified.",
+    "C06 is a scaffolded advanced circular-motion practice, requiring v²/r, gravity and a string-only nonnegative tension condition before the learner can independently reconstruct it.",
+    "Existing C01–C04 browser localStorage v1 keys remain unchanged after C05/C06 addition; no reset of old learners' attempts.",
+    "Only software browser simulations, not real child observations, measure layout and state transitions in this batch."
   ],
   "implementation_batch": {
-    "id": "C03_C04_INTERACTIVE_TRANSFER",
+    "id": "C05_C06_INTERACTIVE_TRANSFER",
     "date": "2026-11-03",
     "new_topics": [
-      "C03",
-      "C04"
+      "C05",
+      "C06"
     ],
     "retained_topics": [
       "C01",
-      "C02"
+      "C02",
+      "C03",
+      "C04"
     ],
     "new_qualified_routes": 0,
     "academic_admissions_changed": false,
     "real_student_usability_observed": false,
     "software_browser_simulations_only": true,
-    "author_pack_contract": "Six stages for each, independent fresh model decisions and changed-condition reasoning, original attempt persisted separately from repair",
-    "learner_accessibility": "No required calculus. Qualitative speed/time and chain-state pictures with explicit units."
+    "author_pack_contract": "All six stages per lesson; first attempt saved and separate from self-diagnosis, repair, and boundary-model transfer",
+    "learner_accessibility": "Graph axes and coordinate cards shown explicitly; vertical-circular motion marked advanced prerequisite with inward-force arrows. No original examination graph used.",
+    "existing_storage_keys_preserved": true
   }
 }
