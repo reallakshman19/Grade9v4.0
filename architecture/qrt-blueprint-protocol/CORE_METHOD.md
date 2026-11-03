@@ -71,3 +71,30 @@ The full Blueprint asks for one Core1A teaching construction per instance, one b
 | Boundary test | “Belt slows to 2 m/s; chips still enter at 1 m/s; feeder rule remains. Do outputs merely halve?” | New rate **1 kg/s**, F **1 N**, motor **2 W**, kinetic gain **1.5 W**, heat **0.5 W** |
 
 **Why this is not an admitted D3.4 tile:** C07 is authored related practice. EX-M16 has an unqualified source-to-practice join, and its exact speed-dependent original demand still requires authorized QRT and source review.
+
+## Why checking only the answer fails: C06 contrast
+
+A 1 kg ball on a 1 m string starts at the bottom at 7 m/s (g = 10). Energy gives a **hypothetical** top speed squared of 49−40 = 9. But inward is downward at the top and a taut string requires T+mg=mv²/r. The calculation gives **T=−1 N**, impossible for a string that can only pull. The string goes slack before the top. Raising initial speed to 8 m/s makes the candidate top speed squared **24**, with **T=+14 N**, a physically possible taut path.
+
+The six-stage method makes the child predict whether energy is sufficient, attempt the **separate inward-force feasibility decision**, reconstruct the two-condition reasoning, diagnose “energy automatically guarantees a taut circle,” repair the force constraint and transfer to a changed initial speed. A learner who only computes the top velocity has **not** demonstrated this MODEL/JUSTIFY inference.
+
+## Honest boundary for the current self-tutor
+
+[The current page](../../physics/wpe/d3d4-self-tutor.html) offers actual practice: saved first submissions, separate repairs, optional hints and worked comparisons. But it currently allows hints before the first submission, does not store complete timestamped exposure chronology, uses a self-selected diagnosis rather than independently evidenced misconception detection, and counts boundary-submission completion rather than proven correctness. It has not produced a qualified MAIN-plus-instance native tile or real-child learning evidence.
+
+**Agent instruction:** call these stages *practice support*, never independently verified learner mastery. If exposure or first-response reasoning is insufficient, record **UNKNOWN** or **UNCERTAIN** instead of DEMONSTRATED. Later work may implement more precise exposure logging and evidence-based review; do not state it is already done.
+
+## Execute the method exactly (agent checklist)
+
+1. Read the actual source and QRT status; define Y (taught skill), Z (route) and **W (protected inference)**. If W is unknown, HOLD the exact task mapping rather than guessing.
+2. Verify complete Core1A with different worked anchor, prerequisites, valid physical conditions and wrong route.
+3. Write fresh MAIN and instance Core1B tasks with **one true new decision W**. Score each task separately with five-factor evidence.
+4. For each cycle: Predict with reason; Attempt with first-response/exposure log; Reconstruct complete model; Diagnose from actual error; Repair the first invalid inference; Boundary-test changed conditions **before** revealing the check.
+5. Verify H1/H2/H3 never supplies W, and each diagram matches the exact physical stage.
+6. Recompute units, signs, invariants, limiting cases and numerical boundary answers independently.
+7. Check B1–B7 by actual witnesses, **not** presence of six interface panels.
+8. Keep source custody, independent QRT, approved Blueprint, one selected adapter, Owner authorization and student-release status **separate**. Academic admission remains HOLD without real receipts.
+
+Related authoritative references: [Physics Blueprint](../../templates/physics-blueprint/physics-blueprint.D3-D4.json), [B1–B7 companion](../../docs/agent-entry/CURRENT_CONCEPT_COMPANION.md), [existing tile-plan schema](schemas/tile-build-plan.schema.json), [two-instance D3.4 draft example](fixtures/illustrative-D3.4-tile-plan-NOT-APPROVED.json), [learner observation protocol](../../WPE_Source_to_Core1A_Concept/learning-bridge/LEARNER_OBSERVATION_PROTOCOL.md).
+
+**The rule is not “generate six sections.” It is “teach a warranted idea, protect the child's new inference, use evidence to diagnose and repair it, and test the inference under changed conditions.”**
