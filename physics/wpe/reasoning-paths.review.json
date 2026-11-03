@@ -18,8 +18,8 @@
   },
   "counts": {
     "primary_constructions": 8,
-    "proposed_extensions": 5,
-    "author_packs": 13,
+    "proposed_extensions": 8,
+    "author_packs": 16,
     "missing_author_packs": 0,
     "qualified_learner_routes": 0,
     "pilot_candidates": 14,
@@ -322,6 +322,54 @@
       "approved_core1b_url": null,
       "acceptance": "AUTHOR_DRAFT_ONLY",
       "id": "WPE-E05"
+    },
+    {
+      "id": "WPE-E06",
+      "group": "EXTENSION",
+      "title": "Vertical push and applied mechanical power",
+      "proposed_source_ids": [
+        {
+          "id": "EX-M97",
+          "reader_present": true
+        }
+      ],
+      "foundation_anchors": [],
+      "authored_pack_present": true,
+      "approved_core1a_url": null,
+      "approved_core1b_url": null,
+      "acceptance": "AUTHOR_DRAFT_ONLY"
+    },
+    {
+      "id": "WPE-E07",
+      "group": "EXTENSION",
+      "title": "Incline round-trip friction and energy loss",
+      "proposed_source_ids": [
+        {
+          "id": "EX-N39",
+          "reader_present": true
+        }
+      ],
+      "foundation_anchors": [],
+      "authored_pack_present": true,
+      "approved_core1a_url": null,
+      "approved_core1b_url": null,
+      "acceptance": "AUTHOR_DRAFT_ONLY"
+    },
+    {
+      "id": "WPE-E08",
+      "group": "EXTENSION",
+      "title": "Switched spring force and effective potential",
+      "proposed_source_ids": [
+        {
+          "id": "WEP07-01",
+          "reader_present": true
+        }
+      ],
+      "foundation_anchors": [],
+      "authored_pack_present": true,
+      "approved_core1a_url": null,
+      "approved_core1b_url": null,
+      "acceptance": "AUTHOR_DRAFT_ONLY"
     }
   ],
   "pilot": [
@@ -457,6 +505,16 @@
     "kind": "BATCH_R2_AUTHOR_CANDIDATE_CUES",
     "state": "NOT_ADMITTED",
     "independent_review": "NOT_RUN",
-    "purpose": "Preview source parity with draft PR #26; no canonical prerequisite promotion"
+    "purpose": "Preview source parity with draft PR #26; no canonical prerequisite promotion",
+    "new_author_only_source_theme_links": {
+      "count": 3,
+      "source_ids": [
+        "EX-M97",
+        "EX-N39",
+        "WEP07-01"
+      ],
+      "qualification": "PROPOSED_UNQUALIFIED",
+      "source_stems_or_keys_modified": false
+    }
   }
 }

@@ -131,8 +131,8 @@ def test_learning_routes_and_nine_d3_d4_gaps_are_exact():
         actual = row["learning"]
         expected = routes.get(qid, [])
         assert actual["related_construction_ids"] == expected
-        interactive = [x for x in expected if x.startswith("WPE-C")]
-        authored = [x for x in expected if x.startswith("WPE-E")]
+        interactive = [x for x in expected if x.startswith(("WPE-C","WPE-E"))]
+        authored = [x for x in expected if x not in interactive]
         assert actual["interactive_ids"] == interactive
         assert actual["author_pack_ids"] == authored
         mode = "INTERACTIVE_RELATED_PRACTICE" if interactive else (
@@ -143,17 +143,13 @@ def test_learning_routes_and_nine_d3_d4_gaps_are_exact():
     high = [x for x in report["questions"] if x["reader_proposal"]["band"] in ("D3", "D4")]
     assert len(high) == 22
     assert Counter(x["learning"]["status"] for x in high) == Counter({
-        "INTERACTIVE_RELATED_PRACTICE": 13, "AUTHOR_PACK_ONLY": 6, "UNMAPPED": 3
+        "INTERACTIVE_RELATED_PRACTICE": 22, "AUTHOR_PACK_ONLY": 0, "UNMAPPED": 0
     })
-    assert set(report["summary"]["reader_d3d4_unmapped_ids"]) == {
-        "EX-M97", "EX-N39", "WEP07-01"
-    }
-    assert set(report["summary"]["reader_d3d4_author_only_ids"]) == {
-        "EX-M82", "EX-M89", "EX-M109", "EX-N34",
-        "TB-WPE-ILL-05", "TB-WPE-ILL-06"
-    }
+    assert report["summary"]["reader_d3d4_unmapped_ids"] == []
+    assert {"EX-M97","EX-N39","WEP07-01"} <= set(report["summary"]["reader_d3d4_interactive_ids"])
+    assert report["summary"]["reader_d3d4_author_only_ids"] == []
     assert Counter(x["learning"]["status"] for x in report["questions"]) == Counter({
-        "INTERACTIVE_RELATED_PRACTICE": 18, "AUTHOR_PACK_ONLY": 7, "UNMAPPED": 49
+        "INTERACTIVE_RELATED_PRACTICE": 28, "AUTHOR_PACK_ONLY": 0, "UNMAPPED": 46
     })
     assert all(row["learning"]["semantic_join"] == "PROPOSED_UNQUALIFIED" for row in high)
 

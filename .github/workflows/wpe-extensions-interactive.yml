@@ -1,4 +1,4 @@
-name: WPE E01-E05 Interactive Learning QA
+name: WPE E01-E08 Interactive Learning QA
 on:
   workflow_dispatch:
   pull_request:
@@ -24,9 +24,9 @@ jobs:
         run: |
           python -m pip install -e ".[dev]" playwright==1.55.0
           python -m playwright install --with-deps chromium
-      - name: Entire existing Python regression suite plus five extension science checks
+      - name: Entire existing Python regression suite plus eight extension science checks
         run: python -m pytest -q
-      - name: Five complete six-stage interactive extension journeys (desktop and mobile)
+      - name: Eight complete six-stage interactive extension journeys (desktop and mobile)
         run: python tools/wpe_extensions_interactive_ui.py
       - name: C01-C08 existing real-browser regressions
         run: python tools/wpe_d3d4_self_tutor_ui.py

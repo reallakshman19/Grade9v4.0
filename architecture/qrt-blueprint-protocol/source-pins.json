@@ -36,8 +36,8 @@
     },
     "reasoning_routes": {
       "path": "physics/wpe/reasoning-paths.review.json",
-      "git_blob_sha": "f5640abfcd6684413b1102987ef5485b5a7150a7",
-      "qualification_status": "REVIEW_NAVIGATION_ONLY"
+      "git_blob_sha": "687d0084f43b78156766a70e1afb8661b865110c",
+      "qualification_status": "REVIEW_NAVIGATION_ONLY__16_AUTHORED_CONSTRUCTIONS_NO_ADMISSION"
     },
     "learner_practice": {
       "path": "physics/wpe/d3d4-self-tutor.review.json",

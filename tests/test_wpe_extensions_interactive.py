@@ -1,4 +1,4 @@
-"""Physics and route tests for E01–E05 interactive practice.
+"""Physics and route tests for E01–E08 interactive practice.
 
 The equations are independently rederived here; this is software QA, not
 academic certification or grading of a child's written explanations.
@@ -72,7 +72,7 @@ def test_first_attempt_before_reconstruction_and_changed_condition_gate():
     assert "innerHTML" not in script  # no raw text-to-HTML injection
     for id_ in EXPECTED:
         assert f"{id_}:" in script
-    assert script.count('visual:"')==5
+    assert script.count('visual:"')==8
     assert "sourceId" in script and "reader_present" in script
 
 def test_e01_allowed_but_unreachable_connected_regions():

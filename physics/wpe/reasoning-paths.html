@@ -40,7 +40,7 @@ body{background:#f4f8fa;color:#1c3646}
 <section class="route-panel" aria-live="polite"><h2>Return to your question</h2><p id="route-status">Checking source/route identity…</p><nav id="return-links" class="route-links" aria-label="Return to question"></nav></section>
 <section aria-label="Author-proposed construction and extension index">
 <h2>Proposed reasoning constructions and targeted extensions</h2>
-<p class="route-muted">All C01–C08 and E01–E05 have separate six-stage interactive student practice lessons. Each teaches an authored model and a different challenge before the exact-question return. These are suggested study routes, not verified prerequisites.</p>
+<p class="route-muted">All C01–C08 and E01–E08 have separate six-stage interactive student practice lessons. Each teaches an authored model and a different challenge before the exact-question return. These are suggested study routes, not verified prerequisites.</p>
 <div class="route-grid" id="route-cards"><p>Reading review-only route inventory…</p></div>
 </section>
 </main>
@@ -60,7 +60,7 @@ try{
  if(d.schema!=='wpe-reasoning-route-preview/v1'||d.policy!=='REVIEW_NAVIGATION_ONLY__NOT_CANONICAL_PREREQUISITE'||
     d.academic?.admitted!==0||d.academic?.native_core1a!=='NOT_ACCEPTED'||d.academic?.native_core1b!=='NOT_ACCEPTED'||
     d.academic?.qrt!=='NOT_RUN'||d.academic?.owner!=='PENDING'||d.counts?.qualified_learner_routes!==0||
-    !Array.isArray(d.constructions)||d.constructions.length!==13||d.constructions.some(x=>x.approved_core1a_url!==null||x.approved_core1b_url!==null)){
+    !Array.isArray(d.constructions)||d.constructions.length!==16||d.constructions.some(x=>x.approved_core1a_url!==null||x.approved_core1b_url!==null)){
   throw new Error('Changed academic authority: refuse inferred routes');
  }
 }catch(error){status.textContent='HOLD: the reviewed route evidence is missing or authority changed. Return to Chapter home.';cards.textContent='No route inferred.';return;}
@@ -99,7 +99,7 @@ for(const route of d.constructions){
   const params=id&&valid(id)&&match?'?question='+encodeURIComponent(id):'';
   addLink(found,'learn-challenge.html'+params+'#'+encodeURIComponent(anchor),'Foundation: '+anchor.replace(/-/g,' '));
  }
- if(/^WPE-E0[1-5]$/.test(route.id)){
+ if(/^WPE-E0[1-8]$/.test(route.id)){
    const code=route.id.slice(-3);
    const sourceMatch=valid(id)&&route.proposed_source_ids.some(s=>s.id===id&&s.reader_present);
    const params=sourceMatch?'?question='+encodeURIComponent(id):'';
