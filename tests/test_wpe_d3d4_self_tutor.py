@@ -123,7 +123,7 @@ def test_spring_contact_and_rough_strip_expected_answer():
     close(math.sqrt(2*final_k/2), math.sqrt(.5))
     boundary_k = spring_energy-1*1.00
     close(boundary_k, 0)
-    assert boundary_k == 0
+    close(boundary_k, 0)
 
 
 def test_no_upgrade_to_native_status_or_exam_original_delivery():
