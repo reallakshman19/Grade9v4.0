@@ -110,6 +110,13 @@ def browser_roundtrip(browser, base, width, height):
         page.locator("#filter").select_option("unmapped")
         require(page.locator("#rows tr").count()==49,"Incorrect unmapped gap count")
         page.locator("#filter").select_option("all")
+        page.locator("#search").fill("EX-M101")
+        require(page.locator("#rows tr").count()==1,"Spring source coverage missing")
+        spring_skill=page.locator("#rows tr").inner_text().lower()
+        require("equal final equilibrium force" in spring_skill and "equal extension" in spring_skill,
+                "EX-M101 map still teaches the wrong model")
+        require("conservative vector field" not in spring_skill,
+                "Wrong imported crux still appears in spring coverage")
         page.locator("#search").fill("EX-M79")
         require(page.locator("#rows tr").count()==1,"Coverage search ambiguous")
         require("speed–distance" in page.locator("#rows tr").inner_text(),"EX-M79 reasoning capability inaccurate")
