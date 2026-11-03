@@ -567,12 +567,16 @@
     const banner=$("#source-journey"),info=$("#source-message"),link=$("#source-return");
     if(!/^[A-Za-z0-9-]{2,64}$/.test(sourceId)){banner.hidden=false;info.textContent="Invalid source question identifier. No original question link was created.";return;}
     try{
-      const res=await fetch("reasoning-paths.review.json",{cache:"no-store"});
-      if(!res.ok)throw Error("No route inventory");
-      const manifest=await res.json();
-      if(manifest.schema!=="wpe-reasoning-route-preview/v1"||manifest.policy!=="REVIEW_NAVIGATION_ONLY__NOT_CANONICAL_PREREQUISITE"||!Array.isArray(manifest.constructions))throw Error("Invalid route inventory");
-      const route=manifest.constructions.find(row=>row.id==="WPE-"+active && row.proposed_source_ids?.some(s=>s.id===sourceId&&s.reader_present));
-      if(!route)throw Error("Unmapped source/lesson pair");
+      const [res,bankResponse]=await Promise.all([
+        fetch("learning-coverage-r1.json",{cache:"no-store"}),
+        fetch("../../workspace/output/WPE_Core2_Consolidated_20261102/native-candidate/selected_bank.review.json",{cache:"no-store"})
+      ]);
+      if(!res.ok||!bankResponse.ok)throw Error("Source evidence unavailable");
+      const coverage=await res.json(),bank=await bankResponse.json();
+      if(coverage.schema!=="wpe-learner-coverage-r1/v1"||coverage.questions?.length!==74||bank.questions?.length!==74)throw Error("Inventory changed");
+      const row=coverage.questions.find(x=>x.source_id===sourceId&&x.primary_lesson===active&&x.fit!=="MISSING_CONSTRUCTION");
+      if(!row||!bank.questions.some(x=>x.source_id===sourceId&&x.stem_sha256===row.stem_sha256))throw Error("Unverified source lesson");
+      try{localStorage.setItem("g9:wpe:journey:v1",JSON.stringify({question:sourceId,lesson:active}));}catch(_){}
       sourceLink={id:sourceId,lesson:active,href:"../../preview/question-status.html?question="+encodeURIComponent(sourceId)};
       banner.hidden=false;
       $("#source-title").textContent="Your original Question Bank entry: "+sourceId;

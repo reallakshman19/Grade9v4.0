@@ -693,12 +693,16 @@
     const lesson=location.hash.replace(/^#/,"");
     if(!sourceId||!/^[-A-Za-z0-9]{2,64}$/.test(sourceId)||!Object.prototype.hasOwnProperty.call(lessons,lesson))return;
     try{
-      const response=await fetch("reasoning-paths.review.json");
-      if(!response.ok)return;
-      const d=await response.json();
-      if(d.schema!=="wpe-reasoning-route-preview/v1"||!Array.isArray(d.constructions))return;
-      const row=d.constructions.find(r=>r.id==="WPE-"+lesson && r.proposed_source_ids?.some(q=>q.id===sourceId && q.reader_present));
-      if(!row)return;
+      const [response,bankResponse]=await Promise.all([
+        fetch("learning-coverage-r1.json",{cache:"no-store"}),
+        fetch("../../workspace/output/WPE_Core2_Consolidated_20261102/native-candidate/selected_bank.review.json",{cache:"no-store"})
+      ]);
+      if(!response.ok||!bankResponse.ok)return;
+      const d=await response.json(),bank=await bankResponse.json();
+      if(d.schema!=="wpe-learner-coverage-r1/v1"||d.questions?.length!==74||bank.questions?.length!==74)return;
+      const row=d.questions.find(q=>q.source_id===sourceId&&q.primary_lesson===lesson&&q.fit!=="MISSING_CONSTRUCTION");
+      if(!row||!bank.questions.some(q=>q.source_id===sourceId&&q.stem_sha256===row.stem_sha256))return;
+      try{localStorage.setItem("g9:wpe:journey:v1",JSON.stringify({question:sourceId,lesson}));}catch(_){}
       const href="../../preview/question-status.html?question="+encodeURIComponent(sourceId);
       sourceRoute={id:sourceId,lesson,href};
       const banner=document.getElementById("source-journey");
