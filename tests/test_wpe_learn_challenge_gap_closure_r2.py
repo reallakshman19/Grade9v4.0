@@ -64,7 +64,13 @@ def test_existing_embedded_question_bank_and_source_hash_receipt():
     assert json.loads(match.group(1))["questions"]==data(BANK)["questions"]
     assert "if(!s?.committed)return" in html
     assert "q.scaffolds?.length?q.scaffolds:q.hints" in html
-    assert 'F0[1-8]' in html and 'gap-journeys' in html
+    # Exercise the source-backed mapping, not a fragile regex string in HTML.
+    routes={r["source_id"]:r for r in data(MAP)["questions"]}
+    for source_id,lesson in TARGETS.items():
+        row=routes[source_id]
+        assert row["stem_sha256"]==next(x["stem_sha256"] for x in data(BANK)["questions"] if x["source_id"]==source_id)
+        assert row["lesson_href"]==f"gap-journeys.html?question={source_id}#{lesson}"
+        assert row["primary_lesson"]==lesson and row["fit"]=="FOCUSED_NEW"
     entry=next(x for x in data(MANIFEST)["artifacts"] if x["path"]=="preview/question-status.html")
     assert entry["sha"]==sha_blob(PAGE) and entry["length"]==len(PAGE.read_bytes())
 
@@ -224,7 +230,12 @@ def test_gap_lessons_reuse_original_six_stage_and_do_not_expose_source_answers()
     assert 'src="gap-journeys.js" defer' in html
     assert 'href="extension-learning.css"' in html and 'href="focused-journeys.css"' in html
     assert 'F04:' in src and 'F08:' in src
-    assert 'gap-journeys' in link and 'F06' in link
+    # Route resolution is tested in Chromium for all five source-bound F04–F08
+    # pairs; gateway code must not special-case or hard-code an example F06 ID.
+    assert 'gap-journeys.html' in link and 'row.lesson_href' in link
+    route=next(x for x in data(MAP)["questions"] if x["source_id"]=="EX-M96")
+    assert route["primary_lesson"]=="F06"
+    assert route["lesson_href"]=="gap-journeys.html?question=EX-M96#F06"
     assert 'id="question-routes"' in tile
     assert 'g9:wpe:focused:v1:' in original_engine
     assert 'EX-M97' in original_engine
