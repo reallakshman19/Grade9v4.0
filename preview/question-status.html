@@ -143,7 +143,7 @@ function showSolution(q){
   const springSteps=[
    "For ideal slow stretching to the same FINAL force F, work stored in a spring is U=F²/(2k). More work in S1 than S2 therefore means k1<k2.",
    "For the same EXTENSION x, work is U=½kx². Since k1<k2, S1 stores LESS energy than S2, not more.",
-   "Statement 1 is false and Statement 2 is true; this comparison depends on what is held fixed, not on a general conservative-vector-field argument."
+   "Statement 1 is false and Statement 2 is true; this comparison depends on what is held fixed, not on an unrelated path-independence argument."
   ];
   el.innerHTML='<div class="solution"><strong>Coaching-proposed answer (not an official verified key):</strong> '+formatted(q.answer||'Not supplied')+
    '<ol>'+springSteps.map(x=>'<li>'+formatted(x)+'</li>').join('')+'</ol>'+
