@@ -151,7 +151,7 @@ def verify_documentary_sources(bundle: dict) -> None:
             raise ValueError(f"{name}: pinned source missing at {filepath}")
         content = filepath.read_bytes()
         git_blob_sha = hashlib.sha1(
-            b"blob " + str(len(content)).encode("ascii") + b"\\0" + content
+            b"blob " + str(len(content)).encode("ascii") + b"\0" + content
         ).hexdigest()
         if git_blob_sha != item["git_blob_sha"]:
             raise ValueError(f"{name}: Git blob changed; re-audit before updating pin.")
