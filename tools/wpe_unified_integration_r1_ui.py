@@ -60,6 +60,24 @@ def original_question_roundtrip(page,base):
     verify(page.locator("#commit").is_enabled(),"Start-again control did not reset source attempt")
     verify(saved(page,"g9:wpe:core2:attempt:v1:EX-M79") is None,"Reset did not erase this question")
 
+def written_question_draft(page,base):
+    page.goto(base+"/preview/question-status.html?question=EX-N39")
+    verify(page.locator(".qtitle").inner_text()=="EX-N39","Numerical original question not selected")
+    page.locator("#free-answer").fill("Use two signed friction ledgers; I must decide which forces dissipate energy.")
+    stored=saved(page,"g9:wpe:core2:attempt:v1:EX-N39")
+    verify("two signed friction" in stored["response"] and not stored["committed"],"Written draft not saved")
+    page.goto(base+"/physics/wpe/learn-challenge.html?question=EX-N39#question-routes")
+    page.locator('#question-plan .primary-link[href*="focused-journeys.html?question=EX-N39#F02"]').wait_for()
+    page.locator("#journey-resume").wait_for()
+    page.goto(base+"/preview/question-status.html?question=EX-N39")
+    verify("two signed friction" in page.locator("#free-answer").input_value(),"Written draft not restored after navigation")
+    verify(page.locator("#solution-container .solution").count()==0,"Free-text draft revealed source answer")
+    page.locator("#commit").click()
+    verify(page.locator("#commit").is_disabled(),"Written attempt not committed")
+    page.reload()
+    verify(saved(page,"g9:wpe:core2:attempt:v1:EX-N39")["first"]["response"].startswith("Use two signed"),"Committed written original not preserved")
+    verify(page.locator("#solution-container .solution").count()==0,"Committed numerical response auto-revealed")
+
 def finish_challenge(root):
     root.locator('[data-field="prediction"]').fill("I will choose forces and use the phase boundary first.")
     root.locator('[data-action="prediction"]').click()
@@ -155,6 +173,7 @@ def main():
                         errors=[]
                         page.on("pageerror",lambda error:errors.append(str(error)))
                         original_question_roundtrip(page,base)
+                        written_question_draft(page,base)
                         focus_variants(page,base)
                         verify(page.evaluate("document.documentElement.scrollWidth<=innerWidth+4"),"Mobile horizontal overflow")
                         verify(not errors,"Browser JS exceptions: "+repr(errors))
