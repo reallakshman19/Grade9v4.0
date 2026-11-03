@@ -23,7 +23,7 @@
     rows=map.questions;
   }catch(err){panel.textContent="The exact question-to-lesson route cannot be verified right now. Use the Question Bank directly.";status.textContent="Learning route unavailable.";return;}
   const query=new URLSearchParams(location.search).get("question");
-  selected=query && valid(query) && rows.some(x=>x.source_id===query)?query:(query?null:"EX-M97");
+  selected=query && valid(query) && rows.some(x=>x.source_id===query)?query:null;
   const names={F01:"Applied power vs net power",F02:"Round-trip incline energy",F03:"Spring force switching",C01:"Every force counts",C02:"Spring contact",C03:"Constant power",C04:"Distributed mass",C05:"Choose the graph operation",C06:"Vertical-circle contact",C07:"Conveyor momentum flow",C08:"Comparing spring controls",E01:"Potential wells",E02:"Instantaneous power",E03:"Spring to projectile",E04:"Repeated bouncing",E05:"Radial force and potential"};
   function fillChoices(){
     const term=search.value.trim().toLowerCase();
@@ -35,8 +35,9 @@
       for(const row of filtered){
         const opt=add(picker,"option",row.source_id+" · "+row.student_goal.slice(0,52));opt.value=row.source_id;
       }
-      if(!filtered.some(x=>x.source_id===selected))selected=filtered[0].source_id;
-      picker.value=selected;
+      if(!filtered.some(x=>x.source_id===selected))selected=null;
+      const prompt=add(picker,"option","Choose an original question");prompt.value="";
+      picker.value=selected||"";
     }
     status.textContent=filtered.length+" of 74 source questions shown; "+map.counts.focused_new+" new focused journeys, "+map.counts.targeted+" close practice matches, "+map.counts.related+" related-only bridges, "+map.counts.missing+" genuine missing constructions.";
     draw();
@@ -46,7 +47,7 @@
     try{
       const url=new URL(href,location.href),loc=new URL("focused-journeys.html",location.href);
       if(url.origin!==loc.origin||url.pathname.substring(0,url.pathname.lastIndexOf("/")+1)!==loc.pathname.substring(0,loc.pathname.lastIndexOf("/")+1))return null;
-      if(!/^(d3d4-self-tutor|extension-learning|focused-journeys|study-bridge)\.html$/.test(url.pathname.split("/").pop()))return null;
+      if(!/^(d3d4-self-tutor|extension-learning|focused-journeys)\.html$/.test(url.pathname.split("/").pop()))return null;
       if(url.searchParams.get("question")!==source)return null;
       return url.href;
     }catch(_){return null;}
@@ -59,6 +60,7 @@
       add(panel,"p","No lesson or source return is inferred. Choose a known ID from the selector.");
       return;
     }
+    try{localStorage.setItem("g9:wpe:journey:v1",JSON.stringify({question:row.source_id,lesson:row.primary_lesson}));}catch(_){}
     const heading=add(panel,"h3",row.source_id+" · Your learning route");
     const description=add(panel,"p",row.student_goal,"student-goal");
     const summary=add(panel,"p",null,"fit-explanation");
@@ -105,6 +107,32 @@
     }
     if(location.search!==""&&new URLSearchParams(location.search).get("question")===row.source_id)heading.setAttribute("data-exact-source","true");
   }
+  const skillHost=$("#skill-links");
+  for(const [id,name] of Object.entries(names)){
+    const page=id.startsWith("C")?"d3d4-self-tutor.html":id.startsWith("E")?"extension-learning.html":"focused-journeys.html";
+    const a=add(skillHost,"a",id+" · "+name);a.href=page+"#"+id;
+  }
+  const resume=$("#resume-journey"),notice=$("#saved-practice-status");
+  function refreshResume(){
+    try{
+      const saved=JSON.parse(localStorage.getItem("g9:wpe:journey:v1")||"null");
+      const row=rows.find(r=>r.source_id===saved?.question&&r.primary_lesson===saved.lesson&&r.lesson_href);
+      if(row){resume.href=saved.variant==="transfer55"&&row.primary_lesson.startsWith("F")
+        ?row.lesson_href.replace("#","&variant=transfer55#"):row.lesson_href;
+        resume.textContent="Resume "+row.source_id+" → "+row.primary_lesson;
+      }else{resume.href="#question-routes";resume.textContent="Choose a question to begin";}
+    }catch(_){resume.href="#question-routes";}
+  }
+  refreshResume();
+  $("#clear-saved-practice").addEventListener("click",()=>{
+    if(!confirm("Clear ALL WPE practice, including Question Bank drafts, saved in this browser? This cannot be undone."))return;
+    try{
+      const prefixes=["g9:wpe:d3d4:self-tutor:v1:","g9:wpe:extensions:v1:","g9:wpe:focused:v1:","g9:wpe:core2:attempt:v1:","g9:wpe:learn-challenge:v1:","g9:wpe:learn-challenge:","g9:wpe:journey:v1"];
+      for(let i=localStorage.length-1;i>=0;i--){const key=localStorage.key(i);if(key&&prefixes.some(x=>key.startsWith(x)))localStorage.removeItem(key);}
+      notice.textContent="Saved WPE practice cleared on this device. Reload other open Question Bank tabs to reflect this reset.";
+      refreshResume();
+    }catch(_){notice.textContent="Browser storage could not be cleared here.";}
+  });
   search.addEventListener("input",fillChoices);
   picker.addEventListener("change",()=>{
     selected=picker.value;
@@ -112,7 +140,7 @@
     if(selected)url.searchParams.set("question",selected);
     url.hash="question-routes";
     history.replaceState(null,"",url.pathname+url.search+url.hash);
-    draw();
+    draw();refreshResume();
   });
   fillChoices();
 })();
