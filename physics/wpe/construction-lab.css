@@ -1,0 +1,56 @@
+/* Scoped to the two six-stage WPE author-practice journeys. Existing five lessons remain untouched. */
+.construction-lab{max-width:1066px;margin:32px auto 48px;padding:0 18px;scroll-margin-top:20px;color:#1b3949}
+.construction-lab>header{background:#103e53;border-radius:18px;padding:23px 25px;color:#fff}
+.construction-lab>header h2{font-size:clamp(1.45rem,2.8vw,1.95rem);margin:7px 0}
+.construction-lab>header p{max-width:790px;line-height:1.58;margin:8px 0}
+.construction-lab .lab-kicker{font-size:.73rem;letter-spacing:.06em;text-transform:uppercase;font-weight:800;color:#bee8e2}
+.construction-lab .lab-progress{background:#eef7f7;border:1px solid #cfdfdf;padding:12px 17px;border-radius:11px;margin:13px 0;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:.9rem}
+.construction-lab .lab-modules{display:grid;gap:24px}
+.construction-lab .lab-card{background:#fff;border:1px solid #d3e4ea;box-shadow:0 5px 16px #1c40500d;border-radius:17px;overflow:hidden;scroll-margin-top:16px}
+.construction-lab .lab-card>header{padding:18px 23px;background:#f1f7fa;border-bottom:1px solid #d8e5e9}
+.construction-lab .lab-card>header small{color:#286b69;letter-spacing:.055em;font-weight:800}
+.construction-lab .lab-card h3{font-size:1.22rem;margin:5px 0 9px}
+.construction-lab .lab-guide{padding:18px 24px;background:#f8fcfb;border-bottom:1px solid #d7e5e7}
+.construction-lab .lab-guide p,.construction-lab .lab-guide li{line-height:1.62}
+.construction-lab .lab-guide ol{padding-left:21px;margin:9px 0}
+.construction-lab .lab-guide li{margin:7px 0}
+.construction-lab .lab-guide h4{margin:5px 0;font-size:1.01rem}
+.construction-lab .lab-mini-table{border-collapse:collapse;width:100%;max-width:660px;font-size:.87rem;margin:9px 0}
+.construction-lab .lab-mini-table th,.construction-lab .lab-mini-table td{border:1px solid #cbdfe4;padding:8px 10px;text-align:left}
+.construction-lab .lab-mini-table th{background:#eaf4f6}
+.construction-lab .lab-problem{padding:18px 24px 8px}
+.construction-lab .lab-problem h4{font-size:1.04rem;margin:4px 0 9px}
+.construction-lab .lab-problem p{line-height:1.6;margin:9px 0}
+.construction-lab .lab-stage{padding:8px 24px 20px}
+.construction-lab .lab-steps{display:flex;flex-wrap:wrap;gap:7px;margin:9px 0 19px;list-style:none;padding:0}
+.construction-lab .lab-steps li{border:1px solid #d3e3e8;border-radius:8px;padding:6px 8px;font-size:.76rem;color:#52717b;background:#fff}
+.construction-lab .lab-steps li[aria-current=step]{background:#176c65;border-color:#176c65;color:#fff;font-weight:850}
+.construction-lab .lab-steps li.is-done{background:#e5f4ef;color:#155e51;border-color:#bde1d4}
+.construction-lab .lab-stage h4{font-size:1.1rem;margin:12px 0}
+.construction-lab .lab-stage p{line-height:1.59}
+.construction-lab .lab-field{display:flex;flex-direction:column;gap:6px;margin:13px 0}
+.construction-lab .lab-field label{font-weight:800;font-size:.88rem}
+.construction-lab .lab-field input,.construction-lab .lab-field textarea,.construction-lab .lab-field select{font:inherit;font-size:.95rem;border:1px solid #a6c4d0;border-radius:9px;padding:11px 12px;background:#fff;color:#183e4b;width:100%;max-width:730px}
+.construction-lab .lab-field textarea{min-height:99px;resize:vertical}
+.construction-lab .lab-field input:focus,.construction-lab .lab-field textarea:focus,.construction-lab .lab-field select:focus{outline:3px solid #88cdbc;outline-offset:2px}
+.construction-lab .lab-input-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 17px}
+.construction-lab .lab-actions{display:flex;flex-wrap:wrap;gap:9px;margin:17px 0 7px}
+.construction-lab button{font:inherit;font-size:.88rem;cursor:pointer;min-height:44px;padding:10px 14px;border-radius:9px;border:1px solid #a7cad1;background:#eef6f8;color:#145467;font-weight:800}
+.construction-lab button.lab-primary{background:#11766d;color:#fff;border-color:#11766d}
+.construction-lab button:disabled{opacity:.46;cursor:default}
+.construction-lab button:focus-visible{outline:3px solid #e1a753;outline-offset:3px}
+.construction-lab .lab-status{min-height:20px;font-size:.88rem;color:#385f6e}
+.construction-lab .lab-reference{border-left:4px solid #278f75;background:#edf8f3;padding:12px 15px;border-radius:7px;margin:16px 0}
+.construction-lab .lab-reference h5{font-size:.95rem;margin:5px 0 9px}
+.construction-lab .lab-reference li{margin:9px 0;line-height:1.55}
+.construction-lab .lab-first{background:#f0f5fa;border:1px solid #cadfe8;border-radius:10px;padding:12px 15px;margin:15px 0}
+.construction-lab .lab-first summary{font-weight:800;cursor:pointer}
+.construction-lab .lab-first dl{display:grid;grid-template-columns:minmax(110px,1fr) minmax(0,2fr);gap:9px;margin:8px 0;overflow-wrap:anywhere}
+.construction-lab .lab-first dt{font-weight:750}.construction-lab .lab-first dd{margin:0}
+.construction-lab .lab-error{color:#a34c22;font-weight:750}
+.construction-lab .lab-done{padding:13px 16px;background:#e9f6ef;border-radius:11px;border:1px solid #c3e4d2}
+.construction-lab .lab-footer{padding:12px 24px;background:#f9fcfd;border-top:1px solid #d7e6eb;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:9px}
+.construction-lab .lab-note{font-size:.78rem;color:#536f7a;max-width:660px}
+.construction-lab .lab-reset{font-size:.78rem;background:white;color:#566f7b;border-color:#cedfe6}
+.construction-lab [hidden]{display:none!important}
+@media(max-width:670px){.construction-lab{padding:0 12px}.construction-lab .lab-input-grid{grid-template-columns:1fr}.construction-lab .lab-guide,.construction-lab .lab-problem,.construction-lab .lab-stage,.construction-lab .lab-card>header{padding-left:16px;padding-right:16px}.construction-lab .lab-first dl{grid-template-columns:1fr;gap:4px}.construction-lab .lab-actions button{flex:1 1 auto}}
