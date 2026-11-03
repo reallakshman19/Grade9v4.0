@@ -346,8 +346,9 @@
   }
   let storageWorks=true;
   const states={};
+  // Read every topic state before the first render updates the shared counter.
+  Object.keys(lessons).forEach(lesson=>{states[lesson]=load(lesson);});
   Object.keys(lessons).forEach(lesson=>{
-    states[lesson]=load(lesson);
     const root=document.querySelector('[data-stage-root="'+lesson+'"]');
     if(root){root.addEventListener("click",event=>update(lesson,event));render(lesson,false);}
   });
