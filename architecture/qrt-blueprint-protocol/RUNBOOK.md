@@ -130,6 +130,8 @@ Do **not** confuse columns because a question *contains* a graph, *mentions* a f
 
 **D3.1 note:** the `templates/physics-blueprint/subtiles/physics-blueprint.D3.v0.2.1.json` is also draft and does not resume D3.1. A sub-tile splits *ideas* for coverage without inventing an eighth cognitive column.
 
+**Implemented P0 working inventory:** [search the 74-question WPE QRT × Blueprint × learning register](wpe-coverage.html) or [inspect its pinned JSON](wpe-coverage-register.json). The 21-place original-exam pilot is an independent overlay; source and QRT holds remain explicitly unadmitted.
+
 ## 5. D3/D4-first priority queue; keep different denominators separate
 
 | Priority | Actual queue | Completion test |
