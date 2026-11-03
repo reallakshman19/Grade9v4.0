@@ -113,7 +113,7 @@ def full_journey(browser,base,width,height,source,lesson,wrong_model,wrong_field
         check(root.locator(".assessment li.review").count()>=1,lesson+" changed-condition feedback not tied to wrong number")
         check(local(page,lesson)["first"]==initial,lesson+" first attempt overwritten")
         check(local(page,lesson)["boundary"]["why"],lesson+" boundary reasoning not saved")
-        check(page.locator("#progress-label").inner_text().startswith("1 of 3"),lesson+" progress not updated")
+        check(page.locator("#progress-label").inner_text().startswith("1 of 6"),lesson+" progress not updated")
         page.reload(wait_until="load")
         page.locator("#source-journey:not([hidden])").wait_for()
         check(root.locator(".stage-card h3").inner_text()=="6. Boundary test",lesson+" boundary stage not persistent")
