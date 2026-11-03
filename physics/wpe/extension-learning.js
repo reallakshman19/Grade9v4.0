@@ -792,6 +792,37 @@
       textAt(480,105,"v tangent", "#465cb1",12);
       textAt(392,194,"F inward","#a85d2c",12);
       out.textContent="Area gives U("+nice(value)+") = "+nice(3*value)+" J. Local force 3 N sets v = "+nice(Math.sqrt(3*value))+" m/s for 1 kg. Circular K = "+nice(1.5*value)+" J; force does zero work around the circle.";
+    }else if(id==="E06"){
+      // Guided constant contact push; use applied force for supplied mechanical power.
+      const weight=20,net=value-weight,v=Math.sqrt(Math.max(0,net));
+      svgNode(svg,"rect",{x:235,y:138,width:170,height:91,rx:12,fill:"#cde8f3",stroke:"#37748d","stroke-width":3});
+      line(320,135,320,34,"#138d7d",5);line(312,47,320,31,"#138d7d",5);line(328,47,320,31,"#138d7d",5);
+      line(320,230,320,270,"#b16c46",5);
+      textAt(332,37,"F applied = "+nice(value)+" N","#167970",16);
+      textAt(341,263,"Weight = 20 N","#9a613a",13);
+      textAt(238,183,"Toy mass 2 kg",null,16);
+      out.textContent="Contact phase: net force "+nice(net)+" N; K at 1 m="+nice(net)+" J; take-off speed "+nice(v)+" m/s. Applied power at take-off "+nice(value*v)+" W, but net kinetic-energy rate only "+nice(net*v)+" W.";
+    }else if(id==="E07"){
+      const up=6+value,down=6-value,d=8/up,returnK=down*d;
+      svgNode(svg,"path",{d:"M48 230L505 55",fill:"none",stroke:"#87a9b1","stroke-width":8});
+      svgNode(svg,"rect",{x:233,y:133,width:64,height:38,rx:7,fill:"#cce8f1",stroke:"#396b85","stroke-width":3});
+      line(231,149,145,182,"#b66f47",4);line(284,115,388,75,"#177f72",4);
+      textAt(56,35,"Incline: gravity component 6 N downhill",null,16);
+      textAt(48,274,"Friction opposes travel in BOTH directions.",null,14);
+      textAt(340,112,"Up → / Down ←",null,15);
+      out.textContent="With friction "+nice(value)+" N: uphill retarding force "+nice(up)+" N; stopping distance "+nice(d)+" m; downhill net "+nice(down)+" N; returned K "+nice(returnK)+" J and speed "+nice(Math.sqrt(2*returnK))+" m/s.";
+    }else if(id==="E08"){
+      const xeq=value/100,xi=0.10,xother=2*xeq-xi;
+      line(35,183,615,183,"#86a4af",3);
+      line(90,90,90,215,"#516f87",6);
+      svgNode(svg,"polyline",{points:"95,154 112,154 123,135 134,174 145,135 156,174 167,154 198,154",fill:"none",stroke:"#b88153","stroke-width":5});
+      svgNode(svg,"rect",{x:197,y:129,width:83,height:50,rx:8,fill:"#cce7f2",stroke:"#38738b","stroke-width":2});
+      const mapX=x=>196+x*680;
+      line(mapX(xeq),85,mapX(xeq),210,"#168476",3);
+      line(mapX(xother),103,mapX(xother),214,"#bc713b",3);
+      textAt(23,30,"k = 100 N/m, initial x = 0.10 m",null,15);
+      textAt(29,250,"New force: +"+nice(value)+" N; green = equilibrium, orange = far turning point",null,13);
+      out.textContent="After force switch: new equilibrium x="+nice(xeq)+" m; starting rest x=0.10 m; other turning point x="+nice(xother)+" m. Conserve K+½kx²−F_new x, not spring energy alone.";
     }
   }
   function renderStage(host,id,config){
