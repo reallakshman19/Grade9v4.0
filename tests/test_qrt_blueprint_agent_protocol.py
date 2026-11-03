@@ -151,6 +151,10 @@ def test_architecture_links_and_honest_source_baseline():
     assert "D3.1" in runbook and "PAUSED" in runbook
     assert "NO_REAL_APPROVAL" in runbook
     assert "QRT" in runbook and "Blueprint" in runbook and "WPE" in runbook
+    assert 'href="source-pins.json"' in page
+    pins=load(PROTOCOL/"source-pins.json")
+    assert len(pins["sources"])==6
+    assert pins["sources"]["question_reader"]["record_count"]==74
     blueprint=load(ROOT/"templates/physics-blueprint/physics-blueprint.D3-D4.json")
     assert blueprint["status"]=="DRAFT_OWNER_REVIEW"
     assert blueprint["version"]=="0.2.0"
