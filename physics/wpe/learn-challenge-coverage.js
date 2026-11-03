@@ -1,6 +1,6 @@
 /* Student-first source-question router for the existing Learn → Challenge tile.
  * The 74-question evidence is reconciled against the original bank, 13
- * pre-existing lessons and F01–F03. Routes are practice, not QRT decisions.
+ * pre-existing C/E lessons and F01–F08. Routes are practice, not QRT decisions.
  */
 (async()=>{
   "use strict";
@@ -24,7 +24,7 @@
   }catch(err){panel.textContent="The exact question-to-lesson route cannot be verified right now. Use the Question Bank directly.";status.textContent="Learning route unavailable.";return;}
   const query=new URLSearchParams(location.search).get("question");
   selected=query && valid(query) && rows.some(x=>x.source_id===query)?query:null;
-  const names={F01:"Applied power vs net power",F02:"Round-trip incline energy",F03:"Spring force switching",C01:"Every force counts",C02:"Spring contact",C03:"Constant power",C04:"Distributed mass",C05:"Choose the graph operation",C06:"Vertical-circle contact",C07:"Conveyor momentum flow",C08:"Comparing spring controls",E01:"Potential wells",E02:"Instantaneous power",E03:"Spring to projectile",E04:"Repeated bouncing",E05:"Radial force and potential"};
+  const names={F01:"Applied power vs net power",F02:"Round-trip incline energy",F03:"Spring force switching",F04:"Two-body spring energy",F05:"Massive spring",F06:"Wind energy flow",F07:"Pendulum turning or holding",F08:"Shock absorber energy",C01:"Every force counts",C02:"Spring contact",C03:"Constant power",C04:"Distributed mass",C05:"Choose the graph operation",C06:"Vertical-circle contact",C07:"Conveyor momentum flow",C08:"Comparing spring controls",E01:"Potential wells",E02:"Instantaneous power",E03:"Spring to projectile",E04:"Repeated bouncing",E05:"Radial force and potential"};
   function fillChoices(){
     const term=search.value.trim().toLowerCase();
     const filtered=rows.filter(row=>(row.source_id+" "+row.student_goal+" "+(names[row.primary_lesson]||"")).toLowerCase().includes(term));
@@ -39,21 +39,37 @@
       if(!filtered.some(x=>x.source_id===selected))selected=null;
       picker.value=selected||"";
     }
-    status.textContent=filtered.length+" of 74 source questions shown; "+map.counts.focused_new+" new focused journeys, "+map.counts.targeted+" close practice matches, "+map.counts.related+" related-only bridges, "+map.counts.missing+" remaining unaddressed constructions.";
+    status.textContent=filtered.length+" of 74 source questions shown; "+map.counts.focused_new+" focused journeys, "+map.counts.targeted+" close practice matches, "+map.counts.related+" related-only bridges, "+map.counts.missing+" unmapped. Every question has a route; related-only routes are NOT complete teaching for the original question.";
     draw();
   }
+  // Verified source inventory supplies the only allowed lesson mapping.
+  // A browser URL is not an authority: reject cross-origin, foreign directories,
+  // unexpected query keys, bad anchors, and wrong source/lesson combinations.
   const safeLessonURL=(href,source,lesson)=>{
-    if(typeof href!=="string")return null;
+    if(typeof href!=="string"||!valid(source)||typeof lesson!=="string")return null;
+    const path=/^C0[1-8]$/.test(lesson)?"d3d4-self-tutor.html":
+      /^E0[1-5]$/.test(lesson)?"extension-learning.html":
+      /^F0[1-3]$/.test(lesson)?"focused-journeys.html":
+      /^F0[4-8]$/.test(lesson)?"gap-journeys.html":null;
+    if(!path)return null;
+    // The selected row must be the verified source-bound primary route.
+    if(!rows.some(row=>row.source_id===source&&row.primary_lesson===lesson&&
+                      row.fit!=="MISSING_CONSTRUCTION"&&row.lesson_href===href))return null;
     try{
-      const url=new URL(href,location.href),loc=new URL("focused-journeys.html",location.href);
-      if(url.origin!==loc.origin||url.pathname.substring(0,url.pathname.lastIndexOf("/")+1)!==loc.pathname.substring(0,loc.pathname.lastIndexOf("/")+1))return null;
-      if(!/^(d3d4-self-tutor|extension-learning|focused-journeys|gap-journeys|study-bridge)\.html$/.test(url.pathname.split("/").pop()))return null;
-      if(url.searchParams.get("question")!==source)return null;
-      const path=lesson?.startsWith("C")?"d3d4-self-tutor.html":lesson?.startsWith("E")?"extension-learning.html":lesson?.startsWith("F")?"focused-journeys.html":null;
-      if(!path)return null;
-      if(url.pathname.endsWith("study-bridge.html")){
-        if(url.searchParams.get("lesson")!==lesson)return null;
-      }else if(!url.pathname.endsWith(path)||url.hash!=="#"+lesson)return null;
+      const url=new URL(href,location.href),expected=new URL(path,location.href);
+      const bridge=new URL("study-bridge.html",location.href);
+      if(!["http:","https:"].includes(url.protocol)||url.username||url.password||
+         url.origin!==expected.origin)return null;
+      const isBridge=url.pathname===bridge.pathname;
+      if(url.pathname!==(isBridge?bridge.pathname:expected.pathname))return null;
+      if(url.searchParams.getAll("question").length!==1||
+         url.searchParams.get("question")!==source)return null;
+      const keys=Array.from(url.searchParams.keys());
+      if(isBridge){
+        if(url.hash||url.searchParams.getAll("lesson").length!==1||
+           url.searchParams.get("lesson")!==lesson||
+           keys.length!==2||!keys.every(k=>["question","lesson"].includes(k)))return null;
+      }else if(url.hash!=="#"+lesson||keys.length!==1||keys[0]!=="question")return null;
       const target=new URL(path,location.href);
       target.searchParams.set("question",source);
       target.hash=lesson;
@@ -128,7 +144,7 @@
   function refreshManager(){
     let entry=null;
     try{entry=JSON.parse(localStorage.getItem("g9:wpe:journey:v1")||"null")}catch(_){}
-    const allowed={"d3d4-self-tutor.html":/^C0[1-8]$/,"extension-learning.html":/^E0[1-5]$/,"focused-journeys.html":/^F0[1-3]$/};
+    const allowed={"d3d4-self-tutor.html":/^C0[1-8]$/,"extension-learning.html":/^E0[1-5]$/,"focused-journeys.html":/^F0[1-3]$/,"gap-journeys.html":/^F0[4-8]$/};
     if(entry&&typeof entry.path==="string"&&allowed[entry.path]?.test(entry.lesson||"")&&(!entry.question||rows.some(x=>x.source_id===entry.question&&x.primary_lesson===entry.lesson))&&(!entry.variant||["first","transfer"].includes(entry.variant))){
       const url=new URL(entry.path,location.href);
       if(entry.question)url.searchParams.set("question",entry.question);
@@ -144,7 +160,7 @@
   $("#journey-clear").addEventListener("click",()=>{
     if(!confirm("Clear all WPE lesson practice saved in this browser? Original Question Bank attempts will be kept."))return;
     try{
-      const prefixes=["g9:wpe:journey:v1","g9:wpe:learn-challenge:v2:","g9:wpe:d3d4:self-tutor:v1:","g9:wpe:extensions:v1:","g9:wpe:focused:v1:"];
+      const prefixes=["g9:wpe:journey:v1","g9:wpe:learn-challenge:v2:","g9:wpe:d3d4:self-tutor:v1:","g9:wpe:extensions:v1:","g9:wpe:focused:v1:","g9:wpe:gaps:v2:"];
       for(let i=localStorage.length-1;i>=0;i--){const key=localStorage.key(i);if(prefixes.some(p=>key.startsWith(p)))localStorage.removeItem(key);}
     }catch(_){notice.textContent="Local storage is unavailable: saved practice could not be fully cleared.";return;}
     refreshManager();notice.textContent="Saved lesson practice cleared; original Question Bank answers remain untouched.";
