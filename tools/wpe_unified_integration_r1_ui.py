@@ -172,6 +172,7 @@ def focus_variants(page,base):
         verify(page.locator("iframe").count()==0,id_+" iframe")
 
     page.goto(base+"/physics/wpe/learn-challenge.html#practice-manager")
+    page.locator("#question-route-status").filter(has_text="of 74 source questions shown").wait_for()
     page.locator("#journey-clear").click()
     verify(saved(page,"g9:wpe:focused:v1:F01") is None,"Lesson clear left first focused attempt")
     verify(saved(page,"g9:wpe:focused:v1:F01:transfer") is None,"Lesson clear left transfer focused attempt")
