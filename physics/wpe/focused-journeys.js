@@ -385,10 +385,10 @@
         action(acts,"history","Review my original attempt and repair",true);
         paragraph(box,"You finished this fresh problem. You can return to the original question immediately; the next challenge is optional.","done");
          if(requestedVariant()==="first"&&window.WPE_F_TRANSFER?.[id]){
-           const another=add(box,"a","Try another challenge · optional transfer","return-original");
+           const another=add(box,"a","Try another challenge · optional transfer","transfer-challenge-link");
            const next=new URL(location.href);next.searchParams.set("variant","transfer");next.hash=id;another.href=next.pathname+next.search+next.hash;
          }else if(requestedVariant()==="transfer"){
-           const initial=add(box,"a","Resume my first challenge","return-original");
+           const initial=add(box,"a","Resume my first challenge","transfer-challenge-link");
            const prev=new URL(location.href);prev.searchParams.delete("variant");prev.hash=id;initial.href=prev.pathname+prev.search+prev.hash;
          }
         if(sourceLink?.lesson===id){
