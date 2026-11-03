@@ -166,7 +166,8 @@ def focus_variants(page,base):
         worked=root.locator(".worked").inner_text()
         verify(("5/13" in worked) if id_=="F02" else ("0.80" in worked and "0.30" in worked),id_+" donor result missing")
         verify(saved(page,"g9:wpe:focused:v1:"+id_+":transfer")["first"] is not None,id_+" independent attempt not saved")
-        verify(saved(page,"g9:wpe:focused:v1:"+id_)["first"] is None,id_+" first variant unexpectedly changed")
+        original=saved(page,"g9:wpe:focused:v1:"+id_)
+        verify(original is None or original["first"] is None,id_+" first variant unexpectedly changed")
         verify(page.locator("#source-return").get_attribute("href").endswith("question="+source),id_+" source ID lost")
         verify(page.locator("iframe").count()==0,id_+" iframe")
 
