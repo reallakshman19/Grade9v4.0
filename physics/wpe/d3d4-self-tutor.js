@@ -706,7 +706,7 @@
       if(!item||!bank.questions.some(q=>q.source_id===sourceId&&q.stem_sha256===item.stem_sha256))return;
       const suggested=d.constructions.some(r=>r.id==="WPE-"+lesson&&r.proposed_source_ids?.some(q=>q.id===sourceId&&q.reader_present));
       const primary=item.primary_lesson===lesson&&item.fit!=="MISSING_CONSTRUCTION";
-      if(!primary&&!suggested)return;
+      if(!primary&&!suggested||location.hash.replace(/^#/,"")!==lesson)return;
       const href="../../preview/question-status.html?question="+encodeURIComponent(sourceId);
       sourceRoute={id:sourceId,lesson,href};
       const banner=document.getElementById("source-journey");
@@ -729,6 +729,12 @@
   Object.keys(lessons).forEach(lesson=>{
     const root=document.querySelector('[data-stage-root="'+lesson+'"]');
     if(root){root.addEventListener("click",event=>update(lesson,event));root.addEventListener("input",event=>saveUnfinishedInput(lesson,event));root.addEventListener("change",event=>saveUnfinishedInput(lesson,event));render(lesson,false);}
+  });
+  window.addEventListener("hashchange",()=>{
+    sourceRoute=null;
+    document.getElementById("source-journey").hidden=true;
+    document.querySelectorAll(".unit-next .return-original").forEach(link=>link.remove());
+    bindSourceJourney();
   });
   bindSourceJourney();
 })();
