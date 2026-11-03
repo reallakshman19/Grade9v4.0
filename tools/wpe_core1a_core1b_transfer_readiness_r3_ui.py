@@ -103,7 +103,7 @@ def test_case(browser,base,screen,source,lesson,wrong_model,wrong_assumption,wro
         feedback=root.locator(".assessment").inner_text()
         check("MODEL_CHOICE" in feedback,"No specific wrong-model diagnosis")
         check("INVALID_ASSUMPTION" in feedback,"No specific invalid-assumption diagnosis")
-        check("SIGN_OR_" in feedback or "SPATIAL_" in feedback or "GEOMETRY_" in feedback or "CALCULATION_OR_UNITS" in feedback,
+        check("SIGN_OR_" in feedback or "SPATIAL_" in feedback or "GEOMETRY_" in feedback or "AREA_AND_RATE_" in feedback or "CALCULATION_OR_UNITS" in feedback,
               "No specific numerical/representation diagnosis")
         check(root.locator(".worked ol li").count()==4,"B worked derivation incomplete")
         # Commit Task A separately with no hints, while preserving B immutable.
