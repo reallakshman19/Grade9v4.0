@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#12384f">
+  <meta name="description" content="Two WPE practice journeys: learn, predict, attempt, reconstruct, diagnose, repair and test a changed condition.">
+  <title>Two thinking challenges · Work, Power and Energy</title>
+  <link rel="stylesheet" href="../../site.css">
+  <link rel="stylesheet" href="d3d4-self-tutor.css">
+  <script src="d3d4-self-tutor.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#lesson-main">Skip to learning</a>
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <a class="back" href="index.html">‹ WPE chapter</a>
+      <span>Grade 9 Physics · Learn → Reconstruct</span>
+    </div>
+  </header>
+  <main id="lesson-main" class="shell">
+    <section class="welcome" aria-labelledby="page-title">
+      <p class="eyebrow">Two thinking skills · Student practice preview</p>
+      <h1 id="page-title">Learn the idea. Then solve a <em>different</em> problem.</h1>
+      <p>These are not speed tests. Use the worked example to learn a method, then keep your first thinking before seeing the answer. You can be unsure or make mistakes—that's how the next steps help.</p>
+      <div class="how">
+        <strong>How each challenge works</strong>
+        <ol aria-label="Six learning stages">
+          <li>Predict</li><li>Attempt</li><li>Reconstruct</li><li>Diagnose</li><li>Repair</li><li>Boundary test</li>
+        </ol>
+        <p>You can write <strong>“I’m not sure”</strong> in an answer. Your first attempt is saved on this browser and stays separate from your later repair. This page does not grade explanations.</p>
+      </div>
+      <div class="overall" aria-live="polite">
+        <span id="overall-count">0 of 2 challenges completed</span>
+        <progress id="overall-meter" value="0" max="2" aria-label="Completed boundary tests"></progress>
+      </div>
+      <nav class="topic-links" aria-label="Choose a lesson">
+        <a href="#C01">1 · Every force counts</a>
+        <a href="#C02">2 · When the spring stops pushing</a>
+      </nav>
+    </section>
+
+    <article class="unit" id="C01" data-topic="C01" aria-labelledby="c01-title">
+      <header class="unit-header">
+        <p class="eyebrow">Skill 1 of 2 · Multi-force work and energy</p>
+        <h2 id="c01-title">🛴 Every force counts</h2>
+        <p class="unit-subtitle">A push helps, friction slows, gravity pulls—and your energy calculation must include them all.</p>
+      </header>
+      <div class="pair">
+        <section class="guide" aria-labelledby="c01-guide">
+          <p class="part-label">Core1A · Guided example</p>
+          <h3 id="c01-guide">A box being pulled across a floor</h3>
+          <p>A <strong>2 kg</strong> box already moves right at <strong>1 m/s</strong>. A child pulls right with <strong>10 N</strong>. Friction pulls left with <strong>4 N</strong>. The box moves <strong>3 m right</strong> on a level floor.</p>
+          <figure class="illustration">
+            <svg viewBox="0 0 500 190" role="img" aria-label="Box moving right; ten-newton pull points right, four-newton friction points left, gravity down and normal force up.">
+              <path d="M22 139H479" stroke="#7695a3" stroke-width="3"/>
+              <rect x="198" y="80" width="95" height="58" rx="9" fill="#d2e7f0" stroke="#315f7a" stroke-width="3"/>
+              <text x="217" y="112" fill="#274e69" font-size="18" font-weight="bold">2 kg</text>
+              <path d="M292 106H422" stroke="#168774" stroke-width="4" stroke-linecap="round"/>
+              <path d="M411 95L425 106L411 117" fill="none" stroke="#168774" stroke-width="4"/>
+              <text x="330" y="91" fill="#0b705f" font-size="16">Pull 10 N →</text>
+              <path d="M198 120H80" stroke="#c16b43" stroke-width="4" stroke-linecap="round"/>
+              <path d="M92 109L78 120L92 131" fill="none" stroke="#c16b43" stroke-width="4"/>
+              <text x="32" y="103" fill="#995334" font-size="15">← Friction 4 N</text>
+              <path d="M247 82V31M247 139V173" stroke="#577f99" stroke-width="3"/>
+              <path d="M239 43L247 29L255 43M239 161L247 175L255 161" stroke="#577f99" stroke-width="3" fill="none"/>
+              <text x="263" y="32" fill="#416985" font-size="14">Normal ↑</text>
+              <text x="265" y="181" fill="#416985" font-size="14">Gravity ↓</text>
+            </svg>
+            <figcaption>Motion is horizontal; gravity and the floor's support are perpendicular to it.</figcaption>
+          </figure>
+          <ol class="guide-steps">
+            <li><strong>Choose the object:</strong> the box. Draw the four forces and the direction of its movement.</li>
+            <li><strong>Do the signs first:</strong> pull helps movement (+), friction opposes it (−), gravity and normal do zero work during horizontal motion.</li>
+            <li><strong>Make a work ledger:</strong>
+              <table><thead><tr><th scope="col">Force</th><th scope="col">Work</th></tr></thead><tbody>
+                <tr><td>Pull</td><td>+10 × 3 = +30 J</td></tr>
+                <tr><td>Friction</td><td>−4 × 3 = −12 J</td></tr>
+                <tr><td>Gravity</td><td>0 J</td></tr>
+                <tr><td>Normal support</td><td>0 J</td></tr>
+              </tbody></table>
+            </li>
+            <li><strong>Add all the work:</strong> net work = +30 − 12 = <strong>+18 J</strong>. This—not friction alone—equals the change in kinetic energy.</li>
+            <li><strong>Find speed:</strong> initial K = ½ × 2 × 1² = 1 J, final K = 19 J. So final speed = √19 ≈ <strong>4.36 m/s</strong>.</li>
+          </ol>
+          <p class="guide-takeaway"><strong>Remember:</strong> Every force gets a ledger row. Add the signed work before using the change in kinetic energy.</p>
+          <details class="conditions"><summary>When can I use this method?</summary><p>The forces are constant over 3 m, air drag is ignored, and the box stays level. If it climbs upward, gravity also does negative work. The normal force is perpendicular to this horizontal movement, so its work is zero.</p></details>
+        </section>
+        <section class="challenge" aria-labelledby="c01-challenge">
+          <p class="part-label independent">Core1B · Different challenge</p>
+          <h3 id="c01-challenge">Can the battery scooter climb?</h3>
+          <p>A <strong>3 kg</strong> toy scooter starts from rest at the bottom of a <strong>2 m ramp</strong>. The top is <strong>0.5 m higher</strong>. Its motor pushes <strong>15 N uphill</strong>, while friction is <strong>3 N downhill</strong>. The normal force is perpendicular to the ramp. Take <strong>g = 10 m/s²</strong>. Does it reach the top, and how fast is it moving there?</p>
+          <figure class="illustration">
+            <svg viewBox="0 0 500 165" role="img" aria-label="Two-metre rising ramp to a point half a metre higher; scooter moves uphill with a fifteen-newton motor force and three-newton friction downhill.">
+              <path d="M28 136L431 50" stroke="#468a80" stroke-width="6" stroke-linecap="round"/>
+              <path d="M431 50V137" stroke="#9eacb8" stroke-width="2" stroke-dasharray="5 4"/>
+              <rect x="187" y="82" width="75" height="32" rx="8" fill="#d3e9f3" stroke="#315f7a" stroke-width="2" transform="rotate(-12 225 100)"/>
+              <circle cx="202" cy="119" r="9" fill="#334f66"/><circle cx="254" cy="108" r="9" fill="#334f66"/>
+              <path d="M270 85L357 65" stroke="#168774" stroke-width="3"/><path d="M344 58L358 64L350 77" fill="none" stroke="#168774" stroke-width="3"/>
+              <text x="270" y="51" font-size="14" fill="#126d5e">15 N uphill</text>
+              <text x="32" y="44" font-size="15" fill="#a76041">3 N friction downhill</text>
+              <text x="397" y="157" font-size="14" fill="#476677">↑ 0.5 m</text>
+              <text x="92" y="154" font-size="14" fill="#476677">2 m slope</text>
+            </svg>
+            <figcaption>New situation: movement is up a slope, so gravity now matters.</figcaption>
+          </figure>
+          <div class="stage-root" data-stage-root="C01">
+            <p>Interactive steps require JavaScript. The guided example is available above.</p>
+          </div>
+        </section>
+      </div>
+      <nav class="unit-next" aria-label="Next skill"><a href="#C02">Next: When the spring stops pushing →</a></nav>
+    </article>
+
+    <article class="unit" id="C02" data-topic="C02" aria-labelledby="c02-title">
+      <header class="unit-header">
+        <p class="eyebrow">Skill 2 of 2 · Spring contact and energy</p>
+        <h2 id="c02-title">🌀 When the spring stops pushing</h2>
+        <p class="unit-subtitle">One journey can have two different sets of forces. Find the point where the rules change.</p>
+      </header>
+      <div class="pair">
+        <section class="guide" aria-labelledby="c02-guide">
+          <p class="part-label">Core1A · Guided example</p>
+          <h3 id="c02-guide">A spring pushes a toy cart</h3>
+          <p>A <strong>1 kg</strong> cart begins at rest against a spring compressed by <strong>0.20 m</strong> with stiffness <strong>100 N/m</strong>. The cart is <strong>not attached</strong>. The whole track is smooth.</p>
+          <figure class="illustration">
+            <svg viewBox="0 0 500 170" role="img" aria-label="A cart pushed away from a compressed spring. Phase A contact, then phase B smooth track after spring returns to natural length.">
+              <path d="M20 123H479" stroke="#7597a6" stroke-width="3"/>
+              <path d="M44 62V127" stroke="#436d83" stroke-width="8"/>
+              <polyline points="50,97 64,97 71,77 83,116 95,77 107,116 119,97 131,97" fill="none" stroke="#bd7850" stroke-width="4"/>
+              <rect x="131" y="77" width="67" height="37" rx="6" fill="#cee9f1" stroke="#315f7a" stroke-width="2"/>
+              <circle cx="149" cy="118" r="8" fill="#315f7a"/><circle cx="181" cy="118" r="8" fill="#315f7a"/>
+              <path d="M217 84H275" stroke="#208575" stroke-width="4"/><path d="M263 73L277 84L263 95" fill="none" stroke="#208575" stroke-width="4"/>
+              <path d="M292 61V130" stroke="#9db6bd" stroke-width="2" stroke-dasharray="5 4"/>
+              <text x="35" y="38" fill="#825333" font-size="16">A · Spring contact</text><text x="315" y="38" fill="#206f6a" font-size="16">B · No spring push</text>
+              <text x="239" y="149" fill="#476677" font-size="13">Natural length</text>
+            </svg>
+            <figcaption>Spring push stops when it reaches natural length and contact ends.</figcaption>
+          </figure>
+          <ol class="guide-steps">
+            <li><strong>Divide the path:</strong> A = spring contact. B = after the spring returns to natural length. The spring cannot pull this unattached cart.</li>
+            <li><strong>Energy at the start:</strong> spring energy = ½kx² = ½ × 100 × 0.20² = <strong>2 J</strong>.</li>
+            <li><strong>At release:</strong> the 2 J becomes kinetic energy, so ½ × 1 × v² = 2. The cart leaves at <strong>2 m/s</strong>.</li>
+            <li><strong>Later on smooth ground:</strong> the spring no longer acts and friction is zero, so the cart continues at <strong>2 m/s</strong>.</li>
+          </ol>
+          <p class="guide-takeaway"><strong>Remember:</strong> Write one energy rule while contact exists, then check which forces act afterward. Do not continue adding spring work after separation.</p>
+          <details class="conditions"><summary>When can I use this method?</summary><p>The spring is ideal and not attached, the track is smooth, and energy loss is ignored. If rough ground begins later, friction belongs in that later region only.</p></details>
+        </section>
+        <section class="challenge" aria-labelledby="c02-challenge">
+          <p class="part-label independent">Core1B · Different challenge</p>
+          <h3 id="c02-challenge">The cart crosses a rough strip</h3>
+          <p>A <strong>2 kg</strong> toy cart begins at rest against an <strong>unattached spring</strong> of stiffness <strong>200 N/m</strong>, compressed by <strong>0.10 m</strong>. The launch is smooth until the spring reaches natural length. Then the cart immediately crosses a <strong>0.50 m rough strip</strong> with <strong>1 N</strong> friction. No motor acts. Does it cross, and what is its speed at the far end?</p>
+          <figure class="illustration">
+            <svg viewBox="0 0 500 164" role="img" aria-label="Cart first moves away from a compressed spring on smooth track, then enters a separate 0.50 metre rough strip with one-newton friction.">
+              <path d="M18 120H485" stroke="#7597a6" stroke-width="3"/>
+              <path d="M36 55V124" stroke="#426b83" stroke-width="8"/>
+              <polyline points="43,98 53,98 64,79 76,117 88,79 101,117 114,98" fill="none" stroke="#c18159" stroke-width="4"/>
+              <rect x="115" y="77" width="66" height="33" rx="5" fill="#cee6ef" stroke="#315f7a" stroke-width="2"/>
+              <circle cx="135" cy="116" r="7" fill="#315f7a"/><circle cx="166" cy="116" r="7" fill="#315f7a"/>
+              <path d="M248 53V123" stroke="#97aeb8" stroke-width="2" stroke-dasharray="5 4"/>
+              <path d="M249 124H468" stroke="#bd8059" stroke-width="9" stroke-dasharray="10 6"/>
+              <text x="30" y="35" font-size="15" fill="#366c69">Smooth spring launch</text>
+              <text x="289" y="35" font-size="15" fill="#a56139">Rough strip · 0.50 m</text>
+              <text x="253" y="148" font-size="13" fill="#476677">Spring stops here</text>
+            </svg>
+            <figcaption>Contact and rough ground are two different regions. Mark their boundary first.</figcaption>
+          </figure>
+          <div class="stage-root" data-stage-root="C02">
+            <p>Interactive steps require JavaScript. The guided example is available above.</p>
+          </div>
+        </section>
+      </div>
+      <nav class="unit-next" aria-label="Learning navigation"><a href="#C01">← Back to Skill 1</a><a href="learn-challenge.html">Explore the five foundations →</a></nav>
+    </article>
+    <footer class="end-note">
+      <strong>About this preview:</strong> These are newly authored, independent practice problems based on the C01/C02 conceptual teaching drafts—not original examination questions. Local browser storage is useful for practice, but it does <em>not</em> verify identity, grade written reasoning, securely hide an answer key, or establish academic Core1A/Core1B admission. Original source selections remain under review.
+    </footer>
+  </main>
+</body>
+</html>

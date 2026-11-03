@@ -5,7 +5,7 @@ from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 ROUTES = {
-    "physics/wpe/index.html": ("quicklinks", 6),
+    "physics/wpe/index.html": ("quicklinks", 7),
     "physics/wpe/learn-challenge.html": ("wpe-related-pages", 5),
     "preview/physics-wpe.html": ("wpe-learning-route", 5),
     "preview/practice.html": ("wpe-learning-route", 5),
