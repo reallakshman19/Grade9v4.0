@@ -99,3 +99,32 @@ def test_three_distinct_models_and_boundary_conditions():
     eq2=5/k;other2=2*eq2-x0
     assert eq2==.1 and other2==.4
     assert math.isclose(energy(x0,5),2) and math.isclose(energy(other2,5),2)
+
+
+def test_skill_explorer_four_tables_preserve_all_existing_destinations():
+    from urllib.parse import urlsplit
+    gateway=source("physics/wpe/learn-challenge.html")
+    area=gateway.split('<section class="skill-explorer"',1)[1].split('<section class="practice-manager"',1)[0]
+    expected={
+        "foundation-skills-title": [("#work-sign","01"),("#momentum-energy","02"),("#energy-motion","03"),
+                                    ("#potential-force","04"),("#momentum-fragments","05")],
+        "core-skills-title": [(f"d3d4-self-tutor.html#C{i:02}",f"C{i:02}") for i in range(1,9)],
+        "extension-skills-title": [(f"extension-learning.html#E{i:02}",f"E{i:02}") for i in range(1,6)],
+        "focused-skills-title": [(f"focused-journeys.html#F{i:02}",f"F{i:02}") for i in range(1,4)]
+    }
+    groups=re.findall(r'<section class="skill-group" aria-labelledby="([^"]+)">(.*?)</table></section>',area,re.S)
+    assert [name for name,_ in groups]==list(expected)
+    assert area.count('<table class="skill-table"')==4
+    assert area.count('<th scope="col">')==12
+    for name,group in groups:
+        rows=re.findall(r'<tr><th scope="row" class="skill-code">([^<]+)</th><td>.*?</td><td><a class="skill-open" href="([^"]+)"',group,re.S)
+        assert [(href,code) for code,href in rows]==expected[name],name
+        assert group.count('class="skill-open"')==len(expected[name])
+        for href,_ in expected[name]:
+            parsed=urlsplit(href)
+            target=WPE/parsed.path if parsed.path else WPE/"learn-challenge.html"
+            assert target.is_file(),(name,href)
+            assert f'id="{parsed.fragment}"' in target.read_text(encoding="utf-8"),(name,href)
+    css=source("physics/wpe/student-journey.css")
+    assert ".skill-table" in css and ".skill-open" in css and "@media(max-width:560px)" in css
+    assert ".skill-links" not in area
