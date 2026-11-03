@@ -287,6 +287,9 @@
       s.repair=value;s.stage=5;
     }else if(key==="boundary"&&s.stage===5&&s.boundary===null){
       const values=readValues(host);
+      if(data.boundaryFields.some(f=>f.id==="model")&&(!values.model||values.model==="Choose an idea")){
+        warn("Choose the changed-condition physical model before seeing the worked check.");return;
+      }
       if(!values.why?.trim()){warn("Explain your changed-condition decision before seeing its check.");return;}
       s.boundary={...values,capturedAt:new Date().toISOString()};
     }else{return;}
