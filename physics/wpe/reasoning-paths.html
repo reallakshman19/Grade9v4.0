@@ -83,12 +83,15 @@ try{
   if(coverage.schema==='wpe-learner-coverage-r1/v1'&&coverage.questions?.length===74&&id&&valid(id)){
    const plan=coverage.questions.find(q=>q.source_id===id);
    if(plan){
-    addLink(returns,'learn-challenge.html?question='+encodeURIComponent(id)+'#question-routes','Pick a source-specific learning route · '+id);
+    // Preserve the existing review-index contract for questions without
+    // a proposed source-to-construction association. The separate Learn
+    // Challenge tile handles related-only practice and missing gaps.
+    if(present||plan.fit==='FOCUSED_NEW'){
+      addLink(returns,'learn-challenge.html?question='+encodeURIComponent(id)+'#question-routes','Pick a source-specific learning route · '+id);
+    }
     if(plan.fit==='FOCUSED_NEW'&&/^F0[1-3]$/.test(plan.primary_lesson)){
       status.textContent=id+' · new focused interactive study route '+plan.primary_lesson+'. This is practice, not an admitted examination classification.';
       addLink(returns,plan.lesson_href,'New focused challenge · '+plan.primary_lesson);
-    }else if(!present){
-      status.textContent=id+' · '+(plan.fit==='MISSING_CONSTRUCTION'?'an essential construction is still missing.':'related practice exists but may not teach the full inference.')+' Choose the learning route to see the limitation.';
     }
    }
   }
