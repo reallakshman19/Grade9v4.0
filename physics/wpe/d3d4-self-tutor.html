@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#12384f">
-  <meta name="description" content="Four WPE practice journeys: learn, predict, attempt, reconstruct, diagnose, repair and test a changed condition.">
-  <title>Four thinking challenges · Work, Power and Energy</title>
+  <meta name="description" content="Six WPE practice journeys: learn, predict, attempt, reconstruct, diagnose, repair and test a changed condition.">
+  <title>Six thinking challenges · Work, Power and Energy</title>
   <link rel="stylesheet" href="../../site.css">
   <link rel="stylesheet" href="d3d4-self-tutor.css">
   <script src="d3d4-self-tutor.js" defer></script>
@@ -20,7 +20,7 @@
   </header>
   <main id="lesson-main" class="shell">
     <section class="welcome" aria-labelledby="page-title">
-      <p class="eyebrow">Four thinking skills · Student practice preview</p>
+      <p class="eyebrow">Six thinking skills · Student practice preview</p>
       <h1 id="page-title">Learn the idea. Then solve a <em>different</em> problem.</h1>
       <p>These are not speed tests. Use the worked example to learn a method, then keep your first thinking before seeing the answer. You can be unsure or make mistakes—that's how the next steps help.</p>
       <div class="how">
@@ -31,20 +31,22 @@
         <p>You can write <strong>“I’m not sure”</strong> in an answer. Your first attempt is saved on this browser and stays separate from your later repair. This page does not grade explanations.</p>
       </div>
       <div class="overall" aria-live="polite">
-        <span id="overall-count">0 of 4 challenges completed</span>
-        <progress id="overall-meter" value="0" max="4" aria-label="Completed boundary tests"></progress>
+        <span id="overall-count">0 of 6 challenges completed</span>
+        <progress id="overall-meter" value="0" max="6" aria-label="Completed boundary tests"></progress>
       </div>
       <nav class="topic-links" aria-label="Choose a lesson">
         <a href="#C01">1 · Every force counts</a>
         <a href="#C02">2 · When the spring stops pushing</a>
         <a href="#C03">3 · Energy added each second</a>
         <a href="#C04">4 · Only the hanging part</a>
+        <a href="#C05">5 · Read the axes first</a>
+        <a href="#C06">6 · Stay on the circle?</a>
       </nav>
     </section>
 
     <article class="unit" id="C01" data-topic="C01" aria-labelledby="c01-title">
       <header class="unit-header">
-        <p class="eyebrow">Skill 1 of 4 · Multi-force work and energy</p>
+        <p class="eyebrow">Skill 1 of 6 · Multi-force work and energy</p>
         <h2 id="c01-title">🛴 Every force counts</h2>
         <p class="unit-subtitle">A push helps, friction slows, gravity pulls—and your energy calculation must include them all.</p>
       </header>
@@ -116,7 +118,7 @@
 
     <article class="unit" id="C02" data-topic="C02" aria-labelledby="c02-title">
       <header class="unit-header">
-        <p class="eyebrow">Skill 2 of 4 · Spring contact and energy</p>
+        <p class="eyebrow">Skill 2 of 6 · Spring contact and energy</p>
         <h2 id="c02-title">🌀 When the spring stops pushing</h2>
         <p class="unit-subtitle">One journey can have two different sets of forces. Find the point where the rules change.</p>
       </header>
@@ -177,7 +179,7 @@
 
     <article class="unit" id="C03" data-topic="C03" aria-labelledby="c03-title">
       <header class="unit-header">
-        <p class="eyebrow">Skill 3 of 4 · Constant power</p>
+        <p class="eyebrow">Skill 3 of 6 · Constant power</p>
         <h2 id="c03-title">⚡ Energy added each second</h2>
         <p class="unit-subtitle">A motor can supply equal amounts of energy every second without making speed rise equally every second.</p>
       </header>
@@ -236,7 +238,7 @@
 
     <article class="unit" id="C04" data-topic="C04" aria-labelledby="c04-title">
       <header class="unit-header">
-        <p class="eyebrow">Skill 4 of 4 · Changing centre of mass</p>
+        <p class="eyebrow">Skill 4 of 6 · Changing centre of mass</p>
         <h2 id="c04-title">⛓️ Only the hanging part</h2>
         <p class="unit-subtitle">When a rope hangs over an edge, the amount of hanging rope—and the position of its middle—both change as you pull.</p>
       </header>
@@ -286,10 +288,146 @@
           <div class="stage-root" data-stage-root="C04"><p>Interactive steps require JavaScript. The guided example is available above.</p></div>
         </section>
       </div>
-      <nav class="unit-next" aria-label="Learning navigation"><a href="#C03">← Back to Skill 3</a><a href="#C01">Return to the first skill ↑</a></nav>
+      <nav class="unit-next" aria-label="Learning navigation"><a href="#C03">← Back to Skill 3</a><a href="#C05">Next: Read the axes first →</a></nav>
+    </article>
+
+    <article class="unit" id="C05" data-topic="C05" aria-labelledby="c05-title">
+      <header class="unit-header">
+        <p class="eyebrow">Skill 5 of 6 · Read graphs by their axes</p>
+        <h2 id="c05-title">📈 Read the axes first</h2>
+        <p class="unit-subtitle">Three graphs can look alike but mean very different things. Decide whether to find an area or a slope—and check the units.</p>
+      </header>
+      <div class="pair">
+        <section class="guide" aria-labelledby="c05-guide">
+          <p class="part-label">Core1A · Guided example</p>
+          <h3 id="c05-guide">Three graphs, three meanings</h3>
+          <p>Imagine three notebook graphs. First read the <strong>vertical and horizontal axes</strong>. Then decide what operation answers the question.</p>
+          <figure class="illustration">
+            <svg viewBox="0 0 520 174" role="img" aria-label="Three labeled graph sketches. A: force versus position horizontal at three newtons. B: potential energy versus position slopes down from nine to three joules. C: displacement versus time rises from zero to six metres over three seconds.">
+              <g fill="none" stroke="#74909c" stroke-width="2">
+                <path d="M31 131V30M31 131H165 M207 131V30M207 131H340 M382 131V30M382 131H506"/>
+              </g>
+              <g fill="#385e71" font-size="12" font-weight="600">
+                <text x="13" y="19">F (N)</text><text x="146" y="151">x (m)</text>
+                <text x="194" y="19">U (J)</text><text x="321" y="151">x (m)</text>
+                <text x="370" y="19">s (m)</text><text x="486" y="151">t (s)</text>
+              </g>
+              <path d="M32 72H145" stroke="#148577" stroke-width="4"/>
+              <path d="M208 39L324 103" stroke="#ad7150" stroke-width="4"/>
+              <path d="M383 131L498 39" stroke="#396f9a" stroke-width="4"/>
+              <g fill="#2e5769" font-size="12">
+                <text x="33" y="166">A · area</text><text x="217" y="166">B · slope</text><text x="395" y="166">C · slope</text>
+                <text x="39" y="64">3 N</text><text x="267" y="32">9 → 3 J</text><text x="417" y="35">0 → 6 m</text>
+              </g>
+            </svg>
+            <figcaption>Schematic graphs; exact endpoints are given in the text. The horizontal-axis unit is part of each physics decision.</figcaption>
+          </figure>
+          <ol class="guide-steps">
+            <li><strong>Graph A: force versus position.</strong> Force is +3 N from x = 0 to 2 m. The <em>area</em> is a rectangle: 3 × 2 = <strong>+6 J of work</strong>.</li>
+            <li><strong>Graph B: potential energy versus position.</strong> U falls from 9 J at x = 0 to 3 J at x = 2 m. The <em>slope</em> is (3 − 9) ÷ 2 = −3 J/m. The conservative force is the <em>negative</em> slope: <strong>+3 N</strong>.</li>
+            <li><strong>Graph C: displacement versus time.</strong> Displacement changes from 0 to 6 m over 3 s. The <em>slope</em> gives velocity: 6 ÷ 3 = <strong>2 m/s</strong>.</li>
+            <li><strong>Check the units:</strong> N × m = J for force–position area. J/m = N for potential–position slope. m/s is velocity for displacement–time slope.</li>
+            <li><strong>Say the choice first:</strong> “These axes show ___ against ___, so I use ___ because I need an answer in ___.”</li>
+          </ol>
+          <p class="guide-takeaway"><strong>Remember:</strong> a sloping line does not always mean a force, and an area does not always mean work. Read the axes <em>before</em> using a formula.</p>
+          <details class="conditions"><summary>Why do signs and graph corners matter?</summary><p>Work is signed when force acts with or against displacement. A conservative force equals minus the slope of its potential-energy graph. Velocity from a piecewise displacement–time plot is the slope <em>within the chosen straight interval</em>; at a sharp corner, a single instantaneous slope is not defined.</p></details>
+        </section>
+        <section class="challenge" aria-labelledby="c05-challenge">
+          <p class="part-label independent">Core1B · Different challenge</p>
+          <h3 id="c05-challenge">Robot lab: three mystery graph cards</h3>
+          <p>Read these <strong>new</strong> graph descriptions. Decide which operation—<strong>area or slope</strong>—you need, then calculate each answer with a unit.</p>
+          <div class="graph-cards">
+            <div><strong>Card R · Force–position</strong><p>Horizontal axis: x (m). Vertical axis: F (N). A straight line rises from <strong>(0 m, 0 N)</strong> to <strong>(4 m, 8 N)</strong>. The robot moves right. Find the <strong>work</strong> over 0–4 m.</p></div>
+            <div><strong>Card S · Potential–position</strong><p>Horizontal axis: x (m). Vertical axis: U (J). A straight line rises from <strong>(0 m, 2 J)</strong> to <strong>(2 m, 8 J)</strong>. Find the <strong>conservative force</strong> on this interval.</p></div>
+            <div><strong>Card T · Displacement–time</strong><p>Horizontal axis: t (s). Vertical axis: s (m). Straight segments join <strong>(0 s, 0 m)</strong>, <strong>(2 s, 4 m)</strong>, and <strong>(5 s, 16 m)</strong>. Find the <strong>velocity between 2 s and 5 s</strong>.</p></div>
+          </div>
+          <figure class="illustration">
+            <svg viewBox="0 0 520 167" role="img" aria-label="Three independently labeled new graph cards: R has a rising triangular force versus position line, S has rising potential versus position, T has two rising displacement versus time segments of differing slopes.">
+              <g stroke="#7e9aa8" fill="none" stroke-width="2">
+                <path d="M35 130V22M35 130H162M207 130V22M207 130H337M381 130V22M381 130H505"/>
+              </g>
+              <g fill="#345f73" font-size="12">
+                <text x="8" y="14">F (N)</text><text x="137" y="149">x (m)</text>
+                <text x="191" y="14">U (J)</text><text x="314" y="149">x (m)</text>
+                <text x="371" y="14">s (m)</text><text x="483" y="149">t (s)</text>
+              </g>
+              <path d="M35 130L156 32" stroke="#167d70" stroke-width="4"/>
+              <path d="M207 110L331 34" stroke="#aa714f" stroke-width="4"/>
+              <path d="M381 130L426 99L498 30" stroke="#326e9d" stroke-width="4" fill="none"/>
+              <g fill="#315769" font-size="12" font-weight="700"><text x="52" y="166">R · 0–4 m</text><text x="231" y="166">S · 0–2 m</text><text x="393" y="166">T · 2–5 s</text></g>
+            </svg>
+            <figcaption>The lines are sketched from the written coordinates; no original examination diagram is used.</figcaption>
+          </figure>
+          <div class="stage-root" data-stage-root="C05"><p>Interactive steps require JavaScript. The guided example is available above.</p></div>
+        </section>
+      </div>
+      <nav class="unit-next" aria-label="Learning navigation"><a href="#C04">← Back to Skill 4</a><a href="#C06">Next: Stay on the circle? →</a></nav>
+    </article>
+
+    <article class="unit" id="C06" data-topic="C06" aria-labelledby="c06-title">
+      <header class="unit-header">
+        <p class="eyebrow">Skill 6 of 6 · Vertical circular motion</p>
+        <h2 id="c06-title">🪀 Stay on the circle?</h2>
+        <p class="unit-subtitle">A moving ball may have enough energy to reach a height but still lack the inward pull needed to follow a taut circular path.</p>
+      </header>
+      <div class="pair">
+        <section class="guide" aria-labelledby="c06-guide">
+          <p class="part-label">Core1A · Guided example</p>
+          <h3 id="c06-guide">A ball circling on a string</h3>
+          <p>A <strong>0.5 kg</strong> ball moves in a vertical circle on a light, <strong>taut 2 m string</strong>. At the <strong>top</strong> its speed is <strong>6 m/s</strong>. Use <strong>g = 10 m/s²</strong>; ignore air resistance and pivot friction.</p>
+          <figure class="illustration">
+            <svg viewBox="0 0 520 232" role="img" aria-label="Vertical circular path with a top ball and bottom ball. At the top, inward points downward and gravity and string tension both point down. At the bottom, inward points upward; string tension points up and gravity down.">
+              <circle cx="242" cy="115" r="76" stroke="#8ba9b4" stroke-width="3" stroke-dasharray="6 5" fill="none"/>
+              <circle cx="242" cy="115" r="5" fill="#496b7c"/>
+              <path d="M242 115V39M242 115V191" stroke="#b7ccd4" stroke-width="2"/>
+              <circle cx="242" cy="39" r="12" fill="#cbe6f0" stroke="#325c74" stroke-width="2"/>
+              <circle cx="242" cy="191" r="12" fill="#cbe6f0" stroke="#325c74" stroke-width="2"/>
+              <path d="M227 55V91" stroke="#188479" stroke-width="4"/>
+              <path d="M219 79L227 94L235 79" stroke="#188479" stroke-width="3" fill="none"/>
+              <path d="M257 177V145" stroke="#188479" stroke-width="4"/>
+              <path d="M249 158L257 143L265 158" stroke="#188479" stroke-width="3" fill="none"/>
+              <g fill="#2b5669" font-size="15">
+                <text x="36" y="33">TOP: inward ↓</text><text x="36" y="52">gravity and tension ↓</text>
+                <text x="323" y="190">BOTTOM: inward ↑</text><text x="323" y="210">tension ↑, gravity ↓</text>
+                <text x="284" y="104">Centre</text><text x="42" y="211">Speed is tangent to the path</text>
+              </g>
+            </svg>
+            <figcaption>Point toward the centre first. A string can pull inward, but it cannot push outward to maintain a circle.</figcaption>
+          </figure>
+          <ol class="guide-steps">
+            <li><strong>At the top, inward is down.</strong> Gravity and string tension both act down. The needed inward force is mass × speed² ÷ radius.</li>
+            <li><strong>Find top tension:</strong> weight = 0.5 × 10 = 5 N. Needed inward force = 0.5 × 6² ÷ 2 = 9 N. So tension = 9 − 5 = <strong>+4 N</strong>. A positive tension is physically possible.</li>
+            <li><strong>Use energy from top to bottom:</strong> the top is twice the string length higher, or 4 m. Falling through 4 m gives the ball 0.5 × 10 × 4 = <strong>20 J</strong> extra kinetic energy.</li>
+            <li><strong>Find bottom speed:</strong> v² at the bottom = 6² + 4 × 10 × 2 = 116. Thus speed ≈ <strong>10.77 m/s</strong>.</li>
+            <li><strong>At the bottom, inward is up:</strong> tension acts up and gravity down. Tension − 5 = 0.5 × 116 ÷ 2 = 29 N, so bottom tension = <strong>34 N</strong>.</li>
+          </ol>
+          <p class="guide-takeaway"><strong>Remember:</strong> energy tells you a <em>possible speed</em>, while the inward-force equation checks whether the string can actually keep the ball on the circle. At the top, tension cannot be negative.</p>
+          <details class="conditions"><summary>What must I know before this advanced lesson?</summary><p>This extension uses inward (radial) acceleration = speed² ÷ radius. Radial acceleration changes the <em>direction</em> of the velocity. Velocity itself is tangent to the circle; at the bottom it is horizontal, not vertically upward. The force equations apply only while the light string is taut. Gravity also changes speed during travel; there is no air resistance.</p></details>
+        </section>
+        <section class="challenge" aria-labelledby="c06-challenge">
+          <p class="part-label independent">Core1B · Different challenge</p>
+          <h3 id="c06-challenge">Will a different string remain taut?</h3>
+          <p>A <strong>1 kg</strong> ball is attached to a light <strong>1 m string</strong> with a fixed pivot. At the <strong>bottom</strong> it is moving at <strong>7 m/s</strong>, tangent to the circle toward the rising side. The string begins taut. Use <strong>g = 10 m/s²</strong> and ignore air resistance.</p>
+          <p>Can the ball complete a full <strong>taut circular path</strong>? Check both the <strong>energy needed to reach the top height</strong> and the <strong>inward force the string must supply at the top</strong>. Explain what it means if the calculation gives a negative tension.</p>
+          <figure class="illustration">
+            <svg viewBox="0 0 520 195" role="img" aria-label="New one-metre vertical loop with a ball at its bottom moving tangentially. The top is two metres higher. A downward arrow at the top indicates inward direction; energy and tension must both be checked.">
+              <circle cx="260" cy="99" r="68" fill="none" stroke="#819eaa" stroke-width="3" stroke-dasharray="6 6"/>
+              <circle cx="260" cy="99" r="4" fill="#4a6f80"/>
+              <circle cx="260" cy="167" r="12" fill="#d0e7ef" stroke="#345f76" stroke-width="2"/>
+              <path d="M260 99V167" stroke="#90acba" stroke-width="3"/>
+              <path d="M279 167H357" stroke="#168676" stroke-width="4"/><path d="M344 157L359 167L344 177" stroke="#168676" stroke-width="3" fill="none"/>
+              <path d="M260 34V74" stroke="#a86b4f" stroke-width="3"/><path d="M252 61L260 76L268 61" stroke="#a86b4f" stroke-width="3" fill="none"/>
+              <g fill="#345e71" font-size="15"><text x="35" y="24">At top: inward ↓</text><text x="34" y="180">At bottom: 7 m/s →</text><text x="347" y="106">Height rise</text><text x="347" y="126">2 × 1 = 2 m</text></g>
+            </svg>
+            <figcaption>Energy might allow the height, yet the assumed taut circle can still fail. The challenge is to decide why.</figcaption>
+          </figure>
+          <div class="stage-root" data-stage-root="C06"><p>Interactive steps require JavaScript. The guided example is available above.</p></div>
+        </section>
+      </div>
+      <nav class="unit-next" aria-label="Learning navigation"><a href="#C05">← Back to Skill 5</a><a href="#C01">Return to Skill 1 ↑</a></nav>
     </article>
     <footer class="end-note">
-      <strong>About this preview:</strong> These are newly authored, independent practice problems based on the C01–C04 conceptual teaching drafts—not original examination questions. Local browser storage is useful for practice, but it does <em>not</em> verify identity, grade written reasoning, securely hide an answer key, or establish academic Core1A/Core1B admission. Original source selections remain under review.
+      <strong>About this preview:</strong> These are newly authored, independent practice problems based on the C01–C06 conceptual teaching drafts—not original examination questions. Local browser storage is useful for practice, but it does <em>not</em> verify identity, grade written reasoning, securely hide an answer key, or establish academic Core1A/Core1B admission. Original source selections remain under review.
     </footer>
   </main>
 </body>
