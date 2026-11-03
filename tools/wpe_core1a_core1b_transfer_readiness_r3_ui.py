@@ -153,11 +153,37 @@ def test_case(browser,base,screen,source,lesson,wrong_model,wrong_assumption,wro
               "Separate committed answers not persistent")
         check(page.evaluate("document.documentElement.scrollWidth<=innerWidth+3"),
               "R3 horizontal overflow at "+str(width))
+        # Independently finish original Task A on this SAME device after B.
+        # No common gateway or legacy main route selector is assumed here.
+        page.locator("[data-variant='T1']").click()
+        check(root.locator(".stage-card h3").inner_text()=="3. Reconstruct",
+              "Task A committed step changed after Task B completion")
+        root.locator('[data-action="reconstruct"]').click()
+        check(root.locator(".stage-card h3").inner_text()=="4. Diagnose","A diagnosis stage missing")
+        root.locator('[data-diagnosis]').select_option("model")
+        root.locator('[data-field="why"]').fill("I checked the separate Task A force/energy owner and assumptions.")
+        root.locator('[data-action="diagnose"]').click()
+        check(root.locator(".stage-card h3").inner_text()=="5. Repair","A repair stage missing")
+        root.locator('[data-field="repair"]').fill("I now know which physical ledger and limiting case to check.")
+        root.locator('[data-action="repair"]').click()
+        check(root.locator(".stage-card h3").inner_text()=="6. Boundary test","A boundary stage missing")
+        check(root.locator(".worked").count()==0,"Original Task A boundary leaked before attempt")
+        boundary_numeric=root.locator('.stage-card input[type="number"][data-field]')
+        if boundary_numeric.count():boundary_numeric.first.fill("999")
+        root.locator('[data-field="why"]').fill("An altered condition requires a new physical decision and revised calculation.")
+        root.locator('[data-action="boundary"]').click()
+        check(root.locator(".worked").count()==1,"Original Task A worked boundary not unlocked after attempt")
+        check(state(page,lesson)["first"]==Afirst,"Original A first attempt overwritten during repair")
+        check(state(page,lesson+"-T2")["first"]==Bfirst,"Original B first attempt overwritten during A repair")
+        check(page.locator("#progress-label").inner_text().startswith("1 of 5"),"Original A progress missing")
+        page.locator("[data-variant='T2']").click()
+        check(root.locator(".stage-card h3").inner_text()=="6. Boundary test","B stage no longer complete")
+        check(state(page,lesson+"-T2")["first"]==Bfirst,"B first attempt changed")
         root.locator(".return-original").first.click()
         check(page.locator(".qtitle").inner_text()==source,"Exact source not recovered after R3")
         check(page.locator("#solution-container .solution").count()==0,"Original source answer automatically revealed")
         check(not errors,"Browser errors "+repr(errors))
-        print("PASS R3 "+lesson+" "+source+" two independent commits + unfamiliar transfer "+str(width)+"x"+str(height))
+        print("PASS R3 "+lesson+" "+source+" two complete six-stage tasks + separate immutable first attempts "+str(width)+"x"+str(height))
     finally:
         context.close()
 
