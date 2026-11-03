@@ -74,6 +74,29 @@ else if(present){
  addLink(returns,'../../preview/question-status.html?question='+encodeURIComponent(id),'Return to '+id+' (review candidate)');
 }else if(pilot&&!pilot.reader_present){status.textContent=id+' is absent from the 74-entry Question Bank. No reader link is supplied.';}
 else{status.textContent='No source-bound route exists for '+id+'. No academic mapping is inferred.';}
+// Add the new evidence-based 74-question practice overlay without changing
+// the pre-existing thirteen author-proposed QRT/Blueprint associations.
+try{
+ const r=await fetch('learning-coverage-r1.json',{cache:'no-store'});
+ if(r.ok){
+  const coverage=await r.json();
+  if(coverage.schema==='wpe-learner-coverage-r1/v1'&&coverage.questions?.length===74&&id&&valid(id)){
+   const plan=coverage.questions.find(q=>q.source_id===id);
+   if(plan){
+    // Preserve the existing review-index contract for questions without
+    // a proposed source-to-construction association. The separate Learn
+    // Challenge tile handles related-only practice and missing gaps.
+    if(present||plan.fit==='FOCUSED_NEW'){
+      addLink(returns,'learn-challenge.html?question='+encodeURIComponent(id)+'#question-routes','Pick a source-specific learning route · '+id);
+    }
+    if(plan.fit==='FOCUSED_NEW'&&/^F0[1-3]$/.test(plan.primary_lesson)){
+      status.textContent=id+' · new focused interactive study route '+plan.primary_lesson+'. This is practice, not an admitted examination classification.';
+      addLink(returns,plan.lesson_href,'New focused challenge · '+plan.primary_lesson);
+    }
+   }
+  }
+ }
+}catch(_){/* Existing thirteen author-bound review routes remain usable. */}
 cards.replaceChildren();
 for(const route of d.constructions){
  const card=document.createElement('article');card.className='route-card';card.id=route.id||'wpe-extension-pending';const match=matches.some(c=>c.id===route.id);card.dataset.match=match?'yes':'no';

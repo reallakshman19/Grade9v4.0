@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Related reasoning practice · WPE Learn → Challenge</title>
+<link rel="stylesheet" href="../../site.css">
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f3f8fa;color:#1c3d50;font:16px/1.5 system-ui,sans-serif}
+header{background:#174457;color:white;padding:14px 18px}header a{color:white;font-weight:750}
+main{max-width:1280px;margin:0 auto;padding:15px}.context{background:#fff;border:1px solid #c7dce6;border-radius:13px;padding:15px 19px;margin-bottom:15px}
+.context h1{font-size:clamp(1.3rem,3.5vw,2rem);margin:8px 0}.context p{max-width:1000px;margin:7px 0}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}.actions a{display:inline-block;min-height:44px;padding:10px 14px;border-radius:9px;background:#137c70;color:#fff;text-decoration:none;font-weight:780}
+.actions a.secondary{background:#edf6f8;color:#1d556a;border:1px solid #a2bdc7}
+.frame{border:2px solid #bcd3df;border-radius:10px;overflow:hidden;background:white}
+iframe{display:block;width:100%;height:max(80vh,830px);border:0;background:white}
+.notice{font-size:.84rem;color:#4b6979}
+@media(max-width:590px){main{padding:9px}.context{padding:13px}iframe{height:80vh}}
+a:focus-visible,iframe:focus-visible{outline:3px solid #d8a14d;outline-offset:3px}
+</style>
+</head>
+<body>
+<header><a href="learn-challenge.html#question-routes">← Back to Learn → Challenge</a></header>
+<main>
+<section class="context" aria-live="polite">
+<p><strong>Related reasoning practice · Suggested, not guaranteed sufficient</strong></p>
+<h1 id="title">Checking the original question and lesson…</h1>
+<p id="goal">This page preserves the exact Question Bank return while showing an existing completed lesson unchanged.</p>
+<p id="limit"></p>
+<nav class="actions" id="actions" aria-label="Question and learning navigation"></nav>
+<p class="notice">The completed lesson below runs as it was authored. Your source question is preserved by this outer learning page; the embedded lesson is for a different practice problem.</p>
+</section>
+<div class="frame" id="frame"></div>
+</main>
+<script>
+(async()=>{
+"use strict";
+const q=new URLSearchParams(location.search),question=q.get("question"),lesson=q.get("lesson");
+const title=document.getElementById("title"),goal=document.getElementById("goal"),limit=document.getElementById("limit"),actions=document.getElementById("actions"),host=document.getElementById("frame");
+const link=(href,label,cls)=>{const a=document.createElement("a");a.href=href;a.textContent=label;if(cls)a.className=cls;actions.append(a);};
+if(!/^[A-Za-z0-9-]{2,64}$/.test(question||"")||!/^(C0[1-8]|E0[1-5]|F0[1-3])$/.test(lesson||"")){title.textContent="No valid source-bound lesson selected.";return;}
+try{
+ const [r,b]=await Promise.all([fetch("learning-coverage-r1.json"),fetch("../../workspace/output/WPE_Core2_Consolidated_20261102/native-candidate/selected_bank.review.json")]);
+ if(!r.ok||!b.ok)throw Error("Missing coverage or Question Bank evidence");
+ const data=await r.json(),bank=await b.json();
+ if(data.schema!=="wpe-learner-coverage-r1/v1"||bank.questions?.length!==74)throw Error("Unexpected source inventory");
+ const row=data.questions.find(x=>x.source_id===question);
+ const original=bank.questions.find(x=>x.source_id===question);
+ if(!row||row.primary_lesson!==lesson||row.fit!=="RELATED_BRIDGE"&&row.fit!=="TARGETED_PRACTICE"||original?.stem_sha256!==row.stem_sha256)throw Error("No exact source-to-related-lesson match");
+ title.textContent="From "+question+" to "+lesson+" · related practice";
+ goal.textContent="Reasoning to practise: "+row.student_goal;
+ limit.textContent="Important limit: "+row.teaching_limit;
+ link("../../preview/question-status.html?question="+encodeURIComponent(question),"Return to "+question+" without revealing its answer");
+ link("learn-challenge.html?question="+encodeURIComponent(question)+"#question-routes","Choose another learning route","secondary");
+ const frame=document.createElement("iframe");
+ frame.title="Unchanged WPE "+lesson+" interactive lesson and fresh challenge";
+ frame.loading="eager";
+ frame.src=(lesson.startsWith("E")?"extension-learning.html":lesson.startsWith("F")?"focused-journeys.html":"d3d4-self-tutor.html")+"#"+lesson;
+ host.append(frame);
+}catch(error){title.textContent="Lesson route unavailable";goal.textContent="We could not confirm a matching Question Bank record and learning route.";limit.textContent="No link or lesson inferred.";host.textContent=""; }
+})();
+</script>
+</body></html>
