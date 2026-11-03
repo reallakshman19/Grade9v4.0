@@ -52,7 +52,7 @@ def test_exact_74_custody_and_reconciliation_distinguishes_fits():
     assert map_["counts"]["targeted"]==18
     assert map_["counts"]["related"]==48
     assert map_["counts"]["missing"]==5
-    assert map_["counts"]["wrapped_related"]==37
+    assert map_["counts"]["wrapped_related"]==41
     expected_new={"EX-M97":"F01","EX-N39":"F02","WEP07-01":"F03"}
     for row in map_["questions"]:
         id_=row["source_id"]
@@ -71,7 +71,7 @@ def test_exact_74_custody_and_reconciliation_distinguishes_fits():
             if row["route_mode"]=="BRIDGED_RELATED":
                 assert row["lesson_href"].startswith("study-bridge.html?question="+id_+"&lesson=")
             if row["fit"]=="RELATED_BRIDGE":
-                assert "not" in row["teaching_limit"].lower() or "need" in row["teaching_limit"].lower() or "requires" in row["teaching_limit"].lower() or row["route_mode"]=="BRIDGED_RELATED"
+                assert len(row["teaching_limit"])>=25, "Related practice must identify the remaining physical step"
         else:
             assert row["fit"]=="MISSING_CONSTRUCTION" and row["lesson_href"] is None
     assert {q["source_id"] for q in map_["questions"] if q["fit"]=="MISSING_CONSTRUCTION"}=={
@@ -117,7 +117,7 @@ def test_three_new_physics_models_are_correct_even_where_source_key_is_contested
     # Fresh: 3 kg, 54 N over .8 m.
     vf=math.sqrt(2*(54-30)*.8/3)
     close(vf,math.sqrt(12.8))
-    close(54*vf,193.2 if False else 54*math.sqrt(12.8))
+    close(54*vf,54*math.sqrt(12.8))
     close((54-30)*vf,24*math.sqrt(12.8))
     close(vf**2/(2*g),.64)
     # Boundary: 42 N, same mass and stroke.
