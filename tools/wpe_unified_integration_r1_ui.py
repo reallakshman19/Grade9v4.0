@@ -171,6 +171,13 @@ def focus_variants(page,base):
         verify(page.locator("#source-return").get_attribute("href").endswith("question="+source),id_+" source ID lost")
         verify(page.locator("iframe").count()==0,id_+" iframe")
 
+    page.goto(base+"/physics/wpe/learn-challenge.html#practice-manager")
+    page.locator("#journey-clear").click()
+    verify(saved(page,"g9:wpe:focused:v1:F01") is None,"Lesson clear left first focused attempt")
+    verify(saved(page,"g9:wpe:focused:v1:F01:transfer") is None,"Lesson clear left transfer focused attempt")
+    verify(saved(page,"g9:wpe:focused:v1:F02:transfer") is None,"Lesson clear left another transfer")
+    verify(saved(page,"g9:wpe:core2:attempt:v1:EX-N39")["committed"],"Lesson clear erased original source attempt")
+
 def main():
     service,base=server()
     try:
