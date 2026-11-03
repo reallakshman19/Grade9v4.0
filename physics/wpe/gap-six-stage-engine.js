@@ -28,14 +28,20 @@
   const svgLine=(parent,x1,y1,x2,y2,color="#719ba8",weight=3)=>svg(parent,"line",{x1,y1,x2,y2,stroke:color,"stroke-width":weight});
   const nice=n=>Number(n.toFixed(3)).toString();
   function blank(id){return {schema:1,id,stage:0,prediction:"",predictionDraft:"",draft:{},first:null,hints:[],checks:[],diagnosis:null,repair:"",boundary:null,helpHistory:[],exposure:"UNASSISTED_UNTIL_FIRST_ATTEMPT"};}
-  const states={};
+  /* R3: Task A preserves the original R2 key; Task B has a separate key.
+   * No state is copied between tasks, including hints, first attempt or repair. */
+  const states={},variantOf={};
+  const taskKey=id=>id+(variantOf[id]==="T2"?"-T2":"");
   let storageWorks=true;
   for(const id of ids){
-    let s=null;
-    try{s=JSON.parse(localStorage.getItem(prefix+id)||"null");}catch(_){}
-    states[id]=(s&&s.schema===1&&s.id===id&&Number.isInteger(s.stage)&&s.stage>=0&&s.stage<=5&&(s.stage<2||(s.first&&s.first.answers&&typeof s.first.answers.reason==="string")))?s:blank(id);
+    try{variantOf[id]=localStorage.getItem(prefix+"selected:"+id)==="T2"?"T2":"T1";}catch(_){variantOf[id]="T1";}
+    for(const key of [id,id+"-T2"]){
+      let s=null;
+      try{s=JSON.parse(localStorage.getItem(prefix+key)||"null");}catch(_){}
+      states[key]=(s&&s.schema===1&&s.id===key&&Number.isInteger(s.stage)&&s.stage>=0&&s.stage<=5&&(s.stage<2||(s.first&&s.first.answers&&typeof s.first.answers.reason==="string")))?s:blank(key);
+    }
   }
-  function persist(id){try{localStorage.setItem(prefix+id,JSON.stringify(states[id]));return true;}catch(_){storageWorks=false;$("#save-notice").hidden=false;return false;}}
+  function persist(id){const key=taskKey(id);try{localStorage.setItem(prefix+key,JSON.stringify(states[key]));return true;}catch(_){storageWorks=false;$("#save-notice").hidden=false;return false;}}
   let active=ids[0], sourceLink=null;
   function input(parent,id,field,value){
     const group=add(parent,"div",null,"field");
@@ -81,6 +87,20 @@
       const li=add(ol,"li");add(li,"strong",name+". ");
       li.append(doc.createTextNode(description));
     }
+    if(data.academic){
+      const a=add(guide,"section",null,"academic-checkpoint");
+      add(a,"h3","Check the model before trusting the formula");
+      paragraph(a,data.academic.decision);
+      const table=add(a,"dl",null,"academic-observations");
+      for(const [name,value] of [
+        ["What the picture/control can test",data.academic.observe],
+        ["Conditions to verify",data.academic.validity],
+        ["Try an extreme or changed case",data.academic.limit]
+      ]){add(table,"dt",name);add(table,"dd",value);}
+      const source=add(a,"details",null,"source-claim");
+      add(source,"summary","Where this original question needs care");
+      paragraph(source,data.academic.sourceBoundary);
+    }
     const contrast=add(guide,"details",null,"bridge");
     add(contrast,"summary","Compare a tempting wrong approach");
     paragraph(contrast,data.wrong);
@@ -95,7 +115,7 @@
       return {status:"missing",text:"No model decision or value entered yet. "+field.mistake};
     const good=field.type==="select"?value===field.expected:Number.isFinite(numeric(value))&&Math.abs(numeric(value)-field.expected)<=field.tol;
     return good?{status:"matches",text:"Your entry matches this authored model. Check that your explanation also justifies it."}
-      :{status:"review",text:"Review this step: "+field.mistake};
+      :{status:"review",text:"Review this step ("+(field.errorKind||"MODEL_OR_CALCULATION")+"): "+field.mistake};
   }
   function drawAssessment(host,fields,answer){
     const summary=add(host,"section",null,"assessment");
@@ -134,7 +154,7 @@
   }
   function showStage(host,id,d,focus){
     host.replaceChildren();
-    const s=states[id];
+    const s=states[taskKey(id)];
     stepHeader(host,s);
     const box=add(host,"section",null,"stage-card");
     const title=add(box,"h3",(s.stage+1)+". "+stages[s.stage]);title.tabIndex=-1;
@@ -219,12 +239,13 @@
   function dispatch(host,id,data,event){
     const btn=event.target.closest("button[data-action]");
     if(!btn||!host.contains(btn))return;
-    const s=states[id],key=btn.dataset.action;
+    const s=states[taskKey(id)],key=btn.dataset.action;
     const warn=message=>{const n=$("[data-notice]",host);if(n)n.textContent=message;};
     if(key==="reset"){
       if(!window.confirm("Clear this lesson's saved prediction, first attempt, hints, diagnosis and repair?"))return;
-      try{localStorage.removeItem(prefix+id)}catch(_){}
-      states[id]=blank(id);render();return;
+      const current=taskKey(id);
+      try{localStorage.removeItem(prefix+current)}catch(_){}
+      states[current]=blank(current);render();return;
     }
     if(key==="hint"&&s.stage===1&&s.first===null&&s.hints.length<data.hints.length){
       const idx=s.hints.length;s.hints.push(idx);
@@ -275,6 +296,9 @@
     const count=ids.filter(x=>states[x].boundary!==null).length;
     $("#progress-label").textContent=count+" of "+ids.length+" fresh boundary challenges completed";
     $("#progress-meter").value=count;
+    const extraCount=ids.filter(x=>states[x+"-T2"]?.boundary!==null).length;
+    const extra=$("#transfer-progress-label");
+    if(extra)extra.textContent=extraCount+" of "+ids.length+" unfamiliar-setting tasks completed";
     for(const id of ids){
       const a=$('[data-journey="'+id+'"]');
       a.classList.toggle("complete",states[id].boundary!==null);
@@ -294,22 +318,37 @@
     const grid=add(article,"div",null,"learning-grid");
     buildGuide(grid,active,d);
     const challenge=add(grid,"section",null,"challenge");
+    const selector=add(challenge,"div",null,"variant-switch");
+    selector.setAttribute("role","group");
+    selector.setAttribute("aria-label","Two different problems with separate saved first attempts");
+    for(const [variant,label] of [["T1","Task A · guided topic transfer"],["T2","Task B · unfamiliar setting"]]){
+      const b=add(selector,"button",label,variantOf[active]===variant?"selected":"secondary");
+      b.type="button";b.dataset.variant=variant;b.setAttribute("aria-pressed",String(variantOf[active]===variant));
+      b.addEventListener("click",()=>{
+        variantOf[active]=variant;
+        try{localStorage.setItem(prefix+"selected:"+active,variant)}catch(_){}
+        render(true);
+      });
+    }
+    const problem=variantOf[active]==="T2"?{...d,...d.transfer}:d;
+    paragraph(challenge,variantOf[active]==="T2"?problem.label:
+      "Task A · First fresh problem (independent record)","mini");
     paragraph(challenge,"CORE1B · A genuinely different problem","mini");
     add(challenge,"h2","Predict → Attempt → Reconstruct → Diagnose → Repair → Boundary test");
-    paragraph(challenge,"Original thinking is saved before the worked answer. Study hints are optional; the boundary is a different condition.");
+    paragraph(challenge,"Task A and Task B have separate first attempts, optional cues, diagnoses, repairs and changed-condition results. Switching tasks cannot reveal the other task's worked answer.");
     const host=add(challenge,"div",null,"stage-root");host.dataset.stageRoot=active;
-    host.addEventListener("click",e=>dispatch(host,active,d,e));
+    host.addEventListener("click",e=>dispatch(host,active,problem,e));
     host.addEventListener("input",()=>{
-      const s=states[active];
+      const s=states[taskKey(active)];
       if(s.stage===0)s.predictionDraft=$('[data-field="prediction"]',host)?.value||"";
       else if(s.stage===1&&s.first===null)s.draft=readValues(host);
       else return;
       persist(active);
     });
     host.addEventListener("change",()=>{
-      const s=states[active];if(s.stage===1&&s.first===null){s.draft=readValues(host);persist(active);}
+      const s=states[taskKey(active)];if(s.stage===1&&s.first===null){s.draft=readValues(host);persist(active);}
     });
-    showStage(host,active,d,focus);
+    showStage(host,active,problem,focus);
     const footer=add(article,"nav",null,"lesson-footer");footer.setAttribute("aria-label","Other focused journeys");
     const n=ids.indexOf(active);
     const prev=add(footer,"a",n?"← Previous new journey":"Learn → Challenge tile");prev.href=n?"#"+ids[n-1]:"learn-challenge.html";
