@@ -86,6 +86,20 @@ The earlier eight reusable construction packs are still intact. Five **source-th
 
 The inventory and machine-check values appear in [P0_P1_CONSTRUCTION_BRIDGE.json](P0_P1_CONSTRUCTION_BRIDGE.json) under `extension_inventory` and `extension_solution_checks`. The independent `tests/test_wpe_d3d4_extensions.py` recomputes turning-point inequalities, signed power, spring/contact flight and geometric bounces; `tests/test_wpe_d3d4_radial_force.py` checks the radial potential and circular-force cases. These are *mathematical correctness checks*, not student testing, independent B3/B4/QRT qualification or secure answer containment.
 
+## Three newly authored previously unmapped reader-D3 bridges (E06–E08)
+
+These **additional** P1 author packs complete a *proposed practice route* for the three D3 source IDs left unmapped by the original C01–C08 + E01–E05 inventory. They do not change the original five-extension backlog in `P0_P1_CONSTRUCTION_BRIDGE.json`, whose historical exact-source pins remain intact.
+
+| New practice pack | Proposed source theme | Child-owned inference and fresh-boundary check | Current status |
+|---|---|---|---|
+| [E06 · Vertical push and applied power](VERTICAL_PUSH_POWER_LEARNING_PACK.md) | EX-M97 · reader SYNTHESIZE/D3 | Separate force supplied by the upward push from net accelerating force, calculate work during **contact** and later free-flight height; change later rise from 0.80 to 0.45 m | Authored Core1A + fresh six-stage Core1B preview; original key HOLD |
+| [E07 · Incline round-trip friction](INCLINE_ROUND_TRIP_FRICTION_LEARNING_PACK.md) | EX-N39 · reader SYNTHESIZE/D3 | Opposing friction on both uphill and downhill legs, same stopping distance, new 45° speed-ratio case 2/3 → 3/4 | Authored preview; source/key/QRT NOT_ADMITTED |
+| [E08 · Force-switched spring potential](SWITCHED_SPRING_FORCE_LEARNING_PACK.md) | WEP07-01 · reader MODEL/D3 | Signed compressed starting position, **new effective potential** and turning-point symmetry about new equilibrium; force switch +15 → +5 N | Authored preview; source/key/QRT NOT_ADMITTED |
+
+**Specific unresolved EX-M97 issue:** the selected bank's coaching explanation computes `net accelerating force × take-off speed` and describes the result as delivered muscle power. Under its stated constant upward applied contact force, the *external applied force* is `m(a+g)`, whereas the net force is `ma`. Their instantaneous powers differ by the rate of gravitational energy gain during contact. Do **not** present the coaching value or any source answer choice as an authenticated key; request exact original diagram, wording, key correspondence and a fresh independent physics review. Our E06 authored scenario uses distinct values and clearly asks for **applied mechanical power** rather than physiological/metabolic power.
+
+The separate interactive E01–E08 student experience is [extension-learning.html](../../physics/wpe/extension-learning.html). E06–E08 reuse its existing six-stage response protection and different fresh authored problems. All topic-source joins remain `PROPOSED_UNQUALIFIED` in [the 74-question register](../../architecture/qrt-blueprint-protocol/wpe-coverage.html); **22 related D3/D4 learning routes, 0 native QRT-admitted originals, 0 independently verified exact transfer matches**. Do not infer a completed B1–B7 native MAIN-plus-instance tile from a finished practice lesson.
+
 ## The current five foundational pairs remain distinct
 
 The previous five pairs teach work sign, momentum/kinetic energy, energy reachability, potential-energy slope and spring-driven cart momentum. They remain useful foundations but do **not** establish the missing D3/D4 constructions above.
