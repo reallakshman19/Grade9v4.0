@@ -329,6 +329,137 @@ def test_wpe_learning_route(browser):
             context.close()
     print("PASS: WPE five-surface learning route, anchored return, disclosure and attempt gates.")
 
+def test_six_stage_construction_lab(browser):
+    """Run both student reconstruction journeys at desktop and mobile widths.
+
+    Browser storage is a UX persistence check, never an independent first-attempt witness.
+    """
+    for width, height in ((1280, 800), (390, 844)):
+        context = browser.new_context(viewport={"width": width, "height": height}, device_scale_factor=1)
+        try:
+            page = context.new_page()
+            errors, answers_requests = [], []
+            page.on("pageerror", lambda exc: errors.append(str(exc)))
+            page.on("request", lambda req: answers_requests.append(req.url)
+                    if req.url.endswith("/construction-lab-answers.json") else None)
+            response = page.goto(URL, wait_until="load")
+            check(response is not None and response.status == 200, "Construction lab page missing")
+            check(page.locator('article.lesson').count() == 5, "Original five foundations changed")
+            check(page.locator(".lab-card").count() == 2, "Expected two six-stage construction cards")
+            check(page.locator("#lab-progress-count").inner_text() ==
+                  "0 of 2 reflection journeys completed", "Initial lab progress wrong")
+            check(not answers_requests, "Worked check fetched before any learner attempt")
+            check(page.locator(".lab-card .lab-reference").count() == 0, "Worked check leaked before attempt")
+
+            inputs = {
+                "C01": {
+                    "motor": "30", "friction": "-6", "gravity": "-15", "normal": "0",
+                    "net": "9", "speed": "sqrt(6) approximately 2.45"
+                },
+                "C02": {
+                    "springEnergy": "1", "releaseEnergy": "1", "releaseSpeed": "1",
+                    "friction": "-0.5", "finishEnergy": "0.5", "finishSpeed": "sqrt(0.5)"
+                }
+            }
+            initial_snapshots = {}
+            for code in ("C01", "C02"):
+                lab = page.locator('[data-lab="' + code + '"]')
+                stage = lab.locator(".lab-stage")
+                check("1 · Predict" in stage.locator("h4").inner_text(), "Prediction phase missing " + code)
+                check(lab.locator(".lab-first").count() == 0, "Prior attempt displayed before commitment")
+                check(stage.locator('[data-field="prediction"]').count() == 1,
+                      "Prediction input missing " + code)
+                stage.locator('[data-field="prediction"]').fill(
+                    "I predict the path and the energy will change based on each force and phase.")
+                stage.get_by_role("button", name="Save prediction").click()
+                check("2 · Attempt" in stage.locator("h4").inner_text(), "Attempt phase missing " + code)
+                check(not answers_requests, "Hints or answers fetched before first attempt")
+                stage.get_by_role("button", name="Lock my first attempt").click()
+                check("Fill in" in lab.locator(".lab-status").inner_text(),
+                      "Blank first attempt incorrectly accepted " + code)
+                for field_name, value in inputs[code].items():
+                    stage.locator('[data-field="' + field_name + '"]').fill(value)
+                stage.locator('[data-field="explanation"]').fill(
+                    "I used the force and motion directions, plus two separate regions when needed.")
+                stage.get_by_role("button", name="Lock my first attempt").click()
+                check("3 · Reconstruct" in stage.locator("h4").inner_text(),
+                      "Post-attempt reconstruction missing " + code)
+                check(not answers_requests, "Worked file fetched before explicit post-attempt request")
+                key = "g9:wpe:six-stage-lab:v1:" + code
+                first = page.evaluate("(k) => JSON.parse(localStorage.getItem(k))", key)
+                check(first and first["step"] == 2 and first["attempt"]["values"] == inputs[code],
+                      "First attempt not saved accurately " + code)
+                initial_snapshots[code] = first["attempt"]
+                check(lab.locator(".lab-first").count() == 1, "Immutable first attempt not displayed")
+                if code == "C01":
+                    stage.get_by_role("button", name="Show hint 1").click()
+                    check("Hint 1:" in stage.inner_text(), "Optional first hint missing")
+                    check(not answers_requests, "Hint prematurely requested worked answer")
+                else:
+                    check("Hint 1:" not in stage.inner_text(),
+                          "Hint was revealed without learner asking for it")
+                stage.get_by_role("button", name="Open worked reconstruction").click()
+                stage.locator(".lab-reference").first.wait_for()
+                check("Worked reconstruction" in stage.inner_text(), "Worked explanation missing")
+                check("Check my own explanation" in stage.inner_text(), "Self-assessment criteria missing")
+                check(len(answers_requests) >= 1, "Post-attempt worked-check file not fetched")
+                stage.get_by_role("button", name="I compared the model").click()
+                check("4 · Diagnose" in stage.locator("h4").inner_text(), "Diagnose stage missing")
+                stage.locator('[data-field="diagnosis"]').select_option(index=1)
+                stage.locator('[data-field="diagnosis-note"]').fill(
+                    "A learner may miss a force or place a phase boundary in the wrong position.")
+                stage.get_by_role("button", name="Save diagnosis").click()
+                check("5 · Repair" in stage.locator("h4").inner_text(), "Repair stage missing")
+                stage.locator('[data-field="repair-change"]').fill(
+                    "I verified each force sign and the exact place where the model changes.")
+                stage.locator('[data-field="repair-work"]').fill(
+                    "I recalculated the energy ledger and checked the speed from kinetic energy.")
+                stage.get_by_role("button", name="Save repair").click()
+                check("6 · Boundary test" in stage.locator("h4").inner_text(), "Boundary stage missing")
+                check("Changed-condition model" not in stage.inner_text(),
+                      "Boundary model revealed before boundary attempt")
+                stage.locator('[data-field="boundary"]').fill(
+                    "In the changed situation, the updated energy ledger sets a new stopping boundary.")
+                stage.get_by_role("button", name="Lock boundary answer").click()
+                stage.get_by_text("Changed-condition model").wait_for()
+                after = page.evaluate("(k) => JSON.parse(localStorage.getItem(k))", key)
+                check(after["step"] == 6 and after["attempt"] == first["attempt"],
+                      "First attempt was modified by diagnosis or repair " + code)
+                check(after["diagnosis"] and after["repair"] and after["boundary"],
+                      "Six stages not saved separately " + code)
+
+            check(page.locator("#lab-progress-count").inner_text() ==
+                  "2 of 2 reflection journeys completed", "All-six-stage progress did not advance")
+            page.reload(wait_until="load")
+            check(page.locator("#lab-progress-count").inner_text() ==
+                  "2 of 2 reflection journeys completed", "Completed state did not restore")
+            for code in ("C01", "C02"):
+                lab = page.locator('[data-lab="' + code + '"]')
+                key = "g9:wpe:six-stage-lab:v1:" + code
+                state = page.evaluate("(k) => JSON.parse(localStorage.getItem(k))", key)
+                check(state["attempt"] == initial_snapshots[code], "Reload lost first attempt " + code)
+                check("Six steps completed" in lab.locator(".lab-stage").inner_text(),
+                      "Completed reasoning stage lost on reload " + code)
+                lab.locator("[data-lab-reset]").click()
+                check("Confirm: clear" in lab.locator("[data-lab-reset]").inner_text(),
+                      "Accidental one-click clear of learner work " + code)
+                check(page.evaluate("(k) => localStorage.getItem(k) !== null", key),
+                      "First click unexpectedly deleted work " + code)
+                lab.locator("[data-lab-reset]").click()
+                check(page.evaluate("(k) => localStorage.getItem(k) === null", key),
+                      "Confirmed reset did not clear work " + code)
+                check("1 · Predict" in lab.locator(".lab-stage h4").inner_text(),
+                      "Cleared journey failed to reset " + code)
+            check(page.locator("#lab-progress-count").inner_text() ==
+                  "0 of 2 reflection journeys completed", "Progress did not reset")
+            check(page.evaluate("document.documentElement.scrollWidth - innerWidth") <= 2,
+                  "Construction lab causes horizontal overflow at " + str(width))
+            check(not errors, f"Construction lab JavaScript errors at {width}: {errors}")
+        finally:
+            context.close()
+    print("PASS: two full six-stage student journeys, first attempt integrity, optional hint, restore/reset, mobile/desktop")
+
+
 def main():
     corpus()
     server=subprocess.Popen([sys.executable,"-m","http.server",str(PORT),"--bind","127.0.0.1"],cwd=ROOT,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
@@ -343,6 +474,7 @@ def main():
             try:
                 test(browser)
                 test_child_journeys(browser)
+                test_six_stage_construction_lab(browser)
                 test_wpe_learning_route(browser)
             finally:browser.close()
         print("PASS: Five authored pairs and five viewport browser checks.")
