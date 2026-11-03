@@ -148,6 +148,7 @@ def other_topic_links(browser,base):
         # The renderer must use those cues, not the old hardcoded EX-M101 override.
         page.goto(base+"/preview/question-status.html?question=EX-M101")
         require(page.locator(".qtitle").inner_text()=="EX-M101","Spring comparison source unavailable")
+        page.locator('.hint').first.locator('summary').click()
         first_cue=page.locator('.hint').first.inner_text().lower()
         require(all(word in first_cue for word in ("spring","stiffness","force")),
                 "EX-M101 missing tailored controlled-variable study cue")
