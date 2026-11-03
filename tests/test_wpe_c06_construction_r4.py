@@ -237,7 +237,7 @@ def arc_ratio(lambda_,N=12000):
 def test_ex_m6_travel_time_negative_control_and_figure_hold():
     source=next(x for x in data(BANK)["questions"] if x["source_id"]=="EX-M6")
     assert "coaching" in source["answer"].lower()
-    assert "not a verified universal" in source["answer"]
+    assert "not a verified universal" in source["answer"].lower()
     assert "FIGURE CUSTODY HOLD" in " ".join(source["flags"])
     assert "KEY/PHYSICS HOLD" in " ".join(source["flags"])
     # Assumed phiS=45 degrees; two admissible trajectories reverse ordering.
