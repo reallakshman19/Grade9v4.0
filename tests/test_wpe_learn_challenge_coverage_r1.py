@@ -189,6 +189,19 @@ def test_force_switched_spring_equilibrium_and_signed_energy():
     close(2*0-start,-.05)
     assert abs(-.05)<abs(other)
 
+def test_unmapped_pendulum_and_coupling_do_not_teach_false_model_equivalence():
+    rows=load(WPE/"learning-coverage-r1.json")["questions"]
+    m={x["source_id"]:x for x in rows}
+    p=m["EX-M106"]
+    assert p["fit"]=="MISSING_CONSTRUCTION" and p["has_source_caution"]
+    assert "turning point" in p["source_science_note"]
+    assert "Mg tanθ=Mg" in p["source_science_note"]
+    assert "holding" in p["teaching_limit"] or "static balance" in p["teaching_limit"]
+    w=m["EX-N27"]
+    assert w["fit"]=="MISSING_CONSTRUCTION" and w["has_source_caution"]
+    assert "10%" in w["source_science_note"] and "reduced mass" in w["source_science_note"]
+    assert "individual masses" in w["teaching_limit"]
+
 def test_focus_layout_first_answer_guard_and_existing_13_preserved():
     source=(WPE/"focused-journeys.js").read_text(encoding="utf-8")
     html=(WPE/"focused-journeys.html").read_text(encoding="utf-8")
