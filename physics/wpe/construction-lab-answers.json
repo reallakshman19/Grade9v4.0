@@ -1,0 +1,42 @@
+{
+  "schema": "wpe-construction-lab-post-attempt/v1",
+  "scope": "LEARNER_VIEWABLE_ONLY_AFTER_LOCAL_FIRST_ATTEMPT__PUBLIC_STATIC_RESOURCE_NOT_SECURE",
+  "C01": {
+    "reconstruction": [
+      "Model: the scooter travels 2 m uphill. Choose the scooter as the system. Motor, friction, gravity and the normal force all belong in the work ledger.",
+      "Motor work: +15 N × 2 m = +30 J. Friction work: −3 N × 2 m = −6 J.",
+      "Gravity work: −mgh = −3 kg × 10 m/s² × 0.5 m = −15 J. The normal is perpendicular to the trip, so its work is 0 J.",
+      "Add every row: net work = 30 − 6 − 15 + 0 = +9 J. It starts at rest, so the final kinetic energy is 9 J.",
+      "From ½mv² = 9 J, v² = 2×9/3 = 6 m²/s², so speed at the top is √6 ≈ 2.45 m/s. Positive net work is consistent with reaching the top and gaining speed."
+    ],
+    "criteria": [
+      "Did you include all four force contributions, with signs tied to the direction of travel?",
+      "Did you add total work before using the kinetic-energy equation?",
+      "Did your explanation show why the normal does no work, even though it has a force?"
+    ],
+    "boundary": [
+      "With motor force 10 N, its work would be +20 J across the full 2 m.",
+      "Friction would still contribute −6 J, gravity −15 J and normal 0 J; the would-be net change is −1 J.",
+      "Starting from rest, it cannot reach the top unaided because the motion would need negative kinetic energy. It would need additional energy or a stronger push."
+    ]
+  },
+  "C02": {
+    "reconstruction": [
+      "Draw two regions. During spring contact the ground is smooth. At the spring's natural length the 2 kg cart is no longer touching the unattached spring.",
+      "At the start the spring stores ½kx² = ½ × 200 N/m × (0.10 m)² = 1.00 J.",
+      "At release, all 1.00 J is the cart's kinetic energy: ½ × 2 kg × v² = 1.00 J, so v = 1.00 m/s.",
+      "Only after release does friction act. On the 0.50 m rough strip, friction work is −1 N × 0.50 m = −0.50 J.",
+      "Kinetic energy at the strip's end is 1.00 − 0.50 = 0.50 J. Thus ½ × 2 × v² = 0.50 J, giving v = √0.50 ≈ 0.707 m/s. The cart crosses the strip."
+    ],
+    "criteria": [
+      "Did you draw a clear boundary where spring contact ends and the rough strip begins?",
+      "Did you use stored spring energy only during contact, and friction work only on the rough section?",
+      "Did you carry kinetic energy from the end of region one into region two?"
+    ],
+    "boundary": [
+      "For a 1.00 m rough strip, friction would use 1 N × 1.00 m = 1.00 J, exactly all the release kinetic energy.",
+      "The cart reaches the far end only with zero speed: it has no kinetic energy left there.",
+      "It cannot cross a longer rough strip without extra energy. Zero kinetic energy at a turning/stopping point is allowed; negative kinetic energy is not."
+    ]
+  }
+}
