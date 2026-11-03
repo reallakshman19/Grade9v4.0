@@ -82,7 +82,7 @@ function attach(card,code){
   target.append(make("h4","",title));para(target,description);
  };
  const saveText=(node,message)=>{const value=node.value.trim();if(!value){announce(message,true);node.focus();return null;}return value.slice(0,3000);};
- const advance=(next)=>{state.step=next;persist();render();};
+ const advance=(next)=>{state.step=next;persist();render(true);};
  const showOriginal=(target)=>{
   if(state.step<2||!state.attempt)return;
   const d=make("details","lab-first"),sum=make("summary","", "My locked first attempt (unchanged)");d.append(sum);
@@ -118,8 +118,8 @@ function attach(card,code){
    announce("Could not retrieve the worked check. Try again.",true);
   }
  };
- const render=()=>{
-  ++renderSerial;resetArmed=false;stage.replaceChildren();
+ const render=(focusStage=false)=>{
+  ++renderSerial;resetArmed=false;reset.textContent="Clear this journey";stage.replaceChildren();
   const steps=make("ol","lab-steps");
   for(let i=0;i<STEPS.length;i++){
    const li=make("li",i<state.step?"is-done":"",String(i+1)+". "+STEPS[i]);
@@ -218,10 +218,11 @@ function attach(card,code){
   status.classList.remove("lab-error");
   if(!status.textContent)status.textContent="Saved on this browser only. Your written answers are not automatically graded.";
   updateProgress();
+  if(focusStage){const heading=by(stage,"h4");if(heading){heading.tabIndex=-1;heading.focus({preventScroll:true});}}
  };
  reset.addEventListener("click",()=>{
   if(!resetArmed){resetArmed=true;reset.textContent="Confirm: clear this journey";announce("Click once more to clear this journey's saved attempt.");return;}
-  clear(key);state=emptyState();reset.textContent="Clear this journey";announce("This journey was cleared. You can start again.");render();
+  clear(key);state=emptyState();reset.textContent="Clear this journey";announce("This journey was cleared. You can start again.");render(true);
  });
  instances.push({getState:()=>state});render();
 }
