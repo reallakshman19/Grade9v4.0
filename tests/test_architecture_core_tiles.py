@@ -30,8 +30,10 @@ def test_tile_mapping_and_no_iframes():
 
 def test_old_architecture_material_is_preserved_in_disclosure():
     html = PAGE.read_text(encoding="utf-8")
-    archive = html.split('<div class="legacy-content">\\n', 1)[1].split('\\n  </div>\\n</details>', 1)[0]
+    archive = html.split('<div class="legacy-content">', 1)[1].split('</details>', 1)[0]
     assert archive.count('<article class="card">') == 9
+    assert html.count('Production checklist · Core2 tablet QA') == 1
+    assert html.count('<article class="card">') == 9
     for text in (
         "Production checklist · Core2 tablet QA",
         "Start with the guidebook",
@@ -42,7 +44,7 @@ def test_old_architecture_material_is_preserved_in_disclosure():
         "Scope & authority", "Intake & custody", "WPE review examples",
     ):
         assert text in archive
-    assert archive.startswith('<section class="panel"')
+    assert archive.strip().startswith('<section class="panel"')
 
 def test_new_learning_links_are_direct_local_destinations():
     html = PAGE.read_text(encoding="utf-8")
