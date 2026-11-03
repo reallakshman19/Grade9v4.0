@@ -540,7 +540,7 @@
         "C03"
       ],
       "fit": "RELATED_BRIDGE",
-      "student_goal": "Determine the physical speed–distance law before adopting any constant-power model.",
+      "student_goal": "Decide from the speed–distance relation what the motion law actually is, and compare its energy-time behavior with constant-power practice.",
       "teaching_limit": "Existing lesson is related practice, NOT sufficient proof for this question's exact inference; inspect the source conditions and figure.",
       "lesson_href": "d3d4-self-tutor.html?question=EX-M79#C03",
       "source_href": "../../preview/question-status.html?question=EX-M79",
@@ -734,7 +734,7 @@
         "C08"
       ],
       "fit": "TARGETED_PRACTICE",
-      "student_goal": "Investigate Spring energy at equal force versus equal extension, selecting the valid law and assumptions.",
+      "student_goal": "Compare spring work at equal final equilibrium force versus equal extension; determine how the controlled variable reverses the energy ordering.",
       "teaching_limit": "Close practice for the proposed reasoning operation, but original-question transfer and source evidence still need checking.",
       "lesson_href": "d3d4-self-tutor.html?question=EX-M101#C08",
       "source_href": "../../preview/question-status.html?question=EX-M101",
