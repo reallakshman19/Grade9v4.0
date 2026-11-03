@@ -10,6 +10,8 @@ import json
 from collections import Counter, defaultdict
 from pathlib import Path
 
+from jsonschema import Draft202012Validator
+
 ROOT = Path(__file__).resolve().parents[1]
 DIR = ROOT / "architecture" / "qrt-blueprint-protocol"
 REGISTER = DIR / "wpe-coverage-register.json"
@@ -187,7 +189,7 @@ def test_21_place_pilot_is_separate_even_when_reader_absent():
         assert actual["candidate_id"] == expected["candidate_id"]
         assert actual["pilot_band"] == expected["band"]
         assert actual["pilot_status"] == expected["status"]
-        assert actual["admitted"] is not True if "admitted" in actual else actual["qrt_final_admitted"] is False
+        assert actual["qrt_final_admitted"] is False
         q = by_id.get(expected["candidate_id"])
         if expected["candidate_id"] is None:
             comparison = "VACANT"
@@ -211,6 +213,24 @@ def test_21_place_pilot_is_separate_even_when_reader_absent():
     assert all(not x["qrt_final_admitted"] for x in out)
 
 
+
+def test_machine_schema_requires_full_fields_and_no_fabricated_approvals():
+    report = load(REGISTER)
+    schema = load(DIR / "schemas" / "coverage-register.schema.json")
+    Draft202012Validator.check_schema(schema)
+    errors = list(Draft202012Validator(schema).iter_errors(report))
+    assert not errors, [str(e) for e in errors[:4]]
+    assert schema["properties"]["questions"]["items"]["properties"]["admission"] == {
+        "const": "NOT_ADMITTED"
+    }
+    assert schema["properties"]["pilot_places"]["items"]["properties"]["qrt_final_admitted"] == {
+        "const": False
+    }
+    assert all(not row["qrt_evidence"]["independent_final_adjudication"]
+               for row in report["questions"])
+    assert all(not x["qrt_final_admitted"] for x in report["pilot_places"])
+
+
 def test_priority_dashboard_links_and_accessible_dynamic_filters():
     home = (ROOT / "architecture/index.html").read_text(encoding="utf-8")
     protocol = (DIR / "index.html").read_text(encoding="utf-8")
@@ -227,4 +247,4 @@ def test_priority_dashboard_links_and_accessible_dynamic_filters():
     assert "textContent" in page and "replaceChildren" in page
     assert "innerHTML" not in page
     assert "all academic admissions" not in page.lower() or "NOT_ADMITTED" in page
-    assert "no automatic QRT admission" in page.lower()
+    assert "no automatic qrt admission" in page.lower()
