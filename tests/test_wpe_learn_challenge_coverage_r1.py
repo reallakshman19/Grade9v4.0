@@ -230,6 +230,6 @@ def test_focus_layout_first_answer_guard_and_existing_13_preserved():
     assert "question-coverage-r1.js" in index
     assert "<iframe" not in bridge and "location.replace(target)" in bridge
     assert 'row.primary_lesson!==lesson' in bridge
-    assert 'original.stem_sha256!==row.stem_sha256' in bridge
+    assert 'row.stem_sha256!==original.stem_sha256' in bridge
     for p in ["d3d4-self-tutor.html","d3d4-self-tutor.js","extension-learning.html","extension-learning.js"]:
         assert (WPE/p).is_file()

@@ -5,7 +5,7 @@ from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 ROUTES = {
-    "physics/wpe/index.html": ("quicklinks", 9),
+    "physics/wpe/index.html": ("quicklinks", 3),
     "physics/wpe/learn-challenge.html": ("wpe-related-pages", 5),
     "preview/physics-wpe.html": ("wpe-learning-route", 5),
     "preview/practice.html": ("wpe-learning-route", 5),
@@ -43,7 +43,7 @@ def parsed(path, target_name=None):
 
 def test_navigation_links_resolve_to_existing_pages_and_anchors():
     expected = {
-        "physics/wpe/index.html": ("learn-challenge.html", "question-coverage.html", "extension-learning.html"),
+        "physics/wpe/index.html": ("learn-challenge.html#question-routes", "learn-challenge.html#skill-explorer", "question-coverage.html"),
         "physics/wpe/learn-challenge.html": ("index.html", "question-bank.html"),
         "preview/physics-wpe.html": ("../physics/wpe/learn-challenge.html#potential-force",),
         "preview/practice.html": ("../physics/wpe/learn-challenge.html#energy-motion",),
@@ -67,8 +67,9 @@ def test_only_authored_learner_navigation_changed():
     guided = (ROOT / "physics/wpe/learn-challenge.html").read_text(encoding="utf-8")
     practice = (ROOT / "preview/practice.html").read_text(encoding="utf-8")
     examples = (ROOT / "preview/batches/reader.html").read_text(encoding="utf-8")
-    assert "Primary guided path" in hub
-    assert "not yet a native Core1A/Core1B-approved course" in hub
+    assert hub.count("<h2>Learn → Challenge</h2>")==1
+    assert "<h2>Practice my skills</h2>" in hub
+    assert "Academic admissions: 0" in hub
     assert guided.count('<article class="lesson"') == 5
     assert "Academic admissions: 0" in guided
     assert "not a verified exam question" in practice

@@ -45,7 +45,8 @@ def test_eight_source_grounded_guided_and_fresh_pairs():
     script = SCRIPT.read_text(encoding="utf-8")
     assert 'href="d3d4-self-tutor.css"' in html
     assert 'src="d3d4-self-tutor.js"' in html
-    assert 'href="d3d4-self-tutor.html"' in HUB.read_text(encoding="utf-8")
+    assert 'href="learn-challenge.html"' in HUB.read_text(encoding="utf-8")
+    assert '"d3d4-self-tutor.html"' in (ROOT/"physics/wpe/learn-challenge-coverage.js").read_text(encoding="utf-8")
     assert html.count('class="stage-root"') == 8
     for row in data["lessons"]:
         source = ROOT / row["author_pack"]

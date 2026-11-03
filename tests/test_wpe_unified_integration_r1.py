@@ -69,7 +69,7 @@ def test_gateway_no_iframes_and_old_links_fail_closed():
                  "focused-journeys.html", "question-bank.html"]:
         assert "<iframe" not in read(WPE / file).lower(), file
     assert "location.replace(target)" in read(WPE / "study-bridge.html")
-    assert "original.stem_sha256!==row.stem_sha256" in read(WPE / "study-bridge.html")
+    assert "row.stem_sha256!==original.stem_sha256" in read(WPE / "study-bridge.html")
     index = read(WPE / "index.html")
     for heading in ("Learn → Challenge", "Question Bank", "Practice my skills"):
         assert f"<h2>{heading}</h2>" in index

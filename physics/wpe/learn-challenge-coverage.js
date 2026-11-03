@@ -111,13 +111,19 @@
   for(const [id,name] of Object.entries(names)){
     const page=id.startsWith("C")?"d3d4-self-tutor.html":id.startsWith("E")?"extension-learning.html":"focused-journeys.html";
     const a=add(skillHost,"a",id+" · "+name);a.href=page+"#"+id;
+    a.addEventListener("click",()=>{
+      try{localStorage.setItem("g9:wpe:journey:v1",JSON.stringify({question:null,lesson:id}));}catch(_){}
+    });
   }
   const resume=$("#resume-journey"),notice=$("#saved-practice-status");
   function refreshResume(){
     try{
       const saved=JSON.parse(localStorage.getItem("g9:wpe:journey:v1")||"null");
       const row=rows.find(r=>r.source_id===saved?.question&&r.primary_lesson===saved.lesson&&r.lesson_href);
-      if(row){resume.href=saved.variant==="transfer55"&&row.primary_lesson.startsWith("F")
+      if(!row&&saved?.question===null&&names[saved?.lesson]){
+        const id=saved.lesson,page=id.startsWith("C")?"d3d4-self-tutor.html":id.startsWith("E")?"extension-learning.html":"focused-journeys.html";
+        resume.href=page+"#"+id;resume.textContent="Resume "+id+" · "+names[id];
+      }else if(row){resume.href=saved.variant==="transfer55"&&row.primary_lesson.startsWith("F")
         ?row.lesson_href.replace("#","&variant=transfer55#"):row.lesson_href;
         resume.textContent="Resume "+row.source_id+" → "+row.primary_lesson;
       }else{resume.href="#question-routes";resume.textContent="Choose a question to begin";}

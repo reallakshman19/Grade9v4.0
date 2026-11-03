@@ -50,7 +50,8 @@ def test_all_five_are_distinct_from_c01_c08_and_reference_existing_packs():
     assert 'src="extension-learning.js"' in page
     assert 'href="extension-learning.css"' in page
     assert 'id="lesson-surface"' in page
-    assert "extension-learning.html" in (WPE/"index.html").read_text(encoding="utf-8")
+    assert 'href="learn-challenge.html"' in (WPE/"index.html").read_text(encoding="utf-8")
+    assert '"extension-learning.html"' in (WPE/"learn-challenge-coverage.js").read_text(encoding="utf-8")
     route_html=(WPE/"reasoning-paths.html").read_text(encoding="utf-8")
     assert "extension-learning.html" in route_html
     assert "route.proposed_source_ids.some(s=>s.id===id&&s.reader_present)" in route_html
@@ -73,7 +74,8 @@ def test_first_attempt_before_reconstruction_and_changed_condition_gate():
     for id_ in EXPECTED:
         assert f"{id_}:" in script
     assert script.count('visual:"')==5
-    assert "sourceId" in script and "reader_present" in script
+    assert "sourceId" in script and "stem_sha256" in script
+    assert "learning-coverage-r1.json" in script
 
 def test_e01_allowed_but_unreachable_connected_regions():
     # Guided parabola: U=(x-2)^2, m=2 kg, E=4 J.
