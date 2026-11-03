@@ -1,4 +1,4 @@
-/* WPE E01-E05: distinct authored extensions, not original exam questions.
+/* WPE E01-E08: distinct authored extensions, not original exam questions.
  * Core1A follows the existing WPE extension learning packs. The fresh
  * reconstruction is revealed only after a locally saved first attempt.
  * Browser storage is practice convenience, not secure assessment.
@@ -218,6 +218,407 @@
       boundary:"Consider a DIFFERENT steady circle at r = 4 m, with the same force law and mass. Compute U(4), speed, K and total E(4). Why is this not the same spacecraft moving freely from the 3 m circle without extra energy?",
       boundaryCheck:"U(4) = 4×2 + ½(4+8)×2 = 8 + 12 = 20 J. Local force 8 N gives 2v²/4 = 8, so v = 4 m/s. K = ½×2×16 = 16 J and E(4) = 36 J. These are distinct circular-orbit states; the conservative force alone cannot change E from 22 to 36 J.",
       visual:"radial"
+    },
+    E06: {
+      "title": "Ground push power versus net acceleration",
+      "question": "Why isn't the power supplied by an upward push the same as net acceleration power?",
+      "prereq": "A vertical force does positive work when it points with displacement; gravity does negative work during upward motion. Instantaneous power is F·v for the force of interest.",
+      "core": "During ground contact, applied force pays for BOTH kinetic-energy gain and gravitational height. After separation, only gravity acts. The maximum applied power occurs at the maximum speed during the constant-force push.",
+      "guide": "A 2 kg upward-launch toy starts at rest and is pushed 1.0 m upward by a constant 30 N force while its weight is 20 N. Take g=10 m/s²; after leaving the launcher it rises under gravity alone.",
+      "steps": [
+        [
+          "Draw contact force arrows",
+          "The constant applied force is +30 N; weight is −20 N. Net acceleration force is +10 N, not the full applied force."
+        ],
+        [
+          "Write the contact work ledger",
+          "Applied work +30 J, gravity work −20 J, net +10 J = change in kinetic energy from rest."
+        ],
+        [
+          "Find speed and flight height",
+          "½(2)v²=10 J, so v=√10≈3.162 m/s. After separation the further rise is v²/(2g)=0.50 m."
+        ],
+        [
+          "Distinguish two instantaneous powers",
+          "Applied push power at separation is 30√10≈94.87 W, while net force×v=10√10≈31.62 W describes dK/dt. The difference is gravitational energy gain rate."
+        ],
+        [
+          "Explain the switch at take-off",
+          "The launcher stops acting in free flight. Do not assign applied push work to the later 0.50 m rise."
+        ]
+      ],
+      "contrast": "Multiplying NET force by speed answers kinetic-energy rate, not the full external applied mechanical power. The ground-contact displacement is different from the subsequent free-flight height.",
+      "misconception": "Do not treat a coaching-labelled 'muscle power' as the net force power without specifying which force supplies the work. The original exam source/key is unresolved.",
+      "assumptions": "Starts from rest; constant upward applied force during contact; no drag or other losses; launcher stops acting at separation; power means mechanical power of the applied upward force, not metabolic power.",
+      "challenge": "A different 4 kg toy starts from rest. A CONSTANT upward force pushes it for 0.50 m before it separates. It then rises ANOTHER 0.80 m in free flight. Take g=10 m/s². Find its take-off speed, kinetic gain, gravity work during contact, applied push force, and the MAXIMUM instantaneous mechanical power of that applied force during contact.",
+      "fields": [
+        {
+          "id": "takeoffSpeed",
+          "label": "Take-off speed (m/s)",
+          "type": "number"
+        },
+        {
+          "id": "contactGain",
+          "label": "Kinetic-energy gain during push (J)",
+          "type": "number"
+        },
+        {
+          "id": "contactGravity",
+          "label": "Gravity's work during push (J)",
+          "type": "number"
+        },
+        {
+          "id": "appliedForce",
+          "label": "Upward applied contact force (N)",
+          "type": "number"
+        },
+        {
+          "id": "netForce",
+          "label": "Net accelerating force during contact (N)",
+          "type": "number"
+        },
+        {
+          "id": "appliedPower",
+          "label": "MAXIMUM applied mechanical power (W)",
+          "type": "number"
+        },
+        {
+          "id": "model",
+          "label": "Which force must be multiplied by speed for supplied push power?",
+          "type": "select",
+          "options": [
+            "Choose a model",
+            "Applied upward contact force",
+            "Net accelerating force only",
+            "Weight only",
+            "Not sure yet"
+          ]
+        },
+        {
+          "id": "reason",
+          "label": "Explain the TWO phases and why applied and net power differ",
+          "type": "textarea"
+        }
+      ],
+      "hints": [
+        "Use the flight rise AFTER take-off to find speed at the contact boundary, not the push displacement.",
+        "During contact, the applied push pays for kinetic gain AND gravity's negative work. Keep the contact and free-flight distances separate.",
+        "The power question asks for the rate of work done by the applied upward force, not solely net acceleration; speed is highest at take-off."
+      ],
+      "worked": [
+        [
+          "Free flight determines take-off speed",
+          "Extra rise 0.80 m requires v²=2gh=16 m²/s², hence v=4 m/s at separation."
+        ],
+        [
+          "Contact energy includes rising against gravity",
+          "K increases by ½(4)(4²)=32 J. Weight does −(4)(10)(0.50)=−20 J during contact, so applied work must supply 32+20=52 J."
+        ],
+        [
+          "Find applied rather than only net force",
+          "F_applied=52/0.50=104 N. Weight is 40 N down, so F_net=104−40=64 N."
+        ],
+        [
+          "Compute power for the CORRECT force",
+          "Maximum applied power at take-off is F_applied v=104×4=416 W. F_net v=64×4=256 W is the kinetic-energy rate, not total mechanical power of the push."
+        ],
+        [
+          "Check contact and free-flight phases",
+          "52 J applied energy during contact becomes 32 J kinetic plus 20 J gravitational potential. After separation, the toy rises under gravity alone."
+        ]
+      ],
+      "checks": [
+        "I used the extra 0.80 m flight height to infer take-off speed 4 m/s.",
+        "I included the 20 J gravitational energy rise during the 0.50 m ground push.",
+        "I calculated applied F=104 N separately from net F=64 N.",
+        "I found applied push power 416 W rather than net kinetic-energy rate 256 W."
+      ],
+      "diagnoses": [
+        "I used the 0.80 m free-flight height as contact distance.",
+        "I forgot the gravitational work while the toy was still being pushed.",
+        "I treated net F×v as the power delivered by the applied force.",
+        "I continued the applied push into free flight.",
+        "The phase model was correct but I want to check arithmetic.",
+        "I'm still unsure which force provides the energy."
+      ],
+      "diagnosisTips": [
+        "Mark the contact boundary at 0.50 m and the separate later rise of 0.80 m.",
+        "Gravity acts throughout both phases, including during the push; add contact mgs to the kinetic gain.",
+        "Net F explains dK/dt; applied F explains work rate delivered by the contact push.",
+        "Only gravity acts during flight; no extra contact work is supplied after separation.",
+        "Recheck work units (N·m=J), power units (N·m/s=W) and the energy balance.",
+        "Start with two labelled boxes, CONTACT and FLIGHT, and one force arrow for each agent."
+      ],
+      "boundary": "The same 4 kg toy still starts from rest and is pushed upward for 0.50 m, but its later FREE flight rise is only 0.45 m. Find new take-off speed, contact applied force and maximum applied mechanical power; distinguish net power.",
+      "boundaryCheck": "Later rise 0.45 m implies v²=9 and take-off v=3 m/s. Contact kinetic gain is 18 J; contact gravity rise needs 20 J. Applied work=38 J, applied force=76 N, MAXIMUM applied power=76×3=228 W. Net force=(76−40)=36 N and its kinetic-energy rate at take-off is 108 W. The 0.45 m is not the push distance.",
+      "visual": "push"
+    },
+    E07: {
+      "title": "Two incline journeys, two friction losses",
+      "question": "Why does a block lose energy to friction on BOTH the ascent and the descent?",
+      "prereq": "Friction always opposes current sliding. Gravity is conservative, so its work cancels when a block returns to exactly its original height.",
+      "core": "Use one stopping distance in two different along-slope models: gravity and friction both oppose uphill motion, but friction opposes downhill return while gravity assists it.",
+      "guide": "A 1 kg block starts uphill at 4 m/s. Gravity's component along the slope is 6 N downhill; kinetic friction magnitude is 2 N against its movement on either leg. It stops, then slides back.",
+      "steps": [
+        [
+          "Uphill retarding work",
+          "Both gravity and friction point downhill, so resistance is 6+2=8 N; initial K=½×1×4²=8 J."
+        ],
+        [
+          "Find the uphill stopping distance",
+          "The uphill distance is 8 J ÷ 8 N = 1 m. Both forces remove kinetic energy over this segment."
+        ],
+        [
+          "Change the sign of friction on descent",
+          "When sliding DOWN the plane, gravity's 6 N points with motion, while friction's 2 N points UP. Net downhill force is 6−2=4 N."
+        ],
+        [
+          "Compute return speed",
+          "The 4 N downhill net force acts over the same 1 m, so K_return=4 J and return speed=√8≈2.828 m/s."
+        ],
+        [
+          "Check the entire round trip",
+          "Gravity gives −6 J uphill and +6 J downhill (zero total); friction removes 2 J on each 1 m leg, a 4 J total loss equal to K_initial−K_return."
+        ]
+      ],
+      "contrast": "Friction's DIRECTION changes when motion reverses, but frictional work is negative on both legs. Do not subtract the uphill gravitational potential energy a second time after returning to the same height.",
+      "misconception": "A quick one-leg energy calculation ignores the second friction loss. A speed ratio must be SQUARED when using kinetic energy or distance ratios.",
+      "assumptions": "Straight incline, constant kinetic friction, constant gravity component and normal force, both legs have the same distance, no air resistance; returning motion needs gravity downhill component greater than friction.",
+      "challenge": "A new block is launched uphill on a rough incline of 45°. Its kinetic friction coefficient μ is constant. After stopping it returns to its original launch position at speed (2/3) of the initial speed v₀. Assume it DOES slide back and sin45°=cos45°. Determine μ from two properly signed motion phases and explain why mass and v₀ cancel.",
+      "fields": [
+        {
+          "id": "frictionUp",
+          "label": "On ascent, friction points...",
+          "type": "select",
+          "options": [
+            "Choose",
+            "Down the slope",
+            "Up the slope",
+            "Sideways",
+            "Not sure"
+          ]
+        },
+        {
+          "id": "frictionDown",
+          "label": "On descent, friction points...",
+          "type": "select",
+          "options": [
+            "Choose",
+            "Down the slope",
+            "Up the slope",
+            "Sideways",
+            "Not sure"
+          ]
+        },
+        {
+          "id": "upFactor",
+          "label": "Uphill retarding factor in units of g·sin45°",
+          "type": "text",
+          "hint": "Use μ and sin45°=cos45°."
+        },
+        {
+          "id": "downFactor",
+          "label": "Downhill accelerating factor in units of g·sin45°",
+          "type": "text"
+        },
+        {
+          "id": "returnRatioSquared",
+          "label": "(v_return / v₀)²",
+          "type": "number"
+        },
+        {
+          "id": "mu",
+          "label": "Coefficient of kinetic friction μ",
+          "type": "number",
+          "hint": "Give an exact fraction in your explanation; decimal is fine here."
+        },
+        {
+          "id": "reason",
+          "label": "Explain why friction costs energy on both legs and use the SAME distance",
+          "type": "textarea"
+        }
+      ],
+      "hints": [
+        "Draw a separate friction arrow for UP and DOWN travel, both opposite the motion.",
+        "Write the uphill stopping distance as v₀²/[2g(sin45°+μcos45°)]. The SAME distance is used on descent.",
+        "Relate the RETURN SPEED SQUARED to the ratio of downhill and uphill acceleration. With 45°, sine and cosine are equal."
+      ],
+      "worked": [
+        [
+          "Two phase-specific along-slope force models",
+          "On ascent, stopping acceleration magnitude is g(sin45°+μcos45°); on descent, forward acceleration is g(sin45°−μcos45°). Gravity direction stays downhill; friction reverses."
+        ],
+        [
+          "Use one shared stopping distance",
+          "d=v₀²/[2g(sinθ+μcosθ)] and v_return²=2gd(sinθ−μcosθ). Thus r²=(sinθ−μcosθ)/(sinθ+μcosθ)."
+        ],
+        [
+          "Cancel the equal sine and cosine",
+          "At 45°, r²=(1−μ)/(1+μ). The observed r=2/3 gives r²=4/9."
+        ],
+        [
+          "Solve and check physical bound",
+          "4(1+μ)=9(1−μ), giving 13μ=5 and μ=5/13≈0.384615. It is nonnegative and less than tan45°=1, so the block slides back."
+        ],
+        [
+          "Reconcile energy losses",
+          "The block returns to the same height, so gravity work over the full path is zero. Friction removes energy during ascent and descent and makes return speed smaller than v₀."
+        ]
+      ],
+      "checks": [
+        "I gave friction opposite movement separately on the uphill and downhill legs.",
+        "I used the SAME stopping distance with two differently signed accelerations.",
+        "I squared the 2/3 speed ratio to get 4/9, then solved μ=5/13.",
+        "I checked the resulting μ is positive and low enough for descent to occur."
+      ],
+      "diagnoses": [
+        "I drew friction down the ramp on both legs.",
+        "I forgot to square the speed ratio.",
+        "I used a different stopping distance for descent.",
+        "I treated gravity as losing net energy on a completed round trip.",
+        "My arrows were correct; I need to check the algebra.",
+        "I'm not sure why two phases share the same distance."
+      ],
+      "diagnosisTips": [
+        "Friction always points opposite the current motion, so its direction must flip.",
+        "Energy is proportional to speed squared; square 2/3 before calculating μ.",
+        "The block stops at the same point and returns to the same base, so each leg spans the same d.",
+        "Gravity loses and regains equal potential energy on this closed vertical route; friction dissipates energy twice.",
+        "Simplify (4/9)(1+μ)=1−μ without changing the original force signs.",
+        "Draw a start, turning point and return arrow, then write which forces oppose each direction."
+      ],
+      "boundary": "On the SAME 45° incline, a new trial returns to its starting position at speed (3/4)v₀. What μ is implied, and why is it less than in the original trial?",
+      "boundaryCheck": "For the 45° incline, r²=(1−μ)/(1+μ). With r=3/4, r²=9/16, so 9(1+μ)=16(1−μ). Thus 25μ=7 and μ=7/25=0.28, smaller than 5/13. Less friction means less round-trip energy loss. Gravity still cancels over the full return.",
+      "visual": "incline"
+    },
+    E08: {
+      "title": "New spring-force equilibrium, new turning point",
+      "question": "Where does the spring stop after the external force suddenly changes?",
+      "prereq": "Hooke's law says the spring force is −kx when positive x is rightward from natural length. Constant applied forces can do work during motion.",
+      "core": "After a force switch, use ONLY the new constant force in effective potential U_eff=½kx²−F_new x. A released-from-rest oscillator has turning points symmetric about the NEW equilibrium x_eq=F_new/k.",
+      "guide": "A horizontal ideal spring has k=100 N/m. Its block rests at x=+0.10 m held by +10 N. At time zero the applied force is suddenly changed to constant +20 N; it starts moving from rest, with no friction.",
+      "steps": [
+        [
+          "Choose x axis and identify both applied forces",
+          "x=0 means natural length, positive RIGHT; the initial spring force at x=+0.10 m is −10 N and old applied force +10 N balances it."
+        ],
+        [
+          "Find the new equilibrium, not the old one",
+          "After switching to +20 N, the equilibrium becomes x_eq=+20/100=+0.20 m."
+        ],
+        [
+          "Build post-switch effective potential",
+          "U_eff=½(100)x²−20x=50x²−20x J, with x in metres. The −20x term represents work of the constant new force."
+        ],
+        [
+          "Conserve post-switch effective energy",
+          "At starting rest x_i=0.10 m, E_post=U_eff(0.10)=0.5−2=−1.5 J. This is allowed: an additive energy reference can be negative."
+        ],
+        [
+          "Find and check the far turning point",
+          "The quadratic potential is symmetric about 0.20 m; the other turning point is x=2(0.20)−0.10=+0.30 m, with U_eff(0.30)=4.5−6=−1.5 J."
+        ]
+      ],
+      "contrast": "The new effective potential (including the constant applied force) governs later motion. Spring elastic energy by itself is not conserved because the new force keeps doing work.",
+      "misconception": "A turning point is a position of zero instantaneous speed, NOT automatically equilibrium. New equilibrium is x_eq=F_new/k; it is generally not x=0 or the original held position.",
+      "assumptions": "Ideal Hookean spring with an attached block, frictionless horizontal axis, constant post-switch force, ideal instantaneous force jump at fixed position with zero initial speed; conserve only after switch.",
+      "challenge": "A different spring with k=50 N/m holds its block at rest compressed at x_i=−0.20 m under an old force −10 N. At time zero the applied force is replaced suddenly by constant +15 N and it is released from rest. Use x positive RIGHT from natural length. Find new equilibrium, initial post-switch effective energy, far positive turning point and an energy check.",
+      "fields": [
+        {
+          "id": "initialX",
+          "label": "Initial signed spring position (m)",
+          "type": "number"
+        },
+        {
+          "id": "newEquilibrium",
+          "label": "New equilibrium position (m)",
+          "type": "number"
+        },
+        {
+          "id": "initialEnergy",
+          "label": "Effective energy at initial rest position (J)",
+          "type": "number"
+        },
+        {
+          "id": "turning",
+          "label": "Other far positive turning position (m)",
+          "type": "number"
+        },
+        {
+          "id": "turningEnergy",
+          "label": "Effective potential at far turning point (J)",
+          "type": "number"
+        },
+        {
+          "id": "model",
+          "label": "Which energy is conserved after the force switch?",
+          "type": "select",
+          "options": [
+            "Choose a model",
+            "Spring elastic energy only",
+            "K + spring energy − F_new·x",
+            "K + spring energy − F_old·x",
+            "Not sure yet"
+          ]
+        },
+        {
+          "id": "reason",
+          "label": "Explain why the new equilibrium sets the turning-point symmetry",
+          "type": "textarea"
+        }
+      ],
+      "hints": [
+        "Initial compression is NEGATIVE x. Put the old equilibrium and new applied force on one signed axis.",
+        "Once switched to constant +15 N, use x_eq=F_new/k; do not keep the old applied force in the motion equation.",
+        "For post-switch turning points K=0 and U_eff is equal. Complete the square or use symmetry about the NEW equilibrium."
+      ],
+      "worked": [
+        [
+          "Check initial holding state",
+          "At x_i=−0.20 m with k=50 N/m, spring force is −kx_i=+10 N, balanced by the old external −10 N. At the moment of switching the block is at rest."
+        ],
+        [
+          "Change to the NEW equilibrium",
+          "New applied force is +15 N. Therefore kx_eq=+15 and x_eq=+0.30 m."
+        ],
+        [
+          "Calculate post-switch effective energy",
+          "U_eff=½(50)x²−15x J. At x_i=−0.20 m: U_eff=1+3=4 J; initial K=0."
+        ],
+        [
+          "Use symmetry or solve the turning-point quadratic",
+          "The other turning point is x_other=2x_eq−x_i=0.60−(−0.20)=+0.80 m. Substitution gives U_eff(0.80)=16−12=4 J, matching the starting value."
+        ],
+        [
+          "Explain why the spring-only model fails",
+          "The new external constant force moves the block and does work. Only K+½kx²−15x is conserved after the switch; spring energy alone changes."
+        ]
+      ],
+      "checks": [
+        "I identified the initial compressed position x_i=−0.20 m and the old holding force correctly.",
+        "I used the NEW +15 N force to calculate equilibrium x_eq=+0.30 m.",
+        "I conserved post-switch K+U_eff and found the far turning point x=+0.80 m.",
+        "I checked equal effective energies 4 J at both turning points and explained why spring energy alone is insufficient."
+      ],
+      "diagnoses": [
+        "I treated the compressed starting position as +0.20 m.",
+        "I conserved spring energy alone and ignored the new force's work.",
+        "I kept the old applied holding force in the new effective potential.",
+        "I reflected about natural length x=0 instead of new equilibrium.",
+        "My effective potential was right but I made an arithmetic error.",
+        "I'm not sure how changing the force moves equilibrium."
+      ],
+      "diagnosisTips": [
+        "With x positive rightward, compression to the left is negative; the spring force has the opposite sign.",
+        "The new constant force supplies work; include −F_new x in the potential energy.",
+        "Only the force actually applied after t=0 belongs in the post-switch effective potential.",
+        "Turn points of a quadratic with constant forcing are symmetric about F_new/k, not natural length.",
+        "Recompute U_eff at both turning positions and compare the same energy value.",
+        "Start with two snapshots: old held equilibrium and new switched force, then redraw the axis."
+      ],
+      "boundary": "Keep k=50 N/m and initial rest position x_i=−0.20 m, but change the switched constant force to +5 N. Find the NEW equilibrium and the OTHER turning point; verify effective potential at both.",
+      "boundaryCheck": "With +5 N after switch, new equilibrium is x_eq=5/50=+0.10 m and the far turning point is x=2(0.10)−(−0.20)=+0.40 m. Initial effective energy is ½(50)(0.20²)−5(−0.20)=1+1=2 J. At x=+0.40 m, U_eff=½(50)(0.40²)−5(0.40)=4−2=2 J. The new force changes the equilibrium and turning point; old holding force does not enter post-switch energy.",
+      "visual": "spring-switch"
     }
   };
   const allIds = Object.keys(lessons);
@@ -300,9 +701,9 @@
     svg.id="guide-plot";
     add(chart,"figcaption",null,"Change the control. Watch what the model predicts, not just the numbers.");
     const controls=add(guide,"div","visual-controls");
-    add(controls,"label",null,id==="E01"?"Total energy in the bowl (J)":id==="E02"?"Trolley velocity (m/s)":id==="E03"?"Contact friction (N)":id==="E04"?"Energy fraction retained": "Circular orbit radius (m)").htmlFor="guide-slider";
+    add(controls,"label",null,id==="E01"?"Total energy in the bowl (J)":id==="E02"?"Trolley velocity (m/s)":id==="E03"?"Contact friction (N)":id==="E04"?"Energy fraction retained":id==="E05"?"Circular orbit radius (m)":id==="E06"?"Applied contact force (N)":id==="E07"?"Friction on each incline leg (N)":"New switched applied force (N)").htmlFor="guide-slider";
     const slider=add(controls,"input");slider.id="guide-slider";slider.type="range";
-    const settings={E01:[0,6,1,4],E02:[-3,3,1,3],E03:[0,5,0.5,0],E04:[0.1,0.75,0.05,0.25],E05:[1,4,0.5,2]}[id];
+    const settings={E01:[0,6,1,4],E02:[-3,3,1,3],E03:[0,5,0.5,0],E04:[0.1,0.75,0.05,0.25],E05:[1,4,0.5,2],E06:[22,40,2,30],E07:[0,4,0.5,2],E08:[10,25,5,20]}[id];
     [slider.min,slider.max,slider.step,slider.value]=settings.map(String);
     const readout=add(controls,"output","model-readout");readout.htmlFor="guide-slider";
     slider.addEventListener("input",()=>drawVisual(id,Number(slider.value),svg,readout));
@@ -522,8 +923,8 @@
   }
   function updateProgress(){
     const completed=allIds.filter(id=>states[id].boundary!==null).length;
-    $("#extension-progress").textContent=completed+" of 5 boundary challenges completed";
-    $("#extension-meter").max=5;$("#extension-meter").value=completed;
+    $("#extension-progress").textContent=completed+" of "+allIds.length+" boundary challenges completed";
+    $("#extension-meter").max=allIds.length;$("#extension-meter").value=completed;
     for(const id of allIds){const link=$('[data-lesson-link="'+id+'"]');if(link){link.classList.toggle("complete",states[id].boundary!==null);link.setAttribute("aria-current",id===active?"page":"false");}}
   }
   function render(){
@@ -557,7 +958,7 @@
     footer.setAttribute("aria-label","Learning navigation");
     const i=allIds.indexOf(active);
     const prev=add(footer,"a",null,i===0?"WPE chapter":"← Previous extension");prev.href=i===0?"index.html":"#"+allIds[i-1];
-    const next=add(footer,"a",null,i===4?"Back to extensions start":"Next extension →");next.href="#"+allIds[(i+1)%5];
+    const next=add(footer,"a",null,i===allIds.length-1?"Back to extensions start":"Next extension →");next.href="#"+allIds[(i+1)%allIds.length];
     if(sourceLink && sourceLink.lesson===active){const ret=add(footer,"a","return-original","Return to "+sourceLink.id+" without showing answer");ret.href=sourceLink.href;}
     updateProgress();
   }
