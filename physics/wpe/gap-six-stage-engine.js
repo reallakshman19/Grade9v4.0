@@ -6,6 +6,7 @@
   "use strict";
   window.WPEGapJourneys=function(scenarios,config){
     if(!scenarios||!Object.keys(scenarios).length||!config?.storagePrefix)throw Error("No safe journey configuration");
+    const stages=["Predict","Attempt","Reconstruct","Diagnose","Repair","Boundary test"];
   const ids=Object.keys(scenarios);
   const prefix=config.storagePrefix;
   const doc=document,svgNS="http://www.w3.org/2000/svg";
