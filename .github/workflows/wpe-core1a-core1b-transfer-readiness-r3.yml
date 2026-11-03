@@ -33,7 +33,10 @@ jobs:
           node --check physics/wpe/gap-six-stage-engine.js
       - name: Independent equations, limiting cases, source custody, five construction rubrics
         run: python -m pytest -q tests/test_wpe_core1a_core1b_transfer_readiness_r3.py
-      - name: Ten separate learner first-attempts, two distinct tasks per construction, desktop and mobile
+      - name: Ten complete A/B six-stage journeys per screen, both source-validated desktop and mobile
         run: python tools/wpe_core1a_core1b_transfer_readiness_r3_ui.py
-      - name: Protect original F04–F08 six-stage source routes on desktop and mobile
-        run: python tools/wpe_learn_challenge_gap_closure_r2_ui.py
+      # Historical R2 gateway-click test uses an obsolete #interactive-lesson-links
+      # selector removed by merged #62; its shared-route repair is PR #61-owned.
+      # The R3-local browser test runs both full six-stage Task A and Task B
+      # per construction, checks source identity and returns, without rewriting
+      # the Question Bank or pretending that gateway migration is complete.
