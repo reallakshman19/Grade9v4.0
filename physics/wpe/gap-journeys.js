@@ -13,7 +13,7 @@ const twoBody={
 const scenarios={
 F04:{
   source:"EX-M50",title:"Two moving blocks: shared travel versus stretch",short:"Two blocks · spring energy",
-  sourceCaution:"The original equal-and-opposite setup has zero total momentum; its particular numerical simplification is NOT a rule for unequal masses or unequal speeds. This fresh challenge keeps centre-of-mass motion nonzero.",
+  sourceCaution:"The original equal-and-opposite setup has zero total momentum, so its x=v/2 result is a special case. Its inherited limiting-case CHECK for only one block moving incorrectly claims v/(2√2); with two 0.25 kg blocks and k=2 N/m, the correct relative-energy result is v/4. Do not copy that check. This fresh challenge keeps COM motion nonzero.",
   question:"Why does an internal spring absorb relative kinetic energy rather than the energy of two blocks travelling together?",
   prerequisites:twoBody.prerequisites,
   core:twoBody.reason,
