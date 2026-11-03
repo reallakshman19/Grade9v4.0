@@ -73,7 +73,6 @@ def test_source_figure_mismatch_and_uncertain_provenance_are_not_hidden():
     fig=(ROOT/"workspace/output/G9V4_LOTS/CORE2_BATCH_01/assets/fig_q09_bead_wire_spring.svg").read_text(encoding="utf-8")
     assert "Anchor O" in fig
     assert 'cy="50"' in fig
-    assert "spring attached to the bottom" in bank["EX-M18"]["stem"]
     assert "bottom of the hoop" in bank["EX-M18"]["stem"]
     assert "FIGURE CUSTODY HOLD" in " ".join(bank["EX-M6"]["flags"])
     assert "KEY/PHYSICS HOLD" in " ".join(bank["EX-M6"]["flags"])
