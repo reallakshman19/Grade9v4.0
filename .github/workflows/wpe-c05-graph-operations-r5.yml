@@ -8,6 +8,7 @@ on:
       - "physics/wpe/c05-source-r5.js"
       - "physics/wpe/reviews/WPE_C05_GRAPH_OPERATIONS_R5_AUDIT.md"
       - "tests/test_wpe_c05_graph_operations_r5.py"
+      - "tests/test_wpe_c05_r5_authored_oracle.py"
       - "tools/wpe_c05_graph_operations_r5_ui.py"
       - ".github/workflows/wpe-c05-graph-operations-r5.yml"
   workflow_dispatch:
@@ -30,7 +31,7 @@ jobs:
           node --check physics/wpe/c05-source-r5.js
       - name: Independently verify graph models, signs, units, negative controls and 74-source custody
         run: |
-          python -m pytest -q tests/test_wpe_c05_graph_operations_r5.py
+          python -m pytest -q tests/test_wpe_c05_graph_operations_r5.py tests/test_wpe_c05_r5_authored_oracle.py
           python -m pytest -q tests/test_wpe_c06_construction_r4.py tests/test_wpe_core1a_core1b_transfer_readiness_r3.py
       - name: Fourteen independent A/B tasks — real six-stage Chromium desktop/mobile, source refusals
         run: python tools/wpe_c05_graph_operations_r5_ui.py
