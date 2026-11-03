@@ -1,4 +1,4 @@
-"""Chromium QA for two source-grounded WPE six-stage student practice journeys."""
+"""Chromium QA for four source-grounded WPE six-stage student practice journeys."""
 from __future__ import annotations
 
 import http.server
@@ -57,10 +57,26 @@ def fill_stage_one(page, lesson, answer):
         root.locator('[data-input="normal"]').select_option(label="Zero (0)")
         root.locator('[data-input="netWork"]').fill("39")
         root.locator('[data-input="topSpeed"]').fill("5")
-    else:
+    elif lesson == "C02":
         root.locator('[data-input="boundary"]').select_option(label="At the far end of the rough strip")  # incorrect
         root.locator('[data-input="springEnergy"]').fill("1")
         root.locator('[data-input="finalSpeed"]').fill("1")
+    elif lesson == "C03":
+        root.locator('[data-input="powerMeaning"]').select_option(label="The force is always 18 N")  # incorrect
+        root.locator('[data-input="initialEnergy"]').fill("0")  # forgot initial energy
+        root.locator('[data-input="energyAt2"]').fill("36")
+        root.locator('[data-input="speedAt2"]').fill("5")
+        root.locator('[data-input="energyGraph"]').select_option(label="Straight rising line")
+        root.locator('[data-input="speedGraph"]').select_option(label="Straight rising line")  # misconception
+    elif lesson == "C04":
+        root.locator('[data-input="massPerMetre"]').fill("0.5")
+        root.locator('[data-input="startMass"]').fill("4")  # used total rope mass
+        root.locator('[data-input="startDepth"]').fill("4")
+        root.locator('[data-input="endMass"]').fill("4")
+        root.locator('[data-input="helperWork"]').fill("80")
+        root.locator('[data-input="modelChoice"]').select_option(label="The whole 4 kg rope in both states")
+    else:
+        raise AssertionError("Unknown topic " + lesson)
     root.locator('[data-action="lock-attempt"]').click()
     check(root.locator(".stage-card h4").inner_text() == "3. Reconstruct", lesson+" first attempt not committed")
     check(root.locator(".worked").count() == 1, lesson+" worked reconstruction not available")
@@ -113,28 +129,42 @@ def run_viewport(browser, width, height, base):
         page.on("pageerror", lambda err: errors.append(str(err)))
         response = page.goto(base+PATH, wait_until="load")
         check(response is not None and response.status == 200, "Self-tutor page did not load")
-        check(page.locator("article.unit").count() == 2, "Two lessons missing")
-        check(page.locator(".guide-steps").count() == 2, "Core1A guides missing")
-        check(page.locator(".stage-root .step-list li").count() == 12, "All six stages not listed for two lessons")
+        check(page.locator("article.unit").count() == 4, "Four lessons missing")
+        check(page.locator(".guide-steps").count() == 4, "Core1A guides missing")
+        check(page.locator(".stage-root .step-list li").count() == 24, "All six stages not listed for four lessons")
         check(page.locator("body").inner_text().find("This page does not grade explanations") != -1, "Non-grading learner note missing")
-        check(page.locator("#overall-count").inner_text() == "0 of 2 challenges completed", "Initial progress incorrect")
+        check(page.locator("#overall-count").inner_text() == "0 of 4 challenges completed", "Initial progress incorrect")
         check(not errors, "JavaScript error on load: "+str(errors))
         check(page.evaluate("document.documentElement.scrollWidth <= window.innerWidth + 3"),
               "Horizontal page overflow at "+str(width))
 
-        # Two distinct first attempts. Both deliberately make a conceptual mistake;
+        # Four distinct first attempts; each deliberately includes a plausible conceptual mistake;
         # there is no automatic evaluation of the child's free-text explanation.
         first_c01 = fill_stage_one(page, "C01", "I counted the motor and gravity as helping uphill, maybe 39 joules.")
         check(saved_state(page, "C02") is None, "C01 saved the other topic unexpectedly")
         finish_stages(page, "C01", first_c01)
-        check(page.locator("#overall-count").inner_text() == "1 of 2 challenges completed", "First completion not counted")
+        check(page.locator("#overall-count").inner_text() == "1 of 4 challenges completed", "First completion not counted")
         first_c02 = fill_stage_one(page, "C02", "I think the spring might keep pushing into the rough strip.")
         finish_stages(page, "C02", first_c02)
-        check(page.locator("#overall-count").inner_text() == "2 of 2 challenges completed", "Both completions not counted")
+        check(page.locator("#overall-count").inner_text() == "2 of 4 challenges completed", "Second completion not counted")
+        first_c03 = fill_stage_one(page, "C03", "I think 18 watts means constant force and each second gives the same speed increase.")
+        check("Kinetic energy" in root_for(page, "C03").locator(".worked").inner_text()
+              or "kinetic energy" in root_for(page, "C03").locator(".worked").inner_text(),
+              "C03 reconstruction does not explain power/energy relationship")
+        finish_stages(page, "C03", first_c03)
+        check(page.locator("#overall-count").inner_text() == "3 of 4 challenges completed",
+              "Third completion not counted")
+        first_c04 = fill_stage_one(page, "C04", "I used the whole four kilograms in both rope pictures instead of changing the hanging mass.")
+        check("−40 J" in root_for(page, "C04").locator(".worked").inner_text(),
+              "C04 worked model missing initial hanging potential")
+        finish_stages(page, "C04", first_c04)
+        check(page.locator("#overall-count").inner_text() == "4 of 4 challenges completed",
+              "Fourth completion not counted")
         page.reload(wait_until="load")
-        check(page.locator("#overall-count").inner_text() == "2 of 2 challenges completed", "Completed progress not restored")
-        check(saved_state(page, "C01")["first"] == first_c01, "C01 first reasoning was modified")
-        check(saved_state(page, "C02")["first"] == first_c02, "C02 first reasoning was modified")
+        check(page.locator("#overall-count").inner_text() == "4 of 4 challenges completed", "Completed progress not restored")
+        for lesson, initial in (("C01",first_c01),("C02",first_c02),("C03",first_c03),("C04",first_c04)):
+            check(saved_state(page, lesson)["first"] == initial,
+                  lesson+" first reasoning was modified after completing all four lessons")
         check(page.evaluate("document.documentElement.scrollWidth <= window.innerWidth + 3"),
               "Page overflow after completion at "+str(width))
         check(not errors, "JavaScript runtime errors: "+str(errors))
@@ -143,8 +173,10 @@ def run_viewport(browser, width, height, base):
         root_for(page, "C01").locator('[data-action="reset"]').click()
         check(saved_state(page, "C01") is None, "C01 reset did not clear local attempt")
         check(saved_state(page, "C02")["first"] == first_c02, "Reset of C01 cleared C02")
-        check(page.locator("#overall-count").inner_text() == "1 of 2 challenges completed", "Reset progress incorrect")
-        print("PASS: %sx%s C01/C02 all stages, attempted lock, storage, feedback, repair, boundary, reset" % (width,height))
+        check(page.locator("#overall-count").inner_text() == "3 of 4 challenges completed", "Reset progress incorrect")
+        check(saved_state(page, "C03")["first"] == first_c03 and saved_state(page, "C04")["first"] == first_c04,
+              "Resetting C01 unexpectedly cleared new C03/C04 records")
+        print("PASS: %sx%s C01–C04 all stages, independent first tries, repair, boundaries, persistence, reset" % (width,height))
     finally:
         context.close()
 

@@ -1,6 +1,6 @@
-/* WPE C01/C02 interactive student practice. Client-side only: NOT secured answers,
+/* WPE C01–C04 interactive student practice. Client-side only: NOT secured answers,
  * not authenticated learner evidence, not academic Core1A/B acceptance.
- * Source author packs: WPE-C01 MULTIFORCE_LEDGER, WPE-C02 SPRING_CONTACT.
+ * Source author packs: WPE-C01 through C04 (multi-force, spring, power, hanging rope).
  */
 (() => {
   "use strict";
@@ -92,6 +92,99 @@
         "A 1.00 m strip with 1 N friction removes 1.00 J: friction work = −1.00 J.",
         "At the far end, kinetic energy would be exactly 0 J and speed 0 m/s. It reaches the endpoint and stops, but does not pass it with nonzero speed.",
         "A longer rough strip would require more energy than the cart has; without another push it cannot cross that longer strip."
+      ]
+    },
+    C03: {
+      title: "Energy added each second",
+      version: 1,
+      prediction: "With constant motor power, do we gain equal kinetic energy every second, equal speed every second, or both? Which graph will be straight?",
+      fields: [
+        {id:"powerMeaning",type:"select",label:"What does 18 W tell us?",options:["The motor adds 18 J every second", "The force is always 18 N", "The trolley gains 18 m/s every second", "I'm not sure"]},
+        {id:"initialEnergy",type:"number",label:"Kinetic energy at the start (J)",hint:"Remember: the trolley is already moving at 2 m/s."},
+        {id:"energyAt2",type:"number",label:"Total kinetic energy after 2 s (J)",hint:"Include the initial kinetic energy."},
+        {id:"speedAt2",type:"number",label:"Speed after 2 s (m/s)",hint:"A rounded decimal is fine."},
+        {id:"energyAt6",type:"number",label:"Total kinetic energy after 6 s (J)"},
+        {id:"speedAt6",type:"number",label:"Speed after 6 s (m/s)"},
+        {id:"energyGraph",type:"select",label:"Shape of kinetic energy against time?",options:["Straight rising line", "Curving line that flattens", "Horizontal line", "I'm not sure"]},
+        {id:"speedGraph",type:"select",label:"Shape of speed against time?",options:["Straight rising line", "Rising curve that gradually flattens", "Horizontal line", "I'm not sure"]},
+        {id:"distanceGraph",type:"select",label:"Shape of displacement against time?",options:["Straight rising line", "Rising curve that gets steeper", "Horizontal line", "I'm not sure"]},
+        {id:"acceleration",type:"select",label:"Is acceleration constant?",options:["Yes", "No", "I'm not sure"]},
+        {id:"reason",type:"textarea",label:"Show your time → energy → speed table and explain the three graph shapes",hint:"It's okay to say 'I'm not sure' at any step."}
+      ],
+      worked: [
+        ["Start with the trolley's own energy", "The 3 kg trolley starts at 2 m/s. K₀ = ½ × 3 × 2² = 6 J. Power is 18 W = 18 J of added kinetic energy each second, not 18 N."],
+        ["Make a two-time energy table", "At 2 seconds, added energy = 18 × 2 = 36 J, total K = 6 + 36 = 42 J. At 6 seconds, added = 18 × 6 = 108 J, total K = 6 + 108 = 114 J."],
+        ["Turn energy into speed", "Using K = ½mv²: at 2 s, v² = 2 × 42 / 3 = 28, so v ≈ 5.29 m/s. At 6 s, v² = 2 × 114 / 3 = 76, so v ≈ 8.72 m/s."],
+        ["Choose the right graph shape", "K–time is a rising straight line (equal joules added each second). Speed–time rises but gradually flattens. Displacement–time rises and gets steeper because its slope is speed. You do not need to calculate exact distance."],
+        ["Check acceleration", "It is not constant: at positive speed, the driving force F = P / v gets smaller as the trolley speeds up. Constant power does not mean constant force or equal speed gains each second."]
+      ],
+      rubric: [
+        "I used 18 W as joules per second and included the trolley's starting energy.",
+        "I built both time → added energy → total kinetic energy → speed rows.",
+        "I used the correct axes to describe the three different graph shapes.",
+        "I explained why constant power does not mean constant acceleration."
+      ],
+      diagnoses: [
+        "I treated watts as newtons or as a fixed acceleration.",
+        "I forgot the starting kinetic energy.",
+        "I added the same speed each second instead of the same energy.",
+        "I mixed up the speed, displacement and kinetic-energy graph shapes.",
+        "My model was fine; I want to double-check the arithmetic.",
+        "I'm not sure what went wrong yet."
+      ],
+      repairPrompt: "Correct the first wrong entry in your time–energy–speed table or your graph explanation. Give both speeds and say whether acceleration stays constant. What did you change?",
+      boundaryPrompt: "The SAME 3 kg trolley still starts at 2 m/s, but the motor now supplies 9 W (half the original power). What is its speed after 2 seconds? Does that make its acceleration constant? Explain.",
+      boundaryCheck: [
+        "The trolley starts with K₀ = ½ × 3 × 2² = 6 J. The power is now 9 J/s.",
+        "After 2 s it gains 9 × 2 = 18 J, so the total kinetic energy is 6 + 18 = 24 J.",
+        "From ½ × 3 × v² = 24, we get v² = 16 and speed = 4 m/s.",
+        "Acceleration is still not constant: the motor supplies constant power, so as speed grows its driving force F = P / v decreases. Power changed, not the kind of model."
+      ]
+    },
+    C04: {
+      title: "Only the hanging part",
+      version: 1,
+      prediction: "As you pull the rope upward from 4 m hanging to 2 m hanging, what happens to the hanging mass and the position of its middle? Will this take as much work as lifting all of it?",
+      fields: [
+        {id:"massPerMetre",type:"number",label:"Mass per metre of rope (kg/m)",hint:"Divide the whole rope mass by the whole rope length."},
+        {id:"startMass",type:"number",label:"Mass hanging BEFORE the pull (kg)",hint:"Only 4 m out of 8 m hangs at the start."},
+        {id:"startDepth",type:"number",label:"Depth of the hanging part's middle BEFORE (m below platform)"},
+        {id:"startU",type:"number",label:"Gravitational potential energy BEFORE (J)",hint:"Choose platform height as zero. Below it is negative."},
+        {id:"endMass",type:"number",label:"Mass hanging AFTER the pull (kg)",hint:"2 m still hangs. The hanging mass has changed."},
+        {id:"endDepth",type:"number",label:"Depth of the hanging part's middle AFTER (m below platform)"},
+        {id:"endU",type:"number",label:"Gravitational potential energy AFTER (J)"},
+        {id:"helperWork",type:"number",label:"Positive work by the helper (J)",hint:"Take final potential energy minus initial potential energy."},
+        {id:"modelChoice",type:"select",label:"Which mass model did you use?",options:["Only the hanging mass in each state", "The whole 4 kg rope in both states", "The mass hanging at the start for both states", "I'm not sure"]},
+        {id:"reason",type:"textarea",label:"Describe the two hanging-length pictures and explain how you found the work",hint:"Describe the middle of each hanging piece. You may write 'I'm not sure'."}
+      ],
+      worked: [
+        ["Start with mass per metre", "The 8 m rope has 4 kg of mass, so 4 ÷ 8 = 0.5 kg per metre. Only the hanging length contributes energy below platform height."],
+        ["Draw the BEFORE state", "Initially 4 m hangs: hanging mass = 0.5 × 4 = 2 kg. Its middle is halfway down, at 2 m below the platform. With U = 0 on the platform, U_before = −2 × 10 × 2 = −40 J."],
+        ["Draw the AFTER state", "Only 2 m remains hanging: mass = 0.5 × 2 = 1 kg; its middle is 1 m below the platform. U_after = −1 × 10 × 1 = −10 J."],
+        ["Subtract final minus initial", "The helper pulls slowly on a smooth edge, so their positive work equals the rise in gravitational potential energy: (−10) − (−40) = +30 J."],
+        ["Explain the key decision", "Both the hanging mass and its centre-of-mass depth shrink. Using the entire 4 kg rope or the starting hanging mass for the final state would model the wrong picture."]
+      ],
+      rubric: [
+        "I found the mass per metre and used only the mass actually hanging in each state.",
+        "I placed the middle of each uniform hanging piece halfway down.",
+        "I calculated a separate potential energy before and after, using the platform as zero.",
+        "I subtracted final minus initial and explained why the helper's work is positive."
+      ],
+      diagnoses: [
+        "I treated the whole 4 kg rope as if it were hanging.",
+        "I kept the hanging mass unchanged after pulling.",
+        "I placed the middle at the bottom of the hanging piece.",
+        "I mixed up the minus signs when subtracting potential energies.",
+        "My model was fine; I want to double-check the arithmetic.",
+        "I'm not sure what went wrong yet."
+      ],
+      repairPrompt: "Write a corrected BEFORE and AFTER table with hanging mass, middle depth and potential energy, then the helper's work. Explain which picture or subtraction you fixed.",
+      boundaryPrompt: "Start with the SAME 8 m, 4 kg rope with 4 m hanging. Now pull it COMPLETELY onto the smooth platform (0 m hanging). How much work is needed, and why is this more than stopping with 2 m still hanging?",
+      boundaryCheck: [
+        "The starting hanging part is unchanged: 2 kg, with its middle 2 m below the platform, so U_before = −40 J.",
+        "If the rope is fully on the platform, 0 m hangs: U_after = 0 J.",
+        "The slow helper's work is U_after − U_before = 0 − (−40) = +40 J.",
+        "That exceeds the +30 J partial-lift case because the helper lifts the remaining hanging 2 m section as well. The full rope does not rise by one identical height."
       ]
     }
   };
@@ -283,8 +376,8 @@
     Object.keys(lessons).forEach(lesson=>{ if(states[lesson].boundary!==null)count++; });
     const label=document.getElementById("overall-count");
     const meter=document.getElementById("overall-meter");
-    if(label)label.textContent=count+" of 2 challenges completed";
-    if(meter)meter.value=count;
+    if(label)label.textContent=count+" of "+Object.keys(lessons).length+" challenges completed";
+    if(meter){meter.max=Object.keys(lessons).length;meter.value=count;}
   }
   function warn(root, text) {
     const notice=root.querySelector("[data-notice]");

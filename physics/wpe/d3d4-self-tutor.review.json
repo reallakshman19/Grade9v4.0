@@ -1,9 +1,9 @@
 {
-  "schema": "wpe-c01-c02-six-stage-self-tutor/v1",
+  "schema": "wpe-c01-c04-six-stage-self-tutor/v2",
   "date": "2026-11-03",
   "publication_role": "STUDENT_PRACTICE_PREVIEW_ONLY",
   "route": "physics/wpe/d3d4-self-tutor.html",
-  "scope": "Two original author-authored guided Core1A/fresh Core1B simulations with six stages; no native acceptance or source exam question reprint",
+  "scope": "Four original guided Core1A and separate fresh Core1B interactive six-stage practice journeys, no native academic acceptance or reproduction of source examination questions",
   "lessons": [
     {
       "id": "C01",
@@ -31,6 +31,36 @@
         "EX-M24",
         "TB-WPE-ILL-12",
         "EX-M18"
+      ],
+      "source_join_status": "PROPOSED_UNQUALIFIED",
+      "revision": 1
+    },
+    {
+      "id": "C03",
+      "concept": "Constant mechanical power, energy versus speed and graph shapes",
+      "author_pack": "WPE_Source_to_Core1A_Concept/learning-bridge/CONSTANT_POWER_LEARNING_PACK.md",
+      "author_pack_blob_sha": "46794134580e69654318325b9e8247cb1fc24d18",
+      "guided": "2 kg sled with initial 2 m/s and 12 W for 1 s and 4 s, energy table and graphs",
+      "fresh": "3 kg trolley with initial 2 m/s and 18 W for 2 s and 6 s, three graph choices and 9 W boundary",
+      "proposed_source_themes": [
+        "EX-M62",
+        "EX-M79",
+        "EX-M69"
+      ],
+      "source_join_status": "PROPOSED_UNQUALIFIED",
+      "revision": 1
+    },
+    {
+      "id": "C04",
+      "concept": "Distributed chain mass and changing hanging centre of mass",
+      "author_pack": "WPE_Source_to_Core1A_Concept/learning-bridge/DISTRIBUTED_MASS_LEARNING_PACK.md",
+      "author_pack_blob_sha": "78097c0c64319a0dcc949da445fb67e6add1afcc",
+      "guided": "4 m, 2 kg uniform chain, 2 m hanging, lifted completely onto tabletop",
+      "fresh": "8 m, 4 kg rope, hanging length changes from 4 m to 2 m, full-lift boundary",
+      "proposed_source_themes": [
+        "EX-M73",
+        "WEP07-02",
+        "TB-WPE-ILL-11"
       ],
       "source_join_status": "PROPOSED_UNQUALIFIED",
       "revision": 1
@@ -66,6 +96,28 @@
     "Two concepts are connected to difficult-question source IDs only as unverified proposed themes, not proven prerequisites.",
     "Existing five-topic practice and main academic reader remain unchanged apart from small WPE chapter entry-point link.",
     "Original exam stems, keys, source figures and native academic statuses were not copied or modified.",
-    "Static browser code can be inspected; a UI lock is not secure answer custody or independent evidence of a child's ability."
-  ]
+    "Static browser code can be inspected; a UI lock is not secure answer custody or independent evidence of a child's ability.",
+    "C03 guided and fresh problems follow existing constant-power authored pack; finite initial speed avoids the idealized zero-speed constant-power singularity and no s∝t^(3/2) derivation is required.",
+    "C04 guided and fresh problems follow existing chain pack; both hanging mass and centre height change, and a child may explain their diagram using text instead of drawing.",
+    "C01/C02 browser localStorage v1 keys retained so saved prior attempts continue after expansion to four topics.",
+    "No real-child observation performed; layout and state testing are automated simulations only."
+  ],
+  "implementation_batch": {
+    "id": "C03_C04_INTERACTIVE_TRANSFER",
+    "date": "2026-11-03",
+    "new_topics": [
+      "C03",
+      "C04"
+    ],
+    "retained_topics": [
+      "C01",
+      "C02"
+    ],
+    "new_qualified_routes": 0,
+    "academic_admissions_changed": false,
+    "real_student_usability_observed": false,
+    "software_browser_simulations_only": true,
+    "author_pack_contract": "Six stages for each, independent fresh model decisions and changed-condition reasoning, original attempt persisted separately from repair",
+    "learner_accessibility": "No required calculus. Qualitative speed/time and chain-state pictures with explicit units."
+  }
 }
