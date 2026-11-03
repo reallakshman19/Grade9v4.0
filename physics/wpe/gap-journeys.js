@@ -17,7 +17,7 @@ F04:{
   question:"Why does an internal spring absorb relative kinetic energy rather than the energy of two blocks travelling together?",
   prerequisites:twoBody.prerequisites,
   core:twoBody.reason,
-  guide:"GUIDED ANCHOR: two frictionless blocks, masses 1 kg and 3 kg, start with a spring at natural length. At an instant they move right at +2 m/s and left at −2 m/s. k=8 N/m. They are separating, and the spring is attached to both.",
+  guide:"GUIDED ANCHOR: two frictionless blocks, masses 1 kg and 3 kg, start with a spring at natural length. Block 1 is to the RIGHT of block 2; at an instant block 1 moves right at +2 m/s and block 2 moves left at −2 m/s. k=8 N/m. They are separating, and the spring is attached to both.",
   guideSteps:[
     ["Distinguish two speeds","Their centre-of-mass velocity is V=(1×2+3×(−2))/4=−1 m/s. Their relative speed is w=2−(−2)=4 m/s. Translating the pair does not by itself stretch the spring."],
     ["Decompose kinetic energy","Total K=½(1)(2²)+½(3)(2²)=8 J. Common-motion energy is ½(4)(1²)=2 J. Internal relative energy is therefore 6 J."],
@@ -27,7 +27,7 @@ F04:{
   ],
   wrong:"Wrong path: set ½kx² equal to ½m₁u₁²+½m₂u₂² without checking V. That is correct only when the centre of mass is initially stationary. At maximum extension the blocks generally still move together.",
   conditions:"1D horizontal spring, initially unstretched and attached at both ends; no friction or external horizontal impulse; Hooke's law; neglect spring mass. Positive velocity points right. First maximum elongation is the instant w=0.",
-  challenge:"FRESH MODEL CHOICE: on a frictionless line two attached blocks have m₁=1 kg and m₂=3 kg. The spring (k=6 N/m) is initially at natural length. At that instant u₁=+4 m/s and u₂=−2 m/s, so they begin separating. Determine centre-of-mass velocity, reduced mass, relative kinetic energy, and first maximum spring elongation. Explain why total kinetic energy is NOT wholly stored in the spring.",
+  challenge:"FRESH MODEL CHOICE: on a frictionless line two attached blocks have m₁=1 kg (RIGHT-hand block) and m₂=3 kg (LEFT-hand block). The spring (k=6 N/m) is initially at natural length. At that instant u₁=+4 m/s and u₂=−2 m/s, so they begin separating. Determine centre-of-mass velocity, reduced mass, relative kinetic energy, and first maximum spring elongation. Explain why total kinetic energy is NOT wholly stored in the spring.",
   prediction:"Can the entire initial kinetic energy turn into spring potential when the pair's total momentum is not zero? What will still be moving at maximum extension?",
   fields:[
     {id:"model",label:"Choose the energy model for internal spring elongation",type:"select",choices:["Choose an idea","Relative kinetic energy ½μ(u₁−u₂)²","Total kinetic energy of both blocks","Only the lighter block's kinetic energy","I'm not sure yet"],expected:"Relative kinetic energy ½μ(u₁−u₂)²",mistake:"The common centre-of-mass kinetic energy survives at maximum extension. Use relative velocity and reduced mass."},
@@ -215,7 +215,7 @@ F08:{
   ],
   wrong:"Wrong path: assume a wagon moving with its engine at the same speed can compress an internal spring from that shared forward kinetic energy alone. With zero relative speed, the ideal pair cannot change its coupling compression unless an external force or brake changes their relative motion. Another wrong path is treating a stated energy-retention fraction as a unique two-body braking solution when component masses are missing.",
   conditions:"Model A: f=10% whole initial KE reaches spring at maximum compression; residual translational/thermal energy is handled by the postulated budget. Model B: 1D horizontal bodies joined by a massless linear spring, initially relaxed, no external impulse, friction or damping; genuine compression uses relative mass μ and relative initial speed. A real braking engine–wagon pair may violate either idealization.",
-  challenge:"FRESH MODEL CHOICE: two frictionless industrial carts are connected by an ideal spring, initially uncompressed. Cart A has mass 600 kg and speed +6 m/s; cart B has mass 900 kg and speed 0. The spring stiffness is 54,000 N/m. No brakes, damping or outside horizontal forces act. Find the COM speed, reduced mass, relative kinetic energy available for compression and FIRST maximum compression. Explain why using 10% of whole-system kinetic energy would be unjustified here.",
+  challenge:"FRESH MODEL CHOICE: two frictionless industrial carts are connected by an ideal spring, initially uncompressed. Cart A is LEFT of cart B, moving RIGHT toward B, with mass 600 kg and speed +6 m/s; cart B has mass 900 kg and speed 0. The spring stiffness is 54,000 N/m. No brakes, damping or outside horizontal forces act. Find the COM speed, reduced mass, relative kinetic energy available for compression and FIRST maximum compression. Explain why using 10% of whole-system kinetic energy would be unjustified here.",
   prediction:"If cart B were moving at +6 m/s along with A, would their common 6 m/s motion alone compress the internal spring? Why or why not?",
   fields:[
     {id:"model",label:"Which source of spring energy is justified by the FRESH cart data?",type:"select",choices:["Choose an idea","Relative kinetic energy of the two carts","Automatically 10% of their total kinetic energy","All of the initial total kinetic energy","I'm not sure yet"],expected:"Relative kinetic energy of the two carts",mistake:"The fresh setup supplies both masses and velocities, and explicitly has no dissipation. Use the relative motion, not a source-only 10% assumption."},
@@ -255,11 +255,11 @@ function modelSvg(id,val,{host,readout,svg,svgLine,svgText,nice}){
     svg(host,"rect",{x:458,y:137,width:112,height:56,rx:9,fill:"#bed5f5",stroke:"#5474a0","stroke-width":2});
     const zig=[];for(let i=0;i<=16;i++){const x=182+i*(276/16),y=i===0||i===16?165:165+(i%2?15:-15);zig.push((i?"L":"M")+x+" "+y);}
     svg(host,"path",{d:zig.join(" "),fill:"none",stroke:"#b77b38","stroke-width":4});
-    text(100,166,"Body A");text(470,166,"Body B");text(245,115,"Internal spring");
+    text(100,166,id==="F04"?"Body B":"Body A");text(470,166,id==="F04"?"Body A":"Body B");text(245,115,"Internal spring");
     if(id==="F04"){
       const shift=val,u1=2+shift,u2=-2+shift,V=-1+shift;
-      text(55,65,"u₁="+nice(u1)+" m/s");text(450,65,"u₂="+nice(u2)+" m/s");
-      svgLine(host,110,88,160,88,"#1a856d",4);svgLine(host,466,88,420,88,"#9c6644",4);
+      text(55,65,"u₂="+nice(u2)+" m/s");text(450,65,"u₁="+nice(u1)+" m/s");
+      svgLine(host,150,88,100,88,"#1a856d",4);svgLine(host,420,88,470,88,"#9c6644",4);
       readout.textContent="Shift both speeds by "+nice(shift)+" m/s. Relative speed stays "+nice(u1-u2)+" m/s, relative energy stays 6 J and maximum stretch stays √1.5 ≈ 1.225 m; COM velocity changes to "+nice(V)+" m/s.";
     }else{
       const f=val/100,E=f*50000,k=f===0?0:2*E/(.5**2);
