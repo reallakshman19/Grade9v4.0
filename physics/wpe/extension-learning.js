@@ -351,7 +351,7 @@
       ],
       "boundary": "The same 4 kg toy still starts from rest and is pushed upward for 0.50 m, but its later FREE flight rise is only 0.45 m. Find new take-off speed, contact applied force and maximum applied mechanical power; distinguish net power.",
       "boundaryCheck": "Later rise 0.45 m implies v²=9 and take-off v=3 m/s. Contact kinetic gain is 18 J; contact gravity rise needs 20 J. Applied work=38 J, applied force=76 N, MAXIMUM applied power=76×3=228 W. Net force=(76−40)=36 N and its kinetic-energy rate at take-off is 108 W. The 0.45 m is not the push distance.",
-      "visual": "push"
+      visual:"push"
     },
     E07: {
       "title": "Two incline journeys, two friction losses",
@@ -489,7 +489,7 @@
       ],
       "boundary": "On the SAME 45° incline, a new trial returns to its starting position at speed (3/4)v₀. What μ is implied, and why is it less than in the original trial?",
       "boundaryCheck": "For the 45° incline, r²=(1−μ)/(1+μ). With r=3/4, r²=9/16, so 9(1+μ)=16(1−μ). Thus 25μ=7 and μ=7/25=0.28, smaller than 5/13. Less friction means less round-trip energy loss. Gravity still cancels over the full return.",
-      "visual": "incline"
+      visual:"incline"
     },
     E08: {
       "title": "New spring-force equilibrium, new turning point",
@@ -618,7 +618,7 @@
       ],
       "boundary": "Keep k=50 N/m and initial rest position x_i=−0.20 m, but change the switched constant force to +5 N. Find the NEW equilibrium and the OTHER turning point; verify effective potential at both.",
       "boundaryCheck": "With +5 N after switch, new equilibrium is x_eq=5/50=+0.10 m and the far turning point is x=2(0.10)−(−0.20)=+0.40 m. Initial effective energy is ½(50)(0.20²)−5(−0.20)=1+1=2 J. At x=+0.40 m, U_eff=½(50)(0.40²)−5(0.40)=4−2=2 J. The new force changes the equilibrium and turning point; old holding force does not enter post-switch energy.",
-      "visual": "spring-switch"
+      visual:"spring-switch"
     }
   };
   const allIds = Object.keys(lessons);
