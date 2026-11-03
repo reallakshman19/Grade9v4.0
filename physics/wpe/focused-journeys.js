@@ -98,7 +98,7 @@
         {id:"why",label:"Explain why return speed changes even though μ stays the same",type:"textarea"}
       ],
       boundaryCheck:"At 45°, Kreturn/Kinitial = (1−0.6)/(1+0.6) = 0.25. Thus speed ratio = √0.25 = 0.5 and return kinetic energy = 18×0.25 = 4.5 J. Compared with 37°, the steeper ramp gives gravity a larger share relative to friction over the climb and return.",
-      visual:"incline",slider:{label:"Guided kinetic friction μ",min:0,max:.8,step:.05,value:1/3}
+      visual:"incline",slider:{label:"Guided kinetic friction μ",min:0,max:.8,step:"any",value:1/3}
     },
     F03:{
       source:"WEP07-01",title:"When an applied force reverses, the equilibrium moves",short:"Spring switch: new equilibrium, new turning point",
@@ -186,7 +186,7 @@
       e=add(group,"select");
       for(const c of field.choices)add(e,"option",c).value=c;
     }else{e=add(group,"input");e.type=field.type;e.inputMode="decimal";e.step="any";}
-    e.id=name;e.dataset.field=field.id;e.value=value??"";
+    e.id=name;e.dataset.field=field.id;e.value=value??(field.type==="select"?field.choices[0]:"");
     return e;
   }
   function action(parent,key,label,secondary=false){
@@ -381,6 +381,7 @@
       }
     }
     action(acts,"reset","Restart this journey (clears saved work)",true).classList.add("reset");
+    box.append(acts);
     const note=add(box,"p","","status");note.setAttribute("aria-live","polite");note.dataset.notice="true";
     if(focus)title.focus({preventScroll:true});
   }
