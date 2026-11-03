@@ -51,7 +51,7 @@ if(!a.ok||!b.ok)throw Error("Source records unavailable");
 bank=await a.json();route=await b.json();
 if(!Array.isArray(bank.questions)||bank.questions.length!==74||route.schema!=="wpe-reasoning-route-preview/v1"||!Array.isArray(route.constructions))throw Error("Question inventory changed");
 }catch(err){summary.textContent="Question map unavailable: "+err.message;return;}
-const interactive=new Set(["WPE-C01","WPE-C02","WPE-C03","WPE-C04","WPE-C05","WPE-C06"]);
+const interactive=new Set(["WPE-C01","WPE-C02","WPE-C03","WPE-C04","WPE-C05","WPE-C06","WPE-C07","WPE-C08"]);
 const seen=new Set();
 const entries=bank.questions.map(q=>{
 if(!q.source_id||seen.has(q.source_id))throw Error("Duplicate or absent source question ID");
