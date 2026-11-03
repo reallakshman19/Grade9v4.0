@@ -1,4 +1,4 @@
-"""Static integrity and independent calculations for the C01/C02 practice preview.
+"""Static integrity and independent calculations for the C01–C08 practice preview.
 
 This is software QA, not a learner performance score or academic admission.
 """
@@ -32,7 +32,7 @@ def close(a, b):
     assert math.isclose(a, b, rel_tol=1e-11, abs_tol=1e-11), (a, b)
 
 
-def test_two_source_grounded_guided_and_fresh_pairs():
+def test_eight_source_grounded_guided_and_fresh_pairs():
     data = load(META)
     assert data["schema"] == "wpe-c01-c08-six-stage-self-tutor/v4"
     assert data["publication_role"] == "STUDENT_PRACTICE_PREVIEW_ONLY"
@@ -270,6 +270,108 @@ def test_existing_four_local_storage_keys_not_versioned_away():
     assert next(x for x in data["lessons"] if x["id"]=="C05")["original_source_graphs_verified"] is False
     assert len(next(x for x in data["lessons"] if x["id"]=="C06")["required_prerequisites"]) == 4
 
+
+def test_conveyor_c07_steady_momentum_flow_and_heat_ledger():
+    """Two separate mechanical rates must balance without equating them."""
+    # Guided: 1 kg/s arrives at u=0, leaves with 2 m/s belt.
+    m_dot, u, v = 1, 0, 2
+    force=m_dot*(v-u)
+    motor=force*v
+    gain=0.5*m_dot*(v*v-u*u)
+    heat=0.5*m_dot*(v-u)**2
+    close(force, 2)
+    close(motor, 4)
+    close(gain, 2)
+    close(heat, 2)
+    close(motor, gain+heat)
+
+    # Fresh: 4 m/s belt, 1 m/s rightward arrivals, flow rate is v/2.
+    belt, incoming = 4, 1
+    rate=belt/2
+    F=rate*(belt-incoming)
+    P=F*belt
+    K_dot=0.5*rate*(belt*belt-incoming*incoming)
+    Q_dot=0.5*rate*(belt-incoming)**2
+    close(rate, 2)
+    close(F, 6)
+    close(P, 24)
+    close(K_dot, 15)
+    close(Q_dot, 9)
+    close(P, K_dot+Q_dot)
+    # Boundary: the feed rate, belt speed, and speed gap all change.
+    belt=2
+    rate=belt/2
+    force=rate*(belt-incoming)
+    motor=force*belt
+    gain=0.5*rate*(belt*belt-incoming*incoming)
+    heat=0.5*rate*(belt-incoming)**2
+    for actual, expected in [(rate,1),(force,1),(motor,2),(gain,1.5),(heat,0.5)]:
+        close(actual,expected)
+    close(motor,gain+heat)
+    html=PAGE.read_text(encoding="utf-8")
+    script=SCRIPT.read_text(encoding="utf-8")
+    assert 'id="C07"' in html and 'data-stage-root="C07"' in html
+    assert "zero horizontal speed" in html
+    assert "1 m/s" in html and "4 m/s" in html
+    assert "C07:" in script
+    assert "24 W" in script and "15 W" in script and "9 W" in script
+    assert "0.5 W" in script
+
+
+def test_spring_c08_fixed_compression_versus_final_force_reversal():
+    """Compare both lab conditions with separately inferred stiffnesses."""
+    # Guided: given spring constants, x=0.10 m or F_final=10 N.
+    stiffness_guide=[100,200]
+    for k, expected_x, expected_f in zip(stiffness_guide,[0.5,1],[0.5,0.25]):
+        close(0.5*k*0.10**2,expected_x)
+        close(10**2/(2*k),expected_f)
+
+    # Fresh: measured forces 8 N/16 N at the same x=4 cm.
+    measured_forces=[8,16]
+    stiffness=[force/0.04 for force in measured_forces]
+    close(stiffness[0],200)
+    close(stiffness[1],400)
+    fixed_x=[0.5*k*0.05**2 for k in stiffness]
+    fixed_force_extensions=[12/k for k in stiffness]
+    fixed_force=[12**2/(2*k) for k in stiffness]
+    for actual,expected in zip(fixed_x,[0.25,0.5]):close(actual,expected)
+    for actual,expected in zip(fixed_force_extensions,[0.06,0.03]):close(actual,expected)
+    for actual,expected in zip(fixed_force,[0.36,0.18]):close(actual,expected)
+    assert fixed_x[1]>fixed_x[0] and fixed_force[0]>fixed_force[1]
+
+    # Doubling the final equilibrium force quadruples energy for each fixed k.
+    doubled=[24**2/(2*k) for k in stiffness]
+    close(doubled[0],1.44)
+    close(doubled[1],0.72)
+    for i in range(2):close(doubled[i]/fixed_force[i],4)
+    html=PAGE.read_text(encoding="utf-8")
+    script=SCRIPT.read_text(encoding="utf-8")
+    assert 'id="C08"' in html and 'data-stage-root="C08"' in html
+    assert "<caption>Measured final equilibrium force at 4 cm compression</caption>" in html
+    assert "C08:" in script
+    assert "0.36 J" in script and "0.18 J" in script
+    assert "1.44 J" in script and "0.72 J" in script
+
+
+def test_six_prior_local_saved_tries_keep_same_storage_keys():
+    data=load(META)
+    batch=data["implementation_batch"]
+    assert batch["new_topics"]==["C07","C08"]
+    assert batch["retained_topics"]==["C01","C02","C03","C04","C05","C06"]
+    assert batch["existing_storage_keys_preserved"] is True
+    assert batch["real_student_usability_observed"] is False
+    assert batch["academic_admissions_changed"] is False
+    assert data["academic"]["qualified_learner_routes"]==0
+    script=SCRIPT.read_text(encoding="utf-8")
+    assert 'return "g9:wpe:d3d4:self-tutor:v1:"+lesson;' in script
+    assert 'Object.keys(lessons).length+" challenges completed"' in script
+    assert "state.first=values;state.stage=2" in script
+    c07=next(x for x in data["lessons"] if x["id"]=="C07")
+    c08=next(x for x in data["lessons"] if x["id"]=="C08")
+    assert c07["source_join_status"]==c08["source_join_status"]=="PROPOSED_UNQUALIFIED"
+    assert c08["source_selection_reader_conflict_unresolved"] is True
+    assert len(c07["required_prerequisites"])==4
+
 def test_no_upgrade_to_native_status_or_exam_original_delivery():
     meta = load(META)
     source_map = load(CURRENT_MAP)
@@ -281,76 +383,3 @@ def test_no_upgrade_to_native_status_or_exam_original_delivery():
     html = PAGE.read_text(encoding="utf-8")
     assert "These are newly authored" in html
     assert "does not" in html and "securely hide" in html
-
-
-def test_c07_conveyor_variable_flow_motor_vs_kinetic_energy_vs_heat():
-    # Existing author pack's Core1A: 1 kg/s joins a belt at v=2 from u=0.
-    flow, v, u = 1, 2, 0
-    force = flow * (v-u)
-    motor = force*v
-    kinetic = 0.5*flow*(v*v-u*u)
-    heat = 0.5*flow*(v-u)**2
-    close(force, 2)
-    close(motor, 4)
-    close(kinetic, 2)
-    close(heat, 2)
-    close(motor, kinetic+heat)
-
-    # Core1B: feeder rate in kg/s is v/2, incoming u=1 m/s.
-    def pickup(v):
-        flow=v/2
-        u=1
-        F=flow*(v-u)
-        P=F*v
-        K=0.5*flow*(v*v-u*u)
-        H=0.5*flow*(v-u)**2
-        close(P,K+H)
-        return flow,F,P,K,H
-    assert pickup(4)==(2,6,24,15,9)
-    assert pickup(2)==(1,1,2,1.5,0.5)
-    assert pickup(2)!=(1,3,12,7.5,4.5)
-    html=PAGE.read_text(encoding="utf-8")
-    script=SCRIPT.read_text(encoding="utf-8")
-    assert 'id="C07"' in html and 'data-stage-root="C07"' in html
-    assert 'C07: {' in script
-    assert "24 W" in script and "15 W" in script and "9 W" in script
-    assert "steady" in html.lower() and "horizontal" in html.lower()
-
-
-def test_c08_spring_comparisons_reversal_and_doubled_force():
-    # Given final force observations at 4 cm, Hookean and quasi-static.
-    k_blue=8/0.04
-    k_gold=16/0.04
-    close(k_blue, 200)
-    close(k_gold, 400)
-    # Test X fixes x; Test Y fixes final equilibrium F.
-    energy_x=lambda k:0.5*k*(0.05**2)
-    energy_f=lambda k,F:F*F/(2*k)
-    close(energy_x(k_blue),0.25)
-    close(energy_x(k_gold),0.5)
-    close(energy_f(k_blue,12),0.36)
-    close(energy_f(k_gold,12),0.18)
-    assert energy_x(k_gold)>energy_x(k_blue)
-    assert energy_f(k_gold,12)<energy_f(k_blue,12)
-    close(energy_f(k_blue,24),1.44)
-    close(energy_f(k_gold,24),0.72)
-    close(energy_f(k_blue,24)/energy_f(k_blue,12),4)
-    html=PAGE.read_text(encoding="utf-8")
-    script=SCRIPT.read_text(encoding="utf-8")
-    assert 'id="C08"' in html and 'data-stage-root="C08"' in html
-    assert 'C08: {' in script
-    assert "same final" in html.lower() and "slow" in html.lower()
-    assert "0.36 J" in script and "0.18 J" in script
-
-
-def test_c07_c08_reuse_existing_pack_and_do_not_override_prior_attempts():
-    metadata=load(META)
-    last=metadata["lessons"][-2:]
-    assert [x["id"] for x in last]==["C07","C08"]
-    assert all(git_blob(ROOT/x["author_pack"])==x["author_pack_blob_sha"] for x in last)
-    assert all(x["source_join_status"]=="PROPOSED_UNQUALIFIED" for x in last)
-    script=SCRIPT.read_text(encoding="utf-8")
-    assert 'g9:wpe:d3d4:self-tutor:v1:' in script
-    assert metadata["first_attempt_policy"]["immutable_after_commit_until_explicit_reset"]
-    assert metadata["academic"]["qualified_learner_routes"]==0
-    assert metadata["implementation_batch"]["real_student_usability_observed"] is False

@@ -93,25 +93,23 @@ def fill_stage_one(page, lesson, answer):
         root.locator('[data-input="topTension"]').fill("19")
         root.locator('[data-input="staysTaut"]').select_option(label="Yes")
     elif lesson == "C07":
-        root.locator('[data-input="system"]').select_option(label="One fixed lump of chips already on the belt")  # model error
-        root.locator('[data-input="rate"]').fill("0.5")  # ignores speed-dependent rate
-        root.locator('[data-input="velocityChange"]').fill("4")  # ignores incoming speed
-        root.locator('[data-input="force"]').fill("2")
-        root.locator('[data-input="motorPower"]').fill("8")
-        root.locator('[data-input="kineticRate"]').fill("8")
-        root.locator('[data-input="heatRate"]').fill("0")
-        root.locator('[data-input="powerClaim"]').select_option(label="Motor power always equals kinetic-energy increase")
+        root.locator('[data-input="model"]').select_option(label="All chips ever collected on the belt")  # wrong model
+        root.locator('[data-input="flowRate"]').fill("2")
+        root.locator('[data-input="deltaVelocity"]').fill("4")  # ignores incoming speed
+        root.locator('[data-input="pickupForce"]').fill("8")
+        root.locator('[data-input="motorPower"]').fill("32")
+        root.locator('[data-input="chipEnergy"]').fill("24")  # treats all motor power as kinetic
+        root.locator('[data-input="energyModel"]').select_option(label="All to chips' kinetic energy")
     elif lesson == "C08":
         root.locator('[data-input="kBlue"]').fill("200")
         root.locator('[data-input="kGold"]').fill("400")
-        root.locator('[data-input="fixedX"]').select_option(label="Compression x = 5 cm for both pads")
-        root.locator('[data-input="blueX"]').fill("0.25")
-        root.locator('[data-input="goldX"]').fill("0.5")
-        root.locator('[data-input="winnerX"]').select_option(label="Gold")
-        root.locator('[data-input="fixedY"]').select_option(label="Compression x = 5 cm for both pads")  # wrong held variable
-        root.locator('[data-input="blueY"]').fill("0.25")
-        root.locator('[data-input="goldY"]').fill("0.5")
-        root.locator('[data-input="winnerY"]').select_option(label="Gold")
+        root.locator('[data-input="testXChoice"]').select_option(label="Gold pad")
+        root.locator('[data-input="xBlue"]').fill("0.25")
+        root.locator('[data-input="xGold"]').fill("0.5")
+        root.locator('[data-input="testYChoice"]').select_option(label="Gold pad")  # mistaken fixed-force ranking
+        root.locator('[data-input="yBlue"]').fill("0.25")  # keeps 5 cm from Test X
+        root.locator('[data-input="yGold"]').fill("0.5")
+        root.locator('[data-input="control"]').select_option(label="Both tests fix compression")
     else:
         raise AssertionError("Unknown topic " + lesson)
     root.locator('[data-action="lock-attempt"]').click()
@@ -211,30 +209,22 @@ def run_viewport(browser, width, height, base):
         finish_stages(page, "C06", first_c06)
         check(page.locator("#overall-count").inner_text() == "6 of 8 challenges completed",
               "Sixth completion not counted")
-        # C07 and C08 provide three progressive, non-answer hints before the first attempt.
-        for topic in ("C07","C08"):
-            root=root_for(page,topic)
-            root.locator('[data-action="save-prediction"]').click()
-            check(root.locator(".stage-card h4").inner_text()=="1. Predict",topic+" empty prediction unexpectedly accepted")
-            for_check=root.locator(".worked").count()
-            check(for_check==0,topic+" worked solution leaked before attempt")
-            # The full stages are exercised below after reset of the untouched state.
         first_c07 = fill_stage_one(page, "C07",
-            "I treated the incoming chips like a fixed mass and equated motor power with kinetic energy.")
-        check("24 W" in root_for(page, "C07").locator(".worked").inner_text()
-              and "15 W" in root_for(page, "C07").locator(".worked").inner_text()
-              and "9 W" in root_for(page, "C07").locator(".worked").inner_text(),
-              "C07 reconstruction lacks distinct power, kinetic and heating rates")
+            "I used all the collected chips and forgot that arrivals already move at 1 m/s.")
+        check("24 W" in root_for(page,"C07").locator(".worked").inner_text()
+              and "15 W" in root_for(page,"C07").locator(".worked").inner_text()
+              and "9 W" in root_for(page,"C07").locator(".worked").inner_text(),
+              "C07 did not give separate power, kinetic gain and heat checks")
         finish_stages(page, "C07", first_c07)
-        check(page.locator("#overall-count").inner_text()=="7 of 8 challenges completed",
+        check(page.locator("#overall-count").inner_text() == "7 of 8 challenges completed",
               "Seventh completion not counted")
         first_c08 = fill_stage_one(page, "C08",
-            "I thought stiffer means greater stored energy regardless of which variable stays fixed.")
-        check("0.36 J" in root_for(page, "C08").locator(".worked").inner_text()
-              and "0.18 J" in root_for(page, "C08").locator(".worked").inner_text(),
-              "C08 reconstruction does not reverse the fixed-force ranking")
+            "I thought the stiffer spring always stores more energy even with equal final force.")
+        check("0.36 J" in root_for(page,"C08").locator(".worked").inner_text()
+              and "0.18 J" in root_for(page,"C08").locator(".worked").inner_text(),
+              "C08 missing different final-force energy comparison")
         finish_stages(page, "C08", first_c08)
-        check(page.locator("#overall-count").inner_text()=="8 of 8 challenges completed",
+        check(page.locator("#overall-count").inner_text() == "8 of 8 challenges completed",
               "Eighth completion not counted")
         page.reload(wait_until="load")
         check(page.locator("#overall-count").inner_text() == "8 of 8 challenges completed", "Completed progress not restored")

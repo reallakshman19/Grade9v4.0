@@ -44,8 +44,8 @@
         <a href="#C04">4 · Only the hanging part</a>
         <a href="#C05">5 · Read the axes first</a>
         <a href="#C06">6 · Stay on the circle?</a>
-        <a href="#C07">7 · A river of moving chips</a>
-        <a href="#C08">8 · What is kept the same?</a>
+        <a href="#C07">7 · Momentum arrives every second</a>
+        <a href="#C08">8 · What stays the same?</a>
       </nav>
     </section>
 
@@ -442,112 +442,120 @@
           <div class="stage-root" data-stage-root="C06"><p>Interactive steps require JavaScript. The guided example is available above.</p></div>
         </section>
       </div>
-      <nav class="unit-next" aria-label="Learning navigation"><a href="#C05">← Back to Skill 5</a><a href="#C07">Next: A river of moving chips →</a></nav>
+      <nav class="unit-next" aria-label="Learning navigation"><a href="#C05">← Back to Skill 5</a><a href="#C07">Next: Momentum arrives every second →</a></nav>
     </article>
-    
+
     <article class="unit" id="C07" data-topic="C07" aria-labelledby="c07-title">
       <header class="unit-header">
-        <p class="eyebrow">Skill 7 of 8 · Momentum entering every second</p>
-        <h2 id="c07-title">📦 A river of moving chips</h2>
-        <p class="unit-subtitle">A conveyor moves new material continuously. Model the kilograms arriving each second—not a fixed pile—and distinguish motor power from kinetic-energy gain.</p>
+        <p class="eyebrow">Skill 7 of 8 · Flowing mass, momentum and motor power</p>
+        <h2 id="c07-title">📦 Momentum arrives every second</h2>
+        <p class="unit-subtitle">A conveyor must keep speeding up fresh material as it arrives. Find what happens each second—not the total mass already on the belt.</p>
       </header>
       <div class="pair">
         <section class="guide" aria-labelledby="c07-guide">
-          <p class="part-label">Core1A · Guided construction</p>
-          <h3 id="c07-guide">Sand landing on a toy conveyor</h3>
-          <p>A horizontal belt moves right at a steady <strong>2 m/s</strong>. Every second <strong>1 kg of sand</strong> arrives with <strong>zero horizontal speed</strong> and leaves moving with the belt. Ignore unrelated motor losses and vertical energy.</p>
+          <p class="part-label">Core1A · Guided example</p>
+          <h3 id="c07-guide">Sand joining a moving belt</h3>
+          <p>A conveyor carries sand to the right at a steady <strong>2 m/s</strong>. Each second <strong>1 kg of sand</strong> lands with <strong>zero horizontal speed</strong> and leaves moving with the belt. Ignore other motor loads and vertical motion for this example.</p>
           <figure class="illustration">
-            <svg viewBox="0 0 520 183" role="img" aria-label="Steady horizontal conveyor. One kilogram of sand arrives per second with zero horizontal speed; the belt and exiting sand move right at two metres per second.">
-              <rect x="48" y="115" width="414" height="28" rx="13" fill="#bddde7" stroke="#416b7c" stroke-width="2"/>
-              <path d="M132 72V112M126 100L132 113L138 100" stroke="#ae7251" stroke-width="4" fill="none"/>
-              <g fill="#b98154"><circle cx="119" cy="39" r="7"/><circle cx="134" cy="51" r="7"/><circle cx="146" cy="33" r="7"/></g>
-              <path d="M284 102H404M390 92L405 102L390 112" stroke="#168474" stroke-width="4" fill="none"/>
-              <g font-size="16" fill="#294f61"><text x="33" y="21">In: 1 kg/s</text><text x="33" y="167">u = 0 horizontally</text><text x="282" y="87">Out: 2 m/s →</text><text x="298" y="167">Belt: 2 m/s →</text></g>
+            <svg viewBox="0 0 500 160" role="img" aria-label="Sand enters a moving belt with zero horizontal speed. One kilogram arrives each second, speeds up to 2 metres per second to the right, while motor force maintains belt motion.">
+              <path d="M46 115H453" stroke="#547f90" stroke-width="10" stroke-linecap="round"/>
+              <g fill="#bc8b5c"><circle cx="115" cy="45" r="7"/><circle cx="133" cy="59" r="6"/><circle cx="100" cy="65" r="6"/><circle cx="121" cy="82" r="7"/></g>
+              <path d="M126 88V101" stroke="#ac714f" stroke-width="3"/><path d="M118 95L126 103L134 95" stroke="#ac714f" fill="none" stroke-width="3"/>
+              <path d="M228 86H395" stroke="#118b7b" stroke-width="4"/><path d="M382 76L399 86L382 96" stroke="#118b7b" fill="none" stroke-width="3"/>
+              <g font-size="14" fill="#325c6f"><text x="36" y="28">1 kg each second</text><text x="36" y="143">Incoming u = 0</text><text x="280" y="65">Belt v = 2 m/s →</text><text x="285" y="146">Outgoing: 2 m/s →</text></g>
             </svg>
-            <figcaption>The stream changes its horizontal momentum. The belt is kept at constant speed by a motor.</figcaption>
+            <figcaption>Choose a 1-second batch. The belt changes its horizontal momentum, and some supplied energy becomes heat while sand catches up.</figcaption>
           </figure>
           <ol class="guide-steps">
-            <li><strong>Choose the moving stream.</strong> Every kilogram arrives at u = 0 and leaves at v = 2 m/s. Its horizontal velocity changes by +2 m/s.</li>
-            <li><strong>Use kilograms per second.</strong> Horizontal force needed on the incoming sand is F = (1 kg/s)(2 − 0) m/s = <strong>+2 N</strong>. This is not the weight of the accumulated sand.</li>
-            <li><strong>Work at the belt speed.</strong> The sand pushes the belt backward with 2 N. The motor supplies an extra 2 N forward as the belt moves at 2 m/s: pickup-related motor power is <strong>2 × 2 = 4 W</strong>.</li>
-            <li><strong>Compare where energy goes.</strong> Each second, the new 1 kg gains horizontal kinetic energy ½(1)(2² − 0²) = <strong>2 J</strong>: an increase rate of <strong>2 W</strong>. The other <strong>2 W</strong> is converted to heat during frictional speed matching.</li>
-            <li><strong>Change just the arrival speed.</strong> If sand arrives already moving horizontally at 2 m/s, its horizontal momentum needs no change. Pickup-related force and power are zero even if other motor losses remain.</li>
+            <li><strong>Think in kilograms per second:</strong> 1 kg arrives each second. Its horizontal speed changes from 0 to 2 m/s.</li>
+            <li><strong>Find the required push:</strong> momentum gain per second gives force = (1 kg/s) × (2 − 0 m/s) = <strong>2 N right</strong>. The arriving sand pushes the belt backward by 2 N.</li>
+            <li><strong>Find extra motor power:</strong> to keep the belt at 2 m/s, the motor supplies <strong>2 N × 2 m/s = 4 W</strong> for pickup.</li>
+            <li><strong>Separate the energy uses:</strong> new sand gains horizontal kinetic energy at <strong>½ × 1 × (2² − 0²) = 2 W</strong>. The remaining <strong>4 − 2 = 2 W</strong> becomes heat during slipping.</li>
+            <li><strong>Check what changes:</strong> if sand already arrived moving right at 2 m/s, the belt would need <strong>zero extra pickup force and power</strong> in this ideal model.</li>
           </ol>
-          <p class="guide-takeaway"><strong>Remember:</strong> F = mass rate × change in horizontal velocity; motor pickup power = F × belt speed. Energy gain and motor input are not automatically identical.</p>
-          <details class="deep-reason"><summary>Model detective · why does the heat term appear?</summary>
-            <p>For a one-dimensional steady pickup, incoming speed u, belt speed v and flow rate ṁ, the momentum-change force is F = ṁ(v − u). Motor pickup power is ṁ(v − u)v; the chips' horizontal kinetic-energy-gain rate is ½ṁ(v² − u²). Their difference is ½ṁ(v − u)², dissipated in the idealized slipping contact.</p>
-            <p>If the feeder supplies a speed-dependent flow rate, recalculate ṁ when v changes. These formulas concern the pickup contribution only, not all electrical motor losses or the vertical fall of the material.</p>
-          </details>
-          <details class="conditions"><summary>Scientific conditions and limits</summary><p>The flow is steady and one-dimensional. Friction accelerates the entering material horizontally as it joins the belt, which a motor keeps at constant speed. Ignore vertical-energy changes, startup effects, bearing resistance and electrical inefficiency. If the incoming material overtakes the belt, analyze force and power signs anew.</p></details>
+          <p class="guide-takeaway"><strong>Remember:</strong> extra motor power and the sand's kinetic-energy gain are not always equal. Show the <em>incoming velocity</em>, the <em>outgoing velocity</em>, and how much material arrives <em>per second</em>.</p>
+          <details class="conditions"><summary>When does this conveyor model work?</summary><p>This is a steady-flow model of horizontal momentum transfer. Sand is slower than the belt and friction brings it to belt speed. The motor holds belt speed steady. We ignore vertical-energy changes, bearing losses, electrical inefficiency and other loads. The rates are extra pickup-related power, not total electricity consumed. A feeder's mass-per-second rate may depend on belt speed.</p></details>
         </section>
         <section class="challenge" aria-labelledby="c07-challenge">
-          <p class="part-label independent">Core1B · Different, independent challenge</p>
-          <h3 id="c07-challenge">Chips that already move right</h3>
-          <p>Wood chips enter a conveyor at <strong>1 m/s rightward</strong>. The belt moves at <strong>4 m/s rightward</strong>. The feeder delivers a mass rate in kg/s equal to <strong>half the numerical belt speed in m/s</strong>: ṁ = v/2. Chips leave at belt speed. Assume steady horizontal pickup; ignore unrelated motor loads. Determine mass flow, pickup force, extra motor power, horizontal kinetic-energy-gain rate and frictional heating rate.</p>
+          <p class="part-label independent">Core1B · Different challenge</p>
+          <h3 id="c07-challenge">Wood chips joining the school conveyor</h3>
+          <p>A conveyor belt moves <strong>right at 4 m/s</strong>. Wood chips arrive already moving <strong>right at 1 m/s</strong> and leave at the belt speed. The feeder delivers <strong>half the numerical belt speed</strong> in kilograms per second: at 4 m/s, its rate is 4 ÷ 2 kg/s. Friction speeds up incoming chips. Assume steady flow and ignore all other loads and vertical changes.</p>
+          <p>Find the <strong>mass flow rate</strong>, required <strong>horizontal force</strong>, extra <strong>motor power</strong>, the rate of increase in the chips' <strong>horizontal kinetic energy</strong>, and the <strong>heat rate</strong> during pickup. Explain why the last three numbers must balance.</p>
           <figure class="illustration">
-            <svg viewBox="0 0 520 169" role="img" aria-label="Wood chips enter a steady conveyor moving right with one metre per second horizontal speed, then depart at the belt's four metres per second. The feeder rate depends on belt speed.">
-              <path d="M38 123H480" stroke="#86a5b2" stroke-width="16" stroke-linecap="round"/>
-              <path d="M53 81H138M124 72L140 81L124 90" stroke="#ba8054" stroke-width="4" fill="none"/>
-              <path d="M307 81H457M440 72L457 81L440 90" stroke="#158473" stroke-width="4" fill="none"/>
-              <g fill="#345a6e" font-size="16"><text x="38" y="58">Incoming u = 1 m/s →</text><text x="294" y="58">Outgoing v = 4 m/s →</text><text x="70" y="159">Feeder: ṁ = v/2 kg/s</text></g>
+            <svg viewBox="0 0 500 150" role="img" aria-label="Wood chips arrive from the left at one metre per second and leave with a four-metre-per-second rightward conveyor. Feed rate is half the numerical belt speed in kilograms per second.">
+              <path d="M32 114H466" stroke="#557e90" stroke-width="10" stroke-linecap="round"/>
+              <g fill="#a47c53"><rect x="70" y="83" width="17" height="15" rx="3"/><rect x="105" y="84" width="17" height="13" rx="3"/><rect x="336" y="83" width="17" height="15" rx="3"/></g>
+              <path d="M63 62H150" stroke="#ac734d" stroke-width="4"/><path d="M137 54L152 62L137 70" stroke="#ac734d" stroke-width="3" fill="none"/>
+              <path d="M283 62H439" stroke="#138579" stroke-width="4"/><path d="M426 54L441 62L426 70" stroke="#138579" stroke-width="3" fill="none"/>
+              <g fill="#3c6273" font-size="14"><text x="46" y="42">Incoming: u = 1 m/s</text><text x="294" y="42">Outgoing: v = 4 m/s</text><text x="126" y="139">Feed rate: v ÷ 2 kg/s</text></g>
             </svg>
-            <figcaption>Both speeds point right, but they are different. Decide the momentum change before computing power.</figcaption>
+            <figcaption>The incoming chips are already moving. Do not use zero for their initial horizontal velocity.</figcaption>
           </figure>
-          <div class="stage-root" data-stage-root="C07"><p>Interactive steps require JavaScript. The guided construction remains available above.</p></div>
+          <div class="stage-root" data-stage-root="C07"><p>Interactive steps require JavaScript. The guided example is available above.</p></div>
         </section>
       </div>
-      <nav class="unit-next" aria-label="Learning navigation"><a href="#C06">← Stay on the circle?</a><a href="#C08">Next: Fixed force or extension? →</a></nav>
+      <nav class="unit-next" aria-label="Learning navigation"><a href="#C06">← Back to Skill 6</a><a href="#C08">Next: What stays the same? →</a></nav>
     </article>
 
     <article class="unit" id="C08" data-topic="C08" aria-labelledby="c08-title">
       <header class="unit-header">
-        <p class="eyebrow">Skill 8 of 8 · Change the controlled variable</p>
-        <h2 id="c08-title">🌀 What is kept the same?</h2>
-        <p class="unit-subtitle">A stiffer spring can store more energy under the same extension and less under the same final force. Read the experimental condition before choosing a formula.</p>
+        <p class="eyebrow">Skill 8 of 8 · Springs with different controlled variables</p>
+        <h2 id="c08-title">🌀 What stays the same?</h2>
+        <p class="unit-subtitle">A stiffer spring can store more energy in one experiment, but less in another. The answer depends on whether extension or final force is kept fixed.</p>
       </header>
       <div class="pair">
         <section class="guide" aria-labelledby="c08-guide">
-          <p class="part-label">Core1A · Guided construction</p>
-          <h3 id="c08-guide">Two workshop springs, two experiments</h3>
-          <p>Spring A is soft (k = <strong>100 N/m</strong>); spring B is stiffer (k = <strong>200 N/m</strong>). They obey Hooke's law and are slowly stretched from their natural lengths, ending at rest. First hold extension fixed, then hold the <strong>final applied force</strong> fixed.</p>
+          <p class="part-label">Core1A · Guided example</p>
+          <h3 id="c08-guide">Two springs, two kinds of fairness</h3>
+          <p>Spring A is softer (<strong>100 N/m</strong>). Spring B is stiffer (<strong>200 N/m</strong>). Start from their natural lengths and pull <strong>slowly</strong> until they stop moving. The force builds gradually from zero.</p>
           <figure class="illustration">
-            <svg viewBox="0 0 520 163" role="img" aria-label="Two comparison experiment sketches. Test one holds both extensions at ten centimetres; test two holds each spring's final force at ten newtons but their extensions differ.">
-              <g stroke="#678d9b" stroke-width="2" fill="none"><path d="M25 125H235M289 125H499"/></g>
-              <g fill="#2c586b" font-size="15"><text x="38" y="24">A. Same extension</text><text x="294" y="24">B. Same final force</text><text x="50" y="149">Both x = 10 cm</text><text x="309" y="149">Both final F = 10 N</text></g>
-              <g fill="none" stroke-width="4"><path d="M45 82h15l9 -23l10 46l10 -46l10 46l10 -46l10 23h15" stroke="#c28a57"/><path d="M150 82h15l9 -23l10 46l10 -46l10 46l10 -46l10 23h15" stroke="#227d80"/><path d="M303 82h15l9 -23l10 46l10 -46l10 46l10 -46l10 23h15" stroke="#c28a57"/><path d="M410 82h10l9 -23l10 46l10 -46l10 23h10" stroke="#227d80"/></g>
+            <svg viewBox="0 0 500 162" role="img" aria-label="Two springs, A at 100 newtons per metre and B at 200 newtons per metre. Equal extension means equal stretch. Equal final applied force means the softer spring extends further.">
+              <g fill="#315a6e" font-size="14" font-weight="bold"><text x="28" y="27">A · 100 N/m</text><text x="274" y="27">B · 200 N/m</text></g>
+              <g stroke="#6d909e" stroke-width="5"><path d="M30 42V127"/><path d="M272 42V127"/></g>
+              <g stroke="#b17d54" stroke-width="4" fill="none">
+                <polyline points="35,76 54,76 65,61 81,91 97,61 113,91 129,76 148,76"/>
+                <polyline points="277,76 296,76 307,61 323,91 339,61 355,91 371,76 390,76"/>
+              </g>
+              <g stroke="#237f75" stroke-width="3" fill="none"><path d="M148 118H212"/><path d="M202 110L215 118L202 126"/><path d="M390 118H456"/><path d="M445 110L458 118L445 126"/></g>
+              <g fill="#496b79" font-size="12"><text x="46" y="147">Equal stretch?</text><text x="294" y="147">Equal final force?</text></g>
             </svg>
-            <figcaption>Same extension and same final force are <em>different experiments</em>. Do not apply both conditions at once.</figcaption>
+            <figcaption>Ask which quantity is the same across the two springs. The diagrams are qualitative, not to scale.</figcaption>
           </figure>
           <ol class="guide-steps">
-            <li><strong>Start with the spring's force graph.</strong> Hooke's force increases from zero to kx during slow loading. Energy stored is the <em>triangle</em> under F–x: U = ½kx².</li>
-            <li><strong>Experiment A: same x = 0.10 m.</strong> Spring A stores ½ × 100 × 0.10² = <strong>0.50 J</strong>; B stores ½ × 200 × 0.10² = <strong>1.00 J</strong>. Stiffer B wins when extension is fixed.</li>
-            <li><strong>Experiment B: same final F = 10 N.</strong> A stretches 10/100 = 0.10 m; B stretches 10/200 = 0.05 m. Their energies are <strong>0.50 J</strong> and <strong>0.25 J</strong>. Softer A now wins.</li>
-            <li><strong>Explain the apparent reversal.</strong> At fixed x, U = ½kx² increases with k. At fixed final F, substitute x = F/k, so U = F²/(2k) decreases with k.</li>
-            <li><strong>Check the physical experiment.</strong> “Same force” means the same <em>final equilibrium force after slow loading</em>, not a suddenly applied constant force that makes the spring oscillate.</li>
+            <li><strong>Start with Hooke's law:</strong> final force F = k × extension x. Elastic energy is <strong>½kx²</strong>, the triangular area under the increasing force–extension graph—not final F × x.</li>
+            <li><strong>Experiment A: hold extension fixed at 0.10 m.</strong> Spring A stores ½ × 100 × 0.10² = <strong>0.50 J</strong>; spring B stores ½ × 200 × 0.10² = <strong>1.00 J</strong>. The stiffer spring B stores more.</li>
+            <li><strong>Experiment B: hold final force fixed at 10 N.</strong> A extends 10 ÷ 100 = 0.10 m; B extends 10 ÷ 200 = 0.05 m. Their stored energies are <strong>0.50 J</strong> in A and <strong>0.25 J</strong> in B. The softer spring A stores more.</li>
+            <li><strong>Explain the reversal:</strong> at equal extension energy grows with stiffness. At equal final force, the stiffer spring moves less, and energy = F² ÷ (2k), so it stores less.</li>
           </ol>
-          <p class="guide-takeaway"><strong>Remember:</strong> circle what is fixed—extension or final applied force—before ranking spring energies.</p>
-          <details class="deep-reason"><summary>Model detective · the same spring, opposite rankings</summary>
-            <p>Imagine two F–x straight lines from the origin: a stiffer spring has the steeper slope. At a fixed horizontal end x its area triangle is larger. At a fixed vertical end F, its endpoint sits at a smaller x, so its area triangle is smaller. The graph explains both formulas without memorising a reversal.</p>
-          </details>
-          <details class="conditions"><summary>When can this comparison be used?</summary><p>Both springs are linear and ideal within their elastic range, have zero energy at their natural lengths, and are loaded quasistatically to rest. Sudden constant-force loading is a different dynamical model. Centimetres must be converted to metres for N/m stiffness.</p></details>
+          <p class="guide-takeaway"><strong>Remember:</strong> first label the test <em>equal extension</em> or <em>equal final force</em>. “Same force” here means the same <em>final equilibrium</em> force after slowly increasing from zero, not suddenly applying a constant force to a moving spring.</p>
+          <details class="conditions"><summary>Why don't we multiply final force by extension?</summary><p>The spring's resisting force increases gradually during loading from zero to its final value. The stored elastic energy is the triangular area: ½ × final force × extension. Both springs are ideal and Hookean, with no hysteresis, losses, overshoot or oscillation.</p></details>
         </section>
         <section class="challenge" aria-labelledby="c08-challenge">
-          <p class="part-label independent">Core1B · Different, independent challenge</p>
-          <h3 id="c08-challenge">Mystery compression pads</h3>
-          <p>Two ideal spring pads are compressed slowly. At the <strong>same compression of 4 cm</strong>, Blue needs a final force of <strong>8 N</strong> and Gold needs <strong>16 N</strong>. Infer their stiffnesses. Now compare energy in two tests: <strong>Test X</strong> compresses both to <strong>5 cm</strong>; <strong>Test Y</strong> slowly increases the final applied force on both to <strong>12 N</strong>. Find both stored energies in each test and explain which pad wins in each.</p>
+          <p class="part-label independent">Core1B · Different challenge</p>
+          <h3 id="c08-challenge">Which mystery spring pad stores more?</h3>
+          <p>Two ideal pads are compressed <strong>slowly</strong> and held at rest. First, the lab measures the force required to hold both at the same compression of <strong>4 cm</strong>:</p>
+          <table class="student-data">
+            <caption>Measured final equilibrium force at 4 cm compression</caption>
+            <thead><tr><th scope="col">Spring pad</th><th scope="col">Final force</th></tr></thead>
+            <tbody><tr><th scope="row">Blue</th><td>8 N</td></tr><tr><th scope="row">Gold</th><td>16 N</td></tr></tbody>
+          </table>
+          <p><strong>Test X:</strong> compress both pads by <strong>5 cm</strong>. <strong>Test Y:</strong> start uncompressed and slowly increase the force on each until its <strong>final force is 12 N</strong>. Which pad stores more energy in each test?</p>
+          <p>Calculate each stiffness from the lab measurements, then both energy values for both tests. Explain why the winner <em>reverses</em> when the controlled variable changes.</p>
           <figure class="illustration">
-            <svg viewBox="0 0 520 152" role="img" aria-label="Measurement table for two spring pads. At four centimetres compression Blue has force eight newtons and Gold sixteen newtons. Test X fixes compression at five centimetres while Test Y fixes final force at twelve newtons.">
-              <rect x="23" y="12" width="474" height="126" rx="8" fill="#f8fbfc" stroke="#c1d7de"/>
-              <g font-size="16" fill="#345c6d"><text x="45" y="39">At 4 cm compression</text><text x="45" y="72" fill="#276d92">Blue: 8 N</text><text x="281" y="72" fill="#9a7339">Gold: 16 N</text><text x="45" y="109">Test X: same 5 cm</text><text x="281" y="109">Test Y: same final 12 N</text></g>
+            <svg viewBox="0 0 500 122" role="img" aria-label="Blue spring pad requires eight newtons to hold a compression of four centimetres. Gold requires sixteen newtons for the same four centimetres. The student must infer stiffness then compare equal-extension and equal-final-force tests.">
+              <rect x="40" y="37" width="173" height="57" rx="8" fill="#c9e6f3" stroke="#3f779b" stroke-width="2"/>
+              <rect x="288" y="37" width="173" height="57" rx="8" fill="#f6dfaa" stroke="#a17c38" stroke-width="2"/>
+              <g fill="#2d5569" font-size="15" font-weight="bold"><text x="99" y="60">Blue</text><text x="345" y="60">Gold</text><text x="93" y="81">8 N</text><text x="344" y="81">16 N</text></g>
+              <g fill="#4d6f7e" font-size="14"><text x="181" y="21">Both 4 cm</text><text x="151" y="117">Which one is stiffer?</text></g>
             </svg>
-            <figcaption>Find stiffness from the measurements, then make a fresh model choice for each of the two tests.</figcaption>
+            <figcaption>The first measurements are clues to spring stiffness, not the forces you must use in both later tests.</figcaption>
           </figure>
-          <div class="stage-root" data-stage-root="C08"><p>Interactive steps require JavaScript. The guided construction remains available above.</p></div>
+          <div class="stage-root" data-stage-root="C08"><p>Interactive steps require JavaScript. The guided example is available above.</p></div>
         </section>
       </div>
-      <nav class="unit-next" aria-label="Learning navigation"><a href="#C07">← A river of moving chips</a><a href="#C01">Review the first skill ↑</a></nav>
+      <nav class="unit-next" aria-label="Learning navigation"><a href="#C07">← Back to Skill 7</a><a href="#C01">Return to Skill 1 ↑</a></nav>
     </article>
-<footer class="end-note">
+    <footer class="end-note">
       <strong>About this preview:</strong> These are newly authored, independent practice problems based on the C01–C08 conceptual teaching drafts—not original examination questions. Local browser storage is useful for practice, but it does <em>not</em> verify identity, grade written reasoning, securely hide an answer key, or establish academic Core1A/Core1B admission. Original source selections remain under review.
     </footer>
   </main>
