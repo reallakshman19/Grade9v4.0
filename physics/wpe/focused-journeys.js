@@ -334,7 +334,7 @@
       const ol=add(worked,"ol");
       for(const [name,description] of d.worked){const li=add(ol,"li");add(li,"strong",name+". ");li.append(doc.createTextNode(description));}
       const checks=add(box,"fieldset",null,"self-check");add(checks,"legend","Which model steps did you explain?");
-      ["I chose the appropriate force/energy owner.","I identified where the physical conditions change.","I justified the signs and equations.","I checked the numerical result and its units."].forEach((label,i)=>{
+      (d.checks||["I chose the appropriate force/energy owner.","I identified where the physical conditions change.","I justified the signs and equations.","I checked the numerical result and its units."]).forEach((label,i)=>{
         const row=add(checks,"label");const c=add(row,"input");c.type="checkbox";c.value=i;c.dataset.check="true";c.checked=s.checks.includes(i);
         row.append(doc.createTextNode(" "+label));
       });
@@ -345,6 +345,10 @@
       const issue=drawAssessment(assessment,d.fields,s.first.answers);
       const suggested=issue?issue.field:"explanation";
       paragraph(box,issue?"Possible first divergence: "+suggested+". "+issue.why:"Your numerical entries match the authored model; explain why each equation is valid, not only the arithmetic.","diagnosis-tip");
+      if(d.diagnoses){
+        const traps=add(box,"details",null,"review-model");add(traps,"summary","Specific reasoning traps to examine");
+        d.diagnoses.forEach((mistake,i)=>paragraph(traps,mistake+" "+(d.diagnosisTips?.[i]||"")));
+      }
       const group=add(box,"div",null,"field");const label=add(group,"label","Where will you examine your reasoning first?");label.htmlFor="diagnosis-select";
       const select=add(group,"select");select.id="diagnosis-select";select.dataset.diagnosis="true";
       add(select,"option","Choose a step").value="";
@@ -368,7 +372,7 @@
       snapshot(box,s);
       paragraph(box,"Your revised model: "+s.repair,"repair-record");
       if(s.boundary===null){
-        d.boundaryFields.forEach(f=>input(box,id,f,undefined));
+        d.boundaryFields.forEach(f=>input(box,id,f,s.boundaryDraft?.[f.id]));
         action(acts,"boundary","Commit boundary attempt → Check");
       }else{
         paragraph(box,"Your saved changed-condition explanation: "+(s.boundary.why||""),"step-note");
@@ -489,11 +493,12 @@
       const s=states[stateId];
       if(s.stage===0)s.predictionDraft=$('[data-field="prediction"]',host)?.value||"";
       else if(s.stage===1&&s.first===null)s.draft=readValues(host);
+      else if(s.stage===5&&s.boundary===null)s.boundaryDraft=readValues(host);
       else return;
       persist(stateId);
     });
     host.addEventListener("change",()=>{
-      const s=states[stateId];if(s.stage===1&&s.first===null){s.draft=readValues(host);persist(stateId);}
+      const s=states[stateId];if(s.stage===1&&s.first===null){s.draft=readValues(host);persist(stateId);}else if(s.stage===5&&s.boundary===null){s.boundaryDraft=readValues(host);persist(stateId);}
     });
     showStage(host,stateId,d,focus);
     const footer=add(article,"nav",null,"lesson-footer");footer.setAttribute("aria-label","Other focused journeys");
