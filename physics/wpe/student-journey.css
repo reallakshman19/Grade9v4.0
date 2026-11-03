@@ -1,0 +1,16 @@
+/* Shared, responsive WPE student-navigation vocabulary. */
+.gateway-start,.skill-explorer,.practice-manager{max-width:1110px;margin:18px auto;padding:18px 22px;border:1px solid #c8dde5;border-radius:14px;background:#fff;color:#1a3648}
+.gateway-options{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:12px;margin-top:12px}
+.gateway-option{display:flex;flex-direction:column;gap:6px;padding:18px;border:2px solid #b4d1de;border-radius:12px;background:#edf8fa;color:#174d63;text-decoration:none;min-height:94px}
+.gateway-option strong{font-size:1.15rem}.gateway-option span{font-size:.96rem}
+.skill-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:9px;margin:12px 0}
+.skill-links a{border:1px solid #c9dce6;border-radius:9px;background:#f3f9fb;padding:10px 12px;min-height:44px;color:#135e77}
+.practice-controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.practice-controls a,.practice-controls button{padding:10px 13px;min-height:44px;border:1px solid #2c7381;border-radius:9px;font:inherit;background:#eef8fa;color:#154c62;font-weight:650;cursor:pointer;text-decoration:none}
+.practice-controls [aria-disabled="true"]{opacity:.75}
+.lesson-roles{display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin:12px 0;padding:12px;border:1px solid #bad5df;border-radius:10px;background:#eaf7f8}
+.lesson-roles button{min-height:44px;border-radius:8px;border:1px solid #28778b;padding:8px 12px;background:#fff;color:#17576b;font:inherit;cursor:pointer;font-weight:650}
+.lesson-roles .source-return-inline{display:inline-flex;align-items:center;min-height:44px;color:#195e76;font-weight:700}
+.lesson-roles .role-status{font-size:.88rem;color:#4c6878;flex-basis:100%}
+a:focus-visible,button:focus-visible{outline:3px solid #d9a742;outline-offset:3px}
+@media(max-width:560px){.gateway-start,.skill-explorer,.practice-manager{padding:14px 12px;margin:10px}.gateway-option{padding:14px}.lesson-roles{padding:10px}}
