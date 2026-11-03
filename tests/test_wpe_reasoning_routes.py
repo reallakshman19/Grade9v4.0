@@ -30,8 +30,8 @@ def test_review_route_pinned_to_exact_author_sources():
       "native_core1a":"NOT_ACCEPTED","native_core1b":"NOT_ACCEPTED",
       "qrt":"NOT_RUN","owner":"PENDING","admitted":0}
     assert a["counts"]=={
-      "primary_constructions":8,"proposed_extensions":5,
-      "author_packs":13,"missing_author_packs":0,
+      "primary_constructions":8,"proposed_extensions":8,
+      "author_packs":16,"missing_author_packs":0,
       "qualified_learner_routes":0,"pilot_candidates":14,
       "reader_agreements":3,"reader_conflicts":8,"reader_absent":3}
     assert all("LEARNING_PACK.md" not in x for x in (MANIFEST.read_text(),ROUTE_HTML.read_text()))
@@ -39,7 +39,7 @@ def test_review_route_pinned_to_exact_author_sources():
 def test_all_author_routes_are_proposals_not_native_prerequisites():
     a=load(MANIFEST)
     b=load(BRIDGE)
-    assert len(a["constructions"])==13
+    assert len(a["constructions"])==16
     originals=[*b["constructions"],*b["extensions_backlog"]]
     ids={q["source_id"] for q in load(BANK)["questions"]}
     for row,src in zip(a["constructions"],originals):
@@ -49,9 +49,9 @@ def test_all_author_routes_are_proposals_not_native_prerequisites():
         assert row["approved_core1a_url"] is None
         assert row["approved_core1b_url"] is None
         assert row["acceptance"]=="AUTHOR_DRAFT_ONLY"
-    assert sum(x["authored_pack_present"] for x in a["constructions"])==13
+    assert sum(x["authored_pack_present"] for x in a["constructions"])==16
     assert all(x["authored_pack_present"] for x in a["constructions"])
-    assert a["constructions"][-1]["id"]=="WPE-E05"
+    assert a["constructions"][-1]["id"]=="WPE-E08"
     assert a["constructions"][-1]["approved_core1a_url"] is None
     assert a["constructions"][-1]["approved_core1b_url"] is None
     assert all(q["review_state"]=="NOT_ADMITTED" for q in load(BANK)["questions"])
