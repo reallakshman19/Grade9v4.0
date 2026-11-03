@@ -1,0 +1,42 @@
+name: WPE Unified Core1A/Core1B/Core2 Integration R1
+on:
+  push:
+    branches:
+      - feat/wpe-unified-core1a-core1b-integration-r1
+    paths:
+      - "physics/wpe/**"
+      - "preview/question-status.html"
+      - "tools/wpe_*"
+      - "tests/test_wpe_*"
+      - ".github/workflows/wpe-unified-integration-r1.yml"
+  pull_request:
+    paths:
+      - "physics/wpe/**"
+      - "preview/question-status.html"
+      - "tools/wpe_*"
+      - "tests/test_wpe_*"
+      - ".github/workflows/wpe-unified-integration-r1.yml"
+  workflow_dispatch:
+jobs:
+  source-integrity-and-student-browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install project and Chromium
+        run: |
+          python -m pip install -e ".[dev]" playwright==1.55.0
+          python -m playwright install --with-deps chromium
+      - name: All existing Python regressions and new WPE invariants
+        run: python -m pytest -q
+      - name: Existing focused three six-stage journeys
+        run: python tools/wpe_learn_challenge_coverage_r1_ui.py
+      - name: EX-M79 to C03 and back
+        run: python tools/wpe_student_journey_r1_ui.py
+      - name: New unified source persistence and optional donor transfers
+        run: python tools/wpe_unified_integration_r1_ui.py
+      - name: Existing five extension six-stage journeys
+        run: python tools/wpe_extensions_interactive_ui.py
