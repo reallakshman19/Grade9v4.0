@@ -199,6 +199,8 @@
       title: "Read the axes first",
       version: 1,
       prediction: "Which new graph card needs an area, and which two need a slope? What units should your answers use?",
+      hints: ["Read each graph's vertical and horizontal axis labels, then ask what UNIT the question wants. Force × distance makes joules; distance ÷ time makes metres per second.","For the U–position graph, draw an arrow showing that potential rises to the right. A conservative force points opposite the direction of increasing potential. For card T, use only the requested 2–5 s interval."],
+      diagnosisFeedback: ["Put the horizontal axis unit under the force graph. Multiply newtons by metres to get work; the line's slope has different units.","Find the change in U divided by change in position, then reverse its sign to get conservative force. The U–x area does not represent force.","Circle the requested 2–5 s interval, read its two displacement values and divide their difference by three seconds.","Start each card with 'vertical axis / horizontal axis / operation / resulting unit' before doing any number work.","Check your units and signs against the axes once more. If they match, keep the original reasoning and explain why.","Use one card at a time and start from its axis names. A small table is enough; you don't need all three answers at once."],
       fields: [
         {id:"graphR",type:"select",label:"Card R: How do you find work from force against position?",options:["Area between the line and x-axis", "Slope of the line", "Area under a potential–position line", "I'm not sure"]},
         {id:"workR",type:"number",label:"Card R: Work over 0–4 m (J)",hint:"The force rises from 0 N to 8 N. Think about a triangle."},
@@ -243,6 +245,8 @@
       title: "Stay on the circle?",
       version: 1,
       prediction: "The ball has enough energy to be at the top height in a calculation. Does that alone prove its string can stay taut? At the top, which way is inward and can a string push?",
+      hints: ["Draw two arrows at the top of the circular path: one toward the centre and one in the direction of gravity. What direction would the tension in a taut string pull?","First use the height rise from bottom to top to estimate top speed from energy. THEN compare the inward force it needs with the weight that already points inward. A string cannot provide an outward push."],
+      diagnosisFeedback: ["Separate the tests: reaching the top HEIGHT using energy is not the same as staying on the taut circular route.","At the top, the centre is below the ball. Redraw downward gravity and downward string tension before forming the radial-force equation.","A negative computed tension means the assumed taut-string model is invalid. A string cannot push; use this sign as a physical check.","Speed is tangent to the circle while inward acceleration has magnitude v²/r. Label their directions separately before calculating.","Recheck the 2r height difference, top-speed squared and force signs. Explain whether your initial model already did both tests.","Try two small calculations: 'energy allows this height?' and 'tension can pull inward?' The second decision is what the first cannot answer."],
       fields: [
         {id:"topInward",type:"select",label:"At the top of a vertical circle, which direction is toward its centre?",options:["Downward", "Upward", "Along its tangential velocity", "I'm not sure"]},
         {id:"heightRise",type:"number",label:"Height change from bottom to top (m)",hint:"The rise is twice the circle's 1 m radius."},
@@ -289,6 +293,8 @@
       title: "Momentum arrives every second",
       version: 1,
       prediction: "The chips arrive already moving right. Does the belt need to speed them up? Will extra motor power all become the chips' kinetic energy, or might some become heat?",
+      hints: ["Draw a one-second batch of arriving chips. Label their incoming horizontal speed and outgoing belt speed, and use kilograms EACH second rather than total chips accumulated.","Calculate the force from mass-per-second × speed change. Motor power uses BELT speed, while kinetic-energy change uses both squared speeds. What is left over during slipping?"],
+      diagnosisFeedback: ["Use a control-volume picture: count new kilograms per second, not the entire stock already riding the conveyor.","Underline the 1 m/s incoming speed and the feed rule 'half the belt speed'. Recompute the horizontal velocity gain before force.","The motor keeps the belt moving, so its pickup force moves at BELT speed. Recalculate mechanical power at that speed.","Make a three-column energy ledger: motor input, chip kinetic-energy gain, and heat. Do not force the first two columns to match.","Check units in each line: kg/s × m/s makes N; N × m/s makes W. Then test whether the three power entries balance.","Start with two arrows, 'before' and 'after', and a small box labelled 'kg each second'. Keep each calculation separate."],
       fields: [
         {id:"model",type:"select",label:"Which object or flow are you following?",options:["Incoming kilograms of chips each second", "All chips ever collected on the belt", "Only the empty belt", "I'm not sure"]},
         {id:"flowRate",type:"number",label:"Mass of new chips per second (kg/s)",hint:"The feed rate equals half the numerical belt speed."},
@@ -335,6 +341,8 @@
       title: "What stays the same?",
       version: 1,
       prediction: "At equal compression, which pad looks stiffer from the 4 cm measurement? Will the stiffer pad store more energy under BOTH equal-extension and equal-final-force tests?",
+      hints: ["First convert 4 centimetres to metres. Infer each k from the lab measurement using final force divided by compression; the two tests come AFTER this measurement.","Label Test X 'same compression' and Test Y 'same FINAL force'. For Y the softer spring compresses farther, so calculate each new x = F/k instead of reusing X's 5 cm."],
+      diagnosisFeedback: ["Remember: 4 cm is 0.04 m and 5 cm is 0.05 m. Recalculate k in N/m before the energy comparisons.","Write 'same extension' over X and 'same final force' over Y. Each condition chooses a different comparison; stiffness alone does not choose the winner.","Test Y must use each spring's own compression under 12 N. Find x = F/k for Blue and Gold, then use elastic energy.","For a slowly increasing Hookean force, the area under the force–extension graph is a TRIANGLE: ½ × final force × extension.","Check that both tests use slow loading and final equilibrium conditions. Review the ordering without erasing the first try.","Start by writing what is held the SAME in each experiment; then calculate one spring at a time."],
       fields: [
         {id:"kBlue",type:"number",label:"Blue pad stiffness (N/m)",hint:"4 cm is 0.04 m. Use k = final force ÷ compression."},
         {id:"kGold",type:"number",label:"Gold pad stiffness (N/m)"},
@@ -383,7 +391,7 @@
   };
 
   function initState(lesson) {
-    return {schema:1,lesson,stage:0,prediction:null,first:null,hintsUsed:0,reconstruction:null,diagnosis:null,repair:null,boundary:null};
+    return {schema:1,lesson,stage:0,prediction:null,predictionDraft:"",draft:null,first:null,hintsUsed:0,reconstruction:null,diagnosis:null,repair:null,boundary:null};
   }
   function storageKey(lesson) { return "g9:wpe:d3d4:self-tutor:v1:"+lesson; }
   function load(lesson) {
@@ -505,7 +513,7 @@
     top.tabIndex=-1;
     if(stage===0) {
       note(card,"Make a prediction first. You don't need to be correct.", "stage-desc");
-      textArea(card,"prediction-"+lesson,"What do you think will happen?",config.prediction,state.prediction||"");
+      textArea(card,"prediction-"+lesson,"What do you think will happen?",config.prediction,state.predictionDraft||state.prediction||"");
       addButton(actions(card),"save-prediction","Keep my prediction and try the problem");
     } else if(stage===1) {
       note(card,"Try the new problem independently. Work in any order and write how you decided. It's fine to say 'I'm not sure'.", "stage-desc");
@@ -518,7 +526,9 @@
         if(field.type==="textarea")textArea(form,id,field.label,field.hint,"");
         const input=form.querySelector("#"+id);
         input.dataset.input=field.id;
+        if(state.draft && typeof state.draft[field.id]==="string")input.value=state.draft[field.id];
       });
+      note(card,"Your unfinished answers are saved on this browser as you type. You can come back to this skill later.","draft-note");
       const hints=config.hints||[];
       if(hints.length){
       const help=el("section","progressive-hints");help.dataset.hintPanel="true";
@@ -570,6 +580,14 @@
           a.href=sourceRoute.href;card.append(a);
         }
       }
+    }
+    // Once the first model is locked, the full reasoning stays available for
+    // self-diagnosis and repair without exposing the boundary answer in advance.
+    if(stage===3 || stage===4 || (stage===5 && state.boundary===null)){
+      const ref=el("details","review-model");
+      addText(ref,"summary",null,"Review the worked steps while thinking");
+      workedList(ref,config.worked,"Worked model — open when you need it");
+      card.append(ref);
     }
     const footer=actions(root);
     addButton(footer,"reset","Start this skill again (clears saved work)","danger");
@@ -626,7 +644,7 @@
     if(kind==="save-prediction" && state.stage===0) {
       const prediction=root.querySelector("textarea").value.trim();
       if(!prediction){warn(root,"Write a prediction or 'I'm not sure' so you can compare it later.");return;}
-      state.prediction=prediction;state.stage=1;
+      state.prediction=prediction;state.stage=1;state.predictionDraft="";
     } else if(kind==="lock-attempt" && state.stage===1 && !state.first) {
       const values=formValues(root);
       if(!values.reason){
@@ -634,7 +652,7 @@
         root.querySelector('[data-input="reason"]').focus();
         return;
       }
-      state.first=values;state.stage=2;
+      state.first=values;state.stage=2;state.draft=null;
     } else if(kind==="save-reconstruction" && state.stage===2) {
       state.reconstruction=[...root.querySelectorAll("[data-rubric]:checked")].map(x=>Number(x.value));
       state.stage=3;
@@ -655,6 +673,18 @@
     const saved=persist(lesson,state);
     if(!saved)storageWorks=false;
     render(lesson,true);
+  }
+  // Drafts live only in this browser. Committed first responses remain separate
+  // and cannot be replaced by editing a later repair.
+  function saveUnfinishedInput(lesson,event){
+    const state=states[lesson];
+    if(state.stage===0 && event.target.matches("textarea")){
+      state.predictionDraft=event.target.value;
+    }else if(state.stage===1 && !state.first && event.target.matches("[data-input]")){
+      const root=document.querySelector('[data-stage-root="'+lesson+'"]');
+      state.draft=formValues(root);
+    }else return;
+    if(!persist(lesson,state))storageWorks=false;
   }
   const configHintCount=lesson=>(lessons[lesson].hints||[]).length;
   let sourceRoute=null;
@@ -690,7 +720,7 @@
   Object.keys(lessons).forEach(lesson=>{states[lesson]=load(lesson);});
   Object.keys(lessons).forEach(lesson=>{
     const root=document.querySelector('[data-stage-root="'+lesson+'"]');
-    if(root){root.addEventListener("click",event=>update(lesson,event));render(lesson,false);}
+    if(root){root.addEventListener("click",event=>update(lesson,event));root.addEventListener("input",event=>saveUnfinishedInput(lesson,event));root.addEventListener("change",event=>saveUnfinishedInput(lesson,event));render(lesson,false);}
   });
   bindSourceJourney();
 })();

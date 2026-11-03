@@ -85,7 +85,13 @@ def browser_roundtrip(browser, base, width, height):
         require("K₀" in root.locator(".diagnostic-tip").inner_text(),"Diagnosis lacks specific repair guidance")
         root.locator('[data-input$="repair"]').fill("I must add K0 before using the square-root speed law.")
         root.locator('[data-action="save-repair"]').click()
-        require(root.locator(".worked").count()==0,"Boundary answer shown before boundary attempt")
+        # Prior worked reasoning is now available, but collapsed, for repair.
+        # The NEW boundary-condition solution must still be absent until submission.
+        require(root.locator(".review-model").count()==1,"Prior model not reviewable during boundary")
+        require(root.locator(".review-model").evaluate("(e) => !e.open"),
+                "Worked reference opened without learner request")
+        require(root.locator(".stage-card > .worked").count()==0,
+                "Changed-condition answer shown before boundary attempt")
         root.locator('[data-input$="boundary"]').fill("Halving power lowers the energy gain, but does not make acceleration fixed.")
         root.locator('[data-action="save-boundary"]').click()
         require("4 m/s" in root.locator(".worked").inner_text(),"Changed-condition scientific check wrong")

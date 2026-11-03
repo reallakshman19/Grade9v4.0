@@ -23,3 +23,10 @@
 .student-data thead{background:#e8f3f6}
 .student-data tbody th{font-weight:700}
 .student-data tbody tr:nth-child(even){background:#f6fafb}
+
+/* Learner-readiness: keep the original model consultable during repair, while
+   keeping new boundary answers hidden until the changed-condition attempt. */
+.review-model{margin:16px 0;padding:10px 12px;border:1px solid #c9dce5;background:#f6fafb;border-radius:10px}
+.review-model summary{font-size:.91rem;font-weight:800;color:#245a70;cursor:pointer;padding:5px 2px}
+.review-model .worked{margin-top:12px}
+.draft-note{font-size:.84rem;color:#275e69;background:#edf8f7;border-left:4px solid #4d9e8b;padding:10px 12px;border-radius:0 8px 8px 0}
