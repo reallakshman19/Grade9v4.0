@@ -127,7 +127,7 @@ def test_skill_explorer_four_tables_preserve_all_existing_destinations():
             if parsed.path in ("extension-learning.html","focused-journeys.html"):
                 # These existing pages generate lesson anchors from JS data at runtime.
                 js=WPE/("extension-learning.js" if parsed.path.startswith("extension") else "focused-journeys.js")
-                assert re.search(r"\\b"+re.escape(parsed.fragment)+r":\\s*\\{",js.read_text(encoding="utf-8")),(name,href)
+                assert f"{parsed.fragment}: {{" in js.read_text(encoding="utf-8"),(name,href)
             else:
                 assert f'id="{parsed.fragment}"' in target.read_text(encoding="utf-8"),(name,href)
     css=source("physics/wpe/student-journey.css")
