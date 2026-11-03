@@ -372,6 +372,46 @@ def test_six_prior_local_saved_tries_keep_same_storage_keys():
     assert c08["source_selection_reader_conflict_unresolved"] is True
     assert len(c07["required_prerequisites"])==4
 
+
+def test_learner_readiness_supports_eight_lessons_and_no_real_observations():
+    """Code review and physics contracts are not evidence of student mastery."""
+    meta = load(META)
+    batch = meta["learner_readiness_batch"]
+    assert batch["real_student_sessions_conducted"] == 0
+    assert batch["actual_child_observations"] is False
+    assert batch["automated_browser_regression_only"] is True
+    assert batch["academic_admissions_changed"] is False
+    assert batch["first_attempt_key_changed"] is False
+    assert batch["first_attempt_unlock_changed"] is False
+    assert meta["academic"]["qualified_learner_routes"] == 0
+    protocol = ROOT / batch["observational_protocol"]
+    assert protocol.is_file()
+    guide = protocol.read_text(encoding="utf-8")
+    assert "observations NOT RUN" in guide
+    assert "do not" in guide.lower()
+    assert "Boundary" in guide
+    script = SCRIPT.read_text(encoding="utf-8")
+    for topic in [f"C0{i}" for i in range(5, 9)]:
+        start = script.index("    "+topic+": {")
+        end = script.find("\n    C0", start+8)
+        if end == -1:
+            end = script.index("\n  };\n\n  function initState",start)
+        section = script[start:end]
+        assert "hints: [" in section, topic
+        assert "diagnosisFeedback: [" in section, topic
+        assert "Which" in section or "which" in section
+
+    assert "state.predictionDraft" in script
+    assert "state.draft=formValues(root)" in script
+    assert "state.first=values;state.stage=2;state.draft=null;" in script
+    assert "g9:wpe:d3d4:self-tutor:v1:" in script
+    assert 'el("details","review-model")' in script
+    assert "stage===3 || stage===4" in script
+    assert "saveUnfinishedInput" in script
+    assert "innerHTML" not in script
+    assert "real_student_sessions_conducted" not in script  # no invented learner telemetry
+
+
 def test_no_upgrade_to_native_status_or_exam_original_delivery():
     meta = load(META)
     source_map = load(CURRENT_MAP)
