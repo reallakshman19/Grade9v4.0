@@ -371,6 +371,57 @@ def test_wpe_question_reasoning_return(browser):
             context.close()
     print("PASS: question → provisional route → existing foundation → same question; invalid/absent ID and answer leakage blocked.")
 
+
+def test_wpe_core2_r2_hint_safety(browser):
+    """Batched candidate cue renderer check; never an academic science approval."""
+    bank=json.loads((ROOT/"workspace/output/WPE_Core2_Consolidated_20261102/native-candidate/selected_bank.review.json").read_text(encoding="utf-8"))
+    questions={q["source_id"]:q for q in bank["questions"]}
+    curated=questions["EX-M8"]
+    raw=questions["EX-M69"]
+    check(len(curated["scaffolds"])==2 and len(curated["hints"])==3,
+          "EX-M8 source/cue inventory changed")
+    check(not raw.get("scaffolds") and len(raw["hints"])==3,
+          "EX-M69 raw-hint inventory changed")
+    for width,height in ((1024,768),(390,844)):
+        ctx=browser.new_context(viewport={"width":width,"height":height},device_scale_factor=1)
+        try:
+            page=ctx.new_page()
+            errors=[]
+            page.on("pageerror",lambda err:errors.append(str(err)))
+            response=page.goto(f"http://127.0.0.1:{PORT}/preview/question-status.html?question=EX-M8",wait_until="load")
+            check(response is not None and response.status==200,"Authored-cue reader unavailable")
+            check(page.locator(".qtitle").inner_text()=="EX-M8","EX-M8 direct source link failed")
+            hints=page.locator("#question-root details.hint")
+            check(hints.count()==2,"EX-M8 must show exactly two new student-safe cues")
+            displayed=" ".join(hints.nth(i).text_content() or "" for i in range(hints.count()))
+            check(all(s["text"] in displayed for s in curated["scaffolds"]),
+                  "EX-M8 curated cue not displayed")
+            check(all(h["text"] not in displayed for h in curated["hints"]),
+                  "EX-M8 raw source hint leaked in place of curated cue")
+            check("crux move:" not in displayed.lower(),"EX-M8 Crux Move leaked")
+            check(page.locator("#solution-container .solution").count()==0,"EX-M8 answer leaked before attempt")
+            page.locator('.source-note a[href*="reasoning-paths.html?question=EX-M8"]').click()
+            page.locator("#route-status").filter(has_text="EX-M8").wait_for()
+            page.locator('#return-links a[href*="question-status.html?question=EX-M8"]').click()
+            check(page.locator(".qtitle").inner_text()=="EX-M8","Return lost exact EX-M8 candidate")
+            check(page.locator("#solution-container .solution").count()==0,"Return revealed answer before attempt")
+            response=page.goto(f"http://127.0.0.1:{PORT}/preview/question-status.html?question=EX-M69",wait_until="load")
+            check(response is not None and response.status==200,"Unscaffolded-hint reader unavailable")
+            check(page.locator(".qtitle").inner_text()=="EX-M69","EX-M69 direct link failed")
+            hints=page.locator("#question-root details.hint")
+            check(hints.count()==2,"EX-M69 must defer exactly one explicit Crux Move hint")
+            displayed=" ".join(hints.nth(i).text_content() or "" for i in range(hints.count()))
+            check("crux move:" not in displayed.lower(),"EX-M69 method spoiler leaked")
+            check(all(h["text"] in displayed for h in raw["hints"] if "crux move" not in h["text"].lower()),
+                  "Remaining source hints incorrectly removed")
+            check(page.locator("#solution-container .solution").count()==0,"EX-M69 answer leaked before attempt")
+            check(not errors,f"Hint safety JavaScript errors at {width}: {errors}")
+            check(page.evaluate("document.documentElement.scrollWidth-innerWidth")<=2,
+                  f"Candidate hint reader horizontal overflow at {width}")
+        finally:
+            ctx.close()
+    print("PASS: EX-M8 curated cues and EX-M69 Crux Move deferral, exact-question return and no pre-attempt answer at desktop/mobile.")
+
 def main():
     corpus()
     server=subprocess.Popen([sys.executable,"-m","http.server",str(PORT),"--bind","127.0.0.1"],cwd=ROOT,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
@@ -387,6 +438,7 @@ def main():
                 test_child_journeys(browser)
                 test_wpe_learning_route(browser)
                 test_wpe_question_reasoning_return(browser)
+                test_wpe_core2_r2_hint_safety(browser)
             finally:browser.close()
         print("PASS: Five authored pairs and five viewport browser checks.")
     finally:
