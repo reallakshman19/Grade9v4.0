@@ -62,7 +62,7 @@ def round_trip(page,base,lesson,source):
     require(guide.locator("svg").count()==1 and guide.locator(".visual-controls input").count()==1,lesson+": interactive diagram missing")
     slider=guide.locator("#guide-slider")
     original=guide.locator(".model-readout").inner_text()
-    slider.fill(slider.get_attribute("min"))
+    slider.evaluate("(el)=>{el.value=el.value===el.min?el.max:el.min;el.dispatchEvent(new Event(\'input\',{bubbles:true}));}")
     require(guide.locator(".model-readout").inner_text()!=original,lesson+": visual not interactive")
     require(page.evaluate("document.documentElement.scrollWidth<=window.innerWidth+3"),lesson+": horizontal page overflow")
     root=page.locator('[data-stage-root="'+lesson+'"]')
