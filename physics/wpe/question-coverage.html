@@ -51,7 +51,7 @@ if(!a.ok||!b.ok)throw Error("Source records unavailable");
 bank=await a.json();route=await b.json();
 if(!Array.isArray(bank.questions)||bank.questions.length!==74||route.schema!=="wpe-reasoning-route-preview/v1"||!Array.isArray(route.constructions))throw Error("Question inventory changed");
 }catch(err){summary.textContent="Question map unavailable: "+err.message;return;}
-const interactive=new Set(["WPE-C01","WPE-C02","WPE-C03","WPE-C04","WPE-C05","WPE-C06"]);
+const interactive=new Set(["WPE-C01","WPE-C02","WPE-C03","WPE-C04","WPE-C05","WPE-C06","WPE-C07","WPE-C08"]);
 const seen=new Set();
 const entries=bank.questions.map(q=>{
 if(!q.source_id||seen.has(q.source_id))throw Error("Duplicate or absent source question ID");
@@ -62,6 +62,8 @@ const crux=q.hints?.find(h=>h.text?.includes("Crux Move:"))?.text?.replace(/^Cru
 const hint=q.hints?.[1]?.text;
 const description=q.source_id==="EX-M79"
 ?"Identify the physical model from a speed–distance law, then connect work and time (source's constant-power association is only a contrast)."
+:q.source_id==="EX-M101"
+?"Compare spring work at equal final equilibrium force versus equal extension, infer relative stiffness, and test each statement independently."
 :(crux||hint||"Question-specific reasoning move not supplied in the current bank.");
 return {q,mapped,working,description,kind:working.length?"interactive":mapped.length?"pack":"unmapped"};
 });

@@ -85,13 +85,9 @@ def browser_roundtrip(browser, base, width, height):
         require("K₀" in root.locator(".diagnostic-tip").inner_text(),"Diagnosis lacks specific repair guidance")
         root.locator('[data-input$="repair"]').fill("I must add K0 before using the square-root speed law.")
         root.locator('[data-action="save-repair"]').click()
-        # Prior worked reasoning is now available, but collapsed, for repair.
-        # The NEW boundary-condition solution must still be absent until submission.
-        require(root.locator(".review-model").count()==1,"Prior model not reviewable during boundary")
-        require(root.locator(".review-model").evaluate("(e) => !e.open"),
-                "Worked reference opened without learner request")
-        require(root.locator(".stage-card > .worked").count()==0,
-                "Changed-condition answer shown before boundary attempt")
+        require(root.locator(".review-model").count()==1,"Earlier worked model should be available to review")
+        require(root.locator(".review-model").evaluate("(e) => !e.open"),"Earlier worked model opened without asking")
+        require(root.locator(".stage-card > .worked").count()==0,"Changed-condition answer shown before boundary attempt")
         root.locator('[data-input$="boundary"]').fill("Halving power lowers the energy gain, but does not make acceleration fixed.")
         root.locator('[data-action="save-boundary"]').click()
         require("4 m/s" in root.locator(".worked").inner_text(),"Changed-condition scientific check wrong")
@@ -110,12 +106,19 @@ def browser_roundtrip(browser, base, width, height):
         page.locator("#table-status").filter(has_text="74 of 74").wait_for()
         require(page.locator("#rows tr").count()==74,"Not all source questions covered")
         page.locator("#filter").select_option("interactive")
-        require(page.locator("#rows tr").count()==16,"Incorrect available-tutor coverage")
+        require(page.locator("#rows tr").count()==18,"Incorrect available-tutor coverage")
         page.locator("#filter").select_option("pack")
-        require(page.locator("#rows tr").count()==9,"Incorrect authored-only gap count")
+        require(page.locator("#rows tr").count()==7,"Incorrect authored-only gap count")
         page.locator("#filter").select_option("unmapped")
         require(page.locator("#rows tr").count()==49,"Incorrect unmapped gap count")
         page.locator("#filter").select_option("all")
+        page.locator("#search").fill("EX-M101")
+        require(page.locator("#rows tr").count()==1,"Spring source coverage missing")
+        spring_skill=page.locator("#rows tr").inner_text().lower()
+        require("equal final equilibrium force" in spring_skill and "equal extension" in spring_skill,
+                "EX-M101 map still teaches the wrong model")
+        require("conservative vector field" not in spring_skill,
+                "Wrong imported crux still appears in spring coverage")
         page.locator("#search").fill("EX-M79")
         require(page.locator("#rows tr").count()==1,"Coverage search ambiguous")
         require("speed–distance" in page.locator("#rows tr").inner_text(),"EX-M79 reasoning capability inaccurate")
@@ -127,7 +130,7 @@ def other_topic_links(browser,base):
     ctx=browser.new_context(viewport={"width":390,"height":844})
     try:
         page=ctx.new_page()
-        cases=[("EX-M105","C01"),("EX-M24","C02"),("EX-M73","C04")]
+        cases=[("EX-M105","C01"),("EX-M24","C02"),("EX-M73","C04"),("EX-M16","C07"),("EX-M101","C08")]
         for q,lesson in cases:
             page.goto(base+f"/physics/wpe/reasoning-paths.html?question={q}")
             page.locator("#route-status").filter(has_text=q).wait_for()
@@ -141,9 +144,25 @@ def other_topic_links(browser,base):
             require(root.locator(".worked").count()==0,"Hint leaked the answer for "+lesson)
             page.locator("#source-journey-return").click()
             require(page.locator(".qtitle").inner_text()==q,"Other topic returned to wrong question")
+        # Imported EX-M101 source hints were about the wrong scientific subject.
+        # Show the spring controlled-variable reasoning instead, without editing source JSON.
+        page.goto(base+"/preview/question-status.html?question=EX-M101")
+        require(page.locator(".qtitle").inner_text()=="EX-M101","Spring comparison source unavailable")
+        require("Which quantity is held constant?" in page.locator('.hint').first.inner_text(),
+                "EX-M101 does not offer spring-specific progressive hints")
+        require(page.locator("#solution-container .solution").count()==0,
+                "Spring explanation leaked before a committed attempt")
+        page.locator('input[name="answer-option"]').first.check()
+        page.locator("#commit").click()
+        page.locator("#reveal").click()
+        explained=page.locator("#solution-container").inner_text()
+        require("same FINAL force" in explained and "same EXTENSION" in explained,
+                "Source solution did not distinguish fixed force from fixed extension")
+        require("conservative-vector-field" not in explained,
+                "Irrelevant imported explanation still shown")
         page.goto(base+"/physics/wpe/d3d4-self-tutor.html?question=EX-M81#C03")
         require(page.locator("#source-journey").is_hidden(),"Absent question got a false return link")
-        print("PASS: C01, C02 and C04 source navigation, optional hints, and absent-ID refusal")
+        print("PASS: C01, C02, C04, C07 and C08 source navigation, optional hints, and absent-ID refusal")
     finally:ctx.close()
 
 def main():
