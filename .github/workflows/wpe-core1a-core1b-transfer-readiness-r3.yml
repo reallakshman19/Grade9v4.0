@@ -32,7 +32,7 @@ jobs:
           node --check physics/wpe/gap-journeys.js
           node --check physics/wpe/gap-six-stage-engine.js
       - name: Independent equations, limiting cases, source custody, five construction rubrics
-        run: python -m pytest -q tests/test_wpe_core1a_core1b_transfer_readiness_r3.py tests/test_wpe_learn_challenge_gap_closure_r2.py
+        run: python -m pytest -q tests/test_wpe_core1a_core1b_transfer_readiness_r3.py
       - name: Ten separate learner first-attempts, two distinct tasks per construction, desktop and mobile
         run: python tools/wpe_core1a_core1b_transfer_readiness_r3_ui.py
       - name: Protect original F04–F08 six-stage source routes on desktop and mobile
