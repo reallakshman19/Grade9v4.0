@@ -126,6 +126,16 @@ def test_three_new_physics_models_are_correct_even_where_source_key_is_contested
     close(42*vb,42*math.sqrt(6.4))
     close(vb*vb/(2*g),.32)
 
+def test_ex_m97_qualifies_real_muscle_power_interpretation():
+    focused=(WPE/"focused-journeys.js").read_text(encoding="utf-8")
+    mapped=load(WPE/"learning-coverage-r1.json")
+    row=next(x for x in mapped["questions"] if x["source_id"]=="EX-M97")
+    # COM pseudo-work rate should not be asserted as power delivered at a stationary shoe.
+    assert "ground contact can be stationary" in focused
+    assert "pseudo-work rate" in focused
+    assert "body-segment motion" in row["source_science_note"]
+    assert "actual internal muscular power" in row["source_science_note"]
+
 def test_round_trip_incline_signed_ledger_and_downhill_condition():
     # Original EX-N39: speeds v0 and v0/2 at theta 30 deg.
     theta=math.pi/6

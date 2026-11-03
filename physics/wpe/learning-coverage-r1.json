@@ -695,7 +695,7 @@
       "lesson_href": "focused-journeys.html?question=EX-M97#F01",
       "source_href": "../../preview/question-status.html?question=EX-M97",
       "has_source_caution": true,
-      "source_science_note": "The coaching prediction conflates (F−mg)v with upward-applied Fv; keep separate.",
+      "source_science_note": "The coaching prediction uses (F−mg)v_COM, while applied-force × centre-of-mass speed gives Fv_COM. Neither alone establishes actual internal muscular power for a real jumper: the stationary shoe contact and body-segment motion matter. Distinguish these quantities.",
       "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
       "route_mode": "FOCUSED_SOURCE"
     },

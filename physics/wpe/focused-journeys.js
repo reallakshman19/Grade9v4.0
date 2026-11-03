@@ -9,7 +9,7 @@
   const scenarios={
     F01:{
       source:"EX-M97",title:"The force doing work is not always the net force",short:"Launch power: applied versus net",
-      sourceCaution:"The source's coaching key treats net-force power as muscular power. A constant upward push and the net force are different. This lesson teaches both explicitly; it does not certify the original key.",
+      sourceCaution:"The source's coaching key treats net-force power as muscular power. An idealized applied-force × centre-of-mass-speed rate also differs from net-force power. For a real jumper, ground contact can be stationary: F_ground × v_COM is a centre-of-mass pseudo-work rate, not directly measured muscular power. Additional body-motion assumptions would be needed to infer that. This lesson compares the rates without certifying the original key.",
       question:"Which force should multiply the speed to give power delivered by a lifting agent?",
       prerequisites:"Before starting: work is force along displacement; power is work per unit time at that instant. Energy changes through work of ALL forces. Weight mg acts downward even while something accelerates upward.",
       core:"Choose a force owner before calculating: P_lifter = T v, but dK/dt = (T − mg)v. The difference mgv is the rate of increase of gravitational potential energy. At release, the applied force ceases; gravity alone governs flight.",
