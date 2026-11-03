@@ -104,9 +104,9 @@ def browser_roundtrip(browser, base, width, height):
         page.locator("#table-status").filter(has_text="74 of 74").wait_for()
         require(page.locator("#rows tr").count()==74,"Not all source questions covered")
         page.locator("#filter").select_option("interactive")
-        require(page.locator("#rows tr").count()==16,"Incorrect available-tutor coverage")
+        require(page.locator("#rows tr").count()==18,"Incorrect available-tutor coverage")
         page.locator("#filter").select_option("pack")
-        require(page.locator("#rows tr").count()==9,"Incorrect authored-only gap count")
+        require(page.locator("#rows tr").count()==7,"Incorrect authored-only gap count")
         page.locator("#filter").select_option("unmapped")
         require(page.locator("#rows tr").count()==49,"Incorrect unmapped gap count")
         page.locator("#filter").select_option("all")
@@ -121,7 +121,7 @@ def other_topic_links(browser,base):
     ctx=browser.new_context(viewport={"width":390,"height":844})
     try:
         page=ctx.new_page()
-        cases=[("EX-M105","C01"),("EX-M24","C02"),("EX-M73","C04")]
+        cases=[("EX-M105","C01"),("EX-M24","C02"),("EX-M73","C04"),("EX-M16","C07"),("EX-M101","C08")]
         for q,lesson in cases:
             page.goto(base+f"/physics/wpe/reasoning-paths.html?question={q}")
             page.locator("#route-status").filter(has_text=q).wait_for()
@@ -137,7 +137,7 @@ def other_topic_links(browser,base):
             require(page.locator(".qtitle").inner_text()==q,"Other topic returned to wrong question")
         page.goto(base+"/physics/wpe/d3d4-self-tutor.html?question=EX-M81#C03")
         require(page.locator("#source-journey").is_hidden(),"Absent question got a false return link")
-        print("PASS: C01, C02 and C04 source navigation, optional hints, and absent-ID refusal")
+        print("PASS: C01, C02, C04, C07 and C08 source navigation, optional hints, and absent-ID refusal")
     finally:ctx.close()
 
 def main():
