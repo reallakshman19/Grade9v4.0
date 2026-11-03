@@ -97,7 +97,7 @@
       <small>CORE1A · TEACHING</small>
       <h3>📘 Learn the reasoning</h3>
       <p>Develop the physical model through guided explanations, worked examples, interactive diagrams, assumptions and misconceptions.</p>
-      <ul><li>Five foundation mini-lessons</li><li>Guided teaching within C01–C08, E01–E05 and F01–F03</li></ul>
+      <ul><li>Five foundation mini-lessons</li><li>Guided teaching within C01–C08, E01–E05 and F01–F08</li></ul>
       <a href="../physics/wpe/learn-challenge.html#work-sign">Foundation example</a>
       <a href="../physics/wpe/d3d4-self-tutor.html#C03">Deep reasoning example · C03</a>
     </article>
@@ -105,7 +105,7 @@
       <small>CORE1B · INDEPENDENT PRACTICE</small>
       <h3>🧠 Try a fresh challenge</h3>
       <p>Choose a model, predict, commit an independent attempt, optionally use progressive hints, diagnose and repair errors, and test a changed condition.</p>
-      <ul><li>Six-stage challenges in the 16 C/E/F journeys</li><li>Optional second challenges for F01–F03 are <strong>planned</strong> from PR #55, not yet integrated</li></ul>
+      <ul><li>Six-stage challenges in the 21 C/E/F journeys</li><li>Optional second challenges for F01–F03 are <strong>planned</strong> from PR #55, not yet integrated</li></ul>
       <a href="../physics/wpe/focused-journeys.html?question=EX-M97#F01">Focused challenge · F01</a>
       <a href="https://github.com/reallakshman19/Grade9v4.0/pull/55">PR #55 variants (source only)</a>
     </article>
@@ -131,11 +131,13 @@
           <tr><td><a href="../physics/wpe/d3d4-self-tutor.html">C01–C08 · Eight thinking challenges</a></td><td>Core1A + Core1B</td><td>Guided physical model followed by six-stage independent reconstruction</td></tr>
           <tr><td><a href="../physics/wpe/extension-learning.html#E01">E01–E05 · Advanced extensions</a></td><td>Core1A + Core1B</td><td>Advanced concepts with separate fresh six-stage practice</td></tr>
           <tr><td><a href="../physics/wpe/focused-journeys.html?question=EX-M97#F01">F01–F03 · Focused journeys</a></td><td>Core1A + Core1B</td><td>Three difficult question-specific reasoning types; optional transfer variants planned</td></tr>
+          <tr><td><a href="../physics/wpe/gap-journeys.html?question=EX-M50#F04">F04–F08 · Additional focused journeys</a></td><td>Core1A + Core1B</td><td>Five more source-specific constructions: two-body springs, massive spring, wind power, pendulum, and energy-loss models</td></tr>
           <tr><td><a href="../physics/wpe/question-bank.html">Question Bank</a></td><td>Core2</td><td>Exact source question, learner attempt and protected answer reveal</td></tr>
         </tbody>
       </table>
     </div>
     <p class="core-note"><strong>No iframe integration:</strong> the planned unified journey uses direct, source-verified page links and preserved learner state. The existing <code>study-bridge.html</code> still contains an iframe and is a known integration target, not the intended final design.</p>
+    <p class="core-note"><strong>Current map after R2:</strong> 74 source questions, 8 focused journeys, 18 close-practice matches, 48 related-only bridges, and 0 unmapped questions. Related practice does <em>not</em> establish sufficient teaching or independent QRT approval.</p>
     <p class="core-note"><strong>Platform scope and authority:</strong> Physics, Mathematics and Chemistry share Core-role responsibilities; these C/E/F lesson examples are the WPE <em>Physics-only pilot</em>. Published software or passing tests do not independently certify source correctness, academic Core admission or student mastery.</p>
   </section>
 </section>
@@ -157,7 +159,7 @@
     <span class="kicker">Concept note · 01</span><h3 id="guide-concept-title">Separate the learner's journey from the evidence that qualifies it</h3>
     <p>The <strong>learner</strong> follows a simple loop: <strong>original question → understand the idea → independently solve a different problem → return to the original question</strong>. The <strong>author</strong> follows an evidence process that asks whether the source is real, the physics is valid, the exact reasoning has been identified, and the teaching can prepare a genuinely independent attempt. These are related workflows, not one interchangeable chain of approvals.</p>
     <div class="cols">
-      <div class="panel-lite"><h4>What the child sees</h4><p><strong>Learn → Challenge</strong> is a gateway, not a fourth Core. It selects a question or concept and connects <strong>Core2</strong> (original question), <strong>Core1A</strong> (teaching the reasoning) and <strong>Core1B</strong> (fresh reasoning practice). The same lesson page may contain both Core1A and Core1B.</p><p>Foundation lessons, C01–C08, E01–E05 and F01–F03 are different collections of current WPE practice. Their page names are not QRT academic qualifications.</p></div>
+      <div class="panel-lite"><h4>What the child sees</h4><p><strong>Learn → Challenge</strong> is a gateway, not a fourth Core. It selects a question or concept and connects <strong>Core2</strong> (original question), <strong>Core1A</strong> (teaching the reasoning) and <strong>Core1B</strong> (fresh reasoning practice). The same lesson page may contain both Core1A and Core1B.</p><p>Foundation lessons, C01–C08, E01–E05 and F01–F08 are different collections of current WPE practice. Their page names are not QRT academic qualifications.</p></div>
       <div class="panel-lite"><h4>What the agent must prove</h4><p>Can the child identify a model and its conditions? Does the guided example truly teach the decisive operation? Does the fresh task demand a <em>new</em> inference that has not been given away? Are the original question and the learner's first response preserved?</p><p><strong>Source correctness, scientific correctness, independent cognitive review, learner evidence and release permission are separate gates.</strong> A green browser test does not collapse them.</p></div>
     </div>
     <p>The system uses the seven candidate cognitive-operation labels <strong>RETRIEVE, EXPLAIN, APPLY, MODEL, REPRESENT, SYNTHESIZE and JUSTIFY</strong>. They describe the decisive act of an <em>exact task</em>, not a topic-wide label, the length of a solution or a chapter badge. The five task-demand factors are <strong>model selection, representation translation, reasoning chain, computational load and exception sensitivity</strong>. An author may record a proposal; an independent reviewer must judge the exact original where authorized.</p>
@@ -271,7 +273,7 @@
         <li><strong>Verification:</strong> Python output, browser viewport routes, numerical negative controls, B1–B7 evidence and every NOT_RUN/HOLD.</li>
         <li><strong>Delivery:</strong> PR URL, exact head, green CI scope, release/academic decision still outstanding and the next bounded action.</li>
       </ol></div>
-      <div class="panel-lite"><h4>Typical repository destinations</h4><p><code>physics/wpe/learn-challenge.html</code> — learner gateway<br><code>physics/wpe/d3d4-self-tutor.html</code> — C01–C08 teaching and practice<br><code>physics/wpe/extension-learning.html</code> — E01–E05<br><code>physics/wpe/focused-journeys.html</code> — F01–F03<br><code>physics/wpe/learning-coverage-r1.json</code> — 74-question practice map<br><code>preview/question-status.html</code> — original question/attempt UI</p><p>All paths are the <em>current public WPE pilot</em>, not a new universal schema or confirmed approved native tile.</p></div>
+      <div class="panel-lite"><h4>Typical repository destinations</h4><p><code>physics/wpe/learn-challenge.html</code> — learner gateway<br><code>physics/wpe/d3d4-self-tutor.html</code> — C01–C08 teaching and practice<br><code>physics/wpe/extension-learning.html</code> — E01–E05<br><code>physics/wpe/focused-journeys.html</code> — F01–F03<br><code>physics/wpe/gap-journeys.html</code> — F04–F08<br><code>physics/wpe/learning-coverage-r1.json</code> — 74-question practice map<br><code>preview/question-status.html</code> — original question/attempt UI</p><p>All paths are the <em>current public WPE pilot</em>, not a new universal schema or confirmed approved native tile.</p></div>
     </div>
     <h4>Primary full-length references for checking precise rules</h4>
     <p>This page contains the working concept and procedure. For edge cases and actual contract versions, read the <a class="inline-link" href="guidebook.html">full illustrated Architecture Guidebook</a>, <a class="inline-link" href="../docs/agent-entry/concept-report-v4.html">Source → Core1A concept report</a> with its <a href="../docs/agent-entry/CURRENT_CONCEPT_COMPANION.md">current companion</a>, <a href="qrt-blueprint-protocol/CORE_METHOD.md">six-stage Core method</a>, <a href="qrt-blueprint-protocol/RUNBOOK.md">QRT × Blueprint runbook</a>, and <a href="../docs/agent-entry/00-required-reading.md">ordered agent onboarding map</a>. These explain exceptions; this page does not supersede the exact source contracts, separately appointed reviewers or Owner decisions.</p>

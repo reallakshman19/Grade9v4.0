@@ -69,3 +69,19 @@ def test_previous_guidebook_and_architecture_archive_are_still_present():
         assert term in archive
     assert "guidebook.html" in archive
     assert "concept-report-v4.html" in archive
+
+
+def test_architecture_current_wpe_r2_counts_match_source_map():
+    import json
+    page = PAGE.read_text(encoding="utf-8")
+    map_data = json.loads((ROOT / "physics/wpe/learning-coverage-r1.json").read_text(encoding="utf-8"))
+    assert map_data["counts"]["total"] == 74
+    assert (map_data["counts"]["focused_new"], map_data["counts"]["targeted"],
+            map_data["counts"]["related"], map_data["counts"]["missing"]) == (8, 18, 48, 0)
+    new = page.split('<details class="legacy-archive"', 1)[0]
+    assert "21 C/E/F journeys" in new
+    assert "F04–F08 · Additional focused journeys" in new
+    assert 'href="../physics/wpe/gap-journeys.html?question=EX-M50#F04"' in new
+    assert "48 related-only bridges" in new
+    assert "16 C/E/F journeys" not in new
+    assert 'id="agent-guidebook"' in new
