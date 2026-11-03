@@ -12,7 +12,7 @@ from playwright.sync_api import sync_playwright
 ROOT=Path(__file__).resolve().parents[1]
 PREFIX="g9:wpe:gaps:v2:"
 CASES=[
- ("EX-M50","F04","Total kinetic energy because both skaters stop","Common COM motion will stop at peak extension","com","-1"),
+ ("EX-M50","F04","Total kinetic energy because both skaters stop","Friction removes an unknown fraction, but we may ignore it","com","-1"),
  ("EX-M92","F05","Entire cord at the 6 m/s tip speed","An arbitrary standing wave still has linear internal speeds","quarter","6"),
  ("EX-M96","F06","Kinetic energy of one fixed water packet irrespective of time","Water also descends an unknown vertical head that we ignore when computing TOTAL power","flow","300"),
  ("EX-M106","F07","Tangential static balance in both cases because speed is zero at the turn","Track normal performs positive work while the bead moves","rise","10"),
