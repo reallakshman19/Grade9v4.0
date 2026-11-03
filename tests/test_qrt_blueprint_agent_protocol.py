@@ -163,3 +163,39 @@ def test_architecture_links_and_honest_source_baseline():
     reader=load(ROOT/"workspace/output/WPE_Core2_Consolidated_20261102/native-candidate/selected_bank.review.json")
     assert len(reader["questions"])==74
     assert sum(q["band"] in ("D3","D4") for q in reader["questions"])==22
+
+
+def test_core_six_stage_fixture_matches_blueprint_and_b1_b7():
+    method=load(FIXTURES/"six-stage-core-method.json")
+    bp=load(ROOT/"templates/physics-blueprint/physics-blueprint.D3-D4.json")
+    expected=[x["id"] for x in bp["common"]["page_anatomy"]["core1b"]["sections"]]
+    assert [x["key"] for x in method["stages"]]==expected
+    assert len(expected)==6
+    assert method["blueprint"]["version"]==bp["version"]
+    assert method["status"]=="AUTHOR_EXPOSED_TRAINING_NOT_QRT_NOT_LEARNER_EVIDENCE"
+    assert set(method["method"]["evidence_states"])==set(
+        bp["common"]["evidence_record"]["observation_states"])
+    assert all(x["principle"] and x["expected_evidence"] and x["failure"]
+               for x in method["stages"])
+    assert {k for x in method["stages"] for k in x["witness"]}=={
+        "B1","B2","B3","B4","B5","B6","B7"}
+
+
+def test_core_method_examples_and_architecture_links():
+    m=load(FIXTURES/"six-stage-core-method.json")
+    c=m["examples"]["conveyor"]
+    for name,total in (("core1a",4),("fresh",24),("boundary",2)):
+        row=c[name]
+        assert row["motor_W"]==total
+        assert row["motor_W"]==row["kinetic_W"]+row["heat_W"]
+    v=m["examples"]["vertical_circle"]
+    assert v["top_tension_N"]==-1 and v["boundary_top_tension_N"]==14
+    page=(PROTOCOL/"index.html").read_text(encoding="utf-8")
+    guide=(PROTOCOL/"CORE_METHOD.md").read_text(encoding="utf-8")
+    home=(ROOT/"architecture/index.html").read_text(encoding="utf-8")
+    assert 'id="core-method"' in page
+    assert 'href="CORE_METHOD.md"' in page
+    assert 'href="qrt-blueprint-protocol/CORE_METHOD.md"' in home
+    for stage in ("Predict","Attempt","Reconstruct","Diagnose","Repair","Boundary test"):
+        assert stage in page and stage in guide
+    assert "Core1A" in guide and "Core1B" in guide and "UNCERTAIN" in guide

@@ -4,7 +4,7 @@
 **Scope:** apply the repository's existing SL1 → SL2 → independent QRT → common Physics Blueprint + WPE topic adapter → Core1A/Core1B → B1–B7 → native/Owner gates. **D3/D4 first.** Physics-only: do **not** reuse these Physics rules in Mathematics or Chemistry.  
 **Authority:** this is a reproducible execution aid for a low-capability agent, **not** a substitute for Shared/Owner/Oracle instructions, the actual Blueprint, academic reviewer, native skill, source custody or actual child testing. **NO_REAL_APPROVAL** is ever conferred by this document, a fixture, a Python test or a webpage.
 
-[Architecture entry](../index.html) · [Readable protocol](index.html) · [Pinned source manifest](source-pins.json) · [Golden cases](fixtures/golden-cases.json) · [Executable validator](verify_cases.py) · [Physics Blueprint v0.2.0](../../templates/physics-blueprint/physics-blueprint.D3-D4.json) · [Independent-review entry](../../docs/agent-entry/07-independent-review.md)
+[Architecture entry](../index.html) · [Readable protocol](index.html) · **[Core six-stage reasoning method](CORE_METHOD.md)** · [Pinned source manifest](source-pins.json) · [Golden cases](fixtures/golden-cases.json) · [Executable validator](verify_cases.py) · [Physics Blueprint v0.2.0](../../templates/physics-blueprint/physics-blueprint.D3-D4.json) · [Independent-review entry](../../docs/agent-entry/07-independent-review.md)
 
 ## 0. Non-negotiable preflight — read these in this order
 
@@ -61,7 +61,7 @@ The primary typed row is [`schemas/question-route.schema.json`](schemas/question
 
 **S6 — Select the topic adapter only through authority.** Common Blueprint is Physics-wide and topic-neutral; all WPE bodies, laws, quantities, signs, figures, source anchors, misconceptions and exceptions go into the WPE adapter. Bind **one exact** adapter path/version/hash and its Owner selection receipt. If missing, use `UNSELECTED`. Never edit the common Blueprint to fit a WPE problem.
 
-**S7 — Build teaching and independent reasoning.** Audit whether Core1A teaches the *exact inferential jump*, prerequisite laws, conditions, units, sign/frame, diagrams, wrong path and check. Audit Core1B for a **fresh** attempt with an independent first model, honest H1/H2/H3, reconstruction, diagnosed cause from actual response, repair and changed-condition transfer. A completed C01–C08 practice lesson is usable learning help but not proof that an original question or D3/D4 MAIN task is fully covered.
+**S7 — Build teaching and independent reasoning.** Read [Core six-stage method](CORE_METHOD.md) first: define the taught skill, protected inference, evidence for each stage, and how help changes the independence claim. Audit whether Core1A teaches the *exact inferential jump*, prerequisite laws, conditions, units, sign/frame, diagrams, wrong path and check. Audit Core1B for a **fresh** attempt with an independent first model, honest H1/H2/H3, reconstruction, diagnosed cause from actual response, repair and changed-condition transfer. A completed C01–C08 practice lesson is usable learning help but not proof that an original question or D3/D4 MAIN task is fully covered.
 
 **S8 — Test the Blueprint's complete tile shape.** A tile may have multiple topic-specific instances. Provide one Core1A construction per instance; one band-carrying MAIN Core1B cycle **mixing the instances**; and one Core1B cycle per instance, with truthful individual bands. Score each MAIN/instance/exam task independently. A D2 instance can teach a D4 MAIN but cannot be counted as a D4 exam original.
 
