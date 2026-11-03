@@ -1,20 +1,22 @@
 {
   "schema": "wpe-learner-coverage-r1/v1",
   "date": "2026-11-03",
-  "basis": "Exact 74 reader questions + preexisting 13 authored interactive lessons + three new original focused learning constructions; existing QRT/Blueprint/adapter classifications retained as proposals.",
+  "basis": "Exact 74 reader questions + preexisting 13 authored interactive lessons + three new original focused learning constructions; existing QRT/Blueprint/adapter classifications retained as proposals. R2 adds five scientifically distinct source-specific Core1A/Core1B challenges F04–F08, with shared two-body relative-motion model across F04/F08; QRT proposals remain unchanged.",
   "source_bank_git_blob": "cd7cb5c705ce12b0f97edee213be2afedc04abb1",
   "source_coverage_register_git_blob": "6b2ad2ef3f458c60314fb56cadb931e8b102b6dd",
   "source_reasoning_manifest_git_blob": "f5640abfcd6684413b1102987ef5485b5a7150a7",
   "counts": {
     "total": 74,
-    "focused_new": 3,
+    "focused_new": 8,
     "targeted": 18,
     "related": 48,
-    "missing": 5,
-    "wrapped_related": 41
+    "missing": 0,
+    "wrapped_related": 41,
+    "new_gap_closure": 5,
+    "shared_foundation_groups": 4
   },
   "fit_legend": {
-    "FOCUSED_NEW": "New authored Core1A and different Core1B practice, source answer not certified.",
+    "FOCUSED_NEW": "Authored Core1A and fresh six-stage Core1B; includes F01–F08 and does not certify original examination key.",
     "TARGETED_PRACTICE": "A lesson practises the same apparent reasoning operation, without academic sufficiency claim.",
     "RELATED_BRIDGE": "A helpful related lesson but NOT sufficient teaching of the exact question's decisive inference.",
     "MISSING_CONSTRUCTION": "No existing interactive lesson covers the crucial physical operation; do not invent an equivalence."
@@ -294,17 +296,20 @@
         "op": "APPLY",
         "band": "D2"
       },
-      "primary_lesson": null,
-      "related_lessons": [],
-      "fit": "MISSING_CONSTRUCTION",
-      "student_goal": "Use relative motion and stored spring energy for two masses departing oppositely.",
-      "teaching_limit": "Missing construction: two-body centre-of-mass and reduced-mass spring dynamics.",
-      "lesson_href": null,
+      "primary_lesson": "F04",
+      "related_lessons": [
+        "F04"
+      ],
+      "fit": "FOCUSED_NEW",
+      "student_goal": "Separate centre-of-mass drift from relative kinetic energy so an internal spring receives only the energy of changing separation.",
+      "teaching_limit": "Ideal lossless spring: ½μ(u₁−u₂)² becomes spring energy while ½MV² remains. A different external impulse or nonzero spring prestrain requires a new budget.",
+      "lesson_href": "gap-journeys.html?question=EX-M50#F04",
       "source_href": "../../preview/question-status.html?question=EX-M50",
       "has_source_caution": false,
       "source_science_note": null,
       "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
-      "route_mode": "MISSING"
+      "route_mode": "FOCUSED_SOURCE",
+      "construction_group": "TWO_BODY_RELATIVE_ENERGY"
     },
     {
       "source_id": "EX-M56",
@@ -645,17 +650,20 @@
         "op": "MODEL",
         "band": "D2"
       },
-      "primary_lesson": null,
-      "related_lessons": [],
-      "fit": "MISSING_CONSTRUCTION",
-      "student_goal": "Model distributed velocity along a massive spring and sum kinetic energy.",
-      "teaching_limit": "Missing construction: continuous mass distribution and a velocity profile.",
-      "lesson_href": null,
+      "primary_lesson": "F05",
+      "related_lessons": [
+        "F05"
+      ],
+      "fit": "FOCUSED_NEW",
+      "student_goal": "Give every spring slice its own speed, sum its kinetic energy, then recover mv²/6 from a linear velocity profile.",
+      "teaching_limit": "The one-sixth rule needs a fixed end AND uniform-affine extension. End speed by itself does not exclude elastic waves or nonlinear velocity profiles.",
+      "lesson_href": "gap-journeys.html?question=EX-M92#F05",
       "source_href": "../../preview/question-status.html?question=EX-M92",
       "has_source_caution": false,
       "source_science_note": null,
       "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
-      "route_mode": "MISSING"
+      "route_mode": "FOCUSED_SOURCE",
+      "construction_group": "DISTRIBUTED_MASS_VELOCITY"
     },
     {
       "source_id": "EX-M96",
@@ -665,17 +673,20 @@
         "op": "RETRIEVE",
         "band": "D2"
       },
-      "primary_lesson": null,
-      "related_lessons": [],
-      "fit": "MISSING_CONSTRUCTION",
-      "student_goal": "Derive wind energy flux from mass crossing rotor area each second.",
-      "teaching_limit": "Missing construction: area × velocity mass flow and v³ power scaling.",
-      "lesson_href": null,
+      "primary_lesson": "F06",
+      "related_lessons": [
+        "F06"
+      ],
+      "fit": "FOCUSED_NEW",
+      "student_goal": "Multiply mass intercepted per second (∝v) by kinetic energy per kilogram (∝v²) to justify cubic wind power.",
+      "teaching_limit": "The cubic law assumes constant rotor area, air density and conversion fraction. A real turbine may not obey one power law across all speeds.",
+      "lesson_href": "gap-journeys.html?question=EX-M96#F06",
       "source_href": "../../preview/question-status.html?question=EX-M96",
       "has_source_caution": false,
       "source_science_note": null,
       "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
-      "route_mode": "MISSING"
+      "route_mode": "FOCUSED_SOURCE",
+      "construction_group": "MOVING_MASS_ENERGY_FLUX"
     },
     {
       "source_id": "EX-M97",
@@ -773,17 +784,20 @@
         "op": "MODEL",
         "band": "D2"
       },
-      "primary_lesson": null,
-      "related_lessons": [],
-      "fit": "MISSING_CONSTRUCTION",
-      "student_goal": "Distinguish the constant-horizontal-force turning-point work model from the force needed to hold the pendulum statically at 45°.",
-      "teaching_limit": "Missing construction: force–displacement work with moving geometry versus instantaneous static balance. The wording does not explicitly state whether 45° is a turning point or a held equilibrium.",
-      "lesson_href": null,
+      "primary_lesson": "F07",
+      "related_lessons": [
+        "F07"
+      ],
+      "fit": "FOCUSED_NEW",
+      "student_goal": "Choose between constant-force turning-point work and static tangential equilibrium; derive Mg tan(θ/2) versus Mg tanθ.",
+      "teaching_limit": "The wording does not specify a constant-force start-and-stop journey versus static holding. Their distinct 45° predictions are Mg(√2−1) and Mg.",
+      "lesson_href": "gap-journeys.html?question=EX-M106#F07",
       "source_href": "../../preview/question-status.html?question=EX-M106",
       "has_source_caution": true,
-      "source_science_note": "The suggested Mg(√2−1) follows from an ideal constant horizontal force starting at rest and reaching 45° as a turning point: F Lsinθ = Mg L(1−cosθ). Holding the mass statically at θ=45° requires F=Mg tanθ=Mg. The original prompt does not explicitly distinguish these.",
+      "source_science_note": "Do not teach one unique value: a constant horizontal force ending at first turning point gives Mg(√2−1) at 45°, while static holding needs Mg. The original wording is ambiguous.",
       "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
-      "route_mode": "MISSING"
+      "route_mode": "FOCUSED_SOURCE",
+      "construction_group": "PENDULUM_DYNAMIC_VS_STATIC"
     },
     {
       "source_id": "EX-M109",
@@ -925,17 +939,20 @@
         "op": "APPLY",
         "band": "D2"
       },
-      "primary_lesson": null,
-      "related_lessons": [],
-      "fit": "MISSING_CONSTRUCTION",
-      "student_goal": "Distinguish whole-system kinetic energy lost to friction from the relative kinetic energy available to compress an engine–wagon coupling.",
-      "teaching_limit": "Missing construction: a source-specific whole-system energy-budget assumption versus a physically defined relative compression of two connected masses. Their individual masses and braking forces are not supplied.",
-      "lesson_href": null,
+      "primary_lesson": "F08",
+      "related_lessons": [
+        "F08"
+      ],
+      "fit": "FOCUSED_NEW",
+      "student_goal": "Contrast an explicitly ASSUMED whole-system 10%-retention budget with an actual two-body spring's available relative kinetic energy.",
+      "teaching_limit": "The 16×10⁵ N/m coached value depends on assuming 10% of WHOLE-SYSTEM initial energy becomes spring energy. A genuine engine–wagon prediction needs separate masses and braking/damping information.",
+      "lesson_href": "gap-journeys.html?question=EX-N27#F08",
       "source_href": "../../preview/question-status.html?question=EX-N27",
       "has_source_caution": true,
-      "source_science_note": "The coached k=16×10^5 N/m treats 10% of ½(40000 kg)(20 m/s)^2 as stored spring energy at x=1 m. A genuine two-body coupling may instead depend on reduced mass and braking details, neither specified. Teach the assumed ideal energy budget, not an unqualified unique mechanical model.",
+      "source_science_note": "Conditional only: k=1.6×10⁶ N/m from assumed 10% of whole-system kinetic energy and x=1 m. Because wagon/engine masses and the brake/damping forces are absent, the source data do not uniquely determine a two-body coupling.",
       "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
-      "route_mode": "MISSING"
+      "route_mode": "FOCUSED_SOURCE",
+      "construction_group": "TWO_BODY_RELATIVE_ENERGY"
     },
     {
       "source_id": "EX-N30",
