@@ -41,17 +41,20 @@ small{color:#496877}#table-status{font-weight:750}
 const tbody=document.getElementById("rows"),summary=document.getElementById("counts"),status=document.getElementById("table-status"),search=document.getElementById("search"),filter=document.getElementById("filter");
 const cell=(row,label,value)=>{const el=document.createElement("td");el.dataset.label=label;if(typeof value==="string")el.textContent=value;else if(value)el.append(value);row.append(el);return el;};
 const link=(href,caption)=>{const a=document.createElement("a");a.href=href;a.textContent=caption;return a;};
-let bank,route;
+let bank,route,tutor;
 try{
-const [a,b]=await Promise.all([
+const [a,b,c]=await Promise.all([
 fetch("../../workspace/output/WPE_Core2_Consolidated_20261102/native-candidate/selected_bank.review.json"),
-fetch("reasoning-paths.review.json")
+fetch("reasoning-paths.review.json"),
+fetch("d3d4-self-tutor.review.json")
 ]);
-if(!a.ok||!b.ok)throw Error("Source records unavailable");
-bank=await a.json();route=await b.json();
-if(!Array.isArray(bank.questions)||bank.questions.length!==74||route.schema!=="wpe-reasoning-route-preview/v1"||!Array.isArray(route.constructions))throw Error("Question inventory changed");
+if(!a.ok||!b.ok||!c.ok)throw Error("Source records or learning inventory unavailable");
+bank=await a.json();route=await b.json();tutor=await c.json();
+if(!Array.isArray(bank.questions)||bank.questions.length!==74||route.schema!=="wpe-reasoning-route-preview/v1"||!Array.isArray(route.constructions)||tutor.academic?.qualified_learner_routes!==0||!Array.isArray(tutor.lessons)||tutor.lessons.length!==13)throw Error("Question or teaching inventory changed");
 }catch(err){summary.textContent="Question map unavailable: "+err.message;return;}
-const interactive=new Set(["WPE-C01","WPE-C02","WPE-C03","WPE-C04","WPE-C05","WPE-C06","WPE-C07","WPE-C08"]);
+// Interactive availability derives from the student's authored teaching inventory.
+// This is NOT exact source-QRT admission or verified semantic transfer.
+const interactive=new Set(tutor.lessons.map(item=>"WPE-"+item.id));
 const seen=new Set();
 const entries=bank.questions.map(q=>{
 if(!q.source_id||seen.has(q.source_id))throw Error("Duplicate or absent source question ID");
