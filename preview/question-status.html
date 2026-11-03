@@ -142,9 +142,12 @@ function showInteractiveLessonLinks(q){
   if(row){
     if(row.lesson_href&&/^(C0[1-8]|E0[1-5]|F0[1-3])$/.test(row.primary_lesson||'') &&
        /^(focused-journeys|study-bridge|d3d4-self-tutor|extension-learning)\.html\?question=/.test(row.lesson_href) &&
-       row.lesson_href.includes('question='+encodeURIComponent(q.source_id)) &&
-       row.fit!=='MISSING_CONSTRUCTION'){
-      append('../physics/wpe/'+row.lesson_href,row.primary_lesson+' · '+(row.fit==='FOCUSED_NEW'?'New focused reasoning journey':row.fit==='RELATED_BRIDGE'?'Related idea · not full teaching':'Direct reasoning practice'));
+       row.lesson_href.includes('question='+encodeURIComponent(q.source_id)) && row.fit!=='MISSING_CONSTRUCTION'){
+      const id=row.primary_lesson;
+      const dest=id[0]==='C'?'d3d4-self-tutor.html':id[0]==='E'?'extension-learning.html':'focused-journeys.html';
+      const valid=row.lesson_href.startsWith('study-bridge.html')?row.lesson_href.includes('&lesson='+id):row.lesson_href.includes('#'+id);
+      if(valid)append('../physics/wpe/'+dest+'?question='+encodeURIComponent(q.source_id)+'#'+id,
+        id+' · '+(row.fit==='FOCUSED_NEW'?'Fully relevant focused teaching':row.fit==='RELATED_BRIDGE'?'Related practice only':'Close practice match'));
     }
     const tile='../physics/wpe/learn-challenge.html?question='+encodeURIComponent(q.source_id)+'#question-routes';
     append(tile,'Choose your learning route · '+q.source_id);
