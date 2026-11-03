@@ -190,9 +190,20 @@ def case(browser, base, width, height):
         page.reload()
         require(page.locator("#solution-container .solution").count() == 0,
                 "Author proposal reappeared automatically after reload")
+        page.once("dialog", lambda dlg: dlg.accept())
         page.locator("#restart-source").click()
-        page.on("dialog", lambda dlg: dlg.accept())
-        # Dialog handler must be in place before the reset click.
+        require(state(page, "g9:wpe:core2:attempt:v1:EX-M79") is None,
+                "Per-question Start again did not clear saved state")
+        require(not page.locator('input[name="answer-option"]').first.is_checked(),
+                "Start again retained an old selection")
+        page.goto(base + "/physics/wpe/learn-challenge.html#practice-controls")
+        page.locator("#clear-saved-practice").wait_for()
+        page.once("dialog", lambda dlg: dlg.accept())
+        page.locator("#clear-saved-practice").click()
+        require(page.locator("#saved-practice-status").inner_text().startswith("Saved WPE practice cleared"),
+                "Clear saved practice was not confirmed")
+        require(not errors, "Unexpected JS exceptions: " + repr(errors))
+        print("PASS source draft, commit, explicit reveal, reload, per-question reset and clear at", width)
     finally:
         context.close()
 
