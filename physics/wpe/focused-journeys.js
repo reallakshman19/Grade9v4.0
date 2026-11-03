@@ -279,7 +279,7 @@
     let firstIssue=null;
     for(const field of fields.filter(f=>f.type!=="textarea")){
       const result=feedback(field,answer[field.id]);
-      if(!firstIssue&&result.status!=="matches")firstIssue={field:field.id,why:result.text};
+      if(!firstIssue&&result.status!=="matches"&&result.status!=="ungraded")firstIssue={field:field.id,why:result.text};
       const li=add(list,"li");
       add(li,"strong",field.label+": ");
       li.append(doc.createTextNode(result.text));
