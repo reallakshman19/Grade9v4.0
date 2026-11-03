@@ -30,7 +30,7 @@ small{color:#496877}#table-status{font-weight:750}
 </section>
 <div id="counts" class="counts" aria-live="polite">Reading the existing Question Bank…</div>
 <div class="controls"><label>Find a question or physics skill<input id="search" type="search" placeholder="Try EX-M79, graphs, spring…"></label>
-<label>Show<select id="filter"><option value="all">All questions</option><option value="interactive">Working C01–C04 lesson</option><option value="pack">Authored pack, no interactive lesson</option><option value="unmapped">No construction mapping</option></select></label></div>
+<label>Show<select id="filter"><option value="all">All questions</option><option value="interactive">Working interactive lesson</option><option value="pack">Authored pack, no interactive lesson</option><option value="unmapped">No construction mapping</option></select></label></div>
 <p id="table-status" role="status"></p>
 <div class="table-wrap"><table><thead><tr><th scope="col">Question</th><th scope="col">Essential reasoning to practise</th><th scope="col">Learn → different challenge</th><th scope="col">What is missing?</th></tr></thead><tbody id="rows"></tbody></table></div>
 <p><small>Source operations and reasoning descriptions are author-supplied and may need physics correction. This page never imports source answers or treats proposed topic links as verified prerequisites.</small></p>
@@ -51,7 +51,7 @@ if(!a.ok||!b.ok)throw Error("Source records unavailable");
 bank=await a.json();route=await b.json();
 if(!Array.isArray(bank.questions)||bank.questions.length!==74||route.schema!=="wpe-reasoning-route-preview/v1"||!Array.isArray(route.constructions))throw Error("Question inventory changed");
 }catch(err){summary.textContent="Question map unavailable: "+err.message;return;}
-const interactive=new Set(["WPE-C01","WPE-C02","WPE-C03","WPE-C04"]);
+const interactive=new Set(["WPE-C01","WPE-C02","WPE-C03","WPE-C04","WPE-C05","WPE-C06"]);
 const seen=new Set();
 const entries=bank.questions.map(q=>{
 if(!q.source_id||seen.has(q.source_id))throw Error("Duplicate or absent source question ID");
