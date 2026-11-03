@@ -149,9 +149,9 @@ def main():
             try:
                 for width,height in VIEWPORTS:
                     context=browser.new_context(viewport={"width":width,"height":height},accept_downloads=False)
-                    context.on("dialog",lambda dialog:dialog.accept())
                     try:
                         page=context.new_page()
+                        page.on("dialog",lambda dialog:dialog.accept())
                         errors=[]
                         page.on("pageerror",lambda error:errors.append(str(error)))
                         original_question_roundtrip(page,base)
