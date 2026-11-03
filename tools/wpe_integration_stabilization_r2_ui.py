@@ -88,7 +88,7 @@ def legacy_roundtrips(page,base,width):
         require(page.locator("iframe").count()==0,source+" legacy iframe")
         page.locator("#source-journey:not([hidden])").wait_for()
         # Some C/E lessons use a slightly different return control.
-        ret=page.locator("#source-journey-return") if lesson.startswith(("C","E")) else page.locator("#source-return")
+        ret=page.locator("#source-journey-return") if lesson.startswith("C") else page.locator("#source-return")
         require(ret.count()==1 and ret.is_visible(),source+" missing verified source return")
         ret.click()
         require(page.locator(".qtitle").inner_text()==source,source+" legacy return mismatched")
