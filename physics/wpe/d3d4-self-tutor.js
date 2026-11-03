@@ -693,12 +693,20 @@
     const lesson=location.hash.replace(/^#/,"");
     if(!sourceId||!/^[-A-Za-z0-9]{2,64}$/.test(sourceId)||!Object.prototype.hasOwnProperty.call(lessons,lesson))return;
     try{
-      const response=await fetch("reasoning-paths.review.json");
-      if(!response.ok)return;
-      const d=await response.json();
-      if(d.schema!=="wpe-reasoning-route-preview/v1"||!Array.isArray(d.constructions))return;
-      const row=d.constructions.find(r=>r.id==="WPE-"+lesson && r.proposed_source_ids?.some(q=>q.id===sourceId && q.reader_present));
-      if(!row)return;
+      const [routing,coverage,original]=await Promise.all([
+        fetch("reasoning-paths.review.json",{cache:"no-store"}),
+        fetch("learning-coverage-r1.json",{cache:"no-store"}),
+        fetch("../../workspace/output/WPE_Core2_Consolidated_20261102/native-candidate/selected_bank.review.json",{cache:"no-store"})
+      ]);
+      if(!routing.ok||!coverage.ok||!original.ok)return;
+      const d=await routing.json(),map=await coverage.json(),bank=await original.json();
+      if(d.schema!=="wpe-reasoning-route-preview/v1"||!Array.isArray(d.constructions)||
+         map.schema!=="wpe-learner-coverage-r1/v1"||map.questions?.length!==74||bank.questions?.length!==74)return;
+      const item=map.questions.find(q=>q.source_id===sourceId);
+      if(!item||!bank.questions.some(q=>q.source_id===sourceId&&q.stem_sha256===item.stem_sha256))return;
+      const suggested=d.constructions.some(r=>r.id==="WPE-"+lesson&&r.proposed_source_ids?.some(q=>q.id===sourceId&&q.reader_present));
+      const primary=item.primary_lesson===lesson&&item.fit!=="MISSING_CONSTRUCTION";
+      if(!primary&&!suggested)return;
       const href="../../preview/question-status.html?question="+encodeURIComponent(sourceId);
       sourceRoute={id:sourceId,lesson,href};
       const banner=document.getElementById("source-journey");
