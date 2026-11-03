@@ -192,7 +192,7 @@ def test_all_four_preserve_existing_local_attempt_keys_and_ungraded_status():
     meta=load(META)
     assert 'return "g9:wpe:d3d4:self-tutor:v1:"+lesson;' in script
     assert 'Object.keys(lessons).length+" challenges completed"' in script
-    assert len(meta["lessons"])==6
+    assert len(meta["lessons"])==8
     assert meta["academic"]["qualified_learner_routes"]==0
     assert meta["first_attempt_policy"]["graded_reasoning"] is False
     assert meta["first_attempt_policy"]["independent_student_observation"] is False
