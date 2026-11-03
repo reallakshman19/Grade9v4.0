@@ -1,4 +1,4 @@
-"""Chromium QA for six source-grounded WPE six-stage student practice journeys."""
+"""Chromium QA for eight source-grounded WPE six-stage student practice journeys."""
 from __future__ import annotations
 
 import http.server
@@ -92,6 +92,26 @@ def fill_stage_one(page, lesson, answer):
         root.locator('[data-input="radialEquation"]').select_option(label="T − mg = mv²/r")  # wrong top force signs
         root.locator('[data-input="topTension"]').fill("19")
         root.locator('[data-input="staysTaut"]').select_option(label="Yes")
+    elif lesson == "C07":
+        root.locator('[data-input="system"]').select_option(label="One fixed lump of chips already on the belt")  # model error
+        root.locator('[data-input="rate"]').fill("0.5")  # ignores speed-dependent rate
+        root.locator('[data-input="velocityChange"]').fill("4")  # ignores incoming speed
+        root.locator('[data-input="force"]').fill("2")
+        root.locator('[data-input="motorPower"]').fill("8")
+        root.locator('[data-input="kineticRate"]').fill("8")
+        root.locator('[data-input="heatRate"]').fill("0")
+        root.locator('[data-input="powerClaim"]').select_option(label="Motor power always equals kinetic-energy increase")
+    elif lesson == "C08":
+        root.locator('[data-input="kBlue"]').fill("200")
+        root.locator('[data-input="kGold"]').fill("400")
+        root.locator('[data-input="fixedX"]').select_option(label="Compression x = 5 cm for both pads")
+        root.locator('[data-input="blueX"]').fill("0.25")
+        root.locator('[data-input="goldX"]').fill("0.5")
+        root.locator('[data-input="winnerX"]').select_option(label="Gold")
+        root.locator('[data-input="fixedY"]').select_option(label="Compression x = 5 cm for both pads")  # wrong held variable
+        root.locator('[data-input="blueY"]').fill("0.25")
+        root.locator('[data-input="goldY"]').fill("0.5")
+        root.locator('[data-input="winnerY"]').select_option(label="Gold")
     else:
         raise AssertionError("Unknown topic " + lesson)
     root.locator('[data-action="lock-attempt"]').click()
@@ -146,60 +166,86 @@ def run_viewport(browser, width, height, base):
         page.on("pageerror", lambda err: errors.append(str(err)))
         response = page.goto(base+PATH, wait_until="load")
         check(response is not None and response.status == 200, "Self-tutor page did not load")
-        check(page.locator("article.unit").count() == 6, "Six lessons missing")
-        check(page.locator(".guide-steps").count() == 6, "Core1A guides missing")
-        check(page.locator(".stage-root .step-list li").count() == 36, "All six stages not listed for six lessons")
+        check(page.locator("article.unit").count() == 8, "Eight lessons missing")
+        check(page.locator(".guide-steps").count() == 8, "Core1A guides missing")
+        check(page.locator(".stage-root .step-list li").count() == 48, "All six stages not listed for six lessons")
         check(page.locator("body").inner_text().find("This page does not grade explanations") != -1, "Non-grading learner note missing")
-        check(page.locator("#overall-count").inner_text() == "0 of 6 challenges completed", "Initial progress incorrect")
+        check(page.locator("#overall-count").inner_text() == "0 of 8 challenges completed", "Initial progress incorrect")
         check(not errors, "JavaScript error on load: "+str(errors))
         check(page.evaluate("document.documentElement.scrollWidth <= window.innerWidth + 3"),
               "Horizontal page overflow at "+str(width))
 
-        # Six distinct first attempts; each deliberately includes a plausible conceptual mistake;
+        # Eight distinct first attempts; each deliberately includes a plausible conceptual mistake;
         # there is no automatic evaluation of the child's free-text explanation.
         first_c01 = fill_stage_one(page, "C01", "I counted the motor and gravity as helping uphill, maybe 39 joules.")
         check(saved_state(page, "C02") is None, "C01 saved the other topic unexpectedly")
         finish_stages(page, "C01", first_c01)
-        check(page.locator("#overall-count").inner_text() == "1 of 6 challenges completed", "First completion not counted")
+        check(page.locator("#overall-count").inner_text() == "1 of 8 challenges completed", "First completion not counted")
         first_c02 = fill_stage_one(page, "C02", "I think the spring might keep pushing into the rough strip.")
         finish_stages(page, "C02", first_c02)
-        check(page.locator("#overall-count").inner_text() == "2 of 6 challenges completed", "Second completion not counted")
+        check(page.locator("#overall-count").inner_text() == "2 of 8 challenges completed", "Second completion not counted")
         first_c03 = fill_stage_one(page, "C03", "I think 18 watts means constant force and each second gives the same speed increase.")
         check("Kinetic energy" in root_for(page, "C03").locator(".worked").inner_text()
               or "kinetic energy" in root_for(page, "C03").locator(".worked").inner_text(),
               "C03 reconstruction does not explain power/energy relationship")
         finish_stages(page, "C03", first_c03)
-        check(page.locator("#overall-count").inner_text() == "3 of 6 challenges completed",
+        check(page.locator("#overall-count").inner_text() == "3 of 8 challenges completed",
               "Third completion not counted")
         first_c04 = fill_stage_one(page, "C04", "I used the whole four kilograms in both rope pictures instead of changing the hanging mass.")
         check("−40 J" in root_for(page, "C04").locator(".worked").inner_text(),
               "C04 worked model missing initial hanging potential")
         finish_stages(page, "C04", first_c04)
-        check(page.locator("#overall-count").inner_text() == "4 of 6 challenges completed",
+        check(page.locator("#overall-count").inner_text() == "4 of 8 challenges completed",
               "Fourth completion not counted")
         first_c05 = fill_stage_one(page, "C05",
             "I think the force graph slope is the work and the positive U slope means a positive force.")
         check("+16 J" in root_for(page, "C05").locator(".worked").inner_text(),
               "C05 worked reconstruction missing triangular force area")
         finish_stages(page, "C05", first_c05)
-        check(page.locator("#overall-count").inner_text() == "5 of 6 challenges completed",
+        check(page.locator("#overall-count").inner_text() == "5 of 8 challenges completed",
               "Fifth completion not counted")
         first_c06 = fill_stage_one(page, "C06",
             "The ball has enough energy to reach the top so its string surely stays taut.")
         check("−1 N" in root_for(page, "C06").locator(".worked").inner_text(),
               "C06 worked reconstruction missing physically impossible negative tension")
         finish_stages(page, "C06", first_c06)
-        check(page.locator("#overall-count").inner_text() == "6 of 6 challenges completed",
+        check(page.locator("#overall-count").inner_text() == "6 of 8 challenges completed",
               "Sixth completion not counted")
+        # C07 and C08 provide three progressive, non-answer hints before the first attempt.
+        for topic in ("C07","C08"):
+            root=root_for(page,topic)
+            root.locator('[data-action="save-prediction"]').click()
+            check(root.locator(".stage-card h4").inner_text()=="1. Predict",topic+" empty prediction unexpectedly accepted")
+            for_check=root.locator(".worked").count()
+            check(for_check==0,topic+" worked solution leaked before attempt")
+            # The full stages are exercised below after reset of the untouched state.
+        first_c07 = fill_stage_one(page, "C07",
+            "I treated the incoming chips like a fixed mass and equated motor power with kinetic energy.")
+        check("24 W" in root_for(page, "C07").locator(".worked").inner_text()
+              and "15 W" in root_for(page, "C07").locator(".worked").inner_text()
+              and "9 W" in root_for(page, "C07").locator(".worked").inner_text(),
+              "C07 reconstruction lacks distinct power, kinetic and heating rates")
+        finish_stages(page, "C07", first_c07)
+        check(page.locator("#overall-count").inner_text()=="7 of 8 challenges completed",
+              "Seventh completion not counted")
+        first_c08 = fill_stage_one(page, "C08",
+            "I thought stiffer means greater stored energy regardless of which variable stays fixed.")
+        check("0.36 J" in root_for(page, "C08").locator(".worked").inner_text()
+              and "0.18 J" in root_for(page, "C08").locator(".worked").inner_text(),
+              "C08 reconstruction does not reverse the fixed-force ranking")
+        finish_stages(page, "C08", first_c08)
+        check(page.locator("#overall-count").inner_text()=="8 of 8 challenges completed",
+              "Eighth completion not counted")
         page.reload(wait_until="load")
-        check(page.locator("#overall-count").inner_text() == "6 of 6 challenges completed", "Completed progress not restored")
+        check(page.locator("#overall-count").inner_text() == "6 of 8 challenges completed", "Completed progress not restored")
         initial_attempts = [
             ("C01",first_c01), ("C02",first_c02), ("C03",first_c03),
-            ("C04",first_c04), ("C05",first_c05), ("C06",first_c06)
+            ("C04",first_c04), ("C05",first_c05), ("C06",first_c06),
+            ("C07",first_c07), ("C08",first_c08)
         ]
         for lesson, initial in initial_attempts:
             check(saved_state(page, lesson)["first"] == initial,
-                  lesson+" first reasoning was modified after completing all six lessons")
+                  lesson+" first reasoning was modified after completing all eight lessons")
         check(page.evaluate("document.documentElement.scrollWidth <= window.innerWidth + 3"),
               "Page overflow after completion at "+str(width))
         check(not errors, "JavaScript runtime errors: "+str(errors))
@@ -208,11 +254,11 @@ def run_viewport(browser, width, height, base):
         root_for(page, "C01").locator('[data-action="reset"]').click()
         check(saved_state(page, "C01") is None, "C01 reset did not clear local attempt")
         check(saved_state(page, "C02")["first"] == first_c02, "Reset of C01 cleared C02")
-        check(page.locator("#overall-count").inner_text() == "5 of 6 challenges completed", "Reset progress incorrect")
+        check(page.locator("#overall-count").inner_text() == "5 of 8 challenges completed", "Reset progress incorrect")
         for lesson, initial in initial_attempts[1:]:
             check(saved_state(page, lesson)["first"] == initial,
                   "Resetting C01 unexpectedly cleared " + lesson + " attempt")
-        print("PASS: %sx%s C01–C06 all stages, original answers, repair, changed conditions, storage, reset" % (width,height))
+        print("PASS: %sx%s C01–C08 all stages, original answers, repair, changed conditions, storage, reset" % (width,height))
     finally:
         context.close()
 
