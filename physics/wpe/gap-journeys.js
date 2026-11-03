@@ -304,7 +304,24 @@ function modelSvg(id,val,{host,readout,svg,svgLine,svgText,nice}){
     readout.textContent="Angle "+nice(val)+"°: work-ledger constant force from rest to turning point = "+nice(turn)+" N; force to hold the bob statically at that angle = "+nice(hold)+" N. A turning point is not equilibrium.";
   }
 }
-for(const [id,d] of Object.entries(scenarios)){d.modelView=(val,help)=>modelSvg(id,val,help);}
+/* R3 retains original Task A and adds Task B as separate committed practice,
+ * without changing source questions, shared C/E/F components or PR #61 routes. */
+const academic=window.WPE_R3_CONTENT;
+if(!academic||Object.keys(academic).sort().join(",")!=="F04,F05,F06,F07,F08")
+ throw Error("R3 transfer science definitions unavailable");
+for(const [id,d] of Object.entries(scenarios)){
+ const r3=academic[id];
+ if(!r3?.academic||!r3.transfer||r3.transfer.fields?.[0]?.id!=="model")
+   throw Error("R3 source-specific construction incomplete: "+id);
+ d.academic=r3.academic;
+ d.transfer=r3.transfer;
+ d.fields.splice(1,0,r3.originalAssumption);
+ for(const f of d.fields){
+  if(!f.errorKind&&f.type==="select")f.errorKind="MODEL_CHOICE";
+  if(!f.errorKind&&f.type==="number")f.errorKind=/^(com|speed|mid)$/.test(f.id)?"SIGN_OR_REPRESENTATION":"CALCULATION_OR_UNITS";
+ }
+ d.modelView=(val,help)=>modelSvg(id,val,help);
+}
 if(typeof window.WPEGapJourneys!=="function")throw Error("Existing six-stage student engine was not loaded");
 window.WPEGapJourneys(scenarios,{storagePrefix:"g9:wpe:gaps:v2:",coveragePath:"learning-coverage-r1.json"});
 })();
