@@ -1,6 +1,6 @@
 # WPE-E08 · A sudden force switch changes the spring's effective potential
 
-**Role:** original Core1A/Core1B author practice mapped as a proposed topic to **WEP07-01** (reader MODEL/D3; key/SL2/QRT and source status unresolved); not academic admission. The example intentionally does not repeat the original's force reversal-and-doubling numerical situation.
+**Role:** original Core1A/Core1B author practice mapped as a proposed topic to **WEP07-01** (reader MODEL/D3; key/SL2/QRT and source status unresolved); NOT_ADMITTED; not academic admission. The example intentionally does not repeat the original's force reversal-and-doubling numerical situation.
 
 **Learner-owned inference W:** after a sudden constant-force switch, use the **new applied force** for the entire subsequent motion and conserve the **post-switch effective potential** plus kinetic energy; the new second turning point is symmetric about the **new equilibrium**, not about natural spring length or old equilibrium.
 
