@@ -8,8 +8,8 @@
   "artifacts": [
     {
       "path": "preview/question-status.html",
-      "sha": "dde6bde2bd1e18ec0bb7911a8d44431f363a38a2",
-      "length": 294372
+      "sha": "c2d46afa480b42c34da3c3f44e6905d910d2a7c6",
+      "length": 313745
     },
     {
       "path": "preview/question-status-archive.html",
@@ -18,8 +18,8 @@
     },
     {
       "path": "workspace/output/WPE_Core2_Consolidated_20261102/native-candidate/selected_bank.review.json",
-      "sha": "1161271c0de01f9de31f62cdbcf3679629e16bad",
-      "length": 217380
+      "sha": "cd7cb5c705ce12b0f97edee213be2afedc04abb1",
+      "length": 240046
     },
     {
       "path": "workspace/output/WPE_Core2_Consolidated_20261102/native-candidate/assets.review.json",
@@ -50,6 +50,21 @@
       "path": "workspace/output/WPE_Core2_Consolidated_20261102/review/HIGH_ROI_CORRECTION_20261102.md",
       "sha": "977911d0d8aa88d73b47870ff87e6ea9569f34f6",
       "length": 3257
+    },
+    {
+      "path": "workspace/output/WPE_Core2_Consolidated_20261102/review/BATCH_R2_HIGHROI_AUDIT.json",
+      "sha": "bff8622ad8be2d22973e416a3f00a739f0f8f291",
+      "length": 7683
+    },
+    {
+      "path": "workspace/output/WPE_Core2_Consolidated_20261102/review/BATCH_R2_HIGHROI_README.md",
+      "sha": "9b97990c5dacf98bdf3bf16cb38708ee921f7a3e",
+      "length": 4477
+    },
+    {
+      "path": "workspace/output/WPE_Core2_Consolidated_20261102/review/BATCH_R2_ACADEMIC_AUTHOR_AUDIT_20261102.json",
+      "sha": "ddb51fb70cfd5edcee5f8607e03dcd63f1722c9d",
+      "length": 14905
     }
   ],
   "academic_review": "NOT_RUN",
@@ -60,5 +75,11 @@
     "EX-M6",
     "TB-WPE-ILL-05",
     "WEP07-03"
-  ]
+  ],
+  "batch_r2": {
+    "base_commit": "a5062ab11b512f0146d7bcb6c117124c648e23b4",
+    "scope": "33 authored student cue sets; literal Crux Move filtered for remaining 37; 16-question provisional academic batch audit; no source mutation",
+    "academic_state": "NOT_ADMITTED",
+    "independent_review": "NOT_RUN"
+  }
 }

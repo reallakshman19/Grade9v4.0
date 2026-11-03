@@ -1,10 +1,10 @@
 {
   "schema": "wpe-reasoning-route-preview/v1",
   "created_on": "2026-11-02",
-  "source_head": "a90c34cffed8f108413973a5b12c25ecf09c8ca7",
+  "source_head": "1bfeea16dbc3ecde991353cc09d7adf116721c59",
   "source_git_blobs": {
     "bridge": "255683fa36b2df733838f23a8b86b804aa812b8e",
-    "bank": "1161271c0de01f9de31f62cdbcf3679629e16bad",
+    "bank": "cd7cb5c705ce12b0f97edee213be2afedc04abb1",
     "pilot": "531a5027da2649310b4660e9e812b774eb883de9",
     "foundation_map": "b7e8449419e68398b8440c527ef5a05cbe2af811"
   },
@@ -452,5 +452,11 @@
     "NO_CANONICAL_PREREQUISITE_CLAIMS",
     "NO_OFFICIAL_KEY_OR_QRT_PROMOTION",
     "NO_MASTERY_CLAIMS"
-  ]
+  ],
+  "review_bank_patch": {
+    "kind": "BATCH_R2_AUTHOR_CANDIDATE_CUES",
+    "state": "NOT_ADMITTED",
+    "independent_review": "NOT_RUN",
+    "purpose": "Preview source parity with draft PR #26; no canonical prerequisite promotion"
+  }
 }
