@@ -136,7 +136,7 @@
         </tbody>
       </table>
     </div>
-    <p class="core-note"><strong>No iframe integration:</strong> the planned unified journey uses direct, source-verified page links and preserved learner state. The existing <code>study-bridge.html</code> still contains an iframe and is a known integration target, not the intended final design.</p>
+    <p class="core-note"><strong>No iframe integration:</strong> the merged WPE journey uses direct, source-verified lesson links and preserved learner state. The related-practice <code>study-bridge.html</code> uses a verified full-page link, not an iframe.</p>
     <p class="core-note"><strong>Current map after R2:</strong> 74 source questions, 8 focused journeys, 18 close-practice matches, 48 related-only bridges, and 0 unmapped questions. Related practice does <em>not</em> establish sufficient teaching or independent QRT approval.</p>
     <p class="core-note"><strong>Platform scope and authority:</strong> Physics, Mathematics and Chemistry share Core-role responsibilities; these C/E/F lesson examples are the WPE <em>Physics-only pilot</em>. Published software or passing tests do not independently certify source correctness, academic Core admission or student mastery.</p>
   </section>
@@ -150,7 +150,7 @@
     <p><strong>This is the operational explanation—not merely an index.</strong> It tells a new authoring or engineering agent why the platform has separate source, learning and review responsibilities; how to prepare a Core1A teaching construction and a Core1B fresh challenge; and how to check the result without claiming authority it does not have.</p>
     <p>Grade9 v4.0 targets <strong>Physics, Mathematics and Chemistry</strong>. The examples below use Work, Power and Energy (WPE), a <strong>Physics-only pilot</strong>. Subject-specific laws, proof standards, Blueprint calibrations and adapters do not automatically transfer to Mathematics or Chemistry.</p>
     <nav aria-label="On-page architecture manual chapters">
-      <a href="#guide-concept">Concept</a><a href="#guide-two-routes">Two evidence routes</a><a href="#guide-preflight">Agent preflight</a><a href="#guide-procedure">Step-by-step method</a><a href="#guide-construction">Core1A / Core1B</a><a href="#guide-example">Worked example</a><a href="#guide-gates">Validation and HOLD</a><a href="#guide-delivery">Agent deliverable</a>
+      <a href="#guide-concept">Concept</a><a href="#guide-two-routes">Two evidence routes</a><a href="#guide-preflight">Agent preflight</a><a href="#guide-procedure">Step-by-step method</a><a href="#guide-author-decision">Author thinking</a><a href="#guide-qrt-binding">QRT + Blueprint</a><a href="#guide-construction">Core1A / Core1B</a><a href="#guide-science-tests">Physics + tests</a><a href="#guide-example">Worked example</a><a href="#guide-gates">Validation and HOLD</a><a href="#guide-delivery">Agent deliverable</a>
     </nav>
     <p class="caution"><strong>Review boundary:</strong> This manual is author-exposed material. A genuinely independent first-pass QRT reviewer must instead receive a separately authorized <a href="../docs/agent-entry/07-independent-review.md">source-only packet</a> <em>before</em> exposure to these explanations, coaching answers, labels or prior outcomes. Reading this page disqualifies a claim of a blind first pass for the same questions.</p>
   </header>
@@ -208,6 +208,53 @@
     <p>For batch work, repeat S1–S9 for <em>every</em> ID, including unmapped IDs with a named reason. Never treat all questions in a topic as the same cognitive operation. Version/hash changes invalidate earlier checks unless re-verified.</p>
   </section>
 
+
+  <section class="chapter" id="guide-author-decision" aria-labelledby="guide-author-decision-title">
+    <span class="kicker">Agent workbench · Think before building</span>
+    <h3 id="guide-author-decision-title">Decide what the learner must understand before writing the lesson</h3>
+    <p>A good Core1A/Core1B construction begins with the exact task's <strong>decisive inference</strong>, not a familiar formula or a topic label. Record the decision, the rival physical model, the conditions that choose between them, and a counterexample. This is an inspectable authoring explanation—not a secret reasoning transcript or an academic verdict.</p>
+    <div class="table-scroll"><table><thead><tr><th>Authoring question</th><th>Inspectable answer</th><th>Stop / repair trigger</th></tr></thead><tbody>
+      <tr><td>What exactly is the source?</td><td>Original ID, figure/key authority, digest and requested quantity</td><td>Authored sketch cannot substitute for missing official figure</td></tr>
+      <tr><td>What is the decisive operation?</td><td>Shortest valid task route, competing QRT operation and exclusion reason</td><td>Graph presence, formula length or topic title used as the QRT classification</td></tr>
+      <tr><td>Which model is physically admissible?</td><td>Objects, forces, signs, work terms, constraints, initial state, reachable domain</td><td>Negative string tension, inaccessible path or zero tangential force at exact starting equilibrium</td></tr>
+      <tr><td>What does existing teaching omit?</td><td>Verified foundation versus source-specific missing inference</td><td>RELATED_BRIDGE misrepresented as complete teaching</td></tr>
+      <tr><td>What stays the child's own decision?</td><td>Y = taught principle, Z = connecting route, W = unrevealed fresh inference</td><td>Task B repeats the worked example with only different numbers</td></tr>
+      <tr><td>What falsifies the wrong shortcut?</td><td>Independent negative-model and limiting-case calculations</td><td>Only a happy-path answer is tested</td></tr>
+    </tbody></table></div>
+    <p>Study the reusable decision worksheet in <a href="guidebook.html#author-workbench">Guidebook chapter 17</a> and the worked scientific cases in <a href="guidebook.html#science-cases">chapter 22</a>.</p>
+  </section>
+
+  <section class="chapter" id="guide-qrt-binding" aria-labelledby="guide-qrt-binding-title">
+    <span class="kicker">Academics and authority · QRT + Blueprint</span>
+    <h3 id="guide-qrt-binding-title">Bind QRT, Physics Blueprint and WPE adapter without self-approval</h3>
+    <ol class="steps-list">
+      <li><strong>Read the exact source first:</strong> Keep SL1 custody, author SL2 proposal and optional genuine P1 separate. Identify one decisive act among RETRIEVE, EXPLAIN, APPLY, MODEL, REPRESENT, SYNTHESIZE and JUSTIFY. Score the five demand factors only through an actual authorized independent QRT review—not by inventing numbers.</li>
+      <li><strong>Protect the first-pass reviewer:</strong> A blind QRT agent receives separately authorized source-only material before seeing this guidebook, author solutions or prior classifications. Missing review means NOT_RUN/HOLD, not permission to claim independence.</li>
+      <li><strong>Read the actual Blueprint:</strong> The Physics D3/D4 draft provides seven columns, 14 cells and MAIN/instance teaching obligations. MODEL/D3 suggests candidate <code>D3.4</code>; JUSTIFY/D4 suggests <code>D4.7</code>. These are not approval labels. The D1/D2 Blueprint specification is still pending; do not borrow D3.</li>
+      <li><strong>Pin and select the topic adapter:</strong> Record the exact Blueprint version/hash/status, WPE adapter version/hash and real Owner selection receipt. The current Blueprint remains <code>DRAFT_OWNER_REVIEW</code>, D3.1 paused and adapter <code>UNSELECTED</code>. Never merge candidate variants by choosing one yourself.</li>
+      <li><strong>Join the two evidence routes:</strong> Task/QRT demand defines the learner-owned inference; textbook or disciplinary evidence provides the law and conditions. Build Core1A only for that warranted reasoning, then protect W in Core1B. Technical tests cannot authenticate official keys or advance academic status.</li>
+    </ol>
+    <div class="caution"><strong>Important:</strong> An author may build labelled candidate practice without academic admission. A validated source route, functioning lesson and green CI are three different things from an independently qualified QRT cell and selected topic adapter.</div>
+    <p>Use <a href="guidebook.html#qrt-practice">Guidebook QRT procedure</a>, <a href="guidebook.html#blueprint-practice">Blueprint/adapter walk-through</a> and <a href="qrt-blueprint-protocol/RUNBOOK.md">full QRT runbook</a>.</p>
+  </section>
+
+  <section class="chapter" id="guide-science-tests" aria-labelledby="guide-science-tests-title">
+    <span class="kicker">R3/R4 lessons learned · Correct Physics and real tests</span>
+    <h3 id="guide-science-tests-title">A correct numerical answer can conceal a physically wrong model</h3>
+    <div class="table-scroll"><table><thead><tr><th>Case</th><th>False assumption</th><th>What the agent must test</th></tr></thead><tbody>
+      <tr><td>F04 / F08 springs</td><td>Whole-system kinetic energy all becomes spring energy</td><td>Relative versus centre-of-mass kinetic energy and external work</td></tr>
+      <tr><td>F05 massive spring</td><td><code>mv²/6</code> applies to every velocity profile</td><td>Actual profile integral; compare linear and nonlinear examples</td></tr>
+      <tr><td>F07 pendulum</td><td>Turning-point force equals static holding force</td><td>Force history and distinct endpoint conditions; source ambiguity HOLD</td></tr>
+      <tr><td>C6S elastic robot</td><td>Positive spring energy causes motion from exact antipodal rest</td><td>Zero initial tangential force and vanishing-perturbation limiting motion</td></tr>
+      <tr><td>C6H exterior dome</td><td>Perfect rest at crown initiates descent</td><td>Zero tangent gravity and the perturbation limit for <code>h=2R/3</code></td></tr>
+      <tr><td>C6T / C6W</td><td>Energy ensures string contact; gravity accumulates for every loop</td><td>Radial feasibility and gravitational endpoint-work distinction</td></tr>
+      <tr><td>EX-M6 curved path</td><td>One travel-time ranking is universal</td><td>Geometry/key custody and admissible opposite-order counterexamples</td></tr>
+    </tbody></table></div>
+    <p><strong>Before merging:</strong> independently derive equations, signs, units, limits and deliberately wrong models; validate original source ID/hashes; check B1–B7 witnesses; run actual desktop/mobile Chromium for attempt-before-answer, progressive hints, Task A/B isolation, saved first attempts, diagnosis, boundary tests, source return and missing-source refusal. Then run full Python and relevant browser workflows at the final commit.</p>
+    <p><strong>Claims discipline:</strong> Passing twenty automated browser paths is not evidence from twenty children. Written reasoning saved by a browser is not automatically semantically assessed, and a green CI result cannot establish QRT or academic admission.</p>
+    <p>Full test matrix and commands: <a href="guidebook.html#test-studio">Guidebook chapter 23</a> · <a href="guidebook.html#release-checklist">agent handoff template</a>.</p>
+  </section>
+
   <section class="chapter" id="guide-construction" aria-labelledby="guide-construction-title">
     <span class="kicker">Teaching / transfer contract · 05</span><h3 id="guide-construction-title">What sufficient Core1A and protected Core1B actually mean</h3>
     <p><strong>Core1A is the explanation the child needs to construct a model herself.</strong> It must establish the law, conventions, assumptions, action-and-reason chain, model selection, limits, and an explicit plausible error. A memorised worked answer without a reason is not sufficient teaching.</p>
@@ -258,7 +305,7 @@
       <tr><td>Independent / Owner authority</td><td>Only the decision within an actually authorized, scoped receipt</td><td>Unrelated subjects, future versions or unreviewed questions</td></tr>
     </tbody></table></div>
     <p><strong>PASS</strong> means a named, run check passed at its pinned version. <strong>HOLD</strong> means required evidence or authority is absent. <strong>FAIL</strong> means an actual contradiction or invalid claim was established. <strong>NOT_RUN</strong> is not a failed test and not an implied PASS. Never create reviewer approvals, backdate learner evidence or auto-join conflicting versions.</p>
-    <p class="caution"><strong>Student-flow security:</strong> Do not use iframes for WPE student learning integration. Directly link the verified destination, keep the source question ID intact and preserve attempted answers across page changes. Current <code>study-bridge.html</code> still contains an iframe and is a <em>planned integration correction</em>; the Architecture page documents this gap, it does not claim the code has already been repaired.</p>
+    <p class="caution"><strong>Student-flow security:</strong> Do not use iframes for WPE student learning integration. Directly link the verified destination, keep the source question ID intact and preserve attempted answers across page changes. Current <code>study-bridge.html</code> opens the existing lesson through a validated full-page link; future navigation changes still require source and attempt-preservation regression checks.</p>
   </section>
 
   <section class="chapter" id="guide-delivery" aria-labelledby="guide-delivery-title">
