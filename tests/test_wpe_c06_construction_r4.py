@@ -279,3 +279,40 @@ def test_ten_independent_six_stage_tasks_and_no_automatic_admission():
     assert 'new URLSearchParams(location.search).get("source")' in route
     assert "No return is inferred" in route
     assert "innerHTML" not in js and "innerHTML" not in route
+
+
+def test_c6s_horizontal_robot_initial_equilibrium_and_perturbation_limit():
+    """An exact-rest antipodal point has no tangential spring force.
+    The positive-energy release is a perturbation limit, not spontaneous motion."""
+    src=(WPE/"c06-constructions-r4.js").read_text(encoding="utf-8")
+    for phrase in ("UNSTABLE equilibrium","vanishingly small tangential perturbation",
+                   "no motion starts","limiting perturbed trajectory"):
+        assert phrase in src
+    R=1
+    def chord(angle):
+        return math.sqrt((R-R*math.cos(angle))**2+(R*math.sin(angle))**2)
+    spring_U=lambda angle: .5*20*(chord(angle)-math.sqrt(2))**2
+    eps=1e-5
+    # Negative derivative is the tangential spring force at the antipode.
+    deriv=(spring_U(math.pi+eps)-spring_U(math.pi-eps))/(2*eps*R)
+    approx(deriv,0,eps=1e-8)
+    target=spring_U(math.pi)-spring_U(math.pi/2)
+    approx(target,10*(2-math.sqrt(2))**2)
+    for delta in (.01,.001,.0001):
+        available=spring_U(math.pi-delta)-spring_U(math.pi/2)
+        assert 0<available<target
+    assert abs(spring_U(math.pi-.0001)-spring_U(math.pi))<1e-7
+
+
+def test_c6h_crown_exact_rest_is_not_spontaneous_release():
+    """The classic h=2R/3 sliding result requires a perturbation limit.
+    Exact symmetric rest on a frictionless dome has no tangent gravity."""
+    src=(WPE/"c06-constructions-r4.js").read_text(encoding="utf-8")
+    assert "Exact unperturbed rest would remain at the unstable equilibrium" in src
+    assert "vanishing downhill perturbation" in src
+    assert "vanishing-perturbation crown-rest LIMIT" in src
+    g,R=10,5
+    approx(g*math.sin(0),0)
+    heights=[R*2*math.cos(theta0)/3 for theta0 in (.1,.01,.001)]
+    assert heights[0]<heights[1]<heights[2]<2*R/3
+    assert abs(heights[-1]-2*R/3)<2e-6

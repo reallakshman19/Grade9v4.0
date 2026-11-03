@@ -68,26 +68,26 @@ const C6S={
  }),
  transfer:task({
   label:"Task B · Circular horizontal robot rail with off-centre elastic tether",
-  prediction:"Could a robot accelerate around a HORIZONTAL circular track without gaining or losing gravitational height? What changes about the tether?",
-  challenge:"UNFAMILIAR SETTING: a 2 kg robot rolls on a smooth captive HORIZONTAL circular track of radius 1 m. It is tethered by a k=20 N/m elastic cord to a peg at the RIGHTMOST point of the circle; natural length is √2 m. Starting from rest at the LEFTMOST point, it travels to the TOPMOST point (a quarter-turn around the centre). The peg stays fixed. Calculate released spring energy and speed. Do not invent gravitational work.",
+  prediction:"At the exactly opposite point, the spring initially pulls radially. Can a robot starting at rest move away by itself? After a tiny perturbation, could it accelerate without a height change?",
+  challenge:"UNFAMILIAR SETTING: a 2 kg robot rolls on a smooth captive HORIZONTAL circular track of radius 1 m. It is tethered by a k=20 N/m elastic cord to a peg at the RIGHTMOST point of the circle; natural length is √2 m. At the LEFTMOST point the robot is initially at rest in an UNSTABLE equilibrium: the spring force is radial and cannot initiate tangential movement. A vanishingly small tangential perturbation starts it moving toward the TOPMOST point (a quarter-turn around the centre). Calculate the LIMITING released spring energy and speed as perturbation size and energy tend to zero. The peg stays fixed. Do not invent gravitational work.",
   model:pick("model","Which energy ledger applies on the horizontal rail?","Only elastic energy changes; gravitational height is constant",["Gravity supplies mgR between leftmost and topmost points","Tether length remains one radius R"],"On a horizontal plane all points have equal gravitational height; the peg-to-robot chord changes."),
-  assumption:pick("assumption","Which contact/force assumptions are given?","A captive smooth horizontal rail, fixed peg and massless elastic tether",["A one-sided rail and arbitrary external motor work","Tether has fixed length regardless of attachment geometry"],"Conservative spring work is usable only with the stated fixed anchor and no motor/friction work.","INVALID_ASSUMPTION"),
+  assumption:pick("assumption","Which contact/force assumptions are given?","A captive smooth horizontal rail, fixed peg and massless elastic tether",["A one-sided rail and arbitrary external motor work","Tether has fixed length regardless of attachment geometry"],"With the fixed anchor and no motor/friction work AFTER an infinitesimal initiating perturbation, compute the limiting spring-energy release. At the exactly opposite point at exact rest, tangential force is zero and no motion starts.","INVALID_ASSUMPTION"),
   numbers:[
    num("spring","Elastic energy released (J)",10*(2-Math.sqrt(2))**2,.06,"Initial tether length 2R, final √2R at perpendicular circle points. Subtract both elastic energies.","GEOMETRY_AND_REFERENCE"),
    num("speed","Speed at the topmost point of horizontal track (m/s)",Math.sqrt(10*(2-Math.sqrt(2))**2),.04,"½(2)v² equals released spring energy; height is unchanged.")
   ],
   reason:"Explain why the curved path is compatible with zero gravitational work, and why the tether chord—not circle radius—controls energy.",
-  hints:["Draw the fixed peg on the rightmost circumference point and measure straight-line CHORD distances to robot locations.","From the opposite point the tether length is 2R; from the top point it is √2R and equals its natural length.","Use ΔK=−ΔU_s; gravitational potential does NOT change on a horizontal circle."],
+  hints:["Draw the fixed peg on the rightmost circumference point and measure straight-line CHORD distances to robot locations.","From the opposite point the tether length is 2R; from the top point it is √2R and equals its natural length.","Use ΔK=−ΔU_s after the vanishing perturbation; gravitational potential does NOT change on a horizontal circle. This is a limit of perturbed motion."],
   worked:[
-   ["Reconstruct the horizontal geometry","From the right peg to left robot the distance is 2R=2 m. Right peg to top robot is the hypotenuse √2R=√2 m."],
+   ["Reconstruct the horizontal geometry","From the right peg to left robot the distance is 2R=2 m. Right peg to top robot is the hypotenuse √2R=√2 m. At EXACT rest at the opposite point the spring exerts no tangential force, so departure requires an arbitrarily small initiating perturbation."],
    ["Compare spring endpoints","With ℓ₀=√2m, initial extension is 2−√2 m and final extension 0. Initial elastic energy ½20(2−√2)²=10(2−√2)²≈3.431 J."],
    ["Exclude unsupported energy","A horizontal circle changes no gravitational height. The captive guide's perpendicular normal does no work, and no motor/damping is specified."],
-   ["Solve speed","½(2)v²=3.431 J, giving v=√3.431≈1.852 m/s. A one-sided contact rail would require an additional feasibility check."]
+   ["Solve speed","In the limit of vanishing perturbation energy, ½(2)v²→3.431 J, so v→√3.431≈1.852 m/s. This is a limiting perturbed trajectory, NOT spontaneous motion from exact rest at an unstable equilibrium. A one-sided contact rail would require an additional feasibility check."]
   ],
-  boundary:"ROTATE the same robot rail into a VERTICAL plane, with the left point level with the centre and the top point 1 m HIGHER. Robot still starts at rest with the same spring. Can it reach the upper point without external work? Give the energy deficit in joules instead of inventing an upper-point speed.",
+  boundary:"ROTATE the same robot rail into a VERTICAL plane, with the left point level with the centre and the top point 1 m HIGHER. Use the same vanishing-perturbation initial-energy limit and the same spring. Can it reach the upper point without additional work? Give the energy deficit in joules instead of inventing an upper-point speed.",
   boundaryModel:pick("model","Can the spring release overcome the new gravitational rise?","No: spring release is less than the required gravitational energy",["Yes: horizontal result has the same speed","Yes: every captive guide supplies kinetic energy"],"The guide controls direction but cannot supply work if smooth and stationary."),
   boundaryNumbers:[num("deficit","Minimum additional energy needed (J)",20-10*(2-Math.sqrt(2))**2,.07,"Gravity needs mgR=20 J but spring releases ≈3.431 J.")],
-  boundaryCheck:"Vertical lift from leftmost to top is R=1 m, requiring mgR=(2)(10)(1)=20 J. Elastic release supplies only 10(2−√2)²≈3.431 J. Deficit≈16.569 J, so the upper point is not reachable from rest without outside work. Do NOT write a square root of negative kinetic energy."
+  boundaryCheck:"In the vanishing-perturbation limit, vertical lift from leftmost to top is R=1 m, requiring mgR=(2)(10)(1)=20 J. Elastic release supplies only 10(2−√2)²≈3.431 J. Deficit≈16.569 J, so the upper point is not reachable from rest without outside work. Do NOT write a square root of negative kinetic energy."
  })
 };
 
@@ -165,13 +165,13 @@ const C6A={
 const C6H={
  source:"EX-N31",title:"A smooth exterior dome stops pushing before the bead stops moving",short:"Exterior hemisphere · N = 0 boundary",
  question:"When does a sliding block leave a convex surface, and why is N=0 a force boundary, not a zero-speed condition?",
- sourceCaution:"The EX-N31 2R/3 height result assumes a bead released from rest at the TOP of a stationary smooth EXTERIOR hemisphere, with no initial speed and no supplementary constraints. A rigid captive groove or a different start changes the result. The exact original figure has not been verified.",
+ sourceCaution:"The EX-N31 2R/3 height result is the limit of a bead given an infinitesimal downhill displacement/perturbation from rest at the TOP of a stationary smooth EXTERIOR hemisphere, with initial energy tending to crown-rest energy and no supplementary constraints. At exact unperturbed rest at the crown, no tangential force can initiate sliding. A rigid captive groove or a different start changes the result. The exact original figure has not been verified.",
  prerequisites:"An exterior smooth hemisphere can PUSH outward along its surface normal N≥0 but cannot pull inward to keep a bead attached. Inward is toward the sphere centre. Gravity supplies inward mg cosθ; outward normal subtracts: mg cosθ−N=mv²/R while touching.",
- core:"With launch from rest at the crown, v²=2gR(1−cosθ). Thus N=mg cosθ−m v²/R=m g(3cosθ−2). At N=0, cosθ=2/3 and height above the equator h=Rcosθ=2R/3. For initial downhill speed u at crown, cosθ_det=(u²+2gR)/(3gR), IF contact exists initially.",
- guide:"GUIDED: a 0.5 kg puck slides from rest over a smooth EXTERIOR sphere of R=5 m, g=10. It detaches when cosθ=2/3: h=10/3≈3.333 m above the equatorial plane. The puck then flies freely rather than continuing on the sphere.",
+ core:"In the infinitesimally perturbed rest-at-crown LIMIT, v²=2gR(1−cosθ). Thus N=mg cosθ−m v²/R=m g(3cosθ−2). At N=0, cosθ=2/3 and height above the equator h=Rcosθ=2R/3. For initial downhill speed u at crown, cosθ_det=(u²+2gR)/(3gR), IF contact exists initially.",
+ guide:"GUIDED: a 0.5 kg puck is infinitesimally nudged downhill from the exact stationary crown of a smooth EXTERIOR sphere, R=5 m, g=10. Take the limit of vanishing displacement and initial kinetic energy. Exact unperturbed rest would remain at the unstable equilibrium. In the sliding limit, it detaches when cosθ=2/3: h=10/3≈3.333 m above the equatorial plane. The puck then flies freely rather than continuing on the sphere.",
  guideSteps:[
   ["Separate the physical forces","Inward points toward sphere centre. The normal pushes OUTWARD and gravity has an inward component mg cosθ. An exterior wall cannot provide N<0."],
-  ["Compute speed while still touching","From rest at θ=0, conservation gives v²=2gR(1−cosθ). The normal force does no work while contact exists."],
+  ["Compute speed while still touching","After a vanishing downhill perturbation (exact crown rest alone would not move), conservation gives the limiting v²=2gR(1−cosθ). The normal force does no work while contact exists."],
   ["Apply the inward radial balance","mg cosθ−N=mv²/R; substitute speed to obtain N=mg(3cosθ−2)."],
   ["Find the boundary","N first reaches 0 at cosθ=2/3, so h=Rcosθ=5×2/3=10/3 m. Speed is NONZERO there."],
   ["Stop using the constrained model after release","Beyond N=0, the puck follows projectile motion. Extrapolating v²/R and a fictitious negative N past release is invalid."]
@@ -181,8 +181,8 @@ const C6H={
  academic:{decision:"Use TWO independent statements while touching: energy to find speed, inward force balance to test N≥0. Once the normal would turn negative, stop the constrained trajectory.",
  observe:"Slide along the crown angle; read N/(mg)=3cosθ−2, which falls to zero while v² is already positive. After release the sphere no longer steers the puck.",
  validity:"Sphere exterior contact differs from a captive wire; at the crown an initial tangential speed u must satisfy u²≤gR or contact is impossible immediately.",
- limit:"u²=gR makes initial N=0 and release at the top; u²>gR requires N<0 at the initial crown, so it cannot start in surface contact. From rest at the crown detachment h=2R/3.",
- sourceBoundary:"The 2R/3 source result is conditional on rest-at-crown, smooth EXTERIOR sphere. An author-drawn source figure is unverified and must not be promoted."},
+ limit:"u²=gR makes initial N=0 and release at the top; u²>gR requires N<0 at the initial crown, so it cannot start in surface contact. In the vanishing-perturbation crown-rest LIMIT, detachment h=2R/3. Exact crown rest without a disturbance has no initiated descent.",
+ sourceBoundary:"The 2R/3 source result is a perturbation LIMIT of an ideally smooth EXTERIOR sphere; exact crown rest is stationary until disturbed. An author-drawn source figure is unverified and must not be promoted."},
  slider:{label:"Position θ from crown on exterior sphere (degrees)",min:0,max:85,step:5,value:35},
  ...task({
   prediction:"Could a bead leave a convex dome with POSITIVE speed? What happens first: its speed vanishes or normal contact reaches zero?",
@@ -409,7 +409,7 @@ function diagram(id,value,{host,readout,svg,svgLine}){
     tx(22,51,"Exterior dome: normal OUTWARD");
     tx(22,81,"Gravity inward component mg cosθ");
     const ratio=3*Math.cos(a)-2,det=Math.acos(2/3)*180/Math.PI;
-    readout.textContent="Rest-at-crown model: N/(mg)="+nice(ratio)+" at θ="+value+"°. It reaches zero at θ≈"+nice(det)+"°, where height=2R/3. For N<0 the assumed exterior contact is impossible (bead leaves).";
+    readout.textContent="Perturbed crown-rest LIMIT: N/(mg)="+nice(ratio)+" at θ="+value+"°. It reaches zero at θ≈"+nice(det)+"°, where height=2R/3. For N<0 the assumed exterior contact is impossible (bead leaves).";
   }else if(id==="C6T"){
     const x=cx,y=cy-r;
     svg(host,"circle",{cx:x,cy:y,r:11,fill:"#c68c64"});
