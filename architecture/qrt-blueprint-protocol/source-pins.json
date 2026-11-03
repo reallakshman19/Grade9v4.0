@@ -41,8 +41,8 @@
     },
     "learner_practice": {
       "path": "physics/wpe/d3d4-self-tutor.review.json",
-      "git_blob_sha": "98bd01443fa3b8a8caabda7b2280fd90f730026a",
-      "interactive_constructions": 8,
+      "git_blob_sha": "1f81b3c77eabc8b4deef4566f7a851fd1d82f150",
+      "interactive_constructions": 13,
       "qualified_learner_routes": 0
     }
   },
