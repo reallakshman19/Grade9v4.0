@@ -53,7 +53,7 @@ def test_two_source_grounded_guided_and_fresh_pairs():
         assert git_blob(source) == row["author_pack_blob_sha"], row["id"]
         assert row["revision"] == 1
         assert row["source_join_status"] == "PROPOSED_UNQUALIFIED"
-        assert all(x.startswith(("EX-", "TB-")) for x in row["proposed_source_themes"])
+        assert all(x.startswith(("EX-", "TB-", "WEP07-")) for x in row["proposed_source_themes"])
         assert f'id="{row["id"]}"' in html
         assert f'data-stage-root="{row["id"]}"' in html
     assert "starts from rest at the bottom" in html
