@@ -1,9 +1,9 @@
 {
-  "schema": "wpe-c01-c06-six-stage-self-tutor/v3",
+  "schema": "wpe-c01-c08-six-stage-self-tutor/v4",
   "date": "2026-11-03",
   "publication_role": "STUDENT_PRACTICE_PREVIEW_ONLY",
   "route": "physics/wpe/d3d4-self-tutor.html",
-  "scope": "Six original guided Core1A and distinct fresh Core1B six-stage interactive reasoning journeys; no native academic acceptance or source examination reprint",
+  "scope": "Eight original guided examples and distinct fresh six-stage interactive reasoning challenges; no native academic acceptance or reproduction of examination stems",
   "lessons": [
     {
       "id": "C01",
@@ -102,6 +102,32 @@
         "taut string cannot push"
       ],
       "revision": 1
+    },
+    {
+      "id": "C07",
+      "concept": "Variable mass-flow momentum exchange and distinction between motor pickup power, kinetic-energy rate, and heat",
+      "author_pack": "WPE_Source_to_Core1A_Concept/learning-bridge/CONVEYOR_MOMENTUM_POWER_LEARNING_PACK.md",
+      "author_pack_blob_sha": "5e967434d72f3222efe9ba2675980720f94eff1d",
+      "guided": "Steady 2 m/s belt with 1 kg/s sand arriving at zero horizontal speed; 4 W pickup motor, 2 W horizontal kinetic energy, 2 W heat",
+      "fresh": "Steady 4 m/s belt, chips arriving 1 m/s with speed-dependent feed v/2 kg/s; distinct force/power/heat and 2 m/s boundary",
+      "proposed_source_themes": [
+        "EX-M16"
+      ],
+      "source_join_status": "PROPOSED_UNQUALIFIED",
+      "revision": 1
+    },
+    {
+      "id": "C08",
+      "concept": "Spring energy at equal extension versus equal final quasistatic applied force",
+      "author_pack": "WPE_Source_to_Core1A_Concept/learning-bridge/SPRING_CONTROLLED_VARIABLE_LEARNING_PACK.md",
+      "author_pack_blob_sha": "d90dda5d33fe90f09d1b567f4ae605546d882d0b",
+      "guided": "k=100/200 N/m springs at equal 0.10 m and equal final 10 N, showing reversed energy ordering",
+      "fresh": "Blue/Gold pads measured at 4 cm under 8/16 N; infer k, compare energies at equal 5 cm and equal final 12 N; double-force boundary",
+      "proposed_source_themes": [
+        "EX-M101"
+      ],
+      "source_join_status": "PROPOSED_UNQUALIFIED",
+      "revision": 1
     }
   ],
   "six_stage_contract": [
@@ -142,27 +168,32 @@
     "C05 is an independently authored graph choice sequence; the original graphs for source themes EX-M56/61/69 have not been independently verified.",
     "C06 is a scaffolded advanced circular-motion practice, requiring v²/r, gravity and a string-only nonnegative tension condition before the learner can independently reconstruct it.",
     "Existing C01–C04 browser localStorage v1 keys remain unchanged after C05/C06 addition; no reset of old learners' attempts.",
-    "Only software browser simulations, not real child observations, measure layout and state transitions in this batch."
+    "Only software browser simulations, not real child observations, measure layout and state transitions in this batch.",
+    "C07 distinguishes steady pickup motor power from horizontal kinetic-energy-gain rate under explicitly scoped slipping friction and speed-dependent mass flow.",
+    "C08 distinguishes fixed extension from the same final slowly applied equilibrium force; sudden-force oscillation is excluded.",
+    "C07 and C08 reuse existing author learning packs and the single six-stage tutor engine; first attempt localStorage v1 records for C01–C06 remain untouched."
   ],
   "implementation_batch": {
-    "id": "C05_C06_INTERACTIVE_TRANSFER",
+    "id": "C07_C08_STUDENT_JOURNEY_R2",
     "date": "2026-11-03",
     "new_topics": [
-      "C05",
-      "C06"
+      "C07",
+      "C08"
     ],
     "retained_topics": [
       "C01",
       "C02",
       "C03",
-      "C04"
+      "C04",
+      "C05",
+      "C06"
     ],
     "new_qualified_routes": 0,
     "academic_admissions_changed": false,
     "real_student_usability_observed": false,
     "software_browser_simulations_only": true,
-    "author_pack_contract": "All six stages per lesson; first attempt saved and separate from self-diagnosis, repair, and boundary-model transfer",
-    "learner_accessibility": "Graph axes and coordinate cards shown explicitly; vertical-circular motion marked advanced prerequisite with inward-force arrows. No original examination graph used.",
-    "existing_storage_keys_preserved": true
+    "author_pack_contract": "Reuse two existing learning packs and single six-stage tutor engine; commit independent attempt before reconstruction; separate diagnosis/repair/boundary response.",
+    "existing_storage_keys_preserved": true,
+    "science_boundaries": "Steady conveyor pickup with belt-speed-dependent material feed; quasistatic Hookean loading with fixed extension versus fixed final equilibrium force."
   }
 }
