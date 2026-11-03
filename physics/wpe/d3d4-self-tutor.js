@@ -334,12 +334,15 @@
         const input=form.querySelector("#"+id);
         input.dataset.input=field.id;
       });
+      const hints=config.hints||[];
+      if(hints.length){
       const help=el("section","progressive-hints");help.dataset.hintPanel="true";
       addText(help,"strong",null,"Optional thinking hints — no worked answer");
-      config.hints.slice(0,state.hintsUsed||0).forEach((hint,i)=>note(help,"Hint "+(i+1)+": "+hint,"hint-text"));
+      hints.slice(0,state.hintsUsed||0).forEach((hint,i)=>note(help,"Hint "+(i+1)+": "+hint,"hint-text"));
       card.append(help);
-      const hintButton=addButton(actions(card),"next-hint","Show next hint ("+(state.hintsUsed||0)+"/"+config.hints.length+")","secondary");
-      if((state.hintsUsed||0)>=config.hints.length)hintButton.disabled=true;
+      const hintButton=addButton(actions(card),"next-hint","Show next hint ("+(state.hintsUsed||0)+"/"+hints.length+")","secondary");
+      if((state.hintsUsed||0)>=hints.length)hintButton.disabled=true;
+      }
       note(card,"Your answers will be frozen as your first attempt. A separate repair comes later.","stage-help");
       addButton(actions(card),"lock-attempt","Save my first attempt and reconstruct");
     } else if(stage===2) {
@@ -359,7 +362,7 @@
       note(card,"Make a new version of the reasoning. Your original first attempt stays saved above.", "stage-desc");
       snapshot(card,state,config);
       const issueIndex=config.diagnoses.indexOf(state.diagnosis?.issue);
-      if(issueIndex>=0)note(card,"Try this repair: "+config.diagnosisFeedback[issueIndex],"diagnostic-tip");
+      if(issueIndex>=0 && config.diagnosisFeedback?.[issueIndex])note(card,"Try this repair: "+config.diagnosisFeedback[issueIndex],"diagnostic-tip");
       textArea(card,lesson+"-repair","My repaired calculation and explanation",config.repairPrompt,"");
       addButton(actions(card),"save-repair","Keep my repair → Boundary test");
     } else if(stage===5) {
@@ -468,7 +471,7 @@
     if(!saved)storageWorks=false;
     render(lesson,true);
   }
-  const configHintCount=lesson=>lessons[lesson].hints.length;
+  const configHintCount=lesson=>(lessons[lesson].hints||[]).length;
   let sourceRoute=null;
   async function bindSourceJourney(){
     const sourceId=new URLSearchParams(location.search).get("question");
