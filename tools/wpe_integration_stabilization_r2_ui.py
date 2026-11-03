@@ -112,8 +112,9 @@ def mismatch_and_tamper(browser,base,width,height):
         changed=copy.deepcopy(COVERAGE)
         row=next(x for x in changed["questions"] if x["source_id"]=="EX-M96")
         row["lesson_href"]=poisoned
-        page.route("**/physics/wpe/learning-coverage-r1.json",lambda route,body=json.dumps(changed):
-                   route.fulfill(status=200,content_type="application/json",body=body))
+        payload=json.dumps(changed)
+        page.route("**/physics/wpe/learning-coverage-r1.json",lambda route:
+                   route.fulfill(status=200,content_type="application/json",body=payload))
         page.goto(base+GATE+"?question=EX-M96#question-routes")
         page.locator("#question-plan h3").wait_for()
         require(page.locator("#question-plan .primary-link").count()==0,"Untrusted lesson route was accepted: "+poisoned)
