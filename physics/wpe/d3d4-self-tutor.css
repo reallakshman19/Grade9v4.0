@@ -4,3 +4,14 @@
 .graph-cards>div{background:#f2f8fb;border:1px solid #cce0e8;border-left:4px solid #257b80;border-radius:9px;padding:10px 13px}
 .graph-cards strong{display:block;font-size:.9rem;color:#245568}
 .graph-cards p{font-size:.84rem;margin:5px 0;line-height:1.52}
+
+.source-journey{margin:16px 0 23px;padding:16px 20px;border:1px solid #b9d2d9;background:#f9fcfc;border-radius:14px}
+.source-journey[hidden]{display:none}.source-journey strong{display:block;font-size:1.08rem}
+.source-journey p{font-size:.91rem;margin:7px 0 11px;max-width:800px}
+.source-journey a,.return-original{display:inline-block;color:#fff;background:#176f69;text-decoration:none;font-weight:800;border-radius:10px;padding:11px 14px;margin:9px 0;max-width:100%;overflow-wrap:anywhere}
+.deep-reason{margin:15px 0;padding:12px 15px;border:1px solid #c9dde6;background:#f6fbfd;border-radius:11px;font-size:.89rem}
+.deep-reason summary{cursor:pointer;color:#24516c;font-weight:800}.deep-reason p{margin:10px 0 4px}
+.progressive-hints{padding:12px 14px;border:1px solid #d9cfac;border-radius:10px;background:#fffaf0;margin:15px 0 6px}
+.progressive-hints strong{font-size:.88rem}.hint-text{border-top:1px solid #eadfc5;padding:9px 0;margin:8px 0 0;font-size:.88rem}
+.diagnostic-tip{border-left:4px solid #44828e;background:#f0f8fa;padding:12px 13px;font-size:.89rem;border-radius:0 9px 9px 0}
+.stage-actions button:disabled{opacity:.6;cursor:not-allowed}

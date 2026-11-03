@@ -12,6 +12,8 @@
       title: "Every force counts",
       version: 1,
       prediction: "Which forces help the scooter move up the ramp, which oppose it, and which do no work? Will it speed up?",
+      hints: ["First choose the scooter as the system. Which way is its displacement while climbing?","Assign a work sign to each force before calculating. The normal force is perpendicular to the ramp, but gravity is not.","Add all signed work, then compare that total with the change in kinetic energy. Check whether the result permits motion from rest."],
+      diagnosisFeedback: ["List motor, friction, gravity and normal force separately; choose the scooter as your system.","Use the uphill displacement as the reference direction. Friction opposes it; gravity also removes energy as height rises.","Only the sum of work by all forces equals ΔK. Rebuild your signed ledger before solving for speed.","The normal force is perpendicular to the surface displacement, so its work is zero.","Keep your force ledger; inspect signs, units and whether the final K is physically possible.","Start with a free-body sketch and label each force's angle to displacement."],
       fields: [
         {id:"system",type:"select",label:"What object are you following?",options:["The scooter", "Only the motor", "Only the friction", "I'm not sure"]},
         {id:"motor",type:"select",label:"Work done by the motor?",options:signChoices},
@@ -56,6 +58,8 @@
       title: "When the spring stops pushing",
       version: 1,
       prediction: "At what point does the spring stop pushing? Will the cart's speed be the same at spring release and after the rough strip?",
+      hints: ["Split the journey into spring contact and travel beyond the spring. What marks the moment an unattached spring stops pushing?","Calculate the stored elastic energy while compressed; use it to determine kinetic energy at release before adding any rough-strip losses.","On the rough strip, the spring no longer supplies work. Deduct frictional work from the release kinetic energy and check whether K stays nonnegative."],
+      diagnosisFeedback: ["Mark the natural-length point as the end of contact for an unattached spring.","Use friction only where the track is rough; the initial spring contact phase is smooth.","Write the separate energy balances for the release and the end of the rough strip.","Check the elastic energy ½kx² and negative friction work before using K=½mv².","Keep the two-region model; verify the square and square-root arithmetic.","Sketch both regions with a clear boundary; list which forces act in each."],
       fields: [
         {id:"boundary",type:"select",label:"When does spring contact end?",options:["When the spring returns to natural length", "At the far end of the rough strip", "The spring keeps pushing forever", "I'm not sure"]},
         {id:"springEnergy",type:"number",label:"Initial spring energy (J)"},
@@ -98,6 +102,8 @@
       title: "Energy added each second",
       version: 1,
       prediction: "With constant motor power, do we gain equal kinetic energy every second, equal speed every second, or both? Which graph will be straight?",
+      hints: ["Identify what the source controls: a fixed rate of energy transfer, not a fixed force. What are the units of watts?","Write a K-versus-time table starting with the kinetic energy at t=0. Convert each K to speed only after that.","Read graph slopes: K–time slope is power; v–time slope is acceleration; displacement–time slope is speed. These slopes need not have the same shape."],
+      diagnosisFeedback: ["Return to the units: watts are joules per second, not newtons or metres per second squared.","The trolley is already moving. Compute K₀ from its mass and starting speed before adding energy.","Use K=½mv² after each time row; equal energy increments do not mean equal speed increments.","Name both axes before describing a graph: energy, speed and displacement have different slopes.","Check the assumptions: net power is constant on a smooth track, but force P/v falls as speed grows.","Start with the distinction between power, work and kinetic energy. Compare units before equations."],
       fields: [
         {id:"powerMeaning",type:"select",label:"What does 18 W tell us?",options:["The motor adds 18 J every second", "The force is always 18 N", "The trolley gains 18 m/s every second", "I'm not sure"]},
         {id:"initialEnergy",type:"number",label:"Kinetic energy at the start (J)",hint:"Remember: the trolley is already moving at 2 m/s."},
@@ -145,6 +151,8 @@
       title: "Only the hanging part",
       version: 1,
       prediction: "As you pull the rope upward from 4 m hanging to 2 m hanging, what happens to the hanging mass and the position of its middle? Will this take as much work as lifting all of it?",
+      hints: ["Find the rope's mass per metre. Only the part below the edge contributes nonzero gravitational potential energy for the chosen zero.","Draw two separate hanging pieces. In each, both the hanging mass and its centre depth depend on the hanging length.","Find the potential energy in each picture relative to the platform, then subtract final minus initial for a very slow, frictionless lift."],
+      diagnosisFeedback: ["Use mass per metre times hanging length, not the mass of the rope already on the table.","The hanging length changes, so hanging mass must be recalculated for the after-picture.","For a uniform hanging piece, its centre is halfway down that piece.","Use one fixed height-zero and calculate final potential energy minus initial potential energy.","Keep the two-picture model and recheck arithmetic and signs.","Make a before/after table with hanging length, mass, centre depth and U."],
       fields: [
         {id:"massPerMetre",type:"number",label:"Mass per metre of rope (kg/m)",hint:"Divide the whole rope mass by the whole rope length."},
         {id:"startMass",type:"number",label:"Mass hanging BEFORE the pull (kg)",hint:"Only 4 m out of 8 m hangs at the start."},
@@ -280,7 +288,7 @@
   };
 
   function initState(lesson) {
-    return {schema:1,lesson,stage:0,prediction:null,first:null,reconstruction:null,diagnosis:null,repair:null,boundary:null};
+    return {schema:1,lesson,stage:0,prediction:null,first:null,hintsUsed:0,reconstruction:null,diagnosis:null,repair:null,boundary:null};
   }
   function storageKey(lesson) { return "g9:wpe:d3d4:self-tutor:v1:"+lesson; }
   function load(lesson) {
@@ -416,6 +424,15 @@
         const input=form.querySelector("#"+id);
         input.dataset.input=field.id;
       });
+      const hints=config.hints||[];
+      if(hints.length){
+      const help=el("section","progressive-hints");help.dataset.hintPanel="true";
+      addText(help,"strong",null,"Optional thinking hints — no worked answer");
+      hints.slice(0,state.hintsUsed||0).forEach((hint,i)=>note(help,"Hint "+(i+1)+": "+hint,"hint-text"));
+      card.append(help);
+      const hintButton=addButton(actions(card),"next-hint","Show next hint ("+(state.hintsUsed||0)+"/"+hints.length+")","secondary");
+      if((state.hintsUsed||0)>=hints.length)hintButton.disabled=true;
+      }
       note(card,"Your answers will be frozen as your first attempt. A separate repair comes later.","stage-help");
       addButton(actions(card),"lock-attempt","Save my first attempt and reconstruct");
     } else if(stage===2) {
@@ -434,6 +451,8 @@
     } else if(stage===4) {
       note(card,"Make a new version of the reasoning. Your original first attempt stays saved above.", "stage-desc");
       snapshot(card,state,config);
+      const issueIndex=config.diagnoses.indexOf(state.diagnosis?.issue);
+      if(issueIndex>=0 && config.diagnosisFeedback?.[issueIndex])note(card,"Try this repair: "+config.diagnosisFeedback[issueIndex],"diagnostic-tip");
       textArea(card,lesson+"-repair","My repaired calculation and explanation",config.repairPrompt,"");
       addButton(actions(card),"save-repair","Keep my repair → Boundary test");
     } else if(stage===5) {
@@ -451,6 +470,10 @@
         workedList(card,config.boundaryCheck.map((v,i)=>["Step "+(i+1),v]),"Compare the changed-condition reasoning");
         note(card,"These are self-check criteria, not a score. The stored first try and later repair are distinct.","stage-help");
         addButton(actions(card),"review-history","View original attempt and repair","secondary");
+        if(sourceRoute && sourceRoute.lesson===lesson){
+          const a=el("a","return-original","Return to "+sourceRoute.id+" and try the original question independently");
+          a.href=sourceRoute.href;card.append(a);
+        }
       }
     }
     const footer=actions(root);
@@ -479,6 +502,17 @@
     if(!action || !root.contains(action))return;
     const kind=action.dataset.action;
     let state=states[lesson];
+    if(kind==="next-hint" && state.stage===1 && !state.first){
+      const used=Math.min(configHintCount(lesson),state.hintsUsed||0);
+      if(used>=configHintCount(lesson))return;
+      state.hintsUsed=used+1;
+      const panel=root.querySelector("[data-hint-panel]");
+      note(panel,"Hint "+state.hintsUsed+": "+lessons[lesson].hints[used],"hint-text");
+      action.textContent="Show next hint ("+state.hintsUsed+"/"+configHintCount(lesson)+")";
+      if(state.hintsUsed>=configHintCount(lesson))action.disabled=true;
+      if(!persist(lesson,state))storageWorks=false;
+      return;
+    }
     if(kind==="reset") {
       if(!window.confirm("Clear this skill's saved prediction, first try and later repairs?"))return;
       erase(lesson);states[lesson]=initState(lesson);render(lesson,true);return;
@@ -527,6 +561,34 @@
     if(!saved)storageWorks=false;
     render(lesson,true);
   }
+  const configHintCount=lesson=>(lessons[lesson].hints||[]).length;
+  let sourceRoute=null;
+  async function bindSourceJourney(){
+    const sourceId=new URLSearchParams(location.search).get("question");
+    const lesson=location.hash.replace(/^#/,"");
+    if(!sourceId||!/^[-A-Za-z0-9]{2,64}$/.test(sourceId)||!Object.prototype.hasOwnProperty.call(lessons,lesson))return;
+    try{
+      const response=await fetch("reasoning-paths.review.json");
+      if(!response.ok)return;
+      const d=await response.json();
+      if(d.schema!=="wpe-reasoning-route-preview/v1"||!Array.isArray(d.constructions))return;
+      const row=d.constructions.find(r=>r.id==="WPE-"+lesson && r.proposed_source_ids?.some(q=>q.id===sourceId && q.reader_present));
+      if(!row)return;
+      const href="../../preview/question-status.html?question="+encodeURIComponent(sourceId);
+      sourceRoute={id:sourceId,lesson,href};
+      const banner=document.getElementById("source-journey");
+      document.getElementById("source-journey-title").textContent="Your original question: "+sourceId;
+      document.getElementById("source-journey-message").textContent=sourceId==="EX-M79"
+        ?"This lesson investigates constant power as a comparison. The original gives a speed–distance relationship: decide its own physical model when you return."
+        :"Learn the method through a different situation, try the challenge, then return to your original question.";
+      const link=document.getElementById("source-journey-return");link.href=href;link.textContent="Return to "+sourceId+" without showing its answer";
+      banner.hidden=false;
+      const footer=document.querySelector("#"+lesson+" .unit-next");
+      if(footer){const a=el("a","return-original","↩ Solve "+sourceId+" yourself");a.href=href;footer.append(a);}
+      const state=states[lesson];
+      if(state.boundary!==null)render(lesson,false);
+    }catch(_){/* No invented return link if the source manifest is unavailable. */}
+  }
   let storageWorks=true;
   const states={};
   // Read every topic state before the first render updates the shared counter.
@@ -535,4 +597,5 @@
     const root=document.querySelector('[data-stage-root="'+lesson+'"]');
     if(root){root.addEventListener("click",event=>update(lesson,event));render(lesson,false);}
   });
+  bindSourceJourney();
 })();

@@ -55,6 +55,11 @@ button,.btn{min-height:42px}.item{min-height:42px}.option{min-height:48px}.hint 
  .option{gap:8px}.stem{font-size:16px}
 }
 @media print{.c2-global,.c2-chapterbar{display:none!important}}
+.study-jump:not(:empty){border:1px solid #b1d4d2;background:#eff9f6;border-radius:13px;padding:14px 16px;margin:13px 0}
+.study-jump strong{display:block;font-size:.96rem}.study-jump-links{display:flex;flex-wrap:wrap;gap:9px;margin-top:10px}
+.study-jump-links a{display:inline-flex;align-items:center;min-height:44px;background:#166a63;color:white;text-decoration:none;border-radius:9px;font-weight:750;padding:9px 12px}
+.study-jump p{margin:9px 0 0;font-size:.87rem;line-height:1.5}
+@media(max-width:600px){.study-jump-links{flex-direction:column}.study-jump-links a{width:100%}}
 </style></head><body><nav class="c2-global" aria-label="Site and subject navigation"><a class="c2-brand" href="../index.html" aria-label="Grade9 home"><span aria-hidden="true">G9</span> Grade9</a><div class="c2-links"><a href="../index.html">⌂ Home</a><a href="../physics/index.html">⚛ Physics</a><a href="../mathematics/index.html">∑ Maths</a><a href="../chemistry/index.html">⚗ Chemistry</a><a href="../architecture/index.html">◈ Architecture</a></div></nav><div class="c2-chapterbar"><a href="../physics/index.html">Physics</a><span aria-hidden="true">›</span><a href="../physics/wpe/index.html">Work, Power &amp; Energy</a><span aria-hidden="true">›</span><strong>Question Bank</strong><span class="c2-spacer"></span><a href="../physics/wpe/index.html">Chapter home</a><a href="practice.html">Try practice</a></div><header><div class="kicker">Grade9 v4.0 · Physics pilot · Work, Power &amp; Energy</div><h1>📚 Question Bank · Work, Power &amp; Energy</h1><p>Question custody first · selectable hints · local attempt · author-proposed solution · clear academic holds</p><span class="status">REVIEW CANDIDATE · 0 academically admitted · no learner release approval</span></header>
 <p id="route-status" role="status" aria-live="polite" class="source-note" hidden></p>
 <div class="layout"><aside class="panel"><div class="sidebar-head"><h3>Question navigator</h3><p class="subtitle">Unique display entries after evidence-conscious duplicate handling</p><div class="counts"><span class="count" id="count-source">73 source questions</span><span class="count">1 separate synthetic control</span><span class="count">5 suppressed duplicate displays</span></div><div class="filters"><input type="search" id="search" placeholder="Search source, question or concept" aria-label="Search questions"><select id="kind" aria-label="Filter source"><option value="ALL">All source types</option><option value="EXAM_CLAIM">Exam-labelled (unverified)</option><option value="TEXTBOOK">Textbook extracts</option><option value="SYNTHETIC_CONTROL">Synthetic control</option></select><select id="band" aria-label="Filter proposed band"><option value="ALL">All proposed levels</option><option>D1</option><option>D2</option><option>D3</option><option>D4</option></select></div></div><div id="navlist" class="list-scroll" role="list" aria-label="Filtered questions"></div></aside>
@@ -67,6 +72,7 @@ const nodes={search:document.getElementById('search'),kind:document.getElementBy
 const requestedQuestion=new URLSearchParams(location.search).get('question');
 const requestedMatch=qs.find(q=>q.source_id===requestedQuestion);
 let filtered=[...qs],active=requestedMatch?.id??qs[0].id;const attempts=new Map();
+const studentRoutes=fetch('../physics/wpe/reasoning-paths.review.json').then(r=>r.ok?r.json():null).catch(()=>null);
 if(requestedQuestion&&!requestedMatch){
  const status=document.getElementById('route-status');status.hidden=false;
  status.textContent='Unknown question link. No question was selected from that identifier; choose from the navigator.';
@@ -86,6 +92,22 @@ function current(){return qs.find(q=>q.id===active)}
 function optionMarkup(q,state){const isMulti=q.question_type==='multi_correct_mcq';return '<div class="option-list">'+q.options.map((v,i)=>{let checked=(state?.selected||[]).includes(i);return '<label class="option"><input type="'+(isMulti?'checkbox':'radio')+'" name="answer-option" value="'+i+'" '+(checked?'checked':'')+' '+(state?.committed?'disabled':'')+'><span class="option-key">'+String.fromCharCode(65+i)+'</span><span>'+formatted(cleanOption(v))+'</span></label>';}).join('')+'</div>'}
 function diagram(q){if(!q.source_figures?.length)return '';let entries=q.source_figures.map(name=>data.assets[name]||'').filter(Boolean);if(!entries.length)return '<p class="source-note">Figure reference exists but is not included in this package; see the cited source.</p>';return entries.map(s=>'<figure class="figure">'+s+'<figcaption>'+esc(q.figure_note||'Candidate figure; exact source correspondence unreviewed.')+'</figcaption></figure>').join('');}
 function hintMarkup(q){if(!q.hints.length)return '<p class="source-note">No source hints supplied for this item.</p>';return q.hints.map((h,i)=>'<details class="hint" data-hint="'+i+'" '+(i?'data-locked="true"':'')+'><summary>Hint '+(i+1)+' · '+esc(h.prompt||'Guided cue')+(i?' <span class="hint-lock">(unlock previous hint first)</span>':'')+'</summary><p>'+formatted(h.text)+'</p></details>').join('')}
+function showInteractiveLessonLinks(q){
+ studentRoutes.then(data=>{
+  const host=nodes.root.querySelector('#interactive-lesson-links');
+  if(!host || current()?.id!==q.id || data?.schema!=='wpe-reasoning-route-preview/v1')return;
+  const matches=(data.constructions||[]).filter(c=>/^WPE-C0[1-6]$/.test(c.id) && c.proposed_source_ids?.some(x=>x.id===q.source_id && x.reader_present));
+  if(!matches.length)return;
+  const text=document.createElement('strong');text.textContent='Learn the reasoning with a different problem';host.append(text);
+  const links=document.createElement('div');links.className='study-jump-links';
+  matches.forEach(c=>{
+    const a=document.createElement('a');a.href='../physics/wpe/d3d4-self-tutor.html?question='+encodeURIComponent(q.source_id)+'#'+c.id.slice(-3);
+    a.textContent=c.id.slice(-3)+' · Learn → Try challenge';links.append(a);
+  });
+  host.append(links);
+  if(q.source_id==='EX-M79'){const p=document.createElement('p');p.textContent='Compare the constant-power model with the question’s speed–distance relationship; decide which model really applies when you return.';host.append(p);}
+ });
+}
 function render(){const q=current();if(!q){nodes.root.innerHTML='<p class="empty">Select a different search or filter.</p>';nodes.progress.textContent='0 matches';nodes.prev.disabled=nodes.next.disabled=true;return;}
 const idx=filtered.findIndex(x=>x.id===q.id),st=attempts.get(q.id)||{selected:[],response:'',committed:false,paper:false,revealed:false};nodes.progress.textContent=(idx+1)+' of '+filtered.length+' shown · '+qs.length+' total entries';nodes.prev.disabled=idx<=0;nodes.next.disabled=idx>=filtered.length-1;
 let type=q.question_type==='multi_correct_mcq'?'Select all that apply':q.options.length?'Choose one option':'Write a response or record a paper attempt';
@@ -94,10 +116,12 @@ let badges='<span class="chip">'+esc(q.category==='EXAM_CLAIM'?'Exam-labelled ·
 nodes.root.innerHTML='<div class="meta">'+badges+'</div><h2 class="qtitle">'+esc(q.source_id)+'</h2><p class="subtitle">'+esc(q.source_name)+'</p>'+(q.flags.length?'<div class="alert"><strong>Review notes:</strong><ul>'+q.flags.map(f=>'<li>'+esc(f)+'</li>').join('')+'</ul></div>':'')+
 '<section class="stage"><h3><span class="tag">01</span> Source question</h3><div class="stem">'+formatted(q.stem)+'</div>'+media+'<p class="source-note">Provenance: '+esc(q.origin)+' · stem digest '+esc(q.stem_sha256.slice(0,14))+'… · original complete stem preserved in embedded data and package selected_bank.json.</p></section>'+
 '<section class="stage"><h3><span class="tag">02</span> Local attempt · '+esc(type)+'</h3>'+choice+'<div class="actionbar"><button id="commit" class="btn primary" type="button" '+(st.committed?'disabled':'')+'>Commit local attempt</button><span id="commit-note" class="live-note">'+(st.committed?'Attempt committed in this browser session.':'Answers remain hidden from the page until you attempt and separately reveal.')+'</span></div></section>'+
-'<p class="source-note">Optional <a href="../physics/wpe/reasoning-paths.html?question='+encodeURIComponent(q.source_id)+'">review-only reasoning route</a> · proposed themes are not approved prerequisites. No author-only worked solution is linked.</p>'+
+'<nav id="interactive-lesson-links" class="study-jump" aria-label="Learn with another problem"></nav>'+
+'<p class="source-note">More options: <a href="../physics/wpe/reasoning-paths.html?question='+encodeURIComponent(q.source_id)+'">browse related reasoning skills</a>. The practice examples do not reveal the source answer.</p>'+
 '<section class="stage"><h3><span class="tag">03</span> Progressive hints</h3><p class="subtitle">Hints are available before the answer. Reveal only as much as you need.</p>'+hintMarkup(q)+'</section>'+
 '<section class="stage"><h3><span class="tag">04</span> Author / coaching solution</h3><p class="source-note">Not an authenticated official key or independent scientific review.</p><div class="actionbar"><button id="reveal" class="btn" type="button" '+(!st.committed||st.revealed?'disabled':'')+'>Reveal after attempt</button><span id="reveal-note" class="live-note">'+(!st.committed?'Complete the local attempt before revealing.':st.revealed?'Author proposal revealed.':'Ready for a deliberate reveal.')+'</span></div><div id="solution-container"></div></section>';
 const save=()=>{let state=attempts.get(q.id)||{selected:[],response:'',committed:false,paper:false,revealed:false};if(q.options?.length){state.selected=[...nodes.root.querySelectorAll('input[name="answer-option"]:checked')].map(e=>Number(e.value));}else{state.response=nodes.root.querySelector('#free-answer')?.value||'';state.paper=!!nodes.root.querySelector('#paper-attempt')?.checked;}attempts.set(q.id,state);return state};
+showInteractiveLessonLinks(q);
 if(st.revealed)showSolution(q);nodes.root.querySelectorAll('input[name="answer-option"]').forEach(el=>el.addEventListener('change',save));if(!q.options?.length){nodes.root.querySelector('#free-answer')?.addEventListener('input',save);nodes.root.querySelector('#paper-attempt')?.addEventListener('change',save);}
 nodes.root.querySelector('#commit').addEventListener('click',()=>{const s=save(),valid=q.options?.length?s.selected.length>0:(s.response.trim().length>=5||s.paper);if(!valid){nodes.root.querySelector('#commit-note').textContent='Choose an answer, write at least 5 characters, or confirm a paper attempt.';return;}s.committed=true;attempts.set(q.id,s);render();});
 nodes.root.querySelector('#reveal').addEventListener('click',()=>{const s=attempts.get(q.id);if(!s?.committed)return;s.revealed=true;showSolution(q);nodes.root.querySelector('#reveal').disabled=true;nodes.root.querySelector('#reveal-note').textContent='Author proposal revealed. No official-key grading is claimed.';});

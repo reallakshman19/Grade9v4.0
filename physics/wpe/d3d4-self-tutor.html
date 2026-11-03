@@ -30,6 +30,9 @@
         </ol>
         <p>You can write <strong>“I’m not sure”</strong> in an answer. Your first attempt is saved on this browser and stays separate from your later repair. This page does not grade explanations.</p>
       </div>
+      <nav id="source-journey" class="source-journey" aria-label="Original question" hidden>
+<strong id="source-journey-title"></strong><p id="source-journey-message"></p>
+<a id="source-journey-return" href="question-bank.html">Return to the exact question</a></nav>
       <div class="overall" aria-live="polite">
         <span id="overall-count">0 of 6 challenges completed</span>
         <progress id="overall-meter" value="0" max="6" aria-label="Completed boundary tests"></progress>
@@ -88,6 +91,9 @@
             <li><strong>Find speed:</strong> initial K = ½ × 2 × 1² = 1 J, final K = 19 J. So final speed = √19 ≈ <strong>4.36 m/s</strong>.</li>
           </ol>
           <p class="guide-takeaway"><strong>Remember:</strong> Every force gets a ledger row. Add the signed work before using the change in kinetic energy.</p>
+          <details class="deep-reason"><summary>Model detective · when does a force do zero work?</summary>
+<p>Work depends on the angle between the force and displacement, not simply whether the force points up or down. A normal reaction on a fixed smooth ramp is perpendicular to the motion and does zero work; gravity does negative work during an uphill climb. For a constant force use W = Fd cos θ; when the force varies, account for its change along the path.</p>
+<p><strong>Common wrong move:</strong> subtract only friction and call that the change in kinetic energy. It is the sum of work by <em>every</em> force that equals ΔK.</p></details>
           <details class="conditions"><summary>When can I use this method?</summary><p>The forces are constant over 3 m, air drag is ignored, and the box stays level. If it climbs upward, gravity also does negative work. The normal force is perpendicular to this horizontal movement, so its work is zero.</p></details>
         </section>
         <section class="challenge" aria-labelledby="c01-challenge">
@@ -148,6 +154,9 @@
             <li><strong>Later on smooth ground:</strong> the spring no longer acts and friction is zero, so the cart continues at <strong>2 m/s</strong>.</li>
           </ol>
           <p class="guide-takeaway"><strong>Remember:</strong> Write one energy rule while contact exists, then check which forces act afterward. Do not continue adding spring work after separation.</p>
+          <details class="deep-reason"><summary>Model detective · why not use one force everywhere?</summary>
+<p>While the spring is compressed, its force changes with compression; the released energy is ½kx², not one fixed force acting over the entire journey. For an unattached spring, contact ends at natural length. After that, a rough strip can remove kinetic energy through friction. If the spring is attached, it may pull as well as push and the boundary must be reconsidered.</p>
+<p><strong>Common wrong move:</strong> continue the spring force on the separate rough strip. Mark the change in contact first.</p></details>
           <details class="conditions"><summary>When can I use this method?</summary><p>The spring is ideal and not attached, the track is smooth, and energy loss is ignored. If rough ground begins later, friction belongs in that later region only.</p></details>
         </section>
         <section class="challenge" aria-labelledby="c02-challenge">
@@ -208,7 +217,11 @@
             <li><strong>Turn energy into speed:</strong> K = ½mv², so speed after 1 s is <strong>4 m/s</strong> and after 4 s is <strong>√52 ≈ 7.21 m/s</strong>.</li>
             <li><strong>Choose graph shapes:</strong> kinetic energy against time is a rising straight line. Speed against time rises but gradually flattens. Distance against time grows with an increasing slope because the sled speeds up.</li>
           </ol>
-          <p class="guide-takeaway"><strong>Remember:</strong> constant <em>power</em> means equal energy each second—not a constant force or constant acceleration. Always include the energy from the initial speed.</p>
+          <p class="guide-takeaway"><strong>Remember:</strong> constant <em>net power into kinetic energy</em> means equal kinetic-energy gain each second—not a constant force or constant acceleration. Always include the energy from the initial speed.</p>
+          <details class="deep-reason" open><summary>Model detective · different graphs, different slopes</summary>
+<p>For fixed mass, positive constant <em>net mechanical power into kinetic energy</em> P, and no other work contribution, dK/dt = P gives K(t) = K₀ + Pt. Since K = ½mv², speed follows v(t) = √(v₀² + 2Pt/m). The quoted power must be the actual rate of kinetic-energy gain—not a motor rating when friction or drag removes energy.</p>
+<p><strong>Read the axes:</strong> the slope of K–t is the constant P; the slope of v–t is acceleration, which falls as v rises; the slope of displacement–t is speed, which rises. These graphs cannot all be straight lines. At nonzero speed, P = Fv, so F = P/v and acceleration = P/(mv).</p>
+<p><strong>Different clue, different model:</strong> when a problem gives speed as a function of <em>distance</em>, first decide what its speed–distance relation implies about kinetic-energy change. Do not assume constant power simply because speed is changing. This contrast is useful when you return to the original question.</p></details>
           <details class="conditions"><summary>When does this work?</summary><p>The supplied 12 W is useful mechanical power, the mass stays fixed, the sled is already moving, and there are no energy losses. We only need an energy table and graph shapes; no calculus or memorized distance–time power law is needed.</p></details>
         </section>
         <section class="challenge" aria-labelledby="c03-challenge">
@@ -270,6 +283,9 @@
             <li><strong>Find the work:</strong> the helper works slowly, so the work needed is the increase in potential energy: 0 − (−10) = <strong>+10 J</strong>.</li>
           </ol>
           <p class="guide-takeaway"><strong>Remember:</strong> as the hanging length shrinks, both its <em>mass</em> and its <em>centre-of-mass depth</em> shrink. Compare two pictures rather than lifting the entire chain as one fixed lump.</p>
+          <details class="deep-reason"><summary>Model detective · why the work is not simply weight × height</summary>
+<p>For a uniform rope with mass per length λ, a hanging length ℓ has mass λℓ and a middle ℓ/2 below the tabletop. Relative to that tabletop its gravitational potential energy is U(ℓ) = −λgℓ²/2. A slow lift from ℓ₁ to ℓ₂ therefore needs λg(ℓ₁² − ℓ₂²)/2 work; both the hanging mass and its centre depth change.</p>
+<p>If the rope accelerates while you pull, the work must also account for kinetic-energy change. For a nonuniform rope, constant λ is not valid.</p></details>
           <details class="conditions"><summary>When can I use this method?</summary><p>The chain is uniform and flexible, the edge and tabletop are smooth, and it is pulled slowly enough that kinetic-energy changes can be ignored. Potential energy below the tabletop is negative only because of our chosen zero level.</p></details>
         </section>
         <section class="challenge" aria-labelledby="c04-challenge">
