@@ -469,6 +469,7 @@
       }
     }
     const reset=button(controls,"reset","Start again (clears this lesson)",true);reset.classList.add("reset");
+    stage.append(controls);
     heading.focus({preventScroll:true});
   }
   function readFields(host){
