@@ -172,7 +172,7 @@
   for(const id of ids){
     let s=null;
     try{s=JSON.parse(localStorage.getItem(prefix+id)||"null");}catch(_){}
-    states[id]=(s&&s.schema===1&&s.id===id&&Number.isInteger(s.stage)&&s.stage>=0&&s.stage<=5&&(s.stage<2||(s.first&&typeof s.first.reason==="string")))?s:blank(id);
+    states[id]=(s&&s.schema===1&&s.id===id&&Number.isInteger(s.stage)&&s.stage>=0&&s.stage<=5&&(s.stage<2||(s.first&&s.first.answers&&typeof s.first.answers.reason==="string")))?s:blank(id);
   }
   function persist(id){try{localStorage.setItem(prefix+id,JSON.stringify(states[id]));return true;}catch(_){storageWorks=false;$("#save-notice").hidden=false;return false;}}
   let active="F01", sourceLink=null;
