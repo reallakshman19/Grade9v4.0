@@ -24,7 +24,7 @@
   }catch(err){panel.textContent="The exact question-to-lesson route cannot be verified right now. Use the Question Bank directly.";status.textContent="Learning route unavailable.";return;}
   const query=new URLSearchParams(location.search).get("question");
   selected=query && valid(query) && rows.some(x=>x.source_id===query)?query:(query?null:"EX-M97");
-  const names={F01:"Applied power vs net power",F02:"Round-trip incline energy",F03:"Spring force switching",C01:"Every force counts",C02:"Spring contact",C03:"Constant power",C04:"Distributed mass",C05:"Choose the graph operation",C06:"Vertical-circle contact",C07:"Conveyor momentum flow",C08:"Comparing spring controls",E01:"Potential wells",E02:"Instantaneous power",E03:"Spring to projectile",E04:"Repeated bouncing",E05:"Radial force and potential"};
+  const names={F01:"Applied power vs net power",F02:"Round-trip incline energy",F03:"Spring force switching",F04:"Two-body relative spring energy",F05:"Massive spring slices",F06:"Wind power flux",F07:"Turning point versus static hold",F08:"Shock absorber energy ledger",C01:"Every force counts",C02:"Spring contact",C03:"Constant power",C04:"Distributed mass",C05:"Choose the graph operation",C06:"Vertical-circle contact",C07:"Conveyor momentum flow",C08:"Comparing spring controls",E01:"Potential wells",E02:"Instantaneous power",E03:"Spring to projectile",E04:"Repeated bouncing",E05:"Radial force and potential"};
   function fillChoices(){
     const term=search.value.trim().toLowerCase();
     const filtered=rows.filter(row=>(row.source_id+" "+row.student_goal+" "+(names[row.primary_lesson]||"")).toLowerCase().includes(term));
@@ -38,7 +38,7 @@
       if(!filtered.some(x=>x.source_id===selected))selected=filtered[0].source_id;
       picker.value=selected;
     }
-    status.textContent=filtered.length+" of 74 source questions shown; "+map.counts.focused_new+" new focused journeys, "+map.counts.targeted+" close practice matches, "+map.counts.related+" related-only bridges, "+map.counts.missing+" genuine missing constructions.";
+    status.textContent=filtered.length+" of 74 source questions shown; "+map.counts.focused_new+" new focused journeys, "+map.counts.targeted+" close practice matches, "+map.counts.related+" related-only bridges, "+map.counts.missing+" remaining unaddressed constructions.";
     draw();
   }
   const safeLessonURL=(href,source)=>{
@@ -46,7 +46,7 @@
     try{
       const url=new URL(href,location.href),loc=new URL("focused-journeys.html",location.href);
       if(url.origin!==loc.origin||url.pathname.substring(0,url.pathname.lastIndexOf("/")+1)!==loc.pathname.substring(0,loc.pathname.lastIndexOf("/")+1))return null;
-      if(!/^(d3d4-self-tutor|extension-learning|focused-journeys|study-bridge)\.html$/.test(url.pathname.split("/").pop()))return null;
+      if(!/^(d3d4-self-tutor|extension-learning|focused-journeys|gap-journeys|study-bridge)\.html$/.test(url.pathname.split("/").pop()))return null;
       if(url.searchParams.get("question")!==source)return null;
       return url.href;
     }catch(_){return null;}

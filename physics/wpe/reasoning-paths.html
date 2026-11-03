@@ -89,7 +89,7 @@ try{
     if(present||plan.fit==='FOCUSED_NEW'){
       addLink(returns,'learn-challenge.html?question='+encodeURIComponent(id)+'#question-routes','Pick a source-specific learning route · '+id);
     }
-    if(plan.fit==='FOCUSED_NEW'&&/^F0[1-3]$/.test(plan.primary_lesson)){
+    if(plan.fit==='FOCUSED_NEW'&&/^F0[1-8]$/.test(plan.primary_lesson)){
       status.textContent=id+' · new focused interactive study route '+plan.primary_lesson+'. This is practice, not an admitted examination classification.';
       addLink(returns,plan.lesson_href,'New focused challenge · '+plan.primary_lesson);
     }
