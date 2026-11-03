@@ -51,10 +51,16 @@ def test_exact_74_source_records_untouched_and_local_state_versioned():
     assert "window.WPE_F_TRANSFER" in source("physics/wpe/focused-journeys.js")
     map_=json.loads((WPE/"learning-coverage-r1.json").read_text(encoding="utf-8"))
     assert len(map_["questions"])==74
-    assert map_["counts"]["focused_new"]==3
-    assert map_["counts"]["targeted"]==18
-    assert map_["counts"]["related"]==48
-    assert map_["counts"]["missing"]==5
+    assert map_["counts"]["total"]==74
+    assert (map_["counts"]["focused_new"],map_["counts"]["targeted"],
+            map_["counts"]["related"],map_["counts"]["missing"])==(8,18,48,0)
+    assert map_["counts"]["wrapped_related"]==41
+    assert sum(map_["counts"][key] for key in ("focused_new","targeted","related","missing"))==74
+    assert sum(row["fit"]=="FOCUSED_NEW" for row in map_["questions"])==8
+    assert sum(row["fit"]=="TARGETED_PRACTICE" for row in map_["questions"])==18
+    assert sum(row["fit"]=="RELATED_BRIDGE" for row in map_["questions"])==48
+    assert all(row["stem_sha256"]==next(q["stem_sha256"] for q in bank["questions"]
+                                           if q["source_id"]==row["source_id"]) for row in map_["questions"])
 
 def test_donor_transfer_variants_and_separate_saved_attempts():
     text=source("physics/wpe/focused-transfer-challenges.js")

@@ -528,11 +528,11 @@
       const map=await r.json(),bank=await q.json();
       if(map.schema!=="wpe-learner-coverage-r1/v1"||!Array.isArray(map.questions)||bank.questions?.length!==74)throw Error("source inventory changed");
       const found=map.questions.find(x=>x.source_id===source);
-      if(!found||!bank.questions.some(x=>x.source_id===source&&x.stem_sha256===found.stem_sha256)||found.primary_lesson!==active||found.fit!=="FOCUSED_NEW")
+      if(!found||!bank.questions.some(x=>x.source_id===source&&x.stem_sha256===found.stem_sha256)||found.primary_lesson!==active||found.fit==="MISSING_CONSTRUCTION")
         throw Error("source does not map to this lesson");
       sourceLink={source,lesson:active,href:"../../preview/question-status.html?question="+encodeURIComponent(source)};
       $("#source-title").textContent="Your original question: "+source;
-      $("#source-message").textContent="Learn the physical operation with a DIFFERENT example. Then return to "+source+" and test your own solution. Nothing here confirms the question's coaching answer.";
+      $("#source-message").textContent=(found.fit==="RELATED_BRIDGE"?"RELATED PRACTICE ONLY: this lesson is not complete teaching for the original question. ":found.fit==="TARGETED_PRACTICE"?"Close practice match: check the original assumptions. ":"Focused practice with a different model. ")+"Return to "+source+" to make your own original attempt. No lesson confirms the source coaching key.";
       returnLink.hidden=false;returnLink.href=sourceLink.href;returnLink.textContent="Return to "+source+" without showing its answer";
       render(false);
     }catch(_){$("#source-message").textContent="This question has no verified route to the selected focused journey. No original-question return link is invented.";returnLink.hidden=true;}
