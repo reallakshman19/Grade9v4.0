@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#12384f">
-  <meta name="description" content="Eight WPE practice journeys: learn, predict, attempt, reconstruct, diagnose, repair and test a changed condition.">
-  <title>Eight thinking challenges · Work, Power and Energy</title>
+  <meta name="description" content="Thirteen WPE practice journeys: learn, predict, attempt, reconstruct, diagnose, repair and test a changed condition.">
+  <title>Thirteen thinking challenges · Work, Power and Energy</title>
   <link rel="stylesheet" href="../../site.css">
   <link rel="stylesheet" href="d3d4-self-tutor.css">
   <script src="d3d4-self-tutor.js" defer></script>
@@ -20,7 +20,7 @@
   </header>
   <main id="lesson-main" class="shell">
     <section class="welcome" aria-labelledby="page-title">
-      <p class="eyebrow">Eight thinking skills · Student practice preview</p>
+      <p class="eyebrow">Thirteen thinking skills · Student practice preview</p>
       <h1 id="page-title">Learn the idea. Then solve a <em>different</em> problem.</h1>
       <p>These are not speed tests. Use the worked example to learn a method, then keep your first thinking before seeing the answer. You can be unsure or make mistakes—that's how the next steps help.</p>
       <div class="how">
@@ -34,8 +34,8 @@
 <strong id="source-journey-title"></strong><p id="source-journey-message"></p>
 <a id="source-journey-return" href="question-bank.html">Return to the exact question</a></nav>
       <div class="overall" aria-live="polite">
-        <span id="overall-count">0 of 8 challenges completed</span>
-        <progress id="overall-meter" value="0" max="8" aria-label="Completed boundary tests"></progress>
+        <span id="overall-count">0 of 13 challenges completed</span>
+        <progress id="overall-meter" value="0" max="13" aria-label="Completed boundary tests"></progress>
       </div>
       <nav class="topic-links" aria-label="Choose a lesson">
         <a href="#C01">1 · Every force counts</a>
@@ -46,6 +46,11 @@
         <a href="#C06">6 · Stay on the circle?</a>
         <a href="#C07">7 · Momentum arrives every second</a>
         <a href="#C08">8 · What stays the same?</a>
+        <a href="#E01">9 · Can it cross the hill?</a>
+        <a href="#E02">10 · Instantaneous power</a>
+        <a href="#E03">11 · Launch and flight</a>
+        <a href="#E04">12 · Each bounce is different</a>
+        <a href="#E05">13 · Force graph to orbit</a>
       </nav>
     </section>
 
@@ -553,10 +558,223 @@
           <div class="stage-root" data-stage-root="C08"><p>Interactive steps require JavaScript. The guided example is available above.</p></div>
         </section>
       </div>
-      <nav class="unit-next" aria-label="Learning navigation"><a href="#C07">← Back to Skill 7</a><a href="#C01">Return to Skill 1 ↑</a></nav>
+      <nav class="unit-next" aria-label="Learning navigation"><a href="#C07">← Back to Skill 7</a><a href="#E01">Next: Can it cross the hill? →</a></nav>
+    </article>
+
+    <section class="extensions-intro" aria-labelledby="ext-title">
+      <p class="eyebrow">Optional advanced practice · Five authored extension packs</p>
+      <h2 id="ext-title">Transfer the idea to a less familiar problem</h2>
+      <p>The next five skills may need a teacher or an earlier foundation first. Read the guided Core1A explanation, then attempt a <strong>different Core1B problem</strong> without copying the example. Answers are shown only after you save your first model. Each source-question connection is a <strong>proposed topic theme</strong>, not a validated original-question or QRT match.</p>
+      <p><strong>Start where you are ready:</strong> E01 uses an energy-versus-position graph; E02 uses two-dimensional vectors; E03 combines springs and horizontal projectile motion; E04 uses a geometric series; E05 combines radial potential and circular motion. Ask for prerequisite help whenever these ideas are unfamiliar.</p>
+    </section>
+
+    <article class="unit" id="E01" data-topic="E01" aria-labelledby="e01-title">
+      <header class="unit-header">
+        <p class="eyebrow">Skill 9 of 13 · E01 · Potential wells · Advanced extension</p>
+        <h2 id="e01-title">🏞️ Can it cross the energy hill?</h2>
+        <p class="unit-subtitle">A low-energy destination can be blocked by a high-energy barrier between here and there.</p>
+      </header>
+      <div class="pair">
+        <section class="guide" aria-labelledby="e01-guide">
+          <p class="part-label">Core1A · Guided example</p>
+          <h3 id="e01-guide">One smooth valley</h3>
+          <p>A frictionless bead of <strong>2 kg</strong> has potential energy <strong>U(x) = (x − 2)² J</strong> when x is measured in metres. Its total mechanical energy is <strong>4 J</strong>. Only motion along the x-axis is allowed.</p>
+          <figure class="illustration">
+            <svg viewBox="0 0 500 180" role="img" aria-label="A single bowl-shaped potential energy curve with a horizontal total energy level at four joules. Its allowed region is between x equals zero and x equals four metres.">
+              <path d="M38 146H468M48 153V14" fill="none" stroke="#829eaa" stroke-width="2"/>
+              <path d="M70 24Q248 252 429 24" fill="none" stroke="#1e7e8b" stroke-width="4"/>
+              <path d="M38 56H464" stroke="#ae8552" stroke-width="2" stroke-dasharray="6 5"/>
+              <g fill="#466a7d" font-size="14"><text x="8" y="18">U</text><text x="471" y="151">x</text><text x="359" y="46">E=4 J</text><text x="45" y="168">0 m</text><text x="239" y="168">2 m</text><text x="422" y="168">4 m</text></g>
+            </svg>
+            <figcaption>Qualitative valley and energy line. Use the equation for exact values rather than measuring this sketch.</figcaption>
+          </figure>
+          <ol class="guide-steps">
+            <li><strong>Check the energy budget:</strong> kinetic energy K = E − U must be <strong>zero or positive</strong>. For x = 0, 1, 2, 3, 4 m, the potential values are 4, 1, 0, 1, 4 J.</li>
+            <li><strong>Find turning points:</strong> K = 0 at x = 0 and x = 4 m, the ends of one connected allowed interval.</li>
+            <li><strong>Find maximum speed:</strong> U is smallest at x = 2 m. Then K = 4 J, so with mass 2 kg, v = <strong>2 m/s</strong>.</li>
+            <li><strong>Change the energy:</strong> at E = 1 J the accessible interval shrinks to 1–3 m. A bead cannot travel through a region where U exceeds its total E.</li>
+          </ol>
+          <p class="guide-takeaway"><strong>Remember:</strong> shade positions with E − U ≥ 0, then ask whether the shaded positions make a continuous path from the START.</p>
+          <details class="conditions"><summary>What physics assumptions are needed?</summary><p>One-dimensional conservative motion, no air resistance or friction, fixed total energy. An unstable energy-barrier summit at exact equality is a special limiting case; do not assume a finite-time crossing there.</p></details>
+        </section>
+        <section class="challenge" aria-labelledby="e01-challenge">
+          <p class="part-label independent">Core1B · Different challenge</p>
+          <h3 id="e01-challenge">Two valleys with a central barrier</h3>
+          <p>A <strong>different 2 kg bead</strong> moves without friction in a double-well potential <strong>U=(q² − 4)² J</strong>, where <strong>q = x/(1 m)</strong> is the numerical position measured in metres. It has total energy <strong>9 J</strong> and starts at <strong>x = +2 m</strong> moving left. Can it reach the valley at x = −2 m? Find the allowed regions, inner and outer turning points for the right-hand valley, and maximum speed.</p>
+          <p>As starting clues only: U at −2 m and +2 m equals 0 J, but U at 0 m equals 16 J. Decide whether the whole connecting path is allowed—not just the destination.</p>
+          <div class="stage-root" data-stage-root="E01"><p>JavaScript is required for the six interactive stages; the guided example remains readable.</p></div>
+        </section>
+      </div>
+      <nav class="unit-next" aria-label="Learning navigation"><a href="#C08">← Previous: Spring comparison</a><a href="#E02">Next: Instantaneous power →</a></nav>
+    </article>
+
+    <article class="unit" id="E02" data-topic="E02" aria-labelledby="e02-title">
+      <header class="unit-header">
+        <p class="eyebrow">Skill 10 of 13 · E02 · Instantaneous power · Vector extension</p>
+        <h2 id="e02-title">⚡ Power depends on direction</h2>
+        <p class="unit-subtitle">A moving object can have zero net power even while a nonzero force accelerates it.</p>
+      </header>
+      <div class="pair">
+        <section class="guide" aria-labelledby="e02-guide">
+          <p class="part-label">Core1A · Guided example</p>
+          <h3 id="e02-guide">Two forces, one direction</h3>
+          <p>A trolley already moves right at <strong>3 m/s</strong>. At this instant a person pulls with <strong>6 N rightward</strong> and resistance acts with <strong>2 N leftward</strong>.</p>
+          <figure class="illustration">
+            <svg viewBox="0 0 500 115" role="img" aria-label="A trolley moving right at three metres per second, with a six newton applied force right and two newton resistance left.">
+              <rect x="200" y="39" width="86" height="42" rx="8" fill="#d2e8f2" stroke="#3b6680" stroke-width="2"/>
+              <path d="M287 60H405M198 72H83" fill="none" stroke="#1c8274" stroke-width="4"/>
+              <path d="M393 50L406 60L393 70M95 62L81 72L95 82" fill="none" stroke="#1c8274" stroke-width="4"/>
+              <g fill="#3d6779" font-size="15"><text x="310" y="40">6 N →</text><text x="29" y="47">← 2 N</text><text x="209" y="103">v = 3 m/s →</text></g>
+            </svg><figcaption>At this instant, force and velocity alignment determines each signed power.</figcaption>
+          </figure>
+          <ol class="guide-steps">
+            <li><strong>Power is a rate:</strong> at one instant the force's power is <strong>P = force · velocity</strong>. A force along motion adds kinetic energy; against motion, it removes energy.</li>
+            <li><strong>Give every force a sign:</strong> pull gives +6 × 3 = <strong>+18 W</strong>; resistance gives −2 × 3 = <strong>−6 W</strong>.</li>
+            <li><strong>Combine rates:</strong> net force is +4 N and net power = +4 × 3 = <strong>+12 W</strong>. That is the instantaneous rate of kinetic-energy change, not a promise of +12 J every later second.</li>
+            <li><strong>Check perpendicular forces:</strong> vertical gravity and normal support have zero power during horizontal travel.</li>
+          </ol>
+          <p class="guide-takeaway"><strong>Remember:</strong> force and velocity need matching direction components. Force magnitude × speed is valid only when aligned.</p>
+          <details class="conditions"><summary>What should I know before this vector challenge?</summary><p>This advanced task uses right/forward velocity components, signed component products and instantaneous mechanical power in watts (joules per second). If you have not learned vectors, start with the one-direction trolley and draw a table of right/forward arrows.</p></details>
+        </section>
+        <section class="challenge" aria-labelledby="e02-challenge">
+          <p class="part-label independent">Core1B · Different challenge</p>
+          <h3 id="e02-challenge">A robot moving diagonally</h3>
+          <p>At one instant a robot's velocity is <strong>3 m/s right</strong> and <strong>4 m/s forward</strong>. A motor pushes <strong>6 N right</strong>. Resistance acts <strong>2 N left</strong> and <strong>1 N backward</strong>. Find motor power, resistance power, net power and the present kinetic-energy trend. Use signed rightward and forward components, not merely magnitudes.</p>
+          <figure class="illustration">
+            <svg viewBox="0 0 500 182" role="img" aria-label="Rightward and forward coordinate arrows, with velocity components three right and four forward, motor force six right, resistance two left and one backward.">
+              <path d="M138 132V29M138 132H338" stroke="#a0b2bc" stroke-width="2" fill="none"/><path d="M130 43L138 27L146 43M323 124L339 132L323 140" stroke="#a0b2bc" stroke-width="2" fill="none"/>
+              <path d="M138 132L251 45M239 46L251 45L246 58" stroke="#208d7c" stroke-width="4" fill="none"/>
+              <path d="M138 132H323M308 120L325 132L308 144" stroke="#ce8a53" stroke-width="3" fill="none"/>
+              <g fill="#41687b" font-size="14"><text x="346" y="138">Right x</text><text x="65" y="20">Forward y</text><text x="255" y="38">velocity (3,4)</text><text x="289" y="105">motor 6 N right</text><text x="168" y="169">resistance left 2 N; back 1 N</text></g>
+            </svg>
+            <figcaption>Right and forward are separate axes. Match signed force components with the velocity components.</figcaption>
+          </figure>
+          <div class="stage-root" data-stage-root="E02"><p>JavaScript is required for the six interactive stages; the guided example remains readable.</p></div>
+        </section>
+      </div>
+      <nav class="unit-next" aria-label="Learning navigation"><a href="#E01">← Energy wells</a><a href="#E03">Next: Spring launch and flight →</a></nav>
+    </article>
+
+    <article class="unit" id="E03" data-topic="E03" aria-labelledby="e03-title">
+      <header class="unit-header">
+        <p class="eyebrow">Skill 11 of 13 · E03 · Spring launch and projectile phases</p>
+        <h2 id="e03-title">🌀 A spring stops pushing before landing</h2>
+        <p class="unit-subtitle">The energy calculation and the flight calculation belong to different phases.</p>
+      </header>
+      <div class="pair">
+        <section class="guide" aria-labelledby="e03-guide">
+          <p class="part-label">Core1A · Two short guided examples</p>
+          <h3 id="e03-guide">Spring speed, then independent flight time</h3>
+          <p><strong>Spring model A:</strong> a <strong>1 kg puck</strong> begins at rest against an <strong>unattached</strong> spring (k = 100 N/m, compression 0.20 m) on a smooth track. <strong>Flight model B:</strong> a separate ball is already travelling horizontally at 3 m/s off a <strong>1.25 m</strong> platform. Take g = 10 m/s².</p>
+          <ol class="guide-steps">
+            <li><strong>A · Contact energy:</strong> ½ × 100 × 0.20² = <strong>2 J</strong>. At spring natural length contact ends; ½×1×v²=2 gives the puck <strong>2 m/s</strong>.</li>
+            <li><strong>A · After separation:</strong> the unattached spring can no longer pull or push. On the smooth track this puck continues at 2 m/s.</li>
+            <li><strong>B · Vertical flight:</strong> the separate ball leaves horizontally with zero initial vertical speed; 1.25 = ½×10×t², so fall time <strong>0.50 s</strong>.</li>
+            <li><strong>B · Horizontal flight:</strong> with no air resistance its x speed stays 3 m/s; landing range = 3×0.50 = <strong>1.50 m</strong>.</li>
+          </ol>
+          <p class="guide-takeaway"><strong>Remember:</strong> identify when the spring ends, then join the correct energy and projectile models only when a new question needs BOTH.</p>
+          <details class="conditions"><summary>Which conditions must hold?</summary><p>An ideal Hookean spring, object not attached, no extra forces after spring release, horizontal launch from a known height, zero initial vertical velocity and negligible air resistance. The fresh task adds friction ONLY while spring contact exists.</p></details>
+        </section>
+        <section class="challenge" aria-labelledby="e03-challenge">
+          <p class="part-label independent">Core1B · Different challenge</p>
+          <h3 id="e03-challenge">A dart leaves a rough spring launcher</h3>
+          <p>A <strong>0.50 kg</strong> dart begins at rest against, but <strong>not attached</strong> to, a horizontal spring with <strong>k=125 N/m</strong> compressed by <strong>0.20 m</strong>. During the <strong>0.20 m contact release</strong>, friction opposes motion with <strong>2.5 N</strong>. At natural length it immediately leaves the <strong>1.25 m</strong> high platform horizontally. Ignore air resistance; g=10 m/s². Find the energy at launch, launch speed, fall time and horizontal range.</p>
+          <figure class="illustration">
+            <svg viewBox="0 0 500 176" role="img" aria-label="Dart pushed along a spring while friction acts, ending contact at a platform edge, then following a curved horizontal projectile path to the floor.">
+              <path d="M34 108H250V155H474" fill="none" stroke="#718e9d" stroke-width="4"/>
+              <polyline points="37,96 53,96 61,83 71,105 81,83 92,105 103,96" fill="none" stroke="#c78c5a" stroke-width="3"/>
+              <rect x="105" y="83" width="61" height="20" rx="9" fill="#d1e8f1" stroke="#3d6c85" stroke-width="2"/>
+              <path d="M251 90Q365 87 437 156" fill="none" stroke="#198b7b" stroke-width="3" stroke-dasharray="5 5"/>
+              <path d="M250 22V159" stroke="#bf9570" stroke-dasharray="5 5" stroke-width="2"/>
+              <g fill="#3b6273" font-size="14"><text x="25" y="35">A · spring + friction</text><text x="269" y="35">B · gravity flight only</text><text x="257" y="169">1.25 m drop</text><text x="135" y="72">0.20 m release</text></g>
+            </svg>
+            <figcaption>The vertical phase line marks where contact ends and projectile flight begins.</figcaption>
+          </figure>
+          <div class="stage-root" data-stage-root="E03"><p>JavaScript is required for the six interactive stages; the guided example remains readable.</p></div>
+        </section>
+      </div>
+      <nav class="unit-next" aria-label="Learning navigation"><a href="#E02">← Instantaneous power</a><a href="#E04">Next: Changing bounce rules →</a></nav>
+    </article>
+
+    <article class="unit" id="E04" data-topic="E04" aria-labelledby="e04-title">
+      <header class="unit-header">
+        <p class="eyebrow">Skill 12 of 13 · E04 · Repeated energy-losing bounces</p>
+        <h2 id="e04-title">🏀 Every bounce counts twice</h2>
+        <p class="unit-subtitle">A changing collision rule changes the first rebound and the geometric pattern that follows.</p>
+      </header>
+      <div class="pair">
+        <section class="guide" aria-labelledby="e04-guide">
+          <p class="part-label">Core1A · Guided example</p>
+          <h3 id="e04-guide">One retention rule for every impact</h3>
+          <p>A ball drops vertically from rest at <strong>2 m</strong>. At every ideal impact it loses <strong>75% of kinetic energy</strong> and retains <strong>25%</strong>. Ignore air drag. An infinite sequence of smaller rebounds is a mathematical enrichment, not a model of how real balls finally stop.</p>
+          <ol class="guide-steps">
+            <li><strong>After the first impact:</strong> 25% energy retained means first rebound height = 0.25×2 = <strong>0.50 m</strong>.</li>
+            <li><strong>After later impacts:</strong> the same rule repeats, giving heights <strong>0.125 m</strong>, <strong>0.03125 m</strong>, …</li>
+            <li><strong>Count up AND down:</strong> total distance D = first 2 m drop + 2×(0.50+0.125+0.03125+…). Each complete rebound is counted twice.</li>
+            <li><strong>Sum the ideal series:</strong> height sum = 0.50/(1−0.25)=2/3 m. Total D = 2+2×(2/3) = <strong>10/3 m ≈ 3.333 m</strong>.</li>
+            <li><strong>Check speed:</strong> speed after impact is √0.25 = <strong>0.5 times</strong> impact speed, not 0.25. Energy depends on speed squared.</li>
+          </ol>
+          <p class="guide-takeaway"><strong>Remember:</strong> height follows the ENERGY retention fraction, speed follows its square root, and ideal rebound travel counts both directions.</p>
+          <details class="conditions"><summary>Is an infinite number of bounces realistic?</summary><p>No. The convergent geometric sum represents idealized vertical bounces without air drag and with a constant impact rule. Real balls eventually stop; this calculation is optional if geometric series have not yet been taught.</p></details>
+        </section>
+        <section class="challenge" aria-labelledby="e04-challenge">
+          <p class="part-label independent">Core1B · Different challenge</p>
+          <h3 id="e04-challenge">First impact is different from the rest</h3>
+          <p>A different ball starts at rest <strong>2 m</strong> above the same type of level floor. At the <strong>first impact</strong> it retains <strong>75%</strong> of its kinetic energy. At <strong>every later impact</strong> it retains just <strong>50%</strong>. Find the first three rebound heights and the ideal total distance travelled, counting both upward and downward motion. Which percentage determines the first term, and which one determines the repeating ratio?</p>
+          <figure class="illustration">
+            <svg viewBox="0 0 500 155" role="img" aria-label="A vertical ball drop of two metres followed by three shrinking rebound arcs. The first energy retention is 75 percent and later retentions are 50 percent.">
+              <path d="M25 130H476" stroke="#839aaa" stroke-width="4"/>
+              <path d="M68 22V128M68 128Q145 -69 227 128Q274 30 320 128Q348 81 379 128" fill="none" stroke="#27847e" stroke-width="3" stroke-dasharray="6 4"/>
+              <g fill="#426a7e" font-size="14"><text x="31" y="16">2 m drop</text><text x="117" y="37">75% first</text><text x="270" y="60">50% later</text><text x="325" y="102">50%</text></g>
+            </svg><figcaption>Qualitative rebounds only; calculate heights from energy fractions, not sketch dimensions.</figcaption>
+          </figure>
+          <div class="stage-root" data-stage-root="E04"><p>JavaScript is required for the six interactive stages; the guided example remains readable.</p></div>
+        </section>
+      </div>
+      <nav class="unit-next" aria-label="Learning navigation"><a href="#E03">← Spring and flight</a><a href="#E05">Next: Radial force and potential →</a></nav>
+    </article>
+
+    <article class="unit" id="E05" data-topic="E05" aria-labelledby="e05-title">
+      <header class="unit-header">
+        <p class="eyebrow">Skill 13 of 13 · E05 · Inward force, potential, circular motion</p>
+        <h2 id="e05-title">🪐 Area for potential, height for force</h2>
+        <p class="unit-subtitle">A force–radius graph answers two different physics questions depending on which operation you do.</p>
+      </header>
+      <div class="pair">
+        <section class="guide" aria-labelledby="e05-guide">
+          <p class="part-label">Core1A · Guided example</p>
+          <h3 id="e05-guide">An inward 3 N force</h3>
+          <p>A <strong>1 kg</strong> bead moves around an ideal horizontal circle of radius <strong>2 m</strong>. A conservative central force points inward with magnitude <strong>3 N</strong> at every positive radius. Let <strong>U(0)=0</strong>. Positive radial direction is outward; ignore drag and propulsion.</p>
+          <ol class="guide-steps">
+            <li><strong>Set arrows:</strong> force is inward, velocity tangent to the circle, so no work is done <em>along the circular path</em>.</li>
+            <li><strong>Potential from a radial comparison:</strong> signed radial force Fᵣ=−3 N, so dU/dr=+3 N. U(2)−U(0)=3×2 = <strong>+6 J</strong>.</li>
+            <li><strong>Circle from local force:</strong> 3 N = mv²/r = 1×v²/2. So v=√6 ≈ <strong>2.45 m/s</strong>.</li>
+            <li><strong>Add energies:</strong> K=½×1×6=<strong>3 J</strong> and total mechanical energy E=U+K=<strong>9 J</strong>.</li>
+            <li><strong>Keep two operations separate:</strong> potential compares radial positions by an area; circular speed uses inward force at the chosen radius.</li>
+          </ol>
+          <p class="guide-takeaway"><strong>Remember:</strong> the <em>positive magnitude</em> of inward force plotted versus radius gives potential rise with increasing radius. On a signed radial-force graph, area gives the opposite sign. Neither graph area is the work done around a circle.</p>
+          <details class="conditions"><summary>What must be true for these rules?</summary><p>The central force is conservative, r is a positive outward radial coordinate and the chosen U(0)=0 is a limiting reference. At exactly r=0 “inward” has no fixed direction. A circular orbit remains at one fixed positive r with a tangential velocity and no radial work.</p></details>
+        </section>
+        <section class="challenge" aria-labelledby="e05-challenge">
+          <p class="part-label independent">Core1B · Different challenge</p>
+          <h3 id="e05-challenge">A piecewise force–radius graph</h3>
+          <p>A <strong>2 kg</strong> spacecraft is in a steady circular orbit at <strong>r=3 m</strong>. The positive <strong>magnitude</strong> f(r) of a conservative INWARD force is <strong>4 N</strong> from r=0 to 2 m, then grows linearly from <strong>4 N at r=2 m</strong> to <strong>8 N at r=4 m</strong>. Reference <strong>U(0)=0</strong>; positive r outward. Find U(3), force at 3 m, orbital speed, kinetic energy and total mechanical energy. Explain why you need the graph's <strong>area</strong> for U and its <strong>height</strong> for v.</p>
+          <figure class="illustration">
+            <svg viewBox="0 0 500 205" role="img" aria-label="Positive inward force magnitude versus outward radius: horizontal at four newtons from zero to two metres, then a straight line increasing to eight newtons at four metres. Mark the three metre orbit between the linear endpoints.">
+              <path d="M55 173H455M55 173V15" stroke="#869fac" stroke-width="2" fill="none"/>
+              <path d="M55 110H244L433 28" stroke="#168479" stroke-width="4" fill="none"/>
+              <path d="M338 173V68" stroke="#c28858" stroke-width="2" stroke-dasharray="5 5"/>
+              <g fill="#49697a" font-size="14"><text x="7" y="20">f (N)</text><text x="456" y="174">r</text><text x="43" y="191">0</text><text x="234" y="191">2 m</text><text x="327" y="191">3 m</text><text x="420" y="191">4 m</text><text x="9" y="113">4 N</text><text x="429" y="24">8 N</text></g>
+            </svg>
+            <figcaption>Inward-force magnitude (not signed force). Rectangle plus trapezoid gives radial potential rise; local graph height supplies circular-force requirement.</figcaption>
+          </figure>
+          <div class="stage-root" data-stage-root="E05"><p>JavaScript is required for the six interactive stages; the guided example remains readable.</p></div>
+        </section>
+      </div>
+      <nav class="unit-next" aria-label="Learning navigation"><a href="#E04">← Changing bounce rules</a><a href="#C01">Return to Skill 1 ↑</a></nav>
     </article>
     <footer class="end-note">
-      <strong>About this preview:</strong> These are newly authored, independent practice problems based on the C01–C08 conceptual teaching drafts—not original examination questions. Local browser storage is useful for practice, but it does <em>not</em> verify identity, grade written reasoning, securely hide an answer key, or establish academic Core1A/Core1B admission. Original source selections remain under review.
+      <strong>About this preview:</strong> These are newly authored, independent practice problems based on the C01–C08 and E01–E05 conceptual teaching drafts—not original examination questions. Local browser storage is useful for practice, but it does <em>not</em> verify identity, grade written reasoning, securely hide an answer key, or establish academic Core1A/Core1B admission. Original source selections remain under review.
     </footer>
   </main>
 </body>
