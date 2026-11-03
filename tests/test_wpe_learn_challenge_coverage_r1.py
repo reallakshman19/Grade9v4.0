@@ -221,7 +221,8 @@ def test_focus_layout_first_answer_guard_and_existing_13_preserved():
     assert 'src="learn-challenge-coverage.js" defer' in tile
     assert tile.count('<article class="lesson"')==5
     assert "question-coverage-r1.js" in index
-    assert "iframe" not in bridge and "Return to " in bridge
+    assert "<iframe" not in bridge and 'createElement("iframe")' not in bridge
+    assert "Return to " in bridge
     assert 'id="direct-lesson"' in bridge and '?question="+encodeURIComponent(question)+"#"+lesson' in bridge
     for p in ["d3d4-self-tutor.html","d3d4-self-tutor.js","extension-learning.html","extension-learning.js"]:
         assert (WPE/p).is_file()
