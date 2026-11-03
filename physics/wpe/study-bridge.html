@@ -11,6 +11,7 @@ main{max-width:1280px;margin:0 auto;padding:15px}.context{background:#fff;border
 .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}.actions a{display:inline-block;min-height:44px;padding:10px 14px;border-radius:9px;background:#137c70;color:#fff;text-decoration:none;font-weight:780}
 .actions a.secondary{background:#edf6f8;color:#1d556a;border:1px solid #a2bdc7}
 .route-card{border:2px solid #bcd3df;border-radius:10px;background:white;padding:20px 22px}.route-card a{display:inline-block;background:#137c70;color:white;border-radius:9px;min-height:44px;padding:10px 14px;text-decoration:none;font-weight:780}
+.route-card a[hidden]{display:none} /* Author CSS must not override the hidden fail-closed link. */
 .notice{font-size:.84rem;color:#4b6979}
 @media(max-width:590px){main{padding:9px}.context{padding:13px}.route-card{padding:16px}}
 a:focus-visible{outline:3px solid #d8a14d;outline-offset:3px}
