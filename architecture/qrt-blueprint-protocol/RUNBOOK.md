@@ -139,7 +139,7 @@ Do **not** confuse columns because a question *contains* a graph, *mentions* a f
 | **P0** | Exact source figure/key/custody and disputed QRT operation/band for all selected D3/D4 candidates | Each exact task has provenance, QRT disposition or explicit HOLD |
 | **P0** | Build **74-row** question→concept→QRT→tile register, including 21-place pilot overlay and dedup without dropping identities | 74 unique question records accounted for; 21 pilot places retained; counts reconcile |
 | **P1** | Interactive versions of **E01–E05**, currently author-only | Six linked D3 questions gain usable practice *without* academic promotion |
-| **P1** | Write original student constructions for **EX-M97**, **EX-N39** and **WEP07-01** | Three unmapped D3 source-theme rows gain truthful proposed learning links |
+| **P1** | Independently audit authored E06/E07/E08 teaching of **EX-M97**, **EX-N39** and **WEP07-01** without mistaking related practice for proven exam transfer | Three unmapped D3 source-theme rows gain truthful proposed learning links |
 | **P1** | Re-audit 13 currently linked D3/D4 questions for exact inference vs merely related prerequisite | Each link tagged `RELATED`, `EXACT_INFERENCE_REVIEWED` or `UNQUALIFIED`; no blanket coverage claims |
 | **P2** | Remaining lower-band/unmapped question bank rows using suitable D1/D2 rules when approved | No unaccounted question; never force into D3/D4 |
 | **P2** | Fill original 21-place exam target after authenticated source + independent QRT | Three qualifying distinct originals per operation across D3/D4; no double counting |
