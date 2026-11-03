@@ -31,7 +31,7 @@ def test_review_route_pinned_to_exact_author_sources():
       "qrt":"NOT_RUN","owner":"PENDING","admitted":0}
     assert a["counts"]=={
       "primary_constructions":8,"proposed_extensions":5,
-      "author_packs":12,"missing_author_packs":1,
+      "author_packs":13,"missing_author_packs":0,
       "qualified_learner_routes":0,"pilot_candidates":14,
       "reader_agreements":3,"reader_conflicts":8,"reader_absent":3}
     assert all("LEARNING_PACK.md" not in x for x in (MANIFEST.read_text(),ROUTE_HTML.read_text()))
@@ -49,8 +49,11 @@ def test_all_author_routes_are_proposals_not_native_prerequisites():
         assert row["approved_core1a_url"] is None
         assert row["approved_core1b_url"] is None
         assert row["acceptance"]=="AUTHOR_DRAFT_ONLY"
-    assert sum(x["authored_pack_present"] for x in a["constructions"])==12
-    assert not a["constructions"][-1]["authored_pack_present"]
+    assert sum(x["authored_pack_present"] for x in a["constructions"])==13
+    assert all(x["authored_pack_present"] for x in a["constructions"])
+    assert a["constructions"][-1]["id"]=="WPE-E05"
+    assert a["constructions"][-1]["approved_core1a_url"] is None
+    assert a["constructions"][-1]["approved_core1b_url"] is None
     assert all(q["review_state"]=="NOT_ADMITTED" for q in load(BANK)["questions"])
     assert not any("primary_capability_ref" in q for q in load(BANK)["questions"])
 
