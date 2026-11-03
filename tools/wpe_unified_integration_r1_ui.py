@@ -238,6 +238,7 @@ def full_case(browser, base, width, height):
         direct.click()
         page.locator("#source-journey-return").wait_for(state="visible")
         page.goto(base + "/physics/wpe/study-bridge.html?question=UNKNOWN-ID&lesson=C05")
+        page.locator("#title").filter(has_text="Lesson route unavailable").wait_for(timeout=16000)
         require(page.locator("#direct-lesson").is_hidden(), "Unknown source created lesson")
         require(not errors, "Unexpected JS exceptions: " + repr(errors))
         print("PASS three F optional transfers, independent source/first attempts, saved boundaries and no-frame redirect at", width)

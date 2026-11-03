@@ -48,6 +48,7 @@ def journey(browser,base,width,height,source,lesson,wrong_model,wrong_field,wron
         require(jump.count()==1,source+" lacks a single direct source-to-learning link")
         jump.click()
         require(page.url.endswith("gap-journeys.html?question="+source+"#"+lesson),source+" misrouted")
+        page.locator(".lesson-title").wait_for(state="visible",timeout=16000)
         require(page.locator(".lesson-title").count()==1,
                 "New journey failed to initialize: "+repr(errors)+" body="+page.locator("body").inner_text()[:400])
         require(not errors,"New journey page errors: "+repr(errors))
