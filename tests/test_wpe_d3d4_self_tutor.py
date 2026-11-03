@@ -159,7 +159,7 @@ def test_constant_power_c03_guided_and_fresh_with_graph_operations():
     html=PAGE.read_text(encoding="utf-8")
     script=SCRIPT.read_text(encoding="utf-8")
     assert "C03" in html and "C03:" in script
-    assert "displacement against time" in html
+    assert "displacement–time" in html
     assert "calculus" in html.lower()
 
 
