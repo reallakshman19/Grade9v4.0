@@ -38,3 +38,19 @@ The Blueprint's phases are `GIVENS → ATTEMPT → RECONSTRUCT → ANSWER`. The 
 - **Boundary:** The child handles the changed condition before seeing its solution.
 
 The Blueprint's evidence states are `DEMONSTRATED`, `UNCERTAIN`, `MISSING`, and `UNKNOWN`. A correct number without an explanation is UNCERTAIN; incomplete exposure records support UNKNOWN. A diagnosis selected from a menu is a self-report, not by itself proof of misconception. A six-stage progress counter is not a mastery rating.
+
+## B1–B7: why six screens are not enough
+
+| Witness | Evidence that must exist |
+|---|---|
+| **B1 Target** | Exact task and decisive operation, proposed/reviewed QRT, assumptions |
+| **B2 Signature** | Core1A and a different Core1B require the same *kind* of inference |
+| **B3 Sufficiency** | Actual teaching of prerequisites, action + why, wrong path and completed exit check |
+| **B4 Reconstruction** | Fresh task demands a learner-owned decision W rather than a copied computation |
+| **B5 Protection** | Preserved initial answer, ordered help exposure, separate correction |
+| **B6 Diagnosis and transfer** | Error grounded in the actual first response; causal repair and changed-condition reasoning |
+| **B7 Physics and provenance** | Verified laws and conditions, signs, units, matching diagrams, checks and source identity |
+
+A correct numerical answer is not automatically MODEL, REPRESENT, SYNTHESIZE or JUSTIFY evidence. The QRT band belongs to the exact task, not the user-interface stage. Each MAIN task, instance task and real examination question requires its own demand check. A D2 instance can support a D4 MAIN but does not count as a D4 original.
+
+The full Blueprint asks for one Core1A teaching construction per instance, one band-carrying MAIN Core1B cycle combining instances and one Core1B cycle per instance. The existing eight-topic practice prototype has six-stage journeys but is not an independently approved native MAIN-plus-instance tile.
