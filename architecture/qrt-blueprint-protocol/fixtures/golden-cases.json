@@ -276,7 +276,7 @@
     },
     {
       "id": "G04",
-      "name": "Potential-well source theme has only E01 author pack, not interactive coverage",
+      "name": "Potential-well E01 now interactive but still only a proposed source-theme join",
       "route": {
         "schema": "g9v4-qrt-blueprint-question-route/v1",
         "fixture_not_evidence": true,
@@ -326,7 +326,7 @@
           "construction_ids": [
             "WPE-E01"
           ],
-          "status": "AUTHOR_PACK_ONLY",
+          "status": "INTERACTIVE_PRACTICE",
           "semantic_join": "UNREVIEWED_PROPOSAL",
           "b1_b7_receipt": null
         },
@@ -341,7 +341,7 @@
         "candidate_cell": "D3.6",
         "contains": [
           "QRT_NOT_ADJUDICATED",
-          "AUTHOR_PACK_NOT_INTERACTIVE",
+          "LEARNING_NOT_QUALIFIED",
           "NO_QRT_ADMISSION"
         ],
         "release": "HOLD"
