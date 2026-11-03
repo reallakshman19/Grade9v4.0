@@ -144,20 +144,24 @@ def other_topic_links(browser,base):
             require(root.locator(".worked").count()==0,"Hint leaked the answer for "+lesson)
             page.locator("#source-journey-return").click()
             require(page.locator(".qtitle").inner_text()==q,"Other topic returned to wrong question")
-        # Imported EX-M101 source hints were about the wrong scientific subject.
-        # Show the spring controlled-variable reasoning instead, without editing source JSON.
+        # PR26 supplies science-specific authored cues while preserving the original source hints.
+        # The renderer must use those cues, not the old hardcoded EX-M101 override.
         page.goto(base+"/preview/question-status.html?question=EX-M101")
         require(page.locator(".qtitle").inner_text()=="EX-M101","Spring comparison source unavailable")
-        require("Which quantity is held constant?" in page.locator('.hint').first.inner_text(),
-                "EX-M101 does not offer spring-specific progressive hints")
+        first_cue=page.locator('.hint').first.inner_text().lower()
+        require(all(word in first_cue for word in ("spring","stiffness","force")),
+                "EX-M101 missing tailored controlled-variable study cue")
+        require("path independence" not in first_cue and "conservative" not in first_cue,
+                "Unrelated source hint leaked into EX-M101 pre-attempt guidance")
         require(page.locator("#solution-container .solution").count()==0,
                 "Spring explanation leaked before a committed attempt")
         page.locator('input[name="answer-option"]').first.check()
         page.locator("#commit").click()
         page.locator("#reveal").click()
-        explained=page.locator("#solution-container").inner_text()
-        require("same FINAL force" in explained and "same EXTENSION" in explained,
-                "Source solution did not distinguish fixed force from fixed extension")
+        explained=page.locator("#solution-container").inner_text().lower()
+        require("same force" in explained and "same extension" in explained
+                and "k1<k2" in "".join(explained.split()),
+                "EX-M101 solution must infer spring stiffness and reverse the comparison")
         require("conservative-vector-field" not in explained,
                 "Irrelevant imported explanation still shown")
         page.goto(base+"/physics/wpe/d3d4-self-tutor.html?question=EX-M81#C03")
