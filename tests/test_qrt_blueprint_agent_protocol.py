@@ -163,3 +163,19 @@ def test_architecture_links_and_honest_source_baseline():
     reader=load(ROOT/"workspace/output/WPE_Core2_Consolidated_20261102/native-candidate/selected_bank.review.json")
     assert len(reader["questions"])==74
     assert sum(q["band"] in ("D3","D4") for q in reader["questions"])==22
+
+
+def test_core_six_stage_fixture_matches_blueprint_and_b1_b7():
+    method=load(FIXTURES/"six-stage-core-method.json")
+    bp=load(ROOT/"templates/physics-blueprint/physics-blueprint.D3-D4.json")
+    expected=[x["id"] for x in bp["common"]["page_anatomy"]["core1b"]["sections"]]
+    assert [x["key"] for x in method["stages"]]==expected
+    assert len(expected)==6
+    assert method["blueprint"]["version"]==bp["version"]
+    assert method["status"]=="AUTHOR_EXPOSED_TRAINING_NOT_QRT_NOT_LEARNER_EVIDENCE"
+    assert set(method["method"]["evidence_states"])==set(
+        bp["common"]["evidence_record"]["observation_states"])
+    assert all(x["principle"] and x["expected_evidence"] and x["failure"]
+               for x in method["stages"])
+    assert {k for x in method["stages"] for k in x["witness"]}=={
+        "B1","B2","B3","B4","B5","B6","B7"}
