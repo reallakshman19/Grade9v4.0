@@ -54,3 +54,20 @@ The Blueprint's evidence states are `DEMONSTRATED`, `UNCERTAIN`, `MISSING`, and 
 A correct numerical answer is not automatically MODEL, REPRESENT, SYNTHESIZE or JUSTIFY evidence. The QRT band belongs to the exact task, not the user-interface stage. Each MAIN task, instance task and real examination question requires its own demand check. A D2 instance can support a D4 MAIN but does not count as a D4 original.
 
 The full Blueprint asks for one Core1A teaching construction per instance, one band-carrying MAIN Core1B cycle combining instances and one Core1B cycle per instance. The existing eight-topic practice prototype has six-stage journeys but is not an independently approved native MAIN-plus-instance tile.
+
+## Worked example: C07 conveyor, with one different fresh task
+
+**Core1A (teaching anchor).** A 2 m/s conveyor receives 1 kg/s of sand initially at zero horizontal speed. Force on the incoming flow = 1×2 = **2 N**. Motor pickup power = 2×2 = **4 W**. New sand gains horizontal kinetic energy at **2 W**; idealized slip heat is **2 W**. The child sees every model choice, its warrant and the 4=2+2 check.
+
+**Core1B (different task).** A 4 m/s belt receives chips already moving right at 1 m/s. The feeder supplies half the numerical belt speed in kg/s. The protected W is choosing a one-second stream model and separating motor power, kinetic-energy change and slip heat.
+
+| Stage | Question for child | What the full model later checks |
+|---|---|---|
+| Predict | “Do chips already have momentum? Does all motor power become their kinetic energy?” | Explains difference between input and gain |
+| Attempt | “Choose the incoming mass each second. Find momentum-rate force and three powers.” | 2 kg/s, gain 3 m/s, **6 N**, motor **24 W**, chip kinetic gain **15 W**, heat **9 W** |
+| Reconstruct | “What is the first step that differs from the worked route?” | Full reasoning, conditions and **24=15+9** |
+| Diagnose | “Did you count accumulated chips, forget initial speed or assume zero heat?” | Identify a specific error supported by saved reasoning |
+| Repair | “Rewrite the incorrect assumption and justify the new model.” | A changed physical inference, not just a corrected number |
+| Boundary test | “Belt slows to 2 m/s; chips still enter at 1 m/s; feeder rule remains. Do outputs merely halve?” | New rate **1 kg/s**, F **1 N**, motor **2 W**, kinetic gain **1.5 W**, heat **0.5 W** |
+
+**Why this is not an admitted D3.4 tile:** C07 is authored related practice. EX-M16 has an unqualified source-to-practice join, and its exact speed-dependent original demand still requires authorized QRT and source review.
