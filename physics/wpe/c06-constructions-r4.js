@@ -165,13 +165,13 @@ const C6A={
 const C6H={
  source:"EX-N31",title:"A smooth exterior dome stops pushing before the bead stops moving",short:"Exterior hemisphere · N = 0 boundary",
  question:"When does a sliding block leave a convex surface, and why is N=0 a force boundary, not a zero-speed condition?",
- sourceCaution:"The EX-N31 2R/3 height result assumes a bead released from rest at the TOP of a stationary smooth EXTERIOR hemisphere, with no initial speed and no supplementary constraints. A rigid captive groove or a different start changes the result. The exact original figure has not been verified.",
+ sourceCaution:"The EX-N31 2R/3 height result is the limit of a bead given an infinitesimal downhill displacement/perturbation from rest at the TOP of a stationary smooth EXTERIOR hemisphere, with initial energy tending to crown-rest energy and no supplementary constraints. At exact unperturbed rest at the crown, no tangential force can initiate sliding. A rigid captive groove or a different start changes the result. The exact original figure has not been verified.",
  prerequisites:"An exterior smooth hemisphere can PUSH outward along its surface normal N≥0 but cannot pull inward to keep a bead attached. Inward is toward the sphere centre. Gravity supplies inward mg cosθ; outward normal subtracts: mg cosθ−N=mv²/R while touching.",
- core:"With launch from rest at the crown, v²=2gR(1−cosθ). Thus N=mg cosθ−m v²/R=m g(3cosθ−2). At N=0, cosθ=2/3 and height above the equator h=Rcosθ=2R/3. For initial downhill speed u at crown, cosθ_det=(u²+2gR)/(3gR), IF contact exists initially.",
- guide:"GUIDED: a 0.5 kg puck slides from rest over a smooth EXTERIOR sphere of R=5 m, g=10. It detaches when cosθ=2/3: h=10/3≈3.333 m above the equatorial plane. The puck then flies freely rather than continuing on the sphere.",
+ core:"In the infinitesimally perturbed rest-at-crown LIMIT, v²=2gR(1−cosθ). Thus N=mg cosθ−m v²/R=m g(3cosθ−2). At N=0, cosθ=2/3 and height above the equator h=Rcosθ=2R/3. For initial downhill speed u at crown, cosθ_det=(u²+2gR)/(3gR), IF contact exists initially.",
+ guide:"GUIDED: a 0.5 kg puck is infinitesimally nudged downhill from the exact stationary crown of a smooth EXTERIOR sphere, R=5 m, g=10. Take the limit of vanishing displacement and initial kinetic energy. Exact unperturbed rest would remain at the unstable equilibrium. In the sliding limit, it detaches when cosθ=2/3: h=10/3≈3.333 m above the equatorial plane. The puck then flies freely rather than continuing on the sphere.",
  guideSteps:[
   ["Separate the physical forces","Inward points toward sphere centre. The normal pushes OUTWARD and gravity has an inward component mg cosθ. An exterior wall cannot provide N<0."],
-  ["Compute speed while still touching","From rest at θ=0, conservation gives v²=2gR(1−cosθ). The normal force does no work while contact exists."],
+  ["Compute speed while still touching","After a vanishing downhill perturbation (exact crown rest alone would not move), conservation gives the limiting v²=2gR(1−cosθ). The normal force does no work while contact exists."],
   ["Apply the inward radial balance","mg cosθ−N=mv²/R; substitute speed to obtain N=mg(3cosθ−2)."],
   ["Find the boundary","N first reaches 0 at cosθ=2/3, so h=Rcosθ=5×2/3=10/3 m. Speed is NONZERO there."],
   ["Stop using the constrained model after release","Beyond N=0, the puck follows projectile motion. Extrapolating v²/R and a fictitious negative N past release is invalid."]
@@ -181,8 +181,8 @@ const C6H={
  academic:{decision:"Use TWO independent statements while touching: energy to find speed, inward force balance to test N≥0. Once the normal would turn negative, stop the constrained trajectory.",
  observe:"Slide along the crown angle; read N/(mg)=3cosθ−2, which falls to zero while v² is already positive. After release the sphere no longer steers the puck.",
  validity:"Sphere exterior contact differs from a captive wire; at the crown an initial tangential speed u must satisfy u²≤gR or contact is impossible immediately.",
- limit:"u²=gR makes initial N=0 and release at the top; u²>gR requires N<0 at the initial crown, so it cannot start in surface contact. From rest at the crown detachment h=2R/3.",
- sourceBoundary:"The 2R/3 source result is conditional on rest-at-crown, smooth EXTERIOR sphere. An author-drawn source figure is unverified and must not be promoted."},
+ limit:"u²=gR makes initial N=0 and release at the top; u²>gR requires N<0 at the initial crown, so it cannot start in surface contact. In the vanishing-perturbation crown-rest LIMIT, detachment h=2R/3. Exact crown rest without a disturbance has no initiated descent.",
+ sourceBoundary:"The 2R/3 source result is a perturbation LIMIT of an ideally smooth EXTERIOR sphere; exact crown rest is stationary until disturbed. An author-drawn source figure is unverified and must not be promoted."},
  slider:{label:"Position θ from crown on exterior sphere (degrees)",min:0,max:85,step:5,value:35},
  ...task({
   prediction:"Could a bead leave a convex dome with POSITIVE speed? What happens first: its speed vanishes or normal contact reaches zero?",
@@ -409,7 +409,7 @@ function diagram(id,value,{host,readout,svg,svgLine}){
     tx(22,51,"Exterior dome: normal OUTWARD");
     tx(22,81,"Gravity inward component mg cosθ");
     const ratio=3*Math.cos(a)-2,det=Math.acos(2/3)*180/Math.PI;
-    readout.textContent="Rest-at-crown model: N/(mg)="+nice(ratio)+" at θ="+value+"°. It reaches zero at θ≈"+nice(det)+"°, where height=2R/3. For N<0 the assumed exterior contact is impossible (bead leaves).";
+    readout.textContent="Perturbed crown-rest LIMIT: N/(mg)="+nice(ratio)+" at θ="+value+"°. It reaches zero at θ≈"+nice(det)+"°, where height=2R/3. For N<0 the assumed exterior contact is impossible (bead leaves).";
   }else if(id==="C6T"){
     const x=cx,y=cy-r;
     svg(host,"circle",{cx:x,cy:y,r:11,fill:"#c68c64"});
