@@ -186,7 +186,7 @@
         "The slow helper's work is U_after − U_before = 0 − (−40) = +40 J.",
         "That exceeds the +30 J partial-lift case because the helper lifts the remaining hanging 2 m section as well. The full rope does not rise by one identical height."
       ]
-
+    }
   };
 
   function initState(lesson) {
