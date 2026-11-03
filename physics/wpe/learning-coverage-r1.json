@@ -10,7 +10,8 @@
     "focused_new": 3,
     "targeted": 18,
     "related": 48,
-    "missing": 5
+    "missing": 5,
+    "wrapped_related": 37
   },
   "fit_legend": {
     "FOCUSED_NEW": "New authored Core1A and different Core1B practice, source answer not certified.",
@@ -34,11 +35,12 @@
       "fit": "RELATED_BRIDGE",
       "student_goal": "Coordinate two mass movements with one string constraint, then balance energy.",
       "teaching_limit": "Pulley kinematics and coupled masses need explicit teaching.",
-      "lesson_href": "d3d4-self-tutor.html?question=EX-M2#C01",
+      "lesson_href": "study-bridge.html?question=EX-M2&lesson=C01",
       "source_href": "../../preview/question-status.html?question=EX-M2",
       "has_source_caution": true,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "BRIDGED_RELATED"
     },
     {
       "source_id": "EX-M6",
@@ -59,7 +61,8 @@
       "source_href": "../../preview/question-status.html?question=EX-M6",
       "has_source_caution": true,
       "source_science_note": "Curved-path time ordering is not universally fixed by the given data.",
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "NATIVE_EXACT_SOURCE"
     },
     {
       "source_id": "EX-M7",
@@ -76,11 +79,12 @@
       "fit": "RELATED_BRIDGE",
       "student_goal": "Use gravitational height to compare projectile kinetic energies at different points.",
       "teaching_limit": "Oblique launch and figure-dependent heights are not taught in E03.",
-      "lesson_href": "extension-learning.html?question=EX-M7#E03",
+      "lesson_href": "study-bridge.html?question=EX-M7&lesson=E03",
       "source_href": "../../preview/question-status.html?question=EX-M7",
       "has_source_caution": false,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "BRIDGED_RELATED"
     },
     {
       "source_id": "EX-M8",
@@ -97,11 +101,12 @@
       "fit": "RELATED_BRIDGE",
       "student_goal": "Compare spring energies under different hanging loads, not an equal-load assumption.",
       "teaching_limit": "Unequal masses and the original spring geometry require a separate worked bridge.",
-      "lesson_href": "d3d4-self-tutor.html?question=EX-M8#C08",
+      "lesson_href": "study-bridge.html?question=EX-M8&lesson=C08",
       "source_href": "../../preview/question-status.html?question=EX-M8",
       "has_source_caution": false,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "BRIDGED_RELATED"
     },
     {
       "source_id": "EX-M11",
@@ -118,11 +123,12 @@
       "fit": "RELATED_BRIDGE",
       "student_goal": "Read each potential-energy slope and rank force magnitudes.",
       "teaching_limit": "Need multi-segment absolute-slope ranking and verified figure.",
-      "lesson_href": "d3d4-self-tutor.html?question=EX-M11#C05",
+      "lesson_href": "study-bridge.html?question=EX-M11&lesson=C05",
       "source_href": "../../preview/question-status.html?question=EX-M11",
       "has_source_caution": false,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "BRIDGED_RELATED"
     },
     {
       "source_id": "EX-M14",
@@ -139,11 +145,12 @@
       "fit": "RELATED_BRIDGE",
       "student_goal": "Resolve angled pull, changed normal reaction and friction together.",
       "teaching_limit": "C01 does not yet derive friction from the angle-dependent normal.",
-      "lesson_href": "d3d4-self-tutor.html?question=EX-M14#C01",
+      "lesson_href": "study-bridge.html?question=EX-M14&lesson=C01",
       "source_href": "../../preview/question-status.html?question=EX-M14",
       "has_source_caution": false,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "BRIDGED_RELATED"
     },
     {
       "source_id": "EX-M16",
@@ -164,7 +171,8 @@
       "source_href": "../../preview/question-status.html?question=EX-M16",
       "has_source_caution": false,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "NATIVE_EXACT_SOURCE"
     },
     {
       "source_id": "EX-M18",
@@ -186,7 +194,8 @@
       "source_href": "../../preview/question-status.html?question=EX-M18",
       "has_source_caution": false,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "NATIVE_EXACT_SOURCE"
     },
     {
       "source_id": "EX-M24",
@@ -208,7 +217,8 @@
       "source_href": "../../preview/question-status.html?question=EX-M24",
       "has_source_caution": false,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "NATIVE_EXACT_SOURCE"
     },
     {
       "source_id": "EX-M36",
@@ -225,11 +235,12 @@
       "fit": "RELATED_BRIDGE",
       "student_goal": "Combine gravitational energy and top-of-circle motion constraints.",
       "teaching_limit": "The minimum-speed half-circle string condition needs a separate contact model.",
-      "lesson_href": "d3d4-self-tutor.html?question=EX-M36#C06",
+      "lesson_href": "study-bridge.html?question=EX-M36&lesson=C06",
       "source_href": "../../preview/question-status.html?question=EX-M36",
       "has_source_caution": false,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "BRIDGED_RELATED"
     },
     {
       "source_id": "EX-M47",
@@ -246,11 +257,12 @@
       "fit": "RELATED_BRIDGE",
       "student_goal": "Separate horizontal kinetic energy at the projectile apex from vertical motion.",
       "teaching_limit": "Oblique flight/apex reasoning is not covered by the horizontal-launch guide.",
-      "lesson_href": "extension-learning.html?question=EX-M47#E03",
+      "lesson_href": "study-bridge.html?question=EX-M47&lesson=E03",
       "source_href": "../../preview/question-status.html?question=EX-M47",
       "has_source_caution": false,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "BRIDGED_RELATED"
     },
     {
       "source_id": "EX-M49",
@@ -267,11 +279,12 @@
       "fit": "TARGETED_PRACTICE",
       "student_goal": "Account for momentum transferred to material arriving on a moving belt.",
       "teaching_limit": "C07 is a close model; verify the precise incoming horizontal velocity and losses.",
-      "lesson_href": "d3d4-self-tutor.html?question=EX-M49#C07",
+      "lesson_href": "study-bridge.html?question=EX-M49&lesson=C07",
       "source_href": "../../preview/question-status.html?question=EX-M49",
       "has_source_caution": false,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "BRIDGED_RELATED"
     },
     {
       "source_id": "EX-M50",
@@ -290,7 +303,8 @@
       "source_href": "../../preview/question-status.html?question=EX-M50",
       "has_source_caution": false,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "MISSING"
     },
     {
       "source_id": "EX-M56",
@@ -311,7 +325,8 @@
       "source_href": "../../preview/question-status.html?question=EX-M56",
       "has_source_caution": false,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "NATIVE_EXACT_SOURCE"
     },
     {
       "source_id": "EX-M61",
@@ -332,7 +347,8 @@
       "source_href": "../../preview/question-status.html?question=EX-M61",
       "has_source_caution": true,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "NATIVE_EXACT_SOURCE"
     },
     {
       "source_id": "EX-M62",
@@ -353,7 +369,8 @@
       "source_href": "../../preview/question-status.html?question=EX-M62",
       "has_source_caution": true,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "NATIVE_EXACT_SOURCE"
     },
     {
       "source_id": "EX-M65",
@@ -370,11 +387,12 @@
       "fit": "RELATED_BRIDGE",
       "student_goal": "Relate constant power to energy, speed and displacement over time.",
       "teaching_limit": "Requires a conceptual calculus bridge for displacement proportional to t^(3/2).",
-      "lesson_href": "d3d4-self-tutor.html?question=EX-M65#C03",
+      "lesson_href": "study-bridge.html?question=EX-M65&lesson=C03",
       "source_href": "../../preview/question-status.html?question=EX-M65",
       "has_source_caution": true,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "BRIDGED_RELATED"
     },
     {
       "source_id": "EX-M68",
@@ -391,11 +409,12 @@
       "fit": "TARGETED_PRACTICE",
       "student_goal": "Integrate piecewise changing force as signed area under force–displacement.",
       "teaching_limit": "C05 teaches area choice; a multi-section decreasing-force ledger is still needed.",
-      "lesson_href": "d3d4-self-tutor.html?question=EX-M68#C05",
+      "lesson_href": "study-bridge.html?question=EX-M68&lesson=C05",
       "source_href": "../../preview/question-status.html?question=EX-M68",
       "has_source_caution": false,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "BRIDGED_RELATED"
     },
     {
       "source_id": "EX-M69",
@@ -417,7 +436,8 @@
       "source_href": "../../preview/question-status.html?question=EX-M69",
       "has_source_caution": false,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "NATIVE_EXACT_SOURCE"
     },
     {
       "source_id": "EX-M73",
@@ -438,7 +458,8 @@
       "source_href": "../../preview/question-status.html?question=EX-M73",
       "has_source_caution": true,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "NATIVE_EXACT_SOURCE"
     },
     {
       "source_id": "EX-M74",
@@ -455,11 +476,12 @@
       "fit": "TARGETED_PRACTICE",
       "student_goal": "Recover kinetic energy from area under a force–distance graph.",
       "teaching_limit": "Graph sections and initial energy must be independently checked.",
-      "lesson_href": "d3d4-self-tutor.html?question=EX-M74#C05",
+      "lesson_href": "study-bridge.html?question=EX-M74&lesson=C05",
       "source_href": "../../preview/question-status.html?question=EX-M74",
       "has_source_caution": false,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "BRIDGED_RELATED"
     },
     {
       "source_id": "EX-M76",
@@ -476,11 +498,12 @@
       "fit": "RELATED_BRIDGE",
       "student_goal": "Compute normal-force work with an accelerating vertical platform.",
       "teaching_limit": "Need platform displacement and the nonzero normal-work distinction.",
-      "lesson_href": "d3d4-self-tutor.html?question=EX-M76#C01",
+      "lesson_href": "study-bridge.html?question=EX-M76&lesson=C01",
       "source_href": "../../preview/question-status.html?question=EX-M76",
       "has_source_caution": false,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "BRIDGED_RELATED"
     },
     {
       "source_id": "EX-M78",
@@ -497,11 +520,12 @@
       "fit": "RELATED_BRIDGE",
       "student_goal": "Track spring potential and kinetic energy as compression changes.",
       "teaching_limit": "Check whether the original setup has attached versus contact-only spring.",
-      "lesson_href": "d3d4-self-tutor.html?question=EX-M78#C02",
+      "lesson_href": "study-bridge.html?question=EX-M78&lesson=C02",
       "source_href": "../../preview/question-status.html?question=EX-M78",
       "has_source_caution": false,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "BRIDGED_RELATED"
     },
     {
       "source_id": "EX-M79",
@@ -522,7 +546,8 @@
       "source_href": "../../preview/question-status.html?question=EX-M79",
       "has_source_caution": false,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "NATIVE_EXACT_SOURCE"
     },
     {
       "source_id": "EX-M82",
@@ -543,7 +568,8 @@
       "source_href": "../../preview/question-status.html?question=EX-M82",
       "has_source_caution": false,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "NATIVE_EXACT_SOURCE"
     },
     {
       "source_id": "EX-M85",
@@ -560,11 +586,12 @@
       "fit": "RELATED_BRIDGE",
       "student_goal": "Read speeds at two times then use net work equal to kinetic-energy change.",
       "teaching_limit": "C05 is a graph-operation bridge; figure axes need checking.",
-      "lesson_href": "d3d4-self-tutor.html?question=EX-M85#C05",
+      "lesson_href": "study-bridge.html?question=EX-M85&lesson=C05",
       "source_href": "../../preview/question-status.html?question=EX-M85",
       "has_source_caution": false,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "BRIDGED_RELATED"
     },
     {
       "source_id": "EX-M89",
@@ -585,7 +612,8 @@
       "source_href": "../../preview/question-status.html?question=EX-M89",
       "has_source_caution": false,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "NATIVE_EXACT_SOURCE"
     },
     {
       "source_id": "EX-M90",
@@ -602,11 +630,12 @@
       "fit": "RELATED_BRIDGE",
       "student_goal": "Infer spring stiffness from energy conversion at a partial return position.",
       "teaching_limit": "Requires incomplete-compression energy comparison.",
-      "lesson_href": "d3d4-self-tutor.html?question=EX-M90#C02",
+      "lesson_href": "study-bridge.html?question=EX-M90&lesson=C02",
       "source_href": "../../preview/question-status.html?question=EX-M90",
       "has_source_caution": false,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "BRIDGED_RELATED"
     },
     {
       "source_id": "EX-M92",
@@ -625,7 +654,8 @@
       "source_href": "../../preview/question-status.html?question=EX-M92",
       "has_source_caution": false,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "MISSING"
     },
     {
       "source_id": "EX-M96",
@@ -644,7 +674,8 @@
       "source_href": "../../preview/question-status.html?question=EX-M96",
       "has_source_caution": false,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "MISSING"
     },
     {
       "source_id": "EX-M97",
@@ -665,7 +696,8 @@
       "source_href": "../../preview/question-status.html?question=EX-M97",
       "has_source_caution": true,
       "source_science_note": "The coaching prediction conflates (F−mg)v with upward-applied Fv; keep separate.",
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "FOCUSED_SOURCE"
     },
     {
       "source_id": "EX-M98",
@@ -682,11 +714,12 @@
       "fit": "RELATED_BRIDGE",
       "student_goal": "Recognize identical series force but unequal spring extensions and energies.",
       "teaching_limit": "C08 contrasts controlled force and extension; series connection needs explicit derivation.",
-      "lesson_href": "d3d4-self-tutor.html?question=EX-M98#C08",
+      "lesson_href": "study-bridge.html?question=EX-M98&lesson=C08",
       "source_href": "../../preview/question-status.html?question=EX-M98",
       "has_source_caution": false,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "BRIDGED_RELATED"
     },
     {
       "source_id": "EX-M101",
@@ -707,7 +740,8 @@
       "source_href": "../../preview/question-status.html?question=EX-M101",
       "has_source_caution": true,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "NATIVE_EXACT_SOURCE"
     },
     {
       "source_id": "EX-M105",
@@ -728,7 +762,8 @@
       "source_href": "../../preview/question-status.html?question=EX-M105",
       "has_source_caution": false,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "NATIVE_EXACT_SOURCE"
     },
     {
       "source_id": "EX-M106",
@@ -747,7 +782,8 @@
       "source_href": "../../preview/question-status.html?question=EX-M106",
       "has_source_caution": false,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "MISSING"
     },
     {
       "source_id": "EX-M109",
@@ -768,7 +804,8 @@
       "source_href": "../../preview/question-status.html?question=EX-M109",
       "has_source_caution": false,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "NATIVE_EXACT_SOURCE"
     },
     {
       "source_id": "EX-M111",
@@ -789,7 +826,8 @@
       "source_href": "../../preview/question-status.html?question=EX-M111",
       "has_source_caution": false,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "FOCUSED_SOURCE"
     },
     {
       "source_id": "EX-N8",
@@ -810,7 +848,8 @@
       "source_href": "../../preview/question-status.html?question=EX-N8",
       "has_source_caution": false,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "FOCUSED_SOURCE"
     },
     {
       "source_id": "EX-N11",
@@ -827,11 +866,12 @@
       "fit": "RELATED_BRIDGE",
       "student_goal": "Model circular motion where friction also dissipates energy.",
       "teaching_limit": "C06 covers contact/energy separately, but not friction around a whole loop.",
-      "lesson_href": "d3d4-self-tutor.html?question=EX-N11#C06",
+      "lesson_href": "study-bridge.html?question=EX-N11&lesson=C06",
       "source_href": "../../preview/question-status.html?question=EX-N11",
       "has_source_caution": false,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "BRIDGED_RELATED"
     },
     {
       "source_id": "EX-N19",
@@ -848,11 +888,12 @@
       "fit": "RELATED_BRIDGE",
       "student_goal": "Connect constant power to displacement through a changing speed.",
       "teaching_limit": "The position–time relation requires a prepared integral or graphical bridge.",
-      "lesson_href": "d3d4-self-tutor.html?question=EX-N19#C03",
+      "lesson_href": "study-bridge.html?question=EX-N19&lesson=C03",
       "source_href": "../../preview/question-status.html?question=EX-N19",
       "has_source_caution": false,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "BRIDGED_RELATED"
     },
     {
       "source_id": "EX-N21",
@@ -869,11 +910,12 @@
       "fit": "RELATED_BRIDGE",
       "student_goal": "Use force component along velocity when the angle changes with motion.",
       "teaching_limit": "The angle-varying trajectory needs a separate geometric construction.",
-      "lesson_href": "extension-learning.html?question=EX-N21#E02",
+      "lesson_href": "study-bridge.html?question=EX-N21&lesson=E02",
       "source_href": "../../preview/question-status.html?question=EX-N21",
       "has_source_caution": false,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "BRIDGED_RELATED"
     },
     {
       "source_id": "EX-N27",
@@ -892,7 +934,8 @@
       "source_href": "../../preview/question-status.html?question=EX-N27",
       "has_source_caution": false,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "MISSING"
     },
     {
       "source_id": "EX-N30",
@@ -909,11 +952,12 @@
       "fit": "RELATED_BRIDGE",
       "student_goal": "Track a moving chain's changing centre of mass until it has fully slipped.",
       "teaching_limit": "C04 gives a strong distributed-mass bridge; the release-to-motion phase differs.",
-      "lesson_href": "d3d4-self-tutor.html?question=EX-N30#C04",
+      "lesson_href": "study-bridge.html?question=EX-N30&lesson=C04",
       "source_href": "../../preview/question-status.html?question=EX-N30",
       "has_source_caution": false,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "BRIDGED_RELATED"
     },
     {
       "source_id": "EX-N31",
@@ -934,7 +978,8 @@
       "source_href": "../../preview/question-status.html?question=EX-N31",
       "has_source_caution": false,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "NATIVE_EXACT_SOURCE"
     },
     {
       "source_id": "EX-N34",
@@ -955,7 +1000,8 @@
       "source_href": "../../preview/question-status.html?question=EX-N34",
       "has_source_caution": false,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "NATIVE_EXACT_SOURCE"
     },
     {
       "source_id": "EX-N38",
@@ -972,11 +1018,12 @@
       "fit": "RELATED_BRIDGE",
       "student_goal": "Start from K(t)=Pt and reconstruct distance from changing velocity.",
       "teaching_limit": "C03 explains K and v; integrating displacement is advanced.",
-      "lesson_href": "d3d4-self-tutor.html?question=EX-N38#C03",
+      "lesson_href": "study-bridge.html?question=EX-N38&lesson=C03",
       "source_href": "../../preview/question-status.html?question=EX-N38",
       "has_source_caution": false,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "BRIDGED_RELATED"
     },
     {
       "source_id": "EX-N39",
@@ -997,7 +1044,8 @@
       "source_href": "../../preview/question-status.html?question=EX-N39",
       "has_source_caution": false,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "FOCUSED_SOURCE"
     },
     {
       "source_id": "EX-N42",
@@ -1014,11 +1062,12 @@
       "fit": "RELATED_BRIDGE",
       "student_goal": "Switch from a gravity-powered track to free projectile flight.",
       "teaching_limit": "E03's contact-to-flight split is related but not the same transition.",
-      "lesson_href": "extension-learning.html?question=EX-N42#E03",
+      "lesson_href": "study-bridge.html?question=EX-N42&lesson=E03",
       "source_href": "../../preview/question-status.html?question=EX-N42",
       "has_source_caution": false,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "BRIDGED_RELATED"
     },
     {
       "source_id": "AN-1",
@@ -1035,11 +1084,12 @@
       "fit": "TARGETED_PRACTICE",
       "student_goal": "Set displacement direction and sign of gravity versus lifting work.",
       "teaching_limit": "C01 gives a signed force-work ledger; test the actual source statements.",
-      "lesson_href": "d3d4-self-tutor.html?question=AN-1#C01",
+      "lesson_href": "study-bridge.html?question=AN-1&lesson=C01",
       "source_href": "../../preview/question-status.html?question=AN-1",
       "has_source_caution": false,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "BRIDGED_RELATED"
     },
     {
       "source_id": "AN-2",
@@ -1056,11 +1106,12 @@
       "fit": "RELATED_BRIDGE",
       "student_goal": "Distinguish conservative-force work from negative potential-energy change.",
       "teaching_limit": "The source wording and sign of a stated integral need independent checking.",
-      "lesson_href": "d3d4-self-tutor.html?question=AN-2#C05",
+      "lesson_href": "study-bridge.html?question=AN-2&lesson=C05",
       "source_href": "../../preview/question-status.html?question=AN-2",
       "has_source_caution": false,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "BRIDGED_RELATED"
     },
     {
       "source_id": "AN-3",
@@ -1077,11 +1128,12 @@
       "fit": "RELATED_BRIDGE",
       "student_goal": "Explain when central force fields have path-independent work.",
       "teaching_limit": "A radial position-only central force is conservative under stated conditions; not all forces are.",
-      "lesson_href": "extension-learning.html?question=AN-3#E05",
+      "lesson_href": "study-bridge.html?question=AN-3&lesson=E05",
       "source_href": "../../preview/question-status.html?question=AN-3",
       "has_source_caution": false,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "BRIDGED_RELATED"
     },
     {
       "source_id": "AN-5",
@@ -1098,11 +1150,12 @@
       "fit": "TARGETED_PRACTICE",
       "student_goal": "Infer zero instantaneous power when a force is perpendicular to velocity.",
       "teaching_limit": "E02 provides a direct zero-power changed-condition example.",
-      "lesson_href": "extension-learning.html?question=AN-5#E02",
+      "lesson_href": "study-bridge.html?question=AN-5&lesson=E02",
       "source_href": "../../preview/question-status.html?question=AN-5",
       "has_source_caution": false,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "BRIDGED_RELATED"
     },
     {
       "source_id": "AN-6",
@@ -1119,11 +1172,12 @@
       "fit": "RELATED_BRIDGE",
       "student_goal": "Distinguish conservative forces with potential energy from dissipative forces.",
       "teaching_limit": "C05 teaches U-slope; a formal potential-existence criterion is missing.",
-      "lesson_href": "d3d4-self-tutor.html?question=AN-6#C05",
+      "lesson_href": "study-bridge.html?question=AN-6&lesson=C05",
       "source_href": "../../preview/question-status.html?question=AN-6",
       "has_source_caution": false,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "BRIDGED_RELATED"
     },
     {
       "source_id": "JEE-2026-04-04-S1-Q46",
@@ -1140,11 +1194,12 @@
       "fit": "RELATED_BRIDGE",
       "student_goal": "Compute three-dimensional work using signed force–displacement components.",
       "teaching_limit": "E02's 2-D power components bridge the dot product; 3-D displacement differs.",
-      "lesson_href": "extension-learning.html?question=JEE-2026-04-04-S1-Q46#E02",
+      "lesson_href": "study-bridge.html?question=JEE-2026-04-04-S1-Q46&lesson=E02",
       "source_href": "../../preview/question-status.html?question=JEE-2026-04-04-S1-Q46",
       "has_source_caution": false,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "BRIDGED_RELATED"
     },
     {
       "source_id": "JEE-2026-04-06-S2-Q29",
@@ -1161,11 +1216,12 @@
       "fit": "RELATED_BRIDGE",
       "student_goal": "Read v(x) and evaluate work through change in kinetic energy.",
       "teaching_limit": "C05 distinguishes graph operations but does not derive the entire v(x) law.",
-      "lesson_href": "d3d4-self-tutor.html?question=JEE-2026-04-06-S2-Q29#C05",
+      "lesson_href": "study-bridge.html?question=JEE-2026-04-06-S2-Q29&lesson=C05",
       "source_href": "../../preview/question-status.html?question=JEE-2026-04-06-S2-Q29",
       "has_source_caution": false,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "BRIDGED_RELATED"
     },
     {
       "source_id": "JEE-2026-04-06-S1-Q28",
@@ -1182,11 +1238,12 @@
       "fit": "TARGETED_PRACTICE",
       "student_goal": "Use net work to solve for an unknown resistive-force work.",
       "teaching_limit": "C01 includes resistance signs; source rounding/key still requires caution.",
-      "lesson_href": "d3d4-self-tutor.html?question=JEE-2026-04-06-S1-Q28#C01",
+      "lesson_href": "study-bridge.html?question=JEE-2026-04-06-S1-Q28&lesson=C01",
       "source_href": "../../preview/question-status.html?question=JEE-2026-04-06-S1-Q28",
       "has_source_caution": true,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "BRIDGED_RELATED"
     },
     {
       "source_id": "JEE-2026-04-02-S2-Q31",
@@ -1203,11 +1260,12 @@
       "fit": "RELATED_BRIDGE",
       "student_goal": "Use conservative radial gravitational energy change from infinity to a surface.",
       "teaching_limit": "E05 is a radial-force bridge; inverse-square gravity and U(infinity)=0 need separate teaching.",
-      "lesson_href": "extension-learning.html?question=JEE-2026-04-02-S2-Q31#E05",
+      "lesson_href": "study-bridge.html?question=JEE-2026-04-02-S2-Q31&lesson=E05",
       "source_href": "../../preview/question-status.html?question=JEE-2026-04-02-S2-Q31",
       "has_source_caution": false,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "BRIDGED_RELATED"
     },
     {
       "source_id": "JEE-2026-04-04-S1-Q49",
@@ -1224,11 +1282,12 @@
       "fit": "RELATED_BRIDGE",
       "student_goal": "Find velocity under time-varying vector force before computing instantaneous power.",
       "teaching_limit": "E02 teaches the dot product, but impulse integration is missing.",
-      "lesson_href": "extension-learning.html?question=JEE-2026-04-04-S1-Q49#E02",
+      "lesson_href": "study-bridge.html?question=JEE-2026-04-04-S1-Q49&lesson=E02",
       "source_href": "../../preview/question-status.html?question=JEE-2026-04-04-S1-Q49",
       "has_source_caution": false,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "BRIDGED_RELATED"
     },
     {
       "source_id": "WEP07-02",
@@ -1249,7 +1308,8 @@
       "source_href": "../../preview/question-status.html?question=WEP07-02",
       "has_source_caution": false,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "NATIVE_EXACT_SOURCE"
     },
     {
       "source_id": "WEP07-03",
@@ -1270,7 +1330,8 @@
       "source_href": "../../preview/question-status.html?question=WEP07-03",
       "has_source_caution": true,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "NATIVE_EXACT_SOURCE"
     },
     {
       "source_id": "EX-N41",
@@ -1291,7 +1352,8 @@
       "source_href": "../../preview/question-status.html?question=EX-N41",
       "has_source_caution": false,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "FOCUSED_SOURCE"
     },
     {
       "source_id": "AN-4",
@@ -1308,11 +1370,12 @@
       "fit": "RELATED_BRIDGE",
       "student_goal": "Compare stopping distance from work against equal kinetic energy.",
       "teaching_limit": "C01's work–energy method transfers; distinguish constant versus changing brakes.",
-      "lesson_href": "d3d4-self-tutor.html?question=AN-4#C01",
+      "lesson_href": "study-bridge.html?question=AN-4&lesson=C01",
       "source_href": "../../preview/question-status.html?question=AN-4",
       "has_source_caution": false,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "BRIDGED_RELATED"
     },
     {
       "source_id": "JEE-2026-04-05-S2-Q28",
@@ -1329,11 +1392,12 @@
       "fit": "RELATED_BRIDGE",
       "student_goal": "Decide whether friction does work when the entire surface moves.",
       "teaching_limit": "The figure and actual displacement frame need verification.",
-      "lesson_href": "d3d4-self-tutor.html?question=JEE-2026-04-05-S2-Q28#C01",
+      "lesson_href": "study-bridge.html?question=JEE-2026-04-05-S2-Q28&lesson=C01",
       "source_href": "../../preview/question-status.html?question=JEE-2026-04-05-S2-Q28",
       "has_source_caution": true,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "BRIDGED_RELATED"
     },
     {
       "source_id": "EX-M39",
@@ -1354,7 +1418,8 @@
       "source_href": "../../preview/question-status.html?question=EX-M39",
       "has_source_caution": true,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "NATIVE_EXACT_SOURCE"
     },
     {
       "source_id": "WEP07-01",
@@ -1375,7 +1440,8 @@
       "source_href": "../../preview/question-status.html?question=WEP07-01",
       "has_source_caution": false,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "FOCUSED_SOURCE"
     },
     {
       "source_id": "TB-WPE-ILL-01",
@@ -1392,11 +1458,12 @@
       "fit": "RELATED_BRIDGE",
       "student_goal": "Use signed vector components for work from force and displacement.",
       "teaching_limit": "E02 teaches force–velocity components; for work substitute displacement.",
-      "lesson_href": "extension-learning.html?question=TB-WPE-ILL-01#E02",
+      "lesson_href": "study-bridge.html?question=TB-WPE-ILL-01&lesson=E02",
       "source_href": "../../preview/question-status.html?question=TB-WPE-ILL-01",
       "has_source_caution": false,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "BRIDGED_RELATED"
     },
     {
       "source_id": "TB-WPE-ILL-02",
@@ -1417,7 +1484,8 @@
       "source_href": "../../preview/question-status.html?question=TB-WPE-ILL-02",
       "has_source_caution": false,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "NATIVE_EXACT_SOURCE"
     },
     {
       "source_id": "TB-WPE-ILL-03",
@@ -1434,11 +1502,12 @@
       "fit": "TARGETED_PRACTICE",
       "student_goal": "Find work from a linearly varying force as trapezoid area.",
       "teaching_limit": "C05 gives area operations; varying base and offsets need a fresh check.",
-      "lesson_href": "d3d4-self-tutor.html?question=TB-WPE-ILL-03#C05",
+      "lesson_href": "study-bridge.html?question=TB-WPE-ILL-03&lesson=C05",
       "source_href": "../../preview/question-status.html?question=TB-WPE-ILL-03",
       "has_source_caution": false,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "BRIDGED_RELATED"
     },
     {
       "source_id": "TB-WPE-ILL-04",
@@ -1459,7 +1528,8 @@
       "source_href": "../../preview/question-status.html?question=TB-WPE-ILL-04",
       "has_source_caution": true,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "FOCUSED_SOURCE"
     },
     {
       "source_id": "TB-WPE-ILL-05",
@@ -1480,7 +1550,8 @@
       "source_href": "../../preview/question-status.html?question=TB-WPE-ILL-05",
       "has_source_caution": true,
       "source_science_note": "Initial speed not specified; cannot determine one numerical bottom power.",
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "NATIVE_EXACT_SOURCE"
     },
     {
       "source_id": "TB-WPE-ILL-06",
@@ -1501,7 +1572,8 @@
       "source_href": "../../preview/question-status.html?question=TB-WPE-ILL-06",
       "has_source_caution": false,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "NATIVE_EXACT_SOURCE"
     },
     {
       "source_id": "TB-WPE-ILL-11",
@@ -1522,7 +1594,8 @@
       "source_href": "../../preview/question-status.html?question=TB-WPE-ILL-11",
       "has_source_caution": true,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "NATIVE_EXACT_SOURCE"
     },
     {
       "source_id": "TB-WPE-ILL-12",
@@ -1543,7 +1616,8 @@
       "source_href": "../../preview/question-status.html?question=TB-WPE-ILL-12",
       "has_source_caution": true,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "NATIVE_EXACT_SOURCE"
     },
     {
       "source_id": "SYN-WPE-DIRECTION-CONTROL-01",
@@ -1560,11 +1634,12 @@
       "fit": "TARGETED_PRACTICE",
       "student_goal": "Recognize that a perpendicular force does zero work.",
       "teaching_limit": "C01 explicitly teaches zero work for normal force.",
-      "lesson_href": "d3d4-self-tutor.html?question=SYN-WPE-DIRECTION-CONTROL-01#C01",
+      "lesson_href": "study-bridge.html?question=SYN-WPE-DIRECTION-CONTROL-01&lesson=C01",
       "source_href": "../../preview/question-status.html?question=SYN-WPE-DIRECTION-CONTROL-01",
       "has_source_caution": true,
       "source_science_note": null,
-      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED"
+      "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
+      "route_mode": "BRIDGED_RELATED"
     }
   ]
 }
