@@ -945,7 +945,7 @@
       ],
       "fit": "FOCUSED_NEW",
       "student_goal": "Contrast an explicitly ASSUMED whole-system 10%-retention budget with an actual two-body spring's available relative kinetic energy.",
-      "teaching_limit": "The 16×10⁵ N/m coached value depends on assuming 10% of WHOLE-SYSTEM initial energy becomes spring energy. A genuine engine–wagon prediction needs separate masses and braking/damping information.",
+      "teaching_limit": "The 16×10⁵ N/m coached value depends on assuming 10% of WHOLE-SYSTEM initial energy becomes spring energy. A genuine two-body engine–wagon coupling needs separate masses and braking/damping information.",
       "lesson_href": "gap-journeys.html?question=EX-N27#F08",
       "source_href": "../../preview/question-status.html?question=EX-N27",
       "has_source_caution": true,
