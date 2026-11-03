@@ -11,7 +11,7 @@
     "targeted": 18,
     "related": 48,
     "missing": 5,
-    "wrapped_related": 37
+    "wrapped_related": 41
   },
   "fit_legend": {
     "FOCUSED_NEW": "New authored Core1A and different Core1B practice, source answer not certified.",
@@ -822,12 +822,12 @@
       "fit": "RELATED_BRIDGE",
       "student_goal": "Split a ramp into smooth and rough segments, then apply an energy ledger.",
       "teaching_limit": "F02 covers bidirectional friction; segment-specific friction remains different.",
-      "lesson_href": "focused-journeys.html?question=EX-M111#F02",
+      "lesson_href": "study-bridge.html?question=EX-M111&lesson=F02",
       "source_href": "../../preview/question-status.html?question=EX-M111",
       "has_source_caution": false,
       "source_science_note": null,
       "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
-      "route_mode": "FOCUSED_SOURCE"
+      "route_mode": "BRIDGED_RELATED"
     },
     {
       "source_id": "EX-N8",
@@ -844,12 +844,12 @@
       "fit": "RELATED_BRIDGE",
       "student_goal": "Derive applied inclined-plane force and multiply by instantaneous speed.",
       "teaching_limit": "F01 is vertical and requires a bridge for force components along an incline.",
-      "lesson_href": "focused-journeys.html?question=EX-N8#F01",
+      "lesson_href": "study-bridge.html?question=EX-N8&lesson=F01",
       "source_href": "../../preview/question-status.html?question=EX-N8",
       "has_source_caution": false,
       "source_science_note": null,
       "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
-      "route_mode": "FOCUSED_SOURCE"
+      "route_mode": "BRIDGED_RELATED"
     },
     {
       "source_id": "EX-N11",
@@ -1348,12 +1348,12 @@
       "fit": "RELATED_BRIDGE",
       "student_goal": "Model friction only along rough portions of a composite incline.",
       "teaching_limit": "F02 treats uniform friction on both legs; piecewise roughness differs.",
-      "lesson_href": "focused-journeys.html?question=EX-N41#F02",
+      "lesson_href": "study-bridge.html?question=EX-N41&lesson=F02",
       "source_href": "../../preview/question-status.html?question=EX-N41",
       "has_source_caution": false,
       "source_science_note": null,
       "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
-      "route_mode": "FOCUSED_SOURCE"
+      "route_mode": "BRIDGED_RELATED"
     },
     {
       "source_id": "AN-4",
@@ -1524,12 +1524,12 @@
       "fit": "RELATED_BRIDGE",
       "student_goal": "Create a signed gravity and friction ledger on an inclined plane.",
       "teaching_limit": "F02's two-way model can scaffold a single rough descent.",
-      "lesson_href": "focused-journeys.html?question=TB-WPE-ILL-04#F02",
+      "lesson_href": "study-bridge.html?question=TB-WPE-ILL-04&lesson=F02",
       "source_href": "../../preview/question-status.html?question=TB-WPE-ILL-04",
       "has_source_caution": true,
       "source_science_note": null,
       "academic_status": "PRACTICE_ONLY_NOT_ADMITTED",
-      "route_mode": "FOCUSED_SOURCE"
+      "route_mode": "BRIDGED_RELATED"
     },
     {
       "source_id": "TB-WPE-ILL-05",
