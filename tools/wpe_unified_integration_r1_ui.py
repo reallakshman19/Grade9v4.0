@@ -166,7 +166,8 @@ def case(browser, base, width, height):
                 "Not all C/E/F direct skill destinations offered")
         require(page.locator("#question-plan .primary-link").count() == 0,
                 "Question-less gateway guessed a route")
-        page.goto(base + "/preview/question-status.html?question=EX-M79")
+        page.goto(base + "/physics/wpe/question-bank.html?question=EX-M79")
+        page.wait_for_url("**/preview/question-status.html?question=EX-M79")
         page.locator('#interactive-lesson-links a[href*="d3d4-self-tutor.html?question=EX-M79#C03"]').wait_for()
         page.locator('input[name="answer-option"]').first.check()
         page.reload()

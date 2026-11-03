@@ -295,7 +295,7 @@ def test_wpe_learning_route(browser):
             page.on("pageerror",lambda err:errors.append(str(err)))
             response=page.goto(root+"/physics/wpe/index.html",wait_until="load")
             check(response is not None and response.status==200,"WPE hub unavailable")
-            page.locator('.quicklinks a[href="learn-challenge.html"]').click()
+            page.locator('.quicklinks a[href="learn-challenge.html#question-routes"]').click()
             check("/physics/wpe/learn-challenge.html" in page.url,"Guided path inaccessible from hub")
             check(page.locator("article.lesson").count()==5,"Five guided topic pairs lost")
             check(page.locator("#wpe-related-pages a").count()==5,"Related pages navigation incomplete")
@@ -317,7 +317,10 @@ def test_wpe_learning_route(browser):
             check("0 academically admitted" in page.locator("header").inner_text(),"Source hold missing")
             page.locator('.c2-chapterbar a[href="../physics/wpe/index.html"]').first.click()
             check("/physics/wpe/index.html" in page.url,"Bank cannot return to WPE hub")
-            page.locator('.quicklinks a[href="../../preview/batches/reader.html"]').click()
+            # Technical examples remain discoverable from the one learning gateway,
+            # but are not a fourth competing WPE chapter front door.
+            page.goto(root+"/physics/wpe/learn-challenge.html",wait_until="load")
+            page.locator('#wpe-related-pages a[href="../../preview/batches/reader.html"]').click()
             check("/preview/batches/reader.html" in page.url,"Technical examples inaccessible")
             check(page.locator(".disclose").count()==1,"Examples disclosure missing")
             check(page.locator('nav[aria-label="Collection navigation"] a[href="../../physics/wpe/learn-challenge.html"]').count()==1,

@@ -381,10 +381,10 @@
         action(acts,"history","Review my original attempt and repair",true);
         paragraph(box,"You finished this fresh problem. Return to your source question and make your OWN final reasoning decision.","done");
         if(!d.variantId){
-          const transfer=add(box,"a","Try another challenge (optional)","return-original");
+          const transfer=add(box,"a","Try another challenge (optional)","transfer-challenge");
           transfer.href="focused-journeys.html"+(sourceLink?.lesson===id?"?question="+encodeURIComponent(sourceLink.source)+"&variant=transfer55":"?variant=transfer55")+"#"+id;
         }else{
-          const first=add(box,"a","Revisit my first challenge","return-original");
+          const first=add(box,"a","Revisit my first challenge","transfer-challenge");
           first.href="focused-journeys.html"+(sourceLink?.lesson===id.split("-")[0]?"?question="+encodeURIComponent(sourceLink.source):"")+"#"+id.split("-")[0];
         }
         if(sourceLink?.lesson===id.split("-")[0]){

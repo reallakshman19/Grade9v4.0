@@ -80,7 +80,7 @@ def test_only_authored_learner_navigation_changed():
 def test_full_width_question_bank_redirect_and_custody_unchanged():
     wrapper = (ROOT / "physics/wpe/question-bank.html").read_text(encoding="utf-8")
     reader = (ROOT / "preview/question-status.html").read_text(encoding="utf-8")
-    assert 'location.replace("https://reallakshman19.github.io/Grade9v4.0/preview/question-status.html"+location.search+location.hash)' in wrapper
+    assert 'location.replace("../../preview/question-status.html"+location.search+location.hash)' in wrapper
     assert 'href="../physics/wpe/index.html"' in reader
     assert "0 academically admitted" in reader
     assert "if(!s?.committed)return" in reader
