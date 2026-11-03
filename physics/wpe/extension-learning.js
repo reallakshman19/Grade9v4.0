@@ -567,12 +567,21 @@
     const banner=$("#source-journey"),info=$("#source-message"),link=$("#source-return");
     if(!/^[A-Za-z0-9-]{2,64}$/.test(sourceId)){banner.hidden=false;info.textContent="Invalid source question identifier. No original question link was created.";return;}
     try{
-      const res=await fetch("reasoning-paths.review.json",{cache:"no-store"});
-      if(!res.ok)throw Error("No route inventory");
-      const manifest=await res.json();
-      if(manifest.schema!=="wpe-reasoning-route-preview/v1"||manifest.policy!=="REVIEW_NAVIGATION_ONLY__NOT_CANONICAL_PREREQUISITE"||!Array.isArray(manifest.constructions))throw Error("Invalid route inventory");
-      const route=manifest.constructions.find(row=>row.id==="WPE-"+active && row.proposed_source_ids?.some(s=>s.id===sourceId&&s.reader_present));
-      if(!route)throw Error("Unmapped source/lesson pair");
+      const [res,cov,bankRes]=await Promise.all([
+        fetch("reasoning-paths.review.json",{cache:"no-store"}),
+        fetch("learning-coverage-r1.json",{cache:"no-store"}),
+        fetch("../../workspace/output/WPE_Core2_Consolidated_20261102/native-candidate/selected_bank.review.json",{cache:"no-store"})
+      ]);
+      if(!res.ok||!cov.ok||!bankRes.ok)throw Error("No source verification");
+      const manifest=await res.json(),map=await cov.json(),bank=await bankRes.json();
+      if(manifest.schema!=="wpe-reasoning-route-preview/v1"||manifest.policy!=="REVIEW_NAVIGATION_ONLY__NOT_CANONICAL_PREREQUISITE"||
+         !Array.isArray(manifest.constructions)||map.schema!=="wpe-learner-coverage-r1/v1"||
+         map.questions?.length!==74||bank.questions?.length!==74)throw Error("Invalid source inventory");
+      const matched=map.questions.find(x=>x.source_id===sourceId);
+      if(!matched||!bank.questions.some(x=>x.source_id===sourceId&&x.stem_sha256===matched.stem_sha256))throw Error("Unverified question ID");
+      const proposed=manifest.constructions.some(row=>row.id==="WPE-"+active&&row.proposed_source_ids?.some(x=>x.id===sourceId&&x.reader_present));
+      const primary=matched.primary_lesson===active&&matched.fit!=="MISSING_CONSTRUCTION";
+      if(!primary&&!proposed)throw Error("Unmapped source/lesson pair");
       sourceLink={id:sourceId,lesson:active,href:"../../preview/question-status.html?question="+encodeURIComponent(sourceId)};
       banner.hidden=false;
       $("#source-title").textContent="Your original Question Bank entry: "+sourceId;
