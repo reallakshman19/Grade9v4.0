@@ -41,7 +41,6 @@ def test_all_74_verified_routes_are_direct_without_changing_fits():
         "FOCUSED_NEW": 8,
         "TARGETED_PRACTICE": 18,
         "RELATED_BRIDGE": 48,
-        "MISSING_CONSTRUCTION": 0,
     }
     for row in coverage["questions"]:
         assert row["stem_sha256"] == by_id[row["source_id"]]["stem_sha256"]

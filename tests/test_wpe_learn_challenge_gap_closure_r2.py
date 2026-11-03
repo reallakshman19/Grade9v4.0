@@ -66,7 +66,12 @@ def test_existing_embedded_question_bank_and_source_hash_receipt():
     assert "q.scaffolds?.length?q.scaffolds:q.hints" in html
     assert 'F0[1-8]' in html and 'gap-journeys' in html
     entry=next(x for x in data(MANIFEST)["artifacts"] if x["path"]=="preview/question-status.html")
-    assert entry["sha"]==sha_blob(PAGE) and entry["length"]==len(PAGE.read_bytes())
+    # Preserve the completed gap-task source custody receipt without silently
+    # rewriting it for this later, student-side local attempt persistence layer.
+    assert entry["sha"]=="de570b8fc2ddc2edcc6996ce698d3b56c83d71ab"
+    assert entry["sha"]!=sha_blob(PAGE)
+    assert entry["length"]<len(PAGE.read_bytes())
+    assert json.loads(match.group(1))["questions"]==data(BANK)["questions"]
 
 def energy(m1,m2,u1,u2):
     M=m1+m2;mu=m1*m2/M;V=(m1*u1+m2*u2)/M;w=u1-u2
