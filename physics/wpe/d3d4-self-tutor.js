@@ -285,6 +285,126 @@
       ]
 
     }
+
+    ,
+    C07: {
+      title: "Incoming mass changes the motor's job",
+      version: 1,
+      prediction: "Chips already move right at 1 m/s but the belt moves at 4 m/s. Will pickup need extra motor power, and will all of it become the chips' kinetic energy?",
+      hints: [
+        "Draw a before → after arrow for ONE kilogram: incoming horizontal speed is 1 m/s, outgoing is 4 m/s. Ask what changes each second.",
+        "The rate depends on belt speed: kilograms arriving per second equal half the belt's numerical speed. Use momentum change per kg × kg/s to find force.",
+        "Motor pickup power is reaction force × BELT speed; kinetic-energy gain per second is a different calculation. Compare the two and account for the remainder."
+      ],
+      diagnosisFeedback: [
+        "Use a small flow interval: incoming kg/s times the velocity change of each kg, rather than total sand already riding the belt.",
+        "Subtract the incoming 1 m/s from the outgoing 4 m/s before multiplying by mass flow.",
+        "Recalculate mass flow from the given rate rule each time belt speed changes.",
+        "Keep pickup motor power F × belt speed separate from the chips' kinetic-energy-gain rate; slipping creates heat.",
+        "Check units: kg/s × m/s = N, then N × m/s = W. The energy ledger should balance.",
+        "Start by labeling u, v and kg/s on your incoming and outgoing arrows before calculating."
+      ],
+      fields: [
+        {id:"system",type:"select",label:"Which model follows the chips correctly?",options:["Incoming kg per second and its horizontal momentum change","One fixed lump of chips already on the belt","Only the belt's total mass","I'm not sure"]},
+        {id:"rate",type:"number",label:"Mass flow at 4 m/s (kg/s)",hint:"The feeder rule is rate = half the numerical belt speed."},
+        {id:"velocityChange",type:"number",label:"Horizontal velocity gained by each kg (m/s)",hint:"Final belt speed minus incoming chip speed."},
+        {id:"force",type:"number",label:"Extra horizontal force on chips (N)"},
+        {id:"motorPower",type:"number",label:"Extra pickup motor power (W)",hint:"Use belt speed for the motor's power, not incoming speed."},
+        {id:"kineticRate",type:"number",label:"Rate of horizontal kinetic-energy gain in chips (W)"},
+        {id:"heatRate",type:"number",label:"Rate of heating during slipping (W)"},
+        {id:"powerClaim",type:"select",label:"Why may motor power differ from the chips' kinetic-energy-gain rate?",options:["Slipping during speed matching dissipates energy as heat","The extra energy must disappear","Motor power always equals kinetic-energy increase","I'm not sure"]},
+        {id:"reason",type:"textarea",label:"Explain your before/after momentum arrows and both sides of the energy ledger",hint:"Identify the first model decision. 'I'm not sure' is a valid first attempt."}
+      ],
+      worked: [
+        ["Choose a stream, not a pile","At belt speed v = 4 m/s, the feeder supplies v/2 = 2 kg/s. Each incoming chip has horizontal speed u = 1 m/s; the outgoing speed is 4 m/s."],
+        ["Find horizontal momentum supplied each second","Each kilogram gains 4 − 1 = 3 m/s of horizontal speed, so F = (2 kg/s)(3 m/s) = +6 N on the chips. The equal opposite force acts backward on the belt."],
+        ["Calculate motor pickup power","The motor supplies the extra belt force +6 N while the belt moves at 4 m/s. Pickup-related motor power = 6 × 4 = 24 W."],
+        ["Keep kinetic-energy rate separate","Chips' horizontal kinetic-energy gain rate = ½(2 kg/s)(4² − 1²) = 15 W. It is not 24 W because incoming chips already have horizontal energy."],
+        ["Account for the other energy","In this steady inelastic speed-matching model, 24 − 15 = 9 W becomes heat. Independently ½(2 kg/s)(4 − 1)² = 9 W. Motor input = horizontal K increase + frictional heating."]
+      ],
+      rubric: [
+        "I used kg/s and the change from incoming to outgoing horizontal momentum.",
+        "I recalculated the speed-dependent mass-flow rate before finding force.",
+        "I distinguished motor pickup power (force × belt speed) from the chips' kinetic-energy-gain rate.",
+        "I explained the heating term and checked that the energy ledger balances."
+      ],
+      diagnoses: [
+        "I used the total accumulated belt load rather than incoming mass per second.",
+        "I forgot to subtract the incoming horizontal velocity.",
+        "I kept the feeder's flow rate constant as belt speed changed.",
+        "I incorrectly equated motor pickup power with the chips' kinetic-energy increase.",
+        "My model was right; I need to recheck units or arithmetic.",
+        "I still do not know which flow model applies."
+      ],
+      repairPrompt: "Redraw the two speed arrows, write the mass-flow rule, and repair the FIRST incorrect term in force or power. Finish with motor power = kinetic-energy rate + heat rate.",
+      boundaryPrompt: "The SAME feeder rule (mass flow in kg/s = half the numerical belt speed in m/s) and incoming chip speed u = 1 m/s remain, but belt speed becomes v = 2 m/s. Find flow, pickup force, motor power, horizontal kinetic-energy-gain rate and heat rate. Should all five simply halve?",
+      boundaryCheck: [
+        "New mass flow is 2/2 = 1 kg/s and each kilogram gains only 2 − 1 = 1 m/s horizontally.",
+        "Extra horizontal pickup force = 1 × 1 = +1 N, so motor pickup power = 1 × 2 = 2 W.",
+        "Chips' horizontal kinetic-energy gain rate = ½ × 1 × (2² − 1²) = 1.5 W.",
+        "Heating = 2 − 1.5 = 0.5 W, also ½ × 1 × (2 − 1)². These quantities do not all simply halve: both flow and speed difference changed."
+      ]
+    },
+    C08: {
+      title: "What's fixed: force or extension?",
+      version: 1,
+      prediction: "The gold pad needs twice the force of the blue pad at the same compression. Will it store more energy when both pads have the same final force too?",
+      hints: [
+        "First convert 4 cm into metres and find each spring's stiffness from its measured final force and the same compression.",
+        "For Test X the extension is fixed for both springs. For Test Y the FINAL slowly applied force is fixed; each spring reaches a different extension.",
+        "Elastic energy equals the triangular area under the force–extension graph. Use ½kx² when x is given; if final F is fixed, replace x with F/k."
+      ],
+      diagnosisFeedback: [
+        "Convert 4 cm to 0.04 m and 5 cm to 0.05 m before inferring stiffness or computing energy.",
+        "Force grows from zero as the spring deforms slowly; stored energy is the triangle ½Fx, not F times x throughout.",
+        "Separate the controlled variables: at the same x the stiffer pad stores more, at the same final F the softer pad stores more.",
+        "For Test Y calculate a NEW extension x = F/k for each pad; do not reuse Test X's 5 cm.",
+        "Recheck the inverse dependence U = F²/(2k) at fixed final F and your units.",
+        "Draw two side-by-side experiments, label the fixed quantity above each, then start your calculations."
+      ],
+      fields: [
+        {id:"kBlue",type:"number",label:"Stiffness of blue pad (N/m)",hint:"Use the measured 8 N at 4 cm."},
+        {id:"kGold",type:"number",label:"Stiffness of gold pad (N/m)",hint:"Use the measured 16 N at 4 cm."},
+        {id:"fixedX",type:"select",label:"Test X: what stays the same?",options:["Compression x = 5 cm for both pads","Final force F = 12 N for both pads","Spring stiffness k for both pads","I'm not sure"]},
+        {id:"blueX",type:"number",label:"Blue pad energy in Test X (J)"},
+        {id:"goldX",type:"number",label:"Gold pad energy in Test X (J)"},
+        {id:"winnerX",type:"select",label:"Which stores more in Test X?",options:["Blue","Gold","Equal","I'm not sure"]},
+        {id:"fixedY",type:"select",label:"Test Y: what stays the same?",options:["Final force F = 12 N for both pads","Compression x = 5 cm for both pads","Spring stiffness k for both pads","I'm not sure"]},
+        {id:"blueY",type:"number",label:"Blue pad energy in Test Y (J)"},
+        {id:"goldY",type:"number",label:"Gold pad energy in Test Y (J)"},
+        {id:"winnerY",type:"select",label:"Which stores more in Test Y?",options:["Blue","Gold","Equal","I'm not sure"]},
+        {id:"reason",type:"textarea",label:"Explain why the energy ranking changes when the controlled variable changes",hint:"A correct ranking with no model explanation is not enough. 'I'm not sure' is okay."}
+      ],
+      worked: [
+        ["Infer stiffness from the measurements","Compression of 4 cm is 0.04 m. Blue k = 8/0.04 = 200 N/m; Gold k = 16/0.04 = 400 N/m. Gold is twice as stiff."],
+        ["Test X: fixed extension","Both compress by x = 0.05 m. Blue energy ½ × 200 × 0.05² = 0.25 J; Gold energy ½ × 400 × 0.05² = 0.50 J. Gold stores more at fixed x."],
+        ["Test Y: fixed final equilibrium force","Both reach final F = 12 N, but Blue compresses by F/k = 0.06 m while Gold compresses by 0.03 m. Blue energy F²/(2k) = 0.36 J; Gold = 0.18 J. Blue stores more at fixed F."],
+        ["Explain the reversal","With fixed x, energy ½kx² rises as stiffness k rises. With fixed final F, energy F²/(2k) falls as stiffness rises. The quantity held fixed changed; the springs did not."],
+        ["Check how energy enters","For slow loading from the natural length, force grows linearly from zero to its final value. The work stored is the triangular area under F–x, not the rectangle final F × x."]
+      ],
+      rubric: [
+        "I inferred both spring constants from the observation and converted centimetres to metres.",
+        "I identified fixed extension for Test X and fixed final force for Test Y BEFORE using formulas.",
+        "I calculated four energies and explained why the winner changes between experiments.",
+        "I used triangular force–extension work and the slowly loaded, ideal Hookean spring conditions."
+      ],
+      diagnoses: [
+        "I treated centimetres as metres.",
+        "I used the final force times extension instead of the triangular area.",
+        "I assumed the stiffer spring always stores more.",
+        "I kept extension at 5 cm in the fixed-force experiment.",
+        "My controlled-variable choices were correct; I need to check the inverse stiffness relation.",
+        "I am not sure what should be held constant."
+      ],
+      repairPrompt: "Name the controlled variable in each test, repair the FIRST incorrect stiffness, extension or energy calculation, and explain the ranking reversal in one sentence.",
+      boundaryPrompt: "Repeat Test Y with the SAME blue and gold pads, but slowly increase the common final force from 12 N to 24 N. By what factor does stored energy change in each pad? Calculate both new energies and say which remains larger.",
+      boundaryCheck: [
+        "For fixed stiffness, energy at a given final equilibrium force is U = F²/(2k). Doubling final force multiplies stored energy by four, not two.",
+        "Blue: U = 24²/(2 × 200) = 1.44 J, four times 0.36 J.",
+        "Gold: U = 24²/(2 × 400) = 0.72 J, four times 0.18 J.",
+        "Blue remains higher for equal FINAL force because its stiffness is smaller. A sudden constant-force impact is a different, oscillatory process and is not this slow-loading experiment."
+      ]
+    }
   };
 
   function initState(lesson) {
