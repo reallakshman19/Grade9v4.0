@@ -1,4 +1,114 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Architecture tab: source governance, SL1 and SL2, QRT, subject Blueprint and adapter, Core construction, checks and review protocol."><title>Architecture & Documentation | Grade9 v4.0</title><link rel="stylesheet" href="../site.css"></head><body><header class="mast"><div class="container top"><a class="logo" href="../index.html"><i>G9</i>Grade9 v4.0</a><nav class="tabs" aria-label="Four main sections"><a href="../physics/index.html"><span class="nav-icon" aria-hidden="true">⚛️</span> Physics</a><a href="../mathematics/index.html"><span class="nav-icon" aria-hidden="true">📐</span> Mathematics</a><a href="../chemistry/index.html"><span class="nav-icon" aria-hidden="true">🧪</span> Chemistry</a><a href="index.html" aria-current="page"><span class="nav-icon" aria-hidden="true">🧭</span> Architecture</a></nav></div><div class="container hero"><div class="kicker">Fourth tab · Architecture</div><h1>How do great lessons get made?</h1><p>Explore what happens behind each lesson: where questions come from, how difficulty is checked, and how teachers and reviewers decide what's ready to learn.</p><div class="breadcrumbs"><a href="../index.html">Subjects</a> / Architecture</div></div></header><main class="container main"><section class="panel" style="background:#eaf7f1;border-color:#b7dfcd"><span class="tag">Production readiness</span><h2 style="margin:12px 0">✅ Production checklist · Core2 tablet QA</h2><p>Before each Core2 release, verify the direct full-page Question Bank on a 12.7-inch tablet in portrait and landscape. Check question navigation, source labels, hints and no iframe or horizontal overflow. Oracle Core1A coordination and academic approval are separate.</p><div class="linklist"><a href="production-checklist.html">Open Production Checklist</a><a href="../docs/agent-entry/concept-report-v4.html#production-checklist">Concept → checklist</a></div></section>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Architecture tab: source governance, SL1 and SL2, QRT, subject Blueprint and adapter, Core construction, checks and review protocol."><title>Architecture & Documentation | Grade9 v4.0</title><link rel="stylesheet" href="../site.css">
+<style>
+/* Student-facing Core-role map; the original architecture material remains below, collapsed. */
+.core-map{margin:0 0 24px}
+.core-intro{background:#f0f8fb;border:1px solid #c8dfe8;border-radius:16px;padding:22px 24px;margin-bottom:18px}
+.core-intro h2{font-size:clamp(1.4rem,2.8vw,2rem);line-height:1.25;margin:8px 0}
+.core-intro p{max-width:850px;line-height:1.6}
+.core-kicker{display:inline-block;font-size:.75rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#276574}
+.core-path{display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin:16px 0 6px}
+.core-path span{display:inline-block;background:white;border:1px solid #bed4dd;border-radius:8px;padding:9px 12px;font-size:.9rem;font-weight:750}
+.core-path .core-arrow{border:0;background:transparent;color:#527583;padding:0 2px}
+.core-roles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:14px 0 18px}
+.core-role{background:#fff;border:1px solid #d5e4e9;border-radius:14px;padding:19px 20px;min-width:0}
+.core-role h3{margin:6px 0 10px;font-size:1.3rem}
+.core-role p{line-height:1.55;margin:9px 0}
+.core-role small{display:block;color:#446b78;font-weight:700;letter-spacing:.02em}
+.core-role ul{padding-left:20px;line-height:1.6;margin:11px 0}
+.core-role a{display:inline-block;margin:5px 12px 2px 0}
+.core-entry{background:#f1f8f1;border:1px solid #c7dec6;border-radius:14px;padding:19px 22px;margin:0 0 18px}
+.core-entry h3{margin:4px 0 9px;font-size:1.23rem}
+.core-entry p{max-width:920px;line-height:1.6}
+.core-mini-table{width:100%;border-collapse:collapse;background:white;font-size:.92rem}
+.core-mini-table th,.core-mini-table td{border-bottom:1px solid #dce7eb;padding:11px 12px;vertical-align:top;text-align:left}
+.core-mini-table th{background:#e8f3f7}
+.core-table-wrap{overflow-x:auto;border:1px solid #d9e6e9;border-radius:12px;margin:15px 0 18px}
+.core-map a:focus-visible,.legacy-archive summary:focus-visible{outline:3px solid #c08325;outline-offset:3px}
+.core-note{padding:13px 16px;border-left:4px solid #557f90;background:#f5f9fb;border-radius:6px;line-height:1.55}
+.legacy-archive{border:2px solid #bfd3dd;border-radius:14px;background:white;margin:24px 0 32px}
+.legacy-archive>summary{cursor:pointer;list-style:revert;font-size:1.12rem;font-weight:800;padding:18px 22px;color:#1f4658}
+.legacy-archive>summary:hover{background:#edf6f8}
+.legacy-archive[open]>summary{border-bottom:1px solid #dce7eb}
+.legacy-content{padding:18px 18px 22px}
+@media(max-width:780px){.core-roles{grid-template-columns:1fr}.core-intro,.core-entry{padding:16px}.core-path{gap:6px}.core-path span{font-size:.8rem}.legacy-content{padding:12px}.core-mini-table{min-width:560px}}
+</style></head><body><header class="mast"><div class="container top"><a class="logo" href="../index.html"><i>G9</i>Grade9 v4.0</a><nav class="tabs" aria-label="Four main sections"><a href="../physics/index.html"><span class="nav-icon" aria-hidden="true">⚛️</span> Physics</a><a href="../mathematics/index.html"><span class="nav-icon" aria-hidden="true">📐</span> Mathematics</a><a href="../chemistry/index.html"><span class="nav-icon" aria-hidden="true">🧪</span> Chemistry</a><a href="index.html" aria-current="page"><span class="nav-icon" aria-hidden="true">🧭</span> Architecture</a></nav></div><div class="container hero"><div class="kicker">Fourth tab · Architecture</div><h1>How do great lessons get made?</h1><p>Explore what happens behind each lesson: where questions come from, how difficulty is checked, and how teachers and reviewers decide what's ready to learn.</p><div class="breadcrumbs"><a href="../index.html">Subjects</a> / Architecture</div></div></header><main class="container main">
+
+<section class="core-map" id="core-role-map" aria-labelledby="core-map-title">
+  <div class="core-intro">
+    <span class="core-kicker">Student learning architecture · WPE Physics pilot</span>
+    <h2 id="core-map-title">Which tiles belong to Core1A, Core1B and Core2?</h2>
+    <p><strong>Learn → Challenge is the way in—not a fourth Core.</strong> The three Core roles describe what the learner does. One lesson page can contain both Core1A explanation and Core1B independent practice. The Question Bank remains Core2.</p>
+    <div class="core-path" aria-label="Student journey from original question through learning and back">
+      <span>Core2 · Original question</span><span class="core-arrow" aria-hidden="true">→</span>
+      <span>Core1A · Learn</span><span class="core-arrow" aria-hidden="true">→</span>
+      <span>Core1B · Challenge</span><span class="core-arrow" aria-hidden="true">→</span>
+      <span>Core2 · Try again</span>
+    </div>
+    <p><small>This is a <strong>learner navigation path</strong>, not an academic approval sequence or a replacement for source, QRT, Blueprint and adapter governance.</small></p>
+  </div>
+
+  <section class="core-entry" aria-labelledby="gateway-title">
+    <span class="core-kicker">Shared gateway · Orchestration, not a Core</span>
+    <h3 id="gateway-title">🧭 Learn → Challenge</h3>
+    <p>Start from an exact Question Bank ID or explore a Physics skill. The gateway recommends a relevant teaching journey, explains whether it is a close match or related practice only, and returns the child to the same original question.</p>
+    <div class="linklist">
+      <a class="button" href="../physics/wpe/learn-challenge.html">Open Learn → Challenge →</a>
+      <a href="../physics/wpe/question-coverage.html">See the 74-question learning map</a>
+    </div>
+  </section>
+
+  <div class="core-roles" aria-label="Core role descriptions">
+    <article class="core-role" id="core1a-role">
+      <small>CORE1A · TEACHING</small>
+      <h3>📘 Learn the reasoning</h3>
+      <p>Develop the physical model through guided explanations, worked examples, interactive diagrams, assumptions and misconceptions.</p>
+      <ul><li>Five foundation mini-lessons</li><li>Guided teaching within C01–C08, E01–E05 and F01–F03</li></ul>
+      <a href="../physics/wpe/learn-challenge.html#work-sign">Foundation example</a>
+      <a href="../physics/wpe/d3d4-self-tutor.html#C03">Deep reasoning example · C03</a>
+    </article>
+    <article class="core-role" id="core1b-role">
+      <small>CORE1B · INDEPENDENT PRACTICE</small>
+      <h3>🧠 Try a fresh challenge</h3>
+      <p>Choose a model, predict, commit an independent attempt, optionally use progressive hints, diagnose and repair errors, and test a changed condition.</p>
+      <ul><li>Six-stage challenges in the 16 C/E/F journeys</li><li>Optional second challenges for F01–F03 are <strong>planned</strong> from PR #55, not yet integrated</li></ul>
+      <a href="../physics/wpe/focused-journeys.html?question=EX-M97#F01">Focused challenge · F01</a>
+      <a href="https://github.com/reallakshman19/Grade9v4.0/pull/55">PR #55 variants (source only)</a>
+    </article>
+    <article class="core-role" id="core2-role">
+      <small>CORE2 · SOURCE QUESTION</small>
+      <h3>📚 Original Question Bank</h3>
+      <p>Read the original source question, give an independent answer, and return after learning. Protect the source attempt and answer reveal; never replace the original problem with a practice version.</p>
+      <ul><li>74 Question Bank entries</li><li>Exact-question return is central to the intended learning loop</li></ul>
+      <a href="../preview/question-status.html?question=EX-M79">Original question · EX-M79</a>
+      <a href="../physics/wpe/question-bank.html">Question Bank</a>
+    </article>
+  </div>
+
+  <section class="panel" aria-labelledby="tile-map-title">
+    <span class="core-kicker">Page / tile map</span>
+    <h3 id="tile-map-title" style="margin:9px 0 4px">What does each student-facing tile do?</h3>
+    <div class="core-table-wrap">
+      <table class="core-mini-table">
+        <thead><tr><th scope="col">Tile / page</th><th scope="col">Core role</th><th scope="col">How it fits</th></tr></thead>
+        <tbody>
+          <tr><td><a href="../physics/wpe/learn-challenge.html">Learn → Challenge</a></td><td>Gateway · not a Core</td><td>Choose a question or skill; route to teaching and practice</td></tr>
+          <tr><td>Five foundation mini-lessons</td><td>Core1A + basic Core1B</td><td>Introduce key WPE concepts and try a different simple challenge</td></tr>
+          <tr><td><a href="../physics/wpe/d3d4-self-tutor.html">C01–C08 · Eight thinking challenges</a></td><td>Core1A + Core1B</td><td>Guided physical model followed by six-stage independent reconstruction</td></tr>
+          <tr><td><a href="../physics/wpe/extension-learning.html#E01">E01–E05 · Advanced extensions</a></td><td>Core1A + Core1B</td><td>Advanced concepts with separate fresh six-stage practice</td></tr>
+          <tr><td><a href="../physics/wpe/focused-journeys.html?question=EX-M97#F01">F01–F03 · Focused journeys</a></td><td>Core1A + Core1B</td><td>Three difficult question-specific reasoning types; optional transfer variants planned</td></tr>
+          <tr><td><a href="../physics/wpe/question-bank.html">Question Bank</a></td><td>Core2</td><td>Exact source question, learner attempt and protected answer reveal</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="core-note"><strong>No iframe integration:</strong> the planned unified journey uses direct, source-verified page links and preserved learner state. The existing <code>study-bridge.html</code> still contains an iframe and is a known integration target, not the intended final design.</p>
+    <p class="core-note"><strong>Platform scope and authority:</strong> Physics, Mathematics and Chemistry share Core-role responsibilities; these C/E/F lesson examples are the WPE <em>Physics-only pilot</em>. Published software or passing tests do not independently certify source correctness, academic Core admission or student mastery.</p>
+  </section>
+</section>
+
+<details class="legacy-archive" id="previous-architecture">
+  <summary>Previous architecture details and documentation — show / hide preserved material</summary>
+  <div class="legacy-content">
+<section class="panel" style="background:#eaf7f1;border-color:#b7dfcd"><span class="tag">Production readiness</span><h2 style="margin:12px 0">✅ Production checklist · Core2 tablet QA</h2><p>Before each Core2 release, verify the direct full-page Question Bank on a 12.7-inch tablet in portrait and landscape. Check question navigation, source labels, hints and no iframe or horizontal overflow. Oracle Core1A coordination and academic approval are separate.</p><div class="linklist"><a href="production-checklist.html">Open Production Checklist</a><a href="../docs/agent-entry/concept-report-v4.html#production-checklist">Concept → checklist</a></div></section>
 <section class="panel"><span class="tag">Start with the guidebook</span><h2 style="font-size:1.67rem;margin-top:13px">Subtopic → Demands → QRT → Blueprint + Adapter → Core1A</h2><p>A practical illustrated methodology with both source routes, decisive-route analysis, five-factor demand, exact task joins, B1–B7 witnesses, attempt protection, scientific checks, blind-review hygiene and release governance. Includes actual repository references and explicit unresolved requirements.</p><div class="linklist"><a class="button" href="guidebook.html">Read the Architecture Guidebook →</a><a href="../docs/agent-entry/00-required-reading.md">Original required-reading map</a></div></section>
 <section class="panel" style="background:#eff8f5;border-color:#c3e3d8"><span class="tag">Agent execution · D3/D4 first</span><h2 style="font-size:1.67rem;margin-top:13px">QRT × Physics Blueprint: a repeatable decision protocol</h2><p>For lower-capability agents: an ordered question-by-question procedure, source-only independent-QRT separation, seven cognitive operations, five-factor D3/D4 scoring, Blueprint + exact WPE adapter routing, Core1A/Core1B rules, B1–B7 gates and explicit HOLD outcomes. Includes <strong>four JSON schemas, six golden source-grounded examples, five negative controls and runnable validation</strong>. This is a candidate engineering runbook—not an academic approval.</p><div class="linklist"><a class="button" href="qrt-blueprint-protocol/index.html">Open QRT × Blueprint Agent Protocol →</a><a href="qrt-blueprint-protocol/CORE_METHOD.md">Why the six Core1B stages exist · Core1A and B1–B7</a><a href="qrt-blueprint-protocol/RUNBOOK.md">Deterministic agent runbook</a><a href="qrt-blueprint-protocol/fixtures/golden-cases.json">Golden fixtures (JSON)</a><a href="qrt-blueprint-protocol/wpe-coverage.html">74-question WPE QRT + concept coverage</a></div></section>
 <div class="status"><strong>Authority boundary</strong><p>These links navigate existing documentation and technical previews. They do not create approved QRT decisions, authorize draft Blueprint/adapter selection or release native lessons. Independent reviewers must take the source-only route, not an author-exposed architecture page containing prior outcomes.</p></div>
@@ -14,4 +124,7 @@
 <article class="card"><div class="tile-icon" aria-hidden="true">🔬</div><small>09 · EVIDENCE</small><h3>WPE review examples</h3><p>Read-only technical construction candidates and QRT blockers, not a bank of admitted examination tasks.</p><div class="linklist"><a href="../preview/batches/reader.html">Cumulative WPE reader</a><a href="../preview/batches/b06-evidence-map.json">Source-to-Core1A mapping</a><a href="../preview/batches/b08-source-gates.json">Exam source-gate blockers</a></div></article>
 </div>
 <section class="panel"><h2>Suggested reading sequence (not the independent-review packet)</h2><div class="steps"><div class="step"><b>1. Scope</b><span>Three subjects, correct Owner/Shared role.</span></div><div class="step"><b>2. Source</b><span>Exact question or passage, rights and custody.</span></div><div class="step"><b>3. Requirement</b><span>SL1, SL2 and the parallel source claim route.</span></div><div class="step"><b>4. Review</b><span>Independent QRT, qualified law and topic adapter.</span></div><div class="step"><b>5. Learning</b><span>Core2/Core1A/B, B1–B7 and release.</span></div></div><div class="linklist"><a href="guidebook.html">Open complete step-by-step guidebook</a><a href="guidebook-sources.json">Guidebook source register (JSON)</a></div></section>
+
+  </div>
+</details>
 </main><footer class="footer"><div class="container"><span>Architecture · Documentation organized, not academically re-approved</span><a href="../physics/wpe/index.html">Physics → WPE</a></div></footer></body></html>
