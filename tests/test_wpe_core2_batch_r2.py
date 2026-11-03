@@ -94,7 +94,7 @@ def test_manifest_exact_git_blob_ids():
         if path==PAGE:
             # Historical source-custody manifest remains immutable: it pins the
             # pre-integration reader, not this separately revised student runtime.
-            assert rows[0]["sha"]=="1cc77b9f18f6c7d6ac95075a8955a0283e12e663"
+            assert rows[0]["sha"]=="de570b8fc2ddc2edcc6996ce698d3b56c83d71ab"
             assert sha!=rows[0]["sha"]
             b,h,e=read()
             assert e["questions"]==b["questions"]

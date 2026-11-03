@@ -28,7 +28,7 @@ def transfer():
 
 
 def expected_page(lesson):
-    return {"C": "d3d4-self-tutor", "E": "extension-learning", "F": "focused-journeys"}[lesson[0]]
+    return ("gap-journeys" if int(lesson[1:]) >= 4 else "focused-journeys") if lesson[0] == "F" else {"C": "d3d4-self-tutor", "E": "extension-learning"}[lesson[0]]
 
 
 def test_all_74_verified_routes_are_direct_without_changing_fits():
@@ -38,10 +38,10 @@ def test_all_74_verified_routes_are_direct_without_changing_fits():
     by_id = {q["source_id"]: q for q in bank["questions"]}
     assert len(by_id) == 74
     assert Counter(r["fit"] for r in coverage["questions"]) == {
-        "FOCUSED_NEW": 3,
+        "FOCUSED_NEW": 8,
         "TARGETED_PRACTICE": 18,
         "RELATED_BRIDGE": 48,
-        "MISSING_CONSTRUCTION": 5,
+        "MISSING_CONSTRUCTION": 0,
     }
     for row in coverage["questions"]:
         assert row["stem_sha256"] == by_id[row["source_id"]]["stem_sha256"]
@@ -52,7 +52,7 @@ def test_all_74_verified_routes_are_direct_without_changing_fits():
             assert lesson in (
                 {f"C{i:02}" for i in range(1, 9)}
                 | {f"E{i:02}" for i in range(1, 6)}
-                | {"F01", "F02", "F03"}
+                | {f"F{i:02}" for i in range(1, 9)}
             )
             assert href == (expected_page(lesson) + ".html?question="
                             + row["source_id"] + "#" + lesson)
@@ -68,8 +68,8 @@ def test_gateway_no_iframes_and_old_links_fail_closed():
                  "d3d4-self-tutor.html", "extension-learning.html",
                  "focused-journeys.html", "question-bank.html"]:
         assert "<iframe" not in read(WPE / file).lower(), file
-    assert "location.replace(target)" in read(WPE / "study-bridge.html")
-    assert "row.stem_sha256!==original.stem_sha256" in read(WPE / "study-bridge.html")
+    assert 'id="direct-lesson"' in read(WPE / "study-bridge.html")
+    assert "original?.stem_sha256!==row.stem_sha256" in read(WPE / "study-bridge.html")
     index = read(WPE / "index.html")
     for heading in ("Learn → Challenge", "Question Bank", "Practice my skills"):
         assert f"<h2>{heading}</h2>" in index

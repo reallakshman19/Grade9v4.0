@@ -24,7 +24,7 @@
   }catch(err){panel.textContent="The exact question-to-lesson route cannot be verified right now. Use the Question Bank directly.";status.textContent="Learning route unavailable.";return;}
   const query=new URLSearchParams(location.search).get("question");
   selected=query && valid(query) && rows.some(x=>x.source_id===query)?query:null;
-  const names={F01:"Applied power vs net power",F02:"Round-trip incline energy",F03:"Spring force switching",C01:"Every force counts",C02:"Spring contact",C03:"Constant power",C04:"Distributed mass",C05:"Choose the graph operation",C06:"Vertical-circle contact",C07:"Conveyor momentum flow",C08:"Comparing spring controls",E01:"Potential wells",E02:"Instantaneous power",E03:"Spring to projectile",E04:"Repeated bouncing",E05:"Radial force and potential"};
+  const names={F01:"Applied power vs net power",F02:"Round-trip incline energy",F03:"Spring force switching",F04:"Two-body relative spring energy",F05:"Massive spring slices",F06:"Wind power flux",F07:"Turning point versus static hold",F08:"Shock absorber energy ledger",C01:"Every force counts",C02:"Spring contact",C03:"Constant power",C04:"Distributed mass",C05:"Choose the graph operation",C06:"Vertical-circle contact",C07:"Conveyor momentum flow",C08:"Comparing spring controls",E01:"Potential wells",E02:"Instantaneous power",E03:"Spring to projectile",E04:"Repeated bouncing",E05:"Radial force and potential"};
   function fillChoices(){
     const term=search.value.trim().toLowerCase();
     const filtered=rows.filter(row=>(row.source_id+" "+row.student_goal+" "+(names[row.primary_lesson]||"")).toLowerCase().includes(term));
@@ -47,7 +47,7 @@
     try{
       const url=new URL(href,location.href),loc=new URL("focused-journeys.html",location.href);
       if(url.origin!==loc.origin||url.pathname.substring(0,url.pathname.lastIndexOf("/")+1)!==loc.pathname.substring(0,loc.pathname.lastIndexOf("/")+1))return null;
-      if(!/^(d3d4-self-tutor|extension-learning|focused-journeys)\.html$/.test(url.pathname.split("/").pop()))return null;
+      if(!/^(d3d4-self-tutor|extension-learning|focused-journeys|gap-journeys)\.html$/.test(url.pathname.split("/").pop()))return null;
       if(url.searchParams.get("question")!==source)return null;
       return url.href;
     }catch(_){return null;}
@@ -109,7 +109,7 @@
   }
   const skillHost=$("#skill-links");
   for(const [id,name] of Object.entries(names)){
-    const page=id.startsWith("C")?"d3d4-self-tutor.html":id.startsWith("E")?"extension-learning.html":"focused-journeys.html";
+    const page=id.startsWith("C")?"d3d4-self-tutor.html":id.startsWith("E")?"extension-learning.html":id.startsWith("F")&&Number(id.slice(1))>=4?"gap-journeys.html":"focused-journeys.html";
     const a=add(skillHost,"a",id+" · "+name);a.href=page+"#"+id;
     a.addEventListener("click",()=>{
       try{localStorage.setItem("g9:wpe:journey:v1",JSON.stringify({question:null,lesson:id}));}catch(_){}
@@ -121,7 +121,7 @@
       const saved=JSON.parse(localStorage.getItem("g9:wpe:journey:v1")||"null");
       const row=rows.find(r=>r.source_id===saved?.question&&r.primary_lesson===saved.lesson&&r.lesson_href);
       if(!row&&saved?.question===null&&names[saved?.lesson]){
-        const id=saved.lesson,page=id.startsWith("C")?"d3d4-self-tutor.html":id.startsWith("E")?"extension-learning.html":"focused-journeys.html";
+        const id=saved.lesson,page=id.startsWith("C")?"d3d4-self-tutor.html":id.startsWith("E")?"extension-learning.html":id.startsWith("F")&&Number(id.slice(1))>=4?"gap-journeys.html":"focused-journeys.html";
         resume.href=page+"#"+id;resume.textContent="Resume "+id+" · "+names[id];
       }else if(row){resume.href=saved.variant==="transfer55"&&row.primary_lesson.startsWith("F")
         ?row.lesson_href.replace("#","&variant=transfer55#"):row.lesson_href;
@@ -133,7 +133,7 @@
   $("#clear-saved-practice").addEventListener("click",()=>{
     if(!confirm("Clear ALL WPE practice, including Question Bank drafts, saved in this browser? This cannot be undone."))return;
     try{
-      const prefixes=["g9:wpe:d3d4:self-tutor:v1:","g9:wpe:extensions:v1:","g9:wpe:focused:v1:","g9:wpe:core2:attempt:v1:","g9:wpe:learn-challenge:v1:","g9:wpe:learn-challenge:","g9:wpe:journey:v1"];
+      const prefixes=["g9:wpe:d3d4:self-tutor:v1:","g9:wpe:extensions:v1:","g9:wpe:focused:v1:","g9:wpe:gaps:v2:","g9:wpe:core2:attempt:v1:","g9:wpe:learn-challenge:v1:","g9:wpe:learn-challenge:","g9:wpe:journey:v1"];
       for(let i=localStorage.length-1;i>=0;i--){const key=localStorage.key(i);if(key&&prefixes.some(x=>key.startsWith(x)))localStorage.removeItem(key);}
       notice.textContent="Saved WPE practice cleared on this device. Reload other open Question Bank tabs to reflect this reset.";
       refreshResume();

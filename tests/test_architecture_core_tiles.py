@@ -52,8 +52,12 @@ def test_new_learning_links_are_direct_local_destinations():
     parser = Elements()
     parser.feed(new)
     links = [attrs["href"] for name, attrs in parser.tags if name == "a" and "href" in attrs]
+    ids = {attrs.get("id") for _, attrs in parser.tags if attrs.get("id")}
     assert len(links) >= 10
     for href in links:
+        if href.startswith("#"):
+            assert href[1:] in ids, href
+            continue
         if href.startswith("https://"):
             assert "github.com/reallakshman19/Grade9v4.0/pull/55" in href
             continue

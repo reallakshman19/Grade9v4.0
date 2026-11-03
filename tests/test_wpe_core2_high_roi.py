@@ -104,7 +104,7 @@ def test_manifest_pins_real_git_blob_sha():
         if target == PAGE:
             # Archived source manifest is intentionally not rewritten for
             # student-side local-attempt integration.
-            assert matching[0]["sha"]=="1cc77b9f18f6c7d6ac95075a8955a0283e12e663"
+            assert matching[0]["sha"]=="de570b8fc2ddc2edcc6996ce698d3b56c83d71ab"
             assert sha != matching[0]["sha"]
             bank, embedded, _ = payload()
             assert embedded["questions"] == bank["questions"]

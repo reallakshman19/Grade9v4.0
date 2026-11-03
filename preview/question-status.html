@@ -137,8 +137,8 @@ function showInteractiveLessonLinks(q){
     append('../physics/wpe/'+dest+'?question='+encodeURIComponent(q.source_id)+'#'+id,id+' · Learn → Fresh challenge');
   }
   if(row){
-    if(row.lesson_href&&/^(C0[1-8]|E0[1-5]|F0[1-3])$/.test(row.primary_lesson||'') &&
-       /^(focused-journeys|study-bridge|d3d4-self-tutor|extension-learning)\.html\?question=/.test(row.lesson_href) &&
+    if(row.lesson_href&&/^(C0[1-8]|E0[1-5]|F0[1-8])$/.test(row.primary_lesson||'') &&
+       /^(focused-journeys|gap-journeys|study-bridge|d3d4-self-tutor|extension-learning)\.html\?question=/.test(row.lesson_href) &&
        row.lesson_href.includes('question='+encodeURIComponent(q.source_id)) &&
        row.fit!=='MISSING_CONSTRUCTION'){
       append('../physics/wpe/'+row.lesson_href,row.primary_lesson+' · '+(row.fit==='FOCUSED_NEW'?'New focused reasoning journey':row.fit==='RELATED_BRIDGE'?'Related idea · not full teaching':'Direct reasoning practice'));

@@ -162,7 +162,7 @@ def case(browser, base, width, height):
                 "Chapter practice tile missing")
         page.goto(base + "/physics/wpe/learn-challenge.html")
         page.locator("#skill-links a").first.wait_for()
-        require(page.locator("#skill-links a").count() == 16,
+        require(page.locator("#skill-links a").count() == 21,
                 "Not all C/E/F direct skill destinations offered")
         require(page.locator("#question-plan .primary-link").count() == 0,
                 "Question-less gateway guessed a route")
@@ -231,12 +231,14 @@ def full_case(browser, base, width, height):
                     lesson + " original answer revealed")
             require(page.locator("iframe").count() == 0, "Iframe found on student return")
         page.goto(base + "/physics/wpe/study-bridge.html?question=EX-M11&lesson=C05")
-        page.wait_for_url("**/d3d4-self-tutor.html?question=EX-M11#C05")
-        require(page.locator("#source-journey-return").is_visible(),
-                "Older direct bridge link did not redirect to verified lesson")
+        direct=page.locator("#direct-lesson:not([hidden])")
+        direct.wait_for()
+        require(direct.get_attribute("href").endswith("d3d4-self-tutor.html?question=EX-M11#C05"),
+                "Old bridge did not provide source-verified direct lesson")
+        direct.click()
+        page.locator("#source-journey-return").wait_for(state="visible")
         page.goto(base + "/physics/wpe/study-bridge.html?question=UNKNOWN-ID&lesson=C05")
-        require(page.locator("#destination").get_attribute("href") == "learn-challenge.html",
-                "Unknown source was given a guessed lesson")
+        require(page.locator("#direct-lesson").is_hidden(), "Unknown source created lesson")
         require(not errors, "Unexpected JS exceptions: " + repr(errors))
         print("PASS three F optional transfers, independent source/first attempts, saved boundaries and no-frame redirect at", width)
     finally:
