@@ -3,8 +3,23 @@
 .gateway-options{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:12px;margin-top:12px}
 .gateway-option{display:flex;flex-direction:column;gap:6px;padding:18px;border:2px solid #b4d1de;border-radius:12px;background:#edf8fa;color:#174d63;text-decoration:none;min-height:94px}
 .gateway-option strong{font-size:1.15rem}.gateway-option span{font-size:.96rem}
-.skill-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:9px;margin:12px 0}
-.skill-links a{border:1px solid #c9dce6;border-radius:9px;background:#f3f9fb;padding:10px 12px;min-height:44px;color:#135e77}
+/* Four semantic lesson tables, one per existing content family. */
+.skill-groups{display:grid;gap:18px;margin-top:18px}
+.skill-group{border:1px solid #c8dde5;border-radius:12px;overflow:hidden;background:#fff}
+.skill-group h3{margin:0;padding:14px 16px;background:#eaf4f7;color:#164960;font-size:1.07rem;display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.skill-count{font-size:.82rem;font-weight:600;color:#476777}
+.skill-table{border-collapse:collapse;width:100%;table-layout:fixed;line-height:1.35}
+.skill-table th,.skill-table td{text-align:left;vertical-align:middle;padding:10px 16px;border-top:1px solid #dce8ee;overflow-wrap:anywhere}
+.skill-table thead th{font-size:.82rem;font-weight:700;color:#456575;background:#f6fafb}
+.skill-table th:first-child{width:76px}
+.skill-table th:last-child{width:152px}
+.skill-table tbody tr:nth-child(even){background:#f8fbfc}
+.skill-table tbody tr:hover{background:#edf7f9}
+.skill-table .skill-code{white-space:nowrap;font-variant-numeric:tabular-nums;color:#176071;font-weight:750}
+.skill-open{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:7px 10px;border:1px solid #5f9ca9;border-radius:8px;background:#f0f9fa;color:#145770;font-size:.89rem;font-weight:700;text-decoration:none;text-align:center}
+.skill-open:hover{background:#d9f0f2;text-decoration:underline}
+.skill-extra{display:block;margin-top:4px;font-size:.79rem;line-height:1.4;color:#527384}
+
 .practice-controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
 .practice-controls a,.practice-controls button{padding:10px 13px;min-height:44px;border:1px solid #2c7381;border-radius:9px;font:inherit;background:#eef8fa;color:#154c62;font-weight:650;cursor:pointer;text-decoration:none}
 .practice-controls [aria-disabled="true"]{opacity:.75}
@@ -13,6 +28,18 @@
 .lesson-roles .source-return-inline{display:inline-flex;align-items:center;min-height:44px;color:#195e76;font-weight:700}
 .lesson-roles .role-status{font-size:.88rem;color:#4c6878;flex-basis:100%}
 a:focus-visible,button:focus-visible{outline:3px solid #d9a742;outline-offset:3px}
-@media(max-width:560px){.gateway-start,.skill-explorer,.practice-manager{padding:14px 12px;margin:10px}.gateway-option{padding:14px}.lesson-roles{padding:10px}}
+@media(max-width:560px){
+.gateway-start,.skill-explorer,.practice-manager{padding:14px 12px;margin:10px}
+.gateway-option{padding:14px}
+.lesson-roles{padding:10px}
+.skill-groups{gap:12px;margin-top:12px}
+.skill-group h3{padding:12px 10px;font-size:1rem}
+.skill-table th,.skill-table td{padding:9px 8px;font-size:.86rem}
+.skill-table th:first-child{width:50px}
+.skill-table th:last-child{width:97px}
+.skill-table thead th{font-size:.76rem}
+.skill-open{min-height:44px;padding:6px 5px;font-size:.81rem}
+.skill-extra{font-size:.74rem}
+}
 
 .transfer-challenge-link{display:inline-flex;align-items:center;justify-content:center;min-height:44px;margin:12px 8px 8px 0;padding:10px 14px;border:2px solid #176e80;border-radius:10px;background:#e8f7f6;color:#144b61;font-weight:700;text-decoration:none}
