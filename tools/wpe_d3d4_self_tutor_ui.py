@@ -132,15 +132,25 @@ def finish_stages(page, lesson, first):
     root.locator("[data-rubric]").first.check()
     root.locator('[data-action="save-reconstruction"]').click()
     check(root.locator(".stage-card h4").inner_text() == "4. Diagnose", lesson+" diagnosis missing")
-    check(root.locator(".worked").count() == 0, lesson+" reconstruction answer repeated unnecessarily")
+    check(root.locator(".review-model").count() == 1, lesson+" no reusable worked model at diagnosis")
+    check(root.locator(".review-model").evaluate("(e) => !e.open"), lesson+" model should start collapsed")
+    root.locator(".review-model summary").click()
+    check(root.locator(".review-model .worked").is_visible(), lesson+" cannot reopen worked reasoning")
+    root.locator(".review-model summary").click()
     root.locator('[data-input="diagnosis"]').select_option(index=1)
     root.locator("[data-input$=diagnosisWhy]").fill("My first physics model needs a different boundary or work sign.")
     root.locator('[data-action="save-diagnosis"]').click()
     check(root.locator(".stage-card h4").inner_text() == "5. Repair", lesson+" repair missing")
+    check(root.locator(".review-model").count() == 1, lesson+" no worked reasoning to consult in repair")
+    check(root.locator(".review-model").evaluate("(e) => !e.open"), lesson+" repair reference must be optional")
+    check(root.locator(".diagnostic-tip").count() == 1, lesson+" missing diagnosis-specific repair cue")
     root.locator("[data-input$='-repair']").fill("I corrected the first wrong model choice and now use the right energy ledger.")
     root.locator('[data-action="save-repair"]').click()
     check(root.locator(".stage-card h4").inner_text() == "6. Boundary test", lesson+" boundary stage missing")
-    check(root.locator(".worked").count() == 0, lesson+" boundary worked check visible before attempt")
+    check(root.locator(".review-model").count() == 1, lesson+" cannot reopen prior model during boundary thinking")
+    check(root.locator(".review-model").evaluate("(e) => !e.open"), lesson+" prior model not collapsed")
+    check(root.locator(".worked").count() == 1 and not root.locator(".worked").is_visible(),
+          lesson+" boundary worked check visible before attempt")
     root.locator("[data-input$='-boundary']").fill("I need to check whether energy remains positive at the new endpoint.")
     root.locator('[data-action="save-boundary"]').click()
     check(root.locator(".response-done").count() == 1, lesson+" completion missing")
@@ -253,6 +263,82 @@ def run_viewport(browser, width, height, base):
         context.close()
 
 
+
+def test_partial_draft_resume_and_late_topic_hints(browser, base):
+    """A child can leave and return before committing. The first locked try stays separate."""
+    context=browser.new_context(viewport={"width":390,"height":844})
+    try:
+        page=context.new_page()
+        errors=[]
+        page.on("pageerror",lambda e: errors.append(str(e)))
+        response=page.goto(base+PATH,wait_until="load")
+        check(response and response.status==200,"Draft-resume page failed")
+        root=root_for(page,"C08")
+        root.locator("textarea").fill("I predict Gold always wins, but I need to compare the two tests.")
+        partial=saved_state(page,"C08")
+        check(partial["stage"]==0 and "Gold always wins" in partial["predictionDraft"],
+              "Typing in prediction is not saved locally")
+        page.reload(wait_until="load")
+        root=root_for(page,"C08")
+        check("Gold always wins" in root.locator("textarea").input_value(),
+              "Uncommitted prediction lost after reload")
+        root.locator('[data-action="save-prediction"]').click()
+        check(root.locator(".stage-card h4").inner_text()=="2. Attempt","Could not enter attempt")
+        root.locator('[data-input="kBlue"]').fill("210")
+        root.locator('[data-input="testYChoice"]').select_option(label="Gold pad")
+        root.locator('[data-input="reason"]').fill("My unfinished first theory is that Gold has more energy in every test.")
+        draft=saved_state(page,"C08")
+        check(draft["stage"]==1 and draft["first"] is None,
+              "Uncommitted first attempt incorrectly treated as locked")
+        check(draft["draft"]["kBlue"]=="210" and draft["draft"]["testYChoice"]=="Gold pad",
+              "Field values were not saved in draft")
+        check("Gold has more energy" in draft["draft"]["reason"],
+              "Written reasoning not preserved in draft")
+        check(root.locator(".worked").count()==0,"Worked answer leaked into draft stage")
+        root.locator('[data-action="next-hint"]').click()
+        check("Hint 1:" in root.locator(".progressive-hints").inner_text(),
+              "Optional first hint missing for C08")
+        check(root.locator(".worked").count()==0,"C08 optional hint leaked worked answer")
+        page.reload(wait_until="load")
+        root=root_for(page,"C08")
+        check(root.locator('[data-input="kBlue"]').input_value()=="210","Draft numeric value lost on reload")
+        check(root.locator('[data-input="testYChoice"]').input_value()=="Gold pad","Draft choice lost on reload")
+        check("Gold has more energy" in root.locator('[data-input="reason"]').input_value(),
+              "Draft explanation lost on reload")
+        check("Hint 1:" in root.locator(".progressive-hints").inner_text(),
+              "Previously requested hint disappeared on reload")
+        root.locator('[data-action="next-hint"]').click()
+        check("Hint 2:" in root.locator(".progressive-hints").inner_text(),
+              "Second optional hint missing for C08")
+        root.locator('[data-action="lock-attempt"]').click()
+        state=saved_state(page,"C08")
+        check(state["draft"] is None and state["first"]["kBlue"]=="210",
+              "Committing did not preserve the original answer and clear draft")
+        original=state["first"].copy()
+        page.reload(wait_until="load")
+        root=root_for(page,"C08")
+        check(root.locator(".stage-card h4").inner_text()=="3. Reconstruct",
+              "Committed original incorrectly returned to draft stage")
+        root.locator('[data-action="save-reconstruction"]').click()
+        check(root.locator(".review-model").count()==1,"Model not available to re-check during diagnosis")
+        root.locator('[data-input="diagnosis"]').select_option(index=2)
+        root.locator('[data-action="save-diagnosis"]').click()
+        check(root.locator(".diagnostic-tip").count()==1,"No misconception-specific repair cue")
+        root.locator(".review-model summary").click()
+        check(root.locator(".review-model .worked").is_visible(),"Cannot open worked explanation in repair")
+        root.locator('[data-input$="-repair"]').fill(
+            "My repaired model holds final force fixed in Y, so I must calculate new compressions.")
+        root.locator('[data-action="save-repair"]').click()
+        check(saved_state(page,"C08")["first"]==original,
+              "Repair unexpectedly overwrote first response")
+        # The next topic and pre-existing local key remain untouched.
+        check(saved_state(page,"C07") is None,"C08 writing changed C07 state")
+        check(not errors,"JavaScript error in draft resume: "+str(errors))
+        print("PASS: partial prediction and attempt drafts, C08 hint persistence, repair reference, immutable first try")
+    finally:
+        context.close()
+
+
 def main():
     server, base = local_server()
     try:
@@ -261,6 +347,7 @@ def main():
             try:
                 for width,height in VIEWPORTS:
                     run_viewport(browser,width,height,base)
+                test_partial_draft_resume_and_late_topic_hints(browser,base)
             finally:
                 browser.close()
     finally:
