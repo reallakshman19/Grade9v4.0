@@ -131,8 +131,9 @@ def test_learning_routes_and_nine_d3_d4_gaps_are_exact():
         actual = row["learning"]
         expected = routes.get(qid, [])
         assert actual["related_construction_ids"] == expected
-        interactive = [x for x in expected if x.startswith("WPE-C")]
-        authored = [x for x in expected if x.startswith("WPE-E")]
+        interactive_topics = {x["id"] for x in src["practice"]["lessons"]}
+        interactive = [x for x in expected if x.replace("WPE-", "") in interactive_topics]
+        authored = [x for x in expected if x.replace("WPE-", "") not in interactive_topics]
         assert actual["interactive_ids"] == interactive
         assert actual["author_pack_ids"] == authored
         mode = "INTERACTIVE_RELATED_PRACTICE" if interactive else (
@@ -143,19 +144,24 @@ def test_learning_routes_and_nine_d3_d4_gaps_are_exact():
     high = [x for x in report["questions"] if x["reader_proposal"]["band"] in ("D3", "D4")]
     assert len(high) == 22
     assert Counter(x["learning"]["status"] for x in high) == Counter({
-        "INTERACTIVE_RELATED_PRACTICE": 13, "AUTHOR_PACK_ONLY": 6, "UNMAPPED": 3
+        "INTERACTIVE_RELATED_PRACTICE": 19, "AUTHOR_PACK_ONLY": 0, "UNMAPPED": 3
     })
     assert set(report["summary"]["reader_d3d4_unmapped_ids"]) == {
         "EX-M97", "EX-N39", "WEP07-01"
     }
-    assert set(report["summary"]["reader_d3d4_author_only_ids"]) == {
+    assert report["summary"]["reader_d3d4_author_only_ids"] == []
+    assert set(report["summary"]["reader_d3d4_interactive_ids"]) >= {
         "EX-M82", "EX-M89", "EX-M109", "EX-N34",
         "TB-WPE-ILL-05", "TB-WPE-ILL-06"
     }
     assert Counter(x["learning"]["status"] for x in report["questions"]) == Counter({
-        "INTERACTIVE_RELATED_PRACTICE": 18, "AUTHOR_PACK_ONLY": 7, "UNMAPPED": 49
+        "INTERACTIVE_RELATED_PRACTICE": 25, "AUTHOR_PACK_ONLY": 0, "UNMAPPED": 49
     })
     assert all(row["learning"]["semantic_join"] == "PROPOSED_UNQUALIFIED" for row in high)
+    assert report["summary"]["interactive_practice_topics"] == [
+        "C01","C02","C03","C04","C05","C06","C07","C08",
+        "E01","E02","E03","E04","E05"
+    ]
 
 
 def test_14_candidate_blueprint_cells_are_never_academic_approvals():
