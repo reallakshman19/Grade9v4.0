@@ -69,7 +69,8 @@ def test_exact_74_custody_and_reconciliation_distinguishes_fits():
             assert row["lesson_href"] and "question="+id_ in row["lesson_href"]
             assert row["source_href"].endswith("question="+id_)
             if row["route_mode"]=="BRIDGED_RELATED":
-                assert row["lesson_href"].startswith("study-bridge.html?question="+id_+"&lesson=")
+                expected_page={"C":"d3d4-self-tutor","E":"extension-learning","F":"focused-journeys"}[row["primary_lesson"][0]]
+                assert row["lesson_href"]==expected_page+".html?question="+id_+"#"+row["primary_lesson"]
             if row["fit"]=="RELATED_BRIDGE":
                 assert len(row["teaching_limit"])>=25, "Related practice must identify the remaining physical step"
         else:
@@ -93,8 +94,12 @@ def test_old_question_bank_data_and_answer_protection_remain_intact():
     assert "showInteractiveLessonLinks(q)" in html
     manifest=load(MANIFEST)
     reader=next(x for x in manifest["artifacts"] if x["path"]=="preview/question-status.html")
-    assert reader["sha"]==git_blob(READER)
-    assert reader["length"]==len(READER.read_bytes())
+    # This manifest pins the archived input reader. The student-facing page
+    # now has a separate local practice-state layer, without changing the
+    # source records or silently rewriting custody metadata.
+    assert reader["sha"]=="1cc77b9f18f6c7d6ac95075a8955a0283e12e663"
+    assert reader["sha"]!=git_blob(READER)
+    assert reader["length"]<len(READER.read_bytes())
 
 def test_three_new_physics_models_are_correct_even_where_source_key_is_contested():
     # F01: original physically distinct force definitions. From flight, v²=2gh.
@@ -223,6 +228,8 @@ def test_focus_layout_first_answer_guard_and_existing_13_preserved():
     assert 'src="learn-challenge-coverage.js" defer' in tile
     assert tile.count('<article class="lesson"')==5
     assert "question-coverage-r1.js" in index
-    assert "iframe" in bridge and "Return to " in bridge
+    assert "<iframe" not in bridge and "location.replace(target)" in bridge
+    assert 'row.primary_lesson!==lesson' in bridge
+    assert 'original.stem_sha256!==row.stem_sha256' in bridge
     for p in ["d3d4-self-tutor.html","d3d4-self-tutor.js","extension-learning.html","extension-learning.js"]:
         assert (WPE/p).is_file()

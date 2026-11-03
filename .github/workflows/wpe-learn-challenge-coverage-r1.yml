@@ -9,6 +9,10 @@ on:
       - "physics/wpe/learning-coverage-r1.json"
       - "physics/wpe/focused-journeys.html"
       - "physics/wpe/focused-journeys.js"
+      - "physics/wpe/focused-transfer-variants.js"
+      - "physics/wpe/d3d4-self-tutor.js"
+      - "physics/wpe/extension-learning.js"
+      - "physics/wpe/index.html"
       - "physics/wpe/focused-journeys.css"
       - "physics/wpe/study-bridge.html"
       - "physics/wpe/question-coverage.html"
@@ -16,6 +20,8 @@ on:
       - "preview/question-status.html"
       - "workspace/output/WPE_Core2_Consolidated_20261102/MANIFEST.review.json"
       - "tests/test_wpe_learn_challenge_coverage_r1.py"
+      - "tests/test_wpe_unified_integration_r1.py"
+      - "tools/wpe_unified_integration_r1_ui.py"
       - "tools/wpe_learn_challenge_coverage_r1_ui.py"
       - "tools/wpe_student_journey_r1_ui.py"
       - ".github/workflows/wpe-learn-challenge-coverage-r1.yml"
@@ -33,8 +39,12 @@ jobs:
           python -m pip install -e ".[dev]" playwright==1.55.0
           python -m playwright install --with-deps chromium
       - name: Exact source integrity and three independent scientific derivations
-        run: python -m pytest -q tests/test_wpe_learn_challenge_coverage_r1.py
+        run: python -m pytest -q tests/test_wpe_learn_challenge_coverage_r1.py tests/test_wpe_unified_integration_r1.py
       - name: All three six-stage journeys and full 74 question map on desktop and mobile
         run: python tools/wpe_learn_challenge_coverage_r1_ui.py
       - name: Existing five extension six-stage journeys
         run: python tools/wpe_extensions_interactive_ui.py
+      - name: Unified source preservation and optional transfer on desktop and mobile
+        run: python tools/wpe_unified_integration_r1_ui.py
+      - name: Existing Python regressions
+        run: python -m pytest -q
