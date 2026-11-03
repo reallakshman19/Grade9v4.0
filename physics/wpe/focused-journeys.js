@@ -428,7 +428,7 @@
     }else if(key==="attempt"&&s.stage===1&&s.first===null){
       const values=readValues(host);
       if(!values.reason?.trim()){warn("Explain your model (or write 'I'm not sure') before revealing the worked method.");return;}
-      if(!values.model||values.model==="Choose an idea"){warn("Choose an initial model, or select 'I'm not sure yet'.");return;}
+      if(!values.model||/^Choose (an idea|a model)$/.test(values.model)){warn("Choose an initial model, or select 'I'm not sure yet'.");return;}
       s.first={answers:{...values},hintsUsed:s.hints.length,helpHistory:s.helpHistory.slice(),capturedAt:new Date().toISOString()};
       s.draft={};s.stage=2;
     }else if(key==="reconstruct"&&s.stage===2){
@@ -452,7 +452,8 @@
   }
   function updateProgress(){
     const count=ids.filter(x=>states[x].boundary!==null).length;
-    $("#progress-label").textContent=count+" of 3 fresh boundary challenges completed";
+    const transfers=ids.filter(x=>states[x+"-transfer55"]?.boundary!==null).length;
+    $("#progress-label").textContent=count+" of 3 first challenges · "+transfers+" of 3 optional transfers completed";
     $("#progress-meter").value=count;
     for(const id of ids){
       const a=$('[data-journey="'+id+'"]');
@@ -474,7 +475,7 @@
     const article=add(root,"article",null,"lesson");
     article.id=active;
     const header=add(article,"header",null,"lesson-title");
-    paragraph(header,"NEW FOCUSED REASONING CONSTRUCTION · NOT AN EXAM KEY","mini");
+    paragraph(header,"LEARN THE IDEA · AUTHOR-CREATED TEACHING · NOT AN EXAM KEY","mini");
     add(header,"h2",d.title);paragraph(header,d.question);
     const grid=add(article,"div",null,"learning-grid");
     buildGuide(grid,active,d);
