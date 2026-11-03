@@ -4,6 +4,10 @@ on:
   pull_request:
     paths:
       - "physics/wpe/learn-challenge.html"
+      - "physics/wpe/reasoning-paths.html"
+      - "physics/wpe/reasoning-paths.review.json"
+      - "preview/question-status.html"
+      - "tests/test_wpe_reasoning_routes.py"
       - "physics/wpe/index.html"
       - "physics/wpe/question-bank.html"
       - "preview/physics-wpe.html"
@@ -18,6 +22,10 @@ on:
     branches: [main]
     paths:
       - "physics/wpe/learn-challenge.html"
+      - "physics/wpe/reasoning-paths.html"
+      - "physics/wpe/reasoning-paths.review.json"
+      - "preview/question-status.html"
+      - "tests/test_wpe_reasoning_routes.py"
       - "physics/wpe/index.html"
       - "physics/wpe/question-bank.html"
       - "preview/physics-wpe.html"
