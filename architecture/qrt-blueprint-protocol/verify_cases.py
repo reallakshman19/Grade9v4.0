@@ -9,6 +9,7 @@ Owner approval, changes native SL1/SL2 data, or qualifies a tile.
 from __future__ import annotations
 
 from copy import deepcopy
+import hashlib
 import json
 from pathlib import Path
 
@@ -139,6 +140,21 @@ def evaluate(record: dict) -> dict:
 
 def verify_documentary_sources(bundle: dict) -> None:
     """Check golden examples have not invented or drifted from repo evidence."""
+    pins = read(HERE / "source-pins.json")
+    if pins["schema"] != "g9v4-qrt-blueprint-source-pins/v1":
+        raise ValueError("Unexpected source-pin manifest schema.")
+    if pins["authority"] != "AUTHOR_EXPOSED_ENGINEERING_REFERENCE_ONLY__NOT_OWNER_APPROVAL":
+        raise ValueError("Source-pin record claims unearned academic authority.")
+    for name, item in pins["sources"].items():
+        filepath = ROOT / item["path"]
+        if not filepath.is_file():
+            raise ValueError(f"{name}: pinned source missing at {filepath}")
+        content = filepath.read_bytes()
+        git_blob_sha = hashlib.sha1(
+            b"blob " + str(len(content)).encode("ascii") + b"\\0" + content
+        ).hexdigest()
+        if git_blob_sha != item["git_blob_sha"]:
+            raise ValueError(f"{name}: Git blob changed; re-audit before updating pin.")
     blueprint = read(ROOT / "templates/physics-blueprint/physics-blueprint.D3-D4.json")
     if blueprint["version"] != "0.2.0" or blueprint["status"] != "DRAFT_OWNER_REVIEW":
         raise ValueError("Pinned Blueprint status/version drift; audit and update references, never silently promote.")
