@@ -184,7 +184,9 @@
     "C07 steady pickup addresses only horizontal flows and incremental motor power; electric/bearing/vertical loads excluded. A source reference EX-M16 does not establish an accepted original-source join.",
     "C08 has an unresolved selected-pilot versus consolidated-reader classification discrepancy for EX-M101; no source or demand band change made.",
     "Existing C01–C06 browser localStorage v1 keys, initial responses, repaired text and progress state are unchanged after the C07/C08 addition.",
-    "New C07/C08 reasoning tests are automated simulations; no real child's understanding or admission inferred."
+    "New C07/C08 reasoning tests are automated simulations; no real child's understanding or admission inferred.",
+    "Learner-readiness software audit found missing C05–C08 attempt hints and repair cues, no reviewable worked steps at diagnosis/repair, and lost in-progress draft text across reload. These are code-inspection findings, not observed child behavior.",
+    "A supervised, anonymized learner observation protocol is now prepared. No learner session was run or inferred from the simulated browser journeys."
   ],
   "implementation_batch": {
     "id": "C07_C08_INTERACTIVE_TRANSFER",
@@ -208,5 +210,26 @@
     "software_browser_simulations_only": true,
     "author_pack_contract": "Each fresh challenge requires an independent flow/control variable decision, locked first model, reconstruction, self-diagnosis, repair and changed-condition boundary test",
     "learner_accessibility": "Flow-rate arrows, separate motor/kinetic/heat ledger, and explicit Hooke-law measurements plus worked equal-force versus equal-extension comparisons; advanced examples remain optional."
+  },
+  "learner_readiness_batch": {
+    "id": "EIGHT_LESSON_LEARNER_READINESS_REVIEW_20261103",
+    "date": "2026-11-03",
+    "scope": "Existing C01-C08 six-stage practice only; no academic admission or new source-theme join",
+    "fixes": [
+      "Save incomplete prediction and attempt drafts locally, without overwriting the locked first model",
+      "Keep the worked Core1B reasoning accessible in a collapsed control during diagnosis, repair and pre-boundary reflection",
+      "Give optional non-answer hints and misconception-tailored repair prompts in C05-C08, matching C01-C04 support",
+      "Provide an anonymized supervised observation protocol before claiming actual student usability evidence"
+    ],
+    "observational_protocol": "WPE_Source_to_Core1A_Concept/learning-bridge/LEARNER_OBSERVATION_PROTOCOL.md",
+    "protocol_created": true,
+    "real_student_sessions_conducted": 0,
+    "actual_child_observations": false,
+    "automated_browser_regression_only": true,
+    "first_attempt_key_changed": false,
+    "first_attempt_unlock_changed": false,
+    "original_source_stems_changed": false,
+    "academic_admissions_changed": false,
+    "scope_status": "PREPARATION_AND_SOFTWARE_FIXES_ONLY__NO_REAL_LEARNER_DATA"
   }
 }
