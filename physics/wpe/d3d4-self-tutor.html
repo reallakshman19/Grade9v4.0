@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#12384f">
-  <meta name="description" content="Two WPE practice journeys: learn, predict, attempt, reconstruct, diagnose, repair and test a changed condition.">
-  <title>Two thinking challenges · Work, Power and Energy</title>
+  <meta name="description" content="Four WPE practice journeys: learn, predict, attempt, reconstruct, diagnose, repair and test a changed condition.">
+  <title>Four thinking challenges · Work, Power and Energy</title>
   <link rel="stylesheet" href="../../site.css">
   <link rel="stylesheet" href="d3d4-self-tutor.css">
   <script src="d3d4-self-tutor.js" defer></script>
@@ -20,7 +20,7 @@
   </header>
   <main id="lesson-main" class="shell">
     <section class="welcome" aria-labelledby="page-title">
-      <p class="eyebrow">Two thinking skills · Student practice preview</p>
+      <p class="eyebrow">Four thinking skills · Student practice preview</p>
       <h1 id="page-title">Learn the idea. Then solve a <em>different</em> problem.</h1>
       <p>These are not speed tests. Use the worked example to learn a method, then keep your first thinking before seeing the answer. You can be unsure or make mistakes—that's how the next steps help.</p>
       <div class="how">
@@ -31,18 +31,20 @@
         <p>You can write <strong>“I’m not sure”</strong> in an answer. Your first attempt is saved on this browser and stays separate from your later repair. This page does not grade explanations.</p>
       </div>
       <div class="overall" aria-live="polite">
-        <span id="overall-count">0 of 2 challenges completed</span>
-        <progress id="overall-meter" value="0" max="2" aria-label="Completed boundary tests"></progress>
+        <span id="overall-count">0 of 4 challenges completed</span>
+        <progress id="overall-meter" value="0" max="4" aria-label="Completed boundary tests"></progress>
       </div>
       <nav class="topic-links" aria-label="Choose a lesson">
         <a href="#C01">1 · Every force counts</a>
         <a href="#C02">2 · When the spring stops pushing</a>
+        <a href="#C03">3 · Energy added each second</a>
+        <a href="#C04">4 · Only the hanging part</a>
       </nav>
     </section>
 
     <article class="unit" id="C01" data-topic="C01" aria-labelledby="c01-title">
       <header class="unit-header">
-        <p class="eyebrow">Skill 1 of 2 · Multi-force work and energy</p>
+        <p class="eyebrow">Skill 1 of 4 · Multi-force work and energy</p>
         <h2 id="c01-title">🛴 Every force counts</h2>
         <p class="unit-subtitle">A push helps, friction slows, gravity pulls—and your energy calculation must include them all.</p>
       </header>
@@ -114,7 +116,7 @@
 
     <article class="unit" id="C02" data-topic="C02" aria-labelledby="c02-title">
       <header class="unit-header">
-        <p class="eyebrow">Skill 2 of 2 · Spring contact and energy</p>
+        <p class="eyebrow">Skill 2 of 4 · Spring contact and energy</p>
         <h2 id="c02-title">🌀 When the spring stops pushing</h2>
         <p class="unit-subtitle">One journey can have two different sets of forces. Find the point where the rules change.</p>
       </header>
@@ -170,10 +172,124 @@
           </div>
         </section>
       </div>
-      <nav class="unit-next" aria-label="Learning navigation"><a href="#C01">← Back to Skill 1</a><a href="learn-challenge.html">Explore the five foundations →</a></nav>
+      <nav class="unit-next" aria-label="Learning navigation"><a href="#C01">← Back to Skill 1</a><a href="#C03">Next: Energy added each second →</a></nav>
+    </article>
+
+    <article class="unit" id="C03" data-topic="C03" aria-labelledby="c03-title">
+      <header class="unit-header">
+        <p class="eyebrow">Skill 3 of 4 · Constant power</p>
+        <h2 id="c03-title">⚡ Energy added each second</h2>
+        <p class="unit-subtitle">A motor can supply equal amounts of energy every second without making speed rise equally every second.</p>
+      </header>
+      <div class="pair">
+        <section class="guide" aria-labelledby="c03-guide">
+          <p class="part-label">Core1A · Guided example</p>
+          <h3 id="c03-guide">A powered toy sled</h3>
+          <p>A <strong>2 kg</strong> sled already moves right at <strong>2 m/s</strong>. A motor supplies a steady <strong>12 watts</strong> of mechanical power on a smooth, level track, for <strong>4 seconds</strong>. Assume there is no friction.</p>
+          <figure class="illustration">
+            <svg viewBox="0 0 500 198" role="img" aria-label="Two qualitative graphs: kinetic energy increases in a straight line as time passes, while speed increases but its graph gradually becomes less steep.">
+              <g stroke="#869ca7" stroke-width="2" fill="none"><path d="M40 157H218M40 157V25M286 157H465M286 157V25"/></g>
+              <g font-size="12" fill="#345e70"><text x="20" y="21">K (J)</text><text x="207" y="177">t (s)</text><text x="266" y="21">v (m/s)</text><text x="454" y="177">t (s)</text></g>
+              <path d="M40 145L205 31" stroke="#137d71" stroke-width="4" fill="none" stroke-linecap="round"/>
+              <path d="M286 139Q330 68 454 47" stroke="#ad724c" stroke-width="4" fill="none" stroke-linecap="round"/>
+              <g fill="#0d6b62" font-size="14" font-weight="bold"><text x="65" y="29">Straight</text></g>
+              <g fill="#8b5c39" font-size="14" font-weight="bold"><text x="340" y="30">Curves</text></g>
+              <text x="38" y="190" font-size="12" fill="#567584">Equal energy each second</text>
+              <text x="298" y="190" font-size="12" fill="#567584">Unequal speed gains</text>
+            </svg>
+            <figcaption>These show shapes, not exact plotted measurements. Always read the axes.</figcaption>
+          </figure>
+          <ol class="guide-steps">
+            <li><strong>Read watts:</strong> 12 W means the motor adds <strong>12 J of energy per second</strong>, not 12 N of force.</li>
+            <li><strong>Start with energy already there:</strong> K at the start = ½ × 2 × 2² = <strong>4 J</strong>.</li>
+            <li><strong>Keep an energy table:</strong> K after t seconds = 4 + 12 × t joules. At 1 s, K = <strong>16 J</strong>. At 4 s, K = <strong>52 J</strong>.</li>
+            <li><strong>Turn energy into speed:</strong> K = ½mv², so speed after 1 s is <strong>4 m/s</strong> and after 4 s is <strong>√52 ≈ 7.21 m/s</strong>.</li>
+            <li><strong>Choose graph shapes:</strong> kinetic energy against time is a rising straight line. Speed against time rises but gradually flattens. Distance against time grows with an increasing slope because the sled speeds up.</li>
+          </ol>
+          <p class="guide-takeaway"><strong>Remember:</strong> constant <em>power</em> means equal energy each second—not a constant force or constant acceleration. Always include the energy from the initial speed.</p>
+          <details class="conditions"><summary>When does this work?</summary><p>The supplied 12 W is useful mechanical power, the mass stays fixed, the sled is already moving, and there are no energy losses. We only need an energy table and graph shapes; no calculus or memorized distance–time power law is needed.</p></details>
+        </section>
+        <section class="challenge" aria-labelledby="c03-challenge">
+          <p class="part-label independent">Core1B · Different challenge</p>
+          <h3 id="c03-challenge">The classroom trolley's changing speed</h3>
+          <p>A <strong>3 kg</strong> trolley already moves at <strong>2 m/s</strong>. A motor adds a steady <strong>18 W</strong> of mechanical power on a smooth, level track. Work out its speed after <strong>2 seconds</strong> and <strong>6 seconds</strong>. Explain the shapes of the <strong>kinetic energy–time</strong>, <strong>speed–time</strong> and <strong>displacement–time</strong> graphs. Does it have constant acceleration?</p>
+          <figure class="illustration">
+            <svg viewBox="0 0 500 154" role="img" aria-label="A three-kilogram classroom trolley moves right on a smooth track with an eighteen-watt motor. A timeline labels two seconds and six seconds.">
+              <path d="M20 110H484" stroke="#85a3ac" stroke-width="3"/>
+              <rect x="79" y="58" width="112" height="44" rx="9" fill="#d5eaf1" stroke="#315c7a" stroke-width="3"/>
+              <g fill="#315c7a"><circle cx="103" cy="107" r="10"/><circle cx="167" cy="107" r="10"/></g>
+              <text x="102" y="87" fill="#28536b" font-size="17" font-weight="bold">3 kg</text>
+              <path d="M198 75H313" stroke="#168774" stroke-width="4"/><path d="M298 63L315 75L298 87" fill="none" stroke="#168774" stroke-width="4"/>
+              <text x="211" y="56" fill="#127365" font-size="16">Motor · 18 W</text>
+              <path d="M344 111V125M449 111V125" stroke="#668d9c" stroke-width="2"/>
+              <text x="326" y="144" fill="#3a6273" font-size="14">2 s</text>
+              <text x="430" y="144" fill="#3a6273" font-size="14">6 s</text>
+              <text x="19" y="24" fill="#526d7d" font-size="15">Already moving at 2 m/s</text>
+            </svg>
+            <figcaption>Make a fresh energy table at both times. The motor's power differs from the guided example.</figcaption>
+          </figure>
+          <div class="stage-root" data-stage-root="C03"><p>Interactive steps require JavaScript. The guided example is available above.</p></div>
+        </section>
+      </div>
+      <nav class="unit-next" aria-label="Learning navigation"><a href="#C02">← Back to Skill 2</a><a href="#C04">Next: Only the hanging part →</a></nav>
+    </article>
+
+    <article class="unit" id="C04" data-topic="C04" aria-labelledby="c04-title">
+      <header class="unit-header">
+        <p class="eyebrow">Skill 4 of 4 · Changing centre of mass</p>
+        <h2 id="c04-title">⛓️ Only the hanging part</h2>
+        <p class="unit-subtitle">When a rope hangs over an edge, the amount of hanging rope—and the position of its middle—both change as you pull.</p>
+      </header>
+      <div class="pair">
+        <section class="guide" aria-labelledby="c04-guide">
+          <p class="part-label">Core1A · Guided example</p>
+          <h3 id="c04-guide">Lift a chain onto a table</h3>
+          <p>A uniform <strong>4 m</strong> chain has mass <strong>2 kg</strong>. Initially <strong>2 m hangs</strong> below a smooth table edge; the rest lies on the table. Pull it <strong>very slowly</strong> until none hangs. Take <strong>g = 10 m/s²</strong>.</p>
+          <figure class="illustration">
+            <svg viewBox="0 0 500 210" role="img" aria-label="A tabletop and a two-metre vertical hanging chain. Its hanging section has mass one kilogram and its centre of mass is one metre below the table. After lifting, the chain lies on the tabletop.">
+              <path d="M30 69H208V188" stroke="#678d9d" stroke-width="5" fill="none"/>
+              <path d="M59 61H199V188" stroke="#bd8158" stroke-width="7" stroke-linecap="round" fill="none"/>
+              <circle cx="199" cy="126" r="6" fill="#176f69"/>
+              <text x="64" y="37" font-size="15" fill="#446579">Before</text><text x="68" y="92" font-size="13" fill="#476d7f">On table</text>
+              <text x="209" y="130" font-size="13" fill="#126d67">Middle · 1 m below</text>
+              <text x="204" y="188" font-size="13" fill="#95603a">2 m hanging</text>
+              <path d="M317 69H469V188" stroke="#678d9d" stroke-width="5" fill="none"/>
+              <path d="M329 60H462" stroke="#bd8158" stroke-width="7" stroke-linecap="round"/>
+              <text x="352" y="37" font-size="15" fill="#446579">After</text>
+              <text x="344" y="98" font-size="13" fill="#126d67">0 m hanging</text>
+            </svg>
+            <figcaption>The green dot is the middle of the hanging piece, not the middle of the whole chain.</figcaption>
+          </figure>
+          <ol class="guide-steps">
+            <li><strong>Find mass per metre:</strong> 2 kg ÷ 4 m = <strong>0.5 kg/m</strong>.</li>
+            <li><strong>Use the hanging part:</strong> 2 m hangs, so its mass is 0.5 × 2 = <strong>1 kg</strong>.</li>
+            <li><strong>Find its middle:</strong> because it is uniform, its centre of mass is halfway down—<strong>1 m below the table</strong>.</li>
+            <li><strong>Compare energies:</strong> choose table height as zero. Initially the hanging part has U = −1 × 10 × 1 = <strong>−10 J</strong>. At the end, U = <strong>0 J</strong>.</li>
+            <li><strong>Find the work:</strong> the helper works slowly, so the work needed is the increase in potential energy: 0 − (−10) = <strong>+10 J</strong>.</li>
+          </ol>
+          <p class="guide-takeaway"><strong>Remember:</strong> as the hanging length shrinks, both its <em>mass</em> and its <em>centre-of-mass depth</em> shrink. Compare two pictures rather than lifting the entire chain as one fixed lump.</p>
+          <details class="conditions"><summary>When can I use this method?</summary><p>The chain is uniform and flexible, the edge and tabletop are smooth, and it is pulled slowly enough that kinetic-energy changes can be ignored. Potential energy below the tabletop is negative only because of our chosen zero level.</p></details>
+        </section>
+        <section class="challenge" aria-labelledby="c04-challenge">
+          <p class="part-label independent">Core1B · Different challenge</p>
+          <h3 id="c04-challenge">Pull a rope only partway up</h3>
+          <p>A uniform <strong>8 m rope</strong> has mass <strong>4 kg</strong>. Initially <strong>4 m hangs</strong> below a smooth platform edge. You pull very slowly until <strong>2 m still hangs</strong>. There is no friction, stretching, or change in kinetic energy. Take <strong>g = 10 m/s²</strong>. How much <em>positive work</em> do you do?</p>
+          <figure class="illustration">
+            <svg viewBox="0 0 500 213" role="img" aria-label="Before: a uniform rope hangs four metres from a platform. After: two metres remain hanging. Learner must determine each hanging mass and centre-of-mass depth.">
+              <g stroke="#7597a6" stroke-width="4" fill="none"><path d="M22 53H213V190"/><path d="M283 53H474V190"/></g>
+              <g stroke="#bd805a" stroke-width="7" stroke-linecap="round" fill="none"><path d="M49 45H204V185"/><path d="M302 45H465V121"/></g>
+              <g fill="#345e72" font-size="16" font-weight="bold"><text x="39" y="27">Before · 4 m</text><text x="299" y="27">After · 2 m</text></g>
+              <g fill="#5a7887" font-size="13"><text x="27" y="204">Which mass is hanging?</text><text x="302" y="149">Where is its middle?</text></g>
+            </svg>
+            <figcaption>Draw a middle dot on both hanging pieces yourself. The mass below the edge is not the same in both states.</figcaption>
+          </figure>
+          <div class="stage-root" data-stage-root="C04"><p>Interactive steps require JavaScript. The guided example is available above.</p></div>
+        </section>
+      </div>
+      <nav class="unit-next" aria-label="Learning navigation"><a href="#C03">← Back to Skill 3</a><a href="#C01">Return to the first skill ↑</a></nav>
     </article>
     <footer class="end-note">
-      <strong>About this preview:</strong> These are newly authored, independent practice problems based on the C01/C02 conceptual teaching drafts—not original examination questions. Local browser storage is useful for practice, but it does <em>not</em> verify identity, grade written reasoning, securely hide an answer key, or establish academic Core1A/Core1B admission. Original source selections remain under review.
+      <strong>About this preview:</strong> These are newly authored, independent practice problems based on the C01–C04 conceptual teaching drafts—not original examination questions. Local browser storage is useful for practice, but it does <em>not</em> verify identity, grade written reasoning, securely hide an answer key, or establish academic Core1A/Core1B admission. Original source selections remain under review.
     </footer>
   </main>
 </body>
