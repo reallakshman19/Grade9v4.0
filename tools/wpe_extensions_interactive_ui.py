@@ -1,6 +1,6 @@
 """Real Chromium, desktop and mobile: Question -> extension -> new challenge -> Question.
 
-Exercises all five independent six-stage student journeys and keeps the old
+Exercises all eight independent six-stage student journeys and keeps the old
 C01-C08/browser suites untouched. These are automated interactions, not claims
 of real child testing or scientific approval.
 """
@@ -20,6 +20,9 @@ SOURCES={
     "E03":["EX-N34"],
     "E04":["EX-M82"],
     "E05":["EX-M89"],
+    "E06":["EX-M97"],
+    "E07":["EX-N39"],
+    "E08":["WEP07-01"],
 }
 PROMPT={
     "E01":"Both valleys look low. I am testing whether the middle lets me walk all the way across.",
@@ -27,6 +30,9 @@ PROMPT={
     "E03":"I will stop counting spring force at the contact boundary, then find projectile flight time.",
     "E04":"I will change the retained fraction after impact one and count each rise and fall.",
     "E05":"I need the area for potential change and the force height for inward acceleration.",
+    "E06":"I thought net F times velocity was total supplied push power; I need to account for gravity.",
+    "E07":"I thought friction acted downhill on both legs, but it opposes motion.",
+    "E08":"I forgot the new equilibrium after the force switch and the negative starting compression.",
 }
 
 def require(ok,msg):
@@ -92,7 +98,7 @@ def round_trip(page,base,lesson,source):
     require(root.locator(".stage-card h3").inner_text()=="3. Reconstruct",lesson+": worked model not unlocked")
     original_first=state(page,lesson)["first"]
     require(original_first["reason"]==PROMPT[lesson],lesson+": first reasoning changed")
-    require(root.locator(".worked ol li").count()==4,lesson+": worked reconstruction incomplete")
+    require(root.locator(".worked ol li").count()>=4,lesson+": worked reconstruction incomplete")
     root.locator('[data-action="save-check"]').click()
     require(root.locator(".stage-card h3").inner_text()=="4. Diagnose",lesson+": diagnosis stage missing")
     root.locator('[data-diagnosis]').select_option("0")
@@ -111,7 +117,7 @@ def round_trip(page,base,lesson,source):
     require(root.locator(".stage-card .worked").count()==1,lesson+": boundary worked check missing")
     require(state(page,lesson)["first"]==original_first,lesson+": first attempt overwritten by repair/boundary")
     require(state(page,lesson)["boundary"],lesson+": changed-condition reasoning not saved")
-    require("1 of 5" in page.locator("#extension-progress").inner_text(),lesson+": completed state not counted")
+    require("1 of 8" in page.locator("#extension-progress").inner_text(),lesson+": completed state not counted")
     page.reload(wait_until="load")
     page.locator("#source-journey:not([hidden])").wait_for()
     require(state(page,lesson)["first"]==original_first,lesson+": first attempt lost on reload")
@@ -123,7 +129,7 @@ def round_trip(page,base,lesson,source):
     require(page.locator("#solution-container .solution").count()==0,lesson+": returning revealed source answer")
 
 def verify_source_inventory(page,base):
-    # All seven exact existing candidate-source references can open the right E route.
+    # All ten exact existing candidate-source references can open their selected E route.
     for id_,sources in SOURCES.items():
         for source in sources:
             page.goto(base+"/physics/wpe/reasoning-paths.html?question="+source)
@@ -158,7 +164,7 @@ def main():
                 context=browser.new_context()
                 try:verify_source_inventory(context.new_page(),base)
                 finally:context.close()
-                print("PASS: seven exact source links; unmatched source IDs refused")
+                print("PASS: ten exact source links; unmatched source IDs refused")
             finally:
                 browser.close()
     finally:
