@@ -271,7 +271,7 @@ def test_fourteen_distinct_a_b_tasks_gates_and_no_source_admission():
     assert js.count("boundary:")>=14
     assert "fields:[o.model,o.assumption,...o.numbers,reason(o.reason)]" in js
     assert "boundaryFields:[o.boundaryModel" in js
-    assert 'source:"EX-M69"' in js and "option images" in js.lower()
+    assert 'source:"EX-M69"' in js and "[FIG-options-*]" in js
     assert 'g9:wpe:c05-r5:v1:' in js
     assert 'g9:wpe:c06-r4:v1:' not in js and 'g9:wpe:gaps:v2:' not in js
     assert "window.WPEGapJourneys(signatures" in js
