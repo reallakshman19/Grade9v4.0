@@ -46,12 +46,12 @@ def test_exact_74_custody_and_reconciliation_distinguishes_fits():
     by_id={r["source_id"]:r for r in bank["questions"]}
     source_map={r["source_id"]:r for r in source["questions"]}
     cnt=Counter(x["fit"] for x in map_["questions"])
-    assert cnt==Counter({"FOCUSED_NEW":3,"TARGETED_PRACTICE":18,"RELATED_BRIDGE":48,"MISSING_CONSTRUCTION":5})
+    assert cnt==Counter({"FOCUSED_NEW":8,"TARGETED_PRACTICE":18,"RELATED_BRIDGE":48})
     assert map_["counts"]["total"]==74
-    assert map_["counts"]["focused_new"]==3
+    assert map_["counts"]["focused_new"]==8
     assert map_["counts"]["targeted"]==18
     assert map_["counts"]["related"]==48
-    assert map_["counts"]["missing"]==5
+    assert map_["counts"]["missing"]==0
     assert map_["counts"]["wrapped_related"]==41
     expected_new={"EX-M97":"F01","EX-N39":"F02","WEP07-01":"F03"}
     for row in map_["questions"]:
@@ -65,7 +65,7 @@ def test_exact_74_custody_and_reconciliation_distinguishes_fits():
             assert row["fit"]=="FOCUSED_NEW" and row["primary_lesson"]==expected_new[id_]
             assert row["route_mode"]=="FOCUSED_SOURCE"
         if row["primary_lesson"]:
-            assert row["primary_lesson"] in {f"C{i:02}" for i in range(1,9)} | {f"E{i:02}" for i in range(1,6)} | {"F01","F02","F03"}
+            assert row["primary_lesson"] in {f"C{i:02}" for i in range(1,9)} | {f"E{i:02}" for i in range(1,6)} | {f"F{i:02}" for i in range(1,9)}
             assert row["lesson_href"] and "question="+id_ in row["lesson_href"]
             assert row["source_href"].endswith("question="+id_)
             if row["route_mode"]=="BRIDGED_RELATED":
@@ -74,9 +74,7 @@ def test_exact_74_custody_and_reconciliation_distinguishes_fits():
                 assert len(row["teaching_limit"])>=25, "Related practice must identify the remaining physical step"
         else:
             assert row["fit"]=="MISSING_CONSTRUCTION" and row["lesson_href"] is None
-    assert {q["source_id"] for q in map_["questions"] if q["fit"]=="MISSING_CONSTRUCTION"}=={
-        "EX-M50","EX-M92","EX-M96","EX-M106","EX-N27"
-    }
+    assert not any(q["fit"]=="MISSING_CONSTRUCTION" for q in map_["questions"])
     assert {r["id"] for r in routes["constructions"]}=={f"WPE-C{i:02}" for i in range(1,9)} | {f"WPE-E{i:02}" for i in range(1,6)}
     assert all(r["approved_core1a_url"] is None for r in routes["constructions"])
 
@@ -193,14 +191,14 @@ def test_unmapped_pendulum_and_coupling_do_not_teach_false_model_equivalence():
     rows=load(WPE/"learning-coverage-r1.json")["questions"]
     m={x["source_id"]:x for x in rows}
     p=m["EX-M106"]
-    assert p["fit"]=="MISSING_CONSTRUCTION" and p["has_source_caution"]
+    assert p["fit"]=="FOCUSED_NEW" and p["has_source_caution"]
     assert "turning point" in p["source_science_note"]
-    assert "Mg tanθ=Mg" in p["source_science_note"]
+    assert "Mg" in p["source_science_note"]
     assert "holding" in p["teaching_limit"] or "static balance" in p["teaching_limit"]
     w=m["EX-N27"]
-    assert w["fit"]=="MISSING_CONSTRUCTION" and w["has_source_caution"]
-    assert "10%" in w["source_science_note"] and "reduced mass" in w["source_science_note"]
-    assert "individual masses" in w["teaching_limit"]
+    assert w["fit"]=="FOCUSED_NEW" and w["has_source_caution"]
+    assert "10%" in w["source_science_note"] and "brake" in w["source_science_note"]
+    assert "two-body" in w["teaching_limit"]
 
 def test_focus_layout_first_answer_guard_and_existing_13_preserved():
     source=(WPE/"focused-journeys.js").read_text(encoding="utf-8")

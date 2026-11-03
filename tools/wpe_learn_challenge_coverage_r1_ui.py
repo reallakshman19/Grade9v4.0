@@ -140,8 +140,8 @@ def coverage_and_bridges(browser,base,width,height):
         check("net" in page.locator("#question-plan").inner_text().lower(),"Source ambiguity not explained")
         page.locator("#question-pick").select_option("EX-M96")
         check("EX-M96" in plan.inner_text(),"Question selector did not change")
-        check("missing" in page.locator("#question-plan").inner_text().lower(),"Missing construction misrepresented")
-        check(page.locator("#question-plan .primary-link").count()==0,"A missing lesson was invented")
+        check("F06" in page.locator("#question-plan").inner_text(),"Wind energy flow lesson not connected")
+        check(page.locator("#question-plan .primary-link").count()==1,"Exact-source wind lesson missing")
         page.locator("#question-pick").select_option("EX-M11")
         check("C05" in page.locator("#question-plan").inner_text(),"Related C05 bridge missing")
         bridge=page.locator('#question-plan .primary-link')
@@ -157,7 +157,7 @@ def coverage_and_bridges(browser,base,width,height):
         page.goto(base+"/physics/wpe/question-coverage.html")
         page.locator("#table-status").filter(has_text="74 of 74").wait_for()
         check(page.locator("#rows tr").count()==74,"Not 74 exact coverage entries")
-        for f,n in (("focused",3),("targeted",18),("related",48),("missing",5)):
+        for f,n in (("focused",8),("targeted",18),("related",48),("missing",0)):
             page.locator("#filter").select_option(f)
             check(page.locator("#rows tr").count()==n,f+" expected "+str(n))
         page.locator("#filter").select_option("all")

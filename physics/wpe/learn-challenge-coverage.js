@@ -39,7 +39,7 @@
       if(!filtered.some(x=>x.source_id===selected))selected=null;
       picker.value=selected||"";
     }
-    status.textContent=filtered.length+" of 74 source questions shown; "+map.counts.focused_new+" new focused journeys, "+map.counts.targeted+" close practice matches, "+map.counts.related+" related-only bridges, "+map.counts.missing+" genuine missing constructions.";
+    status.textContent=filtered.length+" of 74 source questions shown; "+map.counts.focused_new+" new focused journeys, "+map.counts.targeted+" close practice matches, "+map.counts.related+" related-only bridges, "+map.counts.missing+" remaining unaddressed constructions.";
     draw();
   }
   const safeLessonURL=(href,source,lesson)=>{
@@ -47,7 +47,7 @@
     try{
       const url=new URL(href,location.href),loc=new URL("focused-journeys.html",location.href);
       if(url.origin!==loc.origin||url.pathname.substring(0,url.pathname.lastIndexOf("/")+1)!==loc.pathname.substring(0,loc.pathname.lastIndexOf("/")+1))return null;
-      if(!/^(d3d4-self-tutor|extension-learning|focused-journeys|study-bridge)\.html$/.test(url.pathname.split("/").pop()))return null;
+      if(!/^(d3d4-self-tutor|extension-learning|focused-journeys|gap-journeys|study-bridge)\.html$/.test(url.pathname.split("/").pop()))return null;
       if(url.searchParams.get("question")!==source)return null;
       const path=lesson?.startsWith("C")?"d3d4-self-tutor.html":lesson?.startsWith("E")?"extension-learning.html":lesson?.startsWith("F")?"focused-journeys.html":null;
       if(!path)return null;
