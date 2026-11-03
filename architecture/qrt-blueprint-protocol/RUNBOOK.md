@@ -18,7 +18,7 @@ For **authoring / planning agents** (already exposed to review history), read th
 
 **Exception: independent blind QRT reviewer.** Do **not** show this author-exposed guide, prior solutions, classification tables, golden fixtures, author labels, consolidated review reader, hints or checkpoint to a reviewer *before their sealed first pass*. Only an actually authorized dispatcher may give that reviewer exact, independently authenticated question/figure/source inputs, applicable rubric/Blueprint, task scope, seal destination and resource bound. Read `docs/agent-entry/07-independent-review.md`. If exposed, declare it. Never self-appoint or describe the review as blind.
 
-**As-of snapshot, not timeless truth:** 74 displayed consolidated records; 22 labeled D3/D4 (17 D3 + 5 D4), all **NOT_ADMITTED**. Eight interactive reusable teaching constructions (C01–C08), five author-only targeted extensions (E01–E05), zero qualified learner routes. The separate 21-place exam pilot has 14 pending, 7 vacant, zero admitted; among its 14 candidates versus the selected reader: 3 agree, 8 conflict, 3 absent from *that reader*. The Physics Blueprint has 14 draft cells (D3/D4 × 7 operations). The selected approved WPE adapter is **UNSELECTED**. D1/D2 common Blueprint is not approved/specified here. **D3.1 is PAUSED.** Recompute counts when the pinned inventory changes.
+**As-of snapshot, not timeless truth:** 74 displayed consolidated records; 22 labeled D3/D4 (17 D3 + 5 D4), all **NOT_ADMITTED**. Eight primary interactive constructions (C01–C08) and eight optional advanced interactive constructions (E01–E08), zero qualified learner routes. The separate 21-place exam pilot has 14 pending, 7 vacant, zero admitted; among its 14 candidates versus the selected reader: 3 agree, 8 conflict, 3 absent from *that reader*. The Physics Blueprint has 14 draft cells (D3/D4 × 7 operations). The selected approved WPE adapter is **UNSELECTED**. D1/D2 common Blueprint is not approved/specified here. **D3.1 is PAUSED.** Recompute counts when the pinned inventory changes.
 
 ## 1. Agent identity and output contract
 
@@ -61,7 +61,7 @@ The primary typed row is [`schemas/question-route.schema.json`](schemas/question
 
 **S6 — Select the topic adapter only through authority.** Common Blueprint is Physics-wide and topic-neutral; all WPE bodies, laws, quantities, signs, figures, source anchors, misconceptions and exceptions go into the WPE adapter. Bind **one exact** adapter path/version/hash and its Owner selection receipt. If missing, use `UNSELECTED`. Never edit the common Blueprint to fit a WPE problem.
 
-**S7 — Build teaching and independent reasoning.** Read [Core six-stage method](CORE_METHOD.md) first: define the taught skill, protected inference, evidence for each stage, and how help changes the independence claim. Audit whether Core1A teaches the *exact inferential jump*, prerequisite laws, conditions, units, sign/frame, diagrams, wrong path and check. Audit Core1B for a **fresh** attempt with an independent first model, honest H1/H2/H3, reconstruction, diagnosed cause from actual response, repair and changed-condition transfer. A completed C01–C08 practice lesson is usable learning help but not proof that an original question or D3/D4 MAIN task is fully covered.
+**S7 — Build teaching and independent reasoning.** Read [Core six-stage method](CORE_METHOD.md) first: define the taught skill, protected inference, evidence for each stage, and how help changes the independence claim. Audit whether Core1A teaches the *exact inferential jump*, prerequisite laws, conditions, units, sign/frame, diagrams, wrong path and check. Audit Core1B for a **fresh** attempt with an independent first model, honest H1/H2/H3, reconstruction, diagnosed cause from actual response, repair and changed-condition transfer. A completed C01–C08 or E01–E08 practice lesson is usable learning help but not proof that an original question or D3/D4 MAIN task is fully covered.
 
 **S8 — Test the Blueprint's complete tile shape.** A tile may have multiple topic-specific instances. Provide one Core1A construction per instance; one band-carrying MAIN Core1B cycle **mixing the instances**; and one Core1B cycle per instance, with truthful individual bands. Score each MAIN/instance/exam task independently. A D2 instance can teach a D4 MAIN but cannot be counted as a D4 exam original.
 
@@ -138,13 +138,13 @@ Do **not** confuse columns because a question *contains* a graph, *mentions* a f
 |---|---|---|
 | **P0** | Exact source figure/key/custody and disputed QRT operation/band for all selected D3/D4 candidates | Each exact task has provenance, QRT disposition or explicit HOLD |
 | **P0** | Build **74-row** question→concept→QRT→tile register, including 21-place pilot overlay and dedup without dropping identities | 74 unique question records accounted for; 21 pilot places retained; counts reconcile |
-| **P1** | Interactive versions of **E01–E05**, currently author-only | Six linked D3 questions gain usable practice *without* academic promotion |
-| **P1** | Independently audit authored E06/E07/E08 teaching of **EX-M97**, **EX-N39** and **WEP07-01** without mistaking related practice for proven exam transfer | Three unmapped D3 source-theme rows gain truthful proposed learning links |
-| **P1** | Re-audit 13 currently linked D3/D4 questions for exact inference vs merely related prerequisite | Each link tagged `RELATED`, `EXACT_INFERENCE_REVIEWED` or `UNQUALIFIED`; no blanket coverage claims |
+| **P1** | Independently audit six newly interactive E01–E05 related routes | Six linked reader-D3 questions have helpful practice; exact-transfer status remains unqualified |
+| **P1** | Audit newly authored E06/E07/E08 for **EX-M97**, **EX-N39** and **WEP07-01**, especially the EX-M97 coaching-power discrepancy | Three previously unmapped reader-D3 source themes now have related practice only |
+| **P1** | Re-audit all 22 currently linked D3/D4 questions for exact inference vs merely related prerequisite | Each link tagged `RELATED`, `EXACT_INFERENCE_REVIEWED` or `UNQUALIFIED`; no blanket coverage claims |
 | **P2** | Remaining lower-band/unmapped question bank rows using suitable D1/D2 rules when approved | No unaccounted question; never force into D3/D4 |
 | **P2** | Fill original 21-place exam target after authenticated source + independent QRT | Three qualifying distinct originals per operation across D3/D4; no double counting |
 
-**Known evidence caveat:** current reader's 22 *proposed* D3/D4 include 13 interactive links, 6 author-pack-only links, 3 unmapped. These 22 labels are not final QRT. A different 21-place pilot currently has 14 proposed leads and 7 vacancies. The 14 Blueprint **cells** represent seven cognitive operations at two bands. These are **three different denominators**; never add them as equivalent acceptance counts.
+**Known evidence caveat:** current reader's 22 *proposed* D3/D4 have 22 interactive related-practice links, 0 pack-only links and 0 unmapped; no accepted exact-task prerequisite join. These 22 labels are not final QRT. A different 21-place pilot currently has 14 proposed leads and 7 vacancies. The 14 Blueprint **cells** represent seven cognitive operations at two bands. These are **three different denominators**; never add them as equivalent acceptance counts.
 
 ## 6. Golden examples — follow the exact evidence, not the desired label
 
@@ -153,10 +153,10 @@ These six [machine-checked documentary cases](fixtures/golden-cases.json) contai
 | Fixture | Verified repository evidence | Required agent decision |
 |---|---|---|
 | **G01 · EX-M62** | Consolidated reader currently proposes **MODEL/D3**; B07 preserves an independent first-pass **APPLY/D2 (4 points)**. B07's separate *prior-author proposal* was APPLY/D3. | Preserve all three provenance layers; no D3 cell; mark D1/D2 specification pending and classification disagreement. C03 interactive practice is only a related help route. |
-| **G02 · WEP07-03** | Pilot conditionally nominates **JUSTIFY/D4**; B07 records **APPLY/D2 (5 points)**. Public IAPT key a,b,c,d corroboration does not resolve QRT classification or full source authority. | **No D4.7 assignment.** Record conflict and separate source/key/Owner holds; E01 remains author-only. |
+| **G02 · WEP07-03** | Pilot conditionally nominates **JUSTIFY/D4**; B07 records **APPLY/D2 (5 points)**. Public IAPT key a,b,c,d corroboration does not resolve QRT classification or full source authority. | **No D4.7 assignment.** Record conflict and separate source/key/Owner holds; E01 has related interactive practice only. |
 | **G03 · EX-M16** | Reader **MODEL/D3**, no admitted independent QRT; C07 is interactive practice. | Candidate `D3.4` **for planning only**, QRT NOT_RUN, Blueprint draft, adapter unselected, admission HOLD. |
-| **G04 · EX-M109** | Reader **SYNTHESIZE/D3**, E01 exists as author-only pack. | Candidate `D3.6` for planning only; do not call it interactive or academically covered. |
-| **G05 · EX-M97** | Reader **SYNTHESIZE/D3**, no mapped construction. | Record true learning gap. Candidate `D3.6`, QRT and original source pending. |
+| **G04 · EX-M109** | Reader **SYNTHESIZE/D3**, E01 now has interactive authored practice. | Candidate `D3.6` for planning only; do not call it an academically qualified source-question link. |
+| **G05 · EX-M97** | Reader **SYNTHESIZE/D3**, now mapped to authored interactive E06. | Record related study only. Candidate `D3.6`, QRT and original source pending; coaching applied-versus-net force power needs review. |
 | **G06 · EX-M79** | Reader proposes APPLY/D3; B07 says contested/unadjudicated and exposed to author assessments. | Candidate `D3.3` is NOT a QRT decision; seek properly assigned independent source-only review. |
 
 **Negative controls:** N01 fake admission, N02 operation/cell mismatch, N03 D2 forced into D3, N04 wrong factor sum, N05 author pack forged as a qualified tile. Every control must produce a HOLD reason, not pass silently. The fixtures' factor entries paraphrase **B07's numeric scores** but explicitly say their per-factor warrants are **not supplied**; the fixture does not fabricate them as independent findings.
@@ -190,7 +190,7 @@ consolidated reader: APPLY / D2 (not admitted)
 B07 recorded independent first pass: APPLY / D2; factor scores 1,0,2,1,1 = 5
 QRT final decision: NOT_GRANTED (first pass is not Owner admission)
 Blueprint D3/D4 cell: NONE; D1/D2 SPEC_PENDING
-learning: E01 AUTHOR_PACK_ONLY, source-theme proposal
+learning: E01 INTERACTIVE_PRACTICE, source-theme proposal
 status: HOLD; never fill D4.7 to satisfy a quota
 ```
 
@@ -247,6 +247,6 @@ When real native data is available, follow `docs/smart-skills-integration.md` fo
 - [SL1/SL2 and QRT integration](../../docs/smart-skills-integration.md); [independent first-pass exception](../../docs/agent-entry/07-independent-review.md); [current concept companion](../../docs/agent-entry/CURRENT_CONCEPT_COMPANION.md).
 - [Existing native QRT binding checker](../../src/grade9qa/qrt_binding.py) and its tests.
 - [B07 actual recorded first-pass statuses](../../preview/batches/b07-qrt-evidence.json), [current 21-place pilot selection](../../WPE_Source_to_Core1A_Concept/evidence/RECEIVED_selection_21_places.json), [WPE source-to-learning matrix](../../physics/wpe/reasoning-paths.review.json).
-- [Current eight interactive learning journeys](../../physics/wpe/d3d4-self-tutor.html), [WPE author packs](../../WPE_Source_to_Core1A_Concept/learning-bridge/README.md), [separate learner observation protocol](../../WPE_Source_to_Core1A_Concept/learning-bridge/LEARNER_OBSERVATION_PROTOCOL.md).
+- [Current eight primary interactive learning journeys](../../physics/wpe/d3d4-self-tutor.html), [WPE author packs](../../WPE_Source_to_Core1A_Concept/learning-bridge/README.md), [separate learner observation protocol](../../WPE_Source_to_Core1A_Concept/learning-bridge/LEARNER_OBSERVATION_PROTOCOL.md).
 
 **If the requested task or source is not supported by these authorities, write the limitation and HOLD it; do not fill the gap from plausible general knowledge.**
