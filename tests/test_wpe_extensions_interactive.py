@@ -156,7 +156,8 @@ def test_e04_energy_speed_and_geometric_bounce_factors():
 def test_e05_force_potential_area_local_centripetal_and_work_sign():
     force,mass,r=3,1,2
     delta_u=force*r
-    assert delta_u==6 and mass*(math.sqrt(force*r/mass))**2/r==force
+    assert delta_u==6
+    close(mass*(math.sqrt(force*r/mass))**2/r,force)
     close(.5*mass*(force*r/mass),3)
     close(delta_u+3,9)
     # The signed radial force would produce negative radial work.
