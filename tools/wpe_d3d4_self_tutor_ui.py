@@ -168,7 +168,7 @@ def run_viewport(browser, width, height, base):
         check(response is not None and response.status == 200, "Self-tutor page did not load")
         check(page.locator("article.unit").count() == 8, "Eight lessons missing")
         check(page.locator(".guide-steps").count() == 8, "Core1A guides missing")
-        check(page.locator(".stage-root .step-list li").count() == 48, "All six stages not listed for six lessons")
+        check(page.locator(".stage-root .step-list li").count() == 48, "All six stages not listed for eight lessons")
         check(page.locator("body").inner_text().find("This page does not grade explanations") != -1, "Non-grading learner note missing")
         check(page.locator("#overall-count").inner_text() == "0 of 8 challenges completed", "Initial progress incorrect")
         check(not errors, "JavaScript error on load: "+str(errors))
@@ -254,7 +254,7 @@ def run_viewport(browser, width, height, base):
         root_for(page, "C01").locator('[data-action="reset"]').click()
         check(saved_state(page, "C01") is None, "C01 reset did not clear local attempt")
         check(saved_state(page, "C02")["first"] == first_c02, "Reset of C01 cleared C02")
-        check(page.locator("#overall-count").inner_text() == "5 of 8 challenges completed", "Reset progress incorrect")
+        check(page.locator("#overall-count").inner_text() == "7 of 8 challenges completed", "Reset progress incorrect")
         for lesson, initial in initial_attempts[1:]:
             check(saved_state(page, lesson)["first"] == initial,
                   "Resetting C01 unexpectedly cleared " + lesson + " attempt")
