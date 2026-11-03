@@ -2,7 +2,7 @@
   "schema": "g9v4-wpe-qrt-blueprint-coverage-register/v1",
   "as_of": "2026-11-03",
   "status": "AUTHOR_EXPOSED_COVERAGE_REGISTER__NO_ACADEMIC_ADMISSION",
-  "authority_note": "Question-bank SL2 labels, source-review leads, B07 recorded first passes and teaching-source associations are distinct evidence layers. This register does not authenticate originals, establish QRT final classifications, approve Blueprint/adapter or admit tiles.",
+  "authority_note": "Updated learner availability: E01–E05 have student-facing six-stage practice, but all source-theme joins remain unqualified. Question-bank SL2 labels, source-review leads, B07 recorded first passes and teaching-source associations remain distinct evidence layers. This register does not authenticate originals, establish final QRT classifications, approve Blueprint/adapter or admit tiles.",
   "pins": {
     "bank": {
       "path": "workspace/output/WPE_Core2_Consolidated_20261102/native-candidate/selected_bank.review.json",
@@ -30,7 +30,7 @@
     },
     "practice": {
       "path": "physics/wpe/d3d4-self-tutor.review.json",
-      "git_blob_sha": "98bd01443fa3b8a8caabda7b2280fd90f730026a"
+      "git_blob_sha": "1f81b3c77eabc8b4deef4566f7a851fd1d82f150"
     },
     "blueprint": {
       "path": "templates/physics-blueprint/physics-blueprint.D3-D4.json",
@@ -67,13 +67,13 @@
     "reader_d3": 17,
     "reader_d4": 5,
     "reader_d3d4_learning": {
-      "INTERACTIVE_RELATED_PRACTICE": 13,
-      "AUTHOR_PACK_ONLY": 6,
+      "INTERACTIVE_RELATED_PRACTICE": 19,
+      "AUTHOR_PACK_ONLY": 0,
       "UNMAPPED": 3
     },
     "all_learning": {
-      "INTERACTIVE_RELATED_PRACTICE": 18,
-      "AUTHOR_PACK_ONLY": 7,
+      "INTERACTIVE_RELATED_PRACTICE": 25,
+      "AUTHOR_PACK_ONLY": 0,
       "UNMAPPED": 49
     },
     "reader_d3d4_unmapped_ids": [
@@ -81,14 +81,7 @@
       "EX-N39",
       "WEP07-01"
     ],
-    "reader_d3d4_author_only_ids": [
-      "EX-M82",
-      "EX-M89",
-      "EX-M109",
-      "EX-N34",
-      "TB-WPE-ILL-05",
-      "TB-WPE-ILL-06"
-    ],
+    "reader_d3d4_author_only_ids": [],
     "reader_d3d4_interactive_ids": [
       "EX-M6",
       "EX-M16",
@@ -97,10 +90,16 @@
       "EX-M62",
       "EX-M73",
       "EX-M79",
+      "EX-M82",
+      "EX-M89",
+      "EX-M109",
       "EX-N31",
+      "EX-N34",
       "WEP07-02",
       "EX-M39",
       "TB-WPE-ILL-02",
+      "TB-WPE-ILL-05",
+      "TB-WPE-ILL-06",
       "TB-WPE-ILL-11",
       "TB-WPE-ILL-12"
     ],
@@ -124,7 +123,29 @@
     "pilot_agree": 3,
     "pilot_conflict": 8,
     "pilot_absent": 3,
-    "admitted": 0
+    "admitted": 0,
+    "interactive_practice_topics": [
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "E01",
+      "E02",
+      "E03",
+      "E04",
+      "E05"
+    ],
+    "extension_practice_topics": [
+      "E01",
+      "E02",
+      "E03",
+      "E04",
+      "E05"
+    ]
   },
   "questions": [
     {
@@ -1804,18 +1825,18 @@
         "related_construction_ids": [
           "WPE-E04"
         ],
-        "interactive_ids": [],
-        "author_pack_ids": [
+        "interactive_ids": [
           "WPE-E04"
         ],
-        "status": "AUTHOR_PACK_ONLY",
+        "author_pack_ids": [],
+        "status": "INTERACTIVE_RELATED_PRACTICE",
         "semantic_join": "PROPOSED_UNQUALIFIED",
         "exact_inference_independently_verified": false
       },
       "next_actions": {
         "source": "VERIFY_EXACT_SOURCE_AND_OFFICIAL_KEY",
         "qrt": "OBTAIN_AUTHORIZED_INDEPENDENT_FIRST_PASS",
-        "learning": "TRANSFER_AUTHOR_PACK_TO_SIX_STAGE_PRACTICE"
+        "learning": "REVIEW_EXACT_INFERENCE_NOT_JUST_RELATED_THEME"
       },
       "priority": "P0_D3_D4_REVIEW",
       "admission": "NOT_ADMITTED"
@@ -1934,18 +1955,18 @@
         "related_construction_ids": [
           "WPE-E05"
         ],
-        "interactive_ids": [],
-        "author_pack_ids": [
+        "interactive_ids": [
           "WPE-E05"
         ],
-        "status": "AUTHOR_PACK_ONLY",
+        "author_pack_ids": [],
+        "status": "INTERACTIVE_RELATED_PRACTICE",
         "semantic_join": "PROPOSED_UNQUALIFIED",
         "exact_inference_independently_verified": false
       },
       "next_actions": {
         "source": "VERIFY_EXACT_SOURCE_AND_OFFICIAL_KEY",
         "qrt": "OBTAIN_AUTHORIZED_INDEPENDENT_FIRST_PASS",
-        "learning": "TRANSFER_AUTHOR_PACK_TO_SIX_STAGE_PRACTICE"
+        "learning": "REVIEW_EXACT_INFERENCE_NOT_JUST_RELATED_THEME"
       },
       "priority": "P0_D3_D4_REVIEW",
       "admission": "NOT_ADMITTED"
@@ -2535,18 +2556,18 @@
         "related_construction_ids": [
           "WPE-E01"
         ],
-        "interactive_ids": [],
-        "author_pack_ids": [
+        "interactive_ids": [
           "WPE-E01"
         ],
-        "status": "AUTHOR_PACK_ONLY",
+        "author_pack_ids": [],
+        "status": "INTERACTIVE_RELATED_PRACTICE",
         "semantic_join": "PROPOSED_UNQUALIFIED",
         "exact_inference_independently_verified": false
       },
       "next_actions": {
         "source": "VERIFY_EXACT_SOURCE_AND_OFFICIAL_KEY",
         "qrt": "OBTAIN_AUTHORIZED_INDEPENDENT_FIRST_PASS",
-        "learning": "TRANSFER_AUTHOR_PACK_TO_SIX_STAGE_PRACTICE"
+        "learning": "REVIEW_EXACT_INFERENCE_NOT_JUST_RELATED_THEME"
       },
       "priority": "P0_D3_D4_REVIEW",
       "admission": "NOT_ADMITTED"
@@ -3110,18 +3131,18 @@
         "related_construction_ids": [
           "WPE-E03"
         ],
-        "interactive_ids": [],
-        "author_pack_ids": [
+        "interactive_ids": [
           "WPE-E03"
         ],
-        "status": "AUTHOR_PACK_ONLY",
+        "author_pack_ids": [],
+        "status": "INTERACTIVE_RELATED_PRACTICE",
         "semantic_join": "PROPOSED_UNQUALIFIED",
         "exact_inference_independently_verified": false
       },
       "next_actions": {
         "source": "VERIFY_EXACT_SOURCE_AND_OFFICIAL_KEY",
         "qrt": "OBTAIN_AUTHORIZED_INDEPENDENT_FIRST_PASS",
-        "learning": "TRANSFER_AUTHOR_PACK_TO_SIX_STAGE_PRACTICE"
+        "learning": "REVIEW_EXACT_INFERENCE_NOT_JUST_RELATED_THEME"
       },
       "priority": "P0_D3_D4_REVIEW",
       "admission": "NOT_ADMITTED"
@@ -4077,18 +4098,18 @@
         "related_construction_ids": [
           "WPE-E01"
         ],
-        "interactive_ids": [],
-        "author_pack_ids": [
+        "interactive_ids": [
           "WPE-E01"
         ],
-        "status": "AUTHOR_PACK_ONLY",
+        "author_pack_ids": [],
+        "status": "INTERACTIVE_RELATED_PRACTICE",
         "semantic_join": "PROPOSED_UNQUALIFIED",
         "exact_inference_independently_verified": false
       },
       "next_actions": {
         "source": "VERIFY_EXACT_SOURCE_AND_OFFICIAL_KEY",
         "qrt": "RECONCILE_RECORDED_D2_FIRST_PASS_AND_PRIOR_PROPOSAL",
-        "learning": "TRANSFER_AUTHOR_PACK_TO_SIX_STAGE_PRACTICE"
+        "learning": "REVIEW_EXACT_INFERENCE_NOT_JUST_RELATED_THEME"
       },
       "priority": "P0_D3_D4_REVIEW",
       "admission": "NOT_ADMITTED"
@@ -4727,18 +4748,18 @@
         "related_construction_ids": [
           "WPE-E02"
         ],
-        "interactive_ids": [],
-        "author_pack_ids": [
+        "interactive_ids": [
           "WPE-E02"
         ],
-        "status": "AUTHOR_PACK_ONLY",
+        "author_pack_ids": [],
+        "status": "INTERACTIVE_RELATED_PRACTICE",
         "semantic_join": "PROPOSED_UNQUALIFIED",
         "exact_inference_independently_verified": false
       },
       "next_actions": {
         "source": "VERIFY_EXACT_SOURCE_AND_OFFICIAL_KEY",
         "qrt": "OBTAIN_AUTHORIZED_INDEPENDENT_FIRST_PASS",
-        "learning": "TRANSFER_AUTHOR_PACK_TO_SIX_STAGE_PRACTICE"
+        "learning": "REVIEW_EXACT_INFERENCE_NOT_JUST_RELATED_THEME"
       },
       "priority": "P0_D3_D4_REVIEW",
       "admission": "NOT_ADMITTED"
@@ -4794,18 +4815,18 @@
         "related_construction_ids": [
           "WPE-E02"
         ],
-        "interactive_ids": [],
-        "author_pack_ids": [
+        "interactive_ids": [
           "WPE-E02"
         ],
-        "status": "AUTHOR_PACK_ONLY",
+        "author_pack_ids": [],
+        "status": "INTERACTIVE_RELATED_PRACTICE",
         "semantic_join": "PROPOSED_UNQUALIFIED",
         "exact_inference_independently_verified": false
       },
       "next_actions": {
         "source": "VERIFY_EXACT_SOURCE_AND_OFFICIAL_KEY",
         "qrt": "OBTAIN_AUTHORIZED_INDEPENDENT_FIRST_PASS",
-        "learning": "TRANSFER_AUTHOR_PACK_TO_SIX_STAGE_PRACTICE"
+        "learning": "REVIEW_EXACT_INFERENCE_NOT_JUST_RELATED_THEME"
       },
       "priority": "P0_D3_D4_REVIEW",
       "admission": "NOT_ADMITTED"
