@@ -80,7 +80,7 @@ def test_six_distinct_phases_and_first_attempt_separation():
     assert "state.first=values;state.stage=2" in script
     assert "state.repair=repaired;state.stage=5" in script
     assert "state.boundary=answer" in script
-    assert "state.first &&" in script
+    assert "value.first &&" in script
     assert "window.confirm" in script
     assert "localStorage.setItem" in script and "localStorage.removeItem" in script
     assert "innerHTML" not in script  # user text can never become executable markup
