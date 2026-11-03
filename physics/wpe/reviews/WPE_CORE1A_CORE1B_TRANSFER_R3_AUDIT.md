@@ -46,7 +46,7 @@
 - **B4:** A = fresh 1.25 kg/m³ rotor problem, speed/area boundary (existing). **B = water kinetic-current harvester**, ρ=1000, area 0.25 m², speed 2 m/s, 20% electrical fraction; no pressure/elevation head. Boundary changes BOTH velocity (3 m/s) and area (0.10 m²).
 - **B5:** Independent `F06` and `F06-T2` first responses.
 - **B6:** Direct targeted feedback for fixed-packet mistake, confusing momentum and energy rates, missing normal-area representation and forgetting the efficiency. Power units checked as kg/s × J/kg = W.
-- **B7:** [Wind energy-physics derivation](https://www.ocw.tudelft.nl/wp-content/uploads/57696e6420706f7765722073797374656d73.pdf) and [OpenStax kinetic energy](https://openstax.org/books/university-physics-volume-1/pages/7-2-kinetic-energy); the v³ law only covers the specified constant-fraction kinetic flux, not a real turbine's full power curve. **HOLD:** applicability to actual devices with changing η, area, pressure and head.
+- **B7:** [U.S. DOE Small Wind Guidebook (kinetic power, rotor area, density, and v³)](https://www.energy.gov/cmei/systems/windexchange/small-wind-guidebook) and [OpenStax kinetic energy](https://openstax.org/books/university-physics-volume-1/pages/7-2-kinetic-energy); the v³ law only covers the specified constant-fraction kinetic flux, not a real turbine's full power curve. **HOLD:** applicability to actual devices with changing η, area, pressure and head.
 
 ### F07 · EX-M106 — horizontal force applied to a pendulum
 
