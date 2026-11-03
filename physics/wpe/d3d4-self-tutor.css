@@ -30,3 +30,10 @@
 .review-model summary{font-size:.91rem;font-weight:800;color:#245a70;cursor:pointer;padding:5px 2px}
 .review-model .worked{margin-top:12px}
 .draft-note{font-size:.84rem;color:#275e69;background:#edf8f7;border-left:4px solid #4d9e8b;padding:10px 12px;border-radius:0 8px 8px 0}
+
+/* E01–E05 advanced optional transfer topics: clarify prerequisites without implying qualification. */
+.extensions-intro{margin:28px 0 24px;padding:23px 26px;border:1px solid #cbdde5;border-radius:15px;background:linear-gradient(110deg,#eaf5f5,#f2f7fc)}
+.extensions-intro h2{margin:8px 0 12px;font-size:clamp(1.45rem,2.7vw,1.9rem);color:#214e63}
+.extensions-intro p{line-height:1.65;max-width:930px}
+.extensions-intro .eyebrow{color:#286f73}
+@media(max-width:680px){.extensions-intro{padding:17px 16px;margin:20px 0}}
