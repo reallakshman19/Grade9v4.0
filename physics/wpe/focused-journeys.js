@@ -148,6 +148,10 @@
   };
   const ids=Object.keys(scenarios);
   const prefix="g9:wpe:focused:v1:";
+  // The first variant retains its existing key; transfer is separate.
+  const requestedVariant=()=>new URLSearchParams(location.search).get("variant")==="transfer"?"transfer":"first";
+  const stateKey=(id,variant=requestedVariant())=>variant==="transfer"?id+":transfer":id;
+  const chosenScenario=id=>requestedVariant()==="transfer"?{...scenarios[id],...window.WPE_F_TRANSFER?.[id]}:scenarios[id];
   const doc=document,svgNS="http://www.w3.org/2000/svg";
   const $=(selector,root=doc)=>root.querySelector(selector);
   const el=(tag,text,className)=>{
@@ -169,12 +173,12 @@
   function blank(id){return {schema:1,id,stage:0,prediction:"",predictionDraft:"",draft:{},first:null,hints:[],checks:[],diagnosis:null,repair:"",boundary:null,helpHistory:[],exposure:"UNASSISTED_UNTIL_FIRST_ATTEMPT"};}
   const states={};
   let storageWorks=true;
-  for(const id of ids){
-    let s=null;
-    try{s=JSON.parse(localStorage.getItem(prefix+id)||"null");}catch(_){}
-    states[id]=(s&&s.schema===1&&s.id===id&&Number.isInteger(s.stage)&&s.stage>=0&&s.stage<=5&&(s.stage<2||(s.first&&s.first.answers&&typeof s.first.answers.reason==="string")))?s:blank(id);
+  for(const id of ids)for(const variant of ["first","transfer"]){
+    const key=stateKey(id,variant);let saved=null;
+    try{saved=JSON.parse(localStorage.getItem(prefix+key)||"null");}catch(_){}
+    states[key]=(saved&&saved.schema===1&&saved.id===key&&Number.isInteger(saved.stage)&&saved.stage>=0&&saved.stage<=5&&(saved.stage<2||(saved.first&&saved.first.answers&&typeof saved.first.answers.reason==="string")))?saved:blank(key);
   }
-  function persist(id){try{localStorage.setItem(prefix+id,JSON.stringify(states[id]));return true;}catch(_){storageWorks=false;$("#save-notice").hidden=false;return false;}}
+  function persist(id){const key=stateKey(id);try{localStorage.setItem(prefix+key,JSON.stringify(states[key]));return true;}catch(_){storageWorks=false;$("#save-notice").hidden=false;return false;}}
   let active="F01", sourceLink=null;
   function input(parent,id,field,value){
     const group=add(parent,"div",null,"field");
@@ -186,7 +190,7 @@
       e=add(group,"select");
       for(const c of field.choices)add(e,"option",c).value=c;
     }else{e=add(group,"input");e.type=field.type;e.inputMode="decimal";e.step="any";}
-    e.id=name;e.dataset.field=field.id;e.value=value??(field.type==="select"?field.choices[0]:"");
+    e.id=name;e.dataset.field=field.id;if(field.type==="text")e.inputMode="text";e.value=value??(field.type==="select"?field.choices[0]:"");
     return e;
   }
   function action(parent,key,label,secondary=false){
@@ -260,7 +264,7 @@
   }
   const numeric=(raw)=>raw==null||String(raw).trim()===""?NaN:Number(raw);
   function feedback(field,value){
-    if(field.type==="textarea")return {status:"ungraded",text:"Your written explanation is saved, not automatically judged."};
+    if(field.type==="textarea"||field.type==="text")return {status:"ungraded",text:"Your explanation or symbolic expression is saved, not automatically graded."};
     if(value==null||String(value).trim()===""||field.type==="select"&&value==="Choose an idea")
       return {status:"missing",text:"No model decision or value entered yet. "+field.mistake};
     const good=field.type==="select"?value===field.expected:Number.isFinite(numeric(value))&&Math.abs(numeric(value)-field.expected)<=field.tol;
@@ -304,7 +308,7 @@
   }
   function showStage(host,id,d,focus){
     host.replaceChildren();
-    const s=states[id];
+    const s=states[stateKey(id)];
     stepHeader(host,s);
     const box=add(host,"section",null,"stage-card");
     const title=add(box,"h3",(s.stage+1)+". "+stages[s.stage]);title.tabIndex=-1;
@@ -389,12 +393,12 @@
   function dispatch(host,id,data,event){
     const btn=event.target.closest("button[data-action]");
     if(!btn||!host.contains(btn))return;
-    const s=states[id],key=btn.dataset.action;
+    const s=states[stateKey(id)],key=btn.dataset.action;
     const warn=message=>{const n=$("[data-notice]",host);if(n)n.textContent=message;};
     if(key==="reset"){
       if(!window.confirm("Clear this lesson's saved prediction, first attempt, hints, diagnosis and repair?"))return;
-      try{localStorage.removeItem(prefix+id)}catch(_){}
-      states[id]=blank(id);render();return;
+      try{localStorage.removeItem(prefix+stateKey(id))}catch(_){}
+      states[stateKey(id)]=blank(stateKey(id));render();return;
     }
     if(key==="hint"&&s.stage===1&&s.first===null&&s.hints.length<data.hints.length){
       const idx=s.hints.length;s.hints.push(idx);
@@ -442,42 +446,42 @@
     persist(id);render(true);
   }
   function updateProgress(){
-    const count=ids.filter(x=>states[x].boundary!==null).length;
-    $("#progress-label").textContent=count+" of 3 fresh boundary challenges completed";
-    $("#progress-meter").value=count;
+    const count=ids.flatMap(id=>[id,id+":transfer"]).filter(key=>states[key].boundary!==null).length;
+    $("#progress-label").textContent=count+" of 6 first and optional boundary challenges completed";
+    $("#progress-meter").max=6;$("#progress-meter").value=count;
     for(const id of ids){
       const a=$('[data-journey="'+id+'"]');
-      a.classList.toggle("complete",states[id].boundary!==null);
+      a.classList.toggle("complete",states[stateKey(id)].boundary!==null);
       a.setAttribute("aria-current",id===active?"page":"false");
     }
   }
   function render(focus=false){
     const requested=location.hash.slice(1).toUpperCase();
     active=ids.includes(requested)?requested:"F01";
-    const d=scenarios[active],root=$("#journey-root");root.replaceChildren();
+    const d=chosenScenario(active),root=$("#journey-root");root.replaceChildren();
     $("#current-title").textContent=active+" · "+d.short;
     const article=add(root,"article",null,"lesson");
     article.id=active;
     const header=add(article,"header",null,"lesson-title");
-    paragraph(header,"NEW FOCUSED REASONING CONSTRUCTION · NOT AN EXAM KEY","mini");
+    paragraph(header,"LEARN THE IDEA · Physical model · not an exam key","mini");
     add(header,"h2",d.title);paragraph(header,d.question);
     const grid=add(article,"div",null,"learning-grid");
     buildGuide(grid,active,d);
     const challenge=add(grid,"section",null,"challenge");
-    paragraph(challenge,"CORE1B · A genuinely different problem","mini");
+    paragraph(challenge,requestedVariant()==="transfer"?"TRY ANOTHER CHALLENGE · Optional transfer":"TRY IT YOURSELF · First fresh challenge","mini");
     add(challenge,"h2","Predict → Attempt → Reconstruct → Diagnose → Repair → Boundary test");
     paragraph(challenge,"Original thinking is saved before the worked answer. Study hints are optional; the boundary is a different condition.");
     const host=add(challenge,"div",null,"stage-root");host.dataset.stageRoot=active;
     host.addEventListener("click",e=>dispatch(host,active,d,e));
     host.addEventListener("input",()=>{
-      const s=states[active];
+      const s=states[stateKey(active)];
       if(s.stage===0)s.predictionDraft=$('[data-field="prediction"]',host)?.value||"";
       else if(s.stage===1&&s.first===null)s.draft=readValues(host);
       else return;
       persist(active);
     });
     host.addEventListener("change",()=>{
-      const s=states[active];if(s.stage===1&&s.first===null){s.draft=readValues(host);persist(active);}
+      const s=states[stateKey(active)];if(s.stage===1&&s.first===null){s.draft=readValues(host);persist(active);}
     });
     showStage(host,active,d,focus);
     const footer=add(article,"nav",null,"lesson-footer");footer.setAttribute("aria-label","Other focused journeys");
@@ -508,7 +512,7 @@
       const map=await r.json(),bank=await q.json();
       if(map.schema!=="wpe-learner-coverage-r1/v1"||!Array.isArray(map.questions)||bank.questions?.length!==74)throw Error("source inventory changed");
       const found=map.questions.find(x=>x.source_id===source);
-      if(!found||!bank.questions.some(x=>x.source_id===source)||found.primary_lesson!==active||found.fit!=="FOCUSED_NEW")
+      if(!found||!bank.questions.some(x=>x.source_id===source&&x.stem_sha256===found.stem_sha256)||found.primary_lesson!==active||found.fit!=="FOCUSED_NEW")
         throw Error("source does not map to this lesson");
       sourceLink={source,lesson:active,href:"../../preview/question-status.html?question="+encodeURIComponent(source)};
       $("#source-title").textContent="Your original question: "+source;
