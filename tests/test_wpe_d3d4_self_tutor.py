@@ -34,19 +34,19 @@ def close(a, b):
 
 def test_two_source_grounded_guided_and_fresh_pairs():
     data = load(META)
-    assert data["schema"] == "wpe-c01-c04-six-stage-self-tutor/v2"
+    assert data["schema"] == "wpe-c01-c06-six-stage-self-tutor/v3"
     assert data["publication_role"] == "STUDENT_PRACTICE_PREVIEW_ONLY"
     assert data["academic"] == {
         "native_core1a": "NOT_ACCEPTED", "native_core1b": "NOT_ACCEPTED",
         "qrt": "NOT_RUN", "owner": "PENDING", "qualified_learner_routes": 0,
     }
-    assert [row["id"] for row in data["lessons"]] == ["C01", "C02", "C03", "C04"]
+    assert [row["id"] for row in data["lessons"]] == ["C01", "C02", "C03", "C04", "C05", "C06"]
     html = PAGE.read_text(encoding="utf-8")
     script = SCRIPT.read_text(encoding="utf-8")
     assert 'href="d3d4-self-tutor.css"' in html
     assert 'src="d3d4-self-tutor.js"' in html
     assert 'href="d3d4-self-tutor.html"' in HUB.read_text(encoding="utf-8")
-    assert html.count('class="stage-root"') == 4
+    assert html.count('class="stage-root"') == 6
     for row in data["lessons"]:
         source = ROOT / row["author_pack"]
         assert source.is_file()
@@ -58,12 +58,12 @@ def test_two_source_grounded_guided_and_fresh_pairs():
         assert f'data-stage-root="{row["id"]}"' in html
     assert "starts from rest at the bottom" in html
     assert "not attached" in html
-    assert "Six thinking" not in html  # no inflated master-level claims
-    assert "Four thinking skills" in html
+    assert "Six thinking skills" in html
+    assert "grade written reasoning" in html  # practice is not a mastery claim
     assert "source-question" in json.dumps(data).lower()
     batch=data["implementation_batch"]
-    assert batch["new_topics"] == ["C03","C04"]
-    assert batch["retained_topics"] == ["C01","C02"]
+    assert batch["new_topics"] == ["C05","C06"]
+    assert batch["retained_topics"] == ["C01","C02","C03","C04"]
     assert batch["real_student_usability_observed"] is False
     assert batch["software_browser_simulations_only"] is True
     assert batch["academic_admissions_changed"] is False
@@ -192,10 +192,83 @@ def test_all_four_preserve_existing_local_attempt_keys_and_ungraded_status():
     meta=load(META)
     assert 'return "g9:wpe:d3d4:self-tutor:v1:"+lesson;' in script
     assert 'Object.keys(lessons).length+" challenges completed"' in script
-    assert len(meta["lessons"])==4
+    assert len(meta["lessons"])==6
     assert meta["academic"]["qualified_learner_routes"]==0
     assert meta["first_attempt_policy"]["graded_reasoning"] is False
     assert meta["first_attempt_policy"]["independent_student_observation"] is False
+
+
+def test_axis_first_c05_guide_and_three_fresh_graph_operations():
+    # Guide: area under a horizontal F–x line, negative slope of U–x, and s–t slope.
+    close(3*2, 6)
+    close(-(3-9)/(2-0), 3)
+    close((6-0)/(3-0), 2)
+    # Fresh card R, a triangle from 0 N to +8 N across a 4 m displacement.
+    work_r = 0.5*(4-0)*8
+    close(work_r, 16)
+    # Fresh card S, potential increases by 6 J across 2 m: force is negative slope.
+    force_s = -(8-2)/(2-0)
+    close(force_s, -3)
+    # Fresh card T asks for interval 2 to 5 s, not average over the whole 0–5.
+    velocity_t = (16-4)/(5-2)
+    close(velocity_t, 4)
+    assert velocity_t != (16-0)/(5-0)
+    # Changed graph axis: F–time area gives impulse in N s, not work in J.
+    impulse_ft = 0.5*(4)*8
+    close(impulse_ft, 16)
+    html=PAGE.read_text(encoding="utf-8")
+    script=SCRIPT.read_text(encoding="utf-8")
+    assert 'id="C05"' in html and 'data-stage-root="C05"' in html
+    assert "0 N" in html and "16 m" in html
+    assert "C05:" in script
+    assert "impulse" in script.lower()
+    assert "negative slope" in script.lower()
+
+
+def test_vertical_circular_c06_energy_then_tension_and_boundary():
+    g = 10
+    # Guided top-speed known: 0.5 kg, r=2, v_top=6.
+    mass_guide, r_guide, top_speed = 0.5, 2, 6
+    t_top=mass_guide*top_speed**2/r_guide-mass_guide*g
+    close(t_top, 4)
+    v_bottom_squared=top_speed**2+4*g*r_guide
+    close(v_bottom_squared, 116)
+    close(mass_guide*v_bottom_squared/r_guide+mass_guide*g, 34)
+    # Fresh: known bottom speed 7 m/s, r=1, m=1.
+    mass, r, bottom_speed = 1, 1, 7
+    v_top_squared=bottom_speed**2-4*g*r
+    close(v_top_squared, 9)
+    assert v_top_squared > 0  # enough mechanical energy to reach top HEIGHT
+    theoretical_tension=mass*v_top_squared/r-mass*g
+    close(theoretical_tension, -1)
+    assert theoretical_tension < 0  # a taut string cannot push: assumption invalid
+    # Changed bottom speed 8 m/s: tension becomes positive.
+    v_top_boundary=8**2-4*g*r
+    close(v_top_boundary, 24)
+    close(mass*v_top_boundary/r-mass*g, 14)
+    close(math.sqrt(5*g*r), math.sqrt(50))
+    assert 7 < math.sqrt(50) < 8
+    html=PAGE.read_text(encoding="utf-8")
+    script=SCRIPT.read_text(encoding="utf-8")
+    assert 'id="C06"' in html and 'data-stage-root="C06"' in html
+    assert "radial" in html.lower()
+    assert "string can pull" in html.lower()
+    assert "C06:" in script
+    assert "−1 N" in script and "+14 N" in script
+
+
+def test_existing_four_local_storage_keys_not_versioned_away():
+    data=load(META)
+    script=SCRIPT.read_text(encoding="utf-8")
+    assert [lesson["revision"] for lesson in data["lessons"]] == [1,1,1,1,1,1]
+    assert "g9:wpe:d3d4:self-tutor:v1:" in script
+    batch=data["implementation_batch"]
+    assert batch["existing_storage_keys_preserved"] is True
+    assert batch["real_student_usability_observed"] is False
+    assert data["first_attempt_policy"]["secure_answer_secrecy"] is False
+    assert data["academic"]["qualified_learner_routes"] == 0
+    assert next(x for x in data["lessons"] if x["id"]=="C05")["original_source_graphs_verified"] is False
+    assert len(next(x for x in data["lessons"] if x["id"]=="C06")["required_prerequisites"]) == 4
 
 def test_no_upgrade_to_native_status_or_exam_original_delivery():
     meta = load(META)
