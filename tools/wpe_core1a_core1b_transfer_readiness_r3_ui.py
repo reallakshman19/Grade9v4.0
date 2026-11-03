@@ -60,7 +60,7 @@ def test_case(browser,base,screen,source,lesson,wrong_model,wrong_assumption,wro
         root=page.locator('[data-stage-root="'+lesson+'"]')
         check(root.locator(".stage-card h3").inner_text()=="1. Predict","T2 prediction must start locked")
         check(root.locator(".worked").count()==0,"T2 answer present before prediction")
-        check(state(page,lesson+"-T2")["first"] is None,"Uncommitted T2 has a forged first answer")
+        check(state(page,lesson+"-T2") is None or state(page,lesson+"-T2")["first"] is None,"Uncommitted T2 has a forged first answer")
         prediction="I need the system boundary, assumptions and signed velocities before choosing an equation."
         root.locator('[data-field="prediction"]').fill(prediction)
         root.locator('[data-action="prediction"]').click()
@@ -83,7 +83,7 @@ def test_case(browser,base,screen,source,lesson,wrong_model,wrong_assumption,wro
         page.locator("[data-variant='T1']").click()
         check(root.locator(".stage-card h3").inner_text()=="1. Predict","B state contaminated A")
         check(root.locator(".worked").count()==0,"Switching B→A leaked an answer")
-        check(state(page,lesson)["first"] is None,"A first answer invented by B work")
+        check(state(page,lesson) is None or state(page,lesson)["first"] is None,"A first answer invented by B work")
         page.locator("[data-variant='T2']").click()
         check(root.locator('[data-field="reason"]').input_value()==reasoning,"B draft lost after switching")
         check(root.locator(".hint-list li").count()==3,"B hint exposure lost after switching")
