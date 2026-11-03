@@ -237,7 +237,7 @@ def run_viewport(browser, width, height, base):
         check(page.locator("#overall-count").inner_text()=="8 of 8 challenges completed",
               "Eighth completion not counted")
         page.reload(wait_until="load")
-        check(page.locator("#overall-count").inner_text() == "6 of 8 challenges completed", "Completed progress not restored")
+        check(page.locator("#overall-count").inner_text() == "8 of 8 challenges completed", "Completed progress not restored")
         initial_attempts = [
             ("C01",first_c01), ("C02",first_c02), ("C03",first_c03),
             ("C04",first_c04), ("C05",first_c05), ("C06",first_c06),
