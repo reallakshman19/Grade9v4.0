@@ -135,6 +135,22 @@ def other_topic_links(browser,base):
             require(root.locator(".worked").count()==0,"Hint leaked the answer for "+lesson)
             page.locator("#source-journey-return").click()
             require(page.locator(".qtitle").inner_text()==q,"Other topic returned to wrong question")
+        # Imported EX-M101 source hints were about the wrong scientific subject.
+        # Show the spring controlled-variable reasoning instead, without editing source JSON.
+        page.goto(base+"/preview/question-status.html?question=EX-M101")
+        require(page.locator(".qtitle").inner_text()=="EX-M101","Spring comparison source unavailable")
+        require("Which quantity is held constant?" in page.locator('.hint').first.inner_text(),
+                "EX-M101 does not offer spring-specific progressive hints")
+        require(page.locator("#solution-container .solution").count()==0,
+                "Spring explanation leaked before a committed attempt")
+        page.locator('input[name="answer-option"]').first.check()
+        page.locator("#commit").click()
+        page.locator("#reveal").click()
+        explained=page.locator("#solution-container").inner_text()
+        require("same FINAL force" in explained and "same EXTENSION" in explained,
+                "Source solution did not distinguish fixed force from fixed extension")
+        require("conservative-vector-field" not in explained,
+                "Irrelevant imported explanation still shown")
         page.goto(base+"/physics/wpe/d3d4-self-tutor.html?question=EX-M81#C03")
         require(page.locator("#source-journey").is_hidden(),"Absent question got a false return link")
         print("PASS: C01, C02, C04, C07 and C08 source navigation, optional hints, and absent-ID refusal")
