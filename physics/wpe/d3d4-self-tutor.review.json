@@ -24,7 +24,7 @@
       "id": "C02",
       "concept": "Spring contact and rough-ground phase split",
       "author_pack": "WPE_Source_to_Core1A_Concept/learning-bridge/SPRING_CONTACT_LEARNING_PACK.md",
-      "author_pack_blob_sha": "56ac029f37bc805acbdc296b2f3d55ebdc53b0",
+      "author_pack_blob_sha": "56ac029f37bc805acbdc296b2f3d55ebdc53b0ca",
       "guided": "1 kg smooth spring-cart release k=100 N/m x=0.20 m",
       "fresh": "2 kg spring cart k=200 N/m x=0.10 m then 0.50 m rough strip, 1 N friction",
       "proposed_source_themes": [
