@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9._:-]{2,127}$"
+    },
+    "status": {
+      "enum": [
+        "APPROVED",
+        "REJECTED"
+      ]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "discipline": {
+      "enum": [
+        "SOURCE_CUSTODY",
+        "PHYSICS",
+        "COGNITIVE",
+        "PEDAGOGY",
+        "EXAM",
+        "TECHNICAL",
+        "GOVERNANCE"
+      ]
+    },
+    "subject_type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "subject_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "subject_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "reviewer_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reviewer_role": {
+      "type": "string",
+      "minLength": 1
+    },
+    "author_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reviewed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z][A-Za-z0-9._:-]{2,127}$"
+      }
+    },
+    "decision_reason": {
+      "type": "string",
+      "minLength": 1
+    },
+    "independent_of_author": {
+      "type": "boolean"
+    },
+    "scope": {
+      "type": "string",
+      "minLength": 1
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "status",
+    "created_at",
+    "discipline",
+    "subject_type",
+    "subject_id",
+    "subject_sha256",
+    "reviewer_id",
+    "reviewer_role",
+    "author_id",
+    "reviewed_at",
+    "evidence_refs",
+    "decision_reason",
+    "independent_of_author",
+    "scope"
+  ]
+}

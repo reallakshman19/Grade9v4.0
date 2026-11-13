@@ -1,0 +1,36 @@
+{
+  "status": "PASS",
+  "findings": [],
+  "inventory_rows_verified": 256,
+  "golden_tree_files_verified": 152,
+  "retained_source_files_verified": 10,
+  "local_links_checked": 293,
+  "remote_links": [],
+  "html": {
+    "index.html": {
+      "tables": 7,
+      "links": 14,
+      "images": 1,
+      "scripts": 0
+    },
+    "golden-fixtures.html": {
+      "tables": 7,
+      "links": 278,
+      "images": 0,
+      "scripts": 0
+    }
+  },
+  "SVG_XML": "PASS",
+  "PNG_size": [
+    1200,
+    1500
+  ],
+  "diagram_visual_inspection": "PERFORMED by author on rasterized export; readable, no observed clipping",
+  "browser_layout": "NOT_RUN",
+  "archive_build_scripts": "NOT_EXECUTED",
+  "native_product_build": "NOT_RUN",
+  "previous_implementation_tests": "RECORDED 50/50; not rerun for documentation",
+  "independent_academic_review": "NOT_RUN",
+  "Owner_acceptance": "PENDING",
+  "scope": "Report/diagram/catalogue integrity and source preservation, not learner-course or scientific acceptance"
+}

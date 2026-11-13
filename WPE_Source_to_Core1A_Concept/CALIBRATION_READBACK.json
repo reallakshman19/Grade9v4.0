@@ -1,0 +1,309 @@
+{
+  "negative_files": [
+    {
+      "id": "S1",
+      "path": "C:\\CodeC\\Grade9v3.5\\benchmarks\\quality-calibration\\specimens\\S1-motion2d-six-core-html\\core1.html",
+      "expected": "1f8782967789f6632dd2459d8ed888f4fd6a505c1b654bca103a0f3123d34c85",
+      "actual": "1f8782967789f6632dd2459d8ed888f4fd6a505c1b654bca103a0f3123d34c85",
+      "status": "MATCH"
+    },
+    {
+      "id": "S1",
+      "path": "C:\\CodeC\\Grade9v3.5\\benchmarks\\quality-calibration\\specimens\\S1-motion2d-six-core-html\\core1a.html",
+      "expected": "0d3db9d11403ca20967ec0f54f77adea309037587957736be3872fbd18a7374c",
+      "actual": "0d3db9d11403ca20967ec0f54f77adea309037587957736be3872fbd18a7374c",
+      "status": "MATCH"
+    },
+    {
+      "id": "S1",
+      "path": "C:\\CodeC\\Grade9v3.5\\benchmarks\\quality-calibration\\specimens\\S1-motion2d-six-core-html\\core1b.html",
+      "expected": "2c71c0c32ff113257760ff2d94c9d3b04e5363b6e57400dd0853d2b7a94a7f22",
+      "actual": "2c71c0c32ff113257760ff2d94c9d3b04e5363b6e57400dd0853d2b7a94a7f22",
+      "status": "MATCH"
+    },
+    {
+      "id": "S1",
+      "path": "C:\\CodeC\\Grade9v3.5\\benchmarks\\quality-calibration\\specimens\\S1-motion2d-six-core-html\\core2.html",
+      "expected": "3e3b6ac86ea0f9e4b6f687574d19021ee9b78643945152772c06bd38f834b780",
+      "actual": "3e3b6ac86ea0f9e4b6f687574d19021ee9b78643945152772c06bd38f834b780",
+      "status": "MATCH"
+    },
+    {
+      "id": "S1",
+      "path": "C:\\CodeC\\Grade9v3.5\\benchmarks\\quality-calibration\\specimens\\S1-motion2d-six-core-html\\core2a.html",
+      "expected": "10ffe47a0224f3f1a81b3627527d6d124aa3582a521444ce20b7df79ecc0cd61",
+      "actual": "10ffe47a0224f3f1a81b3627527d6d124aa3582a521444ce20b7df79ecc0cd61",
+      "status": "MATCH"
+    },
+    {
+      "id": "S1",
+      "path": "C:\\CodeC\\Grade9v3.5\\benchmarks\\quality-calibration\\specimens\\S1-motion2d-six-core-html\\core2b.html",
+      "expected": "ff02bd3fe320c34475e575f08fce794e2899bdfd33e1b1ec9df2d253cbf6e162",
+      "actual": "ff02bd3fe320c34475e575f08fce794e2899bdfd33e1b1ec9df2d253cbf6e162",
+      "status": "MATCH"
+    },
+    {
+      "id": "S1",
+      "path": "C:\\CodeC\\Grade9v3.5\\benchmarks\\quality-calibration\\specimens\\S1-motion2d-six-core-html\\index.html",
+      "expected": "78bc87d920866b02f077b4d23986f4d08e7bc522993815acd59304b1c268b1a5",
+      "actual": "78bc87d920866b02f077b4d23986f4d08e7bc522993815acd59304b1c268b1a5",
+      "status": "MATCH"
+    },
+    {
+      "id": "S2",
+      "path": "C:\\CodeC\\Grade9v3.5\\benchmarks\\quality-calibration\\specimens\\S2-motion2d-six-core-pdf\\Core1A_Motion2D_DetailedTeaching.pdf",
+      "expected": "18819244fb691bc5021949bf3b44d6d03149ffecc2ce7feb96ce00d316e13c7c",
+      "actual": "18819244fb691bc5021949bf3b44d6d03149ffecc2ce7feb96ce00d316e13c7c",
+      "status": "MATCH"
+    },
+    {
+      "id": "S2",
+      "path": "C:\\CodeC\\Grade9v3.5\\benchmarks\\quality-calibration\\specimens\\S2-motion2d-six-core-pdf\\Core1B_Motion2D_ReconstructionTutor.pdf",
+      "expected": "ca2b7f1a3ce3d8ad1fd132a484cefc8a5689d5d7e9b0d0ee0e6e3c76a91d63f9",
+      "actual": "ca2b7f1a3ce3d8ad1fd132a484cefc8a5689d5d7e9b0d0ee0e6e3c76a91d63f9",
+      "status": "MATCH"
+    },
+    {
+      "id": "S2",
+      "path": "C:\\CodeC\\Grade9v3.5\\benchmarks\\quality-calibration\\specimens\\S2-motion2d-six-core-pdf\\Core1_Motion2D_Orientation.pdf",
+      "expected": "ac4fbcf4b817e8e8e3e04e74c9fdf3d29ecee522f5452f0ac8e0dd5a2095ca4d",
+      "actual": "ac4fbcf4b817e8e8e3e04e74c9fdf3d29ecee522f5452f0ac8e0dd5a2095ca4d",
+      "status": "MATCH"
+    },
+    {
+      "id": "S2",
+      "path": "C:\\CodeC\\Grade9v3.5\\benchmarks\\quality-calibration\\specimens\\S2-motion2d-six-core-pdf\\Core2A_Motion2D_SupportedPractice.pdf",
+      "expected": "f1e4c6c55a160a6f7c0af10f6d77e26a0f40734b0560f739475d4868a79b4695",
+      "actual": "f1e4c6c55a160a6f7c0af10f6d77e26a0f40734b0560f739475d4868a79b4695",
+      "status": "MATCH"
+    },
+    {
+      "id": "S2",
+      "path": "C:\\CodeC\\Grade9v3.5\\benchmarks\\quality-calibration\\specimens\\S2-motion2d-six-core-pdf\\Core2B_Motion2D_Transfer.pdf",
+      "expected": "8b0b354d8b819e1ae53cc32f4ad8892fe4d25dce188e9b9ddd03061be4170bae",
+      "actual": "8b0b354d8b819e1ae53cc32f4ad8892fe4d25dce188e9b9ddd03061be4170bae",
+      "status": "MATCH"
+    },
+    {
+      "id": "S2",
+      "path": "C:\\CodeC\\Grade9v3.5\\benchmarks\\quality-calibration\\specimens\\S2-motion2d-six-core-pdf\\Core2_Motion2D_SourceCustody.pdf",
+      "expected": "600694b1142ea0808bae3786925ddbf10c56d85e7aca3e981c68dade3377a287",
+      "actual": "600694b1142ea0808bae3786925ddbf10c56d85e7aca3e981c68dade3377a287",
+      "status": "MATCH"
+    },
+    {
+      "id": "S3",
+      "path": "C:\\CodeC\\Grade9v3.5\\benchmarks\\quality-calibration\\specimens\\S3-projectile-prototype-markdown\\CORE1.md",
+      "expected": "1dae44eb0528b3cc92399f2c67a373e7ca2830f5745a8de2cc483517ddc1209e",
+      "actual": "1dae44eb0528b3cc92399f2c67a373e7ca2830f5745a8de2cc483517ddc1209e",
+      "status": "MATCH"
+    },
+    {
+      "id": "S3",
+      "path": "C:\\CodeC\\Grade9v3.5\\benchmarks\\quality-calibration\\specimens\\S3-projectile-prototype-markdown\\CORE1A.md",
+      "expected": "293902e360c72e33ac0646ba8a5766aaaea09d5f160337b9390bf72c99ad13a2",
+      "actual": "293902e360c72e33ac0646ba8a5766aaaea09d5f160337b9390bf72c99ad13a2",
+      "status": "MATCH"
+    },
+    {
+      "id": "S3",
+      "path": "C:\\CodeC\\Grade9v3.5\\benchmarks\\quality-calibration\\specimens\\S3-projectile-prototype-markdown\\CORE1B.md",
+      "expected": "fe2d4abbb655fe00d751d552a8d20e6c930f11c335c34357ca19c1653fee2e47",
+      "actual": "fe2d4abbb655fe00d751d552a8d20e6c930f11c335c34357ca19c1653fee2e47",
+      "status": "MATCH"
+    },
+    {
+      "id": "S3",
+      "path": "C:\\CodeC\\Grade9v3.5\\benchmarks\\quality-calibration\\specimens\\S3-projectile-prototype-markdown\\CORE2.md",
+      "expected": "f4b32efc8cdecbfe2556c96e0e7ca741223be4e38a70c5635d242dc007c2e40f",
+      "actual": "f4b32efc8cdecbfe2556c96e0e7ca741223be4e38a70c5635d242dc007c2e40f",
+      "status": "MATCH"
+    },
+    {
+      "id": "S3",
+      "path": "C:\\CodeC\\Grade9v3.5\\benchmarks\\quality-calibration\\specimens\\S3-projectile-prototype-markdown\\CORE2A.md",
+      "expected": "d67b5b02a0a9d5e87e1d8b0019f72b3143be7ed561fb432ba114b059b4406ebc",
+      "actual": "d67b5b02a0a9d5e87e1d8b0019f72b3143be7ed561fb432ba114b059b4406ebc",
+      "status": "MATCH"
+    },
+    {
+      "id": "S3",
+      "path": "C:\\CodeC\\Grade9v3.5\\benchmarks\\quality-calibration\\specimens\\S3-projectile-prototype-markdown\\CORE2B.md",
+      "expected": "f34dd2c5f4d6b601e357e00299626e121451f1b22c26100a7f315ededa6a823f",
+      "actual": "f34dd2c5f4d6b601e357e00299626e121451f1b22c26100a7f315ededa6a823f",
+      "status": "MATCH"
+    },
+    {
+      "id": "S3",
+      "path": "C:\\CodeC\\Grade9v3.5\\benchmarks\\quality-calibration\\specimens\\S3-projectile-prototype-markdown\\README.md",
+      "expected": "f8aff54872c19d53e5a245db42fa5e52307a5613c0065b8a49229af7ee299454",
+      "actual": "f8aff54872c19d53e5a245db42fa5e52307a5613c0065b8a49229af7ee299454",
+      "status": "MATCH"
+    },
+    {
+      "id": "S3",
+      "path": "C:\\CodeC\\Grade9v3.5\\benchmarks\\quality-calibration\\specimens\\S3-projectile-prototype-markdown\\demand-map.json",
+      "expected": "bc888b834feda2b237c9a0f1cb14adec960a9bbe716f4c12c354120061fc07be",
+      "actual": "bc888b834feda2b237c9a0f1cb14adec960a9bbe716f4c12c354120061fc07be",
+      "status": "MATCH"
+    },
+    {
+      "id": "S3",
+      "path": "C:\\CodeC\\Grade9v3.5\\benchmarks\\quality-calibration\\specimens\\S3-projectile-prototype-markdown\\hold-register.json",
+      "expected": "e9df8d129e21c864144c725b9870f62d821f1a7e2205bbeb53fb90860c45aaff",
+      "actual": "e9df8d129e21c864144c725b9870f62d821f1a7e2205bbeb53fb90860c45aaff",
+      "status": "MATCH"
+    },
+    {
+      "id": "S3",
+      "path": "C:\\CodeC\\Grade9v3.5\\benchmarks\\quality-calibration\\specimens\\S3-projectile-prototype-markdown\\preview.html",
+      "expected": "0ed16d83287ee82ea9b584412c50106e2a0da2d3ef5929da6b60bd7138749866",
+      "actual": "0ed16d83287ee82ea9b584412c50106e2a0da2d3ef5929da6b60bd7138749866",
+      "status": "MATCH"
+    },
+    {
+      "id": "S3",
+      "path": "C:\\CodeC\\Grade9v3.5\\benchmarks\\quality-calibration\\specimens\\S3-projectile-prototype-markdown\\traceability.json",
+      "expected": "e953679274573b17f4c4990f0e83f465569d04f63c98a20293d2dd12652ce68c",
+      "actual": "e953679274573b17f4c4990f0e83f465569d04f63c98a20293d2dd12652ce68c",
+      "status": "MATCH"
+    },
+    {
+      "id": "S3",
+      "path": "C:\\CodeC\\Grade9v3.5\\benchmarks\\quality-calibration\\specimens\\S3-projectile-prototype-markdown\\validation-report.md",
+      "expected": "d9ac112b57c6ab863df00ad08e2a8b715dab19b31f7aa99499906719cda0bf4a",
+      "actual": "d9ac112b57c6ab863df00ad08e2a8b715dab19b31f7aa99499906719cda0bf4a",
+      "status": "MATCH"
+    },
+    {
+      "id": "S4",
+      "path": "C:\\CodeC\\Grade9v3.5\\benchmarks\\quality-calibration\\specimens\\S4-pr288-preview\\preview.html",
+      "expected": "fb790d45acf1a5378c9733f9d8e65b829574253a378b2eebe9fbd6379a7b57f7",
+      "actual": "fb790d45acf1a5378c9733f9d8e65b829574253a378b2eebe9fbd6379a7b57f7",
+      "status": "MATCH"
+    },
+    {
+      "id": "S5",
+      "path": "C:\\CodeC\\Grade9v3.5\\benchmarks\\quality-calibration\\specimens\\S5-research-first-render\\atlas\\index.html",
+      "expected": "2ca9503565bee12ac7b319ebac6281ac0dfa0b54bd6798b0a8ed8b285513618c",
+      "actual": "2ca9503565bee12ac7b319ebac6281ac0dfa0b54bd6798b0a8ed8b285513618c",
+      "status": "MATCH"
+    },
+    {
+      "id": "S5",
+      "path": "C:\\CodeC\\Grade9v3.5\\benchmarks\\quality-calibration\\specimens\\S5-research-first-render\\bank\\questions.json",
+      "expected": "6a28ad14ede1c3852d1afce679c817134206339b812750e94fc794d9c3f1087e",
+      "actual": "6a28ad14ede1c3852d1afce679c817134206339b812750e94fc794d9c3f1087e",
+      "status": "MATCH"
+    },
+    {
+      "id": "S5",
+      "path": "C:\\CodeC\\Grade9v3.5\\benchmarks\\quality-calibration\\specimens\\S5-research-first-render\\book\\index.html",
+      "expected": "13c77065437bb2f26c6a833f61bc8b82135bde7c1713e1793602f7e90b359b46",
+      "actual": "13c77065437bb2f26c6a833f61bc8b82135bde7c1713e1793602f7e90b359b46",
+      "status": "MATCH"
+    },
+    {
+      "id": "S5",
+      "path": "C:\\CodeC\\Grade9v3.5\\benchmarks\\quality-calibration\\specimens\\S5-research-first-render\\builder\\index.html",
+      "expected": "d2d6ca06d657fc8081e074e9931d9bad564965828d13d9a2e0e832660fe72579",
+      "actual": "d2d6ca06d657fc8081e074e9931d9bad564965828d13d9a2e0e832660fe72579",
+      "status": "MATCH"
+    },
+    {
+      "id": "S5",
+      "path": "C:\\CodeC\\Grade9v3.5\\benchmarks\\quality-calibration\\specimens\\S5-research-first-render\\builder\\run.json",
+      "expected": "75d7e70bc4f6d79d68d98494c7848928de2761fd8de76e166e58f88cd195bd09",
+      "actual": "75d7e70bc4f6d79d68d98494c7848928de2761fd8de76e166e58f88cd195bd09",
+      "status": "MATCH"
+    },
+    {
+      "id": "S5",
+      "path": "C:\\CodeC\\Grade9v3.5\\benchmarks\\quality-calibration\\specimens\\S5-research-first-render\\delivery.json",
+      "expected": "3aba7f9e833a4831e4d0db33915d8b308641a400b4f84f4219d28f35ce2af22e",
+      "actual": "3aba7f9e833a4831e4d0db33915d8b308641a400b4f84f4219d28f35ce2af22e",
+      "status": "MATCH"
+    },
+    {
+      "id": "S5",
+      "path": "C:\\CodeC\\Grade9v3.5\\benchmarks\\quality-calibration\\specimens\\S5-research-first-render\\pages\\constant-acceleration-in-a-plane.html",
+      "expected": "8890c3c2c67834705436843078ac34c0c43aaf3c780c9fe5e3dd69785278fce1",
+      "actual": "8890c3c2c67834705436843078ac34c0c43aaf3c780c9fe5e3dd69785278fce1",
+      "status": "MATCH"
+    },
+    {
+      "id": "S5",
+      "path": "C:\\CodeC\\Grade9v3.5\\benchmarks\\quality-calibration\\specimens\\S5-research-first-render\\pages\\horizontal-launch-from-a-height.html",
+      "expected": "58ac33b5c3e903a2f59cad56c4545d0dc614646a0c9878605298ba71ba9fcea4",
+      "actual": "58ac33b5c3e903a2f59cad56c4545d0dc614646a0c9878605298ba71ba9fcea4",
+      "status": "MATCH"
+    },
+    {
+      "id": "S5",
+      "path": "C:\\CodeC\\Grade9v3.5\\benchmarks\\quality-calibration\\specimens\\S5-research-first-render\\pages\\perpendicular-components-are-independent.html",
+      "expected": "34bcf0fdc928223ee70a121e4c6d985a421cd408384c79f2c051f1990f095880",
+      "actual": "34bcf0fdc928223ee70a121e4c6d985a421cd408384c79f2c051f1990f095880",
+      "status": "MATCH"
+    },
+    {
+      "id": "S5",
+      "path": "C:\\CodeC\\Grade9v3.5\\benchmarks\\quality-calibration\\specimens\\S5-research-first-render\\pages\\position-and-displacement-in-a-plane.html",
+      "expected": "608a59d3e5a1d93897cc46125b046ae24376767be1208f4abb9a4e5f96a079e6",
+      "actual": "608a59d3e5a1d93897cc46125b046ae24376767be1208f4abb9a4e5f96a079e6",
+      "status": "MATCH"
+    },
+    {
+      "id": "S5",
+      "path": "C:\\CodeC\\Grade9v3.5\\benchmarks\\quality-calibration\\specimens\\S5-research-first-render\\pages\\projectiles-time-of-flight-height-and-range.html",
+      "expected": "edbb35a27ec27cf570fb3eb199106962b1bdd812d2617fc2659f25c97376af0d",
+      "actual": "edbb35a27ec27cf570fb3eb199106962b1bdd812d2617fc2659f25c97376af0d",
+      "status": "MATCH"
+    },
+    {
+      "id": "S5",
+      "path": "C:\\CodeC\\Grade9v3.5\\benchmarks\\quality-calibration\\specimens\\S5-research-first-render\\pages\\relative-velocity-in-two-dimensions.html",
+      "expected": "a6c93b039018dc27459c1f3a6f0dbcf6406ca404b88d174b747d33a3925c62e9",
+      "actual": "a6c93b039018dc27459c1f3a6f0dbcf6406ca404b88d174b747d33a3925c62e9",
+      "status": "MATCH"
+    },
+    {
+      "id": "S5",
+      "path": "C:\\CodeC\\Grade9v3.5\\benchmarks\\quality-calibration\\specimens\\S5-research-first-render\\pages\\uniform-circular-motion.html",
+      "expected": "fdbcfe7fdac1684d1d1550ae0b005865d7800bff0abfb2df9b22cbe61ca39eb2",
+      "actual": "fdbcfe7fdac1684d1d1550ae0b005865d7800bff0abfb2df9b22cbe61ca39eb2",
+      "status": "MATCH"
+    },
+    {
+      "id": "S5",
+      "path": "C:\\CodeC\\Grade9v3.5\\benchmarks\\quality-calibration\\specimens\\S5-research-first-render\\pages\\velocity-and-acceleration-as-vectors.html",
+      "expected": "bfa765949a8240702de9e0bbe5add3cfcf03d902b943c884e55d15ac23ca1312",
+      "actual": "bfa765949a8240702de9e0bbe5add3cfcf03d902b943c884e55d15ac23ca1312",
+      "status": "MATCH"
+    }
+  ],
+  "positive_reference_current_checkout": [
+    {
+      "id": "R2",
+      "path": "C:\\CodeC\\Grade9v3.5\\docs\\question-bank\\pass1\\canonical_question_bank_10inch_tablet.html",
+      "expected": "4e264fc62da5846e316ca49d69bbc62cb44cbf6dcfe5173c57f941fde64b47c0",
+      "actual": null,
+      "status": "ABSENT_IN_CURRENT_CHECKOUT"
+    },
+    {
+      "id": "R2",
+      "path": "C:\\CodeC\\Grade9v3.5\\docs\\question-bank\\pass1\\Grade9V3_Canonical_Question_Bank_10inch_Tablet.pdf",
+      "expected": "4fd5ed058f58e78072d950b48d89b38691d428abeb38bfa84329b8efc6992a34",
+      "actual": null,
+      "status": "ABSENT_IN_CURRENT_CHECKOUT"
+    },
+    {
+      "id": "R2",
+      "path": "C:\\CodeC\\Grade9v3.5\\docs\\question-bank\\pass1\\canonical_77_questions.json",
+      "expected": null,
+      "actual": null,
+      "status": "ABSENT_IN_CURRENT_CHECKOUT"
+    }
+  ],
+  "R1_exact_pdf": "NOT_LOCATED_IN_REPOSITORY per manifest; no all-branch search rerun",
+  "behavioral_quality": "NOT_RERUN"
+}

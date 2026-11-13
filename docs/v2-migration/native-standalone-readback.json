@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0.0",
+  "observation": "SHARED_ZIP_STANDALONE_NOT_FULL_SUBJECT_REPOSITORY",
+  "native_tool": "Shared/tools/check_subjects.py",
+  "source_archive_sha256": "16b6fba6c349923d1744badf0c53f5debdbbe4e25eae7f02413a7baeee76667b",
+  "native_result": {
+    "subjects_checked": 0,
+    "subjects": [],
+    "passed": false
+  },
+  "native_exit_code": 1,
+  "subject_implementation_status": "HOLD",
+  "qualifications": "HOLD",
+  "source_assessment": "LOCAL_OWNER_SUPPLIED_UNVERIFIED"
+}

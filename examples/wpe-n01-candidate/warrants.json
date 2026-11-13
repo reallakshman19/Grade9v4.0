@@ -1,0 +1,21 @@
+[
+  {
+    "schema_version": "1.0.0",
+    "id": "WARR-N01",
+    "status": "CANDIDATE",
+    "created_at": "2026-10-31T00:00:00Z",
+    "physics_claim": "In a constant-force translational exercise, work sign depends on force component along displacement.",
+    "law_or_model": "Work as dot product",
+    "assumptions": [
+      "Constant applied force",
+      "Specified frame"
+    ],
+    "validity_domain": "Synthetic work-sign scenario",
+    "exceptions": [],
+    "sign_convention": "Positive along displacement",
+    "source_ids": [
+      "SOURCE-N01"
+    ],
+    "review_approval_ids": []
+  }
+]

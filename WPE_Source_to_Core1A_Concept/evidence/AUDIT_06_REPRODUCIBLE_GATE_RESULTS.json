@@ -1,0 +1,222 @@
+{
+  "schema": "wpe-core2-read-only-contract-check/v1",
+  "inputs": {
+    "owner_sha256": "7a5e6f12bd5ea656fea301a00796c20ce9aa5a897acbb1f4e95f57ca2cd59033",
+    "organized_sha256": "b664284944de4eb76775a089ecdf795a86cd99d250081625aca700dc90f2356c",
+    "skills_sha256": "96f7f3dea6efb0ec7bff729392ed6b53a08a6496fb53663f002fb9998e9c1286",
+    "golden_sha256": "433b356a26ebfdbfa922cbaa7401e7c224f5c095f4bae8f951b4e97154937d74"
+  },
+  "gates": [
+    {
+      "id": "SOURCE_ARCHIVE_LOCAL_SHA",
+      "status": "PASS",
+      "actual": "f9f5cf75652f20483d44e837c564fe4635e55aa75dd6007d988c297e82ef82c4",
+      "required": "f9f5cf75652f20483d44e837c564fe4635e55aa75dd6007d988c297e82ef82c4",
+      "next_step": "Preserve existing source ZIP unchanged",
+      "category": "custody"
+    },
+    {
+      "id": "SL1_SL2_SKILL_BYTES",
+      "status": "PASS",
+      "actual": "Owner reference skills equal supplied attachments",
+      "required": "SL1 and SL2 exact skill bytes",
+      "next_step": "Restore/check same pinned candidate skill versions",
+      "category": "implementation"
+    },
+    {
+      "id": "R2_SKILL_ARCHIVE_IDENTITY",
+      "status": "PASS",
+      "actual": "96f7f3dea6efb0ec7bff729392ed6b53a08a6496fb53663f002fb9998e9c1286",
+      "required": "96f7f3dea6efb0ec7bff729392ed6b53a08a6496fb53663f002fb9998e9c1286",
+      "next_step": "Do not swap R2 versions without new pins",
+      "category": "implementation"
+    },
+    {
+      "id": "NATIVE_OVERLAYS_CREATED",
+      "status": "PASS",
+      "actual": {
+        "sl1": 13,
+        "sl2": 13,
+        "contract": 13
+      },
+      "required": "13 matched overlays for the older coder selection",
+      "next_step": "Do not treat engineering records as reviewer approval",
+      "category": "implementation"
+    },
+    {
+      "id": "BLUEPRINT_BYTE_MATCH",
+      "status": "PASS",
+      "actual": {
+        "source_pin": "e6030a5933a803ddc39708414e6831c89c9565def78c09c99f58f95052c2b45f",
+        "organized_copies": 7
+      },
+      "required": "Byte-matched versioned blueprint",
+      "next_step": "Pin semantic cell resolver as well as hash",
+      "category": "implementation"
+    },
+    {
+      "id": "TOPIC_ADAPTER_PINNED",
+      "status": "HOLD",
+      "actual": {
+        "pinned": [
+          "library",
+          "vocabulary",
+          "blueprint",
+          "methodology",
+          "r2"
+        ],
+        "available_organized_adapter_candidates": 6,
+        "unique_candidate_hashes": 5
+      },
+      "required": "One Owner-approved WPE topic adapter with SHA, version and authority",
+      "next_step": "Choose adapter; pin it into source inputs and review_subject; fail stale verdicts",
+      "category": "implementation"
+    },
+    {
+      "id": "TOPIC_ADAPTER_ACTUALLY_CONSUMED",
+      "status": "HOLD",
+      "actual": "No topic adapter read in current Core2 build",
+      "required": "Blueprint + topic adapter semantic resolution",
+      "next_step": "Replace hardcoded scope_map with validated (operation,band,topic) cell resolution",
+      "category": "implementation"
+    },
+    {
+      "id": "GOLDEN_MANIFEST_BANK_RECORDS",
+      "status": "HOLD",
+      "actual": [],
+      "required": "Golden manifest, bank and package records in Core2 output",
+      "next_step": "Build derived learner product from exact qualified WPE source through golden schema adapter",
+      "category": "implementation"
+    },
+    {
+      "id": "GOLDEN_LEARNER_RENDERER_CONTRACT",
+      "status": "HOLD",
+      "actual": "Custom catalogue.template.html and static question_page()",
+      "required": "Golden attempt-first renderer and inert hints/commit/answer reveal",
+      "next_step": "Do not style static review HTML to impersonate golden learner bank",
+      "category": "implementation"
+    },
+    {
+      "id": "GOLDEN_FIXTURE_FIELD_CONTRACT",
+      "status": "PASS",
+      "actual": {
+        "golden_question_fields": [
+          "id",
+          "version",
+          "status",
+          "source_refs",
+          "evidence_refs",
+          "extensions",
+          "origin",
+          "origin_ref",
+          "original_identifier",
+          "stem",
+          "subparts",
+          "options",
+          "conditions",
+          "figure_refs",
+          "answer",
+          "primary_capability_ref",
+          "secondary_capability_refs",
+          "family_ref",
+          "adaptation",
+          "exposure",
+          "hints",
+          "scaffolds",
+          "response"
+        ],
+        "golden_package_sections": [
+          "schema_version",
+          "package_id",
+          "title",
+          "version",
+          "status",
+          "subject",
+          "scope_summary",
+          "curriculum_mappings",
+          "resources",
+          "buckets",
+          "capabilities",
+          "microtopics",
+          "relations",
+          "representations",
+          "question_families",
+          "questions",
+          "teaching_routes",
+          "practice_profiles",
+          "evidence",
+          "known_issues",
+          "extensions",
+          "data",
+          "application_contexts"
+        ]
+      },
+      "required": "Golden template structurally inspectable",
+      "next_step": "Build schema tests for every emitted WPE selected question",
+      "category": "implementation"
+    },
+    {
+      "id": "R2_ALL_INTEGRITY_GATES_PASS",
+      "status": "HOLD",
+      "actual": {
+        "R2_status": "PARTIAL",
+        "integrity": {
+          "HOLD": 7,
+          "PASS": 6
+        }
+      },
+      "required": "All applicable current native gates PASS",
+      "next_step": "Bind figures and source/answer reference types; preserve all legitimate HOLDs",
+      "category": "implementation"
+    },
+    {
+      "id": "OWNER_21_ADMISSIONS",
+      "status": "HOLD",
+      "actual": {
+        "pending": 14,
+        "vacant": 7,
+        "admitted": 0
+      },
+      "required": "Exactly 21 distinct independently admitted authentic exam originals",
+      "next_step": "Fill vacancies only from verified exam originals; separate academic from engineering gates",
+      "category": "academic"
+    },
+    {
+      "id": "OWNER_APPOINTMENT_APPROVAL",
+      "status": "HOLD",
+      "actual": {
+        "owner_approval_recorded": false,
+        "independent_reviewer_designated": false
+      },
+      "required": "New bounded Owner authorization and distinct reviewer assignment",
+      "next_step": "Obtain actual signed Owner appointment and resource approval before claiming independent review",
+      "category": "authority"
+    },
+    {
+      "id": "LOCAL_EXAM_SOURCE_BYTE_BINDING",
+      "status": "PASS",
+      "actual": {
+        "locally_verified_exam_records": 79,
+        "exam_records_expected": 79
+      },
+      "required": "79 exact raw local source bindings",
+      "next_step": "Preserve source claim and distinct authority in promotion",
+      "category": "custody"
+    },
+    {
+      "id": "OFFICIAL_PAPER_AND_KEY_COMPLETE",
+      "status": "HOLD",
+      "actual": {
+        "exam_records_with_both_local_evidence_refs": 6
+      },
+      "required": "Each exam original has independently authenticated paper and key",
+      "next_step": "Independent upstream authenticity/readback and key-version receipts still required",
+      "category": "custody"
+    }
+  ],
+  "summary": {
+    "pass": 7,
+    "hold": 8,
+    "owner_acceptance": "NOT_GRANTED"
+  }
+}

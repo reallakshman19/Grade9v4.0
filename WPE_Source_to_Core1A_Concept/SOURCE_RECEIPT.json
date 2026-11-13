@@ -1,0 +1,74 @@
+{
+  "schema": "source-core1a-report-evidence/v1",
+  "captured_utc": "2026-10-30T10:34:28.816374+00:00",
+  "retained_sources": [
+    {
+      "original_path": "C:\\Users\\reall\\Downloads\\WPE_CORE2_R2_AUDIT_CONCEPT_ADDENDUM.md",
+      "sha256": "9022d551f56eed63a861bf305b795b2261d1b1bde52268fba368c909cd6b2dd4",
+      "retained_copy": "evidence/ATTACHED_CORE2_ADDENDUM.md"
+    },
+    {
+      "original_path": "C:\\CodeC\\Grade9v3.5\\golden\\INDEX.md",
+      "sha256": "df40f2b308b30e7bd18fe0a5e76cc9b3c885a8495a35c2070430007e2078f622",
+      "retained_copy": "evidence/GOLDEN_INDEX.md"
+    },
+    {
+      "original_path": "C:\\CodeC\\Grade9v3.5\\golden\\TECHNIQUES.md",
+      "sha256": "08b69e05ea9470947e7d401e37001c91a6475fea137ee9afc877d2cd0ba8c52c",
+      "retained_copy": "evidence/GOLDEN_TECHNIQUES.md"
+    },
+    {
+      "original_path": "C:\\CodeC\\Grade9v3.5\\golden\\units\\G-MATH-LINEAR-CONSTRAINT\\GOLDEN.md",
+      "sha256": "224199b6377e32cc99139c6aaab2c3bb9e8f1ab303574e14ea2d6f4f5208d17b",
+      "retained_copy": "evidence/G_MATH_DECLARATION.md"
+    },
+    {
+      "original_path": "C:\\CodeC\\Grade9v3.5\\golden\\units\\G-CORE2-R2\\GOLDEN.md",
+      "sha256": "2ad7d1ff1d48709eb823dcbb96300c530876044de418b5b7fad80b7502a311e1",
+      "retained_copy": "evidence/G_CORE2_DECLARATION.md"
+    },
+    {
+      "original_path": "C:\\CodeC\\Grade9v3.5\\benchmarks\\quality-calibration\\manifest.v1.json",
+      "sha256": "da03539f682b7de8b0554fbf92d03087f4be72e1bf799a146c425bb1ee81dccf",
+      "retained_copy": "evidence/CALIBRATION_MANIFEST.json"
+    },
+    {
+      "original_path": "C:\\CodeC\\Grade9v3.5\\evidence\\stress-tests\\polynomials-six-core\\REPORT.md",
+      "sha256": "74227efb3e1cab8fe653a7b24d47e98c97e60bbfc1cd795d2dada5cadccb5069",
+      "retained_copy": "evidence/POLYNOMIALS_REPORT.md"
+    },
+    {
+      "original_path": "D:\\CodeD\\g9v3.5\\chatgpt\\output\\WPE_CONSTRUCTION_HANDOFF_R1_DELIVERY_RECEIPT.json",
+      "sha256": "d2c7cd114c9bb333502ec5ffc6720a5d750d4bbe10ef049c6af24359c87b8ce8",
+      "retained_copy": "evidence/HANDOFF_DELIVERY_RECEIPT.json"
+    },
+    {
+      "original_path": "D:\\CodeD\\g9v3.5\\chatgpt\\output\\WPE_Construction_Handoff_Skill_R1_2026-10-30\\review\\EXAMPLE_CHECK.json",
+      "sha256": "abfcb0440067fb62e5efd1d9d72e06e3879dbffb07fd5f82a6b583a73ccb06f4",
+      "retained_copy": "evidence/HANDOFF_EXAMPLE_CHECK.json"
+    },
+    {
+      "original_path": "D:\\CodeD\\g9v3.5\\chatgpt\\output\\WPE_Construction_Handoff_Skill_R1_2026-10-30\\review\\VALIDATION_READBACK.md",
+      "sha256": "8fe7ea4ed47538b6b7bfe7e988cfa7db484cfdb4df0dce99f67fde4fd3333bb0",
+      "retained_copy": "evidence/HANDOFF_VALIDATION.md"
+    }
+  ],
+  "inventory_rows": 256,
+  "golden_tree_files": 152,
+  "registered_candidates": 2,
+  "owner_blessed_among_registered": 0,
+  "Reference_files": 115,
+  "anti_examples": 15,
+  "calibration_entries": 7,
+  "negative_calibration_files": 40,
+  "negative_hash_counts": {
+    "MATCH": 40,
+    "MISSING": 0,
+    "DIFFERS": 0
+  },
+  "stress_files": 62,
+  "render_asset_files": 2,
+  "frozen_handoff_archive_sha256": "c14de8a538c2276855a5f911dc9685adbebd159f5c631ff870daba87a05ab681",
+  "semantic_qualification": "NOT_RUN",
+  "source_instructions": "TREATED_AS_EVIDENCE_NOT_AUTHORITY"
+}

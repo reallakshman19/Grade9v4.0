@@ -1,0 +1,20 @@
+{
+  "task": "WPE-SOURCE-CORE1A-CONCEPT-REPORT-R1",
+  "session_role": "Oracle (standalone)",
+  "thread_id": "01a188e5-af7a-7881-b414-b465ca99680f",
+  "owner_reply": "Approve bounded report routine",
+  "scope": "Inventory golden fixtures/reference material, reconcile relevant audit claims, create Source-to-Core1A concept report and progress diagram in Markdown, HTML and SVG",
+  "started_utc": "2026-10-30T10:25:59Z",
+  "deadline_utc": "2026-10-30T10:50:59Z",
+  "max_minutes": 25,
+  "max_inspection_verification_calls": 25,
+  "counting_rule": "exec_command/write_stdin and image inspections plus dependency lookup count; apply_patch, clocks and waits excluded",
+  "status": "PRE_DELIVERY_SNAPSHOT; final external receipt supplies closure",
+  "exclusions": ["product rebuild", "lesson authoring", "installation", "agents", "remote writes", "original edits", "release"],
+  "D3.1": "PAUSED",
+  "resource_metric": "reported input plus output",
+  "baseline": "UNKNOWN",
+  "forecast_ratio": "UNKNOWN",
+  "context_meter": "UNKNOWN",
+  "account_meter": "UNKNOWN"
+}

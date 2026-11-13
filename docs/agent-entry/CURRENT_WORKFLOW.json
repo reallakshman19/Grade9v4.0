@@ -1,0 +1,173 @@
+{
+  "profile": "g9-v4-local-process-map/v1-current-navigation",
+  "platform_subjects": [
+    "PHYSICS",
+    "MATHEMATICS",
+    "CHEMISTRY"
+  ],
+  "pilot": "Physics/WPE only",
+  "presentation_path": "source -> skills -> Blueprint + adapters -> output -> publish HTML",
+  "dependency_note": "Subject rules are loaded before cognitive labelling; Core1A preparation can run alongside question intake. Core2-first authoring is this Owner-scoped WPE workflow, not universal Shared academic authority.",
+  "stages": [
+    {
+      "id": "source",
+      "name": "Source and book intake",
+      "depends_on": [],
+      "artifacts": [
+        "question_sources",
+        "book_syllabus"
+      ],
+      "state": "AVAILABLE_PRIVATE_UNQUALIFIED"
+    },
+    {
+      "id": "rules",
+      "name": "Subject Blueprint, adapter and Shared authority",
+      "depends_on": [],
+      "artifacts": [
+        "shared_runtime",
+        "physics_blueprint",
+        "root_adapter_draft"
+      ],
+      "state": "DRAFT_PHYSICS_ONLY; NO_MATH_CHEM_BLUEPRINT_SELECTED"
+    },
+    {
+      "id": "sl1",
+      "name": "SL1 source identity",
+      "depends_on": [
+        "source",
+        "rules"
+      ],
+      "artifacts": [
+        "smart_sl1"
+      ],
+      "state": "CANDIDATE_TOOL; SOURCE_CUSTODY_STILL_REVIEWED"
+    },
+    {
+      "id": "provisional",
+      "name": "Provisional QRT indexing",
+      "depends_on": [
+        "sl1",
+        "rules"
+      ],
+      "artifacts": [
+        "operation_adapter_variants"
+      ],
+      "state": "ORGANIZATION_NOT_ADMISSION"
+    },
+    {
+      "id": "sl2",
+      "name": "SL2 cognitive analysis",
+      "depends_on": [
+        "sl1",
+        "provisional",
+        "rules"
+      ],
+      "artifacts": [
+        "smart_sl2"
+      ],
+      "state": "CANDIDATE; NO_AUTO_ADJUDICATION"
+    },
+    {
+      "id": "qrt",
+      "name": "Distinct QRT adjudication",
+      "depends_on": [
+        "sl2",
+        "rules"
+      ],
+      "artifacts": [
+        "academic_review"
+      ],
+      "state": "FOUR_D2_REVIEWS; TEN_NOMINATIONS_UNREVIEWED"
+    },
+    {
+      "id": "prep",
+      "name": "Book-to-Core1A preparation",
+      "depends_on": [
+        "source",
+        "rules"
+      ],
+      "artifacts": [
+        "core1a_preparation_skill",
+        "core1a_dossiers"
+      ],
+      "state": "TEN_DOSSIERS; ZERO_QUALIFIED_NEW_LESSONS"
+    },
+    {
+      "id": "core2",
+      "name": "Native Core2 output",
+      "depends_on": [
+        "source",
+        "qrt",
+        "rules"
+      ],
+      "artifacts": [
+        "core2_reader"
+      ],
+      "state": "EIGHT_TEXTBOOK_PLUS_SYNTHETIC; PRESENTATION_FIXED; AUTHOR_CHECKS12; ZERO_EXAM_ADMISSIONS"
+    },
+    {
+      "id": "binder",
+      "name": "Qualified warrants and construction correspondence",
+      "depends_on": [
+        "prep",
+        "qrt",
+        "rules"
+      ],
+      "artifacts": [],
+      "state": "HOLD_INDEPENDENT_SEMANTIC_WARRANT_AND_B1_B7_EVIDENCE"
+    },
+    {
+      "id": "core1a",
+      "name": "Core1A lesson authoring",
+      "depends_on": [
+        "binder",
+        "core2"
+      ],
+      "artifacts": [],
+      "state": "OWNER_SCOPED_CORE2_APPROVAL_REQUIRED_FOR_THIS_WPE_WORKFLOW"
+    },
+    {
+      "id": "core1b",
+      "name": "Core1B fresh reconstruction",
+      "depends_on": [
+        "core1a",
+        "binder"
+      ],
+      "artifacts": [],
+      "state": "HOLD_OWNER_CORE1A_APPROVAL; NO_NEW_LESSON"
+    },
+    {
+      "id": "review_html",
+      "name": "Local review HTML",
+      "depends_on": [
+        "core2"
+      ],
+      "artifacts": [
+        "local_html_staging"
+      ],
+      "state": "NAVIGATION_ONLY; NOT_LEARNER_RELEASE"
+    },
+    {
+      "id": "publish",
+      "name": "Authorized publication",
+      "depends_on": [
+        "core2",
+        "core1a",
+        "core1b",
+        "binder"
+      ],
+      "artifacts": [],
+      "state": "HOLD_RIGHTS_INDEPENDENT_REVIEW_RUNTIME_AND_OWNER_RELEASE"
+    }
+  ],
+  "remote_publication": "NOT_AUTHORIZED",
+  "no_academic_approval_inferred_from_software_validation": true,
+  "path_resolver": "docs/agent-entry/CURRENT_PATHS.json",
+  "onboarding_reading": [
+    "current_companion",
+    "methodology",
+    "concept_report",
+    "worked_r2_record",
+    "native_authority"
+  ]
+}

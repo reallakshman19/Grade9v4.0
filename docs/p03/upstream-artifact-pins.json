@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0.0",
+  "status": "CANDIDATE_UNVERIFIED_OWNER_SOURCE",
+  "scope": "METADATA_ONLY_NO_REDISRIBUTION",
+  "sources": [
+    {
+      "role": "SMART_R2",
+      "archive": "SMART_LABELLING_QRT_HARDENING_R2_CANDIDATE(2).zip",
+      "sha256": "96f7f3dea6efb0ec7bff729392ed6b53a08a6496fb53663f002fb9998e9c1286",
+      "files": [
+        {
+          "path": "skills/smart-labelling-1/SKILL.md",
+          "sha256": "044f0752410f79f54a0b37032a43707523f744fc6ab30db65940c760f4fa48cd"
+        },
+        {
+          "path": "skills/smart-labelling-2/SKILL.md",
+          "sha256": "f8638dc9ba0ad6d2c1f1f3bde31e5722a1ee9237979f017f2a8195527971ea12"
+        },
+        {
+          "path": "skills/smart-labelling-1/references/hardening-contract.md",
+          "sha256": "5233c011ece392a659aed7949bbc7b23b5be4df46d43581307061240b030b877"
+        }
+      ]
+    },
+    {
+      "role": "QRT",
+      "archive": "QRT(4).zip",
+      "sha256": "362dbd60ab8c5fcab955bb5cef75ec1d64a74a84bad3cdffbac8c22f0e3c7e23",
+      "files": [
+        {
+          "path": "physics-blueprint.D3-D4.json",
+          "sha256": "e6030a5933a803ddc39708414e6831c89c9565def78c09c99f58f95052c2b45f"
+        },
+        {
+          "path": "builds/PHY-WPE-D3.1/topic-adapter.work-power-energy.json",
+          "sha256": "21db1a2c6688c23ab68e8f29eb52f2ed63a8881b3ff2468b0acd10a1353454a9"
+        },
+        {
+          "path": "builds/PHY-WPE-D3.5/topic-adapter.work-power-energy.json",
+          "sha256": "471edab47b5ad79e7323cf4d560e348b0de30da3689bcfe4762db460b24e31e2"
+        },
+        {
+          "path": "builds/PHY-WPE-D3.7/topic-adapter.work-power-energy.json",
+          "sha256": "4d162ce01139828f73f13c9d87ed7d9c9afa57c8b930187ec616447f7eabd8ad"
+        }
+      ]
+    },
+    {
+      "role": "CORE1A_HANDOFF",
+      "archive": "WPE_CONSTRUCTION_HANDOFF_SKILL_R1_CANDIDATE.zip",
+      "sha256": "c14de8a538c2276855a5f911dc9685adbebd159f5c631ff870daba87a05ab681",
+      "files": [
+        {
+          "path": "skill/source-to-core1a/SKILL.md",
+          "sha256": "e657150ba5b1d845c90fc1016770de6e80569b31244ff7d0fcfe85370d133373"
+        },
+        {
+          "path": "skill/source-to-core1a/examples/wpe-work-direction/handoff.json",
+          "sha256": "705e87ad7c26cf235563d58881282380983a9ddb6c4a8e86ffd30463bfb4abd3"
+        }
+      ]
+    }
+  ]
+}

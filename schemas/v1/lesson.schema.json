@@ -1,0 +1,219 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9._:-]{2,127}$"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "CANDIDATE",
+        "UNDER_REVIEW",
+        "APPROVED",
+        "REJECTED",
+        "BLOCKED"
+      ]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "construction_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "kind": {
+      "enum": [
+        "CORE1A",
+        "CORE1B"
+      ]
+    },
+    "grade_track": {
+      "enum": [
+        "G9_FOUNDATION",
+        "G10_STRENGTHENING",
+        "JEE_BRIDGE"
+      ]
+    },
+    "taught_direction": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tested_direction": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidence_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z][A-Za-z0-9._:-]{2,127}$"
+      }
+    },
+    "content_path": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$)).+$"
+    },
+    "physical_demo": {
+      "type": "string",
+      "minLength": 1
+    },
+    "qualitative_prediction": {
+      "type": "string",
+      "minLength": 1
+    },
+    "law_and_conditions": {
+      "type": "string",
+      "minLength": 1
+    },
+    "worked_original_example": {
+      "type": "string",
+      "minLength": 1
+    },
+    "guided_practice": {
+      "type": "string",
+      "minLength": 1
+    },
+    "misconception_repair": {
+      "type": "string",
+      "minLength": 1
+    },
+    "verification_check": {
+      "type": "string",
+      "minLength": 1
+    },
+    "covered_decisive_moves": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "fresh_task": {
+      "type": "string",
+      "minLength": 1
+    },
+    "protected_decisive_step": {
+      "type": "string",
+      "minLength": 1
+    },
+    "attempt_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "first_answer_before_hint": {
+          "type": "boolean"
+        },
+        "reveal_requires_attempt": {
+          "type": "boolean"
+        },
+        "p1_optional": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "first_answer_before_hint",
+        "reveal_requires_attempt",
+        "p1_optional"
+      ]
+    },
+    "diagnostic_rules": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "changed_condition_transfer": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tested_decisive_moves": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "freshness_evidence": {
+      "type": "string",
+      "minLength": 1
+    },
+    "directional_match_approval_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "author_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "status",
+    "created_at",
+    "construction_id",
+    "kind",
+    "grade_track",
+    "evidence_ids",
+    "content_path"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "const": "CORE1A"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "taught_direction",
+          "physical_demo",
+          "qualitative_prediction",
+          "law_and_conditions",
+          "worked_original_example",
+          "guided_practice",
+          "misconception_repair",
+          "verification_check",
+          "covered_decisive_moves"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "const": "CORE1B"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "tested_direction",
+          "fresh_task",
+          "protected_decisive_step",
+          "attempt_state",
+          "diagnostic_rules",
+          "changed_condition_transfer",
+          "tested_decisive_moves",
+          "freshness_evidence",
+          "directional_match_approval_id"
+        ]
+      }
+    }
+  ]
+}

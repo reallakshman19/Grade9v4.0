@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1500" viewBox="0 0 1200 1500" role="img" aria-labelledby="title desc">
+<title id="title">WPE Source to Core1A progress</title><desc id="desc">One checked preparation candidate is delivered. Scientific qualification, reviewed question and adapter binding, completed Core2 approval, native Core1A authoring and acceptance remain open. D3.1 is paused.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#7b899a"/></marker></defs>
+<rect width="1200" height="1500" fill="#f7f9fc"/>
+<g font-family="Segoe UI,Arial,sans-serif" fill="#203047">
+<text x="50" y="52" font-size="29" font-weight="700">WPE · Source → Core1A</text>
+<text x="50" y="84" font-size="18">30 October 2026 · Progress is evidence-qualified; no completion percentage assigned</text>
+<text x="50" y="115" font-size="16">Green = retained · Blue = delivered candidate · Amber = unresolved prerequisite · Grey = future work</text>
+<rect x="50" y="150" width="800" height="95" rx="12" fill="#e4f3e9" stroke="#287448"/>
+<text x="70" y="179" font-size="21" font-weight="600">1. Saved book / syllabus / figures</text>
+<text x="70" y="207" font-size="16">Inventory recorded; source truth remains reviewable</text>
+<text x="70" y="231" font-size="14" font-weight="700" fill="#287448">RETAINED</text>
+<path d="M450 245V265" stroke="#7b899a" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="50" y="270" width="800" height="95" rx="12" fill="#e5effb" stroke="#315f9f"/>
+<text x="70" y="299" font-size="21" font-weight="600">2. Exact source units</text>
+<text x="70" y="327" font-size="16">One WPE-N01 example · 6 sources · 11 exact units</text>
+<text x="70" y="351" font-size="14" font-weight="700" fill="#315f9f">CHECKED CANDIDATE</text>
+<path d="M450 365V385" stroke="#7b899a" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="50" y="390" width="800" height="95" rx="12" fill="#e5effb" stroke="#315f9f"/>
+<text x="70" y="419" font-size="21" font-weight="600">3. Core1A preparation requirements</text>
+<text x="70" y="447" font-size="16">3 claims · 3 role requirements · 7 native mappings</text>
+<text x="70" y="471" font-size="14" font-weight="700" fill="#315f9f">CANDIDATE DELIVERED</text>
+<path d="M450 485V505" stroke="#7b899a" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="50" y="510" width="800" height="95" rx="12" fill="#fff1d4" stroke="#9b6418"/>
+<text x="70" y="539" font-size="21" font-weight="600">4. Scientific warrants and conditions</text>
+<text x="70" y="567" font-size="16">Candidate library; semantic review NOT_RUN</text>
+<text x="70" y="591" font-size="14" font-weight="700" fill="#9b6418">HOLD</text>
+<path d="M450 605V625" stroke="#7b899a" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="50" y="630" width="800" height="95" rx="12" fill="#fff1d4" stroke="#9b6418"/>
+<text x="70" y="659" font-size="21" font-weight="600">5. Reviewed task + topic-adapter binding</text>
+<text x="70" y="687" font-size="16">No reviewed question join; adapter decision unresolved</text>
+<text x="70" y="711" font-size="14" font-weight="700" fill="#9b6418">HOLD</text>
+<path d="M450 725V745" stroke="#7b899a" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="50" y="750" width="800" height="95" rx="12" fill="#fff1d4" stroke="#9b6418"/>
+<text x="70" y="779" font-size="21" font-weight="600">6. Owner approval of completed Core2</text>
+<text x="70" y="807" font-size="16">Latest received proposal: 14 leads / 7 vacancies / 0 admissions</text>
+<text x="70" y="831" font-size="14" font-weight="700" fill="#9b6418">PENDING</text>
+<path d="M450 845V865" stroke="#7b899a" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="50" y="870" width="800" height="95" rx="12" fill="#edf0f4" stroke="#626f7d"/>
+<text x="70" y="899" font-size="21" font-weight="600">7. Native Core1A teaching authoring</text>
+<text x="70" y="927" font-size="16">No new lesson, package or manifest emitted</text>
+<text x="70" y="951" font-size="14" font-weight="700" fill="#626f7d">NOT STARTED</text>
+<path d="M450 965V985" stroke="#7b899a" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="50" y="990" width="800" height="95" rx="12" fill="#edf0f4" stroke="#626f7d"/>
+<text x="70" y="1019" font-size="21" font-weight="600">8. Governed render and teaching checks</text>
+<text x="70" y="1047" font-size="16">Native build, browser and academic review NOT_RUN</text>
+<text x="70" y="1071" font-size="14" font-weight="700" fill="#626f7d">NOT RUN</text>
+<path d="M450 1085V1105" stroke="#7b899a" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="50" y="1110" width="800" height="95" rx="12" fill="#edf0f4" stroke="#626f7d"/>
+<text x="70" y="1139" font-size="21" font-weight="600">9. Owner Core1A acceptance</text>
+<text x="70" y="1167" font-size="16">Exact build + teaching evidence required</text>
+<text x="70" y="1191" font-size="14" font-weight="700" fill="#626f7d">PENDING</text>
+<path d="M450 1205V1225" stroke="#7b899a" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="50" y="1230" width="800" height="95" rx="12" fill="#edf0f4" stroke="#626f7d"/>
+<text x="70" y="1259" font-size="21" font-weight="600">10. Fresh Core1B reconstruction</text>
+<text x="70" y="1287" font-size="16">After Core1A approval; preserve the same decisive operation</text>
+<text x="70" y="1311" font-size="14" font-weight="700" fill="#626f7d">DEFERRED</text>
+<rect x="885" y="170" width="270" height="170" rx="10" fill="white" stroke="#cbd5e2"/>
+<text x="902" y="198" font-size="16" font-weight="700">Parallel source preparation</text>
+<text x="902" y="226" font-size="15">Can continue while Core2 is</text>
+<text x="902" y="248" font-size="15">reviewed. It does not grant</text>
+<text x="902" y="270" font-size="15">teaching-construction</text>
+<text x="902" y="292" font-size="15">approval.</text>
+<rect x="885" y="420" width="270" height="170" rx="10" fill="white" stroke="#cbd5e2"/>
+<text x="902" y="448" font-size="16" font-weight="700">Golden comparison</text>
+<text x="902" y="476" font-size="15">2 indexed candidates, neither</text>
+<text x="902" y="498" font-size="15">Owner-blessed. References and</text>
+<text x="902" y="520" font-size="15">negative controls are</text>
+<text x="902" y="542" font-size="15">different evidence classes.</text>
+<rect x="885" y="680" width="270" height="170" rx="10" fill="white" stroke="#cbd5e2"/>
+<text x="902" y="708" font-size="16" font-weight="700">Mechanical ≠ academic</text>
+<text x="902" y="736" font-size="15">50 recorded checks pass,</text>
+<text x="902" y="758" font-size="15">including relocation.</text>
+<text x="902" y="780" font-size="15">Coherent false prose can</text>
+<text x="902" y="802" font-size="15">still pass integrity.</text>
+<rect x="885" y="930" width="270" height="170" rx="10" fill="white" stroke="#cbd5e2"/>
+<text x="902" y="958" font-size="16" font-weight="700">Current stop condition</text>
+<text x="902" y="986" font-size="15">Core1A construction waits for</text>
+<text x="902" y="1008" font-size="15">completed Core2 approval. No</text>
+<text x="902" y="1030" font-size="15">lesson has been built by this</text>
+<text x="902" y="1052" font-size="15">route.</text>
+<rect x="885" y="1190" width="270" height="170" rx="10" fill="white" stroke="#cbd5e2"/>
+<text x="902" y="1218" font-size="16" font-weight="700">D3.1 stays PAUSED</text>
+<text x="902" y="1246" font-size="15">No agent, installation,</text>
+<text x="902" y="1268" font-size="15">remote write or product</text>
+<text x="902" y="1290" font-size="15">rebuild is created by this</text>
+<text x="902" y="1312" font-size="15">report.</text>
+<text x="50" y="1410" font-size="19" font-weight="600">No accepted WPE Core1A is claimed.</text>
+<text x="50" y="1440" font-size="16">Keep source evidence, semantic qualification, native rendering and Owner acceptance separate.</text>
+</g></svg>

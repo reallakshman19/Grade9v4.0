@@ -1,0 +1,63 @@
+{
+  "schema": "wpe-r2-authorization-package-receipt/v1",
+  "task": "WPE-CORE2-COVERAGE-R2-REVIEW-PREPARATION",
+  "status": "PREPARED_FOR_OWNER_DECISION_NOT_APPROVED",
+  "source_archive_sha256_verified": "f9f5cf75652f20483d44e837c564fe4635e55aa75dd6007d988c297e82ef82c4",
+  "r1_return_sha256_verified": "8b3fa63993a8d7a54b8fc6e38dca96227e18e3ae35c3e5b5e9a596cc20b2a99b",
+  "blind_review_zip_sha256": "07bf26741ccbbc43fe6a858310cab4175178aa118c2ae95adf1339f6ce588e6d",
+  "r1_checkpoint": {
+    "source_records": 139,
+    "exam_candidates": 79,
+    "local_identity_groups": 78,
+    "prior_exposure": true,
+    "conditional_leads": 14,
+    "vacancies": 7,
+    "independent_admissions": 0
+  },
+  "new_r2_review_performed": false,
+  "independent_reviewer_designated": false,
+  "owner_approval_recorded": false,
+  "source_records_modified": false,
+  "external_retrieval": "NOT_RUN",
+  "web": "NOT_RUN",
+  "remote_writes": "NOT_RUN",
+  "installation": "NOT_RUN",
+  "agents_created": 0,
+  "public_release": "NOT_RUN",
+  "P1": "NOT_RUN_OPTIONAL",
+  "Core1A": "NOT_RUN",
+  "Core1B": "NOT_RUN",
+  "D3.1": "PAUSED",
+  "checks": {
+    "source_archive_sha256": "PASS",
+    "r1_nested_zip_exact_copy": "PASS",
+    "blind_zip_crc": "PASS",
+    "blind_only_five_files": "PASS",
+    "blind_question_html_r1_solution_data_token_check": "PASS",
+    "reviewer_blank_templates_78": "PASS",
+    "record_and_place_counts": "PASS",
+    "actual_r2_native_gate": "NOT_RUN_THIS_PACKAGE; R1 retained HOLD"
+  },
+  "unresolved": [
+    "R2 new Owner budget/permission not granted",
+    "reviewer has not been designated",
+    "seven vacant counting homes",
+    "14 conditional leads require source/key and independent academic checks",
+    "source upstream authentication incomplete",
+    "missing M56 M61 M69 graphical originals",
+    "open answer and assumption disputes",
+    "R2 explanatory figure compatibility boundary"
+  ],
+  "input_material": [
+    "WPE original ZIP and checksum",
+    "external delivery receipt",
+    "R1 machine-readable selection, 79 dispositions, readable report, receipt",
+    "preserved SL1/SL2 skills and pinned vocabulary and original authority constraints"
+  ],
+  "excluded_artifacts": [
+    "No signed approval",
+    "No completed blind scores",
+    "No certified native SL1/SL2 R2 PASS",
+    "No 21 admitted questions"
+  ]
+}

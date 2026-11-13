@@ -1,0 +1,209 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9._:-]{2,127}$"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "CANDIDATE",
+        "UNDER_REVIEW",
+        "APPROVED",
+        "REJECTED",
+        "BLOCKED"
+      ]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "construction_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "kind": {
+      "enum": [
+        "AUTHENTICATED_EXAM",
+        "TEXTBOOK",
+        "SYNTHETIC",
+        "INDEPENDENT_RECONSTRUCTION"
+      ]
+    },
+    "source_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z][A-Za-z0-9._:-]{2,127}$"
+      }
+    },
+    "paper_identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "year": {
+          "type": "integer",
+          "minimum": 1900
+        },
+        "date": {
+          "type": "string",
+          "format": "date"
+        },
+        "session": {
+          "type": "string",
+          "minLength": 1
+        },
+        "question_number": {
+          "type": [
+            "string",
+            "integer"
+          ]
+        }
+      },
+      "required": [
+        "year",
+        "question_number"
+      ]
+    },
+    "key_source_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "solution_source_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "review_approval_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z][A-Za-z0-9._:-]{2,127}$"
+      }
+    },
+    "direction": {
+      "type": "string",
+      "minLength": 1
+    },
+    "decisive_move": {
+      "type": "string",
+      "minLength": 1
+    },
+    "demand_scores": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "conceptual": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2
+        },
+        "representation": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2
+        },
+        "reasoning_chain": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2
+        },
+        "algebraic": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2
+        },
+        "misconception_trap": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2
+        }
+      },
+      "required": [
+        "conceptual",
+        "representation",
+        "reasoning_chain",
+        "algebraic",
+        "misconception_trap"
+      ]
+    },
+    "demand_evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "conceptual": {
+          "type": "string",
+          "minLength": 1
+        },
+        "representation": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reasoning_chain": {
+          "type": "string",
+          "minLength": 1
+        },
+        "algebraic": {
+          "type": "string",
+          "minLength": 1
+        },
+        "misconception_trap": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "conceptual",
+        "representation",
+        "reasoning_chain",
+        "algebraic",
+        "misconception_trap"
+      ]
+    },
+    "author_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "status",
+    "created_at",
+    "construction_id",
+    "kind",
+    "source_ids",
+    "review_approval_ids",
+    "direction",
+    "decisive_move",
+    "demand_scores",
+    "demand_evidence"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "const": "AUTHENTICATED_EXAM"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "paper_identity",
+          "key_source_id",
+          "solution_source_id"
+        ]
+      }
+    }
+  ]
+}

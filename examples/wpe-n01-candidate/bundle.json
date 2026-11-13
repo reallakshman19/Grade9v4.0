@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0.0",
+  "id": "BUNDLE-WEP01",
+  "status": "CANDIDATE",
+  "created_at": "2026-10-31T00:00:00Z",
+  "topic_id": "WEP-01",
+  "blueprint_ref": "PHYSICS-D3D4@0.2.0-CANDIDATE",
+  "adapter_ref": "WPE-PILOT@0.1.0-CANDIDATE",
+  "files": {
+    "sources": "sources.json",
+    "warrants": "warrants.json",
+    "constructions": "constructions.json",
+    "lessons": "lessons.json",
+    "assessments": "assessments.json",
+    "approvals": "approvals.json"
+  }
+}

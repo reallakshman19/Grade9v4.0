@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "source_kind": "OWNER_SUPPLIED_SYNTHETIC_SL1_SL2_SEED_AND_DRAFT_BLUEPRINT",
+  "status": "STRUCTURAL_SMOKE_HOLD",
+  "question_count": 1,
+  "proposed_operation": "JUSTIFY",
+  "proposed_band": "D3",
+  "factor_sum": 6,
+  "common_blueprint_cell": "D3.7",
+  "wpe_adapter_cell_present": true,
+  "core1a_preparation": "SOURCE_PREPARATION_ONLY",
+  "qualification_status": "HOLD",
+  "native_r2_sidecar_status": "STRUCTURAL_SMOKE_ONLY_NOT_NATIVE_VALIDATED",
+  "codes": [
+    "BLUEPRINT_NOT_APPROVED",
+    "HANDOFF_NOT_APPROVED",
+    "HANDOFF_NO_REVIEWED_QUESTION_JOIN",
+    "NATIVE_REPORT_ABSENT",
+    "QRT_INDEPENDENT_DECISION_MISSING",
+    "SL1_CLAIM_NOT_INDEPENDENT_CUSTODY",
+    "WPE_ADAPTER_NOT_APPROVED"
+  ]
+}

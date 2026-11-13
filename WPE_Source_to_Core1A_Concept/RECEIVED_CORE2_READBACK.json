@@ -1,0 +1,43 @@
+{
+  "audit": {
+    "path": "C:\\Users\\reall\\Downloads\\WPE_CORE2_R2_READONLY_AUDIT.zip",
+    "sha256": "16dd1d5aadc9c2cdf0a0c4e120c1249092136829dc9ac2813c127236a63d20c0",
+    "CRC": "PASS",
+    "manifest_payloads_verified": 10,
+    "failures": [],
+    "recorded_summary": {
+      "pass": 7,
+      "hold": 8,
+      "owner_acceptance": "NOT_GRANTED"
+    },
+    "four_input_checker": "NOT_RERUN",
+    "appointment": "UNAPPOINTED_DIAGNOSTIC"
+  },
+  "owner_package": {
+    "path": "C:\\Users\\reall\\Downloads\\WPE_CORE2_R2_FULL_OWNER_REVIEW_PACKAGE.zip",
+    "sha256": "7a5e6f12bd5ea656fea301a00796c20ce9aa5a897acbb1f4e95f57ca2cd59033",
+    "nested_return_sha256": "8b3fa63993a8d7a54b8fc6e38dca96227e18e3ae35c3e5b5e9a596cc20b2a99b",
+    "nested_CRC": "PASS",
+    "nested_receipt_payloads_verified": 18,
+    "selection_count": 21,
+    "conditional_selected": 14,
+    "vacant": 7,
+    "admitted": 0,
+    "source_records": 79,
+    "identity_groups_reported": 78,
+    "identity_groups_recomputed": 78,
+    "alias_pair": [
+      {
+        "id": "EX-M4",
+        "canonical_counting_id": "JEE-2026-04-05-S2-Q28"
+      },
+      {
+        "id": "JEE-2026-04-05-S2-Q28",
+        "canonical_counting_id": "JEE-2026-04-05-S2-Q28"
+      }
+    ],
+    "independent_review": "NOT_ESTABLISHED",
+    "Owner_approval": "NOT_GRANTED"
+  },
+  "academic_verdicts": "NOT_REPERFORMED"
+}
